@@ -121,7 +121,7 @@
 
 \section{Introduction}
 
-Consider \cite{oeis} \cite{Hong_2018} \cite{10.5555/1717824} \cite{Bna2006AWT} the following $6$ unit squares with markings on them.
+Consider the following $6$ unit squares with markings on them.
 
 %figure of tiles (colored marknigs!)
 \begin{center}
@@ -240,7 +240,7 @@ An example of a $(7,5)$-mosaic with a self-avoiding polygon:
 \end{center}
 \end{exmp}
 
-Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding polygon or SAP. From the fact that the smallest SAP is
+Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding polygon (SAP). From the fact that the smallest SAP is
 
 \begin{center}
 \begin{tikzpicture}
@@ -259,7 +259,7 @@ we have that $t_{n,1}=t_{1,m}=0$, and $t_{2,2} = 1$. What else can be said?
 \begin{theorem}\label{thm: m=2 case}
 Setting $m=2$ gives
 \begin{equation}
-    \sum_{n \geq 2}t_{n,2}x^n = \frac{x^2}{(1-36x)(1-37x+37x^2)}.
+    T_2(x) = \sum_{n \geq 2}t_{n,2}x^n = \frac{x^2}{(1-36x)(1-37x+37x^2)}.
 \end{equation}
 This can be solved for $n \geq 2$ to give
 \begin{equation}
@@ -273,12 +273,12 @@ where $\alpha = \frac{1}{2} + \frac{1}{2}\sqrt{\frac{33}{37}}$ and $\beta = \fra
 We prove that $t_{n,2}$ has
 $$t_{n,2} = 36t_{n-1,2} + \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2}).$$
 
-Split $t_{n,2}$ into $S$ and $S^c$. $S$ contains the mosaics that have $1$ SAP only, and the SAP contains the left-most two cells. This means $S^c$ contains all mosaics that contain multiple SAPs and mosaics that contain only $1$ SAP, but that does not contain the two left-most cells.
+Split $t_{n,2}$ into $S_n$ and $S_n^c$. $S_n$ contains the mosaics that have just $1$ SAP that contains the left-most two cells. This means $S_n^c$ contains all mosaics that contain multiple SAPs and mosaics that contain only $1$ SAP, but that does not contain the two left-most cells.
 
-The subset $S$ can be split further by the length of each SAP $i$. 
+The subset $S_n$ can be split further by the length of each SAP $i$. 
 
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}\label{fig: S breakdown}
 \draw[thick] ( 0 , 0 ) rectangle ( 8 , 2 );
 % row1
 \cellD{0}{0}{1}{1}
@@ -298,12 +298,12 @@ The subset $S$ can be split further by the length of each SAP $i$.
 \cellB{2}{-1.5}{3}{-0.5}
 
 \end{tikzpicture}
-\captionof{figure}{Members of $S$ of lengths $i=2$ and $i=3$}\label{fig: S breakdown}
+\captionof{figure}{Members of $S_n$ of lengths $i=2$ and $i=3$}
 \end{center}
 
-As $S$ counts the number of mosaics that only contain $1$ SAP, the blank space in Figure \ref{fig: S breakdown} must have no SAPs. The number of mosaics that have no SAPs is $6^{2(n-i)}-t_{n-i,2}$. As a SAP's width can range from $2$ to $n$, we have $|S| = \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2}) = \sum_{i=0}^{n-2}(6^{2(n-i)}-t_{n-i,2})$
+As $S_n$ counts the number of mosaics that only contain $1$ SAP, the blank space in Figure \ref{fig: S breakdown} must have no SAPs. The number of mosaics that have no SAPs is $6^{2(n-i)}-t_{n-i,2}$. As a SAP's width can range from $2$ to $n$, we have $|S_n| = \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2}).$
 
-Now consider $S^c$. The mosaics that belong to this set can be represented by the following diagram,
+Now consider $S_n^c$. The mosaics that belong to this set can be represented by the following diagram,
 
 \begin{center}
 \begin{tikzpicture}
@@ -315,46 +315,150 @@ Now consider $S^c$. The mosaics that belong to this set can be represented by th
 % text
 \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 4 , 1 ){$t_{n-1,2}$};
 \end{tikzpicture}
-\captionof{figure}{Representation of $S^c$}\label{fig: Sc breakdown}
+\captionof{figure}{Representation of $S_n^c$}\label{fig: Sc breakdown}
 \end{center}
 
-where the red dot in the left most cells indicate any marking. For this paper, we will refer to a cell that can have any marking as an \textit{open}. We can conclude that $|S^c| = 6^{2}t_{n-1,2}$. Combining $S$ and $S^c$ gives the recurrence relation. Standard techniques then give the generating function and formula.
+where the red dot in the left most cells indicate any marking. For this paper, we will refer to a cell that can have any marking as an \textit{open}. We can conclude that $|S_n^c| = 6^{2}t_{n-1,2}$. Combining $S_n$ and $S_n^c$ gives the recurrence relation. Standard techniques then give the generating function and formula.
 \end{proof}
 
 \begin{theorem}\label{thm: m=3 case}
 Setting $m=3$ gives
 \begin{equation}
-    \sum_{n \geq 2}t_{n,3}x^n = \frac{(73-414x)x^2}{(1-216x)(1-228x+2699x^2-7758x^3)}
+    T_3(x) = \sum_{n \geq 2}t_{n,3}x^n = \frac{(73-414x)x^2}{(1-216x)(1-228x+2699x^2-7758x^3)}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-Similarly to $t_{n,2}$, we prove a recurrence relation. This time, we prove
-$$t_{3,n} = 6^3 t_{n-1,3} + \sum_{i = 0}^{n}(6^{3(n-i)} - t_{n-i,3})f_{i,3}$$
-where $f_{n,m}$ is the number of mosaics in an $n \times m$ grid  that contain just one SAP that is $n$ wide and $m$ tall. 
+For $t_{n,3}$ we directly compute the generating function $T_3(x)=\sum_{n \geq 2}t_{n,3}x^n$ using the following recurrence relation
+$$t_{3,n} = 6^3 t_{n-1,3} + \sum_{i = 2}^{n}(6^{3(n-i)} - t_{n-i,3})f_{i},$$
+where $f_{i}$ is the number of mosaics in an $i \times 3$ grid  that contain just one SAP that has cells in the left-most column. We similarly split $t_{n,3}$ into $S_n$ and $S_n^c$. Here let $S_n$ be the set that contains the mosaics that have just $1$ SAP that has cells in the left-most column. Therefore $S_n^c$ contains all mosaics that contain multiple SAPs and mosaics that contain $1$ SAP that does not have cells in the left-most column. 
 
-EXAMPLE FIGURE %caption: a mosaic that is counted in f_{7,5}
+Similarly for the $n=2$ case, $S_n^c$ can be easily enumerated. 
+\begin{center}
+    \begin{tikzpicture}
+    \draw[thick] ( 0 , 0 ) rectangle ( 8 , 3 );
+    % row1
+    \cellopen{0}{0}{1}{1}
+    % row2
+    \cellopen{0}{1}{1}{2}
+    % row3
+    \cellopen{0}{2}{1}{3}
+    % text
+    \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 4 , 1.5 ){$t_{n-1,3}$};
+    \end{tikzpicture}
+    \captionof{figure}{Representation of $S_n^c$}\label{fig: Sc breakdown for 3}
+\end{center}
 
-Notice that $f_{n,2} = 1$ for $n \geq 2$, which is why this 'weight' factor does not appear in the proof of Theorem \ref{thm: m=2 case}. It can be shown that 
-$$F_3(x) = \sum_{n \geq 2} f_{n,3}x^n = \frac{73 - 414x}{1-12x+43x^2},$$
+It is clear to see that $|S_n^c| = 6^3 t_{n-1,3},$ and so 
+$$\sum_{n \geq 2} |S_n^c|x^n = 6^3 xT(x).$$
 
-and similar techniques prove the generating function.
+To enumerate $S_n$, as in the $n=2$ case, the SAP starts in the first column and ends at column $i$, after which there are no SAPs. This allows us to conclude that $|S_n| = \sum_{i = 2}^{n}(6^{3(n-i)} - t_{n-i,3})f_{i},$, where $f_i$ is the number of ways the cells to the left of and including column $i$ can contain $1$ SAP that includes the left-most column. To find the identity of $f_i$, we study the $4$ cases below.
 
-PROOF OF F RECURRENCE RELATION
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
+        % row1
+        \cellopen{0}{0}{1}{1}
+        % row2
+        \cellD{0}{1}{1}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+
+        % row1
+        \cellopen{4}{0}{5}{1}
+        % row2
+        \cellC{4}{1}{5}{2}
+        % row3
+        \cellB{4}{2}{5}{3}
+
+        % text
+        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$a_{i}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
+        % row1
+        \cellopen{0}{0}{1}{1}
+        % row2
+        \cellD{0}{1}{1}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+
+        % row1
+        \cellC{4}{0}{5}{1}
+        % row2
+        \cellE{4}{1}{5}{2}
+        % row3
+        \cellB{4}{2}{5}{3}
+
+        % text
+        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$b_{i}$};
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
+        % row1
+        \cellopen{0}{0}{1}{1}
+        % row2
+        \cellD{0}{1}{1}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+
+        % row1
+        \cellC{4}{0}{5}{1}
+        % row2
+        \cellB{4}{1}{5}{2}
+        % row3
+        \cellopen{4}{2}{5}{3}
+
+        % text
+        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$c_{i}$};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
+        % row1
+        \cellD{0}{0}{1}{1}
+        % row2
+        \cellE{0}{1}{1}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+
+        % row1
+        \cellC{4}{0}{5}{1}
+        % row2
+        \cellE{4}{1}{5}{2}
+        % row3
+        \cellB{4}{2}{5}{3}
+
+        % text
+        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$d_{i}$};
+    \end{tikzpicture}
+\end{center}
+
+It is easy to see that $a_2 = 36$ and $a_3 = 216$. As $i$ increases, one can see that the enumeration of $a_i$ is related to smaller values of $a_i$ and $b_i$, more specifically
+$$a_i = 6a_{i-1} + 6^2 b_{i-2}.$$
+
+We find similar relations with the other $3$ cases, namely
+$$b_n = 6b_{n-1} + 6^2 d_{n-2}$$
+where $b_2 = 0$ and $b_3 = 6$
+$$c_n = 6c_{n-1} + 6^2 b_{n-2}$$
+where $c_2 = 0$ and $c_3 = 0$
+$$d_n = 6d_{n-1} + 6^2 b_{n-2}$$
+where $d_2 = 1$ and $d_3 = 6.$
+
+Combining these $4$ cases, and accounting for the appropriate symmetries, we arrive at
+
+$$f_i = 2a_i + 4b_i + 2c_i + d_i.$$
+
+Solving this series of recurrence relations using generating functions gives
+
+$$F(x) = \sum_{i \geq 2} f_i x^i = \frac{73 - 414x}{1-12x+43x^2}$$
+
+This allows us to write 
+$$\sum_{n \geq 2} |S_n|x^n = \left(\frac{1}{1-6^3x}-T(x)\right)F(x).$$
+
+Combining these two generating functions and simplifying gives the result.
 
 \end{proof}
-
-\begin{theorem}
-Setting $m=4$ gives
-\begin{equation}
-    \sum_{n \geq 2}t_{n,4}x^n = ?
-\end{equation}
-\end{theorem}
-
-%\newpage
-
-%\bibliography{bibtex}{}
-\printbibliography
-
 
 \end{document}
