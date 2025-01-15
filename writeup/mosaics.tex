@@ -461,4 +461,35 @@ Combining these two generating functions and simplifying gives the result.
 
 \end{proof}
 
+\section{Full Solution}
+
+TODO writeup, credit Farstar31!
+
+$$
+M(2) = \begin{bmatrix}
+36 & 1 \\
+-1 & 1
+\end{bmatrix}
+$$
+
+For $h \geq 2$, then if
+$$
+M(h) = \begin{bmatrix}
+M_1 & M_2 \\
+M_3 & M_4
+\end{bmatrix}
+$$
+
+then
+$$
+M(h+1) = \begin{bmatrix}
+6M_1 & 6M_2 & \frac{1}{6}M_1 & 1M_2 \\
+6M_3 & 6M_4 & 0M_3 & 1M_4 \\
+-\frac{1}{6}M_1 & 0M_2 & \frac{1}{6}M_1 & 1M_2 \\
+1M_3 & 1M_4 & -1M_3 & 6M_4 \\
+\end{bmatrix}
+$$
+
+where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.
+
 \end{document}
