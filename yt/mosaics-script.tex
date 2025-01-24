@@ -1,0 +1,256 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{tikz}
+%\usepackage{subfig}
+\usepackage[english]{babel}
+%\usepackage{capt-of}
+\newtheorem{theorem}{Theorem}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+\usepackage{hyperref}
+%might be unnecessary
+\usepackage{doi}
+%bibliography CMDS
+\usepackage{filecontents}
+\begin{filecontents*}{mosaicsref.bib}
+
+
+
+\end{filecontents*}
+
+
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{ohcrefs.bib}
+
+%%% With amsthm package, creates environments for nicely formatted,
+%%% labeled, and numbered propositions, etc.
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{observ}[thm]{Observation}
+\newtheorem{open}[thm]{Open Problem}
+\newtheorem{prob.}[thm]{Problem}
+\newtheorem{quest}[thm]{Question}
+
+% I used these for making definitions and theorems, not what is above
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{note}[thm]{Note}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+
+%nice quick solution
+\usepackage[margin=1in]{geometry}
+
+\title{The Mosaic Problem - How and Why to do Math for Fun. \#SOME3}
+\author{Jack Hanke}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% TODO
+% add animation notes to all sections
+% need to make a specific list of animations for Kim to do
+
+% write the python version of your c++ algorithm 
+% verify that t_{n,3} for n>=8 still agrees with the GF
+% exactly solve t_{n,3} from the generating function
+
+% https://3blue1brown.substack.com/p/some3-begins
+
+
+\section{Introduction}
+
+%past to present tense transitions will help, like "here is what I was thinking of at the time"
+
+% This video is intended for people with at least one course in calculus, and especially for high school students considering a major in mathematics. 
+
+Have you ever been in a math class, listening to a lecture, and you find yourself thinking
+``Oh my god who the hell cares?''
+% https://www.youtube.com/watch?v=RAA1xgTTw9w
+I think even math students can occasionally admit to this. Math education is notoriously hard to connect with. There are even contests to make high quality, engaging math lessons. In this video I will talk about how I was able to overcome these ``who the hell cares" moments and how you can too. 
+
+\section{Backburner Problems}
+
+My advice is that before you take a math class you should have a problem you would like to solve in your head. 
+
+The problem doesn't have to be within the subject in question, nor does it need to be unsolved by the greater mathematics community. All you will need is to truly care about it. The problem can be about baseball statistics, Minecraft crop growth, or YouTube analytics. Use whatever you find interesting to motivate your own studies.
+
+Say you are about to learn real analysis. I suggest then that you should have say a function you want to learn more about. Suddenly, every theorem you read that starts ``take a function $f$ defined on R yadda yadda yadda" turns into ``take \textit{your} function $f$ defined on R yadda yadda yadda". That function you care about will bring extra context to what you are learning. Whether or not the theorem actually helps solve your problem is unimportant -- it is the re-contextualization of the material that is so critical.
+
+I call these ``backburner problems" because, well,  you keep them on the backburner. As an undergraduate, I had a couple backburner problems that kept me motivated and curious throughout my coursework. I'd like to show you one I made up myself, the progress I made on it, and some lessons I picked up along the way.
+
+\section{Introducing My Problem}
+
+About $5$ years ago while on a long flight home, I sketched out the following problem.
+
+% doodling animation KIM
+Imagine you have six types of squares, and on each square is a red line. 
+% draw single rectangles, then draw the red lines
+You then put the squares in a rectangular grid, like you are tiling a bathroom floor. You can use as many of each square, or tile, as you'd like. Here is an example tiling of a $7$ by $5$ grid.
+% show one with no SAPs
+Here is another example.
+% show another with no SAPs
+As you can see, this process gives these nice strangle little designs. I started calling these tiling \textit{mosaics} on that flight, so that's what we will call them now. Let's look at another one.
+% show one with a SAP, not hilighted
+Do you see that? This time we got a special region in our mosaic.  The red lines have drawn out a connected shape. 
+% show the same tiling with the SAP hilighted
+Let's see another mosaic with one of these connected shapes.
+% show a tiling with a more complicated SAP, first unhilighted and then hilighted
+As you can see, these connected shapes can get pretty complicated.
+% show empty grid with question below it
+The question that I asked was "what is the probability that when you make a $n$ by $m$ mosaic, you get at least one connected shape ?" 
+
+So I got to work. 
+
+\section{My Initial Work}
+
+The first thing you will want to do when working on a new math problem is to define some notation. This will help you in formalizing your ideas.
+% write p_{n,m} definition with words
+Let's have $p_{n,m}$ be the probability that we get at least one connected shape in an $n$ by $m$ mosaic. So $p_{n,m}$ is then the number of mosaics with connected shapes over the total number of mosaics.
+
+We'll call the numerator $t_{n,m}$. We can then write that and $6$ to the $n$ times $m$ as the denominator.
+
+% animate 
+Why $6$ to the $n$ times $m$? We have $n$ times $m$ spots to put tiles, and $6$ choices, $1$ for each tile type. So because we can write the denominator easily, we will focus on $t_{n,m}$ for the rest of this video.
+
+Now that we have notation defined, the next step you will likely want to do is collect some empirical data. This means get a feel for your problem! Sketch out some cases, find some examples or counter-examples, and begin to form a hypothesis. For us this means finding some small values of $t_{n,m}$. 
+
+%show 
+Let's start with $t_{1,1}$. We have $6$ mosaics to go through, none of which form a connected shape. This means that $t_{1,1}$ equals $0$. 
+
+% show 1 x 7 rectangular grid
+In fact, if either $n$ or $m$ is $1$, no matter how hard we try, we can't make any connected shapes, so all of those values are $0$. 
+Next let's look at $t_{2,2}$
+% 2 by 2 rectangular grid gets populated with single SAP
+Here we can make just one connected shape, this little diamond shape here. So $t_{2,2}$ equals $1$. 
+
+How about $t_{2,3}$? 
+% show 2 x 3 rectangle
+This one is a little more involved, but let's give it a shot. First, we can make this long diamond shape here. There are just $1$ of those. Next, we could see the smaller diamond appear in the top $4$ spaces. See how we have two open spaces below? Since we only care about making at least one connected region, and we already have one above, these tiles can be anything. Since we have $6$ choices for each open space, there are $6^2$ mosaics with this connected region here. Similarly, for when the smaller diamond appears in the bottom $4$ spaces, we have two open spaces above, and so we also have $6^2$ for this case. So 
+$$t_{2,3} = 1 + 6^2 + 6^2 = 73$$
+
+For the rest of this video, let's call an open space that can be any tile an \textit{open}, and mark them with a dot. This way it is clear that the space is accounted for, it can just be anything.
+
+I would like to take you through $1$ more case to illustrate the last concept for counting these shapes. So let's compute $t_{2,4}$.
+
+Going a bit quicker, we have these $7$ cases, and if we mark the opens, multiply each case by $6$ to the number of opens, and add that all up, we would get our answer right? Unfortunately not. Can you see where we went wrong? 
+% short pause
+
+Look at these three cases. Because opens can be anything, this group of four opens could include the diamond shape. Same with this case, the opens could also contain the small diamond. So instead of counting the two diamond case on the right separately, we have actually already counted it. In fact, we have counted it twice. This means that instead of adding $1$ for this last case, we should actually subtract $1$, which means $t_{2,4} = 3960$. 
+
+This phenomena is known as the \textit{inclusion-exclusion principle}. It may be hard for a student to pick up on the ramifications of such an idea when this line of math is slapped up on a lecture slide. Instead, notice how we naturally arrive at the idea ourselves simply by noticing that we are over-counting some of our cases, and determining how much we need to subtract to get a correct answer. Reaching the principle this way often gives a better of understanding of the general rule.
+
+Another important technique is summarizing your findings. Let's put what we have found so far in a little array. 
+
+%show array of t_{n,m}
+We already determined that anything with a $1$ gives $0$. $2,2$ is $1$, $2,3$ is $73$, and $2,4$ is $3960$. Also because the number of mosaics with a connected region in an $n$ by $m$ rectangle is the same for a $m$ by $n$ rectangle, we know all of these values as well. The last data point I calculated before the plane landed was $t_{3,3}$. There is no complicated double counting, so I will leave it to the viewer to compute that $t_{3,3} = 31998$.
+
+Here is a quick look at this same array but for $p_{n,m}$. We do that just by dividing these values by $6$ to the $n$ times $m$ like we saw before.
+
+These arrays are as far as I got on that flight. After I landed, the problem really stuck with me. It became my first backburner problem, and so I carried it through my coursework, hoping that one of the lectures I attended would give me the tools I needed to get further. 
+
+\section{Course I: Probability} % dice roll
+
+I took a course in probability, which formally taught me the inclusion-exclusion principle. I was taught how to understand what this notation actually said, and how to use it in my own problems. I was already familiar with the idea from our work before, and so I found myself understanding it quite well. The benefits of a backburner problem were already appearing. Other than that though, the course didn't get me further. However, another course I took that semester did.
+
+\section{Course II: Intro to Programming} % keys clacking
+
+The first course I took that helped me was an introduction to programming course. Before, filling out the last entries in that array seemed out of my reach. They were just too complicated. But now that I was taking this course, each programming technique I learned became a way to get the next value. After completing the course, I wrote an algorithm to compute values of $t_{n,m}$ that allowed me to complete my initial array. But even the algorithm could only produce a few more values before it became too slow.
+% transform to show more of the array and a loading wheel
+What else could I do? Well I decided that enumerating the general $t_{n,m}$ may be too tricky to take on directly, so why not just focus on solving a single row? I set my sights on enumerating the $n$ by $2$ case. But how would I do that? I would need to take another course to find out.
+
+\section{Course III: Combinatorics} % sesame street count counting
+
+The course that really opened this problem up to me was combinatorics. Solving the $n$ by $2$ case still seemed difficult, until I learned about linear recurrence relations. A linear recurrence relation is an equation that defines a function $f$ of some variable, let's say $k$, in terms of it's previous values. Here is an example of one. These types of relationships were a large topic in this course. Again the lessons that would have been mundane became critical once I realized I could write my own linear recurrence for the $n$ by $2$ case. Let's see how to do that. 
+
+Earlier we calculated $t_{2,2}$, $t_{3,2}$, and $t_{4,2}$ manually. Let's see if we can compute $t_{5,2}$ using what we know. Let's take our collection of mosaics counted in $t_{4,2}$, and add $2$ cells to the right. For every mosaic we counted in $t_{4,2}$, we can have any combination of tiles for these $2$ new cells, and still have it contain at least one connected shape. So $t_{5,2}$ is at least $6^2 * t_{4,2}$. 
+
+Are there more mosaics in $t_{5,2}$? Yes there are! The previous method computed all mosaics in $t_{5,2}$ where there was at least one connected shape that was within the left $8$ cells. So we need to count the number of mosaics that have a connected shape that uses the $2$ new cells, \textit{and} have that shape be the only one in the mosaic. 
+
+To count these mosaics, we can make a connected shape, and then compute the number of mosaics in the remaining space that \textit{don't} have any connected shapes. 
+
+Let's make the smallest connected shape, the small diamond, first. This leaves us with a $3$ by $2$ region. We know the number of mosaics that do have at least one connected region to be $t_{3,2}$, so the number of mosaics that don't have any is $6^{3*2} - t_{3,2}$. Doing this for each possible width of connected shape, that being widths $2$, $3$, $4$, and $5$ gives us the total for all of these types of mosaics, and consequently all mosaics in a $5$ by $2$ grid. 
+
+And so $t_{5,2}$ equals this sum, which equals $190,475$.
+
+$$t_{5,2} = 36t_{4,2} + \sum_{i=2}^5(6^{2(5-i)} - t_{5-i,2}) = 190,475$$
+
+We can generalize the process we just did into this recurrence relation.
+
+$$t_{n,2} = 36t_{n-1,2} + \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2})$$
+
+This equation is certainly useful for programming, but how do we use it to get a formula for $t_{n,2}$? Well this same course taught me about how we can use a tool called a \textit{generating function} to solve this exactly.
+
+Don't worry if you don't know what a generating function is. They are really just a step between the recurrence relation and the actual solution. The important thing for this video is that GENERATING FUNCTIONS ARE CONFUSING. You learn about power series in calculus and all you ever worry about is convergence. You only ever talk about a series in terms of it's input. And all you care about is the value of the sum. Then you learn generating functions and they look exactly the same as power series except you don't care about convergence, you don't care about it's input, and you don't care about the value of the sum. You only care about the coefficients. 
+
+This was a massive mental shift for me, and so I really struggled through this unit. I think the reason for the hardship was how similar they looked to something I did know. It wasn't something new and completely different looking, it was something new and so familiar that the familiarity interfered with the new. With how much I struggled, I certainly would have mmm hmmed my way through the unit. However, I had a linear recurrence of my own that I needed to solve. So I put in the extra time. I read and reread the textbook and did extra problems until I understood. And all because of my backburner problem. I really am happy this problem was with me, because generating functions are powerful tools to have in your mathematics arsenal. 
+And with them I was able to get an exact expression for $t_{n,2}$. Here it is.
+
+\begin{equation}
+     t_{n,2}= 6^{2n} - \frac{1}{\beta-\alpha}((36\beta-35)\beta^{-n+1} - (36\alpha - 35)\alpha^{-n+1})
+\end{equation}
+
+In this formula $\alpha = \frac{1}{2} + \frac{1}{2}\sqrt{\frac{33}{37}}$ and $\beta = \frac{1}{2} - \frac{1}{2}\sqrt{\frac{33}{37}}$. This is an exact expression for the second row of the array we saw earlier, and is valid for all $n \geq 2$.
+
+And like we mentioned before, dividing by $6$ to the $2$ times $n$ on both sides gives an exact expression for the probability of an $n$ by $2$ mosaic containing a connected shape. 
+
+$$\frac{t_{n,2}}{6^{2n}} = p_{n,2} =  1 - \frac{1}{(\beta-\alpha)6^{2n}}((36\beta-35)\beta^{-n+1} - (36\alpha - 35)\alpha^{-n+1})$$
+
+We can see that as $n$ increases, the probability there is at least one connected shape increases slowly. It is a good exercise for the viewer to show this probability goes to $1$ as $n$ goes to infinity. Also just for fun, the smallest width $n$ where there is a greater than $50$ percent chance of getting a connected shape is $874$. So you need a pretty big rectangle to see at least one of these shapes a majority of the time.
+
+What else can we do? It turns out we can solve the third row of our array as well. $t_{n,3}$ follows a more complicated recurrence, but you can still solve it to give you this ridiculous thing. 
+
+In an amusing twist of fate, in combinatorics it is more common to just give the generating function instead of the exact formula, because of how unwieldy the exact formula can get. This is the generating function for those curious.
+
+\begin{equation}
+    \sum_{n \geq 2}t_{n,3}x^n = \frac{(73-414x)x^2}{(1-216x)(1-228x+2699x^2-7758x^3)} = \frac{1}{1-216x} - \frac{1 -12x + 34x^2}{1-228x+2699x^2-7758x^3}
+\end{equation}
+
+What about more rows? Well, solving $t_{n,4}$ and beyond exactly seems out of my reach. Rows larger than $3$ were just too complicated. And so I had reached the end of what I could do.
+
+This is a common fate of a backburner problem. Sometimes you can't answer everything you hoped to answer, and that's ok! A backburner problems purpose isn't solely to be solved, but instead to motivate and inspire. One of the reasons I made this video was to see if anyone wanted to give it a go on their own - to make the mosaic problem their own backburner problem. It was so useful for me that I thought I would share it with the larger math world, in the hopes that someone else can find some use in it too. Speaking of which...
+
+\section{An Additional Mosaic Question} % hmmmm
+
+With any good problem, you will find many extra problems that you find along the way. Knowing which of these paths to go down and which to leave alone is a crucial skill for your productivity. Here is a problem I asked about mosaics that I decided to leave alone that I thought you may enjoy...
+
+We saw previously that the probability that one gets at least one connected shape goes to $1$ as the size of the grid you are tiling increases, which can be written like this. This means that on the infinite square grid, you will get at least $1$ shape with probability $1$. What else could you ask on the infinite grid? 
+
+Well, you could ask what is the probability that a specific cell is a part of the shape's perimeter? For example, this cell is part of a perimeter, but this one is not.
+
+An expression for this probability can be written as follows. If we let $a_{n}$ be the number of shapes you can draw of length $2n$ 
+%which is sequence A002931 in the OEIS
+, then the probability that a cell in the infinite grid is part of a shapes perimeter is this sum.
+
+$$\sum_{\text{even } n \geq 4} \frac{n a_{n}}{6^{n}} = 0.003382\dots$$
+
+which is about $3$ in a thousand.
+
+So about $3$ out of every $1000$ cells are part of a shape on the infinite grid.
+
+I introduce this because there is a similar-sounding problem which seems to be much harder. What if, instead of wanting to know the probability that a cell is a part of the perimeter, you want to know the probability a cell is enclosed by a shape. This is more difficult because on larger grids, shapes can enclose other smaller shapes. For example, this cell is enclosed by $2$ shapes . If we assert that a cell is only counted as being enclosed if it is surrounded by an odd number of shapes, what is the chance that it is enclosed on the infinite grid? Pretty interesting question huh? 
+
+\section{Outro}
+
+This video was all about why you should have a backburner problem. They really are just so useful for learning mathematics. If you are interested in making the mosaic problem your own backburner problem, here is a brief list of suggested reading that I have compiled. Here are my sources, and my favorite comments from my previous videos.
+
+I would also like to offer my sincerest thanks to my girlfriend Kimberly who provided the hand-drawn animations for this video. Thanks for being the best honeybun.
+
+Finally, I would like to thank you all for watching. Have a nice day! 
+
+\end{document}
