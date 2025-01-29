@@ -95,12 +95,14 @@
 % -
 \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
-\usepackage[margin=1in]{geometry}
 
+\newcommand{\lablnode}[3]{\node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=1pt] (A) at ( #1 , #2 ) {#3};}
+
+\usepackage[margin=1in]{geometry}
 
 %doc info
 \title{Mosaics}
-\author{Jack Hanke}
+\author{Jack Hanke, Farstar31}
 \date{\today}
 
 \begin{document}
@@ -145,46 +147,46 @@ An $(n,m)$-\textit{mosaic} is a rectangular grid made up of tiles.
 An example of a $(7,5)$-mosaic:
 \begin{center}
 \begin{tikzpicture}
-% row1
-\cellA{0}{0}{1}{1}
-\cellB{1}{0}{2}{1}
-\cellF{2}{0}{3}{1}
-\cellA{3}{0}{4}{1}
-\cellC{4}{0}{5}{1}
-\cellE{5}{0}{6}{1}
-\cellD{6}{0}{7}{1}
-% row2
-\cellA{0}{1}{1}{2}
-\cellE{1}{1}{2}{2}
-\cellF{2}{1}{3}{2}
-\cellE{3}{1}{4}{2}
-\cellE{4}{1}{5}{2}
-\cellB{5}{1}{6}{2}
-\cellD{6}{1}{7}{2}
-% row3
-\cellA{0}{2}{1}{3}
-\cellB{1}{2}{2}{3}
-\cellA{2}{2}{3}{3}
-\cellB{3}{2}{4}{3}
-\cellA{4}{2}{5}{3}
-\cellD{5}{2}{6}{3}
-\cellF{6}{2}{7}{3}
-% row4
-\cellF{0}{3}{1}{4}
-\cellE{1}{3}{2}{4}
-\cellA{2}{3}{3}{4}
-\cellA{3}{3}{4}{4}
-\cellE{4}{3}{5}{4}
-\cellD{5}{3}{6}{4}
-\cellC{6}{3}{7}{4}
-% row5
-\cellA{0}{4}{1}{5}
-\cellD{1}{4}{2}{5}
-\cellE{2}{4}{3}{5}
-\cellD{3}{4}{4}{5}
-\cellD{4}{4}{5}{5}
-\cellC{5}{4}{6}{5}
-\cellE{6}{4}{7}{5}
+    % row1
+    \cellA{0}{0}{1}{1}
+    \cellB{1}{0}{2}{1}
+    \cellF{2}{0}{3}{1}
+    \cellA{3}{0}{4}{1}
+    \cellC{4}{0}{5}{1}
+    \cellE{5}{0}{6}{1}
+    \cellD{6}{0}{7}{1}
+    % row2
+    \cellA{0}{1}{1}{2}
+    \cellE{1}{1}{2}{2}
+    \cellF{2}{1}{3}{2}
+    \cellE{3}{1}{4}{2}
+    \cellE{4}{1}{5}{2}
+    \cellB{5}{1}{6}{2}
+    \cellD{6}{1}{7}{2}
+    % row3
+    \cellA{0}{2}{1}{3}
+    \cellB{1}{2}{2}{3}
+    \cellA{2}{2}{3}{3}
+    \cellB{3}{2}{4}{3}
+    \cellA{4}{2}{5}{3}
+    \cellD{5}{2}{6}{3}
+    \cellF{6}{2}{7}{3}
+    % row4
+    \cellF{0}{3}{1}{4}
+    \cellE{1}{3}{2}{4}
+    \cellA{2}{3}{3}{4}
+    \cellA{3}{3}{4}{4}
+    \cellE{4}{3}{5}{4}
+    \cellD{5}{3}{6}{4}
+    \cellC{6}{3}{7}{4}
+    % row5
+    \cellA{0}{4}{1}{5}
+    \cellD{1}{4}{2}{5}
+    \cellE{2}{4}{3}{5}
+    \cellD{3}{4}{4}{5}
+    \cellD{4}{4}{5}{5}
+    \cellC{5}{4}{6}{5}
+    \cellE{6}{4}{7}{5}
 \end{tikzpicture}
 \end{center}
 \end{exmp}
@@ -193,49 +195,50 @@ Clearly there are $6^{nm}$ possible mosaics. Which of these mosaics contain self
 
 %example of a mosaic with an enclosed region
 \begin{exmp}
-An example of a $(7,5)$-mosaic with a self-avoiding polygon:
+\label{exp:sap}
+An example of a $(7,5)$-mosaic with a self-avoiding polygon, hilighted in gray:
 \begin{center}
 \begin{tikzpicture}
-% row1
-\cellA{0}{0}{1}{1}
-\cellB{1}{0}{2}{1}
-\cellDf{2}{0}{3}{1}
-\cellCf{3}{0}{4}{1}
-\cellC{4}{0}{5}{1}
-\cellE{5}{0}{6}{1}
-\cellD{6}{0}{7}{1}
-% row2
-\cellA{0}{1}{1}{2}
-\cellE{1}{1}{2}{2}
-\cellEf{2}{1}{3}{2}
-\cellEf{3}{1}{4}{2}
-\cellE{4}{1}{5}{2}
-\cellB{5}{1}{6}{2}
-\cellD{6}{1}{7}{2}
-% row3
-\cellA{0}{2}{1}{3}
-\cellB{1}{2}{2}{3}
-\cellAf{2}{2}{3}{3}
-\cellBf{3}{2}{4}{3}
-\cellA{4}{2}{5}{3}
-\cellD{5}{2}{6}{3}
-\cellF{6}{2}{7}{3}
-% row4
-\cellF{0}{3}{1}{4}
-\cellE{1}{3}{2}{4}
-\cellA{2}{3}{3}{4}
-\cellA{3}{3}{4}{4}
-\cellE{4}{3}{5}{4}
-\cellD{5}{3}{6}{4}
-\cellC{6}{3}{7}{4}
-% row5
-\cellA{0}{4}{1}{5}
-\cellD{1}{4}{2}{5}
-\cellE{2}{4}{3}{5}
-\cellD{3}{4}{4}{5}
-\cellD{4}{4}{5}{5}
-\cellC{5}{4}{6}{5}
-\cellE{6}{4}{7}{5}
+    % row1
+    \cellA{0}{0}{1}{1}
+    \cellB{1}{0}{2}{1}
+    \cellDf{2}{0}{3}{1}
+    \cellCf{3}{0}{4}{1}
+    \cellC{4}{0}{5}{1}
+    \cellE{5}{0}{6}{1}
+    \cellD{6}{0}{7}{1}
+    % row2
+    \cellA{0}{1}{1}{2}
+    \cellE{1}{1}{2}{2}
+    \cellEf{2}{1}{3}{2}
+    \cellAf{3}{1}{4}{2}
+    \cellCf{4}{1}{5}{2}
+    \cellB{5}{1}{6}{2}
+    \cellD{6}{1}{7}{2}
+    % row3
+    \cellA{0}{2}{1}{3}
+    \cellB{1}{2}{2}{3}
+    \cellAf{2}{2}{3}{3}
+    \cellFf{3}{2}{4}{3}
+    \cellBf{4}{2}{5}{3}
+    \cellD{5}{2}{6}{3}
+    \cellF{6}{2}{7}{3}
+    % row4
+    \cellF{0}{3}{1}{4}
+    \cellE{1}{3}{2}{4}
+    \cellA{2}{3}{3}{4}
+    \cellA{3}{3}{4}{4}
+    \cellE{4}{3}{5}{4}
+    \cellD{5}{3}{6}{4}
+    \cellC{6}{3}{7}{4}
+    % row5
+    \cellA{0}{4}{1}{5}
+    \cellD{1}{4}{2}{5}
+    \cellE{2}{4}{3}{5}
+    \cellD{3}{4}{4}{5}
+    \cellD{4}{4}{5}{5}
+    \cellC{5}{4}{6}{5}
+    \cellE{6}{4}{7}{5}
 \end{tikzpicture}
 \end{center}
 \end{exmp}
@@ -244,7 +247,6 @@ Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding poly
 
 \begin{center}
 \begin{tikzpicture}
-
 % row1
 \cellD{0}{0}{1}{1}
 \cellC{1}{0}{2}{1}
@@ -256,214 +258,9 @@ Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding poly
 
 we have that $t_{n,1}=t_{1,m}=0$, and $t_{2,2} = 1$. What else can be said?
 
-\begin{theorem}\label{thm: m=2 case}
-Setting $m=2$ gives
-\begin{equation}
-    T_2(x) = \sum_{n \geq 2}t_{n,2}x^n = \frac{x^2}{(1-36x)(1-37x+37x^2)}.
-\end{equation}
-This can be solved for $n \geq 2$ to give
-\begin{equation}
-     t_{n,2}= 6^{2n} - \frac{1}{\beta-\alpha}((36\beta-35)\beta^{-n+1} - (36\alpha - 35)\alpha^{-n+1})
-\end{equation}
+\begin{thm}
 
-where $\alpha = \frac{1}{2} + \frac{1}{2}\sqrt{\frac{33}{37}}$ and $\beta = \frac{1}{2} - \frac{1}{2}\sqrt{\frac{33}{37}}$.
-\end{theorem}
-
-\begin{proof}
-We prove that $t_{n,2}$ has
-$$t_{n,2} = 36t_{n-1,2} + \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2}).$$
-
-Split $t_{n,2}$ into $S_n$ and $S_n^c$. $S_n$ contains the mosaics that have just $1$ SAP that contains the left-most two cells. This means $S_n^c$ contains all mosaics that contain multiple SAPs and mosaics that contain only $1$ SAP, but that does not contain the two left-most cells.
-
-The subset $S_n$ can be split further by the length of each SAP $i$. 
-
-\begin{center}
-\begin{tikzpicture}\label{fig: S breakdown}
-\draw[thick] ( 0 , 0 ) rectangle ( 8 , 2 );
-% row1
-\cellD{0}{0}{1}{1}
-\cellC{1}{0}{2}{1}
-% row2
-\cellA{0}{1}{1}{2}
-\cellB{1}{1}{2}{2}
-
-\draw[thick] ( 0 , -2.5 ) rectangle ( 8 , -0.5 );
-% row1
-\cellD{0}{-2.5}{1}{-1.5}
-\cellF{1}{-2.5}{2}{-1.5}
-\cellC{2}{-2.5}{3}{-1.5}
-% row2
-\cellA{0}{-1.5}{1}{-0.5}
-\cellF{1}{-1.5}{2}{-0.5}
-\cellB{2}{-1.5}{3}{-0.5}
-
-\end{tikzpicture}
-\captionof{figure}{Members of $S_n$ of lengths $i=2$ and $i=3$}
-\end{center}
-
-As $S_n$ counts the number of mosaics that only contain $1$ SAP, the blank space in Figure \ref{fig: S breakdown} must have no SAPs. The number of mosaics that have no SAPs is $6^{2(n-i)}-t_{n-i,2}$. As a SAP's width can range from $2$ to $n$, we have $|S_n| = \sum_{i=2}^{n}(6^{2(n-i)}-t_{n-i,2}).$
-
-Now consider $S_n^c$. The mosaics that belong to this set can be represented by the following diagram,
-
-\begin{center}
-\begin{tikzpicture}
-\draw[thick] ( 0 , 0 ) rectangle ( 8 , 2 );
-% row1
-\cellopen{0}{0}{1}{1}
-% row2
-\cellopen{0}{1}{1}{2}
-% text
-\node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 4 , 1 ){$t_{n-1,2}$};
-\end{tikzpicture}
-\captionof{figure}{Representation of $S_n^c$}\label{fig: Sc breakdown}
-\end{center}
-
-where the red dot in the left most cells indicate any marking. For this paper, we will refer to a cell that can have any marking as an \textit{open}. We can conclude that $|S_n^c| = 6^{2}t_{n-1,2}$. Combining $S_n$ and $S_n^c$ gives the recurrence relation. Standard techniques then give the generating function and formula.
-\end{proof}
-
-\begin{theorem}\label{thm: m=3 case}
-Setting $m=3$ gives
-\begin{equation}
-    T_3(x) = \sum_{n \geq 2}t_{n,3}x^n = \frac{(73-414x)x^2}{(1-216x)(1-228x+2699x^2-7758x^3)}
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-For $t_{n,3}$ we directly compute the generating function $T_3(x)=\sum_{n \geq 2}t_{n,3}x^n$ using the following recurrence relation
-$$t_{3,n} = 6^3 t_{n-1,3} + \sum_{i = 2}^{n}(6^{3(n-i)} - t_{n-i,3})f_{i},$$
-where $f_{i}$ is the number of mosaics in an $i \times 3$ grid  that contain just one SAP that has cells in the left-most column. We similarly split $t_{n,3}$ into $S_n$ and $S_n^c$. Here let $S_n$ be the set that contains the mosaics that have just $1$ SAP that has cells in the left-most column. Therefore $S_n^c$ contains all mosaics that contain multiple SAPs and mosaics that contain $1$ SAP that does not have cells in the left-most column. 
-
-Similarly for the $n=2$ case, $S_n^c$ can be easily enumerated. 
-\begin{center}
-    \begin{tikzpicture}
-    \draw[thick] ( 0 , 0 ) rectangle ( 8 , 3 );
-    % row1
-    \cellopen{0}{0}{1}{1}
-    % row2
-    \cellopen{0}{1}{1}{2}
-    % row3
-    \cellopen{0}{2}{1}{3}
-    % text
-    \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 4 , 1.5 ){$t_{n-1,3}$};
-    \end{tikzpicture}
-    \captionof{figure}{Representation of $S_n^c$}\label{fig: Sc breakdown for 3}
-\end{center}
-
-It is clear to see that $|S_n^c| = 6^3 t_{n-1,3},$ and so 
-$$\sum_{n \geq 2} |S_n^c|x^n = 6^3 xT(x).$$
-
-To enumerate $S_n$, as in the $n=2$ case, the SAP starts in the first column and ends at column $i$, after which there are no SAPs. This allows us to conclude that $|S_n| = \sum_{i = 2}^{n}(6^{3(n-i)} - t_{n-i,3})f_{i},$, where $f_i$ is the number of ways the cells to the left of and including column $i$ can contain $1$ SAP that includes the left-most column. To find the identity of $f_i$, we study the $4$ cases below.
-
-\begin{center}
-    \begin{tikzpicture}
-        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
-        % row1
-        \cellopen{0}{0}{1}{1}
-        % row2
-        \cellD{0}{1}{1}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-
-        % row1
-        \cellopen{4}{0}{5}{1}
-        % row2
-        \cellC{4}{1}{5}{2}
-        % row3
-        \cellB{4}{2}{5}{3}
-
-        % text
-        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$a_{i}$};
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
-        % row1
-        \cellopen{0}{0}{1}{1}
-        % row2
-        \cellD{0}{1}{1}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-
-        % row1
-        \cellC{4}{0}{5}{1}
-        % row2
-        \cellE{4}{1}{5}{2}
-        % row3
-        \cellB{4}{2}{5}{3}
-
-        % text
-        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$b_{i}$};
-    \end{tikzpicture}
-\end{center}
-\begin{center}
-    \begin{tikzpicture}
-        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
-        % row1
-        \cellopen{0}{0}{1}{1}
-        % row2
-        \cellD{0}{1}{1}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-
-        % row1
-        \cellC{4}{0}{5}{1}
-        % row2
-        \cellB{4}{1}{5}{2}
-        % row3
-        \cellopen{4}{2}{5}{3}
-
-        % text
-        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$c_{i}$};
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \draw[thick] ( 0 , 0 ) rectangle ( 7 , 3 );
-        % row1
-        \cellD{0}{0}{1}{1}
-        % row2
-        \cellE{0}{1}{1}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-
-        % row1
-        \cellC{4}{0}{5}{1}
-        % row2
-        \cellE{4}{1}{5}{2}
-        % row3
-        \cellB{4}{2}{5}{3}
-
-        % text
-        \node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=0pt] (A) at ( 2.5 , 1.5 ){$d_{i}$};
-    \end{tikzpicture}
-\end{center}
-
-It is easy to see that $a_2 = 36$ and $a_3 = 216$. As $i$ increases, one can see that the enumeration of $a_i$ is related to smaller values of $a_i$ and $b_i$, more specifically
-$$a_i = 6a_{i-1} + 6^2 b_{i-2}.$$
-
-We find similar relations with the other $3$ cases, namely
-$$b_n = 6b_{n-1} + 6^2 d_{n-2}$$
-where $b_2 = 0$ and $b_3 = 6$
-$$c_n = 6c_{n-1} + 6^2 b_{n-2}$$
-where $c_2 = 0$ and $c_3 = 0$
-$$d_n = 6d_{n-1} + 6^2 b_{n-2}$$
-where $d_2 = 1$ and $d_3 = 6.$
-
-Combining these $4$ cases, and accounting for the appropriate symmetries, we arrive at
-
-$$f_i = 2a_i + 4b_i + 2c_i + d_i.$$
-
-Solving this series of recurrence relations using generating functions gives
-
-$$F(x) = \sum_{i \geq 2} f_i x^i = \frac{73 - 414x}{1-12x+43x^2}$$
-
-This allows us to write 
-$$\sum_{n \geq 2} |S_n|x^n = \left(\frac{1}{1-6^3x}-T(x)\right)F(x).$$
-
-Combining these two generating functions and simplifying gives the result.
-
-\end{proof}
-
-\section{Full Solution}
-
-TODO writeup, credit Farstar31!
+TODO finish theorem writeup
 
 $$
 M(2) = \begin{bmatrix}
@@ -490,6 +287,227 @@ M(h+1) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.
+where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.    
+
+Then $t_{n,m}=?$
+
+\end{thm}
+
+\begin{proof}
+Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the diagram from Example \ref{exp:sap} above, we get the following labelling. Notice that vertices on the boundary of the lattice will always be black.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellA{0}{0}{1}{1}
+        \cellB{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
+        \cellC{3}{0}{4}{1}
+        \cellC{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellA{0}{1}{1}{2}
+        \cellE{1}{1}{2}{2}
+        \cellE{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellC{4}{1}{5}{2}
+        \cellB{5}{1}{6}{2}
+        \cellD{6}{1}{7}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+        \cellB{1}{2}{2}{3}
+        \cellA{2}{2}{3}{3}
+        \cellF{3}{2}{4}{3}
+        \cellB{4}{2}{5}{3}
+        \cellD{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellF{0}{3}{1}{4}
+        \cellE{1}{3}{2}{4}
+        \cellA{2}{3}{3}{4}
+        \cellA{3}{3}{4}{4}
+        \cellE{4}{3}{5}{4}
+        \cellD{5}{3}{6}{4}
+        \cellC{6}{3}{7}{4}
+        % row5
+        \cellA{0}{4}{1}{5}
+        \cellD{1}{4}{2}{5}
+        \cellE{2}{4}{3}{5}
+        \cellD{3}{4}{4}{5}
+        \cellD{4}{4}{5}{5}
+        \cellC{5}{4}{6}{5}
+        \cellE{6}{4}{7}{5}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+        \draw[fill=black] (6,0) circle (3pt);
+        \draw[fill=black] (7,0) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=black] (4,1) circle (3pt);
+        \draw[fill=black] (5,1) circle (3pt);
+        \draw[fill=black] (6,1) circle (3pt);
+        \draw[fill=black] (7,1) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+        \draw[fill=black] (6,2) circle (3pt);
+        \draw[fill=black] (7,2) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=black] (4,3) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+        \draw[fill=black] (6,3) circle (3pt);
+        \draw[fill=black] (7,3) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (2,4) circle (3pt);
+        \draw[fill=black] (3,4) circle (3pt);
+        \draw[fill=black] (4,4) circle (3pt);
+        \draw[fill=black] (5,4) circle (3pt);
+        \draw[fill=black] (6,4) circle (3pt);
+        \draw[fill=black] (7,4) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,5) circle (3pt);
+        \draw[fill=black] (1,5) circle (3pt);
+        \draw[fill=black] (2,5) circle (3pt);
+        \draw[fill=black] (3,5) circle (3pt);
+        \draw[fill=black] (4,5) circle (3pt);
+        \draw[fill=black] (5,5) circle (3pt);
+        \draw[fill=black] (6,5) circle (3pt);
+        \draw[fill=black] (7,5) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+
+Considering an individual cell, with the four associated labels.  We call the surrounding vertice labels the cell's \textit{parity}. The $16$ possible parities, along with their associated weight, are shown in the following diagram.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{10}{0}{11}{1}
+        \cell{12}{0}{13}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+        \draw[fill=black] (6,0) circle (3pt);
+        \draw[fill=black] (7,0) circle (3pt);
+        \draw[fill=black] (8,0) circle (3pt);
+        \draw[fill=black] (9,0) circle (3pt);
+        \draw[fill=black] (10,0) circle (3pt);
+        \draw[fill=black] (11,0) circle (3pt);
+        \draw[fill=black] (12,0) circle (3pt);
+        \draw[fill=black] (13,0) circle (3pt);
+        \draw[fill=black] (14,0) circle (3pt);
+        \draw[fill=black] (15,0) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+        \draw[fill=black] (3,1) circle (3pt);
+        \draw[fill=black] (4,1) circle (3pt);
+        \draw[fill=black] (5,1) circle (3pt);
+        \draw[fill=black] (6,1) circle (3pt);
+        \draw[fill=black] (7,1) circle (3pt);
+        \draw[fill=black] (8,1) circle (3pt);
+        \draw[fill=black] (9,1) circle (3pt);
+        \draw[fill=black] (10,1) circle (3pt);
+        \draw[fill=black] (11,1) circle (3pt);
+        \draw[fill=black] (12,1) circle (3pt);
+        \draw[fill=black] (13,1) circle (3pt);
+        \draw[fill=black] (14,1) circle (3pt);
+        \draw[fill=black] (15,1) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        \draw[fill=black] (3,2) circle (3pt);
+        \draw[fill=black] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+        \draw[fill=black] (6,2) circle (3pt);
+        \draw[fill=black] (7,2) circle (3pt);
+        \draw[fill=black] (8,2) circle (3pt);
+        \draw[fill=black] (9,2) circle (3pt);
+        \draw[fill=black] (10,2) circle (3pt);
+        \draw[fill=black] (11,2) circle (3pt);
+        \draw[fill=black] (12,2) circle (3pt);
+        \draw[fill=black] (13,2) circle (3pt);
+        \draw[fill=black] (14,2) circle (3pt);
+        \draw[fill=black] (15,2) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=black] (4,3) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+        \draw[fill=black] (6,3) circle (3pt);
+        \draw[fill=black] (7,3) circle (3pt);
+        \draw[fill=black] (8,3) circle (3pt);
+        \draw[fill=black] (9,3) circle (3pt);
+        \draw[fill=black] (10,3) circle (3pt);
+        \draw[fill=black] (11,3) circle (3pt);
+        \draw[fill=black] (12,3) circle (3pt);
+        \draw[fill=black] (13,3) circle (3pt);
+        \draw[fill=black] (14,3) circle (3pt);
+        \draw[fill=black] (15,3) circle (3pt);
+        % numbers row 1
+        \( \lablnode{0.5}{-0.5}{1} \)
+        \( \lablnode{2.5}{-0.5}{1} \)
+        \( \lablnode{4.5}{-0.5}{1} \)
+        \( \lablnode{6.5}{-0.5}{1} \)
+        \( \lablnode{8.5}{-0.5}{1} \)
+        \( \lablnode{10.5}{-0.5}{1} \)
+        \( \lablnode{12.5}{-0.5}{1} \)
+        \( \lablnode{14.5}{-0.5}{1} \)
+        % numbers row 2
+        \( \lablnode{0.5}{1.5}{1} \)
+        \( \lablnode{2.5}{1.5}{1} \)
+        \( \lablnode{4.5}{1.5}{1} \)
+        \( \lablnode{6.5}{1.5}{1} \)
+        \( \lablnode{8.5}{1.5}{1} \)
+        \( \lablnode{10.5}{1.5}{1} \)
+        \( \lablnode{12.5}{1.5}{1} \)
+        \( \lablnode{14.5}{1.5}{1} \)
+    \end{tikzpicture}
+\end{center}
+
+TODO complete proof writeup
+
+\end{proof}
 
 \end{document}
