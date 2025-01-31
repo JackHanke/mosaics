@@ -34,6 +34,7 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{claim}[thm]{Claim}
 \newtheorem{fact}[thm]{Fact}
+\newtheorem{constraint}[thm]{Constraint}
 
 \theoremstyle{definition}
 \newtheorem{eg}[thm]{Example}
@@ -96,25 +97,25 @@
 \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 
-\newcommand{\lablnode}[3]{\node[shape=circle,draw=white,fill=white, inner sep=0pt,minimum size=1pt] (A) at ( #1 , #2 ) {#3};}
+\newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=0pt] (A) at ( #1 , #2 ) {#3};}
 
 \usepackage[margin=1in]{geometry}
 
 %doc info
-\title{Mosaics}
-\author{Jack Hanke, Farstar31}
+\title{The Mosaic Problem}
+\author{Richard Shank, Jack Hanke}
 \date{\today}
 
 \begin{document}
 
 \begin{center}
     \Large
-    \textbf{Mosaics}
+    \textbf{The Mosaic Problem}
     
     \vspace{0.4cm}
     \large
     
-    Jack Hanke   
+    Richard Shank, Jack Hanke   
     \vspace{0.4cm}
     
     \today
@@ -140,7 +141,7 @@ Consider the following $6$ unit squares with markings on them.
 Call these squares \textit{tiles}. 
 
 \begin{definition}
-An $(n,m)$-\textit{mosaic} is a rectangular grid made up of tiles.
+An $(n,m)$-\textit{mosaic} is a rectangular lattice made up of tiles.
 \end{definition}
 
 \begin{exmp}
@@ -243,7 +244,7 @@ An example of a $(7,5)$-mosaic with a self-avoiding polygon, hilighted in gray:
 \end{center}
 \end{exmp}
 
-Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding polygon (SAP). From the fact that the smallest SAP is
+Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding polygon (SAP). Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
 
 \begin{center}
 \begin{tikzpicture}
@@ -260,10 +261,10 @@ we have that $t_{n,1}=t_{1,m}=0$, and $t_{2,2} = 1$. What else can be said?
 
 \begin{thm}
 
-TODO finish theorem writeup
+Assume $n \geq m $
 
 $$
-M(2) = \begin{bmatrix}
+M(m) = \begin{bmatrix}
 36 & 1 \\
 -1 & 1
 \end{bmatrix}
@@ -271,7 +272,7 @@ $$
 
 For $h \geq 2$, then if
 $$
-M(h) = \begin{bmatrix}
+M(m) = \begin{bmatrix}
 M_1 & M_2 \\
 M_3 & M_4
 \end{bmatrix}
@@ -279,7 +280,7 @@ $$
 
 then
 $$
-M(h+1) = \begin{bmatrix}
+M(m+1) = \begin{bmatrix}
 6M_1 & 6M_2 & \frac{1}{6}M_1 & 1M_2 \\
 6M_3 & 6M_4 & 0M_3 & 1M_4 \\
 -\frac{1}{6}M_1 & 0M_2 & \frac{1}{6}M_1 & 1M_2 \\
@@ -287,14 +288,37 @@ M(h+1) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.    
+where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.
 
-Then $t_{n,m}=?$
+Then for the given $m$, define the rows and columns of $M(m)$ as
+
+$$
+M(m) = 
+\begin{bmatrix}
+    c_1 & c_2 & ... & c_{2^{m-1}}
+\end{bmatrix} = 
+\begin{bmatrix}
+    r_1 \\
+    r_2 \\
+    ... \\
+    r_{2^{m-1}} \\
+\end{bmatrix}
+$$
+
+Then let $v,L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that
+
+$$v_i = -1*r_i \cdot c_1$$
+excluding the first term of the dot product,
+
+and
+$$L(n) = M(m) \cdot L(n-1)+v$$
+
+Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+v).$
 
 \end{thm}
 
 \begin{proof}
-Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the diagram from Example \ref{exp:sap} above, we get the following labelling. Notice that vertices on the boundary of the lattice will always be black.
+Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the diagram from Example \ref{exp:sap} above, we get the following labelling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -395,7 +419,114 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
     \end{tikzpicture}
 \end{center}
 
-Considering an individual cell, with the four associated labels.  We call the surrounding vertice labels the cell's \textit{parity}. The $16$ possible parities, along with their associated weight, are shown in the following diagram.
+Notice that vertices on the boundary of the lattice will always be black. The associated \textit{parity configuration} for the above mosaic is below.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cell{2}{0}{3}{1}
+        \cell{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        \cell{5}{0}{6}{1}
+        \cell{6}{0}{7}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        \cell{2}{1}{3}{2}
+        \cell{3}{1}{4}{2}
+        \cell{4}{1}{5}{2}
+        \cell{5}{1}{6}{2}
+        \cell{6}{1}{7}{2}
+        % row3
+        \cell{0}{2}{1}{3}
+        \cell{1}{2}{2}{3}
+        \cell{2}{2}{3}{3}
+        \cell{3}{2}{4}{3}
+        \cell{4}{2}{5}{3}
+        \cell{5}{2}{6}{3}
+        \cell{6}{2}{7}{3}
+        % row4
+        \cell{0}{3}{1}{4}
+        \cell{1}{3}{2}{4}
+        \cell{2}{3}{3}{4}
+        \cell{3}{3}{4}{4}
+        \cell{4}{3}{5}{4}
+        \cell{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
+        % row5
+        \cell{0}{4}{1}{5}
+        \cell{1}{4}{2}{5}
+        \cell{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cell{4}{4}{5}{5}
+        \cell{5}{4}{6}{5}
+        \cell{6}{4}{7}{5}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+        \draw[fill=black] (6,0) circle (3pt);
+        \draw[fill=black] (7,0) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=black] (4,1) circle (3pt);
+        \draw[fill=black] (5,1) circle (3pt);
+        \draw[fill=black] (6,1) circle (3pt);
+        \draw[fill=black] (7,1) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+        \draw[fill=black] (6,2) circle (3pt);
+        \draw[fill=black] (7,2) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=black] (4,3) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+        \draw[fill=black] (6,3) circle (3pt);
+        \draw[fill=black] (7,3) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (2,4) circle (3pt);
+        \draw[fill=black] (3,4) circle (3pt);
+        \draw[fill=black] (4,4) circle (3pt);
+        \draw[fill=black] (5,4) circle (3pt);
+        \draw[fill=black] (6,4) circle (3pt);
+        \draw[fill=black] (7,4) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,5) circle (3pt);
+        \draw[fill=black] (1,5) circle (3pt);
+        \draw[fill=black] (2,5) circle (3pt);
+        \draw[fill=black] (3,5) circle (3pt);
+        \draw[fill=black] (4,5) circle (3pt);
+        \draw[fill=black] (5,5) circle (3pt);
+        \draw[fill=black] (6,5) circle (3pt);
+        \draw[fill=black] (7,5) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+
+Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration only specifies $1$ SAP. 
+
+Then one can write
+
+$$t_{n,m} = -\sum_{p \in \mathcal{P}(n,m)}f(p).$$
+
+Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} , \dots, w_{16}$ associated with the following individual \textit{cell-parity configurations}.
 
 \begin{center}
     \begin{tikzpicture}
@@ -421,53 +552,53 @@ Considering an individual cell, with the four associated labels.  We call the su
         \draw[fill=black] (0,0) circle (3pt);
         \draw[fill=black] (1,0) circle (3pt);
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=green, draw=none] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (4,0) circle (3pt);
         \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=black] (6,0) circle (3pt);
-        \draw[fill=black] (7,0) circle (3pt);
+        \draw[fill=green, draw=none] (6,0) circle (3pt);
+        \draw[fill=green, draw=none] (7,0) circle (3pt);
         \draw[fill=black] (8,0) circle (3pt);
         \draw[fill=black] (9,0) circle (3pt);
         \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=black] (11,0) circle (3pt);
-        \draw[fill=black] (12,0) circle (3pt);
+        \draw[fill=green, draw=none] (11,0) circle (3pt);
+        \draw[fill=green, draw=none] (12,0) circle (3pt);
         \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=black] (14,0) circle (3pt);
-        \draw[fill=black] (15,0) circle (3pt);
+        \draw[fill=green, draw=none] (14,0) circle (3pt);
+        \draw[fill=green, draw=none] (15,0) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=black] (4,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
         \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=black] (6,1) circle (3pt);
+        \draw[fill=green, draw=none] (6,1) circle (3pt);
         \draw[fill=black] (7,1) circle (3pt);
-        \draw[fill=black] (8,1) circle (3pt);
-        \draw[fill=black] (9,1) circle (3pt);
-        \draw[fill=black] (10,1) circle (3pt);
-        \draw[fill=black] (11,1) circle (3pt);
-        \draw[fill=black] (12,1) circle (3pt);
-        \draw[fill=black] (13,1) circle (3pt);
-        \draw[fill=black] (14,1) circle (3pt);
-        \draw[fill=black] (15,1) circle (3pt);
+        \draw[fill=green, draw=none] (8,1) circle (3pt);
+        \draw[fill=green, draw=none] (9,1) circle (3pt);
+        \draw[fill=green, draw=none] (10,1) circle (3pt);
+        \draw[fill=green, draw=none] (11,1) circle (3pt);
+        \draw[fill=green, draw=none] (12,1) circle (3pt);
+        \draw[fill=green, draw=none] (13,1) circle (3pt);
+        \draw[fill=green, draw=none] (14,1) circle (3pt);
+        \draw[fill=green, draw=none] (15,1) circle (3pt);
         % label for row1
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=black] (3,2) circle (3pt);
-        \draw[fill=black] (4,2) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
         \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=black] (6,2) circle (3pt);
-        \draw[fill=black] (7,2) circle (3pt);
+        \draw[fill=green, draw=none] (6,2) circle (3pt);
+        \draw[fill=green, draw=none] (7,2) circle (3pt);
         \draw[fill=black] (8,2) circle (3pt);
         \draw[fill=black] (9,2) circle (3pt);
         \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=black] (11,2) circle (3pt);
-        \draw[fill=black] (12,2) circle (3pt);
+        \draw[fill=green, draw=none] (11,2) circle (3pt);
+        \draw[fill=green, draw=none] (12,2) circle (3pt);
         \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=black] (14,2) circle (3pt);
-        \draw[fill=black] (15,2) circle (3pt);
+        \draw[fill=green, draw=none] (14,2) circle (3pt);
+        \draw[fill=green, draw=none] (15,2) circle (3pt);
         % label for row1
         \draw[fill=black] (0,3) circle (3pt);
         \draw[fill=black] (1,3) circle (3pt);
@@ -478,36 +609,192 @@ Considering an individual cell, with the four associated labels.  We call the su
         \draw[fill=black] (6,3) circle (3pt);
         \draw[fill=black] (7,3) circle (3pt);
         \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=black] (9,3) circle (3pt);
+        \draw[fill=green, draw=none] (9,3) circle (3pt);
         \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=black] (11,3) circle (3pt);
+        \draw[fill=green, draw=none] (11,3) circle (3pt);
         \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=black] (13,3) circle (3pt);
+        \draw[fill=green, draw=none] (13,3) circle (3pt);
         \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=black] (15,3) circle (3pt);
+        \draw[fill=green, draw=none] (15,3) circle (3pt);
         % numbers row 1
-        \( \lablnode{0.5}{-0.5}{1} \)
-        \( \lablnode{2.5}{-0.5}{1} \)
-        \( \lablnode{4.5}{-0.5}{1} \)
-        \( \lablnode{6.5}{-0.5}{1} \)
-        \( \lablnode{8.5}{-0.5}{1} \)
-        \( \lablnode{10.5}{-0.5}{1} \)
-        \( \lablnode{12.5}{-0.5}{1} \)
-        \( \lablnode{14.5}{-0.5}{1} \)
+        \( \lablnode{0.5}{-0.5}{$w_{9}$} \)
+        \( \lablnode{2.5}{-0.5}{$w_{10}$} \)
+        \( \lablnode{4.5}{-0.5}{$w_{11}$} \)
+        \( \lablnode{6.5}{-0.5}{$w_{12}$} \)
+        \( \lablnode{8.5}{-0.5}{$w_{13}$} \)
+        \( \lablnode{10.5}{-0.5}{$w_{14}$} \)
+        \( \lablnode{12.5}{-0.5}{$w_{15}$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}$} \)
         % numbers row 2
-        \( \lablnode{0.5}{1.5}{1} \)
-        \( \lablnode{2.5}{1.5}{1} \)
-        \( \lablnode{4.5}{1.5}{1} \)
-        \( \lablnode{6.5}{1.5}{1} \)
-        \( \lablnode{8.5}{1.5}{1} \)
-        \( \lablnode{10.5}{1.5}{1} \)
-        \( \lablnode{12.5}{1.5}{1} \)
-        \( \lablnode{14.5}{1.5}{1} \)
+        \( \lablnode{0.5}{1.5}{$w_{1}$} \)
+        \( \lablnode{2.5}{1.5}{$w_{2}$} \)
+        \( \lablnode{4.5}{1.5}{$w_{3}$} \)
+        \( \lablnode{6.5}{1.5}{$w_{4}$} \)
+        \( \lablnode{8.5}{1.5}{$w_{5}$} \)
+        \( \lablnode{10.5}{1.5}{$w_{6}$} \)
+        \( \lablnode{12.5}{1.5}{$w_{7}$} \)
+        \( \lablnode{14.5}{1.5}{$w_{8}$} \)
     \end{tikzpicture}
 \end{center}
 
-TODO complete proof writeup
+Next note the following lemma.
+\begin{lemma}
+    \label{lemma: build bigger saps}
+    One can construct all larger SAPs from the smallest SAP using a finite set of transformations $S$.
+\end{lemma}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+This is because one can find $w_{1} , \dots, w_{16}$ so that the following two constraints hold:
+
+\begin{constraint}
+    \label{constraint: smallest sap prod}
+    The weights associated with the smallest SAP multiply to $-1$, ie. $w_1 w_2 w_4 w_8 = -1.$ 
+\end{constraint}
+\begin{constraint}
+    \label{constraint: prod works}
+    \emph{All} transformations in $S$ preserve the weight product equalling $-1$.
+\end{constraint}
+
+Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constrains gives the following weights.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{10}{0}{11}{1}
+        \cell{12}{0}{13}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=green, draw=none] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+        \draw[fill=green, draw=none] (6,0) circle (3pt);
+        \draw[fill=green, draw=none] (7,0) circle (3pt);
+        \draw[fill=black] (8,0) circle (3pt);
+        \draw[fill=black] (9,0) circle (3pt);
+        \draw[fill=black] (10,0) circle (3pt);
+        \draw[fill=green, draw=none] (11,0) circle (3pt);
+        \draw[fill=green, draw=none] (12,0) circle (3pt);
+        \draw[fill=black] (13,0) circle (3pt);
+        \draw[fill=green, draw=none] (14,0) circle (3pt);
+        \draw[fill=green, draw=none] (15,0) circle (3pt);
+        % label for row1
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=black] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=black] (5,1) circle (3pt);
+        \draw[fill=green, draw=none] (6,1) circle (3pt);
+        \draw[fill=black] (7,1) circle (3pt);
+        \draw[fill=green, draw=none] (8,1) circle (3pt);
+        \draw[fill=green, draw=none] (9,1) circle (3pt);
+        \draw[fill=green, draw=none] (10,1) circle (3pt);
+        \draw[fill=green, draw=none] (11,1) circle (3pt);
+        \draw[fill=green, draw=none] (12,1) circle (3pt);
+        \draw[fill=green, draw=none] (13,1) circle (3pt);
+        \draw[fill=green, draw=none] (14,1) circle (3pt);
+        \draw[fill=green, draw=none] (15,1) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+        \draw[fill=green, draw=none] (6,2) circle (3pt);
+        \draw[fill=green, draw=none] (7,2) circle (3pt);
+        \draw[fill=black] (8,2) circle (3pt);
+        \draw[fill=black] (9,2) circle (3pt);
+        \draw[fill=black] (10,2) circle (3pt);
+        \draw[fill=green, draw=none] (11,2) circle (3pt);
+        \draw[fill=green, draw=none] (12,2) circle (3pt);
+        \draw[fill=black] (13,2) circle (3pt);
+        \draw[fill=green, draw=none] (14,2) circle (3pt);
+        \draw[fill=green, draw=none] (15,2) circle (3pt);
+        % label for row1
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=black] (4,3) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+        \draw[fill=black] (6,3) circle (3pt);
+        \draw[fill=black] (7,3) circle (3pt);
+        \draw[fill=black] (8,3) circle (3pt);
+        \draw[fill=green, draw=none] (9,3) circle (3pt);
+        \draw[fill=black] (10,3) circle (3pt);
+        \draw[fill=green, draw=none] (11,3) circle (3pt);
+        \draw[fill=black] (12,3) circle (3pt);
+        \draw[fill=green, draw=none] (13,3) circle (3pt);
+        \draw[fill=black] (14,3) circle (3pt);
+        \draw[fill=green, draw=none] (15,3) circle (3pt);
+        % numbers row 1
+        \( \lablnode{0.5}{-0.5}{$w_{9}=-1$} \)
+        \( \lablnode{2.5}{-0.5}{$w_{10}=0$} \)
+        \( \lablnode{4.5}{-0.5}{$w_{11}=1$} \)
+        \( \lablnode{6.5}{-0.5}{$w_{12}=1$} \)
+        \( \lablnode{8.5}{-0.5}{$w_{13}=1$} \)
+        \( \lablnode{10.5}{-0.5}{$w_{14}=1$} \)
+        \( \lablnode{12.5}{-0.5}{$w_{15}=-1$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}=6$} \)
+        % numbers row 2
+        \( \lablnode{0.5}{1.5}{$w_{1}=6$} \)
+        \( \lablnode{2.5}{1.5}{$w_{2}=1$} \)
+        \( \lablnode{4.5}{1.5}{$w_{3}=1$} \)
+        \( \lablnode{6.5}{1.5}{$w_{4}=1$} \)
+        \( \lablnode{8.5}{1.5}{$w_{5}=1$} \)
+        \( \lablnode{10.5}{1.5}{$w_{6}=1$} \)
+        \( \lablnode{12.5}{1.5}{$w_{7}=0$} \)
+        \( \lablnode{14.5}{1.5}{$w_{8}=1$} \)
+    \end{tikzpicture}
+\end{center}
+
+TODO
 
 \end{proof}
+
+\section{Appendix}
+
+Each constraint on $w_{1},\dots,w_{16}$ represents a change in a SAP border. For example
+
+TODO
+
+In total, there are $2^8$ seperate constraints, one for each parity configuration of a $(2,2)$ rectangular lattice that does not contain the parity configuratrions associated with $w_{7}$ or $w_{10}$. The constraints are as follows:
+
+TODO
+
+With the help of SageMath, these constraints reduce to the following simplified constraints
+
+TODO
+
+The solution set to these constrains are as follows.
+
+TODO
+
+Any solution set that satisfies these constrains are sufficient for calculating $t_{n,m}$.
+
+\section{Bibliography}
+
+TODO
 
 \end{document}

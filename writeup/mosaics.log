@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  29 JAN 2025 16:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  31 JAN 2025 15:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -989,24 +989,24 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./mosaics.aux)
 \openout1 = `mosaics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 109.
+LaTeX Font Info:    ... okay on input line 109.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1034,7 +1034,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 108.
+Package hyperref Info: Link coloring OFF on input line 109.
 
 (./mosaics.out) (./mosaics.out)
 \@outlinefile=\write5
@@ -1055,8 +1055,8 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'mosaics.bbl' not found.
 
 No file mosaics.bbl.
-Package biblatex Info: Reference section=0 on input line 108.
-Package biblatex Info: Reference segment=0 on input line 108.
+Package biblatex Info: Reference section=0 on input line 109.
+Package biblatex Info: Reference segment=0 on input line 109.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1091,12 +1091,12 @@ Package biblatex Info: Reference segment=0 on input line 108.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 126
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 126
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1105,37 +1105,48 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 
-(./mosaics.aux)
+Overfull \hbox (1.62387pt too wide) in paragraph at lines 654--655
+[][]\OT1/cmr/bx/n/12 Constraint 3. []\OT1/cmr/m/it/12 The weights as-so-ci-ated
+ with the small-est SAP mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1$\O
+T1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
+ []
+
+[4] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 9814C2D956916ADB9290ECA4E25C967A;103.
+(rerunfilecheck)             Checksum: C5FAB8A3A8E5BB91CF9D186BF3101346;186.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32245 strings out of 474116
- 629099 string characters out of 5743681
- 1956187 words of memory out of 5000000
- 54142 multiletter control sequences out of 15000+600000
+ 32260 strings out of 474116
+ 629365 string characters out of 5743681
+ 1961187 words of memory out of 5000000
+ 54152 multiletter control sequences out of 15000+600000
  564272 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,7n,107p,680b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,8n,107p,680b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on mosaics.pdf (3 pages, 103404 bytes).
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mosaics.pdf (4 pages, 154056 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 115 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
+ 29 words of extra memory for PDF output out of 10000 (max. 10000000)
 
