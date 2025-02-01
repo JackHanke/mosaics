@@ -141,7 +141,7 @@ Consider the following $6$ unit squares with markings on them.
 Call these squares \textit{tiles}. 
 
 \begin{definition}
-An $(n,m)$-\textit{mosaic} is a rectangular lattice made up of tiles.
+An $(n,m)$-\textit{mosaic} is an $(n,m)$ rectangular lattice made up of tiles.
 \end{definition}
 
 \begin{exmp}
@@ -288,7 +288,7 @@ M(m+1) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-where $M_i$ is a sub-matrix (or possible a scalar) of the block matrix $M$.
+where $M_i$ is a sub-matrix of the block matrix $M$.
 
 Then for the given $m$, define the rows and columns of $M(m)$ as
 
@@ -318,7 +318,7 @@ Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+v).$
 \end{thm}
 
 \begin{proof}
-Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the diagram from Example \ref{exp:sap} above, we get the following labelling.
+Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exp:sap}, we get the following labelling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -520,7 +520,7 @@ Notice that vertices on the boundary of the lattice will always be black. The as
     \end{tikzpicture}
 \end{center}
 
-Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration only specifies $1$ SAP. 
+Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration specifies only $1$ SAP, so $f(p) = -1 * 6^{28}$. 
 
 Then one can write
 
@@ -637,6 +637,10 @@ Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} ,
     \end{tikzpicture}
 \end{center}
 
+One can assign values to $w_{1},\dots,w_{16}$ so that the product for all parity configurations $p$ equals $f(p)$. To find these assignments, first notice that $w_{1} = w_{16} = 6$, as these cells do not indicate a specific tile. Similarly, $w_{7}=w_{10}=0$, as these are impossible parity configurations for our tile set. The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
+
+First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
+
 Next note the following lemma.
 \begin{lemma}
     \label{lemma: build bigger saps}
@@ -651,11 +655,12 @@ This is because one can find $w_{1} , \dots, w_{16}$ so that the following two c
 
 \begin{constraint}
     \label{constraint: smallest sap prod}
-    The weights associated with the smallest SAP multiply to $-1$, ie. $w_1 w_2 w_4 w_8 = -1.$ 
+    The weights associated with the smallest SAP multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
 \end{constraint}
+
 \begin{constraint}
     \label{constraint: prod works}
-    \emph{All} transformations in $S$ preserve the weight product equalling $-1$.
+    \emph{All} transformations in $S$ preserve the weight product of a changed SAP.
 \end{constraint}
 
 Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constrains gives the following weights.
@@ -775,23 +780,181 @@ TODO
 
 \section{Appendix}
 
-Each constraint on $w_{1},\dots,w_{16}$ represents a change in a SAP border. For example
+Flipping the parity of a single vertex in a parity configuration changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
 
-TODO
+The flipping of parity of a single vertex can result in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of SAPs in the parity configuration. For example, consider the following flip of the center vertex in the following portion of a parity configuration.
 
-In total, there are $2^8$ seperate constraints, one for each parity configuration of a $(2,2)$ rectangular lattice that does not contain the parity configuratrions associated with $w_{7}$ or $w_{10}$. The constraints are as follows:
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=green, draw=none] (1,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,0) circle (3pt);
+        % label for row2
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        % label for row3
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        % row2
+        \cell{3}{1}{4}{2}
+        \cell{4}{1}{5}{2}
+        % label for row1
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (4,0) circle (3pt);
+        \draw[fill=green, draw=none] (5,0) circle (3pt);
+        % label for row2
+        \draw[fill=black] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        % label for row3
+        \draw[fill=black] (3,2) circle (3pt);
+        \draw[fill=black] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
 
-TODO
+        \( \lablnode{2.5}{1}{$\rightarrow$} \)
+    \end{tikzpicture}
+\end{center}
 
-With the help of SageMath, these constraints reduce to the following simplified constraints
+As this does not change the associated number of SAPs in the larger parity configuration, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
 
-TODO
+$$\text{sign}(w_{1}w_{2}w_{5}w_{9}) = \text{sign}(w_{2}w_{4}w_{6}w_{16}).$$
 
-The solution set to these constrains are as follows.
+Now let a constraint of \textit{Type 2} be a parity flip that does change the number of SAPs. For example, consider flipping the center vertex of the following portion of a parity configuration.
 
-TODO
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        % label for row1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+        % label for row2
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        % label for row3
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        % row2
+        \cell{3}{1}{4}{2}
+        \cell{4}{1}{5}{2}
+        % label for row1
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+        % label for row2
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        % label for row3
+        \draw[fill=black] (3,2) circle (3pt);
+        \draw[fill=black] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
 
-Any solution set that satisfies these constrains are sufficient for calculating $t_{n,m}$.
+        \( \lablnode{2.5}{1}{$\rightarrow$} \)
+    \end{tikzpicture}
+\end{center}
+
+The above transformation corresponds with \textit{either} two distinct SAPs joining into one \textit{or} one SAP splitting into two distinct SAPs. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
+
+$$\text{sign}(w_{3}w_{2}w_{9}w_{5}) = -\text{sign}(w_{4}w_{4}w_{13}w_{13}).$$
+
+All Type 1 constraints are as follows.
+
+\begin{eqnarray*}
+    w_{1}w_{1}w_{2}w_{3} = w_{2}w_{3}w_{6}w_{11} & w_{1}w_{1}w_{2}w_{4} = w_{2}w_{3}w_{6}w_{12} & w_{1}w_{1}w_{4}w_{3} = w_{2}w_{3}w_{8}w_{11} \\
+    w_{1}w_{1}w_{4}w_{4} = w_{2}w_{3}w_{8}w_{12} & w_{1}w_{2}w_{1}w_{5} = w_{2}w_{4}w_{5}w_{13} & w_{1}w_{2}w_{1}w_{6} = w_{2}w_{4}w_{5}w_{14} \\
+    w_{1}w_{2}w_{2}w_{8} = w_{2}w_{4}w_{6}w_{16} & w_{1}w_{2}w_{4}w_{8} = w_{2}w_{4}w_{8}w_{16} & w_{3}w_{1}w_{9}w_{1} = w_{4}w_{3}w_{13}w_{9} \\
+    w_{3}w_{1}w_{11}w_{1} = w_{4}w_{3}w_{15}w_{9} & w_{3}w_{1}w_{12}w_{3} = w_{4}w_{3}w_{16}w_{11} & w_{3}w_{1}w_{12}w_{4} = w_{4}w_{3}w_{16}w_{12} \\
+    w_{3}w_{2}w_{12}w_{8} = w_{4}w_{4}w_{16}w_{16} & w_{1}w_{6}w_{1}w_{5} = w_{2}w_{8}w_{5}w_{13} & w_{1}w_{6}w_{1}w_{6} = w_{2}w_{8}w_{5}w_{14} \\
+    w_{1}w_{6}w_{2}w_{8} = w_{2}w_{8}w_{6}w_{16} & w_{1}w_{6}w_{4}w_{8} = w_{2}w_{8}w_{8}w_{16} & w_{3}w_{6}w_{12}w_{8} = w_{4}w_{8}w_{16}w_{16} \\
+    w_{5}w_{9}w_{1}w_{1} = w_{6}w_{11}w_{5}w_{9} & w_{5}w_{13}w_{1}w_{1} = w_{6}w_{15}w_{5}w_{9} & w_{5}w_{14}w_{1}w_{5} = w_{6}w_{16}w_{5}w_{13} \\
+    w_{5}w_{14}w_{1}w_{6} = w_{6}w_{16}w_{5}w_{14} & w_{5}w_{14}w_{2}w_{8} = w_{6}w_{16}w_{6}w_{16} & w_{5}w_{14}w_{4}w_{8} = w_{6}w_{16}w_{8}w_{16} \\
+    w_{11}w_{1}w_{9}w_{1} = w_{12}w_{3}w_{13}w_{9} & w_{11}w_{1}w_{11}w_{1} = w_{12}w_{3}w_{15}w_{9} & w_{11}w_{1}w_{12}w_{3} = w_{12}w_{3}w_{16}w_{11} \\
+    w_{11}w_{1}w_{12}w_{4} = w_{12}w_{3}w_{16}w_{12} & w_{11}w_{2}w_{12}w_{8} = w_{12}w_{4}w_{16}w_{16} & w_{11}w_{6}w_{12}w_{8} = w_{12}w_{8}w_{16}w_{16} \\
+    w_{13}w_{9}w_{1}w_{1} = w_{14}w_{11}w_{5}w_{9} & w_{15}w_{9}w_{9}w_{1} = w_{16}w_{11}w_{13}w_{9} & w_{15}w_{9}w_{11}w_{1} = w_{16}w_{11}w_{15}w_{9} \\
+    w_{15}w_{9}w_{12}w_{3} = w_{16}w_{11}w_{16}w_{11} & w_{15}w_{9}w_{12}w_{4} = w_{16}w_{11}w_{16}w_{12} & w_{13}w_{13}w_{1}w_{1} = w_{14}w_{15}w_{5}w_{9} \\
+    w_{13}w_{14}w_{1}w_{5} = w_{14}w_{16}w_{5}w_{13} & w_{13}w_{14}w_{1}w_{6} = w_{14}w_{16}w_{5}w_{14} & w_{13}w_{14}w_{2}w_{8} = w_{14}w_{16}w_{6}w_{16} \\
+    w_{13}w_{14}w_{4}w_{8} = w_{14}w_{16}w_{8}w_{16} & w_{15}w_{13}w_{9}w_{1} = w_{16}w_{15}w_{13}w_{9} & w_{15}w_{13}w_{11}w_{1} = w_{16}w_{15}w_{15}w_{9} \\
+    w_{15}w_{13}w_{12}w_{3} = w_{16}w_{15}w_{16}w_{11} & w_{15}w_{13}w_{12}w_{4} = w_{16}w_{15}w_{16}w_{12} & w_{15}w_{14}w_{9}w_{5} = w_{16}w_{16}w_{13}w_{13} \\
+    w_{15}w_{14}w_{9}w_{6} = w_{16}w_{16}w_{13}w_{14} & w_{15}w_{14}w_{11}w_{5} = w_{16}w_{16}w_{15}w_{13} & w_{15}w_{14}w_{11}w_{6} = w_{16}w_{16}w_{15}w_{14} \\
+\end{eqnarray*}
+
+Similarly, all Type 2 constraints are as follows.
+
+\begin{eqnarray*}
+        -w_{3}w_{2}w_{9}w_{5} = w_{4}w_{4}w_{13}w_{13} & -w_{3}w_{2}w_{9}w_{6} = w_{4}w_{4}w_{13}w_{14} & -w_{3}w_{2}w_{11}w_{5} = w_{4}w_{4}w_{15}w_{13} \\
+        -w_{3}w_{2}w_{11}w_{6} = w_{4}w_{4}w_{15}w_{14} & -w_{3}w_{6}w_{9}w_{5} = w_{4}w_{8}w_{13}w_{13} & -w_{3}w_{6}w_{9}w_{6} = w_{4}w_{8}w_{13}w_{14} \\
+        -w_{3}w_{6}w_{11}w_{5} = w_{4}w_{8}w_{15}w_{13} & -w_{3}w_{6}w_{11}w_{6} = w_{4}w_{8}w_{15}w_{14} & -w_{5}w_{9}w_{2}w_{3} = w_{6}w_{11}w_{6}w_{11} \\
+        -w_{5}w_{9}w_{2}w_{4} = w_{6}w_{11}w_{6}w_{12} & -w_{5}w_{9}w_{4}w_{3} = w_{6}w_{11}w_{8}w_{11} & -w_{5}w_{9}w_{4}w_{4} = w_{6}w_{11}w_{8}w_{12} \\
+        -w_{5}w_{13}w_{2}w_{3} = w_{6}w_{15}w_{6}w_{11} & -w_{5}w_{13}w_{2}w_{4} = w_{6}w_{15}w_{6}w_{12} & -w_{5}w_{13}w_{4}w_{3} = w_{6}w_{15}w_{8}w_{11} \\
+        -w_{5}w_{13}w_{4}w_{4} = w_{6}w_{15}w_{8}w_{12} & -w_{11}w_{2}w_{9}w_{5} = w_{12}w_{4}w_{13}w_{13} & -w_{11}w_{2}w_{9}w_{6} = w_{12}w_{4}w_{13}w_{14} \\
+        -w_{11}w_{2}w_{11}w_{5} = w_{12}w_{4}w_{15}w_{13} & -w_{11}w_{2}w_{11}w_{6} = w_{12}w_{4}w_{15}w_{14} & -w_{11}w_{6}w_{9}w_{5} = w_{12}w_{8}w_{13}w_{13} \\
+        -w_{11}w_{6}w_{9}w_{6} = w_{12}w_{8}w_{13}w_{14} & -w_{11}w_{6}w_{11}w_{5} = w_{12}w_{8}w_{15}w_{13} & -w_{11}w_{6}w_{11}w_{6} = w_{12}w_{8}w_{15}w_{14} \\
+        -w_{13}w_{9}w_{2}w_{3} = w_{14}w_{11}w_{6}w_{11} & -w_{13}w_{9}w_{2}w_{4} = w_{14}w_{11}w_{6}w_{12} & -w_{13}w_{9}w_{4}w_{3} = w_{14}w_{11}w_{8}w_{11} \\
+        -w_{13}w_{9}w_{4}w_{4} = w_{14}w_{11}w_{8}w_{12} & -w_{13}w_{13}w_{2}w_{3} = w_{14}w_{15}w_{6}w_{11} & -w_{13}w_{13}w_{2}w_{4} = w_{14}w_{15}w_{6}w_{12} \\
+        -w_{13}w_{13}w_{4}w_{3} = w_{14}w_{15}w_{8}w_{11} & -w_{13}w_{13}w_{4}w_{4} = w_{14}w_{15}w_{8}w_{12} & 
+\end{eqnarray*}
+
+Solving all Type 1 and Type 2 constrains gives the following solution set.
+
+\begin{eqnarray*}
+    [w_{1}, ..., w_{16}] & = & [6, -1, -1, -1, -1, -1, 0, -1, 1, 0, -1, -1, -1, -1, 1, 6] \\
+    & = & [6, -1, -1, -1, -1, 1, 0, 1, 1, 0, 1, 1, -1, 1, -1, 6] \\
+    & = & [6, -1, -1, -1, 1, -1, 0, -1, -1, 0, -1, -1, -1, 1, -1, 6] \\
+    & = & [6, -1, -1, -1, 1, 1, 0, 1, -1, 0, 1, 1, -1, -1, 1, 6] \\
+    & = & [6, -1, -1, 1, -1, -1, 0, 1, 1, 0, -1, 1, 1, 1, -1, 6] \\
+    & = & [6, -1, -1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 1, -1, 1, 6] \\
+    & = & [6, -1, -1, 1, 1, -1, 0, 1, -1, 0, -1, 1, 1, -1, 1, 6] \\
+    & = & [6, -1, -1, 1, 1, 1, 0, -1, -1, 0, 1, -1, 1, 1, -1, 6] \\
+    & = & [6, -1, 1, -1, -1, -1, 0, -1, -1, 0, -1, 1, -1, -1, -1, 6] \\
+    & = & [6, -1, 1, -1, -1, 1, 0, 1, -1, 0, 1, -1, -1, 1, 1, 6] \\
+    & = & [6, -1, 1, -1, 1, -1, 0, -1, 1, 0, -1, 1, -1, 1, 1, 6] \\
+    & = & [6, -1, 1, -1, 1, 1, 0, 1, 1, 0, 1, -1, -1, -1, -1, 6] \\
+    & = & [6, -1, 1, 1, -1, -1, 0, 1, -1, 0, -1, -1, 1, 1, 1, 6] \\
+    & = & [6, -1, 1, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, -1, 6] \\
+    & = & [6, -1, 1, 1, 1, -1, 0, 1, 1, 0, -1, -1, 1, -1, -1, 6] \\
+    & = & [6, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 1, 1, 1, 6] \\
+    & = & [6, 1, -1, -1, -1, -1, 0, 1, -1, 0, -1, -1, -1, -1, -1, 6] \\
+    & = & [6, 1, -1, -1, -1, 1, 0, -1, -1, 0, 1, 1, -1, 1, 1, 6] \\
+    & = & [6, 1, -1, -1, 1, -1, 0, 1, 1, 0, -1, -1, -1, 1, 1, 6] \\
+    & = & [6, 1, -1, -1, 1, 1, 0, -1, 1, 0, 1, 1, -1, -1, -1, 6] \\
+    & = & [6, 1, -1, 1, -1, -1, 0, -1, -1, 0, -1, 1, 1, 1, 1, 6] \\
+    & = & [6, 1, -1, 1, -1, 1, 0, 1, -1, 0, 1, -1, 1, -1, -1, 6] \\
+    & = & [6, 1, -1, 1, 1, -1, 0, -1, 1, 0, -1, 1, 1, -1, -1, 6] \\
+    & = & [6, 1, -1, 1, 1, 1, 0, 1, 1, 0, 1, -1, 1, 1, 1, 6] \\
+    & = & [6, 1, 1, -1, -1, -1, 0, 1, 1, 0, -1, 1, -1, -1, 1, 6] \\
+    & = & [6, 1, 1, -1, -1, 1, 0, -1, 1, 0, 1, -1, -1, 1, -1, 6] \\
+    & = & [6, 1, 1, -1, 1, -1, 0, 1, -1, 0, -1, 1, -1, 1, -1, 6] \\
+    & = & [6, 1, 1, -1, 1, 1, 0, -1, -1, 0, 1, -1, -1, -1, 1, 6] \\
+    & = & [6, 1, 1, 1, -1, -1, 0, -1, 1, 0, -1, -1, 1, 1, -1, 6] \\
+    & = & [6, 1, 1, 1, -1, 1, 0, 1, 1, 0, 1, 1, 1, -1, 1, 6] \\
+    & = & [6, 1, 1, 1, 1, -1, 0, -1, -1, 0, -1, -1, 1, -1, 1, 6] \\
+    & = & [6, 1, 1, 1, 1, 1, 0, 1, -1, 0, 1, 1, 1, 1, -1, 6] \\
+\end{eqnarray*}
+
+Any of these assignments are sufficient for calculating $t_{n,m}$. 
 
 \section{Bibliography}
 

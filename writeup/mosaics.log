@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  31 JAN 2025 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  1 FEB 2025 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1105,28 +1105,38 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 
-Overfull \hbox (1.62387pt too wide) in paragraph at lines 654--655
+Overfull \hbox (1.62387pt too wide) in paragraph at lines 658--659
 [][]\OT1/cmr/bx/n/12 Constraint 3. []\OT1/cmr/m/it/12 The weights as-so-ci-ated
  with the small-est SAP mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1$\O
 T1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
  []
 
-[4] (./mosaics.aux)
+[4]
+Overfull \hbox (2.49498pt too wide) in alignment at lines 885--902
+ [][][] []
+ []
+
+[5]
+Overfull \hbox (4.99469pt too wide) in alignment at lines 906--918
+ [][][] []
+ []
+
+[6] [7] [8] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: C5FAB8A3A8E5BB91CF9D186BF3101346;186.
+(rerunfilecheck)             Checksum: 8AB9138423EE8783EF4ED9281D4054A2;289.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32260 strings out of 474116
- 629365 string characters out of 5743681
- 1961187 words of memory out of 5000000
- 54152 multiletter control sequences out of 15000+600000
+ 32268 strings out of 474116
+ 629471 string characters out of 5743681
+ 1963187 words of memory out of 5000000
+ 54155 multiletter control sequences out of 15000+600000
  564272 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,8n,107p,680b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1143,10 +1153,10 @@ xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
 ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (4 pages, 154056 bytes).
+Output written on mosaics.pdf (8 pages, 162724 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 29 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 37 words of extra memory for PDF output out of 10000 (max. 10000000)
 
