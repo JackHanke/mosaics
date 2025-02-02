@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  1 FEB 2025 23:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  2 FEB 2025 00:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -986,11 +986,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count452
 \@quotereset=\count453
-(./mosaics.aux
-
-LaTeX Warning: Label `thm: growth rate' multiply defined.
-
-)
+(./mosaics.aux)
 \openout1 = `mosaics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 109.
@@ -1011,7 +1007,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 109.
 LaTeX Font Info:    ... okay on input line 109.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 109.
 LaTeX Font Info:    ... okay on input line 109.
- (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count454
 \scratchdimen=\dimen280
@@ -1055,11 +1052,12 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `mosaics.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'mosaics.bbl' not found.
+Package biblatex Info: ... file 'mosaics.bbl' found.
 
-No file mosaics.bbl.
+(./mosaics.bbl)
 Package biblatex Info: Reference section=0 on input line 109.
 Package biblatex Info: Reference segment=0 on input line 109.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1131,24 +1129,28 @@ L3 programming layer <2024-02-20>
  ***********
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: FFA55F5D1DD929FA2E3ED4112037958E;727.
+(rerunfilecheck)             Checksum: 279BF603C3E4F5DE01CB9E9F18D5D673;624.
+
+Package biblatex Warning: Please rerun LaTeX.
+
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32294 strings out of 474116
- 629847 string characters out of 5743681
+ 32518 strings out of 474116
+ 634348 string characters out of 5743681
  1956187 words of memory out of 5000000
- 54173 multiletter control sequences out of 15000+600000
- 566128 words of font info for 66 fonts, out of 8000000 for 9000
+ 54391 multiletter control sequences out of 15000+600000
+ 566598 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,8n,107p,680b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,8n,107p,680b,1776s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
@@ -1161,11 +1163,12 @@ ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
 024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (10 pages, 202355 bytes).
+24/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mosaics.pdf (10 pages, 221164 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 187 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

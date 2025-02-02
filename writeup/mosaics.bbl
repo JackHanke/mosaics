@@ -1,0 +1,71 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{Hong2018}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3413b395b2bef2da272660a3967f6683}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Kyungpyo},
+           giveni={K\bibinitperiod}}}%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Canadian Mathematical Society}%
+      }
+      \strng{namehash}{eba85cee225431c250e80a9b0a60ee61}
+      \strng{fullhash}{eba85cee225431c250e80a9b0a60ee61}
+      \strng{bibnamehash}{eba85cee225431c250e80a9b0a60ee61}
+      \strng{authorbibnamehash}{eba85cee225431c250e80a9b0a60ee61}
+      \strng{authornamehash}{eba85cee225431c250e80a9b0a60ee61}
+      \strng{authorfullhash}{eba85cee225431c250e80a9b0a60ee61}
+      \field{labelalpha}{HO18}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1496-4287}
+      \field{journaltitle}{Canadian Mathematical Bulletin}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Bounds on Multiple Self-avoiding Polygons}
+      \field{volume}{61}
+      \field{year}{2018}
+      \field{pages}{518\bibrangedash 530}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.4153/cmb-2017-072-x
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.4153/CMB-2017-072-x
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.4153/CMB-2017-072-x
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

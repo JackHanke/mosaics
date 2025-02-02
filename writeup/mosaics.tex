@@ -22,7 +22,7 @@
 
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 %\usepackage[backend=bibtex,style=alphabetic]{biblatex}
-\addbibresource{bibb.bib}
+\addbibresource{./bibb.bib}
 
 %%% With amsthm package, creates environments for nicely formatted,
 %%% labeled, and numbered propositions, etc.
@@ -242,7 +242,7 @@ Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hili
 \end{center}
 \end{exmp}
 
-Hong and Oh TODO CITE gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}$, namely
+Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}$, namely
 
 $$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
 
@@ -1101,8 +1101,8 @@ Solving all Type 1 and Type 2 constraints gives the following solution set.
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
 
-\section{Bibliography}
+\printbibheading
 
-TODO
+\printbibliography
 
 \end{document}

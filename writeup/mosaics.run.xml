@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>mosaics.bcf</file>
@@ -79,7 +79,7 @@
       <file>mosaics.bcf</file>
     </requires>
     <requires type="editable">
-      <file>bibb.bib</file>
+      <file>./bibb.bib</file>
     </requires>
   </external>
 </requests>
