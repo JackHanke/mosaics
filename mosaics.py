@@ -53,7 +53,12 @@ def mosaics(h,w):
     return mosaics_help(plane, memoize, saps_list, h*w, 0, h, w)
 
 if __name__ == '__main__':
-    for n in range(2,5):
-        for m in range(n,5):
-            value = mosaics(n,m)
-            print(f't_{n,m} = {value}')
+    # for n in range(2,5):
+    #     for m in range(n,5):
+    #         value = mosaics(n,m)
+    #         print(f't_{n,m} = {value}')
+
+    for n in range(2,6):
+        value = mosaics(n,n)
+        print(f't_{n,n} = {value}')
+    
