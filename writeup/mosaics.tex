@@ -118,13 +118,202 @@
     Richard Shank, Jack Hanke   
     \vspace{0.4cm}
     
-    \today
     \vspace{0.4cm}    
+
+    \begin{abstract}
+        Hong and Oh calculated upper and lower bounds on the number of multiple self-avoiding polygons in the square lattice. These results accompanied $7$ distinct tiles that together model multiple ring polymers in physics. We introduce a formula for exact enumeration for these multiple self-avoiding polygons, along with enumeration results on variations on the tile set and rules considered.
+    \end{abstract}
+
 \end{center}
 
 \section{Introduction}
 
-Consider the following $6$ unit squares with markings on them.
+Consider the following $7$ unit squares with red symbols on them.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{-2}{0}{-1}{1}
+        \cellA{0}{0}{1}{1}
+        \cellB{2}{0}{3}{1}
+        \cellC{4}{0}{5}{1}
+        \cellD{6}{0}{7}{1}
+        \cellE{8}{0}{9}{1}
+        \cellF{10}{0}{11}{1}    
+    \end{tikzpicture}
+\end{center}
+
+Call these unit squares \textit{mosaic tiles}. Then let an $(n,m)$-mosaic be an $n \times m$ matrix of mosaic tiles. For example, below is a $(7,5)$-mosaic.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellA{0}{0}{1}{1}
+        \cellB{1}{0}{2}{1}
+        \cellF{2}{0}{3}{1}
+        \cellA{3}{0}{4}{1}
+        \cellC{4}{0}{5}{1}
+        \cell{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellA{0}{1}{1}{2}
+        \cellE{1}{1}{2}{2}
+        \cell{2}{1}{3}{2}
+        \cellE{3}{1}{4}{2}
+        \cellE{4}{1}{5}{2}
+        \cellB{5}{1}{6}{2}
+        \cellD{6}{1}{7}{2}
+        % row3
+        \cellA{0}{2}{1}{3}
+        \cellB{1}{2}{2}{3}
+        \cellA{2}{2}{3}{3}
+        \cellB{3}{2}{4}{3}
+        \cellA{4}{2}{5}{3}
+        \cell{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellF{0}{3}{1}{4}
+        \cellE{1}{3}{2}{4}
+        \cell{2}{3}{3}{4}
+        \cell{3}{3}{4}{4}
+        \cellE{4}{3}{5}{4}
+        \cellD{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
+        % row5
+        \cellA{0}{4}{1}{5}
+        \cellD{1}{4}{2}{5}
+        \cellE{2}{4}{3}{5}
+        \cellD{3}{4}{4}{5}
+        \cellD{4}{4}{5}{5}
+        \cell{5}{4}{6}{5}
+        \cell{6}{4}{7}{5}
+\end{tikzpicture}
+\end{center}
+
+Next, define a \textit{polygon mosaic} as a mosaic in which any pair of mosaic tiles lying immediately next to each other in either the same row or the same column have or do not
+have connection points simultaneously on their common edge, as well as no connection point on the boundary edges. 
+
+\begin{exmp}
+\label{exmp: clean sap}
+Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hilighted in gray.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellCf{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        \cell{5}{0}{6}{1}
+        \cell{6}{0}{7}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        \cellEf{2}{1}{3}{2}
+        \cellAf{3}{1}{4}{2}
+        \cellCf{4}{1}{5}{2}
+        \cell{5}{1}{6}{2}
+        \cell{6}{1}{7}{2}
+        % row3
+        \cell{0}{2}{1}{3}
+        \cell{1}{2}{2}{3}
+        \cellAf{2}{2}{3}{3}
+        \cellFf{3}{2}{4}{3}
+        \cellBf{4}{2}{5}{3}
+        \cell{5}{2}{6}{3}
+        \cell{6}{2}{7}{3}
+        % row4
+        \cellDf{0}{3}{1}{4}
+        \cellCf{1}{3}{2}{4}
+        \cell{2}{3}{3}{4}
+        \cell{3}{3}{4}{4}
+        \cell{4}{3}{5}{4}
+        \cell{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
+        % row5
+        \cellAf{0}{4}{1}{5}
+        \cellBf{1}{4}{2}{5}
+        \cell{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cell{4}{4}{5}{5}
+        \cell{5}{4}{6}{5}
+        \cell{6}{4}{7}{5}
+    \end{tikzpicture}
+\end{center}
+\end{exmp}
+
+Hong and Oh TODO CITE gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}$, namely
+
+$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
+
+We give an exact expression for $p_{n,m}$. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics.
+
+\begin{thm}
+    \label{thm: main theorem}
+    TODO
+\end{thm}
+
+\section{Proof of Theorem \ref{thm: main theorem}}
+
+\begin{proof}
+    TODO
+\end{proof}
+
+\section{Messy Polygon Mosaics}
+
+Define a \textit{messy polygon mosaic} as a mosaic that contains at least one self-avoiding polygon, with no restriction on other connection points. 
+
+\begin{exmp}
+\label{exmp: messy sap}
+Below is a messy polygon $(7,5)$-mosaic with $1$ SAP hilighted in gray. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellA{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellCf{3}{0}{4}{1}
+        \cellC{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellA{0}{1}{1}{2}
+        \cellE{1}{1}{2}{2}
+        \cellEf{2}{1}{3}{2}
+        \cellAf{3}{1}{4}{2}
+        \cellCf{4}{1}{5}{2}
+        \cellB{5}{1}{6}{2}
+        \cellD{6}{1}{7}{2}
+        % row3
+        \cell{0}{2}{1}{3}
+        \cellB{1}{2}{2}{3}
+        \cellAf{2}{2}{3}{3}
+        \cellFf{3}{2}{4}{3}
+        \cellBf{4}{2}{5}{3}
+        \cellD{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellF{0}{3}{1}{4}
+        \cellE{1}{3}{2}{4}
+        \cellA{2}{3}{3}{4}
+        \cellA{3}{3}{4}{4}
+        \cellE{4}{3}{5}{4}
+        \cell{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
+        % row5
+        \cellA{0}{4}{1}{5}
+        \cell{1}{4}{2}{5}
+        \cellE{2}{4}{3}{5}
+        \cellD{3}{4}{4}{5}
+        \cellD{4}{4}{5}{5}
+        \cell{5}{4}{6}{5}
+        \cellE{6}{4}{7}{5}
+    \end{tikzpicture}
+\end{center}
+\end{exmp}
+
+Note that one can also consider creating messy polygon mosaics with the alternate tile set below.
 
 %figure of tiles (colored marknigs!)
 \begin{center}
@@ -138,154 +327,51 @@ Consider the following $6$ unit squares with markings on them.
     \end{tikzpicture}
 \end{center}
 
-Call these squares \textit{tiles}. 
+From now on we refer to the different tile sets as the $7$-tileset and the $6$-tileset respectively. Enumerating messy polygon mosaics under the $7$-tileset immediately gives a similar result for the $6$-tileset, so we focus on the $7$-tileset and give analagous results when necessary.
 
-\begin{definition}
-An $(n,m)$-\textit{mosaic} is an $(n,m)$ rectangular lattice made up of tiles.
-\end{definition}
+It turns out that it is easier to enumerate the number of mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
 
-\begin{exmp}
-An example of a $(7,5)$-mosaic:
 \begin{center}
 \begin{tikzpicture}
     % row1
-    \cellA{0}{0}{1}{1}
-    \cellB{1}{0}{2}{1}
-    \cellF{2}{0}{3}{1}
-    \cellA{3}{0}{4}{1}
-    \cellC{4}{0}{5}{1}
-    \cellE{5}{0}{6}{1}
-    \cellD{6}{0}{7}{1}
+    \cellD{0}{0}{1}{1}
+    \cellC{1}{0}{2}{1}
     % row2
     \cellA{0}{1}{1}{2}
-    \cellE{1}{1}{2}{2}
-    \cellF{2}{1}{3}{2}
-    \cellE{3}{1}{4}{2}
-    \cellE{4}{1}{5}{2}
-    \cellB{5}{1}{6}{2}
-    \cellD{6}{1}{7}{2}
-    % row3
-    \cellA{0}{2}{1}{3}
-    \cellB{1}{2}{2}{3}
-    \cellA{2}{2}{3}{3}
-    \cellB{3}{2}{4}{3}
-    \cellA{4}{2}{5}{3}
-    \cellD{5}{2}{6}{3}
-    \cellF{6}{2}{7}{3}
-    % row4
-    \cellF{0}{3}{1}{4}
-    \cellE{1}{3}{2}{4}
-    \cellA{2}{3}{3}{4}
-    \cellA{3}{3}{4}{4}
-    \cellE{4}{3}{5}{4}
-    \cellD{5}{3}{6}{4}
-    \cellC{6}{3}{7}{4}
-    % row5
-    \cellA{0}{4}{1}{5}
-    \cellD{1}{4}{2}{5}
-    \cellE{2}{4}{3}{5}
-    \cellD{3}{4}{4}{5}
-    \cellD{4}{4}{5}{5}
-    \cellC{5}{4}{6}{5}
-    \cellE{6}{4}{7}{5}
-\end{tikzpicture}
-\end{center}
-\end{exmp}
-
-Clearly there are $6^{nm}$ possible mosaics. Which of these mosaics contain self-avoiding polygons?
-
-%example of a mosaic with an enclosed region
-\begin{exmp}
-\label{exp:sap}
-An example of a $(7,5)$-mosaic with a self-avoiding polygon, hilighted in gray:
-\begin{center}
-\begin{tikzpicture}
-    % row1
-    \cellA{0}{0}{1}{1}
-    \cellB{1}{0}{2}{1}
-    \cellDf{2}{0}{3}{1}
-    \cellCf{3}{0}{4}{1}
-    \cellC{4}{0}{5}{1}
-    \cellE{5}{0}{6}{1}
-    \cellD{6}{0}{7}{1}
-    % row2
-    \cellA{0}{1}{1}{2}
-    \cellE{1}{1}{2}{2}
-    \cellEf{2}{1}{3}{2}
-    \cellAf{3}{1}{4}{2}
-    \cellCf{4}{1}{5}{2}
-    \cellB{5}{1}{6}{2}
-    \cellD{6}{1}{7}{2}
-    % row3
-    \cellA{0}{2}{1}{3}
-    \cellB{1}{2}{2}{3}
-    \cellAf{2}{2}{3}{3}
-    \cellFf{3}{2}{4}{3}
-    \cellBf{4}{2}{5}{3}
-    \cellD{5}{2}{6}{3}
-    \cellF{6}{2}{7}{3}
-    % row4
-    \cellF{0}{3}{1}{4}
-    \cellE{1}{3}{2}{4}
-    \cellA{2}{3}{3}{4}
-    \cellA{3}{3}{4}{4}
-    \cellE{4}{3}{5}{4}
-    \cellD{5}{3}{6}{4}
-    \cellC{6}{3}{7}{4}
-    % row5
-    \cellA{0}{4}{1}{5}
-    \cellD{1}{4}{2}{5}
-    \cellE{2}{4}{3}{5}
-    \cellD{3}{4}{4}{5}
-    \cellD{4}{4}{5}{5}
-    \cellC{5}{4}{6}{5}
-    \cellE{6}{4}{7}{5}
-\end{tikzpicture}
-\end{center}
-\end{exmp}
-
-Let $t_{n,m}$ be the number of mosaics that have at least one self avoiding polygon (SAP). Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
-
-\begin{center}
-\begin{tikzpicture}
-% row1
-\cellD{0}{0}{1}{1}
-\cellC{1}{0}{2}{1}
-% row2
-\cellA{0}{1}{1}{2}
-\cellB{1}{1}{2}{2}
+    \cellB{1}{1}{2}{2}
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=t_{1,m}=0$, and $t_{2,2} = 1$. What else can be said?
+we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. What else can be said?
 
 \begin{thm}
+\label{thm: messy mosaics 7}
 
-Assume $n \geq m $
+Assume $n \geq m \geq 2$, and define
 
 $$
-M(m) = \begin{bmatrix}
-36 & 1 \\
+M(2) = \begin{bmatrix}
+7^2 & 1 \\
 -1 & 1
 \end{bmatrix}
 $$
 
-For $h \geq 2$, then if
+Then for $m \geq 2$, if
 $$
 M(m) = \begin{bmatrix}
 M_1 & M_2 \\
 M_3 & M_4
-\end{bmatrix}
+\end{bmatrix},
 $$
 
 then
 $$
 M(m+1) = \begin{bmatrix}
-6M_1 & 6M_2 & \frac{1}{6}M_1 & 1M_2 \\
-6M_3 & 6M_4 & 0M_3 & 1M_4 \\
--\frac{1}{6}M_1 & 0M_2 & \frac{1}{6}M_1 & 1M_2 \\
-1M_3 & 1M_4 & -1M_3 & 6M_4 \\
-\end{bmatrix}
+7M_1 & 7M_2 & \frac{1}{7}M_1 & M_2 \\
+7M_3 & 7M_4 & 0M_3 & M_4 \\
+-\frac{1}{7}M_1 & 0M_2 & \frac{1}{7}M_1 & 1M_2 \\
+M_3 & M_4 & -M_3 & 7M_4 \\
+\end{bmatrix},
 $$
 
 where $M_i$ is a sub-matrix of the block matrix $M$.
@@ -305,20 +391,73 @@ M(m) =
 \end{bmatrix}
 $$
 
-Then let $v,L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that
+Then let $L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that $L(1) = \vec{0}$ and for $n > 1$ we have
 
-$$v_i = -1*r_i \cdot c_1$$
-excluding the first term of the dot product,
+$$L(n) = M(m) \cdot L(n-1)+c_1$$
 
-and
-$$L(n) = M(m) \cdot L(n-1)+v$$
-
-Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+v).$
+Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+c_1).$
 
 \end{thm}
 
+\begin{thm}
+\label{thm: messy mosaics 6}
+The result is the same for the $6$-tileset, except we swap the appearances of a $7$ with a $6$, namely
+
+$$
+M(2) = \begin{bmatrix}
+6^2 & 1 \\
+-1 & 1
+\end{bmatrix}.
+$$
+
+Then for $m \geq 2$, if
+$$
+M(m) = \begin{bmatrix}
+M_1 & M_2 \\
+M_3 & M_4
+\end{bmatrix},
+$$
+
+then
+$$
+M(m+1) = \begin{bmatrix}
+6M_1 & 6M_2 & \frac{1}{6}M_1 & M_2 \\
+6M_3 & 6M_4 & 0M_3 & M_4 \\
+-\frac{1}{6}M_1 & 0M_2 & \frac{1}{6}M_1 & 1M_2 \\
+M_3 & M_4 & -M_3 & 6M_4 \\
+\end{bmatrix},
+$$
+
+where $M_i$ is a sub-matrix of the block matrix $M$.
+
+Then for the given $m$, define the rows and columns of $M(m)$ as
+
+$$
+M(m) = 
+\begin{bmatrix}
+    c_1 & c_2 & ... & c_{2^{m-1}}
+\end{bmatrix} = 
+\begin{bmatrix}
+    r_1 \\
+    r_2 \\
+    ... \\
+    r_{2^{m-1}} \\
+\end{bmatrix}
+$$
+
+Then let $L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that $L(1) = \vec{0}$ and for $n > 1$ we have
+
+$$L(n) = M(m) \cdot L(n-1)+c_1$$
+
+Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+c_1).$
+\end{thm}
+
+\section{Proof of Theorem \ref{thm: messy mosaics 7}}
+
+We prove the enumeration result for the $7$-tileset. The proof for the $6$-tileset is analagous.
+
 \begin{proof}
-Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exp:sap}, we get the following labelling.
+Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exmp: messy sap}, we get the following labelling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -520,7 +659,7 @@ Notice that vertices on the boundary of the lattice will always be black. The as
     \end{tikzpicture}
 \end{center}
 
-Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration specifies only $1$ SAP, so $f(p) = -1 * 6^{28}$. 
+Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration specifies only $1$ SAP, so $f(p) = -1 * 7^{28}$. 
 
 Then one can write
 
@@ -637,7 +776,7 @@ Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} ,
     \end{tikzpicture}
 \end{center}
 
-One can assign values to $w_{1},\dots,w_{16}$ so that the product for all parity configurations $p$ equals $f(p)$. To find these assignments, first notice that $w_{1} = w_{16} = 6$, as these cells do not indicate a specific tile. Similarly, $w_{7}=w_{10}=0$, as these are impossible parity configurations for our tile set. The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
+One can assign values to $w_{1},\dots,w_{16}$ so that the product for all parity configurations $p$ equals $f(p)$. To find these assignments, first notice that $w_{1} = w_{16} = 7$, as these cells do not indicate a specific tile. Similarly, $w_{7}=w_{10}=0$, as these are impossible parity configurations for our tile set. The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
 
 First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
 
@@ -663,7 +802,7 @@ This is because one can find $w_{1} , \dots, w_{16}$ so that the following two c
     \emph{All} transformations in $S$ preserve the weight product of a changed SAP.
 \end{constraint}
 
-Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constrains gives the following weights.
+Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constraints gives the following weights.
 
 \begin{center}
     \begin{tikzpicture}
@@ -761,9 +900,9 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
         \( \lablnode{8.5}{-0.5}{$w_{13}=1$} \)
         \( \lablnode{10.5}{-0.5}{$w_{14}=1$} \)
         \( \lablnode{12.5}{-0.5}{$w_{15}=-1$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}=6$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}=7$} \)
         % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}=6$} \)
+        \( \lablnode{0.5}{1.5}{$w_{1}=7$} \)
         \( \lablnode{2.5}{1.5}{$w_{2}=1$} \)
         \( \lablnode{4.5}{1.5}{$w_{3}=1$} \)
         \( \lablnode{6.5}{1.5}{$w_{4}=1$} \)
@@ -779,11 +918,10 @@ TODO
 \end{proof}
 
 \begin{theorem}
-    \label{thm: growth rate}
-    The growth rate of the main diagaonal $\gamma$ has 
-    $$\gamma = \lim_{n \to \infty} \frac{t_{n+1,n+1}t_{n-1,n-1}}{t_{n,n}^2}$$
+    \label{thm: growth rate}    
+    Let the probability that an $(n,m)$-mosaic \textit{does not} contain a SAP be denoted $p_{n,m} = \frac{t_{n,m}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
+    $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
 \end{theorem}
-
 
 \section{Appendix}
 
@@ -883,7 +1021,7 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
     \end{tikzpicture}
 \end{center}
 
-The above transformation corresponds with \textit{either} two distinct SAPs joining into one \textit{or} one SAP splitting into two distinct SAPs. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
+The above transformation corresponds with \textit{either} two distinct SAPs joining into one SAP \textit{or} one SAP splitting into two distinct SAPs. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
 
 $$\text{sign}(w_{3}w_{2}w_{9}w_{5}) = -\text{sign}(w_{4}w_{4}w_{13}w_{13}).$$
 
@@ -924,41 +1062,41 @@ Similarly, all Type 2 constraints are as follows.
         -w_{13}w_{13}w_{4}w_{3} = w_{14}w_{15}w_{8}w_{11} & -w_{13}w_{13}w_{4}w_{4} = w_{14}w_{15}w_{8}w_{12} & 
 \end{eqnarray*}
 
-Solving all Type 1 and Type 2 constrains gives the following solution set.
+Solving all Type 1 and Type 2 constraints gives the following solution set.
 
 \begin{eqnarray*}
-    [w_{1}, ..., w_{16}] & = & [6, -1, -1, -1, -1, -1, 0, -1, 1, 0, -1, -1, -1, -1, 1, 6] \\
-    & = & [6, -1, -1, -1, -1, 1, 0, 1, 1, 0, 1, 1, -1, 1, -1, 6] \\
-    & = & [6, -1, -1, -1, 1, -1, 0, -1, -1, 0, -1, -1, -1, 1, -1, 6] \\
-    & = & [6, -1, -1, -1, 1, 1, 0, 1, -1, 0, 1, 1, -1, -1, 1, 6] \\
-    & = & [6, -1, -1, 1, -1, -1, 0, 1, 1, 0, -1, 1, 1, 1, -1, 6] \\
-    & = & [6, -1, -1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 1, -1, 1, 6] \\
-    & = & [6, -1, -1, 1, 1, -1, 0, 1, -1, 0, -1, 1, 1, -1, 1, 6] \\
-    & = & [6, -1, -1, 1, 1, 1, 0, -1, -1, 0, 1, -1, 1, 1, -1, 6] \\
-    & = & [6, -1, 1, -1, -1, -1, 0, -1, -1, 0, -1, 1, -1, -1, -1, 6] \\
-    & = & [6, -1, 1, -1, -1, 1, 0, 1, -1, 0, 1, -1, -1, 1, 1, 6] \\
-    & = & [6, -1, 1, -1, 1, -1, 0, -1, 1, 0, -1, 1, -1, 1, 1, 6] \\
-    & = & [6, -1, 1, -1, 1, 1, 0, 1, 1, 0, 1, -1, -1, -1, -1, 6] \\
-    & = & [6, -1, 1, 1, -1, -1, 0, 1, -1, 0, -1, -1, 1, 1, 1, 6] \\
-    & = & [6, -1, 1, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, -1, 6] \\
-    & = & [6, -1, 1, 1, 1, -1, 0, 1, 1, 0, -1, -1, 1, -1, -1, 6] \\
-    & = & [6, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 1, 1, 1, 6] \\
-    & = & [6, 1, -1, -1, -1, -1, 0, 1, -1, 0, -1, -1, -1, -1, -1, 6] \\
-    & = & [6, 1, -1, -1, -1, 1, 0, -1, -1, 0, 1, 1, -1, 1, 1, 6] \\
-    & = & [6, 1, -1, -1, 1, -1, 0, 1, 1, 0, -1, -1, -1, 1, 1, 6] \\
-    & = & [6, 1, -1, -1, 1, 1, 0, -1, 1, 0, 1, 1, -1, -1, -1, 6] \\
-    & = & [6, 1, -1, 1, -1, -1, 0, -1, -1, 0, -1, 1, 1, 1, 1, 6] \\
-    & = & [6, 1, -1, 1, -1, 1, 0, 1, -1, 0, 1, -1, 1, -1, -1, 6] \\
-    & = & [6, 1, -1, 1, 1, -1, 0, -1, 1, 0, -1, 1, 1, -1, -1, 6] \\
-    & = & [6, 1, -1, 1, 1, 1, 0, 1, 1, 0, 1, -1, 1, 1, 1, 6] \\
-    & = & [6, 1, 1, -1, -1, -1, 0, 1, 1, 0, -1, 1, -1, -1, 1, 6] \\
-    & = & [6, 1, 1, -1, -1, 1, 0, -1, 1, 0, 1, -1, -1, 1, -1, 6] \\
-    & = & [6, 1, 1, -1, 1, -1, 0, 1, -1, 0, -1, 1, -1, 1, -1, 6] \\
-    & = & [6, 1, 1, -1, 1, 1, 0, -1, -1, 0, 1, -1, -1, -1, 1, 6] \\
-    & = & [6, 1, 1, 1, -1, -1, 0, -1, 1, 0, -1, -1, 1, 1, -1, 6] \\
-    & = & [6, 1, 1, 1, -1, 1, 0, 1, 1, 0, 1, 1, 1, -1, 1, 6] \\
-    & = & [6, 1, 1, 1, 1, -1, 0, -1, -1, 0, -1, -1, 1, -1, 1, 6] \\
-    & = & [6, 1, 1, 1, 1, 1, 0, 1, -1, 0, 1, 1, 1, 1, -1, 6] \\
+    [w_{1}, ..., w_{16}] & = & [7, -1, -1, -1, -1, -1, 0, -1, 1, 0, -1, -1, -1, -1, 1, 7] \\
+    & = & [7, -1, -1, -1, -1, 1, 0, 1, 1, 0, 1, 1, -1, 1, -1, 7] \\
+    & = & [7, -1, -1, -1, 1, -1, 0, -1, -1, 0, -1, -1, -1, 1, -1, 7] \\
+    & = & [7, -1, -1, -1, 1, 1, 0, 1, -1, 0, 1, 1, -1, -1, 1, 7] \\
+    & = & [7, -1, -1, 1, -1, -1, 0, 1, 1, 0, -1, 1, 1, 1, -1, 7] \\
+    & = & [7, -1, -1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 1, -1, 1, 7] \\
+    & = & [7, -1, -1, 1, 1, -1, 0, 1, -1, 0, -1, 1, 1, -1, 1, 7] \\
+    & = & [7, -1, -1, 1, 1, 1, 0, -1, -1, 0, 1, -1, 1, 1, -1, 7] \\
+    & = & [7, -1, 1, -1, -1, -1, 0, -1, -1, 0, -1, 1, -1, -1, -1, 7] \\
+    & = & [7, -1, 1, -1, -1, 1, 0, 1, -1, 0, 1, -1, -1, 1, 1, 7] \\
+    & = & [7, -1, 1, -1, 1, -1, 0, -1, 1, 0, -1, 1, -1, 1, 1, 7] \\
+    & = & [7, -1, 1, -1, 1, 1, 0, 1, 1, 0, 1, -1, -1, -1, -1, 7] \\
+    & = & [7, -1, 1, 1, -1, -1, 0, 1, -1, 0, -1, -1, 1, 1, 1, 7] \\
+    & = & [7, -1, 1, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, -1, 7] \\
+    & = & [7, -1, 1, 1, 1, -1, 0, 1, 1, 0, -1, -1, 1, -1, -1, 7] \\
+    & = & [7, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 1, 1, 1, 7] \\
+    & = & [7, 1, -1, -1, -1, -1, 0, 1, -1, 0, -1, -1, -1, -1, -1, 7] \\
+    & = & [7, 1, -1, -1, -1, 1, 0, -1, -1, 0, 1, 1, -1, 1, 1, 7] \\
+    & = & [7, 1, -1, -1, 1, -1, 0, 1, 1, 0, -1, -1, -1, 1, 1, 7] \\
+    & = & [7, 1, -1, -1, 1, 1, 0, -1, 1, 0, 1, 1, -1, -1, -1, 7] \\
+    & = & [7, 1, -1, 1, -1, -1, 0, -1, -1, 0, -1, 1, 1, 1, 1, 7] \\
+    & = & [7, 1, -1, 1, -1, 1, 0, 1, -1, 0, 1, -1, 1, -1, -1, 7] \\
+    & = & [7, 1, -1, 1, 1, -1, 0, -1, 1, 0, -1, 1, 1, -1, -1, 7] \\
+    & = & [7, 1, -1, 1, 1, 1, 0, 1, 1, 0, 1, -1, 1, 1, 1, 7] \\
+    & = & [7, 1, 1, -1, -1, -1, 0, 1, 1, 0, -1, 1, -1, -1, 1, 7] \\
+    & = & [7, 1, 1, -1, -1, 1, 0, -1, 1, 0, 1, -1, -1, 1, -1, 7] \\
+    & = & [7, 1, 1, -1, 1, -1, 0, 1, -1, 0, -1, 1, -1, 1, -1, 7] \\
+    & = & [7, 1, 1, -1, 1, 1, 0, -1, -1, 0, 1, -1, -1, -1, 1, 7] \\
+    & = & [7, 1, 1, 1, -1, -1, 0, -1, 1, 0, -1, -1, 1, 1, -1, 7] \\
+    & = & [7, 1, 1, 1, -1, 1, 0, 1, 1, 0, 1, 1, 1, -1, 1, 7] \\
+    & = & [7, 1, 1, 1, 1, -1, 0, -1, -1, 0, -1, -1, 1, -1, 1, 7] \\
+    & = & [7, 1, 1, 1, 1, 1, 0, 1, -1, 0, 1, 1, 1, 1, -1, 7] \\
 \end{eqnarray*}
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
