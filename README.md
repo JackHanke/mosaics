@@ -30,4 +30,9 @@ $$\sum_{n \geq 2}t_{n,3}x^n = \frac{(73-414x)x^2}{(1-216x)(1-228x+2699x^2-7758x^
 
 A video summarizing this work can be found [here](https://www.youtube.com/watch?v=D3dp5RBmPcs&t=921s). This video won an honorary mention in the [2023 Summer of Math Exposition](https://www.youtube.com/watch?v=6a1fLEToyvU&list=PLctYr3TOAdIE7MNyc8ejPUvda-g7VVVNt) contest.
 
+<!-- https://pastebin.com/WKay2HjU -->
+<!-- https://oeis.org/A181245 -->
 
+## Developer Notes
+
+To refresh bibtex references, run `biber mosaics` .

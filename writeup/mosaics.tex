@@ -102,7 +102,7 @@
 \usepackage[margin=1in]{geometry}
 
 %doc info
-\title{The Mosaic Problem}
+\title{Exact Enumeration of Multiple Self-Avoiding Polygons}
 \author{Richard Shank, Jack Hanke}
 \date{\today}
 
@@ -110,7 +110,7 @@
 
 \begin{center}
     \Large
-    \textbf{The Mosaic Problem}
+    \textbf{Exact Enumeration of Multiple Self-Avoiding Polygons}
     
     \vspace{0.4cm}
     \large
@@ -244,9 +244,9 @@ Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hili
 
 Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}$, namely
 
-$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
+$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} + 1 \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
 
-We give an exact expression for $p_{n,m}$. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics.
+The array $p_{n,m} + 1$ is A181245 on the \cite[OEIS]{oeis} \. We give an exact expression for $p_{n,m}$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics.
 
 \begin{thm}
     \label{thm: main theorem}
@@ -1102,6 +1102,8 @@ Solving all Type 1 and Type 2 constraints gives the following solution set.
 \end{eqnarray*}
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
+
+% contact prog: https://www.math.northwestern.edu/people/faculty/michael-maltenfort.html
 
 \printbibheading
 
