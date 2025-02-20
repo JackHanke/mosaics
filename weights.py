@@ -135,6 +135,11 @@ if __name__ == '__main__':
     print(test_weights(weights=weights, verbose=True))
 
     # NOTE generates total solution set
-    # solution_set = get_solutions()
-    # for sol in solution_set:
-    #     print(f'[w_1 ... w_16] & = & {[6] +sol[1:-1] + [6]} \\\\')
+    solution_set = get_solutions()
+    for sol in solution_set:
+        thing = 'b & '
+        for num in sol[1:-1]:
+            thing += str(num) + ' & '
+        thing += 'b \\\\'
+        print(thing)
+        # print(f'[w_1 ... w_16] & = & {[6] +sol[1:-1] + [6]} \\\\')

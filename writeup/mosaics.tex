@@ -245,33 +245,28 @@ Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hili
 \end{center}
 \end{exmp}
 
-Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}$, namely
+Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}+1$ (A181245 \cite[OEIS]{oeis}), namely
 
 $$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} + 1 \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
 
-The array $p_{n,m} + 1$ is A181245 \cite[OEIS]{oeis}. We give an exact expression for $p_{n,m}$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
+We give an exact expression for $p_{n,m} + 1$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
 
 \begin{thm}
 \label{thm: main theorem}
 
-Define for $n \geq 2$
-
-$$
+Let $
 M(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
 \end{bmatrix}
-$$
-
-Then for $m \geq 2$, if
-$$
+$ for $n \geq 2$. Then for $m \geq 2$, if 
+$
 M(m) = \begin{bmatrix}
 M_1 & M_2 \\
 M_3 & M_4
 \end{bmatrix},
-$$
+$ define
 
-then
 $$
 M(m+1) = \begin{bmatrix}
 M_1 & M_2 & M_1 & M_2 \\
@@ -281,10 +276,7 @@ M_3 & M_4 & M_3 & M_4 \\
 \end{bmatrix},
 $$
 
-where $M_i$ is a sub-matrix of the block matrix $M$.
-
-Next define the rows and columns of $M(m)$ as
-
+where $M_i$ is a sub-matrix of the block matrix $M(m)$. Next define the rows and columns of $M(m)$ as
 $$
 M(m) = 
 \begin{bmatrix}
@@ -403,111 +395,108 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (5,5) circle (3pt);
         \draw[fill=black] (6,5) circle (3pt);
         \draw[fill=black] (7,5) circle (3pt);
-    \end{tikzpicture}
-\end{center}
 
-Notice that vertices on the boundary of the lattice will always be black. The associated \textit{parity configuration} for the above mosaic is below.
+        % arrow
+        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)        
 
-\begin{center}
-    \begin{tikzpicture}
         % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cell{2}{0}{3}{1}
-        \cell{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        \cell{5}{0}{6}{1}
-        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{9}{0}{10}{1}
+        \cell{10}{0}{11}{1}
+        \cell{11}{0}{12}{1}
+        \cell{12}{0}{13}{1}
+        \cell{13}{0}{14}{1}
+        \cell{14}{0}{15}{1}
         % row2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cell{2}{1}{3}{2}
-        \cell{3}{1}{4}{2}
-        \cell{4}{1}{5}{2}
-        \cell{5}{1}{6}{2}
-        \cell{6}{1}{7}{2}
+        \cell{8}{1}{9}{2}
+        \cell{9}{1}{10}{2}
+        \cell{10}{1}{11}{2}
+        \cell{11}{1}{12}{2}
+        \cell{12}{1}{13}{2}
+        \cell{13}{1}{14}{2}
+        \cell{14}{1}{15}{2}
         % row3
-        \cell{0}{2}{1}{3}
-        \cell{1}{2}{2}{3}
-        \cell{2}{2}{3}{3}
-        \cell{3}{2}{4}{3}
-        \cell{4}{2}{5}{3}
-        \cell{5}{2}{6}{3}
-        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{9}{2}{10}{3}
+        \cell{10}{2}{11}{3}
+        \cell{11}{2}{12}{3}
+        \cell{12}{2}{13}{3}
+        \cell{13}{2}{14}{3}
+        \cell{14}{2}{15}{3}
         % row4
-        \cell{0}{3}{1}{4}
-        \cell{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
-        \cell{3}{3}{4}{4}
-        \cell{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
+        \cell{8}{3}{9}{4}
+        \cell{9}{3}{10}{4}
+        \cell{10}{3}{11}{4}
+        \cell{11}{3}{12}{4}
+        \cell{12}{3}{13}{4}
+        \cell{13}{3}{14}{4}
+        \cell{14}{3}{15}{4}
         % row5
-        \cell{0}{4}{1}{5}
-        \cell{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
-        \cell{3}{4}{4}{5}
-        \cell{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cell{6}{4}{7}{5}
+        \cell{8}{4}{9}{5}
+        \cell{9}{4}{10}{5}
+        \cell{10}{4}{11}{5}
+        \cell{11}{4}{12}{5}
+        \cell{12}{4}{13}{5}
+        \cell{13}{4}{14}{5}
+        \cell{14}{4}{15}{5}
         % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=black] (6,0) circle (3pt);
-        \draw[fill=black] (7,0) circle (3pt);
+        \draw[fill=black] (8,0) circle (3pt);
+        \draw[fill=black] (9,0) circle (3pt);
+        \draw[fill=black] (10,0) circle (3pt);
+        \draw[fill=black] (11,0) circle (3pt);
+        \draw[fill=black] (12,0) circle (3pt);
+        \draw[fill=black] (13,0) circle (3pt);
+        \draw[fill=black] (14,0) circle (3pt);
+        \draw[fill=black] (15,0) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
-        \draw[fill=black] (4,1) circle (3pt);
-        \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=black] (6,1) circle (3pt);
-        \draw[fill=black] (7,1) circle (3pt);
+        \draw[fill=black] (8,1) circle (3pt);
+        \draw[fill=black] (9,1) circle (3pt);
+        \draw[fill=black] (10,1) circle (3pt);
+        \draw[fill=green, draw=none] (11,1) circle (3pt);
+        \draw[fill=black] (12,1) circle (3pt);
+        \draw[fill=black] (13,1) circle (3pt);
+        \draw[fill=black] (14,1) circle (3pt);
+        \draw[fill=black] (15,1) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=black] (6,2) circle (3pt);
-        \draw[fill=black] (7,2) circle (3pt);
+        \draw[fill=black] (8,2) circle (3pt);
+        \draw[fill=black] (9,2) circle (3pt);
+        \draw[fill=black] (10,2) circle (3pt);
+        \draw[fill=green, draw=none] (11,2) circle (3pt);
+        \draw[fill=green, draw=none] (12,2) circle (3pt);
+        \draw[fill=black] (13,2) circle (3pt);
+        \draw[fill=black] (14,2) circle (3pt);
+        \draw[fill=black] (15,2) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=black] (4,3) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
-        \draw[fill=black] (6,3) circle (3pt);
-        \draw[fill=black] (7,3) circle (3pt);
+        \draw[fill=black] (8,3) circle (3pt);
+        \draw[fill=black] (9,3) circle (3pt);
+        \draw[fill=black] (10,3) circle (3pt);
+        \draw[fill=black] (11,3) circle (3pt);
+        \draw[fill=black] (12,3) circle (3pt);
+        \draw[fill=black] (13,3) circle (3pt);
+        \draw[fill=black] (14,3) circle (3pt);
+        \draw[fill=black] (15,3) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=green, draw=none] (1,4) circle (3pt);
-        \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=black] (4,4) circle (3pt);
-        \draw[fill=black] (5,4) circle (3pt);
-        \draw[fill=black] (6,4) circle (3pt);
-        \draw[fill=black] (7,4) circle (3pt);
+        \draw[fill=black] (8,4) circle (3pt);
+        \draw[fill=green, draw=none] (9,4) circle (3pt);
+        \draw[fill=black] (10,4) circle (3pt);
+        \draw[fill=black] (11,4) circle (3pt);
+        \draw[fill=black] (12,4) circle (3pt);
+        \draw[fill=black] (13,4) circle (3pt);
+        \draw[fill=black] (14,4) circle (3pt);
+        \draw[fill=black] (15,4) circle (3pt);
         % label for row1
-        \draw[fill=black] (0,5) circle (3pt);
-        \draw[fill=black] (1,5) circle (3pt);
-        \draw[fill=black] (2,5) circle (3pt);
-        \draw[fill=black] (3,5) circle (3pt);
-        \draw[fill=black] (4,5) circle (3pt);
-        \draw[fill=black] (5,5) circle (3pt);
-        \draw[fill=black] (6,5) circle (3pt);
-        \draw[fill=black] (7,5) circle (3pt);
+        \draw[fill=black] (8,5) circle (3pt);
+        \draw[fill=black] (9,5) circle (3pt);
+        \draw[fill=black] (10,5) circle (3pt);
+        \draw[fill=black] (11,5) circle (3pt);
+        \draw[fill=black] (12,5) circle (3pt);
+        \draw[fill=black] (13,5) circle (3pt);
+        \draw[fill=black] (14,5) circle (3pt);
+        \draw[fill=black] (15,5) circle (3pt);
     \end{tikzpicture}
 \end{center}
 
-The number of parity configurations that do not include the following sub-configurations
+Notice that vertices on the boundary of the lattice will always be black. The associated \textit{parity configuration} for the above mosaic is below. The number of parity configurations that do not include the following sub-configurations also count the number of self-avoiding polygons. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -528,11 +517,423 @@ The number of parity configurations that do not include the following sub-config
     \end{tikzpicture}
 \end{center}
 
-also count the number of self-avoiding polygons. We seek to construct a transition matrix for a fixed $m$ that maps all possible parity configuration edge boundaries to every other. As an example, consider $m=3$. 
+We seek to construct a transition matrix for a fixed $m$ that maps all possible parity configuration edge boundaries to every other. As an example, consider $m=3$. 
 
-TODO figure out how to introduce naturally
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
 
-TODO make figures
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+
+        \cell{6}{0}{7}{1}
+        \cell{6}{1}{7}{2}
+        \cell{6}{2}{7}{3}
+        % row2
+        \cell{0}{4}{1}{5}
+        \cell{0}{5}{1}{6}
+        \cell{0}{6}{1}{7}
+
+        \cell{2}{4}{3}{5}
+        \cell{2}{5}{3}{6}
+        \cell{2}{6}{3}{7}
+
+        \cell{4}{4}{5}{5}
+        \cell{4}{5}{5}{6}
+        \cell{4}{6}{5}{7}
+
+        \cell{6}{4}{7}{5}
+        \cell{6}{5}{7}{6}
+        \cell{6}{6}{7}{7}
+        % row3
+        \cell{0}{8}{1}{9}
+        \cell{0}{9}{1}{10}
+        \cell{0}{10}{1}{11}
+
+        \cell{2}{8}{3}{9}
+        \cell{2}{9}{3}{10}
+        \cell{2}{10}{3}{11}
+
+        \cell{4}{8}{5}{9}
+        \cell{4}{9}{5}{10}
+        \cell{4}{10}{5}{11}
+
+        \cell{6}{8}{7}{9}
+        \cell{6}{9}{7}{10}
+        \cell{6}{10}{7}{11}
+        % row4
+        \cell{0}{12}{1}{13}
+        \cell{0}{13}{1}{14}
+        \cell{0}{14}{1}{15}
+
+        \cell{2}{12}{3}{13}
+        \cell{2}{13}{3}{14}
+        \cell{2}{14}{3}{15}
+
+        \cell{4}{12}{5}{13}
+        \cell{4}{13}{5}{14}
+        \cell{4}{14}{5}{15}
+
+        \cell{6}{12}{7}{13}
+        \cell{6}{13}{7}{14}
+        \cell{6}{14}{7}{15}
+        % row 1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=green, draw=none] (0,2) circle (3pt);
+        \draw[fill=black] (0,3) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,2) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=black] (4,3) circle (3pt);
+
+        \draw[fill=black] (5,0) circle (3pt);
+        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+
+        \draw[fill=black] (6,0) circle (3pt);
+        \draw[fill=green, draw=none] (6,1) circle (3pt);
+        \draw[fill=green, draw=none] (6,2) circle (3pt);
+        \draw[fill=black] (6,3) circle (3pt);
+
+        \draw[fill=black] (7,0) circle (3pt);
+        \draw[fill=green, draw=none] (7,1) circle (3pt);
+        \draw[fill=green, draw=none] (7,2) circle (3pt);
+        \draw[fill=black] (7,3) circle (3pt);
+        % row 2
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=green, draw=none] (0,5) circle (3pt);
+        \draw[fill=black] (0,6) circle (3pt);
+        \draw[fill=black] (0,7) circle (3pt);
+
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (1,5) circle (3pt);
+        \draw[fill=black] (1,6) circle (3pt);
+        \draw[fill=black] (1,7) circle (3pt);
+
+        \draw[fill=black] (2,4) circle (3pt);
+        \draw[fill=green, draw=none] (2,5) circle (3pt);
+        \draw[fill=black] (2,6) circle (3pt);
+        \draw[fill=black] (2,7) circle (3pt);
+
+        \draw[fill=black] (3,4) circle (3pt);
+        \draw[fill=black] (3,5) circle (3pt);
+        \draw[fill=green, draw=none] (3,6) circle (3pt);
+        \draw[fill=black] (3,7) circle (3pt);
+
+        \draw[fill=black] (4,4) circle (3pt);
+        \draw[fill=green, draw=none] (4,5) circle (3pt);
+        \draw[fill=black] (4,6) circle (3pt);
+        \draw[fill=black] (4,7) circle (3pt);
+
+        \draw[fill=black] (5,4) circle (3pt);
+        \draw[fill=green, draw=none] (5,5) circle (3pt);
+        \draw[fill=black] (5,6) circle (3pt);
+        \draw[fill=black] (5,7) circle (3pt);
+
+        \draw[fill=black] (6,4) circle (3pt);
+        \draw[fill=green, draw=none] (6,5) circle (3pt);
+        \draw[fill=black] (6,6) circle (3pt);
+        \draw[fill=black] (6,7) circle (3pt);
+
+        \draw[fill=black] (7,4) circle (3pt);
+        \draw[fill=green, draw=none] (7,5) circle (3pt);
+        \draw[fill=green, draw=none] (7,6) circle (3pt);
+        \draw[fill=black] (7,7) circle (3pt);
+        % row 3
+        \draw[fill=black] (0,8) circle (3pt);
+        \draw[fill=black] (0,9) circle (3pt);
+        \draw[fill=green, draw=none] (0,10) circle (3pt);
+        \draw[fill=black] (0,11) circle (3pt);
+
+        \draw[fill=black] (1,8) circle (3pt);
+        \draw[fill=black] (1,9) circle (3pt);
+        \draw[fill=black] (1,10) circle (3pt);
+        \draw[fill=black] (1,11) circle (3pt);
+
+        \draw[fill=black] (2,8) circle (3pt);
+        \draw[fill=black] (2,9) circle (3pt);
+        \draw[fill=green, draw=none] (2,10) circle (3pt);
+        \draw[fill=black] (2,11) circle (3pt);
+
+        \draw[fill=black] (3,8) circle (3pt);
+        \draw[fill=black] (3,9) circle (3pt);
+        \draw[fill=green, draw=none] (3,10) circle (3pt);
+        \draw[fill=black] (3,11) circle (3pt);
+
+        \draw[fill=black] (4,8) circle (3pt);
+        \draw[fill=black] (4,9) circle (3pt);
+        \draw[fill=green, draw=none] (4,10) circle (3pt);
+        \draw[fill=black] (4,11) circle (3pt);
+
+        \draw[fill=black] (5,8) circle (3pt);
+        \draw[fill=green, draw=none] (5,9) circle (3pt);
+        \draw[fill=black] (5,10) circle (3pt);
+        \draw[fill=black] (5,11) circle (3pt);
+
+        \draw[fill=black] (6,8) circle (3pt);
+        \draw[fill=black] (6,9) circle (3pt);
+        \draw[fill=green, draw=none] (6,10) circle (3pt);
+        \draw[fill=black] (6,11) circle (3pt);
+
+        \draw[fill=black] (7,8) circle (3pt);
+        \draw[fill=green, draw=none] (7,9) circle (3pt);
+        \draw[fill=green, draw=none] (7,10) circle (3pt);
+        \draw[fill=black] (7,11) circle (3pt);
+        % row 4
+        \draw[fill=black] (0,12) circle (3pt);
+        \draw[fill=black] (0,13) circle (3pt);
+        \draw[fill=black] (0,14) circle (3pt);
+        \draw[fill=black] (0,15) circle (3pt);
+
+        \draw[fill=black] (1,12) circle (3pt);
+        \draw[fill=black] (1,13) circle (3pt);
+        \draw[fill=black] (1,14) circle (3pt);
+        \draw[fill=black] (1,15) circle (3pt);
+
+        \draw[fill=black] (2,12) circle (3pt);
+        \draw[fill=black] (2,13) circle (3pt);
+        \draw[fill=black] (2,14) circle (3pt);
+        \draw[fill=black] (2,15) circle (3pt);
+
+        \draw[fill=black] (3,12) circle (3pt);
+        \draw[fill=black] (3,13) circle (3pt);
+        \draw[fill=green, draw=none] (3,14) circle (3pt);
+        \draw[fill=black] (3,15) circle (3pt);
+
+        \draw[fill=black] (4,12) circle (3pt);
+        \draw[fill=black] (4,13) circle (3pt);
+        \draw[fill=black] (4,14) circle (3pt);
+        \draw[fill=black] (4,15) circle (3pt);
+
+        \draw[fill=black] (5,12) circle (3pt);
+        \draw[fill=green, draw=none] (5,13) circle (3pt);
+        \draw[fill=black] (5,14) circle (3pt);
+        \draw[fill=black] (5,15) circle (3pt);
+
+        \draw[fill=black] (6,12) circle (3pt);
+        \draw[fill=black] (6,13) circle (3pt);
+        \draw[fill=black] (6,14) circle (3pt);
+        \draw[fill=black] (6,15) circle (3pt);
+
+        \draw[fill=black] (7,12) circle (3pt);
+        \draw[fill=green, draw=none] (7,13) circle (3pt);
+        \draw[fill=green, draw=none] (7,14) circle (3pt);
+        \draw[fill=black] (7,15) circle (3pt);
+        % arrow
+        \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
+        % matrix
+        \( \lablnode{12}{7.5}{$\begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix}$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+We design $M(3)$ so that each column has the same right edge parity and every row has the same left edge parity. The entries of $M(3)$ are $1$ if the parity configuration admits a tile configuration, and $0$ otherwise. 
+
+If we define $M(3)$ in this way, then $c_1$ of $M(3)$ represents all parity configurations that ``start with a boundary" of a parity configuration, and $r_1$ of $M(3)$ represents all parity configurations that ``end with a boundary" of a parity configuration, if you build the parity configuration from right to left. This immediately gives that $p_{n,3}+1 = r_1 M(3)^{n-2} c_1.$
+
+If $M(m)$ can be constructed for a fixed $m$, then the same argument can be used to enumerate $p_{n,m}+1$. But how does one construct $M(m)$ for a general $m$?
+
+Consider $M(2)$ along with its represented parity configurations below.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+
+        % row2
+        \cell{0}{3}{1}{4}
+        \cell{0}{4}{1}{5}
+
+        \cell{2}{3}{3}{4}
+        \cell{2}{4}{3}{5}
+        % row 1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=black] (0,2) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=black] (3,2) circle (3pt);
+        % row 2
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=black] (0,5) circle (3pt);
+
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (1,5) circle (3pt);
+
+        \draw[fill=black] (2,3) circle (3pt);
+        \draw[fill=black] (2,4) circle (3pt);
+        \draw[fill=black] (2,5) circle (3pt);
+
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=green, draw=none] (3,4) circle (3pt);
+        \draw[fill=black] (3,5) circle (3pt);
+
+        % arrow
+        \( \lablnode{5}{2.5}{$\pmb{\to}$} \)
+        % matrix
+        \( \lablnode{7}{2.5}{$\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine the mapping by considering appending all possible cell parity configurations to the bottom of the column, like so.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{-4.5}{2.5}{-3.5}{3.5}
+        \cell{-4.5}{3.5}{-3.5}{4.5}
+
+        % row 1
+        \draw[fill=black] (-4.5,2.5) circle (3pt);
+        \draw[fill=black] (-4.5,3.5) circle (3pt);
+        \draw[fill=black] (-4.5,4.5) circle (3pt);
+
+        \draw[fill=black] (-3.5,2.5) circle (3pt);
+        \draw[fill=green, draw=none] (-3.5,3.5) circle (3pt);
+        \draw[fill=black] (-3.5,4.5) circle (3pt);
+
+        % arrow
+        \( \lablnode{-2}{3.5}{$\pmb{\to}$} \)
+
+        % four columns
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (0,3) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=green, draw=none] (1,2) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+
+        \draw[fill=black] (2,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=black] (3,3) circle (3pt);
+
+        \cell{0}{4}{1}{5}
+        \cell{0}{5}{1}{6}
+        \cell{0}{6}{1}{7}
+
+        \cell{2}{4}{3}{5}
+        \cell{2}{5}{3}{6}
+        \cell{2}{6}{3}{7}
+
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=black] (0,5) circle (3pt);
+        \draw[fill=black] (0,6) circle (3pt);
+        \draw[fill=black] (0,7) circle (3pt);
+
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (1,5) circle (3pt);
+        \draw[fill=green, draw=none] (1,6) circle (3pt);
+        \draw[fill=black] (1,7) circle (3pt);
+
+        \draw[fill=black] (2,4) circle (3pt);
+        \draw[fill=black] (2,5) circle (3pt);
+        \draw[fill=black] (2,6) circle (3pt);
+        \draw[fill=black] (2,7) circle (3pt);
+
+        \draw[fill=black] (3,4) circle (3pt);
+        \draw[fill=green, draw=none] (3,5) circle (3pt);
+        \draw[fill=green, draw=none] (3,6) circle (3pt);
+        \draw[fill=black] (3,7) circle (3pt);
+
+        \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
+
+        \( \lablnode{7}{3.5}{$\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+If we write $M(2) = \begin{bmatrix}
+    1 & 1 \\
+    1 & 1 
+\end{bmatrix} = 
+\begin{bmatrix}
+    M_1 & M_2 \\
+    M_3 & M_4 
+\end{bmatrix}
+$, and compute these mappings for all possible parity configurations, we get
+
+$$
+M(3) = 
+\begin{bmatrix}
+    1M_1 & 1M_2 & 1M_1 & 1M_2 \\
+    1M_3 & 1M_4 & 0M_3 & 1M_4 \\
+    1M_1 & 0M_2 & 1M_1 & 1M_2 \\
+    1M_3 & 1M_4 & 1M_3 & 1M_4 \\
+\end{bmatrix}
+$$.
+
+Finally, as appending any parity configuration to the bottom of a column only changes the identity of the bottom two parity cell configurations, we can write that for any matrix $M(m) =\begin{bmatrix} M_1 & M_2 \\ M_3 & M_4 \end{bmatrix}$ we have 
+
+$$
+M(m+1) = 
+\begin{bmatrix}
+    1M_1 & 1M_2 & 1M_1 & 1M_2 \\
+    1M_3 & 1M_4 & 0M_3 & 1M_4 \\
+    1M_1 & 0M_2 & 1M_1 & 1M_2 \\
+    1M_3 & 1M_4 & 1M_3 & 1M_4 \\
+\end{bmatrix},
+$$
+
+which completes the proof.
 
 \end{proof}
 
@@ -590,7 +991,7 @@ Below is a messy polygon $(7,5)$-mosaic with $1$ SAP hilighted in gray.
 \end{center}
 \end{exmp}
 
-Note that one can also consider creating messy polygon mosaics with the alternate tile set below.
+Note that one can also consider creating messy polygon mosaics with the alternate tile set below, where the empty tile is removed.
 
 %figure of tiles (colored marknigs!)
 \begin{center}
@@ -604,9 +1005,9 @@ Note that one can also consider creating messy polygon mosaics with the alternat
     \end{tikzpicture}
 \end{center}
 
-From now on we refer to the different tile sets as the $7$-tileset and the $6$-tileset respectively. Enumerating messy polygon mosaics under the $7$-tileset immediately gives a similar result for the $6$-tileset, so we focus on the $7$-tileset and give analagous results when necessary.
+Due to the fact that the empty tile cannot contribute to the structure of the SAP, enumerating messy polygon mosaics under either tileset can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tileset. We work with the general $b$ for the remainder of the paper.
 
-It turns out that it is easier to enumerate the number of mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
+Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
 
 \begin{center}
 \begin{tikzpicture}
@@ -619,31 +1020,23 @@ It turns out that it is easier to enumerate the number of mosaics that \textit{d
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. What else can be said?
+we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. 
 
 \begin{thm}
 \label{thm: messy mosaics}
 
-Define for $n \geq 2$
-
-$$
+Let $
 M(2) = \begin{bmatrix}
 b^2 & 1 \\
 -1 & 1
 \end{bmatrix}
-$$
-
-where $b = 6$ for the $6$-tileset and $b = 7$ for the $7$-tileset.
-
-Then for $m \geq 2$, if
-$$
+$ for $n \geq 2$, where $b = 6$ for the $6$-tileset and $b = 7$ for the $7$-tileset.Then for $m \geq 2$, if
+$
 M(m) = \begin{bmatrix}
 M_1 & M_2 \\
 M_3 & M_4
 \end{bmatrix},
-$$
-
-then
+$ define
 $$
 M(m+1) = \begin{bmatrix}
 bM_1 & bM_2 & \frac{1}{b}M_1 & M_2 \\
@@ -653,9 +1046,7 @@ M_3 & M_4 & -M_3 & bM_4 \\
 \end{bmatrix},
 $$
 
-where $M_i$ is a sub-matrix of the block matrix $M$.
-
-Then for the given $m$, define the rows and columns of $M(m)$ as
+where $M_i$ is a sub-matrix of the block matrix $M(m)$. For the given $m$, define the rows and columns of $M(m)$ as
 
 $$
 M(m) = 
@@ -676,7 +1067,7 @@ Then $t_{n,m} = r_1 M(m)^{n-2}c_1 .$
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
 \begin{proof}
-We again consider the parity configurations for a specific $(n,m)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
+We again consider the parity configurations for a specific $(n,m)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way as with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
 
 \begin{center}
     \begin{tikzpicture}
@@ -697,14 +1088,14 @@ We again consider the parity configurations for a specific $(n,m)$-mosaic. Howev
     \end{tikzpicture}
 \end{center}
 
-Additionally, the sub parity configuration shown below
+Additionally, the sub parity configurations shown below
 
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
         \cell{0}{1}{1}{2}
+        \cell{1}{0}{2}{1}
         \cell{1}{1}{2}{2}
 
         \draw[fill=black] (0,0) circle (3pt);
@@ -718,11 +1109,111 @@ Additionally, the sub parity configuration shown below
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
-        
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{3}{1}{4}{2}
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+
+        \draw[fill=green, draw=none] (3,0) circle (3pt);
+        \draw[fill=green, draw=none] (4,0) circle (3pt);
+        \draw[fill=green, draw=none] (5,0) circle (3pt);
+
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=green, draw=none] (5,1) circle (3pt);
+
+        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=green, draw=none] (5,2) circle (3pt);
     \end{tikzpicture}
 \end{center}
 
-is now ambiguous as to whether or not it represents a SAP. To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
+are now ambiguous as to whether or not they represent a SAP. Critically, both of the following parity configurations could include the right-most messy polygon mosaic. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        \cell{0}{3}{1}{4}
+        \cell{1}{0}{2}{1}
+        \cell{1}{1}{2}{2}
+        \cell{1}{2}{2}{3}
+        \cell{1}{3}{2}{4}
+        
+
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=green, draw=none] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+
+        \draw[fill=black] (0,3) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+        \draw[fill=black] (2,3) circle (3pt);
+
+        \draw[fill=black] (0,4) circle (3pt);
+        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=black] (2,4) circle (3pt);
+
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{3}{1}{4}{2}
+        \cell{3}{2}{4}{3}
+        \cell{3}{3}{4}{4}
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+        \cell{4}{3}{5}{4}
+        
+
+        \draw[fill=black] (3,0) circle (3pt);
+        \draw[fill=black] (4,0) circle (3pt);
+        \draw[fill=black] (5,0) circle (3pt);
+
+        \draw[fill=black] (3,1) circle (3pt);
+        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=black] (5,1) circle (3pt);
+
+        \draw[fill=black] (3,2) circle (3pt);
+        \draw[fill=black] (4,2) circle (3pt);
+        \draw[fill=black] (5,2) circle (3pt);
+
+        \draw[fill=black] (3,3) circle (3pt);
+        \draw[fill=green, draw=none] (4,3) circle (3pt);
+        \draw[fill=black] (5,3) circle (3pt);
+
+        \draw[fill=black] (3,4) circle (3pt);
+        \draw[fill=black] (4,4) circle (3pt);
+        \draw[fill=black] (5,4) circle (3pt);
+
+
+        \cellD{6}{0}{7}{1}
+        \cellC{7}{0}{8}{1}
+
+        \cellA{6}{1}{7}{2}
+        \cellB{7}{1}{8}{2}
+
+        \cellD{6}{2}{7}{3}
+        \cellC{7}{2}{8}{3}    
+
+        \cellA{6}{3}{7}{4}
+        \cellB{7}{3}{8}{4}    
+
+    \end{tikzpicture}
+\end{center}
+
+In fact, the number of SAPs that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
+
+To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
 
 \begin{center}
     \begin{tikzpicture}
@@ -835,7 +1326,7 @@ is now ambiguous as to whether or not it represents a SAP. To create an analagou
 
 First $w_{7}=w_{10}=0$, as again these are impossible parity configurations for our tile set. Next notice that $w_{1} = w_{16} = b$, as these cells do not indicate a specific tile.  The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
 
-First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
+First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This is due to the inclusion-exclusion principle. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
 
 Next note the following lemma.
 \begin{lemma}
@@ -970,7 +1461,39 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
     \end{tikzpicture}
 \end{center}
 
-TODO
+This immediately gives us a way to construct an analagous definition for our transition matrixes $M(m) = \begin{bmatrix} M_1 & M_2 \\ M_3 & M_4 \end{bmatrix}$. As the appending of a cell parity configuration can possibly change the number of admitted cells, we define $v_{1} ,\dots, v_{16}$ for the associated change in the number of mosaics for the recursive definition of $M(m+1)$. A simple way to obtain $v_{1} ,\dots, v_{16}$ is to directly compute $M(2)$ and $M(3)$ and compare their values like so.
+
+$$M(2) = 
+\begin{bmatrix}
+    b^2 & 1 \\
+    -1 & 1
+\end{bmatrix}, M(3)=
+\begin{bmatrix}
+b^3 & b & b & 1 \\
+-b & b & 0 & 1 \\
+-b & 0 & b & 1 \\
+-1 & 1 & 1 & b \\
+\end{bmatrix}.$$
+
+This gives
+
+$$
+M(m+1) = 
+\begin{bmatrix}
+    v_{1}M_1 & v_{2}M_2 & v_{3}M_1 & v_{4}M_2 \\
+    v_{5}M_3 & v_{6}M_4 & v_{7}M_3 & v_{8}M_4 \\
+    v_{9}M_1 & v_{10}M_2 & v_{11}M_1 & v_{12}M_2 \\
+    v_{13}M_3 & v_{14}M_4 & v_{15}M_3 & v_{16}M_4 \\
+\end{bmatrix} =
+\begin{bmatrix}
+bM_1 & bM_2 & \frac{1}{b}M_1 & M_2 \\
+bM_3 & bM_4 & 0M_3 & M_4 \\
+-\frac{1}{b}M_1 & 0M_2 & \frac{1}{b}M_1 & M_2 \\
+M_3 & M_4 & -M_3 & bM_4 \\
+\end{bmatrix}.
+$$
+
+An analagous argument to Theorem \ref{thm: main theorem} gives the result.
 
 \end{proof}
 
@@ -1082,7 +1605,7 @@ The above transformation corresponds with \textit{either} two distinct SAPs join
 
 $$\text{sign}(w_{3}w_{2}w_{9}w_{5}) = -\text{sign}(w_{4}w_{4}w_{13}w_{13}).$$
 
-All Type 1 constraints are as follows.
+All Type 1 constraints are as follows. For the following set of equations, assume the equals sign ($=$) means \textit{only} equal in sign.
 
 \begin{eqnarray*}
     w_{1}w_{1}w_{2}w_{3} = w_{2}w_{3}w_{6}w_{11} & w_{1}w_{1}w_{2}w_{4} = w_{2}w_{3}w_{6}w_{12} & w_{1}w_{1}w_{4}w_{3} = w_{2}w_{3}w_{8}w_{11} \\
@@ -1103,7 +1626,7 @@ All Type 1 constraints are as follows.
     w_{15}w_{14}w_{9}w_{6} = w_{16}w_{16}w_{13}w_{14} & w_{15}w_{14}w_{11}w_{5} = w_{16}w_{16}w_{15}w_{13} & w_{15}w_{14}w_{11}w_{6} = w_{16}w_{16}w_{15}w_{14} \\
 \end{eqnarray*}
 
-Similarly, all Type 2 constraints are as follows.
+Similarly, all Type 2 constraints are as follows. Again, for the following set of equations, assume the equals sign ($=$) means \textit{only} equal in sign.
 
 \begin{eqnarray*}
         -w_{3}w_{2}w_{9}w_{5} = w_{4}w_{4}w_{13}w_{13} & -w_{3}w_{2}w_{9}w_{6} = w_{4}w_{4}w_{13}w_{14} & -w_{3}w_{2}w_{11}w_{5} = w_{4}w_{4}w_{15}w_{13} \\
@@ -1121,40 +1644,46 @@ Similarly, all Type 2 constraints are as follows.
 
 Solving all Type 1 and Type 2 constraints gives the following solution set.
 
-\begin{eqnarray*}
-    [w_{1}, ..., w_{16}] & = & [7, -1, -1, -1, -1, -1, 0, -1, 1, 0, -1, -1, -1, -1, 1, 7] \\
-    & = & [7, -1, -1, -1, -1, 1, 0, 1, 1, 0, 1, 1, -1, 1, -1, 7] \\
-    & = & [7, -1, -1, -1, 1, -1, 0, -1, -1, 0, -1, -1, -1, 1, -1, 7] \\
-    & = & [7, -1, -1, -1, 1, 1, 0, 1, -1, 0, 1, 1, -1, -1, 1, 7] \\
-    & = & [7, -1, -1, 1, -1, -1, 0, 1, 1, 0, -1, 1, 1, 1, -1, 7] \\
-    & = & [7, -1, -1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 1, -1, 1, 7] \\
-    & = & [7, -1, -1, 1, 1, -1, 0, 1, -1, 0, -1, 1, 1, -1, 1, 7] \\
-    & = & [7, -1, -1, 1, 1, 1, 0, -1, -1, 0, 1, -1, 1, 1, -1, 7] \\
-    & = & [7, -1, 1, -1, -1, -1, 0, -1, -1, 0, -1, 1, -1, -1, -1, 7] \\
-    & = & [7, -1, 1, -1, -1, 1, 0, 1, -1, 0, 1, -1, -1, 1, 1, 7] \\
-    & = & [7, -1, 1, -1, 1, -1, 0, -1, 1, 0, -1, 1, -1, 1, 1, 7] \\
-    & = & [7, -1, 1, -1, 1, 1, 0, 1, 1, 0, 1, -1, -1, -1, -1, 7] \\
-    & = & [7, -1, 1, 1, -1, -1, 0, 1, -1, 0, -1, -1, 1, 1, 1, 7] \\
-    & = & [7, -1, 1, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, -1, 7] \\
-    & = & [7, -1, 1, 1, 1, -1, 0, 1, 1, 0, -1, -1, 1, -1, -1, 7] \\
-    & = & [7, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 1, 1, 1, 7] \\
-    & = & [7, 1, -1, -1, -1, -1, 0, 1, -1, 0, -1, -1, -1, -1, -1, 7] \\
-    & = & [7, 1, -1, -1, -1, 1, 0, -1, -1, 0, 1, 1, -1, 1, 1, 7] \\
-    & = & [7, 1, -1, -1, 1, -1, 0, 1, 1, 0, -1, -1, -1, 1, 1, 7] \\
-    & = & [7, 1, -1, -1, 1, 1, 0, -1, 1, 0, 1, 1, -1, -1, -1, 7] \\
-    & = & [7, 1, -1, 1, -1, -1, 0, -1, -1, 0, -1, 1, 1, 1, 1, 7] \\
-    & = & [7, 1, -1, 1, -1, 1, 0, 1, -1, 0, 1, -1, 1, -1, -1, 7] \\
-    & = & [7, 1, -1, 1, 1, -1, 0, -1, 1, 0, -1, 1, 1, -1, -1, 7] \\
-    & = & [7, 1, -1, 1, 1, 1, 0, 1, 1, 0, 1, -1, 1, 1, 1, 7] \\
-    & = & [7, 1, 1, -1, -1, -1, 0, 1, 1, 0, -1, 1, -1, -1, 1, 7] \\
-    & = & [7, 1, 1, -1, -1, 1, 0, -1, 1, 0, 1, -1, -1, 1, -1, 7] \\
-    & = & [7, 1, 1, -1, 1, -1, 0, 1, -1, 0, -1, 1, -1, 1, -1, 7] \\
-    & = & [7, 1, 1, -1, 1, 1, 0, -1, -1, 0, 1, -1, -1, -1, 1, 7] \\
-    & = & [7, 1, 1, 1, -1, -1, 0, -1, 1, 0, -1, -1, 1, 1, -1, 7] \\
-    & = & [7, 1, 1, 1, -1, 1, 0, 1, 1, 0, 1, 1, 1, -1, 1, 7] \\
-    & = & [7, 1, 1, 1, 1, -1, 0, -1, -1, 0, -1, -1, 1, -1, 1, 7] \\
-    & = & [7, 1, 1, 1, 1, 1, 0, 1, -1, 0, 1, 1, 1, 1, -1, 7] \\
-\end{eqnarray*}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} 
+\hline
+$w_{1}$ & $w_{2}$ & $w_{3}$ & $w_{4}$ & $w_{5}$ & $w_{6}$ & $w_{7}$ & $w_{8}$ & $w_{9}$ & $w_{10}$ & $w_{11}$ & $w_{12}$ & $w_{13}$ & $w_{14}$ & $w_{15}$ & $w_{16}$ \\
+\hline
+b & -1 & -1 & -1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & -1 & -1 & 1 & b \\
+b & -1 & -1 & -1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & -1 & 1 & -1 & b \\
+b & -1 & -1 & -1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & -1 & 1 & -1 & b \\
+b & -1 & -1 & -1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & -1 & -1 & 1 & b \\
+b & -1 & -1 & 1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & 1 & 1 & -1 & b \\
+b & -1 & -1 & 1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & 1 & -1 & 1 & b \\
+b & -1 & -1 & 1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & 1 & -1 & 1 & b \\
+b & -1 & -1 & 1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & 1 & 1 & -1 & b \\
+b & -1 & 1 & -1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & -1 & -1 & -1 & b \\
+b & -1 & 1 & -1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & -1 & 1 & 1 & b \\
+b & -1 & 1 & -1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & -1 & 1 & 1 & b \\
+b & -1 & 1 & -1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & -1 & -1 & -1 & b \\
+b & -1 & 1 & 1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & 1 & 1 & 1 & b \\
+b & -1 & 1 & 1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 1 & -1 & -1 & b \\
+b & -1 & 1 & 1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & 1 & -1 & -1 & b \\
+b & -1 & 1 & 1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & b \\
+b & 1 & -1 & -1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & -1 & -1 & -1 & b \\
+b & 1 & -1 & -1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & -1 & 1 & 1 & b \\
+b & 1 & -1 & -1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & -1 & 1 & 1 & b \\
+b & 1 & -1 & -1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & -1 & -1 & -1 & b \\
+b & 1 & -1 & 1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & 1 & 1 & 1 & b \\
+b & 1 & -1 & 1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & 1 & -1 & -1 & b \\
+b & 1 & -1 & 1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & 1 & -1 & -1 & b \\
+b & 1 & -1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & 1 & 1 & 1 & b \\
+b & 1 & 1 & -1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & -1 & -1 & 1 & b \\
+b & 1 & 1 & -1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & -1 & 1 & -1 & b \\
+b & 1 & 1 & -1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & -1 & 1 & -1 & b \\
+b & 1 & 1 & -1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & -1 & -1 & 1 & b \\
+b & 1 & 1 & 1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & 1 & 1 & -1 & b \\
+b & 1 & 1 & 1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & -1 & 1 & b \\
+b & 1 & 1 & 1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & 1 & -1 & 1 & b \\
+b & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & b \\
+\hline
+\end{tabular}
+\end{center}
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
 
