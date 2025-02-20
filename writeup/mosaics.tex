@@ -124,14 +124,14 @@
     \vspace{0.4cm}    
 
     \begin{abstract}
-        Hong and Oh calculated upper and lower bounds on the number of multiple self-avoiding polygons in the square lattice. These results accompanied $7$ distinct tiles that together model multiple ring polymers in physics. We introduce a formula for exact enumeration for these multiple self-avoiding polygons, along with enumeration results on variations on the tile set and rules considered.
+        Hong and Oh calculated upper and lower bounds on the number of multiple self-avoiding polygons in the square lattice. These results accompanied $7$ distinct tiles that together model multiple ring polymers in physics. We exactly enumerate these multiple self-avoiding polygons, along with a variation on the tile set and rules considered.
     \end{abstract}
 
 \end{center}
 
 \section{Introduction}
 
-Consider the following $7$ unit squares with red symbols on them.
+Consider the following $7$ unit squares with red lines on them.
 
 \begin{center}
     \begin{tikzpicture}
@@ -249,261 +249,106 @@ Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds 
 
 $$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} + 1 \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
 
-The array $p_{n,m} + 1$ is A181245 on the \cite[OEIS]{oeis} \. We give an exact expression for $p_{n,m}$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics that have a similar enumeration strategy.
+The array $p_{n,m} + 1$ is A181245 \cite[OEIS]{oeis}. We give an exact expression for $p_{n,m}$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
 
 \begin{thm}
-    \label{thm: main theorem}
-    TODO
+\label{thm: main theorem}
+
+Define for $n \geq 2$
+
+$$
+M(2) = \begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}
+$$
+
+Then for $m \geq 2$, if
+$$
+M(m) = \begin{bmatrix}
+M_1 & M_2 \\
+M_3 & M_4
+\end{bmatrix},
+$$
+
+then
+$$
+M(m+1) = \begin{bmatrix}
+M_1 & M_2 & M_1 & M_2 \\
+M_3 & M_4 & 0M_3 & M_4 \\
+M_1 & 0M_2 & M_1 & M_2 \\
+M_3 & M_4 & M_3 & M_4 \\
+\end{bmatrix},
+$$
+
+where $M_i$ is a sub-matrix of the block matrix $M$.
+
+Next define the rows and columns of $M(m)$ as
+
+$$
+M(m) = 
+\begin{bmatrix}
+    r_1 \\
+    r_2 \\
+    ... \\
+    r_{2^{m-1}} \\
+\end{bmatrix} = 
+\begin{bmatrix}
+    c_1 & c_2 & ... & c_{2^{m-1}}
+\end{bmatrix}
+$$
+
+Then $p_{n,m}+1 = r_1 M(m)^{n-2}c_1 .$
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: main theorem}}
 
 \begin{proof}
-    TODO
-\end{proof}
 
-\section{Messy Polygon Mosaics}
-
-Define a \textit{messy polygon mosaic} as a mosaic that contains at least one self-avoiding polygon, with no restriction on other connection points. 
-
-\begin{exmp}
-\label{exmp: messy sap}
-Below is a messy polygon $(7,5)$-mosaic with $1$ SAP hilighted in gray. 
+Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exmp: clean sap}, we get the following labelling.
 
 \begin{center}
     \begin{tikzpicture}
         % row1
-        \cellA{0}{0}{1}{1}
+        \cell{0}{0}{1}{1}
         \cell{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellCf{3}{0}{4}{1}
-        \cellC{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
+        \cellD{2}{0}{3}{1}
+        \cellC{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        \cell{5}{0}{6}{1}
+        \cell{6}{0}{7}{1}
         % row2
-        \cellA{0}{1}{1}{2}
-        \cellE{1}{1}{2}{2}
-        \cellEf{2}{1}{3}{2}
-        \cellAf{3}{1}{4}{2}
-        \cellCf{4}{1}{5}{2}
-        \cellB{5}{1}{6}{2}
-        \cellD{6}{1}{7}{2}
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        \cellE{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellC{4}{1}{5}{2}
+        \cell{5}{1}{6}{2}
+        \cell{6}{1}{7}{2}
         % row3
         \cell{0}{2}{1}{3}
-        \cellB{1}{2}{2}{3}
-        \cellAf{2}{2}{3}{3}
-        \cellFf{3}{2}{4}{3}
-        \cellBf{4}{2}{5}{3}
-        \cellD{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
+        \cell{1}{2}{2}{3}
+        \cellA{2}{2}{3}{3}
+        \cellF{3}{2}{4}{3}
+        \cellB{4}{2}{5}{3}
+        \cell{5}{2}{6}{3}
+        \cell{6}{2}{7}{3}
         % row4
-        \cellF{0}{3}{1}{4}
-        \cellE{1}{3}{2}{4}
-        \cellA{2}{3}{3}{4}
-        \cellA{3}{3}{4}{4}
-        \cellE{4}{3}{5}{4}
+        \cellD{0}{3}{1}{4}
+        \cellC{1}{3}{2}{4}
+        \cell{2}{3}{3}{4}
+        \cell{3}{3}{4}{4}
+        \cell{4}{3}{5}{4}
         \cell{5}{3}{6}{4}
         \cell{6}{3}{7}{4}
         % row5
         \cellA{0}{4}{1}{5}
-        \cell{1}{4}{2}{5}
-        \cellE{2}{4}{3}{5}
-        \cellD{3}{4}{4}{5}
-        \cellD{4}{4}{5}{5}
+        \cellB{1}{4}{2}{5}
+        \cell{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cell{4}{4}{5}{5}
         \cell{5}{4}{6}{5}
-        \cellE{6}{4}{7}{5}
-    \end{tikzpicture}
-\end{center}
-\end{exmp}
-
-Note that one can also consider creating messy polygon mosaics with the alternate tile set below.
-
-%figure of tiles (colored marknigs!)
-\begin{center}
-    \begin{tikzpicture}
-    \cellA{0}{0}{1}{1}
-    \cellB{2}{0}{3}{1}
-    \cellC{4}{0}{5}{1}
-    \cellD{6}{0}{7}{1}
-    \cellE{8}{0}{9}{1}
-    \cellF{10}{0}{11}{1}    
-    \end{tikzpicture}
-\end{center}
-
-From now on we refer to the different tile sets as the $7$-tileset and the $6$-tileset respectively. Enumerating messy polygon mosaics under the $7$-tileset immediately gives a similar result for the $6$-tileset, so we focus on the $7$-tileset and give analagous results when necessary.
-
-It turns out that it is easier to enumerate the number of mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
-
-\begin{center}
-\begin{tikzpicture}
-    % row1
-    \cellD{0}{0}{1}{1}
-    \cellC{1}{0}{2}{1}
-    % row2
-    \cellA{0}{1}{1}{2}
-    \cellB{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-
-we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. What else can be said?
-
-\begin{thm}
-\label{thm: messy mosaics 7}
-
-Assume $n \geq m \geq 2$, and define
-
-$$
-M(2) = \begin{bmatrix}
-7^2 & 1 \\
--1 & 1
-\end{bmatrix}
-$$
-
-Then for $m \geq 2$, if
-$$
-M(m) = \begin{bmatrix}
-M_1 & M_2 \\
-M_3 & M_4
-\end{bmatrix},
-$$
-
-then
-$$
-M(m+1) = \begin{bmatrix}
-7M_1 & 7M_2 & \frac{1}{7}M_1 & M_2 \\
-7M_3 & 7M_4 & 0M_3 & M_4 \\
--\frac{1}{7}M_1 & 0M_2 & \frac{1}{7}M_1 & 1M_2 \\
-M_3 & M_4 & -M_3 & 7M_4 \\
-\end{bmatrix},
-$$
-
-where $M_i$ is a sub-matrix of the block matrix $M$.
-
-Then for the given $m$, define the rows and columns of $M(m)$ as
-
-$$
-M(m) = 
-\begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{m-1}}
-\end{bmatrix} = 
-\begin{bmatrix}
-    r_1 \\
-    r_2 \\
-    ... \\
-    r_{2^{m-1}} \\
-\end{bmatrix}
-$$
-
-Then let $L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that $L(1) = \vec{0}$ and for $n > 1$ we have
-
-$$L(n) = M(m) \cdot L(n-1)+c_1$$
-
-Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+c_1).$
-
-\end{thm}
-
-\begin{thm}
-\label{thm: messy mosaics 6}
-The result is the same for the $6$-tileset, except we swap the appearances of a $7$ with a $6$, namely
-
-$$
-M(2) = \begin{bmatrix}
-6^2 & 1 \\
--1 & 1
-\end{bmatrix}.
-$$
-
-Then for $m \geq 2$, if
-$$
-M(m) = \begin{bmatrix}
-M_1 & M_2 \\
-M_3 & M_4
-\end{bmatrix},
-$$
-
-then
-$$
-M(m+1) = \begin{bmatrix}
-6M_1 & 6M_2 & \frac{1}{6}M_1 & M_2 \\
-6M_3 & 6M_4 & 0M_3 & M_4 \\
--\frac{1}{6}M_1 & 0M_2 & \frac{1}{6}M_1 & 1M_2 \\
-M_3 & M_4 & -M_3 & 6M_4 \\
-\end{bmatrix},
-$$
-
-where $M_i$ is a sub-matrix of the block matrix $M$.
-
-Then for the given $m$, define the rows and columns of $M(m)$ as
-
-$$
-M(m) = 
-\begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{m-1}}
-\end{bmatrix} = 
-\begin{bmatrix}
-    r_1 \\
-    r_2 \\
-    ... \\
-    r_{2^{m-1}} \\
-\end{bmatrix}
-$$
-
-Then let $L(n) \in \mathbb{R}^{2^{m-1} \times 1}$ so that $L(1) = \vec{0}$ and for $n > 1$ we have
-
-$$L(n) = M(m) \cdot L(n-1)+c_1$$
-
-Then $t_{n,m}=r_1 \cdot (M(m) \cdot L(n-1)+c_1).$
-\end{thm}
-
-\section{Proof of Theorem \ref{thm: messy mosaics 7}}
-
-We prove the enumeration result for the $7$-tileset. The proof for the $6$-tileset is analagous.
-
-\begin{proof}
-Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exmp: messy sap}, we get the following labelling.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellA{0}{0}{1}{1}
-        \cellB{1}{0}{2}{1}
-        \cellD{2}{0}{3}{1}
-        \cellC{3}{0}{4}{1}
-        \cellC{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
-        % row2
-        \cellA{0}{1}{1}{2}
-        \cellE{1}{1}{2}{2}
-        \cellE{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellC{4}{1}{5}{2}
-        \cellB{5}{1}{6}{2}
-        \cellD{6}{1}{7}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-        \cellB{1}{2}{2}{3}
-        \cellA{2}{2}{3}{3}
-        \cellF{3}{2}{4}{3}
-        \cellB{4}{2}{5}{3}
-        \cellD{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
-        % row4
-        \cellF{0}{3}{1}{4}
-        \cellE{1}{3}{2}{4}
-        \cellA{2}{3}{3}{4}
-        \cellA{3}{3}{4}{4}
-        \cellE{4}{3}{5}{4}
-        \cellD{5}{3}{6}{4}
-        \cellC{6}{3}{7}{4}
-        % row5
-        \cellA{0}{4}{1}{5}
-        \cellD{1}{4}{2}{5}
-        \cellE{2}{4}{3}{5}
-        \cellD{3}{4}{4}{5}
-        \cellD{4}{4}{5}{5}
-        \cellC{5}{4}{6}{5}
-        \cellE{6}{4}{7}{5}
+        \cell{6}{4}{7}{5}
         % label for row1
         \draw[fill=black] (0,0) circle (3pt);
         \draw[fill=black] (1,0) circle (3pt);
@@ -542,7 +387,7 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (7,3) circle (3pt);
         % label for row1
         \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=green, draw=none] (1,4) circle (3pt);
         \draw[fill=black] (2,4) circle (3pt);
         \draw[fill=black] (3,4) circle (3pt);
         \draw[fill=black] (4,4) circle (3pt);
@@ -643,7 +488,7 @@ Notice that vertices on the boundary of the lattice will always be black. The as
         \draw[fill=black] (7,3) circle (3pt);
         % label for row1
         \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=black] (1,4) circle (3pt);
+        \draw[fill=green, draw=none] (1,4) circle (3pt);
         \draw[fill=black] (2,4) circle (3pt);
         \draw[fill=black] (3,4) circle (3pt);
         \draw[fill=black] (4,4) circle (3pt);
@@ -662,13 +507,222 @@ Notice that vertices on the boundary of the lattice will always be black. The as
     \end{tikzpicture}
 \end{center}
 
-Let $\mathcal{P} (n,m)$ denote all possible parity configurations for an $(n,m)$ rectangular lattice. Clearly $|\mathcal{P} (n,m)| = 2^{(n-1)(m-1)}$. Then let $f(p)$ be a function of a specific parity configuration that retuns the number of possible mosaics that map to $p$, multiplied by $-1$ to the number of SAPs specified by $p$. For example, the above parity configuration specifies only $1$ SAP, so $f(p) = -1 * 7^{28}$. 
+The number of parity configurations that do not include the following sub-configurations
 
-Then one can write
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
 
-$$t_{n,m} = \sum_{p \in \mathcal{P}(n,m)}f(p).$$
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=green, draw=none] (1,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,0) circle (3pt);
+        \draw[fill=black] (3,0) circle (3pt);
 
-Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} , \dots, w_{16}$ associated with the following individual \textit{cell-parity configurations}.
+        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        
+    \end{tikzpicture}
+\end{center}
+
+also count the number of self-avoiding polygons. We seek to construct a transition matrix for a fixed $m$ that maps all possible parity configuration edge boundaries to every other. As an example, consider $m=3$. 
+
+TODO figure out how to introduce naturally
+
+TODO make figures
+
+\end{proof}
+
+\section{Messy Polygon Mosaics}
+
+Define a \textit{messy polygon mosaic} as a mosaic that contains at least one self-avoiding polygon, with no restriction on other connection points. 
+
+\begin{exmp}
+\label{exmp: messy sap}
+Below is a messy polygon $(7,5)$-mosaic with $1$ SAP hilighted in gray. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellA{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellCf{3}{0}{4}{1}
+        \cellC{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellA{0}{1}{1}{2}
+        \cellE{1}{1}{2}{2}
+        \cellEf{2}{1}{3}{2}
+        \cellAf{3}{1}{4}{2}
+        \cellCf{4}{1}{5}{2}
+        \cellB{5}{1}{6}{2}
+        \cellD{6}{1}{7}{2}
+        % row3
+        \cell{0}{2}{1}{3}
+        \cellB{1}{2}{2}{3}
+        \cellAf{2}{2}{3}{3}
+        \cellFf{3}{2}{4}{3}
+        \cellBf{4}{2}{5}{3}
+        \cellD{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellF{0}{3}{1}{4}
+        \cellE{1}{3}{2}{4}
+        \cellA{2}{3}{3}{4}
+        \cellA{3}{3}{4}{4}
+        \cellE{4}{3}{5}{4}
+        \cell{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
+        % row5
+        \cellA{0}{4}{1}{5}
+        \cell{1}{4}{2}{5}
+        \cellE{2}{4}{3}{5}
+        \cellD{3}{4}{4}{5}
+        \cellD{4}{4}{5}{5}
+        \cell{5}{4}{6}{5}
+        \cellE{6}{4}{7}{5}
+    \end{tikzpicture}
+\end{center}
+\end{exmp}
+
+Note that one can also consider creating messy polygon mosaics with the alternate tile set below.
+
+%figure of tiles (colored marknigs!)
+\begin{center}
+    \begin{tikzpicture}
+    \cellA{0}{0}{1}{1}
+    \cellB{2}{0}{3}{1}
+    \cellC{4}{0}{5}{1}
+    \cellD{6}{0}{7}{1}
+    \cellE{8}{0}{9}{1}
+    \cellF{10}{0}{11}{1}    
+    \end{tikzpicture}
+\end{center}
+
+From now on we refer to the different tile sets as the $7$-tileset and the $6$-tileset respectively. Enumerating messy polygon mosaics under the $7$-tileset immediately gives a similar result for the $6$-tileset, so we focus on the $7$-tileset and give analagous results when necessary.
+
+It turns out that it is easier to enumerate the number of mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
+
+\begin{center}
+\begin{tikzpicture}
+    % row1
+    \cellD{0}{0}{1}{1}
+    \cellC{1}{0}{2}{1}
+    % row2
+    \cellA{0}{1}{1}{2}
+    \cellB{1}{1}{2}{2}
+\end{tikzpicture}
+\end{center}
+
+we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. What else can be said?
+
+\begin{thm}
+\label{thm: messy mosaics}
+
+Define for $n \geq 2$
+
+$$
+M(2) = \begin{bmatrix}
+b^2 & 1 \\
+-1 & 1
+\end{bmatrix}
+$$
+
+where $b = 6$ for the $6$-tileset and $b = 7$ for the $7$-tileset.
+
+Then for $m \geq 2$, if
+$$
+M(m) = \begin{bmatrix}
+M_1 & M_2 \\
+M_3 & M_4
+\end{bmatrix},
+$$
+
+then
+$$
+M(m+1) = \begin{bmatrix}
+bM_1 & bM_2 & \frac{1}{b}M_1 & M_2 \\
+bM_3 & bM_4 & 0M_3 & M_4 \\
+-\frac{1}{b}M_1 & 0M_2 & \frac{1}{b}M_1 & M_2 \\
+M_3 & M_4 & -M_3 & bM_4 \\
+\end{bmatrix},
+$$
+
+where $M_i$ is a sub-matrix of the block matrix $M$.
+
+Then for the given $m$, define the rows and columns of $M(m)$ as
+
+$$
+M(m) = 
+\begin{bmatrix}
+    r_1 \\
+    r_2 \\
+    ... \\
+    r_{2^{m-1}} \\
+\end{bmatrix} =
+\begin{bmatrix}
+    c_1 & c_2 & ... & c_{2^{m-1}}
+\end{bmatrix} 
+$$
+
+Then $t_{n,m} = r_1 M(m)^{n-2}c_1 .$
+\end{thm}
+
+\section{Proof of Theorem \ref{thm: messy mosaics}}
+
+\begin{proof}
+We again consider the parity configurations for a specific $(n,m)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=green, draw=none] (2,0) circle (3pt);
+        \draw[fill=green, draw=none] (3,0) circle (3pt);
+
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        
+    \end{tikzpicture}
+\end{center}
+
+Additionally, the sub parity configuration shown below
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (2,0) circle (3pt);
+
+        \draw[fill=black] (0,1) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (2,1) circle (3pt);
+
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (2,2) circle (3pt);
+        
+    \end{tikzpicture}
+\end{center}
+
+is now ambiguous as to whether or not it represents a SAP. To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
 
 \begin{center}
     \begin{tikzpicture}
@@ -683,7 +737,7 @@ Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} ,
         \cell{14}{0}{15}{1}
         % row2
         \cell{0}{2}{1}{3}
-        \cell{2}{2}{3}{3}
+        \cell{2}{2}{3}{3}This means that
         \cell{4}{2}{5}{3}
         \cell{6}{2}{7}{3}
         \cell{8}{2}{9}{3}
@@ -779,7 +833,7 @@ Amazingly, $f(p)$ can be written as a product of some choice of weights $w_{1} ,
     \end{tikzpicture}
 \end{center}
 
-One can assign values to $w_{1},\dots,w_{16}$ so that the product for all parity configurations $p$ equals $f(p)$. To find these assignments, first notice that $w_{1} = w_{16} = 7$, as these cells do not indicate a specific tile. Similarly, $w_{7}=w_{10}=0$, as these are impossible parity configurations for our tile set. The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
+First $w_{7}=w_{10}=0$, as again these are impossible parity configurations for our tile set. Next notice that $w_{1} = w_{16} = b$, as these cells do not indicate a specific tile.  The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
 
 First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
 
@@ -903,9 +957,9 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
         \( \lablnode{8.5}{-0.5}{$w_{13}=1$} \)
         \( \lablnode{10.5}{-0.5}{$w_{14}=1$} \)
         \( \lablnode{12.5}{-0.5}{$w_{15}=-1$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}=7$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}=b$} \)
         % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}=7$} \)
+        \( \lablnode{0.5}{1.5}{$w_{1}=b$} \)
         \( \lablnode{2.5}{1.5}{$w_{2}=1$} \)
         \( \lablnode{4.5}{1.5}{$w_{3}=1$} \)
         \( \lablnode{6.5}{1.5}{$w_{4}=1$} \)
@@ -920,11 +974,11 @@ TODO
 
 \end{proof}
 
-\begin{theorem}
-    \label{thm: growth rate}    
-    Let the probability that an $(n,m)$-mosaic \textit{does not} contain a SAP be denoted $p_{n,m} = \frac{t_{n,m}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
-    $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
-\end{theorem}
+% \begin{theorem}
+%     \label{thm: growth rate}    
+%     Let the probability that an $(n,m)$-mosaic \textit{does not} contain a SAP be denoted $p_{n,m} = \frac{t_{n,m}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
+%     $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
+% \end{theorem}
 
 \section{Appendix}
 
@@ -1103,8 +1157,6 @@ Solving all Type 1 and Type 2 constraints gives the following solution set.
 \end{eqnarray*}
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
-
-\printbibheading
 
 \printbibliography
 
