@@ -18,7 +18,7 @@
 
 
 \refsection{0}
-  \datalist[entry]{anyt/global//global/global}
+  \datalist[entry]{nty/global//global/global}
     \entry{Hong2018}{article}{}
       \name{author}{2}{}{%
         {{hash=3413b395b2bef2da272660a3967f6683}{%
@@ -41,7 +41,6 @@
       \strng{authorbibnamehash}{eba85cee225431c250e80a9b0a60ee61}
       \strng{authornamehash}{eba85cee225431c250e80a9b0a60ee61}
       \strng{authorfullhash}{eba85cee225431c250e80a9b0a60ee61}
-      \field{labelalpha}{HO18}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
@@ -77,7 +76,6 @@
       \strng{authorbibnamehash}{d15e73d058a3f9fe1be220f9200b671a}
       \strng{authornamehash}{d15e73d058a3f9fe1be220f9200b671a}
       \strng{authorfullhash}{d15e73d058a3f9fe1be220f9200b671a}
-      \field{labelalpha}{OEI}
       \field{sortinit}{O}
       \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
       \field{labelnamesource}{author}
