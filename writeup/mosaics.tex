@@ -269,7 +269,7 @@ We give an exact expression for $p_{n,m}$ for $n,m \geq 2$ in Theorem \ref{thm: 
 \begin{thm}
 \label{thm: main theorem}
 
-To enumerate $p_{n,m}$, we construct $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ recursively with the initial matrix $
+To enumerate $p_{n,m}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
 A(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
@@ -280,7 +280,7 @@ A(k) = \begin{bmatrix}
 A_1 & A_2 \\
 A_3 & A_4
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{m-2} \times 2^{m-2}$, or scalars if $m=2$. Then we have
+$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $m=2$. Then we have
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -291,7 +291,7 @@ A_3 & A_4 & A_3 & A_4 \\
 \end{bmatrix},
 $$
 
-where products of a scalar and block matrix are done element-wise. Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. Next denote the rows and columns of $A(m)$ as
+where products of a scalar and block matrix are done element-wise. Construct $A(n)$ by starting with $k=2$ and recursing until $k=n$. Next denote the rows and columns of $A(n)$ as
 $$
 A(m) = 
 \begin{bmatrix}
@@ -305,7 +305,7 @@ A(m) =
 \end{bmatrix}
 $$
 
-Then $p_{n,m} = r_1 A(m)^{n-2}c_1 .$
+Then $p_{n,m} = r_1 A(n)^{m-2}c_1 .$
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: main theorem}}
@@ -314,7 +314,7 @@ Then $p_{n,m} = r_1 A(m)^{n-2}c_1 .$
 
 For a given mosaic, color the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, color it black. If the vertex is surrounded by an odd number of polygons, color it white with a green border. To make a \textit{vertex coloring} we also remove the dotted lines from all tiles in the mosaic. 
 
-Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring of the mosaic, and then the removal of the dotted lines.
+Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring of the vertices, and then the removal of the dotted lines.
 
 \begin{center}
     \begin{tikzpicture}
@@ -826,9 +826,9 @@ With this in mind, we can create a transition matrix that maps every right edge 
 
 We design $A(3)$ so that each column has the same right edge vertex coloring and every row has the same left edge vertex coloring. Notice the entries of $A(3)$ are $1$ if the vertex coloring admits a tile configuration, and $0$ otherwise. 
 
-If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{n,3} = r_1 A(3)^{n-2} c_1.$
+If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{3,m} = r_1 A(3)^{m-2} c_1.$
 
-The final component in enumerating $p_{n,m}$ is constructing $A(m)$ for any $m$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
+The final component in enumerating $p_{n,m}$ is constructing $A(n)$ for any $n$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -886,7 +886,7 @@ The final component in enumerating $p_{n,m}$ is constructing $A(m)$ for any $m$.
     \end{tikzpicture}
 \end{center}
 
-If one knows the $A(2)$ weight at, say, position $(0,1)$, then one can identify the mapping by considering appending all possible vertex colorings to the bottom of the column, like so.
+If one knows the value of $A(2)$ at say position $(0,1)$, then one can identify the mapping by considering appending all possible vertex colorings to the bottom of the column, like so.
 
 \begin{center}
     \begin{tikzpicture}
@@ -975,30 +975,45 @@ If we write $A(2) = \begin{bmatrix}
     1 & 1 
 \end{bmatrix} = 
 \begin{bmatrix}
-    M_1 & M_2 \\
-    M_3 & M_4 
+    A_1 & A_2 \\
+    A_3 & A_4 
 \end{bmatrix}
 $, and compute these mappings for all possible parity configurations, we get
 
 $$
 A(3) = 
 \begin{bmatrix}
-    1M_1 & 1M_2 & 1M_1 & 1M_2 \\
-    1M_3 & 1M_4 & 0M_3 & 1M_4 \\
-    1M_1 & 0M_2 & 1M_1 & 1M_2 \\
-    1M_3 & 1M_4 & 1M_3 & 1M_4 \\
+    1A_1 & 1A_2 & 1A_1 & 1A_2 \\
+    1A_3 & 1A_4 & 0A_3 & 1A_4 \\
+    1A_1 & 0A_2 & 1A_1 & 1A_2 \\
+    1A_3 & 1A_4 & 1A_3 & 1A_4 \\
 \end{bmatrix}.
 $$
 
-Finally, as appending any vertex coloring to the bottom of a column only changes the identity of the bottom two sub-colorings, we can write that for any matrix $A(m) =\begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$ we have 
+Finally, as appending any vertex coloring to the bottom of a column only changes the identity of the bottom two sub-colorings, we can use the fact that the $2^{k-2} \times 2^{k-2}$ blocks of $A(k) = \begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$ are the number of columns that have a shared bottom sub-coloring. For example, all columns accounted for in $A_2$ have the following bottom cell coloring.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+
+        % row 1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=black] (0,1) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,1) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+
+We can then write that
 
 $$
-A(m+1) = 
+A(k+1) = 
 \begin{bmatrix}
-    1M_1 & 1M_2 & 1M_1 & 1M_2 \\
-    1M_3 & 1M_4 & 0M_3 & 1M_4 \\
-    1M_1 & 0M_2 & 1M_1 & 1M_2 \\
-    1M_3 & 1M_4 & 1M_3 & 1M_4 \\
+    1A_1 & 1A_2 & 1A_1 & 1A_2 \\
+    1A_3 & 1A_4 & 0A_3 & 1A_4 \\
+    1A_1 & 0A_2 & 1A_1 & 1A_2 \\
+    1A_3 & 1A_4 & 1A_3 & 1A_4 \\
 \end{bmatrix},
 $$
 
@@ -1076,9 +1091,9 @@ Note that one can also consider creating messy polygon mosaics with the alternat
     \end{tikzpicture}
 \end{center}
 
-Due to the fact that the empty tile cannot contribute to the structure of the SAP, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
+Due to the fact that the empty tile cannot contribute to the structure of the polygon, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
 
-Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
+Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a polygon. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest polygon is
 
 \begin{center}
 \begin{tikzpicture}
@@ -1200,7 +1215,7 @@ Additionally, the sub parity configurations shown below
     \end{tikzpicture}
 \end{center}
 
-are now ambiguous as to whether or not they represent a SAP. Critically, both of the following parity configurations could include the right-most messy polygon mosaic. 
+are now ambiguous as to whether or not they represent a polygon. Critically, both of the following parity configurations could include the right-most messy polygon mosaic. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1282,7 +1297,7 @@ are now ambiguous as to whether or not they represent a SAP. Critically, both of
     \end{tikzpicture}
 \end{center}
 
-In fact, the number of SAPs that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
+In fact, the number of polygons that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
 
 To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
 
@@ -1397,12 +1412,12 @@ To create an analagous result to Theorem \ref{thm: main theorem} we need to find
 
 First $w_{7}=w_{10}=0$, as again these are impossible parity configurations for our tile set. Next notice that $w_{1} = w_{16} = b$, as these cells do not indicate a specific tile.  The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
 
-First notice that we want a weight assignment so that the parity configurations for a given SAP multiply to $-1$. This is due to the inclusion-exclusion principle. This means that if there are multiple SAPs in a mosaic, then the product will be positive if there is an even number of SAPs specified, and negative if there is an odd number specified.
+First notice that we want a weight assignment so that the parity configurations for a given polygon multiply to $-1$. This is due to the inclusion-exclusion principle. This means that if there are multiple polygons in a mosaic, then the product will be positive if there is an even number of polygons specified, and negative if there is an odd number specified.
 
 Next note the following lemma.
 \begin{lemma}
     \label{lemma: build bigger saps}
-    One can construct all larger SAPs from the smallest SAP using a finite set of transformations $S$.
+    One can construct all larger polygons from the smallest polygon using a finite set of transformations $S$.
 \end{lemma}
 
 \begin{proof}
@@ -1413,12 +1428,12 @@ This is because one can find $w_{1} , \dots, w_{16}$ so that the following two c
 
 \begin{constraint}
     \label{constraint: smallest sap prod}
-    The weights associated with the smallest SAP multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
+    The weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
 \end{constraint}
 
 \begin{constraint}
     \label{constraint: prod works}
-    \emph{All} transformations in $S$ preserve the weight product of a changed SAP.
+    \emph{All} transformations in $S$ preserve the weight product of a changed polygon.
 \end{constraint}
 
 Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constraints gives the following weights.
@@ -1578,7 +1593,7 @@ An analagous argument to Theorem \ref{thm: main theorem} gives the result.
 
 Flipping the parity of a single vertex in a parity configuration changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
 
-The flipping of parity of a single vertex can result in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of SAPs in the parity configuration. For example, consider the following flip of the center vertex in the following portion of a parity configuration.
+The flipping of parity of a single vertex can result in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of polygons in the parity configuration. For example, consider the following flip of the center vertex in the following portion of a parity configuration.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1623,11 +1638,11 @@ The flipping of parity of a single vertex can result in $2$ distinct types of co
     \end{tikzpicture}
 \end{center}
 
-As this does not change the associated number of SAPs in the larger parity configuration, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
+As this does not change the associated number of polygons in the larger parity configuration, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
 
 $$\text{sign}(w_{1}w_{2}w_{5}w_{9}) = \text{sign}(w_{2}w_{4}w_{6}w_{16}).$$
 
-Now let a constraint of \textit{Type 2} be a parity flip that does change the number of SAPs. For example, consider flipping the center vertex of the following portion of a parity configuration.
+Now let a constraint of \textit{Type 2} be a parity flip that does change the number of polygons. For example, consider flipping the center vertex of the following portion of a parity configuration.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1672,7 +1687,7 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
     \end{tikzpicture}
 \end{center}
 
-The above transformation corresponds with \textit{either} two distinct SAPs joining into one SAP \textit{or} one SAP splitting into two distinct SAPs. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
+The above transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
 
 $$\text{sign}(w_{3}w_{2}w_{9}w_{5}) = -\text{sign}(w_{4}w_{4}w_{13}w_{13}).$$
 
