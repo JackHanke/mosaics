@@ -65,87 +65,96 @@
 \newcommand{\cellopen}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \node[shape=circle,draw=red,fill=red, inner sep=0pt,minimum size=3pt] (A) at ( #1 * 0.5 + #3 * 0.5 , #2 * 0.5 + #4 * 0.5 ){};}
 
 % /
-\newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
 
 % \
-\newcommand{\cellB}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellB}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 % /
-\newcommand{\cellC}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellC}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 % L
-\newcommand{\cellD}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellD}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
 
 % |
-\newcommand{\cellE}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+\newcommand{\cellE}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 % -
-\newcommand{\cellF}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellF}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
-\newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
 
 % \
-\newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 % /
-\newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 % L
-\newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
 
 % |
-\newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+\newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 % -
-\newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 
 \newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=0pt] (A) at ( #1 , #2 ) {#3};}
 
 \usepackage[margin=1in]{geometry}
-
+\date{}
 %doc info
-\title{Exact Enumeration of Multiple Self-Avoiding Polygons}
-\author{Richard Schank, Jack Hanke}
-\date{\today}
+% $\text{Hanke, Jack}^*$\\
+% $\text{Schank, Richard}$\\
+% $\text{Maltenfort, Michael}^*$
+\author{
+    \textbf{Jack Hanke}\\
+    Northwestern University
+    \and
+    \textbf{Richard Schank}\\
+    \and
+    \textbf{Michael Maltenfort}\\
+    Northwestern University
+    }
+\title{\textbf{Exact Enumeration of Polygon Mosaics}}
+% \date{\today}
 
 \begin{document}
+\maketitle
 
 \begin{center}
-    \Large
-    \textbf{Exact Enumeration of Multiple Self-Avoiding Polygons}
-    
-    \vspace{0.4cm}
-    \large
-    
-    Jack Hanke, Richard Schank
-    \vspace{0.4cm}
-    
-    \vspace{0.4cm}    
 
     \begin{abstract}
-        Hong and Oh calculated upper and lower bounds on the number of multiple self-avoiding polygons in the square lattice. These results accompanied $7$ distinct tiles that together model multiple ring polymers in physics. We exactly enumerate these multiple self-avoiding polygons, along with a variation on the tile set and rules considered.
+        Hong and Oh calculated upper and lower bounds on the number of polygon mosaics for $7$ distinct tiles that together model multiple ring polymers in physics. We exactly enumerate these polygon mosaics. The method we introduce generalizes to various other tile sets. We also introduce and enumerate a variation on polygon mosaics called messy polygon mosaics for various tile sets.
     \end{abstract}
 
 \end{center}
 
 \section{Introduction}
 
-Consider the following $7$ unit squares with red lines on them.
+Consider the following set of $7$ symbols labelled $\{ T_1, \dots T_7 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
 
 \begin{center}
     \begin{tikzpicture}
         \cell{-2}{0}{-1}{1}
+        \( \lablnode{-1.5}{-0.5}{$T_1$} \) 
         \cellA{0}{0}{1}{1}
+        \( \lablnode{0.5}{-0.5}{$T_2$} \) 
         \cellB{2}{0}{3}{1}
+        \( \lablnode{2.5}{-0.5}{$T_3$} \) 
         \cellC{4}{0}{5}{1}
+        \( \lablnode{4.5}{-0.5}{$T_4$} \) 
         \cellD{6}{0}{7}{1}
+        \( \lablnode{6.5}{-0.5}{$T_5$} \) 
         \cellE{8}{0}{9}{1}
-        \cellF{10}{0}{11}{1}    
+        \( \lablnode{8.5}{-0.5}{$T_6$} \) 
+        \cellF{10}{0}{11}{1}
+        \( \lablnode{10.5}{-0.5}{$T_7$} \) 
     \end{tikzpicture}
 \end{center}
 
-Call these unit squares \textit{mosaic tiles}. Then let an $(n,m)$-mosaic be an $n \times m$ matrix of mosaic tiles. For example, below is a $(7,5)$-mosaic.
+Call these symbols \textit{tiles}. A \textit{mosaic} of size $(n, m)$ is an $n \times m$ matrix of these tiles. For example, below is a mosaic of size $(5,7)$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -192,12 +201,13 @@ Call these unit squares \textit{mosaic tiles}. Then let an $(n,m)$-mosaic be an 
 \end{tikzpicture}
 \end{center}
 
-Next, define a \textit{polygon mosaic} as a mosaic in which any pair of mosaic tiles lying immediately next to each other in either the same row or the same column have or do not
-have connection points simultaneously on their common edge, as well as no connection point on the boundary edges. 
+Consider a shared edge between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all shared edges between tiles having $0$ or $2$ dotted lines drawn from their midpoint, and $0$ dotted lines drawn from the boundary edges. 
+
+We call these polygon mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form shapes we call \textit{polygons}. 
 
 \begin{exmp}
 \label{exmp: clean sap}
-Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hilighted in gray.
+Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygons, hilighted in gray.
 
 \begin{center}
     \begin{tikzpicture}
@@ -245,40 +255,45 @@ Below is an example of a polygon $(7,5)$-mosaic that contains $2$ polygons, hili
 \end{center}
 \end{exmp}
 
-Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds on the number of polygon $(n,m)$-mosaics $p_{n,m}+1$ (A181245 \cite[OEIS]{oeis}), namely
+These polygons \footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.} can be formed with any even number of tiles greater than $2$, and can take on many shapes. In large enough mosaics, larger polygons can surround smaller polygons. 
 
-$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} + 1 \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
+Let $p_{n,m}$ be the number of polygon mosaics of size $(n,m)$. First notice that if either $n$ or $m$ is $1$, one cannot construct a polygon mosaic, so 
+$$p_{n,1} = p_{1,m} = 0.$$
 
-We give an exact expression for $p_{n,m} + 1$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
+Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds \footnote{The authors did not consider the mosaic containing all $T_1$ tiles a polygon mosaic, and so define $p_{n,m}$ as one less than what we define.} for $n,m \geq 2$. 
+
+$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
+
+We give an exact expression for $p_{n,m}$ for $n,m \geq 2$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
 
 \begin{thm}
 \label{thm: main theorem}
 
-Let $
-M(2) = \begin{bmatrix}
+To enumerate $p_{n,m}$, we construct $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ recursively with the initial matrix $
+A(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
 \end{bmatrix}
-$ for $n \geq 2$. Then for $m \geq 2$, if 
+$. We recursively define $A(k+1)$ given $A(k)$. Begin by writing
 $
-M(m) = \begin{bmatrix}
-M_1 & M_2 \\
-M_3 & M_4
-\end{bmatrix},
-$ define
+A(k) = \begin{bmatrix}
+A_1 & A_2 \\
+A_3 & A_4
+\end{bmatrix}
+$, where the block matrices $A_i$ are square block matrices of size $2^{m-2} \times 2^{m-2}$, or scalars if $m=2$. Then we have
 
 $$
-M(m+1) = \begin{bmatrix}
-M_1 & M_2 & M_1 & M_2 \\
-M_3 & M_4 & 0M_3 & M_4 \\
-M_1 & 0M_2 & M_1 & M_2 \\
-M_3 & M_4 & M_3 & M_4 \\
+A(k+1) = \begin{bmatrix}
+A_1 & A_2 & A_1 & A_2 \\
+A_3 & A_4 & 0A_3 & A_4 \\
+A_1 & 0A_2 & A_1 & A_2 \\
+A_3 & A_4 & A_3 & A_4 \\
 \end{bmatrix},
 $$
 
-where $M_i$ is a sub-matrix of the block matrix $M(m)$. Next define the rows and columns of $M(m)$ as
+where products of a scalar and block matrix are done element-wise. Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. Next denote the rows and columns of $A(m)$ as
 $$
-M(m) = 
+A(m) = 
 \begin{bmatrix}
     r_1 \\
     r_2 \\
@@ -290,14 +305,16 @@ M(m) =
 \end{bmatrix}
 $$
 
-Then $p_{n,m}+1 = r_1 M(m)^{n-2}c_1 .$
+Then $p_{n,m} = r_1 A(m)^{n-2}c_1 .$
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: main theorem}}
 
 \begin{proof}
 
-Begin by labelling the vertices of the rectangular lattice as follows. If the vertex is surrounded by an even number of SAPs, color it black. If the vertex is surrounded by an odd number of SAPs, color it green. Using the mosaic from Example \ref{exmp: clean sap}, we get the following labelling.
+For a given mosaic, color the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, color it black. If the vertex is surrounded by an odd number of polygons, color it white with a green border. To make a \textit{vertex coloring} we also remove the dotted lines from all tiles in the mosaic. 
+
+Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring of the mosaic, and then the removal of the dotted lines.
 
 \begin{center}
     \begin{tikzpicture}
@@ -354,7 +371,7 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
         \draw[fill=black] (2,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
         \draw[fill=black] (4,1) circle (3pt);
         \draw[fill=black] (5,1) circle (3pt);
         \draw[fill=black] (6,1) circle (3pt);
@@ -363,8 +380,8 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
         \draw[fill=black] (5,2) circle (3pt);
         \draw[fill=black] (6,2) circle (3pt);
         \draw[fill=black] (7,2) circle (3pt);
@@ -379,7 +396,7 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (7,3) circle (3pt);
         % label for row1
         \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=green, draw=none] (1,4) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,4) circle (3pt);
         \draw[fill=black] (2,4) circle (3pt);
         \draw[fill=black] (3,4) circle (3pt);
         \draw[fill=black] (4,4) circle (3pt);
@@ -452,7 +469,7 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (8,1) circle (3pt);
         \draw[fill=black] (9,1) circle (3pt);
         \draw[fill=black] (10,1) circle (3pt);
-        \draw[fill=green, draw=none] (11,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
         \draw[fill=black] (12,1) circle (3pt);
         \draw[fill=black] (13,1) circle (3pt);
         \draw[fill=black] (14,1) circle (3pt);
@@ -461,8 +478,8 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (8,2) circle (3pt);
         \draw[fill=black] (9,2) circle (3pt);
         \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=green, draw=none] (11,2) circle (3pt);
-        \draw[fill=green, draw=none] (12,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
         \draw[fill=black] (13,2) circle (3pt);
         \draw[fill=black] (14,2) circle (3pt);
         \draw[fill=black] (15,2) circle (3pt);
@@ -477,7 +494,7 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
         \draw[fill=black] (15,3) circle (3pt);
         % label for row1
         \draw[fill=black] (8,4) circle (3pt);
-        \draw[fill=green, draw=none] (9,4) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (9,4) circle (3pt);
         \draw[fill=black] (10,4) circle (3pt);
         \draw[fill=black] (11,4) circle (3pt);
         \draw[fill=black] (12,4) circle (3pt);
@@ -496,7 +513,9 @@ Begin by labelling the vertices of the rectangular lattice as follows. If the ve
     \end{tikzpicture}
 \end{center}
 
-Notice that vertices on the boundary of the lattice will always be black. The associated \textit{parity configuration} for the above mosaic is below. The number of parity configurations that do not include the following sub-configurations also count the number of self-avoiding polygons. 
+The critical point is this: even with the dotted lines removed, the vertex coloring uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. We can then enumerate $p_{n,m}$ by enumerating the number of vertex colorings that correspond with a valid polygon mosaic. 
+
+Consider the collection of vertex colorings. Each boundary vertex is necessarily colored black, and each interior vertex is colored either black or white with a green border. Of these $2^{(n-1)(m-1)}$ colorings, the colorings that correspond with valid polygon mosaics are ones that do not contain the following two sub-colorings.
 
 \begin{center}
     \begin{tikzpicture}
@@ -505,19 +524,69 @@ Notice that vertices on the boundary of the lattice will always be black. The as
         \cell{2}{0}{3}{1}
 
         \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=green, draw=none] (1,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
         \draw[fill=black] (3,0) circle (3pt);
 
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
         \draw[fill=black] (2,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
         
     \end{tikzpicture}
 \end{center}
 
-We seek to construct a transition matrix for a fixed $m$ that maps all possible parity configuration edge boundaries to every other. As an example, consider $m=3$. 
+These two sub-colorings aren't associasted with any of our tiles $T_1, \dots, T_7$, and so cannot possibly be created from the coloring process. 
+
+We seek a recursive solution to enumerate the number of vertex colorings that avoid these sub-colorings. We start with a $n \times 1$ matrix for fixed $n$. We intend to build vertex colorings of an $n \times m$ matrix, so the upper and lower boundary vertices are colored black. We also build these matrices from right to left, so the right boundary vertices is also black. We have no conditions on the boundary of the left vertices, and so there are $2^{n-1}$ initial conditions. One of these initial conditions is below.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        % row 1
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (0,3) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+
+If we append some new column of vertex colorings to the left, the newly created $n \times 2$ matrix may or may not have created an illegal sub-coloring. In the below example, the new left column does not create an illegal sub-coloring.  
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        \draw[black] (-1,0) -- (-1,3);
+        % row 1
+        \draw[fill=black] (-1,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (-1,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (-1,2) circle (3pt);
+        \draw[fill=black] (-1,3) circle (3pt);
+
+        \draw[fill=black] (0,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
+        \draw[fill=black] (0,2) circle (3pt);
+        \draw[fill=black] (0,3) circle (3pt);
+
+        \draw[fill=black] (1,0) circle (3pt);
+        \draw[fill=black] (1,1) circle (3pt);
+        \draw[fill=black] (1,2) circle (3pt);
+        \draw[fill=black] (1,3) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+
+With this in mind, we can create a transition matrix that maps every right edge vertex coloring to every left edge vertex coloring, and assigns the value of $0$ to $n\times1$ columns that contain illegal colorings, and $1$ otherwise.  Below is a diagram for the $n=3$ matrix. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -587,8 +656,8 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
         \cell{6}{14}{7}{15}
         % row 1
         \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
-        \draw[fill=green, draw=none] (0,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,2) circle (3pt);
         \draw[fill=black] (0,3) circle (3pt);
 
         \draw[fill=black] (1,0) circle (3pt);
@@ -597,37 +666,37 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
         \draw[fill=black] (1,3) circle (3pt);
 
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,2) circle (3pt);
         \draw[fill=black] (2,3) circle (3pt);
 
         \draw[fill=black] (3,0) circle (3pt);
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
         \draw[fill=black] (3,3) circle (3pt);
 
         \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
         \draw[fill=black] (4,3) circle (3pt);
 
         \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
         \draw[fill=black] (5,2) circle (3pt);
         \draw[fill=black] (5,3) circle (3pt);
 
         \draw[fill=black] (6,0) circle (3pt);
-        \draw[fill=green, draw=none] (6,1) circle (3pt);
-        \draw[fill=green, draw=none] (6,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
         \draw[fill=black] (6,3) circle (3pt);
 
         \draw[fill=black] (7,0) circle (3pt);
-        \draw[fill=green, draw=none] (7,1) circle (3pt);
-        \draw[fill=green, draw=none] (7,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
         \draw[fill=black] (7,3) circle (3pt);
         % row 2
         \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=green, draw=none] (0,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,5) circle (3pt);
         \draw[fill=black] (0,6) circle (3pt);
         \draw[fill=black] (0,7) circle (3pt);
 
@@ -637,38 +706,38 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
         \draw[fill=black] (1,7) circle (3pt);
 
         \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=green, draw=none] (2,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,5) circle (3pt);
         \draw[fill=black] (2,6) circle (3pt);
         \draw[fill=black] (2,7) circle (3pt);
 
         \draw[fill=black] (3,4) circle (3pt);
         \draw[fill=black] (3,5) circle (3pt);
-        \draw[fill=green, draw=none] (3,6) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,6) circle (3pt);
         \draw[fill=black] (3,7) circle (3pt);
 
         \draw[fill=black] (4,4) circle (3pt);
-        \draw[fill=green, draw=none] (4,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,5) circle (3pt);
         \draw[fill=black] (4,6) circle (3pt);
         \draw[fill=black] (4,7) circle (3pt);
 
         \draw[fill=black] (5,4) circle (3pt);
-        \draw[fill=green, draw=none] (5,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,5) circle (3pt);
         \draw[fill=black] (5,6) circle (3pt);
         \draw[fill=black] (5,7) circle (3pt);
 
         \draw[fill=black] (6,4) circle (3pt);
-        \draw[fill=green, draw=none] (6,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,5) circle (3pt);
         \draw[fill=black] (6,6) circle (3pt);
         \draw[fill=black] (6,7) circle (3pt);
 
         \draw[fill=black] (7,4) circle (3pt);
-        \draw[fill=green, draw=none] (7,5) circle (3pt);
-        \draw[fill=green, draw=none] (7,6) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,6) circle (3pt);
         \draw[fill=black] (7,7) circle (3pt);
         % row 3
         \draw[fill=black] (0,8) circle (3pt);
         \draw[fill=black] (0,9) circle (3pt);
-        \draw[fill=green, draw=none] (0,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,10) circle (3pt);
         \draw[fill=black] (0,11) circle (3pt);
 
         \draw[fill=black] (1,8) circle (3pt);
@@ -678,32 +747,32 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
 
         \draw[fill=black] (2,8) circle (3pt);
         \draw[fill=black] (2,9) circle (3pt);
-        \draw[fill=green, draw=none] (2,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,10) circle (3pt);
         \draw[fill=black] (2,11) circle (3pt);
 
         \draw[fill=black] (3,8) circle (3pt);
         \draw[fill=black] (3,9) circle (3pt);
-        \draw[fill=green, draw=none] (3,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,10) circle (3pt);
         \draw[fill=black] (3,11) circle (3pt);
 
         \draw[fill=black] (4,8) circle (3pt);
         \draw[fill=black] (4,9) circle (3pt);
-        \draw[fill=green, draw=none] (4,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,10) circle (3pt);
         \draw[fill=black] (4,11) circle (3pt);
 
         \draw[fill=black] (5,8) circle (3pt);
-        \draw[fill=green, draw=none] (5,9) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,9) circle (3pt);
         \draw[fill=black] (5,10) circle (3pt);
         \draw[fill=black] (5,11) circle (3pt);
 
         \draw[fill=black] (6,8) circle (3pt);
         \draw[fill=black] (6,9) circle (3pt);
-        \draw[fill=green, draw=none] (6,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,10) circle (3pt);
         \draw[fill=black] (6,11) circle (3pt);
 
         \draw[fill=black] (7,8) circle (3pt);
-        \draw[fill=green, draw=none] (7,9) circle (3pt);
-        \draw[fill=green, draw=none] (7,10) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,9) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,10) circle (3pt);
         \draw[fill=black] (7,11) circle (3pt);
         % row 4
         \draw[fill=black] (0,12) circle (3pt);
@@ -723,7 +792,7 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
 
         \draw[fill=black] (3,12) circle (3pt);
         \draw[fill=black] (3,13) circle (3pt);
-        \draw[fill=green, draw=none] (3,14) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,14) circle (3pt);
         \draw[fill=black] (3,15) circle (3pt);
 
         \draw[fill=black] (4,12) circle (3pt);
@@ -732,7 +801,7 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
         \draw[fill=black] (4,15) circle (3pt);
 
         \draw[fill=black] (5,12) circle (3pt);
-        \draw[fill=green, draw=none] (5,13) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,13) circle (3pt);
         \draw[fill=black] (5,14) circle (3pt);
         \draw[fill=black] (5,15) circle (3pt);
 
@@ -742,24 +811,24 @@ We seek to construct a transition matrix for a fixed $m$ that maps all possible 
         \draw[fill=black] (6,15) circle (3pt);
 
         \draw[fill=black] (7,12) circle (3pt);
-        \draw[fill=green, draw=none] (7,13) circle (3pt);
-        \draw[fill=green, draw=none] (7,14) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,13) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,14) circle (3pt);
         \draw[fill=black] (7,15) circle (3pt);
         % arrow
         \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
         % matrix
         \( \lablnode{12}{7.5}{$\begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix}$} \)
 
+        \( \lablnode{12}{5.5}{$A(3)$} \)
+
     \end{tikzpicture}
 \end{center}
 
-We design $M(3)$ so that each column has the same right edge parity and every row has the same left edge parity. The entries of $M(3)$ are $1$ if the parity configuration admits a tile configuration, and $0$ otherwise. 
+We design $A(3)$ so that each column has the same right edge vertex coloring and every row has the same left edge vertex coloring. Notice the entries of $A(3)$ are $1$ if the vertex coloring admits a tile configuration, and $0$ otherwise. 
 
-If we define $M(3)$ in this way, then $c_1$ of $M(3)$ represents all parity configurations that ``start with a boundary" of a parity configuration, and $r_1$ of $M(3)$ represents all parity configurations that ``end with a boundary" of a parity configuration, if you build the parity configuration from right to left. This immediately gives that $p_{n,3}+1 = r_1 M(3)^{n-2} c_1.$
+If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{n,3} = r_1 A(3)^{n-2} c_1.$
 
-If $M(m)$ can be constructed for a fixed $m$, then the same argument can be used to enumerate $p_{n,m}+1$. But how does one construct $M(m)$ for a general $m$?
-
-Consider $M(2)$ along with its represented parity configurations below.
+The final component in enumerating $p_{n,m}$ is constructing $A(m)$ for any $m$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -778,7 +847,7 @@ Consider $M(2)$ along with its represented parity configurations below.
         \cell{2}{4}{3}{5}
         % row 1
         \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (0,2) circle (3pt);
 
         \draw[fill=black] (1,0) circle (3pt);
@@ -786,11 +855,11 @@ Consider $M(2)$ along with its represented parity configurations below.
         \draw[fill=black] (1,2) circle (3pt);
 
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
 
         \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
         \draw[fill=black] (3,2) circle (3pt);
         % row 2
         \draw[fill=black] (0,3) circle (3pt);
@@ -806,7 +875,7 @@ Consider $M(2)$ along with its represented parity configurations below.
         \draw[fill=black] (2,5) circle (3pt);
 
         \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=green, draw=none] (3,4) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,4) circle (3pt);
         \draw[fill=black] (3,5) circle (3pt);
 
         % arrow
@@ -817,7 +886,7 @@ Consider $M(2)$ along with its represented parity configurations below.
     \end{tikzpicture}
 \end{center}
 
-If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine the mapping by considering appending all possible cell parity configurations to the bottom of the column, like so.
+If one knows the $A(2)$ weight at, say, position $(0,1)$, then one can identify the mapping by considering appending all possible vertex colorings to the bottom of the column, like so.
 
 \begin{center}
     \begin{tikzpicture}
@@ -831,7 +900,7 @@ If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine
         \draw[fill=black] (-4.5,4.5) circle (3pt);
 
         \draw[fill=black] (-3.5,2.5) circle (3pt);
-        \draw[fill=green, draw=none] (-3.5,3.5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (-3.5,3.5) circle (3pt);
         \draw[fill=black] (-3.5,4.5) circle (3pt);
 
         % arrow
@@ -847,23 +916,23 @@ If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine
         \cell{2}{2}{3}{3}
 
         \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (0,3) circle (3pt);
 
         \draw[fill=black] (1,0) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (1,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,2) circle (3pt);
         \draw[fill=black] (1,3) circle (3pt);
 
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
         \draw[fill=black] (2,3) circle (3pt);
 
         \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
         \draw[fill=black] (3,3) circle (3pt);
 
         \cell{0}{4}{1}{5}
@@ -881,7 +950,7 @@ If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine
 
         \draw[fill=black] (1,4) circle (3pt);
         \draw[fill=black] (1,5) circle (3pt);
-        \draw[fill=green, draw=none] (1,6) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,6) circle (3pt);
         \draw[fill=black] (1,7) circle (3pt);
 
         \draw[fill=black] (2,4) circle (3pt);
@@ -890,8 +959,8 @@ If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine
         \draw[fill=black] (2,7) circle (3pt);
 
         \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=green, draw=none] (3,5) circle (3pt);
-        \draw[fill=green, draw=none] (3,6) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,5) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,6) circle (3pt);
         \draw[fill=black] (3,7) circle (3pt);
 
         \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
@@ -901,7 +970,7 @@ If one knows the $M(2)$ weight at, say, position $(0,1)$, then one can determine
     \end{tikzpicture}
 \end{center}
 
-If we write $M(2) = \begin{bmatrix}
+If we write $A(2) = \begin{bmatrix}
     1 & 1 \\
     1 & 1 
 \end{bmatrix} = 
@@ -912,19 +981,19 @@ If we write $M(2) = \begin{bmatrix}
 $, and compute these mappings for all possible parity configurations, we get
 
 $$
-M(3) = 
+A(3) = 
 \begin{bmatrix}
     1M_1 & 1M_2 & 1M_1 & 1M_2 \\
     1M_3 & 1M_4 & 0M_3 & 1M_4 \\
     1M_1 & 0M_2 & 1M_1 & 1M_2 \\
     1M_3 & 1M_4 & 1M_3 & 1M_4 \\
-\end{bmatrix}
-$$.
+\end{bmatrix}.
+$$
 
-Finally, as appending any parity configuration to the bottom of a column only changes the identity of the bottom two parity cell configurations, we can write that for any matrix $M(m) =\begin{bmatrix} M_1 & M_2 \\ M_3 & M_4 \end{bmatrix}$ we have 
+Finally, as appending any vertex coloring to the bottom of a column only changes the identity of the bottom two sub-colorings, we can write that for any matrix $A(m) =\begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$ we have 
 
 $$
-M(m+1) = 
+A(m+1) = 
 \begin{bmatrix}
     1M_1 & 1M_2 & 1M_1 & 1M_2 \\
     1M_3 & 1M_4 & 0M_3 & 1M_4 \\
@@ -937,13 +1006,15 @@ which completes the proof.
 
 \end{proof}
 
+The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile sets, which we tabularize in Section \ref{section: summary of results} without proof. Interestingly, the method not only generalizes to other tile sets, but can also be augmented to enumerate the more complicated ``messy" polygon mosaics.
+
 \section{Messy Polygon Mosaics}
 
-Define a \textit{messy polygon mosaic} as a mosaic that contains at least one self-avoiding polygon, with no restriction on other connection points. 
+A \textit{messy polygon mosaic} is a mosaic that contains at least polygon, with no restriction on other shared edges. 
 
 \begin{exmp}
 \label{exmp: messy sap}
-Below is a messy polygon $(7,5)$-mosaic with $1$ SAP hilighted in gray. 
+Below is a messy polygon mosaic of size $(5,7)$ with $1$ polygon hilighted in gray. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1005,7 +1076,7 @@ Note that one can also consider creating messy polygon mosaics with the alternat
     \end{tikzpicture}
 \end{center}
 
-Due to the fact that the empty tile cannot contribute to the structure of the SAP, enumerating messy polygon mosaics under either tileset can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tileset. We work with the general $b$ for the remainder of the paper.
+Due to the fact that the empty tile cannot contribute to the structure of the SAP, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
 
 Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a SAP. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a SAP. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest SAP is
 
@@ -1030,7 +1101,7 @@ M(2) = \begin{bmatrix}
 b^2 & 1 \\
 -1 & 1
 \end{bmatrix}
-$ for $n \geq 2$, where $b = 6$ for the $6$-tileset and $b = 7$ for the $7$-tileset.Then for $m \geq 2$, if
+$ for $n \geq 2$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set.Then for $m \geq 2$, if
 $
 M(m) = \begin{bmatrix}
 M_1 & M_2 \\
@@ -1077,13 +1148,13 @@ We again consider the parity configurations for a specific $(n,m)$-mosaic. Howev
 
         \draw[fill=black] (0,0) circle (3pt);
         \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (3,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
 
         \draw[fill=black] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
         
     \end{tikzpicture}
 \end{center}
@@ -1115,17 +1186,17 @@ Additionally, the sub parity configurations shown below
         \cell{4}{0}{5}{1}
         \cell{4}{1}{5}{2}
 
-        \draw[fill=green, draw=none] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (4,0) circle (3pt);
-        \draw[fill=green, draw=none] (5,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,0) circle (3pt);
 
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
-        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
 
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
-        \draw[fill=green, draw=none] (5,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,2) circle (3pt);
     \end{tikzpicture}
 \end{center}
 
@@ -1149,7 +1220,7 @@ are now ambiguous as to whether or not they represent a SAP. Critically, both of
         \draw[fill=black] (2,0) circle (3pt);
 
         \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=green, draw=none] (1,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,1) circle (3pt);
         \draw[fill=black] (2,1) circle (3pt);
 
         \draw[fill=black] (0,2) circle (3pt);
@@ -1180,7 +1251,7 @@ are now ambiguous as to whether or not they represent a SAP. Critically, both of
         \draw[fill=black] (5,0) circle (3pt);
 
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
         \draw[fill=black] (5,1) circle (3pt);
 
         \draw[fill=black] (3,2) circle (3pt);
@@ -1188,7 +1259,7 @@ are now ambiguous as to whether or not they represent a SAP. Critically, both of
         \draw[fill=black] (5,2) circle (3pt);
 
         \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=green, draw=none] (4,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,3) circle (3pt);
         \draw[fill=black] (5,3) circle (3pt);
 
         \draw[fill=black] (3,4) circle (3pt);
@@ -1239,53 +1310,53 @@ To create an analagous result to Theorem \ref{thm: main theorem} we need to find
         \draw[fill=black] (0,0) circle (3pt);
         \draw[fill=black] (1,0) circle (3pt);
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (4,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
         \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=green, draw=none] (6,0) circle (3pt);
-        \draw[fill=green, draw=none] (7,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,0) circle (3pt);
         \draw[fill=black] (8,0) circle (3pt);
         \draw[fill=black] (9,0) circle (3pt);
         \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=green, draw=none] (11,0) circle (3pt);
-        \draw[fill=green, draw=none] (12,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,0) circle (3pt);
         \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=green, draw=none] (14,0) circle (3pt);
-        \draw[fill=green, draw=none] (15,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,0) circle (3pt);
         % label for row1
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
         \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=green, draw=none] (6,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
         \draw[fill=black] (7,1) circle (3pt);
-        \draw[fill=green, draw=none] (8,1) circle (3pt);
-        \draw[fill=green, draw=none] (9,1) circle (3pt);
-        \draw[fill=green, draw=none] (10,1) circle (3pt);
-        \draw[fill=green, draw=none] (11,1) circle (3pt);
-        \draw[fill=green, draw=none] (12,1) circle (3pt);
-        \draw[fill=green, draw=none] (13,1) circle (3pt);
-        \draw[fill=green, draw=none] (14,1) circle (3pt);
-        \draw[fill=green, draw=none] (15,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (8,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (9,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (10,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (13,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,1) circle (3pt);
         % label for row1
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
         \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=green, draw=none] (6,2) circle (3pt);
-        \draw[fill=green, draw=none] (7,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
         \draw[fill=black] (8,2) circle (3pt);
         \draw[fill=black] (9,2) circle (3pt);
         \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=green, draw=none] (11,2) circle (3pt);
-        \draw[fill=green, draw=none] (12,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
         \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=green, draw=none] (14,2) circle (3pt);
-        \draw[fill=green, draw=none] (15,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,2) circle (3pt);
         % label for row1
         \draw[fill=black] (0,3) circle (3pt);
         \draw[fill=black] (1,3) circle (3pt);
@@ -1296,13 +1367,13 @@ To create an analagous result to Theorem \ref{thm: main theorem} we need to find
         \draw[fill=black] (6,3) circle (3pt);
         \draw[fill=black] (7,3) circle (3pt);
         \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=green, draw=none] (9,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (9,3) circle (3pt);
         \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=green, draw=none] (11,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,3) circle (3pt);
         \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=green, draw=none] (13,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (13,3) circle (3pt);
         \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=green, draw=none] (15,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,3) circle (3pt);
         % numbers row 1
         \( \lablnode{0.5}{-0.5}{$w_{9}$} \)
         \( \lablnode{2.5}{-0.5}{$w_{10}$} \)
@@ -1376,53 +1447,53 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
         \draw[fill=black] (0,0) circle (3pt);
         \draw[fill=black] (1,0) circle (3pt);
         \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=green, draw=none] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (4,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
         \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=green, draw=none] (6,0) circle (3pt);
-        \draw[fill=green, draw=none] (7,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,0) circle (3pt);
         \draw[fill=black] (8,0) circle (3pt);
         \draw[fill=black] (9,0) circle (3pt);
         \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=green, draw=none] (11,0) circle (3pt);
-        \draw[fill=green, draw=none] (12,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,0) circle (3pt);
         \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=green, draw=none] (14,0) circle (3pt);
-        \draw[fill=green, draw=none] (15,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,0) circle (3pt);
         % label for row1
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
         \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=green, draw=none] (6,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
         \draw[fill=black] (7,1) circle (3pt);
-        \draw[fill=green, draw=none] (8,1) circle (3pt);
-        \draw[fill=green, draw=none] (9,1) circle (3pt);
-        \draw[fill=green, draw=none] (10,1) circle (3pt);
-        \draw[fill=green, draw=none] (11,1) circle (3pt);
-        \draw[fill=green, draw=none] (12,1) circle (3pt);
-        \draw[fill=green, draw=none] (13,1) circle (3pt);
-        \draw[fill=green, draw=none] (14,1) circle (3pt);
-        \draw[fill=green, draw=none] (15,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (8,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (9,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (10,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (13,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,1) circle (3pt);
         % label for row1
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
         \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=green, draw=none] (3,2) circle (3pt);
-        \draw[fill=green, draw=none] (4,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
         \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=green, draw=none] (6,2) circle (3pt);
-        \draw[fill=green, draw=none] (7,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
         \draw[fill=black] (8,2) circle (3pt);
         \draw[fill=black] (9,2) circle (3pt);
         \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=green, draw=none] (11,2) circle (3pt);
-        \draw[fill=green, draw=none] (12,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
         \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=green, draw=none] (14,2) circle (3pt);
-        \draw[fill=green, draw=none] (15,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (14,2) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,2) circle (3pt);
         % label for row1
         \draw[fill=black] (0,3) circle (3pt);
         \draw[fill=black] (1,3) circle (3pt);
@@ -1433,13 +1504,13 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
         \draw[fill=black] (6,3) circle (3pt);
         \draw[fill=black] (7,3) circle (3pt);
         \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=green, draw=none] (9,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (9,3) circle (3pt);
         \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=green, draw=none] (11,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (11,3) circle (3pt);
         \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=green, draw=none] (13,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (13,3) circle (3pt);
         \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=green, draw=none] (15,3) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (15,3) circle (3pt);
         % numbers row 1
         \( \lablnode{0.5}{-0.5}{$w_{9}=-1$} \)
         \( \lablnode{2.5}{-0.5}{$w_{10}=0$} \)
@@ -1519,12 +1590,12 @@ The flipping of parity of a single vertex can result in $2$ distinct types of co
         \cell{1}{1}{2}{2}
         % label for row1
         \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=green, draw=none] (1,0) circle (3pt);
-        \draw[fill=green, draw=none] (2,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (1,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
         % label for row2
         \draw[fill=black] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         % label for row3
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
@@ -1537,12 +1608,12 @@ The flipping of parity of a single vertex can result in $2$ distinct types of co
         \cell{4}{1}{5}{2}
         % label for row1
         \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=green, draw=none] (4,0) circle (3pt);
-        \draw[fill=green, draw=none] (5,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,0) circle (3pt);
         % label for row2
         \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
-        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
         % label for row3
         \draw[fill=black] (3,2) circle (3pt);
         \draw[fill=black] (4,2) circle (3pt);
@@ -1571,9 +1642,9 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
         \draw[fill=black] (1,0) circle (3pt);
         \draw[fill=black] (2,0) circle (3pt);
         % label for row2
-        \draw[fill=green, draw=none] (0,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
         \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=green, draw=none] (2,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
         % label for row3
         \draw[fill=black] (0,2) circle (3pt);
         \draw[fill=black] (1,2) circle (3pt);
@@ -1589,9 +1660,9 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
         \draw[fill=black] (4,0) circle (3pt);
         \draw[fill=black] (5,0) circle (3pt);
         % label for row2
-        \draw[fill=green, draw=none] (3,1) circle (3pt);
-        \draw[fill=green, draw=none] (4,1) circle (3pt);
-        \draw[fill=green, draw=none] (5,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
+        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
         % label for row3
         \draw[fill=black] (3,2) circle (3pt);
         \draw[fill=black] (4,2) circle (3pt);
@@ -1686,6 +1757,11 @@ b & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & b \\
 \end{center}
 
 Any of these assignments are sufficient for calculating $t_{n,m}$. 
+
+\section{Summary of Results}
+\label{section: summary of results}
+
+TODO make table with tile sets and matrices
 
 \printbibliography
 
