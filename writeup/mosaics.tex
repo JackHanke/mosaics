@@ -5,6 +5,7 @@
 \usepackage{subfig}
 \usepackage[english]{babel}
 \usepackage{capt-of}
+\usepackage{tabularray}
 \newtheorem{theorem}{Theorem}
 \usetikzlibrary{calc}
 \usetikzlibrary{shapes}
@@ -1778,6 +1779,48 @@ Any of these assignments are sufficient for calculating $t_{n,m}$.
 \label{section: summary of results}
 
 TODO make table with tile sets and matrices
+
+\begin{center}
+    \begin{tblr}{
+  colspec = {X[c,h]X[c]X[c]X[c]},
+  stretch = 0,
+  rowsep = 6pt,
+  hlines = {black, 1pt},
+  vlines = {black, 1pt},
+}
+  \textbf{Tile Set} & \textbf{Polygon Mosaics} & \textbf{Messy Polygon Mosaics}\\
+  
+  \resizebox{0.3\textwidth}{!}{%
+  \begin{tikzpicture}
+      \cellA{0}{0}{1}{1}
+      \cellB{2}{0}{3}{1}
+      \cellC{0}{2}{1}{3}
+      \cellD{2}{2}{3}{3}
+      
+      \cellE{4}{0}{5}{1}
+      \cellF{4}{2}{5}{3}
+
+      \cell{6}{1}{7}{2}
+  \end{tikzpicture}
+    } 
+    & TODO & TODO \\
+
+  \resizebox{0.3\textwidth}{!}{%
+  \begin{tikzpicture}
+      \cellA{0}{0}{1}{1}
+      \cellB{2}{0}{3}{1}
+      \cellC{0}{2}{1}{3}
+      \cellD{2}{2}{3}{3}
+      
+      \cellE{4}{0}{5}{1}
+      \cellF{4}{2}{5}{3}
+  \end{tikzpicture}
+    } 
+    & TODO & TODO \\
+  
+\end{tblr}
+\end{center}
+
 
 \printbibliography
 
