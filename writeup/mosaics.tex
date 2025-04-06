@@ -280,7 +280,7 @@ A(k) = \begin{bmatrix}
 A_1 & A_2 \\
 A_3 & A_4
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $m=2$. Then we have
+$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $n=2$. Then we have
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -293,15 +293,15 @@ $$
 
 where products of a scalar and block matrix are done element-wise. Construct $A(n)$ by starting with $k=2$ and recursing until $k=n$. Next denote the rows and columns of $A(n)$ as
 $$
-A(m) = 
+A(n) = 
 \begin{bmatrix}
     r_1 \\
     r_2 \\
     ... \\
-    r_{2^{m-1}} \\
+    r_{2^{n-1}} \\
 \end{bmatrix} = 
 \begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{m-1}}
+    c_1 & c_2 & ... & c_{2^{n-1}}
 \end{bmatrix}
 $$
 
@@ -1077,7 +1077,7 @@ Below is a messy polygon mosaic of size $(5,7)$ with $1$ polygon hilighted in gr
 \end{center}
 \end{exmp}
 
-Note that one can also consider creating messy polygon mosaics with the alternate tile set below, where the empty tile is removed.
+Note that one can also consider creating messy polygon mosaics with the alternate tile set below, where the empty tile $T_1$ is removed.
 
 %figure of tiles (colored marknigs!)
 \begin{center}
@@ -1091,7 +1091,7 @@ Note that one can also consider creating messy polygon mosaics with the alternat
     \end{tikzpicture}
 \end{center}
 
-Due to the fact that the empty tile cannot contribute to the structure of the polygon, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
+Due to the fact that $T_1$ cannot contribute to the structure of the polygon, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
 
 Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a polygon. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest polygon is
 
@@ -1111,43 +1111,44 @@ we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using sim
 \begin{thm}
 \label{thm: messy mosaics}
 
-Let $
-M(2) = \begin{bmatrix}
+To enumerate $t_{n,m}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
+A(2) = \begin{bmatrix}
 b^2 & 1 \\
 -1 & 1
 \end{bmatrix}
-$ for $n \geq 2$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set.Then for $m \geq 2$, if
+$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set. We recursively define $A(k+1)$ given $A(k)$. Begin by writing
 $
-M(m) = \begin{bmatrix}
-M_1 & M_2 \\
-M_3 & M_4
-\end{bmatrix},
-$ define
+A(k) = \begin{bmatrix}
+A_1 & A_2 \\
+A_3 & A_4
+\end{bmatrix}
+$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $n=2$. Then we have
+
 $$
-M(m+1) = \begin{bmatrix}
-bM_1 & bM_2 & \frac{1}{b}M_1 & M_2 \\
-bM_3 & bM_4 & 0M_3 & M_4 \\
--\frac{1}{b}M_1 & 0M_2 & \frac{1}{b}M_1 & M_2 \\
-M_3 & M_4 & -M_3 & bM_4 \\
+A(k+1) = \begin{bmatrix}
+    bA_1 & bA_2 & \frac{1}{b}A_1 & A_2 \\
+    bA_3 & bA_4 & 0A_3 & A_4 \\
+    -\frac{1}{b}A_1 & 0A_2 & \frac{1}{b}A_1 & A_2 \\
+    A_3 & A_4 & -A_3 & bA_4 \\
 \end{bmatrix},
 $$
 
-where $M_i$ is a sub-matrix of the block matrix $M(m)$. For the given $m$, define the rows and columns of $M(m)$ as
-
+where products of a scalar and block matrix are done element-wise. Construct $A(n)$ by starting with $k=2$ and recursing until $k=n$. Next denote the rows and columns of $A(n)$ as
 $$
-M(m) = 
+A(m) = 
 \begin{bmatrix}
     r_1 \\
     r_2 \\
     ... \\
-    r_{2^{m-1}} \\
-\end{bmatrix} =
+    r_{2^{n-1}} \\
+\end{bmatrix} = 
 \begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{m-1}}
-\end{bmatrix} 
+    c_1 & c_2 & ... & c_{2^{n-1}}
+\end{bmatrix}
 $$
 
-Then $t_{n,m} = r_1 M(m)^{n-2}c_1 .$
+Then $t_{n,m} = r_1 A(n)^{m-2}c_1 .$
+
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
