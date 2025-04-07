@@ -155,7 +155,7 @@ Consider the following set of $7$ symbols labelled $\{ T_1, \dots T_7 \}$ compos
     \end{tikzpicture}
 \end{center}
 
-Call these symbols \textit{tiles}. A \textit{mosaic} of size $(n, m)$ is an $n \times m$ matrix of these tiles. For example, below is a mosaic of size $(5,7)$.
+Call these symbols \textit{tiles}. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix of these tiles. For example, below is a mosaic of size $(5,7)$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -202,7 +202,7 @@ Call these symbols \textit{tiles}. A \textit{mosaic} of size $(n, m)$ is an $n \
 \end{tikzpicture}
 \end{center}
 
-Consider a shared edge between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all shared edges between tiles having $0$ or $2$ dotted lines drawn from their midpoint, and $0$ dotted lines drawn from the boundary edges. 
+Consider a shared edge between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all shared edges between tiles having $0$ or $2$ dotted lines drawn from their midpoint.
 
 We call these polygon mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form shapes we call \textit{polygons}. 
 
@@ -256,22 +256,23 @@ Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygo
 \end{center}
 \end{exmp}
 
-These polygons \footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.} can be formed with any even number of tiles greater than $2$, and can take on many shapes. In large enough mosaics, larger polygons can surround smaller polygons. 
+These polygons\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.} can be formed with any even number of tiles greater than $2$, and can take on many shapes. In large enough mosaics, larger polygons can surround smaller polygons. 
 
-Let $p_{n,m}$ be the number of polygon mosaics of size $(n,m)$. First notice that if either $n$ or $m$ is $1$, one cannot construct a polygon mosaic, so 
-$$p_{n,1} = p_{1,m} = 0.$$
+Let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one cannot construct a polygon mosaic, so 
+$$p_{m,1} = p_{1,n} = 0.$$
 
-Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds \footnote{The authors did not consider the mosaic containing all $T_1$ tiles a polygon mosaic, and so define $p_{n,m}$ as one less than what we define.} for $n,m \geq 2$. 
+Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds\footnote{The authors did not consider the mosaic containing all $T_1$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.} for $m,n \geq 2$. 
 
-$$2^{n+m-3} \left(\frac{17}{10}\right)^{(n-2)(m-2)} \leq p_{n,m} \leq 2^{n+m-3} \left(\frac{31}{16}\right)^{(n-2)(m-2)}.$$
+$$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
 
-We give an exact expression for $p_{n,m}$ for $n,m \geq 2$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
+We give an exact expression for $p_{m,n}$ for $m,n \geq 2$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
 
-\begin{thm}
-\label{thm: main theorem}
+First we define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $p_{m,n}$.
 
-To enumerate $p_{n,m}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
-A(2) = \begin{bmatrix}
+\begin{defn}
+\label{defn: A}
+
+$A(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
 \end{bmatrix}
@@ -281,7 +282,7 @@ A(k) = \begin{bmatrix}
 A_1 & A_2 \\
 A_3 & A_4
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $n=2$. Then we have
+$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. Then we have
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -292,21 +293,13 @@ A_3 & A_4 & A_3 & A_4 \\
 \end{bmatrix},
 $$
 
-where products of a scalar and block matrix are done element-wise. Construct $A(n)$ by starting with $k=2$ and recursing until $k=n$. Next denote the rows and columns of $A(n)$ as
-$$
-A(n) = 
-\begin{bmatrix}
-    r_1 \\
-    r_2 \\
-    ... \\
-    r_{2^{n-1}} \\
-\end{bmatrix} = 
-\begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{n-1}}
-\end{bmatrix}
-$$
+where products of a scalar and block matrix are done element-wise. Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
 
-Then $p_{n,m} = r_1 A(n)^{m-2}c_1 .$
+\end{defn}
+
+\begin{thm}
+\label{thm: main theorem}    
+The $(0,0)$ entry of $A(m)^n$ is $p_{m,n}$.
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: main theorem}}
@@ -514,9 +507,9 @@ Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring o
     \end{tikzpicture}
 \end{center}
 
-The critical point is this: even with the dotted lines removed, the vertex coloring uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. We can then enumerate $p_{n,m}$ by enumerating the number of vertex colorings that correspond with a valid polygon mosaic. 
+The critical point is this: even with the dotted lines removed, the vertex coloring uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. We can then enumerate $p_{m,n}$ by enumerating the number of vertex colorings that correspond with a valid polygon mosaic. 
 
-Consider the collection of vertex colorings. Each boundary vertex is necessarily colored black, and each interior vertex is colored either black or white with a green border. Of these $2^{(n-1)(m-1)}$ colorings, the colorings that correspond with valid polygon mosaics are ones that do not contain the following two sub-colorings.
+Consider the collection of vertex colorings. Each boundary vertex is necessarily colored black, and each interior vertex is colored either black or white. Of these $2^{(m-1)(n-1)}$ colorings, the colorings that correspond with valid polygon mosaics are ones that do not contain the following two sub-colorings.
 
 \begin{center}
     \begin{tikzpicture}
@@ -539,7 +532,7 @@ Consider the collection of vertex colorings. Each boundary vertex is necessarily
 
 These two sub-colorings aren't associasted with any of our tiles $T_1, \dots, T_7$, and so cannot possibly be created from the coloring process. 
 
-We seek a recursive solution to enumerate the number of vertex colorings that avoid these sub-colorings. We start with a $n \times 1$ matrix for fixed $n$. We intend to build vertex colorings of an $n \times m$ matrix, so the upper and lower boundary vertices are colored black. We also build these matrices from right to left, so the right boundary vertices is also black. We have no conditions on the boundary of the left vertices, and so there are $2^{n-1}$ initial conditions. One of these initial conditions is below.
+We seek a recursive solution to enumerate the number of vertex colorings that avoid these sub-colorings. We start with a $m \times 1$ matrix for fixed $m$. We intend to build vertex colorings of an $m \times n$ matrix, so the upper and lower boundary vertices are colored black. We also build these matrices from right to left, so the right boundary vertices is also black. We have no conditions on the boundary of the left vertices, and so there are $2^{m-1}$ initial conditions. One of these initial conditions is below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -560,7 +553,7 @@ We seek a recursive solution to enumerate the number of vertex colorings that av
     \end{tikzpicture}
 \end{center}
 
-If we append some new column of vertex colorings to the left, the newly created $n \times 2$ matrix may or may not have created an illegal sub-coloring. In the below example, the new left column does not create an illegal sub-coloring.  
+If we append some new column of vertex colorings to the left, the newly created $m \times 2$ matrix may or may not have created an illegal sub-coloring. In the below example, the new left column does not create an illegal sub-coloring.  
 
 \begin{center}
     \begin{tikzpicture}
@@ -568,7 +561,11 @@ If we append some new column of vertex colorings to the left, the newly created 
         \cell{0}{1}{1}{2}
         \cell{0}{2}{1}{3}
 
-        \draw[black] (-1,0) -- (-1,3);
+        \cell{-1}{0}{0}{1}
+        \cell{-1}{1}{0}{2}
+        \cell{-1}{2}{0}{3}
+
+        % \draw[black] (-1,0) -- (-1,3);
         % row 1
         \draw[fill=black] (-1,0) circle (3pt);
         \draw[fill=white, draw=green, very thick] (-1,1) circle (3pt);
@@ -587,7 +584,7 @@ If we append some new column of vertex colorings to the left, the newly created 
     \end{tikzpicture}
 \end{center}
 
-With this in mind, we can create a transition matrix that maps every right edge vertex coloring to every left edge vertex coloring, and assigns the value of $0$ to $n\times1$ columns that contain illegal colorings, and $1$ otherwise.  Below is a diagram for the $n=3$ matrix. 
+With this in mind, we can create a transition matrix that maps every right edge vertex coloring to every left edge vertex coloring, and assigns the value of $0$ to $m \times 1$ columns that contain illegal colorings, and $1$ otherwise.  Below is a diagram for the $m=3$ matrix. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -827,9 +824,9 @@ With this in mind, we can create a transition matrix that maps every right edge 
 
 We design $A(3)$ so that each column has the same right edge vertex coloring and every row has the same left edge vertex coloring. Notice the entries of $A(3)$ are $1$ if the vertex coloring admits a tile configuration, and $0$ otherwise. 
 
-If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{3,m} = r_1 A(3)^{m-2} c_1.$
+If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{3,n} = r_1 A(3)^{n-2} c_1.$
 
-The final component in enumerating $p_{n,m}$ is constructing $A(n)$ for any $n$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
+The final component in enumerating $p_{m,n}$ is constructing $A(m)$ for any $m$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1094,7 +1091,7 @@ Note that one can also consider creating messy polygon mosaics with the alternat
 
 Due to the fact that $T_1$ cannot contribute to the structure of the polygon, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
 
-Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{n,m}$ be the number of mosaics that do not contain a polygon. Clearly $t_{n,m}=t_{m,n}.$ Also from the fact that the smallest polygon is
+Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Clearly $t_{m,n}=t_{m,n}.$ Also from the fact that the smallest polygon is
 
 \begin{center}
 \begin{tikzpicture}
@@ -1112,7 +1109,7 @@ we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using sim
 \begin{thm}
 \label{thm: messy mosaics}
 
-To enumerate $t_{n,m}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
+To enumerate $t_{m,n}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
 A(2) = \begin{bmatrix}
 b^2 & 1 \\
 -1 & 1
@@ -1148,14 +1145,14 @@ A(m) =
 \end{bmatrix}
 $$
 
-Then $t_{n,m} = r_1 A(n)^{m-2}c_1 .$
+Then $t_{m,n} = r_1 A(n)^{m-2}c_1 .$
 
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
 \begin{proof}
-We again consider the parity configurations for a specific $(n,m)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way as with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
+We again consider the parity configurations for a specific $(m,n)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way as with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1587,7 +1584,7 @@ An analagous argument to Theorem \ref{thm: main theorem} gives the result.
 
 % \begin{theorem}
 %     \label{thm: growth rate}    
-%     Let the probability that an $(n,m)$-mosaic \textit{does not} contain a SAP be denoted $p_{n,m} = \frac{t_{n,m}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
+%     Let the probability that an $(m,n)$-mosaic \textit{does not} contain a SAP be denoted $p_{m,n} = \frac{t_{m,n}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
 %     $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
 % \end{theorem}
 
@@ -1773,7 +1770,7 @@ b & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & b \\
 \end{tabular}
 \end{center}
 
-Any of these assignments are sufficient for calculating $t_{n,m}$. 
+Any of these assignments are sufficient for calculating $t_{m,n}$. 
 
 \section{Summary of Results}
 \label{section: summary of results}
@@ -1820,7 +1817,6 @@ TODO make table with tile sets and matrices
   
 \end{tblr}
 \end{center}
-
 
 \printbibliography
 
