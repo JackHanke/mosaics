@@ -282,7 +282,7 @@ A(k) = \begin{bmatrix}
 A_1 & A_2 \\
 A_3 & A_4
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. Then we have
+$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -293,7 +293,7 @@ A_3 & A_4 & A_3 & A_4 \\
 \end{bmatrix},
 $$
 
-where products of a scalar and block matrix are done element-wise. Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
+Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
 
 \end{defn}
 
@@ -1104,23 +1104,22 @@ Additionally, it turns out that it is easier to enumerate the number of messy mo
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. 
+we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
 
-\begin{thm}
-\label{thm: messy mosaics}
+\begin{defn}
 
-To enumerate $t_{m,n}$, we construct $A(n) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ recursively with the initial matrix $
-A(2) = \begin{bmatrix}
+$A(2) = \begin{bmatrix}
 b^2 & 1 \\
 -1 & 1
-\end{bmatrix}
-$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set. We recursively define $A(k+1)$ given $A(k)$. Begin by writing
+\end{bmatrix}$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set. 
+
+We recursively define $A(k+1) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ given $A(k)$. Begin by writing
 $
 A(k) = \begin{bmatrix}
 A_1 & A_2 \\
 A_3 & A_4
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{n-2} \times 2^{n-2}$, or scalars if $n=2$. Then we have
+$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -1128,25 +1127,16 @@ A(k+1) = \begin{bmatrix}
     bA_3 & bA_4 & 0A_3 & A_4 \\
     -\frac{1}{b}A_1 & 0A_2 & \frac{1}{b}A_1 & A_2 \\
     A_3 & A_4 & -A_3 & bA_4 \\
-\end{bmatrix},
+\end{bmatrix}.
 $$
 
-where products of a scalar and block matrix are done element-wise. Construct $A(n)$ by starting with $k=2$ and recursing until $k=n$. Next denote the rows and columns of $A(n)$ as
-$$
-A(m) = 
-\begin{bmatrix}
-    r_1 \\
-    r_2 \\
-    ... \\
-    r_{2^{n-1}} \\
-\end{bmatrix} = 
-\begin{bmatrix}
-    c_1 & c_2 & ... & c_{2^{n-1}}
-\end{bmatrix}
-$$
+Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
 
-Then $t_{m,n} = r_1 A(n)^{m-2}c_1 .$
+\end{defn}
 
+\begin{thm}
+\label{thm: messy mosaics}
+The $(0,0)$ entry of $A(m)^n$ is $t_{m,n}$.
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
@@ -1546,7 +1536,7 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
     \end{tikzpicture}
 \end{center}
 
-This immediately gives us a way to construct an analagous definition for our transition matrixes $M(m) = \begin{bmatrix} M_1 & M_2 \\ M_3 & M_4 \end{bmatrix}$. As the appending of a cell parity configuration can possibly change the number of admitted cells, we define $v_{1} ,\dots, v_{16}$ for the associated change in the number of mosaics for the recursive definition of $M(m+1)$. A simple way to obtain $v_{1} ,\dots, v_{16}$ is to directly compute $M(2)$ and $M(3)$ and compare their values like so.
+This immediately gives us a way to construct an analagous definition for our transition matrixes $A(k) = \begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$. As the appending of a cell parity configuration can possibly change the number of admitted cells, we define $v_{1} ,\dots, v_{16}$ for the associated change in the number of mosaics for the recursive definition of $A(k+1)$. A simple way to obtain $v_{1} ,\dots, v_{16}$ is to directly compute $A(2)$ and $A(3)$ and compare their values like so.
 
 $$M(2) = 
 \begin{bmatrix}
@@ -1563,22 +1553,22 @@ b^3 & b & b & 1 \\
 This gives
 
 $$
-M(m+1) = 
+A(k+1) = 
 \begin{bmatrix}
-    v_{1}M_1 & v_{2}M_2 & v_{3}M_1 & v_{4}M_2 \\
-    v_{5}M_3 & v_{6}M_4 & v_{7}M_3 & v_{8}M_4 \\
-    v_{9}M_1 & v_{10}M_2 & v_{11}M_1 & v_{12}M_2 \\
-    v_{13}M_3 & v_{14}M_4 & v_{15}M_3 & v_{16}M_4 \\
+    v_{1}A_1 & v_{2}A_2 & v_{3}A_1 & v_{4}A_2 \\
+    v_{5}A_3 & v_{6}A_4 & v_{7}A_3 & v_{8}A_4 \\
+    v_{9}A_1 & v_{10}A_2 & v_{11}A_1 & v_{12}A_2 \\
+    v_{13}A_3 & v_{14}A_4 & v_{15}A_3 & v_{16}A_4 \\
 \end{bmatrix} =
 \begin{bmatrix}
-bM_1 & bM_2 & \frac{1}{b}M_1 & M_2 \\
-bM_3 & bM_4 & 0M_3 & M_4 \\
--\frac{1}{b}M_1 & 0M_2 & \frac{1}{b}M_1 & M_2 \\
-M_3 & M_4 & -M_3 & bM_4 \\
+bA_1 & bA_2 & \frac{1}{b}A_1 & A_2 \\
+bA_3 & bA_4 & 0A_3 & A_4 \\
+-\frac{1}{b}A_1 & 0A_2 & \frac{1}{b}A_1 & A_2 \\
+A_3 & A_4 & -A_3 & bA_4 \\
 \end{bmatrix}.
 $$
 
-An analagous argument to Theorem \ref{thm: main theorem} gives the result.
+An analagous argument to Theorem \ref{thm: main theorem} then gives the result.
 
 \end{proof}
 
