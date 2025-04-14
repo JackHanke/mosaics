@@ -53,6 +53,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[thm]{Remark}
 \newtheorem{note}[thm]{Note}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{exmp}{Example}[section]
@@ -104,7 +105,9 @@
 \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
 
-\newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=0pt] (A) at ( #1 , #2 ) {#3};}
+\newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=5pt] (A) at ( #1 , #2 ) {#3};}
+
+\newcommand{\lablvertex}[3]{\node[shape=circle,draw=none,fill=white, inner sep=2pt,minimum size=5pt] (A) at ( #1 , #2 ) {#3};}
 
 \usepackage[margin=1in]{geometry}
 \date{}
@@ -205,13 +208,13 @@ Call these symbols \textit{tiles}. A \textit{mosaic} of size $(m,n)$ is an $m \t
 \end{tikzpicture}
 \end{center}
 
-Consider a shared edge between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all shared edges between tiles having $0$ or $2$ dotted lines drawn from their midpoint.
+Consider a edge shared between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all unit edges having $0$ or $2$ dotted lines drawn from their midpoint.
 
-We call these polygon mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form shapes we call \textit{polygons}. 
+We call these polygon mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. 
 
 \begin{exmp}
 \label{exmp: clean sap}
-Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygons, hilighted in gray.
+Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygons, with the squares that make them up hilighted in gray.
 
 \begin{center}
     \begin{tikzpicture}
@@ -259,7 +262,7 @@ Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygo
 \end{center}
 \end{exmp}
 
-These polygons\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.} can be formed with any even number of tiles greater than $2$, and can take on many shapes. In large enough mosaics, larger polygons can surround smaller polygons. 
+Note that in large enough mosaics, it is possible for larger polygons to surround smaller polygons. 
 
 Let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one cannot construct a polygon mosaic, so 
 $$p_{m,1} = p_{1,n} = 0.$$
@@ -268,31 +271,31 @@ Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds\
 
 $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
 
-We give an exact expression for $p_{m,n}$ for $m,n \geq 2$ in Theorem \ref{thm: main theorem}. We also introduce and enumerate \textit{messy polygon mosaics}, a variant on the previously studied polygon mosaics with a similar enumeration strategy.
+In Theorem \ref{thm: main theorem}, we provide an exact expression for $p_{m,n}$ for $m,n \geq 2$. We also introduce messy polygon mosaics—a variant of polygon mosaics—and enumerate them using a similar strategy.
 
 First we define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $p_{m,n}$.
 
 \begin{defn}
 \label{defn: A}
 
-$A(2) = \begin{bmatrix}
+First define $A(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
 \end{bmatrix}
 $. We recursively define $A(k+1)$ given $A(k)$. Begin by writing
 $
 A(k) = \begin{bmatrix}
-A_1 & A_2 \\
-A_3 & A_4
+A_{0,0} & A_{0,1} \\
+A_{1,0} & A_{1,1}
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
+$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
 
 $$
 A(k+1) = \begin{bmatrix}
-A_1 & A_2 & A_1 & A_2 \\
-A_3 & A_4 & 0A_3 & A_4 \\
-A_1 & 0A_2 & A_1 & A_2 \\
-A_3 & A_4 & A_3 & A_4 \\
+A_{0,0} & A_{0,0} & A_{0,1} & A_{0,1} \\
+A_{0,0} & A_{0,0} & 0A_{0,1} & A_{0,1} \\
+A_{1,0} & 0A_{1,0} & A_{1,1} & A_{1,1} \\
+A_{1,0} & A_{1,0} & A_{1,1} & A_{1,1} \\
 \end{bmatrix},
 $$
 
@@ -302,16 +305,14 @@ Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$.
 
 \begin{thm}
 \label{thm: main theorem}    
-The $(0,0)$ entry of $A(m)^n$ is $p_{m,n}$.
+The number of polygon mosaics $p_{m,n}$ is the $(0,0)$-th entry of $A(m)^n$.
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: main theorem}}
 
 \begin{proof}
 
-For a given mosaic, color the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, color it black. If the vertex is surrounded by an odd number of polygons, color it white with a green border. To make a \textit{vertex coloring} we also remove the dotted lines from all tiles in the mosaic. 
-
-Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring of the vertices, and then the removal of the dotted lines.
+For a given mosaic, label the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. To make a \textit{vertex labeling} we also remove the dotted lines from all tiles in the mosaic. Using the mosaic from Example \ref{exmp: clean sap}, we show both the labeling of the vertices, and then the removal of the dotted lines.
 
 \begin{center}
     \begin{tikzpicture}
@@ -356,62 +357,61 @@ Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring o
         \cell{5}{4}{6}{5}
         \cell{6}{4}{7}{5}
         % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=black] (6,0) circle (3pt);
-        \draw[fill=black] (7,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{7}{0}{$0$} \)
         % label for row1
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        \draw[fill=black] (4,1) circle (3pt);
-        \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=black] (6,1) circle (3pt);
-        \draw[fill=black] (7,1) circle (3pt);
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$0$} \)
+        \( \lablvertex{7}{1}{$0$} \)
         % label for row1
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=black] (6,2) circle (3pt);
-        \draw[fill=black] (7,2) circle (3pt);
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$0$} \)
+        \( \lablvertex{7}{2}{$0$} \)
         % label for row1
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=black] (4,3) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
-        \draw[fill=black] (6,3) circle (3pt);
-        \draw[fill=black] (7,3) circle (3pt);
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{3}{$0$} \)
         % label for row1
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,4) circle (3pt);
-        \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=black] (4,4) circle (3pt);
-        \draw[fill=black] (5,4) circle (3pt);
-        \draw[fill=black] (6,4) circle (3pt);
-        \draw[fill=black] (7,4) circle (3pt);
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$1$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$0$} \)
+        \( \lablvertex{6}{4}{$0$} \)
+        \( \lablvertex{7}{4}{$0$} \)
         % label for row1
-        \draw[fill=black] (0,5) circle (3pt);
-        \draw[fill=black] (1,5) circle (3pt);
-        \draw[fill=black] (2,5) circle (3pt);
-        \draw[fill=black] (3,5) circle (3pt);
-        \draw[fill=black] (4,5) circle (3pt);
-        \draw[fill=black] (5,5) circle (3pt);
-        \draw[fill=black] (6,5) circle (3pt);
-        \draw[fill=black] (7,5) circle (3pt);
-
+        \( \lablvertex{0}{5}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        \( \lablvertex{3}{5}{$0$} \)
+        \( \lablvertex{4}{5}{$0$} \)
+        \( \lablvertex{5}{5}{$0$} \)
+        \( \lablvertex{6}{5}{$0$} \)
+        \( \lablvertex{7}{5}{$0$} \)
         % arrow
-        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)        
+        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
 
         % row1
         \cell{8}{0}{9}{1}
@@ -453,66 +453,178 @@ Using the mosaic from Example \ref{exmp: clean sap}, we show both the coloring o
         \cell{12}{4}{13}{5}
         \cell{13}{4}{14}{5}
         \cell{14}{4}{15}{5}
+
         % label for row1
-        \draw[fill=black] (8,0) circle (3pt);
-        \draw[fill=black] (9,0) circle (3pt);
-        \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=black] (11,0) circle (3pt);
-        \draw[fill=black] (12,0) circle (3pt);
-        \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=black] (14,0) circle (3pt);
-        \draw[fill=black] (15,0) circle (3pt);
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$0$} \)
+        \( \lablvertex{12}{0}{$0$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$0$} \)
+        \( \lablvertex{15}{0}{$0$} \)
         % label for row1
-        \draw[fill=black] (8,1) circle (3pt);
-        \draw[fill=black] (9,1) circle (3pt);
-        \draw[fill=black] (10,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
-        \draw[fill=black] (12,1) circle (3pt);
-        \draw[fill=black] (13,1) circle (3pt);
-        \draw[fill=black] (14,1) circle (3pt);
-        \draw[fill=black] (15,1) circle (3pt);
+        \( \lablvertex{8}{1}{$0$} \)
+        \( \lablvertex{9}{1}{$0$} \)
+        \( \lablvertex{10}{1}{$0$} \)
+        \( \lablvertex{11}{1}{$1$} \)
+        \( \lablvertex{12}{1}{$0$} \)
+        \( \lablvertex{13}{1}{$0$} \)
+        \( \lablvertex{14}{1}{$0$} \)
+        \( \lablvertex{15}{1}{$0$} \)
         % label for row1
-        \draw[fill=black] (8,2) circle (3pt);
-        \draw[fill=black] (9,2) circle (3pt);
-        \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
-        \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=black] (14,2) circle (3pt);
-        \draw[fill=black] (15,2) circle (3pt);
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$0$} \)
+        \( \lablvertex{15}{2}{$0$} \)
         % label for row1
-        \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=black] (9,3) circle (3pt);
-        \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=black] (11,3) circle (3pt);
-        \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=black] (13,3) circle (3pt);
-        \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=black] (15,3) circle (3pt);
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$0$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$0$} \)
+        \( \lablvertex{12}{3}{$0$} \)
+        \( \lablvertex{13}{3}{$0$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{15}{3}{$0$} \)
         % label for row1
-        \draw[fill=black] (8,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (9,4) circle (3pt);
-        \draw[fill=black] (10,4) circle (3pt);
-        \draw[fill=black] (11,4) circle (3pt);
-        \draw[fill=black] (12,4) circle (3pt);
-        \draw[fill=black] (13,4) circle (3pt);
-        \draw[fill=black] (14,4) circle (3pt);
-        \draw[fill=black] (15,4) circle (3pt);
+        \( \lablvertex{8}{4}{$0$} \)
+        \( \lablvertex{9}{4}{$1$} \)
+        \( \lablvertex{10}{4}{$0$} \)
+        \( \lablvertex{11}{4}{$0$} \)
+        \( \lablvertex{12}{4}{$0$} \)
+        \( \lablvertex{13}{4}{$0$} \)
+        \( \lablvertex{14}{4}{$0$} \)
+        \( \lablvertex{15}{4}{$0$} \)
         % label for row1
-        \draw[fill=black] (8,5) circle (3pt);
-        \draw[fill=black] (9,5) circle (3pt);
-        \draw[fill=black] (10,5) circle (3pt);
-        \draw[fill=black] (11,5) circle (3pt);
-        \draw[fill=black] (12,5) circle (3pt);
-        \draw[fill=black] (13,5) circle (3pt);
-        \draw[fill=black] (14,5) circle (3pt);
-        \draw[fill=black] (15,5) circle (3pt);
+        \( \lablvertex{8}{5}{$0$} \)
+        \( \lablvertex{9}{5}{$0$} \)
+        \( \lablvertex{10}{5}{$0$} \)
+        \( \lablvertex{11}{5}{$0$} \)
+        \( \lablvertex{12}{5}{$0$} \)
+        \( \lablvertex{13}{5}{$0$} \)
+        \( \lablvertex{14}{5}{$0$} \)
+        \( \lablvertex{15}{5}{$0$} \)
+
     \end{tikzpicture}
 \end{center}
 
-The critical point is this: even with the dotted lines removed, the vertex coloring uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. We can then enumerate $p_{m,n}$ by enumerating the number of vertex colorings that correspond with a valid polygon mosaic. 
+The critical point is this: even with the dotted lines removed, the vertex labeling uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. This is because the vertex labeling of an individual cell, which we will call a \textit{cell-labeling}, uniquely corresponds with a cell $T_i$. This is shown below.
 
-Consider the collection of vertex colorings. Each boundary vertex is necessarily colored black, and each interior vertex is colored either black or white. Of these $2^{(m-1)(n-1)}$ colorings, the colorings that correspond with valid polygon mosaics are ones that do not contain the following two sub-colorings.
+\begin{center}
+    \begin{tikzpicture}
+        % row 1
+        \cell{-2}{0}{-1}{1}
+        \( \lablnode{-1.5}{-0.5}{$T_1$} \) 
+        \cellA{0}{0}{1}{1}
+        \( \lablnode{0.5}{-0.5}{$T_2$} \) 
+        \cellB{2}{0}{3}{1}
+        \( \lablnode{2.5}{-0.5}{$T_3$} \) 
+        \cellC{4}{0}{5}{1}
+        \( \lablnode{4.5}{-0.5}{$T_4$} \) 
+        \cellD{6}{0}{7}{1}
+        \( \lablnode{6.5}{-0.5}{$T_5$} \) 
+        \cellE{8}{0}{9}{1}
+        \( \lablnode{8.5}{-0.5}{$T_6$} \) 
+        \cellF{10}{0}{11}{1}
+        \( \lablnode{10.5}{-0.5}{$T_7$} \) 
+
+        \( \lablvertex{-2}{0}{$1$} \)
+        \( \lablvertex{-2}{1}{$1$} \)
+        \( \lablvertex{-1}{0}{$1$} \)
+        \( \lablvertex{-1}{1}{$1$} \)
+
+        \( \lablvertex{0}{0}{$1$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{5}{0}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+
+        \( \lablvertex{8}{0}{$1$} \)
+        \( \lablvertex{8}{1}{$1$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{9}{1}{$0$} \)
+
+        \( \lablvertex{10}{0}{$1$} \)
+        \( \lablvertex{10}{1}{$0$} \)
+        \( \lablvertex{11}{0}{$1$} \)
+        \( \lablvertex{11}{1}{$0$} \)
+
+
+        % row 2
+        \cell{-2}{2}{-1}{3}
+        \( \lablnode{-1.5}{1.5}{$T_1$} \) 
+        \cellA{0}{2}{1}{3}
+        \( \lablnode{0.5}{1.5}{$T_2$} \) 
+        \cellB{2}{2}{3}{3}
+        \( \lablnode{2.5}{1.5}{$T_3$} \) 
+        \cellC{4}{2}{5}{3}
+        \( \lablnode{4.5}{1.5}{$T_4$} \) 
+        \cellD{6}{2}{7}{3}
+        \( \lablnode{6.5}{1.5}{$T_5$} \) 
+        \cellE{8}{2}{9}{3}
+        \( \lablnode{8.5}{1.5}{$T_6$} \) 
+        \cellF{10}{2}{11}{3}
+        \( \lablnode{10.5}{1.5}{$T_7$} \) 
+
+
+        \( \lablvertex{-2}{2}{$0$} \)
+        \( \lablvertex{-2}{3}{$0$} \)
+        \( \lablvertex{-1}{2}{$0$} \)
+        \( \lablvertex{-1}{3}{$0$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{2}{$1$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+
+        \( \lablvertex{2}{2}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+
+        \( \lablvertex{6}{2}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{2}{$0$} \)
+        \( \lablvertex{7}{3}{$1$} \)
+
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{2}{$1$} \)
+        \( \lablvertex{9}{3}{$1$} \)
+
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{10}{3}{$1$} \)
+        \( \lablvertex{11}{2}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+    \end{tikzpicture}
+\end{center}
+
+We can then enumerate $p_{m,n}$ by enumerating the number of vertex labelings that correspond with a valid polygon mosaic. 
+
+Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labelled $0$, and each interior vertex is labelled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell-labelings.
 
 \begin{center}
     \begin{tikzpicture}
@@ -520,43 +632,22 @@ Consider the collection of vertex colorings. Each boundary vertex is necessarily
         \cell{0}{0}{1}{1}
         \cell{2}{0}{3}{1}
 
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
-        \draw[fill=black] (3,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{0}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
 
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
+        \( \lablvertex{2}{0}{$1$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
         
     \end{tikzpicture}
 \end{center}
 
-These two sub-colorings aren't associasted with any of our tiles $T_1, \dots, T_7$, and so cannot possibly be created from the coloring process. 
+These two cell-labelings aren't associated with any of the cells $T_1, \dots, T_7$, and so cannot correspond with a polygon mosaic. We seek a recursive solution to enumerate the number of vertex labelings for a $m \times n$ grid with these  conditions: the labeling has a boundary of all $0$'s and does not contain the above cell-labelings. 
 
-We seek a recursive solution to enumerate the number of vertex colorings that avoid these sub-colorings. We start with a $m \times 1$ matrix for fixed $m$. We intend to build vertex colorings of an $m \times n$ matrix, so the upper and lower boundary vertices are colored black. We also build these matrices from right to left, so the right boundary vertices is also black. We have no conditions on the boundary of the left vertices, and so there are $2^{m-1}$ initial conditions. One of these initial conditions is below.
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        % row 1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (0,3) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-    \end{tikzpicture}
-\end{center}
-
-If we append some new column of vertex colorings to the left, the newly created $m \times 2$ matrix may or may not have created an illegal sub-coloring. In the below example, the new left column does not create an illegal sub-coloring.  
+Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labelled $0$. One of these columns for $m=3$ is below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -564,30 +655,94 @@ If we append some new column of vertex colorings to the left, the newly created 
         \cell{0}{1}{1}{2}
         \cell{0}{2}{1}{3}
 
-        \cell{-1}{0}{0}{1}
-        \cell{-1}{1}{0}{2}
-        \cell{-1}{2}{0}{3}
-
-        % \draw[black] (-1,0) -- (-1,3);
-        % row 1
-        \draw[fill=black] (-1,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (-1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (-1,2) circle (3pt);
-        \draw[fill=black] (-1,3) circle (3pt);
-
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (0,3) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
+        % col 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        % col 2
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        % index
+        % \( \lablnode{0.5}{-1}{$(0,2)$} \)
     \end{tikzpicture}
 \end{center}
 
-With this in mind, we can create a transition matrix that maps every right edge vertex coloring to every left edge vertex coloring, and assigns the value of $0$ to $m \times 1$ columns that contain illegal colorings, and $1$ otherwise.  Below is a diagram for the $m=3$ matrix. 
+It is useful to define an index for vertex labelings of these $m \times 1$ columns. To do this, consider reading a column of vertex labelings from bottom to top, ignoring the first and last $0$'s. If we interpret these sequences for the left and right column as binary numbers $b_{left}$ and $b_{right}$, the index in base ten is the pair $(b_{left}, b_{right})$. For example, for the above $m=3$ column, we have sequences $00$ for the left column and $10$ for the right column, so the index is $(0,2)$.
+
+Next consider a column with index $(0, b_{1})$ for some $b_{1} \in [0,2^{m-1}-1]$. For reasons we will see later, let's call this the \textit{starting column}. Now consider appending a column with index $(b_{1}, b_{2})$ for some $b_{2} \in [0,2^{m-1}-1]$. For example, below is a diagram for appending our starting column $(0,2)$ with column $(2,3)$. 
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        % col 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        % col 2
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+
+        % plus
+        \( \lablnode{1.5}{1.5}{$\pmb{+}$} \)
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+        % col 1
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        % col 1
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+
+        \( \lablnode{3.5}{1.5}{$\pmb{\to}$} \)
+
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+        \cell{5}{0}{6}{1}
+        \cell{5}{1}{6}{2}
+        \cell{5}{2}{6}{3}
+
+        % col 1
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        % col 2
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        % col 3
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+
+
+    \end{tikzpicture}
+\end{center}
+
+Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell-labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell-labeling. 
+
+Finally, if we further appended a column with label $(b_2,0)$, we would have created a vertex labeling with a boundary of all $0$'s. For this reason, let's call a column with index $(b,0)$ for $b \in [0,2^{m-1}-1]$ an \textit{ending column}. This vertex labeling would correspond with $1$ polygon mosaic if the middle column had index $(2,3)$, but not if the middle column had index $(2,1)$.
+
+This motivates the creation of a matrix $A(m)$ to every column index $(i,j)$, where $A(m)_{i,j}=1$ if the column labeling corresponds with a legal polygon mosaic, and $0$ otherwise. For example, the $A(3)$ matrix corresponds with the following labeled columns. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -656,165 +811,166 @@ With this in mind, we can create a transition matrix that maps every right edge 
         \cell{6}{13}{7}{14}
         \cell{6}{14}{7}{15}
         % row 1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,2) circle (3pt);
-        \draw[fill=black] (0,3) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,2) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-
-        \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
-        \draw[fill=black] (4,3) circle (3pt);
-
-        \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
-
-        \draw[fill=black] (6,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
-        \draw[fill=black] (6,3) circle (3pt);
-
-        \draw[fill=black] (7,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
-        \draw[fill=black] (7,3) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{0}{2}{$1$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        
+        \( \lablvertex{7}{0}{$0$} \)
+        \( \lablvertex{7}{1}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{7}{3}{$0$} \)
         % row 2
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,5) circle (3pt);
-        \draw[fill=black] (0,6) circle (3pt);
-        \draw[fill=black] (0,7) circle (3pt);
-
-        \draw[fill=black] (1,4) circle (3pt);
-        \draw[fill=black] (1,5) circle (3pt);
-        \draw[fill=black] (1,6) circle (3pt);
-        \draw[fill=black] (1,7) circle (3pt);
-
-        \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,5) circle (3pt);
-        \draw[fill=black] (2,6) circle (3pt);
-        \draw[fill=black] (2,7) circle (3pt);
-
-        \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=black] (3,5) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,6) circle (3pt);
-        \draw[fill=black] (3,7) circle (3pt);
-
-        \draw[fill=black] (4,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,5) circle (3pt);
-        \draw[fill=black] (4,6) circle (3pt);
-        \draw[fill=black] (4,7) circle (3pt);
-
-        \draw[fill=black] (5,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,5) circle (3pt);
-        \draw[fill=black] (5,6) circle (3pt);
-        \draw[fill=black] (5,7) circle (3pt);
-
-        \draw[fill=black] (6,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,5) circle (3pt);
-        \draw[fill=black] (6,6) circle (3pt);
-        \draw[fill=black] (6,7) circle (3pt);
-
-        \draw[fill=black] (7,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,5) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,6) circle (3pt);
-        \draw[fill=black] (7,7) circle (3pt);
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$1$} \)
+        \( \lablvertex{0}{6}{$0$} \)
+        \( \lablvertex{0}{7}{$0$} \)
+        
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        \( \lablvertex{1}{6}{$0$} \)
+        \( \lablvertex{1}{7}{$0$} \)
+        
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$1$} \)
+        \( \lablvertex{2}{6}{$0$} \)
+        \( \lablvertex{2}{7}{$0$} \)
+        
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{3}{5}{$0$} \)
+        \( \lablvertex{3}{6}{$1$} \)
+        \( \lablvertex{3}{7}{$0$} \)
+        
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{4}{5}{$1$} \)
+        \( \lablvertex{4}{6}{$0$} \)
+        \( \lablvertex{4}{7}{$0$} \)
+        
+        \( \lablvertex{5}{4}{$0$} \)
+        \( \lablvertex{5}{5}{$1$} \)
+        \( \lablvertex{5}{6}{$0$} \)
+        \( \lablvertex{5}{7}{$0$} \)
+        
+        \( \lablvertex{6}{4}{$0$} \)
+        \( \lablvertex{6}{5}{$1$} \)
+        \( \lablvertex{6}{6}{$0$} \)
+        \( \lablvertex{6}{7}{$0$} \)
+        
+        \( \lablvertex{7}{4}{$0$} \)
+        \( \lablvertex{7}{5}{$1$} \)
+        \( \lablvertex{7}{6}{$1$} \)
+        \( \lablvertex{7}{7}{$0$} \)
         % row 3
-        \draw[fill=black] (0,8) circle (3pt);
-        \draw[fill=black] (0,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,10) circle (3pt);
-        \draw[fill=black] (0,11) circle (3pt);
-
-        \draw[fill=black] (1,8) circle (3pt);
-        \draw[fill=black] (1,9) circle (3pt);
-        \draw[fill=black] (1,10) circle (3pt);
-        \draw[fill=black] (1,11) circle (3pt);
-
-        \draw[fill=black] (2,8) circle (3pt);
-        \draw[fill=black] (2,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,10) circle (3pt);
-        \draw[fill=black] (2,11) circle (3pt);
-
-        \draw[fill=black] (3,8) circle (3pt);
-        \draw[fill=black] (3,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,10) circle (3pt);
-        \draw[fill=black] (3,11) circle (3pt);
-
-        \draw[fill=black] (4,8) circle (3pt);
-        \draw[fill=black] (4,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,10) circle (3pt);
-        \draw[fill=black] (4,11) circle (3pt);
-
-        \draw[fill=black] (5,8) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,9) circle (3pt);
-        \draw[fill=black] (5,10) circle (3pt);
-        \draw[fill=black] (5,11) circle (3pt);
-
-        \draw[fill=black] (6,8) circle (3pt);
-        \draw[fill=black] (6,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,10) circle (3pt);
-        \draw[fill=black] (6,11) circle (3pt);
-
-        \draw[fill=black] (7,8) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,9) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,10) circle (3pt);
-        \draw[fill=black] (7,11) circle (3pt);
+        \( \lablvertex{0}{8}{$0$} \)
+        \( \lablvertex{0}{9}{$0$} \)
+        \( \lablvertex{0}{10}{$1$} \)
+        \( \lablvertex{0}{11}{$0$} \)
+        
+        \( \lablvertex{1}{8}{$0$} \)
+        \( \lablvertex{1}{9}{$0$} \)
+        \( \lablvertex{1}{10}{$0$} \)
+        \( \lablvertex{1}{11}{$0$} \)
+        
+        \( \lablvertex{2}{8}{$0$} \)
+        \( \lablvertex{2}{9}{$0$} \)
+        \( \lablvertex{2}{10}{$1$} \)
+        \( \lablvertex{2}{11}{$0$} \)
+        
+        \( \lablvertex{3}{8}{$0$} \)
+        \( \lablvertex{3}{9}{$0$} \)
+        \( \lablvertex{3}{10}{$1$} \)
+        \( \lablvertex{3}{11}{$0$} \)
+        
+        \( \lablvertex{4}{8}{$0$} \)
+        \( \lablvertex{4}{9}{$0$} \)
+        \( \lablvertex{4}{10}{$1$} \)
+        \( \lablvertex{4}{11}{$0$} \)
+        
+        \( \lablvertex{5}{8}{$0$} \)
+        \( \lablvertex{5}{9}{$1$} \)
+        \( \lablvertex{5}{10}{$0$} \)
+        \( \lablvertex{5}{11}{$0$} \)
+        
+        \( \lablvertex{6}{8}{$0$} \)
+        \( \lablvertex{6}{9}{$0$} \)
+        \( \lablvertex{6}{10}{$1$} \)
+        \( \lablvertex{6}{11}{$0$} \)
+        
+        \( \lablvertex{7}{8}{$0$} \)
+        \( \lablvertex{7}{9}{$1$} \)
+        \( \lablvertex{7}{10}{$1$} \)
+        \( \lablvertex{7}{11}{$0$} \)
         % row 4
-        \draw[fill=black] (0,12) circle (3pt);
-        \draw[fill=black] (0,13) circle (3pt);
-        \draw[fill=black] (0,14) circle (3pt);
-        \draw[fill=black] (0,15) circle (3pt);
+        \( \lablvertex{0}{12}{$0$} \)
+        \( \lablvertex{0}{13}{$0$} \)
+        \( \lablvertex{0}{14}{$0$} \)
+        \( \lablvertex{0}{15}{$0$} \)
+        
+        \( \lablvertex{1}{12}{$0$} \)
+        \( \lablvertex{1}{13}{$0$} \)
+        \( \lablvertex{1}{14}{$0$} \)
+        \( \lablvertex{1}{15}{$0$} \)
+        
+        \( \lablvertex{2}{12}{$0$} \)
+        \( \lablvertex{2}{13}{$0$} \)
+        \( \lablvertex{2}{14}{$0$} \)
+        \( \lablvertex{2}{15}{$0$} \)
+        
+        \( \lablvertex{3}{12}{$0$} \)
+        \( \lablvertex{3}{13}{$0$} \)
+        \( \lablvertex{3}{14}{$1$} \)
+        \( \lablvertex{3}{15}{$0$} \)
+        
+        \( \lablvertex{4}{12}{$0$} \)
+        \( \lablvertex{4}{13}{$0$} \)
+        \( \lablvertex{4}{14}{$0$} \)
+        \( \lablvertex{4}{15}{$0$} \)
+        
+        \( \lablvertex{5}{12}{$0$} \)
+        \( \lablvertex{5}{13}{$1$} \)
+        \( \lablvertex{5}{14}{$0$} \)
+        \( \lablvertex{5}{15}{$0$} \)
+        
+        \( \lablvertex{6}{12}{$0$} \)
+        \( \lablvertex{6}{13}{$0$} \)
+        \( \lablvertex{6}{14}{$0$} \)
+        \( \lablvertex{6}{15}{$0$} \)
+        
+        \( \lablvertex{7}{12}{$0$} \)
+        \( \lablvertex{7}{13}{$1$} \)
+        \( \lablvertex{7}{14}{$1$} \)
+        \( \lablvertex{7}{15}{$0$} \)
 
-        \draw[fill=black] (1,12) circle (3pt);
-        \draw[fill=black] (1,13) circle (3pt);
-        \draw[fill=black] (1,14) circle (3pt);
-        \draw[fill=black] (1,15) circle (3pt);
-
-        \draw[fill=black] (2,12) circle (3pt);
-        \draw[fill=black] (2,13) circle (3pt);
-        \draw[fill=black] (2,14) circle (3pt);
-        \draw[fill=black] (2,15) circle (3pt);
-
-        \draw[fill=black] (3,12) circle (3pt);
-        \draw[fill=black] (3,13) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,14) circle (3pt);
-        \draw[fill=black] (3,15) circle (3pt);
-
-        \draw[fill=black] (4,12) circle (3pt);
-        \draw[fill=black] (4,13) circle (3pt);
-        \draw[fill=black] (4,14) circle (3pt);
-        \draw[fill=black] (4,15) circle (3pt);
-
-        \draw[fill=black] (5,12) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,13) circle (3pt);
-        \draw[fill=black] (5,14) circle (3pt);
-        \draw[fill=black] (5,15) circle (3pt);
-
-        \draw[fill=black] (6,12) circle (3pt);
-        \draw[fill=black] (6,13) circle (3pt);
-        \draw[fill=black] (6,14) circle (3pt);
-        \draw[fill=black] (6,15) circle (3pt);
-
-        \draw[fill=black] (7,12) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,13) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,14) circle (3pt);
-        \draw[fill=black] (7,15) circle (3pt);
         % arrow
         \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
         % matrix
@@ -825,59 +981,57 @@ With this in mind, we can create a transition matrix that maps every right edge 
     \end{tikzpicture}
 \end{center}
 
-We design $A(3)$ so that each column has the same right edge vertex coloring and every row has the same left edge vertex coloring. Notice the entries of $A(3)$ are $1$ if the vertex coloring admits a tile configuration, and $0$ otherwise. 
+$A(m)$ has the property that the $0$-th row represets all starting columns, and the $0$-th column represents all ending columns. Even more importantly, notice that $A(m)^2_{i,j}$ represents the number of $m \times 2$ grids with left-most index $i$ and right-most index $j$ that correspond with a legal polygon mosaic. In general, $(A(m)^n)_{i,j}$ represents this quantity for an $m \times n$ grid of cells, and so if we know $A(m)$ for some $m$, then $(A(m)^n)_{0,0} = p_{m,n}.$
 
-If we define $A(3)$ in this way, then $c_1$ of $A(3)$ represents all vertex colorings that ``start with a boundary" and $r_1$ of $A(3)$ represents all vertex colorings that ``end with a boundary". This immediately gives that $p_{3,n} = r_1 A(3)^{n-2} c_1.$
-
-The final component in enumerating $p_{m,n}$ is constructing $A(m)$ for any $m$. To do this, begin by considering $A(2)$ along with its represented vertex coloring below.
+The final component of the proof is constructing $A(m)$ for any $m$. Begin by  calculating $A(2)$ by identifying the number of legal polygon mosaics that correspond with each vertex coloring index $\{(0,0),(0,1),(1,0),(1,1)\}$, like so.
 
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
         \cell{0}{1}{1}{2}
-
+        
         \cell{2}{0}{3}{1}
         \cell{2}{1}{3}{2}
-
+        
         % row2
         \cell{0}{3}{1}{4}
         \cell{0}{4}{1}{5}
-
+        
         \cell{2}{3}{3}{4}
         \cell{2}{4}{3}{5}
         % row 1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (0,2) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        \draw[fill=black] (3,2) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$0$} \)
         % row 2
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=black] (0,5) circle (3pt);
-
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (1,4) circle (3pt);
-        \draw[fill=black] (1,5) circle (3pt);
-
-        \draw[fill=black] (2,3) circle (3pt);
-        \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=black] (2,5) circle (3pt);
-
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,4) circle (3pt);
-        \draw[fill=black] (3,5) circle (3pt);
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$0$} \)
+        
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{3}{4}{$1$} \)
+        \( \lablvertex{3}{5}{$0$} \)
 
         % arrow
         \( \lablnode{5}{2.5}{$\pmb{\to}$} \)
@@ -887,7 +1041,38 @@ The final component in enumerating $p_{m,n}$ is constructing $A(m)$ for any $m$.
     \end{tikzpicture}
 \end{center}
 
-If one knows the value of $A(2)$ at say position $(0,1)$, then one can identify the mapping by considering appending all possible vertex colorings to the bottom of the column, like so.
+Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell-labelings below. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$0$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        
+    \end{tikzpicture}
+\end{center}
+
+For example, for the $m=2$ column with index $(0,1)$, this operation looks like the following.
 
 \begin{center}
     \begin{tikzpicture}
@@ -896,13 +1081,16 @@ If one knows the value of $A(2)$ at say position $(0,1)$, then one can identify 
         \cell{-4.5}{3.5}{-3.5}{4.5}
 
         % row 1
-        \draw[fill=black] (-4.5,2.5) circle (3pt);
-        \draw[fill=black] (-4.5,3.5) circle (3pt);
-        \draw[fill=black] (-4.5,4.5) circle (3pt);
+        \( \lablvertex{-4.5}{2.5}{$0$} \)
+        \( \lablvertex{-4.5}{3.5}{$0$} \)
+        \( \lablvertex{-4.5}{4.5}{$0$} \)
+        
+        \( \lablvertex{-3.5}{2.5}{$0$} \)
+        \( \lablvertex{-3.5}{3.5}{$1$} \)
+        \( \lablvertex{-3.5}{4.5}{$0$} \)
 
-        \draw[fill=black] (-3.5,2.5) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (-3.5,3.5) circle (3pt);
-        \draw[fill=black] (-3.5,4.5) circle (3pt);
+        % label
+        \( \lablnode{-4}{1.5}{$A(2)_{0,1}$} \)
 
         % arrow
         \( \lablnode{-2}{3.5}{$\pmb{\to}$} \)
@@ -916,107 +1104,117 @@ If one knows the value of $A(2)$ at say position $(0,1)$, then one can identify 
         \cell{2}{1}{3}{2}
         \cell{2}{2}{3}{3}
 
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (0,3) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,2) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$1$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{2}{2}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        
         \cell{0}{4}{1}{5}
         \cell{0}{5}{1}{6}
         \cell{0}{6}{1}{7}
-
+        
         \cell{2}{4}{3}{5}
         \cell{2}{5}{3}{6}
         \cell{2}{6}{3}{7}
 
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=black] (0,5) circle (3pt);
-        \draw[fill=black] (0,6) circle (3pt);
-        \draw[fill=black] (0,7) circle (3pt);
-
-        \draw[fill=black] (1,4) circle (3pt);
-        \draw[fill=black] (1,5) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,6) circle (3pt);
-        \draw[fill=black] (1,7) circle (3pt);
-
-        \draw[fill=black] (2,4) circle (3pt);
-        \draw[fill=black] (2,5) circle (3pt);
-        \draw[fill=black] (2,6) circle (3pt);
-        \draw[fill=black] (2,7) circle (3pt);
-
-        \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,5) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,6) circle (3pt);
-        \draw[fill=black] (3,7) circle (3pt);
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$0$} \)
+        \( \lablvertex{0}{6}{$0$} \)
+        \( \lablvertex{0}{7}{$0$} \)
+        
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$1$} \)
+        \( \lablvertex{1}{6}{$0$} \)
+        \( \lablvertex{1}{7}{$0$} \)
+        
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        \( \lablvertex{2}{6}{$0$} \)
+        \( \lablvertex{2}{7}{$0$} \)
+        
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{3}{5}{$1$} \)
+        \( \lablvertex{3}{6}{$1$} \)
+        \( \lablvertex{3}{7}{$0$} \)
 
         \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
 
-        \( \lablnode{7}{3.5}{$\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$} \)
+        \( \lablnode{7.5}{3.5}{$\begin{bmatrix} A(3)_{0,2} & A(3)_{0,3} \\ A(3)_{1,2} & A(3)_{1,3} \end{bmatrix}$} \)
 
     \end{tikzpicture}
 \end{center}
 
-If we write $A(2) = \begin{bmatrix}
-    1 & 1 \\
-    1 & 1 
-\end{bmatrix} = 
-\begin{bmatrix}
-    A_1 & A_2 \\
-    A_3 & A_4 
-\end{bmatrix}
-$, and compute these mappings for all possible parity configurations, we get
+This operation results in $4$ new columns that are represented in $A(k+1)$. In our example, specifically we get the following. 
 
 $$
-A(3) = 
+\begin{bmatrix} 
+    A(3)_{0,2} & A(3)_{0,3} \\ 
+    A(3)_{1,2} & A(3)_{1,3} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+    1A(2)_{i,j} & 1A(2)_{i,j} \\ 
+    0A(2)_{i,j} & 1A(2)_{i,j} 
+\end{bmatrix},
+$$
+
+Critically, this transformation \textit{only} changes the identity of the top two tiles. This implies that the same value coefficients computed by comparing $A(2)$ and $A(3)$ can be used for any $m \times 1$ column, as long as both column indices $(i,j)$ are congruent $\text{mod } 2$. Furthermore, if one writes $A(k)$ as the block matrix
+
+$$A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$$
+
+where $A_{\hat{i},\hat{j}} \in \mathbb{R}^{2^{k-2} \times 2^{k-2}}$, then all column's represented in $A_{\hat{i},\hat{j}}$ have indices $(i,j) \equiv (\hat{i},\hat{j}) \text{ mod } 2$. This allows us to write that in general, if $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$
+then
+$$A(k+1) = 
 \begin{bmatrix}
-    1A_1 & 1A_2 & 1A_1 & 1A_2 \\
-    1A_3 & 1A_4 & 0A_3 & 1A_4 \\
-    1A_1 & 0A_2 & 1A_1 & 1A_2 \\
-    1A_3 & 1A_4 & 1A_3 & 1A_4 \\
+    V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
+    V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
+    V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
+    V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
 \end{bmatrix}.
 $$
 
-Finally, as appending any vertex coloring to the bottom of a column only changes the identity of the bottom two sub-colorings, we can use the fact that the $2^{k-2} \times 2^{k-2}$ blocks of $A(k) = \begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$ are the number of columns that have a shared bottom sub-coloring. For example, all columns accounted for in $A_2$ have the following bottom cell coloring.
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-
-        % row 1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (0,1) circle (3pt);
-
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,1) circle (3pt);
-    \end{tikzpicture}
-\end{center}
-
-We can then write that
+where $V \in \mathbb{R}^{4 \times 4}$ can be found after directly computing $A(2)$ and $A(3)$, then solving the following equation.
 
 $$
-A(k+1) = 
 \begin{bmatrix}
-    1A_1 & 1A_2 & 1A_1 & 1A_2 \\
-    1A_3 & 1A_4 & 0A_3 & 1A_4 \\
-    1A_1 & 0A_2 & 1A_1 & 1A_2 \\
-    1A_3 & 1A_4 & 1A_3 & 1A_4 \\
-\end{bmatrix},
+    A(3)_{0,0} & A(3)_{0,1} & A(3)_{0,2} & A(3)_{0,3} \\
+    A(3)_{1,0} & A(3)_{1,1} & A(3)_{1,2} & A(3)_{1,3} \\
+    A(3)_{2,0} & A(3)_{2,1} & A(3)_{2,2} & A(3)_{2,3} \\
+    A(3)_{3,0} & A(3)_{3,1} & A(3)_{3,2} & A(3)_{3,3} \\
+\end{bmatrix} = 
+\begin{bmatrix}
+    V_{0,0}A(2)_{0,0} & V_{0,1}A(2)_{0,0} & V_{0,2}A(2)_{0,1} & V_{0,3}A(2)_{0,1} \\
+    V_{1,0}A(2)_{0,0} & V_{1,1}A(2)_{0,0} & V_{1,2}A(2)_{0,1} & V_{1,3}A(2)_{0,1} \\
+    V_{2,0}A(2)_{1,0} & V_{2,1}A(2)_{1,0} & V_{2,2}A(2)_{1,1} & V_{2,3}A(2)_{1,1} \\
+    V_{3,0}A(2)_{1,0} & V_{3,1}A(2)_{1,0} & V_{3,2}A(2)_{1,1} & V_{3,3}A(2)_{1,1} \\
+\end{bmatrix}
 $$
+
+This is easily solved to give 
+
+$$V = 
+\begin{bmatrix} 
+    1 & 1 & 1 & 1 \\ 
+    1 & 1 & 0 & 1 \\ 
+    1 & 0 & 1 & 1 \\ 
+    1 & 1 & 1 & 1 
+\end{bmatrix}
+$$
+
 
 which completes the proof.
 
@@ -1026,11 +1224,11 @@ The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile
 
 \section{Messy Polygon Mosaics}
 
-A \textit{messy polygon mosaic} is a mosaic that contains at least polygon, with no restriction on other shared edges. 
+A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon, with no restriction on other shared edges. 
 
 \begin{exmp}
 \label{exmp: messy sap}
-Below is a messy polygon mosaic of size $(5,7)$ with $1$ polygon hilighted in gray. 
+Below is a messy polygon mosaic of size $(5,7)$ that contains $1$ polygon, with the squares that make it up hilighted in gray. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1078,23 +1276,7 @@ Below is a messy polygon mosaic of size $(5,7)$ with $1$ polygon hilighted in gr
 \end{center}
 \end{exmp}
 
-Note that one can also consider creating messy polygon mosaics with the alternate tile set below, where the empty tile $T_1$ is removed.
-
-%figure of tiles (colored marknigs!)
-\begin{center}
-    \begin{tikzpicture}
-    \cellA{0}{0}{1}{1}
-    \cellB{2}{0}{3}{1}
-    \cellC{4}{0}{5}{1}
-    \cellD{6}{0}{7}{1}
-    \cellE{8}{0}{9}{1}
-    \cellF{10}{0}{11}{1}    
-    \end{tikzpicture}
-\end{center}
-
-Due to the fact that $T_1$ cannot contribute to the structure of the polygon, enumerating messy polygon mosaics under either tile set can be written with a parameter $b$, where $b=6$ or $b=7$ for the respective tile set. We work with the general $b$ for the remainder of the paper.
-
-Additionally, it turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Clearly $t_{m,n}=t_{m,n}.$ Also from the fact that the smallest polygon is
+It turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Also from the fact that the smallest polygon is
 
 \begin{center}
 \begin{tikzpicture}
@@ -1107,29 +1289,29 @@ Additionally, it turns out that it is easier to enumerate the number of messy mo
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=b^n$, and $t_{2,2} = b^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
+we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
 
 \begin{defn}
 
-$A(2) = \begin{bmatrix}
-b^2 & 1 \\
+First define $A(2) = \begin{bmatrix}
+7^2 & 1 \\
 -1 & 1
-\end{bmatrix}$, where $b = 6$ for the $6$-tile set and $b = 7$ for the $7$-tile set. 
+\end{bmatrix}$. 
 
 We recursively define $A(k+1) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ given $A(k)$. Begin by writing
 $
 A(k) = \begin{bmatrix}
-A_1 & A_2 \\
-A_3 & A_4
+A_{0,0} & A_{0,1} \\
+A_{1,0} & A_{1,1}
 \end{bmatrix}
-$, where the block matrices $A_i$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
+$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
 
 $$
 A(k+1) = \begin{bmatrix}
-    bA_1 & bA_2 & \frac{1}{b}A_1 & A_2 \\
-    bA_3 & bA_4 & 0A_3 & A_4 \\
-    -\frac{1}{b}A_1 & 0A_2 & \frac{1}{b}A_1 & A_2 \\
-    A_3 & A_4 & -A_3 & bA_4 \\
+    7A_{0,0} & \frac{1}{7}A_{0,0} & 7A_{0,1} & A_{0,1} \\
+    -\frac{1}{7}A_{0,0} & \frac{1}{7}A_{0,0} & 0A_{0,1} & A_{0,1} \\
+    7A_{1,0} & 0A_{1,0} & 7A_{1,1}  & A_{1,1} \\
+    A_{1,0} & -A_{1,0} & -A_{1,1} & 7A_{1,1} \\
 \end{bmatrix}.
 $$
 
@@ -1139,13 +1321,13 @@ Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$.
 
 \begin{thm}
 \label{thm: messy mosaics}
-The $(0,0)$ entry of $A(m)^n$ is $t_{m,n}$.
+The number of messy mosaics that \textit{do not} contain a polygon is the $(0,0)$-th entry of $A(m)^n$.
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
 \begin{proof}
-We again consider the parity configurations for a specific $(m,n)$-mosaic. However, there is not a bijection between messy polygon mosaics and parity configurations in the same way as with traditional polygon mosaics. This is because the following cell-parity configurations are no longer uniquely determined.
+We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. However, there is not a bijection between messy polygon mosaics and vertex labelings as there is with polygon mosaics. This is because the following cell-labellings configurations are no longer uniquely determined.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1153,20 +1335,19 @@ We again consider the parity configurations for a specific $(m,n)$-mosaic. Howev
         \cell{0}{0}{1}{1}
         \cell{2}{0}{3}{1}
 
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$1$} \)
+        \( \lablvertex{3}{0}{$1$} \)
 
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$1$} \)
     \end{tikzpicture}
 \end{center}
 
-Additionally, the sub parity configurations shown below
+Additionally, the sub-grid vertex labelings shown below
 
 \begin{center}
     \begin{tikzpicture}
@@ -1176,38 +1357,40 @@ Additionally, the sub parity configurations shown below
         \cell{1}{0}{2}{1}
         \cell{1}{1}{2}{2}
 
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
 
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
-
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
         % row1
         \cell{3}{0}{4}{1}
         \cell{3}{1}{4}{2}
         \cell{4}{0}{5}{1}
         \cell{4}{1}{5}{2}
 
-        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,0) circle (3pt);
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$1$} \)
 
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
 
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,2) circle (3pt);
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$1$} \)
+
     \end{tikzpicture}
 \end{center}
 
-are now ambiguous as to whether or not they represent a polygon. Critically, both of the following parity configurations could include the right-most messy polygon mosaic. 
+are now ambiguous as to whether or not they represent a polygon. For example, both of the following vertex labelings could include the right-most messy polygon mosaic. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1221,26 +1404,25 @@ are now ambiguous as to whether or not they represent a polygon. Critically, bot
         \cell{1}{2}{2}{3}
         \cell{1}{3}{2}{4}
         
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
 
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{2}{1}{$0$} \)
 
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,1) circle (3pt);
-        \draw[fill=black] (2,1) circle (3pt);
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
 
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
 
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-
-        \draw[fill=black] (0,4) circle (3pt);
-        \draw[fill=black] (1,4) circle (3pt);
-        \draw[fill=black] (2,4) circle (3pt);
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
 
         % row1
         \cell{3}{0}{4}{1}
@@ -1251,28 +1433,26 @@ are now ambiguous as to whether or not they represent a polygon. Critically, bot
         \cell{4}{1}{5}{2}
         \cell{4}{2}{5}{3}
         \cell{4}{3}{5}{4}
-        
 
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
 
-        \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=black] (5,1) circle (3pt);
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
 
-        \draw[fill=black] (3,2) circle (3pt);
-        \draw[fill=black] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
 
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,3) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$0$} \)
 
-        \draw[fill=black] (3,4) circle (3pt);
-        \draw[fill=black] (4,4) circle (3pt);
-        \draw[fill=black] (5,4) circle (3pt);
-
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$0$} \)
 
         \cellD{6}{0}{7}{1}
         \cellC{7}{0}{8}{1}
@@ -1289,7 +1469,8 @@ are now ambiguous as to whether or not they represent a polygon. Critically, bot
     \end{tikzpicture}
 \end{center}
 
-In fact, the number of polygons that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
+Critically, the number of polygons that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. 
+Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
 
 To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
 
@@ -1581,6 +1762,151 @@ An analagous argument to Theorem \ref{thm: main theorem} then gives the result.
 %     $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
 % \end{theorem}
 
+
+\section{Summary of Results}
+\label{section: summary of results}
+
+Below is a tabulated summary of the results, where the matrices under the "Polygon Mosaics" and "Messy Polygon Mosaics" column are $A(2), W$. One can identify the number of  the number of (messy)
+
+$$A(k+1) = W \cdot \begin{bmatrix}
+    A_1(k) & A_2(k) \\
+    A_3(k) & A_4(k)
+    \end{bmatrix}$$
+
+$$\begin{bmatrix}
+    v_{1}A_1 & v_{2}A_2 & v_{3}A_1 & v_{4}A_2 \\
+    v_{5}A_3 & v_{6}A_4 & v_{7}A_3 & v_{8}A_4 \\
+    v_{9}A_1 & v_{10}A_2 & v_{11}A_1 & v_{12}A_2 \\
+    v_{13}A_3 & v_{14}A_4 & v_{15}A_3 & v_{16}A_4 \\
+\end{bmatrix}$$
+
+Then the $(0,0)$-th entry of $A(m)^n$ is $p_{m,n}$ (polygon mosaics) and $t_{n,m}$ (mosaics that do not contain polygons).
+
+TODO finish explan of following table
+
+\begin{center}
+    \begin{tblr}{
+  colspec = {X[c,h]X[c]X[c]X[c]},
+  stretch = 0,
+  rowsep = 6pt,
+  hlines = {black, 1pt},
+  vlines = {black, 1pt},
+}
+  \textbf{Tile Set} & \textbf{Polygon Mosaics} & \textbf{Messy Polygon Mosaics}\\
+  
+  \resizebox{0.3\textwidth}{!}{%
+  \begin{tikzpicture}
+      \cellA{0}{0}{1}{1}
+      \cellB{2}{0}{3}{1}
+      \cellC{0}{2}{1}{3}
+      \cellD{2}{2}{3}{3}
+      
+      \cellE{4}{0}{5}{1}
+      \cellF{4}{2}{5}{3}
+
+      \cell{6}{1}{7}{2}
+
+    \end{tikzpicture}
+    } 
+    & 
+    $\begin{bmatrix}
+    1 & 1 \\
+    1 & 1
+    \end{bmatrix},
+    \begin{bmatrix} 
+    1 & 1 & 1 & 1 \\ 
+    1 & 1 & 0 & 1 \\ 
+    1 & 0 & 1 & 1 \\ 
+    1 & 1 & 1 & 1 
+    \end{bmatrix}$
+    & 
+    $\begin{bmatrix}
+        7^2 & 1 \\
+        -1 & 1
+    \end{bmatrix},
+    \begin{bmatrix} 
+    7 & 7 & \frac{1}{7}& 1 \\ 
+    7 & 7 & 0 & 1 \\ 
+    -\frac{1}{7} & 0 & 1 & 1 \\ 
+    1 & 1 & -1 & 7
+    \end{bmatrix}$
+    \\
+    
+    \resizebox{0.3\textwidth}{!}{%
+    \begin{tikzpicture}
+        \cellA{0}{0}{1}{1}
+        \cellB{2}{0}{3}{1}
+        \cellC{0}{2}{1}{3}
+        \cellD{2}{2}{3}{3}
+        
+        \cellE{4}{0}{5}{1}
+        \cellF{4}{2}{5}{3}
+        % invisible cell for spacing
+        \spacecell{6}{1}{7}{2}
+    \end{tikzpicture}
+    } 
+    & 
+    TODO 
+    & 
+    $\begin{bmatrix}
+        6^2 & 1 \\
+        -1 & 1
+    \end{bmatrix},
+    \begin{bmatrix} 
+    6 & 6 & \frac{1}{6}& 1 \\ 
+    6 & 6 & 0 & 1 \\ 
+    -\frac{1}{6} & 0 & 1 & 1 \\ 
+    1 & 1 & -1 & 6
+    \end{bmatrix}$ 
+    \\
+
+    \resizebox{0.3\textwidth}{!}{%
+    \begin{tikzpicture}
+        \cellA{0}{0}{1}{1}
+        \cellB{2}{0}{3}{1}
+        \cellC{0}{2}{1}{3}
+        \cellD{2}{2}{3}{3}
+        
+        \cell{4}{1}{5}{2}
+        % invisible cell for spacing
+        \spacecell{6}{1}{7}{2}
+        
+    \end{tikzpicture}
+    } 
+    & 
+    $\begin{bmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{bmatrix}$, TODO 
+    & 
+    TODO
+    \\
+
+    \resizebox{0.3\textwidth}{!}{%
+    \begin{tikzpicture}
+        \cellA{0}{0}{1}{1}
+        \cellB{2}{0}{3}{1}
+        \cellC{0}{2}{1}{3}
+        \cellD{2}{2}{3}{3}
+        % invisible cell for spacing
+        \spacecell{4}{1}{5}{2}
+        % invisible cell for spacing
+        \spacecell{6}{1}{7}{2}
+    \end{tikzpicture}
+      } 
+    & 
+    TODO
+    & 
+    TODO 
+    \\
+  
+\end{tblr}
+\end{center}
+
+
+\printbibliography
+
+
 \section{Appendix}
 
 Flipping the parity of a single vertex in a parity configuration changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
@@ -1764,147 +2090,5 @@ b & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & b \\
 \end{center}
 
 Any of these assignments are sufficient for calculating $t_{m,n}$. 
-
-\section{Summary of Results}
-\label{section: summary of results}
-
-Below is a tabulated summary of the results, where the matrices under the "Polygon Mosaics" and "Messy Polygon Mosaics" column are $A(2), W$. One can identify the number of  the number of (messy)
-
-$$A(k+1) = W \cdot \begin{bmatrix}
-    A_1(k) & A_2(k) \\
-    A_3(k) & A_4(k)
-    \end{bmatrix}$$
-
-$$\begin{bmatrix}
-    v_{1}A_1 & v_{2}A_2 & v_{3}A_1 & v_{4}A_2 \\
-    v_{5}A_3 & v_{6}A_4 & v_{7}A_3 & v_{8}A_4 \\
-    v_{9}A_1 & v_{10}A_2 & v_{11}A_1 & v_{12}A_2 \\
-    v_{13}A_3 & v_{14}A_4 & v_{15}A_3 & v_{16}A_4 \\
-\end{bmatrix}$$
-
-Then the $(0,0)$-th entry of $A(m)^n$ is $p_{m,n}$ (polygon mosaics) and $t_{n,m}$ (mosaics that do not contain polygons).
-
-TODO finish explan of following table
-
-\begin{center}
-    \begin{tblr}{
-  colspec = {X[c,h]X[c]X[c]X[c]},
-  stretch = 0,
-  rowsep = 6pt,
-  hlines = {black, 1pt},
-  vlines = {black, 1pt},
-}
-  \textbf{Tile Set} & \textbf{Polygon Mosaics} & \textbf{Messy Polygon Mosaics}\\
-  
-  \resizebox{0.3\textwidth}{!}{%
-  \begin{tikzpicture}
-      \cellA{0}{0}{1}{1}
-      \cellB{2}{0}{3}{1}
-      \cellC{0}{2}{1}{3}
-      \cellD{2}{2}{3}{3}
-      
-      \cellE{4}{0}{5}{1}
-      \cellF{4}{2}{5}{3}
-
-      \cell{6}{1}{7}{2}
-
-    \end{tikzpicture}
-    } 
-    & 
-    $\begin{bmatrix}
-    1 & 1 \\
-    1 & 1
-    \end{bmatrix},
-    \begin{bmatrix} 
-    1 & 1 & 1 & 1 \\ 
-    1 & 1 & 0 & 1 \\ 
-    1 & 0 & 1 & 1 \\ 
-    1 & 1 & 1 & 1 
-    \end{bmatrix}$
-    & 
-    $\begin{bmatrix}
-        7^2 & 1 \\
-        -1 & 1
-    \end{bmatrix},
-    \begin{bmatrix} 
-    7 & 7 & \frac{1}{7}& 1 \\ 
-    7 & 7 & 0 & 1 \\ 
-    -\frac{1}{7} & 0 & 1 & 1 \\ 
-    1 & 1 & -1 & 7
-    \end{bmatrix}$
-    \\
-    
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        
-        \cellE{4}{0}{5}{1}
-        \cellF{4}{2}{5}{3}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-    \end{tikzpicture}
-    } 
-    & 
-    TODO 
-    & 
-    $\begin{bmatrix}
-        6^2 & 1 \\
-        -1 & 1
-    \end{bmatrix},
-    \begin{bmatrix} 
-    6 & 6 & \frac{1}{6}& 1 \\ 
-    6 & 6 & 0 & 1 \\ 
-    -\frac{1}{6} & 0 & 1 & 1 \\ 
-    1 & 1 & -1 & 6
-    \end{bmatrix}$ 
-    \\
-
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        
-        \cell{4}{1}{5}{2}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-        
-    \end{tikzpicture}
-    } 
-    & 
-    $\begin{bmatrix}
-        1 & 1 \\
-        1 & 0
-    \end{bmatrix}$, TODO 
-    & 
-    TODO
-    \\
-
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        % invisible cell for spacing
-        \spacecell{4}{1}{5}{2}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-    \end{tikzpicture}
-      } 
-    & 
-    TODO
-    & 
-    TODO 
-    \\
-  
-\end{tblr}
-\end{center}
-
-\printbibliography
 
 \end{document}
