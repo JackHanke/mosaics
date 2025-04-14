@@ -140,7 +140,7 @@
 
 \section{Introduction}
 
-Consider the following set of $7$ symbols labelled $\{ T_1, \dots T_7 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
+Consider the following set of $7$ symbols labeled $\{ T_1, \dots T_7 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
 
 \begin{center}
     \begin{tikzpicture}
@@ -624,7 +624,7 @@ The critical point is this: even with the dotted lines removed, the vertex label
 
 We can then enumerate $p_{m,n}$ by enumerating the number of vertex labelings that correspond with a valid polygon mosaic. 
 
-Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labelled $0$, and each interior vertex is labelled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell-labelings.
+Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labeled $0$, and each interior vertex is labeled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell-labelings.
 
 \begin{center}
     \begin{tikzpicture}
@@ -647,7 +647,7 @@ Consider the collection of vertex labelings for a $m \times n$ grid of cells. To
 
 These two cell-labelings aren't associated with any of the cells $T_1, \dots, T_7$, and so cannot correspond with a polygon mosaic. We seek a recursive solution to enumerate the number of vertex labelings for a $m \times n$ grid with these  conditions: the labeling has a boundary of all $0$'s and does not contain the above cell-labelings. 
 
-Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labelled $0$. One of these columns for $m=3$ is below.
+Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labeled $0$. One of these columns for $m=3$ is below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1178,14 +1178,16 @@ $$A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$$
 
 where $A_{\hat{i},\hat{j}} \in \mathbb{R}^{2^{k-2} \times 2^{k-2}}$, then all column's represented in $A_{\hat{i},\hat{j}}$ have indices $(i,j) \equiv (\hat{i},\hat{j}) \text{ mod } 2$. This allows us to write that in general, if $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$
 then
-$$A(k+1) = 
-\begin{bmatrix}
-    V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
-    V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
-    V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
-    V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
-\end{bmatrix}.
-$$
+
+\begin{equation}\label{eqn: coefficient matrix prod}
+    \begin{bmatrix}
+        V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
+        V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
+        V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
+        V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
+    \end{bmatrix}.
+\end{equation}
+
 
 where $V \in \mathbb{R}^{4 \times 4}$ can be found after directly computing $A(2)$ and $A(3)$, then solving the following equation.
 
@@ -1204,7 +1206,7 @@ $$
 \end{bmatrix}
 $$
 
-This is easily solved to give 
+This is solved by
 
 $$V = 
 \begin{bmatrix} 
@@ -1276,7 +1278,7 @@ Below is a messy polygon mosaic of size $(5,7)$ that contains $1$ polygon, with 
 \end{center}
 \end{exmp}
 
-It turns out that it is easier to enumerate the number of messy mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Also from the fact that the smallest polygon is
+It turns out that it is simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Also from the fact that the smallest polygon is
 
 \begin{center}
 \begin{tikzpicture}
@@ -1289,16 +1291,14 @@ It turns out that it is easier to enumerate the number of messy mosaics that \te
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. It turns out that using similar techniques to Theorem \ref{thm: main theorem} we can exactly enumerate messy mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
+we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. We can use similar techniques to Theorem \ref{thm: main theorem} to enumerate messy polygon mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
 
 \begin{defn}
 
 First define $A(2) = \begin{bmatrix}
 7^2 & 1 \\
 -1 & 1
-\end{bmatrix}$. 
-
-We recursively define $A(k+1) \in \mathbb{Z}^{2^{n-1} \times 2^{n-1}}$ given $A(k)$. Begin by writing
+\end{bmatrix}$. We recursively define $A(k+1) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ given $A(k)$. Begin by writing
 $
 A(k) = \begin{bmatrix}
 A_{0,0} & A_{0,1} \\
@@ -1309,9 +1309,9 @@ $, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2}
 $$
 A(k+1) = \begin{bmatrix}
     7A_{0,0} & \frac{1}{7}A_{0,0} & 7A_{0,1} & A_{0,1} \\
-    -\frac{1}{7}A_{0,0} & \frac{1}{7}A_{0,0} & 0A_{0,1} & A_{0,1} \\
+    -\frac{1}{7}A_{0,0} & A_{0,0} & 0A_{0,1} & A_{0,1} \\
     7A_{1,0} & 0A_{1,0} & 7A_{1,1}  & A_{1,1} \\
-    A_{1,0} & -A_{1,0} & -A_{1,1} & 7A_{1,1} \\
+    A_{1,0} & -A_{1,0} & A_{1,1} & 7A_{1,1} \\
 \end{bmatrix}.
 $$
 
@@ -1321,33 +1321,155 @@ Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$.
 
 \begin{thm}
 \label{thm: messy mosaics}
-The number of messy mosaics that \textit{do not} contain a polygon is the $(0,0)$-th entry of $A(m)^n$.
+The number of mosaics that \textit{do not} contain a polygon is the $(0,0)$-th entry of $A(m)^n$.
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
 \begin{proof}
-We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. However, there is not a bijection between messy polygon mosaics and vertex labelings as there is with polygon mosaics. This is because the following cell-labellings configurations are no longer uniquely determined.
+We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell-labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell-labeling.
 
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
         \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{10}{0}{11}{1}
+        \cell{12}{0}{13}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
 
+        % label for row1
         \( \lablvertex{0}{0}{$0$} \)
         \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$1$} \)
+        \( \lablvertex{2}{0}{$0$} \)
         \( \lablvertex{3}{0}{$1$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$1$} \)
+        \( \lablvertex{12}{0}{$1$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$1$} \)
+        \( \lablvertex{15}{0}{$1$} \)
+        
+        % label for row1
+        \( \lablvertex{0}{1}{$1$} \)
         \( \lablvertex{1}{1}{$0$} \)
         \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        \( \lablvertex{8}{1}{$1$} \)
+        \( \lablvertex{9}{1}{$1$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$1$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
+        \( \lablvertex{15}{1}{$1$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
+        \( \lablvertex{15}{2}{$1$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$1$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$0$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{15}{3}{$1$} \)
+
+        % numbers row 1
+        \( \lablnode{0.5}{-0.5}{$w_{9}$} \)
+        \( \lablnode{2.5}{-0.5}{$w_{10}$} \)
+        \( \lablnode{4.5}{-0.5}{$w_{11}$} \)
+        \( \lablnode{6.5}{-0.5}{$w_{12}$} \)
+        \( \lablnode{8.5}{-0.5}{$w_{13}$} \)
+        \( \lablnode{10.5}{-0.5}{$w_{14}$} \)
+        \( \lablnode{12.5}{-0.5}{$w_{15}$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}$} \)
+        % numbers row 2
+        \( \lablnode{0.5}{1.5}{$w_{1}$} \)
+        \( \lablnode{2.5}{1.5}{$w_{2}$} \)
+        \( \lablnode{4.5}{1.5}{$w_{3}$} \)
+        \( \lablnode{6.5}{1.5}{$w_{4}$} \)
+        \( \lablnode{8.5}{1.5}{$w_{5}$} \)
+        \( \lablnode{10.5}{1.5}{$w_{6}$} \)
+        \( \lablnode{12.5}{1.5}{$w_{7}$} \)
+        \( \lablnode{14.5}{1.5}{$w_{8}$} \)
     \end{tikzpicture}
 \end{center}
 
-Additionally, the sub-grid vertex labelings shown below
+The proof of Theorem \ref{thm: main theorem} can be seen as assigning $w_{7} = w_{10} = 0$, and all other weights to $1$. The usefulness of this view can be seen when considering the operation for creating the recursive definition for $A(k)$ in the previous proof. Previously, we defined the coefficient matrix $V$ by computing $A(2)$ and $A(3)$ directly and comparing. Now with a weight assigned to individual cell-labelings, we can define the values of $A(2)$ and $V$ directly in terms of these weights.
+
+$$
+A(2) = 
+\begin{bmatrix}
+    w_{1}w_{1} & w_{2} w_{5} \\
+    w_{3} w_{9} & w_{4} w_{13}
+\end{bmatrix},
+V = 
+\begin{bmatrix}
+    \frac{w_{1} w_{1}}{w_{1}} & \frac{w_{2} w_{5}}{w_{1}} & \frac{w_{1} w_{2}}{w_{2}} & \frac{w_{2} w_{6}}{w_{2}} \\
+    \frac{w_{3} w_{9}}{w_{1}} & \frac{w_{4} w_{13}}{w_{1}} & \frac{w_{3} w_{10}}{w_{2}} & \frac{w_{4} w_{14}}{w_{2}} \\
+    \frac{w_{1} w_{3}}{w_{3}} & \frac{w_{2} w_{7}}{w_{3}} & \frac{w_{1} w_{4}}{w_{4}} & \frac{w_{2} w_{8}}{w_{4}} \\
+    \frac{w_{3} w_{11}}{w_{3}} & \frac{w_{4} w_{15}}{w_{3}} & \frac{w_{3} w_{12}}{w_{4}} & \frac{w_{4} w_{16}}{w_{4}}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    w_{1} & \frac{w_{2} w_{5}}{w_{1}} & w_{1} & w_{6} \\
+    \frac{w_{3} w_{9}}{w_{1}} & \frac{w_{4} w_{13}}{w_{1}} & \frac{w_{3} w_{10}}{w_{2}} & \frac{w_{4} w_{14}}{w_{2}} \\
+    w_{1} & \frac{w_{2} w_{7}}{w_{3}} & w_{1} & \frac{w_{2} w_{8}}{w_{4}} \\
+    w_{11} & \frac{w_{4} w_{15}}{w_{3}} & \frac{w_{3} w_{12}}{w_{4}} & w_{16}
+\end{bmatrix}.
+$$
+
+With this identity, we can enumerate $t_{m,n}$ once we have proper assignments for the $16$ weights. As in the previous proof, we have $w_{7}=w_{10}=0$, as again these are impossible vertex labelings for our tile set. 
+
+Next consider the cell labellings for $w_{1}$ and $w_{16}$. When enumerating polygon mosaics (and their messy variant), these cell-labelings do not contribute to the cells of a polygon. For polygon mosaics, only the $T_1$ tile are permitted to not contribute to the shape of a polygon. However, in messy polygon mosaics, all $7$ tiles are permitted to not contribute to the shape of the polygon, so $w_{1} = w_{16}=7$.
+
+However, this means we now lose the uniqueness of the map from vertex labeling to messy polygon mosaics. For instance, the sub-grid vertex labelings below are now ambiguous as to whether or not they represent a polygon.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1390,10 +1512,77 @@ Additionally, the sub-grid vertex labelings shown below
     \end{tikzpicture}
 \end{center}
 
-are now ambiguous as to whether or not they represent a polygon. For example, both of the following vertex labelings could include the right-most messy polygon mosaic. 
+This ambiguity is explored in the following example.
+
+\begin{exmp}\label{exmp: iep}
+
+Consider the four vertex labelings below, along with the messy polygon mosaic on the right. Write the product of the weights of all cell-labellings below each, assuming all weights not defined above are $1$.
 
 \begin{center}
     \begin{tikzpicture}
+        % row1
+        \cell{-6}{0}{-5}{1}
+        \cell{-6}{1}{-5}{2}
+        \cell{-6}{2}{-5}{3}
+        \cell{-6}{3}{-5}{4}
+        \cell{-5}{0}{-4}{1}
+        \cell{-5}{1}{-4}{2}
+        \cell{-5}{2}{-4}{3}
+        \cell{-5}{3}{-4}{4}
+
+        \( \lablnode{-5}{-1}{$7^8$} \)
+
+        \( \lablvertex{-6}{0}{$0$} \)
+        \( \lablvertex{-5}{0}{$0$} \)
+        \( \lablvertex{-4}{0}{$0$} \)
+
+        \( \lablvertex{-6}{1}{$0$} \)
+        \( \lablvertex{-5}{1}{$0$} \)
+        \( \lablvertex{-4}{1}{$0$} \)
+
+        \( \lablvertex{-6}{2}{$0$} \)
+        \( \lablvertex{-5}{2}{$0$} \)
+        \( \lablvertex{-4}{2}{$0$} \)
+
+        \( \lablvertex{-6}{3}{$0$} \)
+        \( \lablvertex{-5}{3}{$0$} \)
+        \( \lablvertex{-4}{3}{$0$} \)
+
+        \( \lablvertex{-6}{4}{$0$} \)
+        \( \lablvertex{-5}{4}{$0$} \)
+        \( \lablvertex{-4}{4}{$0$} \)
+        % row1
+        \cell{-3}{0}{-2}{1}
+        \cell{-3}{1}{-2}{2}
+        \cell{-3}{2}{-2}{3}
+        \cell{-3}{3}{-2}{4}
+        \cell{-2}{0}{-1}{1}
+        \cell{-2}{1}{-1}{2}
+        \cell{-2}{2}{-1}{3}
+        \cell{-2}{3}{-1}{4}
+
+        \( \lablnode{-2}{-1}{$7^4$} \)
+
+        \( \lablvertex{-3}{0}{$0$} \)
+        \( \lablvertex{-2}{0}{$0$} \)
+        \( \lablvertex{-1}{0}{$0$} \)
+
+        \( \lablvertex{-3}{1}{$0$} \)
+        \( \lablvertex{-2}{1}{$0$} \)
+        \( \lablvertex{-1}{1}{$0$} \)
+
+        \( \lablvertex{-3}{2}{$0$} \)
+        \( \lablvertex{-2}{2}{$0$} \)
+        \( \lablvertex{-1}{2}{$0$} \)
+
+        \( \lablvertex{-3}{3}{$0$} \)
+        \( \lablvertex{-2}{3}{$1$} \)
+        \( \lablvertex{-1}{3}{$0$} \)
+
+        \( \lablvertex{-3}{4}{$0$} \)
+        \( \lablvertex{-2}{4}{$0$} \)
+        \( \lablvertex{-1}{4}{$0$} \)
+
         % row1
         \cell{0}{0}{1}{1}
         \cell{0}{1}{1}{2}
@@ -1403,6 +1592,8 @@ are now ambiguous as to whether or not they represent a polygon. For example, bo
         \cell{1}{1}{2}{2}
         \cell{1}{2}{2}{3}
         \cell{1}{3}{2}{4}
+
+        \( \lablnode{1}{-1}{$7^4$} \)
         
         \( \lablvertex{0}{0}{$0$} \)
         \( \lablvertex{1}{0}{$0$} \)
@@ -1433,6 +1624,8 @@ are now ambiguous as to whether or not they represent a polygon. For example, bo
         \cell{4}{1}{5}{2}
         \cell{4}{2}{5}{3}
         \cell{4}{3}{5}{4}
+
+        \( \lablnode{4}{-1}{$7^0$} \)
 
         \( \lablvertex{3}{0}{$0$} \)
         \( \lablvertex{4}{0}{$0$} \)
@@ -1469,147 +1662,58 @@ are now ambiguous as to whether or not they represent a polygon. For example, bo
     \end{tikzpicture}
 \end{center}
 
-Critically, the number of polygons that appear in a given messy polygon mosaic is exactly the number of parity configurations that map to that mosaic. 
-Therefore, if we are to count these mosaics, we need to account for this double-counting with the inclusion-exclusion principle.  
+Notice that each vertex labelling could include the right-most messy polygon mosaic. In fact, the left-most vertex labeling contains all possible mosaics! If we were to add these weight products together, we would count the right messy polygon mosaic $4$ times.
 
-To create an analagous result to Theorem \ref{thm: main theorem} we need to find a weight assignment to the $16$ parity configurations below that fulfill a set of conditions.
+\end{exmp}
+
+The double counting demonstrated in Example \ref{exmp: iep} motivates the following idea. If vertex labellings with an odd number of polygons are negative, then the addition of these weight products would incorporate the \textit{inclusion-exclusion principle}, mitigating the double counting. In Example \ref{exmp: iep}, the sum $7^8 - 7^4 - 7^4 + 7^0$ would then represent the number of mosaics that \textit{do not} contain the following three classes of messy polygon mosaics, where cells that can be any tile are marked with a dot.
 
 \begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-        \cell{4}{0}{5}{1}
-        \cell{6}{0}{7}{1}
-        \cell{8}{0}{9}{1}
-        \cell{10}{0}{11}{1}
-        \cell{12}{0}{13}{1}
-        \cell{14}{0}{15}{1}
-        % row2
-        \cell{0}{2}{1}{3}
-        \cell{2}{2}{3}{3}This means that
-        \cell{4}{2}{5}{3}
-        \cell{6}{2}{7}{3}
-        \cell{8}{2}{9}{3}
-        \cell{10}{2}{11}{3}
-        \cell{12}{2}{13}{3}
-        \cell{14}{2}{15}{3}
-        % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,0) circle (3pt);
-        \draw[fill=black] (8,0) circle (3pt);
-        \draw[fill=black] (9,0) circle (3pt);
-        \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,0) circle (3pt);
-        \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,0) circle (3pt);
-        % label for row1
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
-        \draw[fill=black] (7,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (8,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (9,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (10,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (13,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,1) circle (3pt);
-        % label for row1
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
-        \draw[fill=black] (8,2) circle (3pt);
-        \draw[fill=black] (9,2) circle (3pt);
-        \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
-        \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,2) circle (3pt);
-        % label for row1
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=black] (4,3) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
-        \draw[fill=black] (6,3) circle (3pt);
-        \draw[fill=black] (7,3) circle (3pt);
-        \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (9,3) circle (3pt);
-        \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,3) circle (3pt);
-        \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (13,3) circle (3pt);
-        \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,3) circle (3pt);
-        % numbers row 1
-        \( \lablnode{0.5}{-0.5}{$w_{9}$} \)
-        \( \lablnode{2.5}{-0.5}{$w_{10}$} \)
-        \( \lablnode{4.5}{-0.5}{$w_{11}$} \)
-        \( \lablnode{6.5}{-0.5}{$w_{12}$} \)
-        \( \lablnode{8.5}{-0.5}{$w_{13}$} \)
-        \( \lablnode{10.5}{-0.5}{$w_{14}$} \)
-        \( \lablnode{12.5}{-0.5}{$w_{15}$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}$} \)
-        % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}$} \)
-        \( \lablnode{2.5}{1.5}{$w_{2}$} \)
-        \( \lablnode{4.5}{1.5}{$w_{3}$} \)
-        \( \lablnode{6.5}{1.5}{$w_{4}$} \)
-        \( \lablnode{8.5}{1.5}{$w_{5}$} \)
-        \( \lablnode{10.5}{1.5}{$w_{6}$} \)
-        \( \lablnode{12.5}{1.5}{$w_{7}$} \)
-        \( \lablnode{14.5}{1.5}{$w_{8}$} \)
-    \end{tikzpicture}
+\begin{tikzpicture}
+    %
+    \cellopen{0}{0}{1}{1}
+    \cellopen{1}{0}{2}{1}
+
+    \cellopen{0}{1}{1}{2}
+    \cellopen{1}{1}{2}{2}
+
+    \cellD{0}{2}{1}{3}
+    \cellC{1}{2}{2}{3}    
+
+    \cellA{0}{3}{1}{4}
+    \cellB{1}{3}{2}{4}
+    %
+    \cellD{3}{0}{4}{1}
+    \cellC{4}{0}{5}{1}
+
+    \cellA{3}{1}{4}{2}
+    \cellB{4}{1}{5}{2}
+
+    \cellopen{3}{2}{4}{3}
+    \cellopen{4}{2}{5}{3}    
+
+    \cellopen{3}{3}{4}{4}
+    \cellopen{4}{3}{5}{4}
+    %
+    \cellD{6}{0}{7}{1}
+    \cellC{7}{0}{8}{1}
+
+    \cellA{6}{1}{7}{2}
+    \cellB{7}{1}{8}{2}
+
+    \cellD{6}{2}{7}{3}
+    \cellC{7}{2}{8}{3}    
+
+    \cellA{6}{3}{7}{4}
+    \cellB{7}{3}{8}{4}
+\end{tikzpicture}
 \end{center}
 
-First $w_{7}=w_{10}=0$, as again these are impossible parity configurations for our tile set. Next notice that $w_{1} = w_{16} = b$, as these cells do not indicate a specific tile.  The remaining weights uniquely specify a tile, and so are equal to $1$ or $-1$. But how do we find these assignments?
+Therefore, the sum over the products for all vertex labelings, where the product is negative if the vertex labeling represents an odd number of polygons in the mosaic, would be the number of mosaics that \textit{do not} include messy polygon mosaics.
 
-First notice that we want a weight assignment so that the parity configurations for a given polygon multiply to $-1$. This is due to the inclusion-exclusion principle. This means that if there are multiple polygons in a mosaic, then the product will be positive if there is an even number of polygons specified, and negative if there is an odd number specified.
+We can accomplish this by finding a weight assignment such that the product over the cell-labeling weights of \textit{any} single polygon equals $-1$. It is not obvious that such an assignment can even be found! 
 
-Next note the following lemma.
-\begin{lemma}
-    \label{lemma: build bigger saps}
-    One can construct all larger polygons from the smallest polygon using a finite set of transformations $S$.
-\end{lemma}
-
-\begin{proof}
-    TODO
-\end{proof}
-
-This is because one can find $w_{1} , \dots, w_{16}$ so that the following two constraints hold:
-
-\begin{constraint}
-    \label{constraint: smallest sap prod}
-    The weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
-\end{constraint}
-
-\begin{constraint}
-    \label{constraint: prod works}
-    \emph{All} transformations in $S$ preserve the weight product of a changed polygon.
-\end{constraint}
-
-Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. The derivation for these constraints can be found in the Appendix. Choosing a solution set from these constraints gives the following weights.
+Luckily such assignments exist. The proof of this fact can be found in the Appendix, and choosing an assignment gives us the following weight assignments.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1631,85 +1735,88 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
         \cell{10}{2}{11}{3}
         \cell{12}{2}{13}{3}
         \cell{14}{2}{15}{3}
+
         % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,0) circle (3pt);
-        \draw[fill=black] (8,0) circle (3pt);
-        \draw[fill=black] (9,0) circle (3pt);
-        \draw[fill=black] (10,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,0) circle (3pt);
-        \draw[fill=black] (13,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$1$} \)
+        \( \lablvertex{12}{0}{$1$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$1$} \)
+        \( \lablvertex{15}{0}{$1$} \)
+        
         % label for row1
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
-        \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=black] (5,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,1) circle (3pt);
-        \draw[fill=black] (7,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (8,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (9,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (10,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (13,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,1) circle (3pt);
-        % label for row1
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (3,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (6,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (7,2) circle (3pt);
-        \draw[fill=black] (8,2) circle (3pt);
-        \draw[fill=black] (9,2) circle (3pt);
-        \draw[fill=black] (10,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (12,2) circle (3pt);
-        \draw[fill=black] (13,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (14,2) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,2) circle (3pt);
-        % label for row1
-        \draw[fill=black] (0,3) circle (3pt);
-        \draw[fill=black] (1,3) circle (3pt);
-        \draw[fill=black] (2,3) circle (3pt);
-        \draw[fill=black] (3,3) circle (3pt);
-        \draw[fill=black] (4,3) circle (3pt);
-        \draw[fill=black] (5,3) circle (3pt);
-        \draw[fill=black] (6,3) circle (3pt);
-        \draw[fill=black] (7,3) circle (3pt);
-        \draw[fill=black] (8,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (9,3) circle (3pt);
-        \draw[fill=black] (10,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (11,3) circle (3pt);
-        \draw[fill=black] (12,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (13,3) circle (3pt);
-        \draw[fill=black] (14,3) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (15,3) circle (3pt);
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        \( \lablvertex{8}{1}{$1$} \)
+        \( \lablvertex{9}{1}{$1$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$1$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
+        \( \lablvertex{15}{1}{$1$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
+        \( \lablvertex{15}{2}{$1$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$1$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$0$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{15}{3}{$1$} \)
+
         % numbers row 1
-        \( \lablnode{0.5}{-0.5}{$w_{9}=-1$} \)
+        \( \lablnode{0.5}{-0.5}{$w_{9}=-9$} \)
         \( \lablnode{2.5}{-0.5}{$w_{10}=0$} \)
         \( \lablnode{4.5}{-0.5}{$w_{11}=1$} \)
         \( \lablnode{6.5}{-0.5}{$w_{12}=1$} \)
         \( \lablnode{8.5}{-0.5}{$w_{13}=1$} \)
         \( \lablnode{10.5}{-0.5}{$w_{14}=1$} \)
         \( \lablnode{12.5}{-0.5}{$w_{15}=-1$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}=b$} \)
+        \( \lablnode{14.5}{-0.5}{$w_{16}=7$} \)
         % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}=b$} \)
+        \( \lablnode{0.5}{1.5}{$w_{1}=7$} \)
         \( \lablnode{2.5}{1.5}{$w_{2}=1$} \)
         \( \lablnode{4.5}{1.5}{$w_{3}=1$} \)
         \( \lablnode{6.5}{1.5}{$w_{4}=1$} \)
@@ -1720,39 +1827,24 @@ Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: p
     \end{tikzpicture}
 \end{center}
 
-This immediately gives us a way to construct an analagous definition for our transition matrixes $A(k) = \begin{bmatrix} A_1 & A_2 \\ A_3 & A_4 \end{bmatrix}$. As the appending of a cell parity configuration can possibly change the number of admitted cells, we define $v_{1} ,\dots, v_{16}$ for the associated change in the number of mosaics for the recursive definition of $A(k+1)$. A simple way to obtain $v_{1} ,\dots, v_{16}$ is to directly compute $A(2)$ and $A(3)$ and compare their values like so.
+This immediately gives us a way to construct an analagous definition for $A(k+1)$ given $A(k)$. Once we write $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix}$, we have
 
-$$A(2) = 
+$$
+A(2) = 
 \begin{bmatrix}
-    b^2 & 1 \\
+    7^2 & 1 \\
     -1 & 1
-\end{bmatrix}, A(3)=
+\end{bmatrix},
+V = 
 \begin{bmatrix}
-b^3 & b & b & 1 \\
--b & b & 0 & 1 \\
--b & 0 & b & 1 \\
--1 & 1 & 1 & b \\
-\end{bmatrix}.$$
-
-This gives
-
-$$
-A(k+1) = 
-\begin{bmatrix}
-    v_{1}A_1 & v_{2}A_2 & v_{3}A_1 & v_{4}A_2 \\
-    v_{5}A_3 & v_{6}A_4 & v_{7}A_3 & v_{8}A_4 \\
-    v_{9}A_1 & v_{10}A_2 & v_{11}A_1 & v_{12}A_2 \\
-    v_{13}A_3 & v_{14}A_4 & v_{15}A_3 & v_{16}A_4 \\
-\end{bmatrix} =
-\begin{bmatrix}
-bA_1 & bA_2 & \frac{1}{b}A_1 & A_2 \\
-bA_3 & bA_4 & 0A_3 & A_4 \\
--\frac{1}{b}A_1 & 0A_2 & \frac{1}{b}A_1 & A_2 \\
-A_3 & A_4 & -A_3 & bA_4 \\
-\end{bmatrix}.
+    7 & \frac{1}{7} & 7 & 1 \\
+    -\frac{1}{7} & 1 & 0 & 1 \\
+    7 & 0 & 7  & 1 \\
+    1 & -1 & 1 & 7 \\
+\end{bmatrix}
 $$
 
-An analagous argument to Theorem \ref{thm: main theorem} then gives the result.
+Subsituting $V$ into Equation \ref{eqn: coefficient matrix prod} gives the result.
 
 \end{proof}
 
@@ -1766,23 +1858,7 @@ An analagous argument to Theorem \ref{thm: main theorem} then gives the result.
 \section{Summary of Results}
 \label{section: summary of results}
 
-Below is a tabulated summary of the results, where the matrices under the "Polygon Mosaics" and "Messy Polygon Mosaics" column are $A(2), W$. One can identify the number of  the number of (messy)
-
-$$A(k+1) = W \cdot \begin{bmatrix}
-    A_1(k) & A_2(k) \\
-    A_3(k) & A_4(k)
-    \end{bmatrix}$$
-
-$$\begin{bmatrix}
-    v_{1}A_1 & v_{2}A_2 & v_{3}A_1 & v_{4}A_2 \\
-    v_{5}A_3 & v_{6}A_4 & v_{7}A_3 & v_{8}A_4 \\
-    v_{9}A_1 & v_{10}A_2 & v_{11}A_1 & v_{12}A_2 \\
-    v_{13}A_3 & v_{14}A_4 & v_{15}A_3 & v_{16}A_4 \\
-\end{bmatrix}$$
-
-Then the $(0,0)$-th entry of $A(m)^n$ is $p_{m,n}$ (polygon mosaics) and $t_{n,m}$ (mosaics that do not contain polygons).
-
-TODO finish explan of following table
+As demonstrated in the proof of Theorem \ref{thm: messy mosaics}, the enumeration of both polygon mosaics and mosaics that do not contain a polygon share the same structure, and only differ by the identity of the matrices $A(2), V$. We summarize these matrices for various collections of tiles below.
 
 \begin{center}
     \begin{tblr}{
@@ -1824,11 +1900,11 @@ TODO finish explan of following table
         7^2 & 1 \\
         -1 & 1
     \end{bmatrix},
-    \begin{bmatrix} 
-    7 & 7 & \frac{1}{7}& 1 \\ 
-    7 & 7 & 0 & 1 \\ 
-    -\frac{1}{7} & 0 & 1 & 1 \\ 
-    1 & 1 & -1 & 7
+    \begin{bmatrix}
+        7 & \frac{1}{7} & 7 & 1 \\
+        -\frac{1}{7} & 1 & 0 & 1 \\
+        7 & 0 & 7  & 1 \\
+        1 & -1 & 1 & 7 \\
     \end{bmatrix}$
     \\
     
@@ -1852,11 +1928,11 @@ TODO finish explan of following table
         6^2 & 1 \\
         -1 & 1
     \end{bmatrix},
-    \begin{bmatrix} 
-    6 & 6 & \frac{1}{6}& 1 \\ 
-    6 & 6 & 0 & 1 \\ 
-    -\frac{1}{6} & 0 & 1 & 1 \\ 
-    1 & 1 & -1 & 6
+    \begin{bmatrix}
+        6 & \frac{1}{6} & 6 & 1 \\
+        -\frac{1}{6} & 1 & 0 & 1 \\
+        6 & 0 & 6  & 1 \\
+        1 & -1 & 1 & 6 \\
     \end{bmatrix}$ 
     \\
 
@@ -1909,9 +1985,31 @@ TODO finish explan of following table
 
 \section{Appendix}
 
-Flipping the parity of a single vertex in a parity configuration changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
+We demonstrate that weight assignments exist such that the product over the cell-labeling weights of \textit{all} single polygons equals $-1$. We do this by first asserting that the product of the weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1$. 
 
-The flipping of parity of a single vertex can result in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of polygons in the parity configuration. For example, consider the following flip of the center vertex in the following portion of a parity configuration.
+\begin{lemma}\label{lemma: build bigger saps}
+    One can construct all larger polygons from the smallest polygon using a finite set of transformations $S$.
+\end{lemma}
+
+\begin{proof}
+    TODO Something about chaging vertex values
+\end{proof}
+
+This is because one can find $w_{1} , \dots, w_{16}$ so that the following two constraints hold:
+
+\begin{constraint}\label{constraint: smallest sap prod}
+    The weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
+\end{constraint}
+
+\begin{constraint}\label{constraint: prod works}
+    All transformations in $S$ preserve the weight product of a changed polygon.
+\end{constraint}
+
+Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. Choosing a solution set from these constraints gives the following weights.
+
+Flipping the parity of a single vertex in a vertex labeling changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
+
+The flipping of parity of a single vertex results in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of polygons represented in the vertex labeling. For example, consider the following flip of the center vertex in the following sub vertex labeling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1922,17 +2020,17 @@ The flipping of parity of a single vertex can result in $2$ distinct types of co
         \cell{0}{1}{1}{2}
         \cell{1}{1}{2}{2}
         % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (1,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$1$} \)
+        \( \lablvertex{2}{0}{$1$} \)
         % label for row2
-        \draw[fill=black] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
         % label for row3
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
         % row1
         \cell{3}{0}{4}{1}
         \cell{4}{0}{5}{1}
@@ -1940,27 +2038,27 @@ The flipping of parity of a single vertex can result in $2$ distinct types of co
         \cell{3}{1}{4}{2}
         \cell{4}{1}{5}{2}
         % label for row1
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,0) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,0) circle (3pt);
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$1$} \)
         % label for row2
-        \draw[fill=black] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
         % label for row3
-        \draw[fill=black] (3,2) circle (3pt);
-        \draw[fill=black] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
 
         \( \lablnode{2.5}{1}{$\rightarrow$} \)
     \end{tikzpicture}
 \end{center}
 
-As this does not change the associated number of polygons in the larger parity configuration, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
+As this does not change the associated number of polygons in the larger vertex labeling, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
 
 $$\text{sign}(w_{1}w_{2}w_{5}w_{9}) = \text{sign}(w_{2}w_{4}w_{6}w_{16}).$$
 
-Now let a constraint of \textit{Type 2} be a parity flip that does change the number of polygons. For example, consider flipping the center vertex of the following portion of a parity configuration.
+Now let a constraint of \textit{Type 2} be a parity flip that does change the number of polygons. For example, consider flipping the center vertex of the following portion of a vertex labeling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1971,17 +2069,18 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
         \cell{0}{1}{1}{2}
         \cell{1}{1}{2}{2}
         % label for row1
-        \draw[fill=black] (0,0) circle (3pt);
-        \draw[fill=black] (1,0) circle (3pt);
-        \draw[fill=black] (2,0) circle (3pt);
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
         % label for row2
-        \draw[fill=white, draw=green, very thick] (0,1) circle (3pt);
-        \draw[fill=black] (1,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (2,1) circle (3pt);
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
         % label for row3
-        \draw[fill=black] (0,2) circle (3pt);
-        \draw[fill=black] (1,2) circle (3pt);
-        \draw[fill=black] (2,2) circle (3pt);
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
         % row1
         \cell{3}{0}{4}{1}
         \cell{4}{0}{5}{1}
@@ -1989,17 +2088,17 @@ Now let a constraint of \textit{Type 2} be a parity flip that does change the nu
         \cell{3}{1}{4}{2}
         \cell{4}{1}{5}{2}
         % label for row1
-        \draw[fill=black] (3,0) circle (3pt);
-        \draw[fill=black] (4,0) circle (3pt);
-        \draw[fill=black] (5,0) circle (3pt);
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
         % label for row2
-        \draw[fill=white, draw=green, very thick] (3,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (4,1) circle (3pt);
-        \draw[fill=white, draw=green, very thick] (5,1) circle (3pt);
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
         % label for row3
-        \draw[fill=black] (3,2) circle (3pt);
-        \draw[fill=black] (4,2) circle (3pt);
-        \draw[fill=black] (5,2) circle (3pt);
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
 
         \( \lablnode{2.5}{1}{$\rightarrow$} \)
     \end{tikzpicture}
@@ -2053,38 +2152,38 @@ Solving all Type 1 and Type 2 constraints gives the following solution set.
 \hline
 $w_{1}$ & $w_{2}$ & $w_{3}$ & $w_{4}$ & $w_{5}$ & $w_{6}$ & $w_{7}$ & $w_{8}$ & $w_{9}$ & $w_{10}$ & $w_{11}$ & $w_{12}$ & $w_{13}$ & $w_{14}$ & $w_{15}$ & $w_{16}$ \\
 \hline
-b & -1 & -1 & -1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & -1 & -1 & 1 & b \\
-b & -1 & -1 & -1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & -1 & 1 & -1 & b \\
-b & -1 & -1 & -1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & -1 & 1 & -1 & b \\
-b & -1 & -1 & -1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & -1 & -1 & 1 & b \\
-b & -1 & -1 & 1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & 1 & 1 & -1 & b \\
-b & -1 & -1 & 1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & 1 & -1 & 1 & b \\
-b & -1 & -1 & 1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & 1 & -1 & 1 & b \\
-b & -1 & -1 & 1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & 1 & 1 & -1 & b \\
-b & -1 & 1 & -1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & -1 & -1 & -1 & b \\
-b & -1 & 1 & -1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & -1 & 1 & 1 & b \\
-b & -1 & 1 & -1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & -1 & 1 & 1 & b \\
-b & -1 & 1 & -1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & -1 & -1 & -1 & b \\
-b & -1 & 1 & 1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & 1 & 1 & 1 & b \\
-b & -1 & 1 & 1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 1 & -1 & -1 & b \\
-b & -1 & 1 & 1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & 1 & -1 & -1 & b \\
-b & -1 & 1 & 1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & b \\
-b & 1 & -1 & -1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & -1 & -1 & -1 & b \\
-b & 1 & -1 & -1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & -1 & 1 & 1 & b \\
-b & 1 & -1 & -1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & -1 & 1 & 1 & b \\
-b & 1 & -1 & -1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & -1 & -1 & -1 & b \\
-b & 1 & -1 & 1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & 1 & 1 & 1 & b \\
-b & 1 & -1 & 1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & 1 & -1 & -1 & b \\
-b & 1 & -1 & 1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & 1 & -1 & -1 & b \\
-b & 1 & -1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & 1 & 1 & 1 & b \\
-b & 1 & 1 & -1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & -1 & -1 & 1 & b \\
-b & 1 & 1 & -1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & -1 & 1 & -1 & b \\
-b & 1 & 1 & -1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & -1 & 1 & -1 & b \\
-b & 1 & 1 & -1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & -1 & -1 & 1 & b \\
-b & 1 & 1 & 1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & 1 & 1 & -1 & b \\
-b & 1 & 1 & 1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & -1 & 1 & b \\
-b & 1 & 1 & 1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & 1 & -1 & 1 & b \\
-b & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & b \\
+7 & -1 & -1 & -1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & -1 & -1 & 1 & 7 \\
+7 & -1 & -1 & -1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & -1 & 1 & -1 & 7 \\
+7 & -1 & -1 & -1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & -1 & 1 & -1 & 7 \\
+7 & -1 & -1 & -1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & -1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & 1 & 1 & -1 & 7 \\
+7 & -1 & -1 & 1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & 1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & 1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & 1 & 1 & -1 & 7 \\
+7 & -1 & 1 & -1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & -1 & -1 & -1 & 7 \\
+7 & -1 & 1 & -1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & -1 & 1 & 1 & 7 \\
+7 & -1 & 1 & -1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & -1 & 1 & 1 & 7 \\
+7 & -1 & 1 & -1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & -1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & 1 & 1 & 1 & 7 \\
+7 & -1 & 1 & 1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & 1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & -1 & -1 & -1 & 7 \\
+7 & 1 & -1 & -1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & -1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & -1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & -1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & 1 & 1 & 1 & 7 \\
+7 & 1 & -1 & 1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & 1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & 1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & 1 & 1 & 1 & 7 \\
+7 & 1 & 1 & -1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & -1 & -1 & 1 & 7 \\
+7 & 1 & 1 & -1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & -1 & 1 & -1 & 7 \\
+7 & 1 & 1 & -1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & -1 & 1 & -1 & 7 \\
+7 & 1 & 1 & -1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & -1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & 1 & 1 & -1 & 7 \\
+7 & 1 & 1 & 1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & 1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & 7 \\
 \hline
 \end{tabular}
 \end{center}
