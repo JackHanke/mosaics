@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  17 APR 2025 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  18 MAY 2025 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**mosaics.tex
+**mosaics
 (./mosaics.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1081,24 +1081,24 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./mosaics.aux)
 \openout1 = `mosaics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 142.
+LaTeX Font Info:    ... okay on input line 142.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1130,7 +1130,7 @@ Package caption Info: End \AtBeginDocument code.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ninecolors/ninecolors.sty
 Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 )
-Package hyperref Info: Link coloring OFF on input line 130.
+Package hyperref Info: Link coloring OFF on input line 142.
 
 (./mosaics.out) (./mosaics.out)
 \@outlinefile=\write5
@@ -1151,8 +1151,8 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'mosaics.bbl' found.
 
 (./mosaics.bbl)
-Package biblatex Info: Reference section=0 on input line 130.
-Package biblatex Info: Reference segment=0 on input line 130.
+Package biblatex Info: Reference section=0 on input line 142.
+Package biblatex Info: Reference segment=0 on input line 142.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1188,12 +1188,12 @@ Package biblatex Info: Reference segment=0 on input line 130.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 132
+LaTeX Font Info:    Trying to load font information for U+msa on input line 144
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 132
+LaTeX Font Info:    Trying to load font information for U+msb on input line 144
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1202,20 +1202,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
-Overfull \hbox (2.30101pt too wide) in paragraph at lines 745--746
+Overfull \hbox (2.30101pt too wide) in paragraph at lines 784--785
 []\OT1/cmr/m/n/12 This mo-ti-vates the cre-ation of a ma-trix $\OML/cmm/m/it/12
  A\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )$ to ev-ery col-umn in-de
 x $(\OML/cmm/m/it/12 i; j\OT1/cmr/m/n/12 )$, where $\OML/cmm/m/it/12 A\OT1/cmr/
 m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )[] =
  []
 
-[5] [6] [7] [8]
-Overfull \hbox (4.1116pt too wide) detected at line 1466
+[5] [6] [7] [8] [9]
+Overfull \hbox (4.1116pt too wide) detected at line 1505
 \OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (2) = [] \OML/cmm/m/it/12 ; V \OT1/cmr/m/n/12
  = [] = [] \OML/cmm/m/it/12 :
  []
 
-[9] [10]
+[10] [11]
 > Step: init table outer spec.
 > Step: parse table options.
 > Step: split table.
@@ -1224,24 +1224,24 @@ Overfull \hbox (4.1116pt too wide) detected at line 1466
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
- [11]
-Overfull \hbox (16.44182pt too wide) in paragraph at lines 2001--2002
+ [12]
+Overfull \hbox (16.44182pt too wide) in paragraph at lines 2040--2041
 [][]\OT1/cmr/bx/n/12 Constraint 6. []\OT1/cmr/m/it/12 The weights as-so-ci-ated
  with the small-est poly-gon mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12
  1$\OT1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
  []
 
-[12]
-Overfull \hbox (2.49498pt too wide) in alignment at lines 2113--2130
- [][][] []
- []
-
 [13]
-Overfull \hbox (4.99469pt too wide) in alignment at lines 2134--2146
+Overfull \hbox (2.49498pt too wide) in alignment at lines 2152--2169
  [][][] []
  []
 
-[14] [15] (./mosaics.aux)
+[14]
+Overfull \hbox (4.99469pt too wide) in alignment at lines 2173--2185
+ [][][] []
+ []
+
+[15] [16] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1253,13 +1253,13 @@ Package logreq Info: Writing requests to 'mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34983 strings out of 474116
- 697358 string characters out of 5743681
- 2018187 words of memory out of 5000000
- 56836 multiletter control sequences out of 15000+600000
+ 35030 strings out of 474116
+ 698253 string characters out of 5743681
+ 2012187 words of memory out of 5000000
+ 56882 multiletter control sequences out of 15000+600000
  571606 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,14n,107p,680b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,110p,676b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1280,10 +1280,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (15 pages, 310710 bytes).
+Output written on mosaics.pdf (16 pages, 312581 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
+ 251 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
