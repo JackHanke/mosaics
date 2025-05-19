@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  18 MAY 2025 17:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  19 MAY 2025 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,7 +1202,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
-Overfull \hbox (2.30101pt too wide) in paragraph at lines 784--785
+Overfull \hbox (2.30101pt too wide) in paragraph at lines 786--787
 []\OT1/cmr/m/n/12 This mo-ti-vates the cre-ation of a ma-trix $\OML/cmm/m/it/12
  A\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )$ to ev-ery col-umn in-de
 x $(\OML/cmm/m/it/12 i; j\OT1/cmr/m/n/12 )$, where $\OML/cmm/m/it/12 A\OT1/cmr/
@@ -1210,7 +1210,7 @@ m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )[] =
  []
 
 [5] [6] [7] [8] [9]
-Overfull \hbox (4.1116pt too wide) detected at line 1505
+Overfull \hbox (4.1116pt too wide) detected at line 1507
 \OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (2) = [] \OML/cmm/m/it/12 ; V \OT1/cmr/m/n/12
  = [] = [] \OML/cmm/m/it/12 :
  []
@@ -1225,19 +1225,19 @@ Overfull \hbox (4.1116pt too wide) detected at line 1505
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
  [12]
-Overfull \hbox (16.44182pt too wide) in paragraph at lines 2040--2041
+Overfull \hbox (16.44182pt too wide) in paragraph at lines 2042--2043
 [][]\OT1/cmr/bx/n/12 Constraint 6. []\OT1/cmr/m/it/12 The weights as-so-ci-ated
  with the small-est poly-gon mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12
  1$\OT1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
  []
 
 [13]
-Overfull \hbox (2.49498pt too wide) in alignment at lines 2152--2169
+Overfull \hbox (2.49498pt too wide) in alignment at lines 2154--2171
  [][][] []
  []
 
 [14]
-Overfull \hbox (4.99469pt too wide) in alignment at lines 2173--2185
+Overfull \hbox (4.99469pt too wide) in alignment at lines 2175--2187
  [][][] []
  []
 
@@ -1253,10 +1253,10 @@ Package logreq Info: Writing requests to 'mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35030 strings out of 474116
- 698253 string characters out of 5743681
+ 35025 strings out of 474116
+ 698118 string characters out of 5743681
  2012187 words of memory out of 5000000
- 56882 multiletter control sequences out of 15000+600000
+ 56878 multiletter control sequences out of 15000+600000
  571606 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,14n,110p,676b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1280,10 +1280,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (16 pages, 312581 bytes).
+Output written on mosaics.pdf (16 pages, 311427 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 249 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

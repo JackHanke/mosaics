@@ -152,7 +152,7 @@
 
 \section{Introduction}
 
-Consider the following set of $7$ symbols labeled $\{ T_1, \dots T_7 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
+Consider the following set of $7$ symbols labeled $\{ T_0, \dots T_6 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
 
 \begin{center}
     \begin{tikzpicture}
@@ -168,6 +168,8 @@ Consider the following set of $7$ symbols labeled $\{ T_1, \dots T_7 \}$ compose
         \( \lablnode{6.5}{-0.5}{$T_4$} \) 
         \cellE{7.5}{0}{8.5}{1}
         \( \lablnode{8}{-0.5}{$T_5$} \) 
+        \cellF{9}{0}{10}{1}
+        \( \lablnode{9.5}{-0.5}{$T_6$} \) 
     \end{tikzpicture}
 \end{center}
 
@@ -253,50 +255,50 @@ We call these polygon mosaics because, other than the mosaic consisting of all $
 
 \begin{exmp}
 \label{exmp: clean sap}
-Below is an example of a polygon mosaic of size $(5,7)$ that contains $2$ polygons, with the squares that make them up hilighted in gray.
+Below is an example of a polygon mosaic of size $(5,7)$ that contains $3$ polygons, with the squares that make them up hilighted in gray.
 
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
         \cell{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellCf{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        \cell{5}{0}{6}{1}
-        \cell{6}{0}{7}{1}
+        \cellCf{2}{0}{3}{1}
+        \cellEf{3}{0}{4}{1}
+        \cellEf{4}{0}{5}{1}
+        \cellEf{5}{0}{6}{1}
+        \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
         \cell{1}{1}{2}{2}
-        \cellEf{2}{1}{3}{2}
-        \cellAf{3}{1}{4}{2}
+        \cellFf{2}{1}{3}{2}
+        \cell{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
-        \cell{5}{1}{6}{2}
-        \cell{6}{1}{7}{2}
+        \cellDf{5}{1}{6}{2}
+        \cellFf{6}{1}{7}{2}
         % row3
         \cell{0}{2}{1}{3}
         \cell{1}{2}{2}{3}
-        \cellAf{2}{2}{3}{3}
-        \cellFf{3}{2}{4}{3}
+        \cellFf{2}{2}{3}{3}
+        \cell{3}{2}{4}{3}
         \cellBf{4}{2}{5}{3}
-        \cell{5}{2}{6}{3}
-        \cell{6}{2}{7}{3}
+        \cellAf{5}{2}{6}{3}
+        \cellFf{6}{2}{7}{3}
         % row4
-        \cellDf{0}{3}{1}{4}
-        \cellCf{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
-        \cell{3}{3}{4}{4}
-        \cell{4}{3}{5}{4}
+        \cellCf{0}{3}{1}{4}
+        \cellDf{1}{3}{2}{4}
+        \cellBf{2}{3}{3}{4}
+        \cellEf{3}{3}{4}{4}
+        \cellDf{4}{3}{5}{4}
         \cell{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
+        \cellFf{6}{3}{7}{4}
         % row5
-        \cellAf{0}{4}{1}{5}
-        \cellBf{1}{4}{2}{5}
+        \cellBf{0}{4}{1}{5}
+        \cellAf{1}{4}{2}{5}
         \cell{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
-        \cell{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cell{6}{4}{7}{5}
+        \cellBf{4}{4}{5}{5}
+        \cellEf{5}{4}{6}{5}
+        \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
 \end{center}
 \end{exmp}
@@ -1274,45 +1276,45 @@ Below is a messy polygon mosaic of size $(5,7)$ that contains $1$ polygon, with 
 \begin{center}
     \begin{tikzpicture}
         % row1
-        \cellA{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellCf{3}{0}{4}{1}
-        \cellC{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
+        \cellE{0}{0}{1}{1}
+        \cellA{1}{0}{2}{1}
+        \cellCf{2}{0}{3}{1}
+        \cellEf{3}{0}{4}{1}
+        \cellEf{4}{0}{5}{1}
+        \cellEf{5}{0}{6}{1}
+        \cellDf{6}{0}{7}{1}
         % row2
-        \cellA{0}{1}{1}{2}
-        \cellE{1}{1}{2}{2}
-        \cellEf{2}{1}{3}{2}
-        \cellAf{3}{1}{4}{2}
+        \cell{0}{1}{1}{2}
+        \cellD{1}{1}{2}{2}
+        \cellFf{2}{1}{3}{2}
+        \cell{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
-        \cellB{5}{1}{6}{2}
-        \cellD{6}{1}{7}{2}
+        \cellDf{5}{1}{6}{2}
+        \cellFf{6}{1}{7}{2}
         % row3
-        \cell{0}{2}{1}{3}
-        \cellB{1}{2}{2}{3}
-        \cellAf{2}{2}{3}{3}
-        \cellFf{3}{2}{4}{3}
+        \cellH{0}{2}{1}{3}
+        \cellI{1}{2}{2}{3}
+        \cellFf{2}{2}{3}{3}
+        \cellF{3}{2}{4}{3}
         \cellBf{4}{2}{5}{3}
-        \cellD{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
+        \cellAf{5}{2}{6}{3}
+        \cellFf{6}{2}{7}{3}
         % row4
-        \cellF{0}{3}{1}{4}
-        \cellE{1}{3}{2}{4}
-        \cellA{2}{3}{3}{4}
-        \cellA{3}{3}{4}{4}
-        \cellE{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
+        \cellCf{0}{3}{1}{4}
+        \cellDf{1}{3}{2}{4}
+        \cellBf{2}{3}{3}{4}
+        \cellEf{3}{3}{4}{4}
+        \cellDf{4}{3}{5}{4}
+        \cellA{5}{3}{6}{4}
+        \cellFf{6}{3}{7}{4}
         % row5
-        \cellA{0}{4}{1}{5}
-        \cell{1}{4}{2}{5}
-        \cellE{2}{4}{3}{5}
-        \cellD{3}{4}{4}{5}
-        \cellD{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cellE{6}{4}{7}{5}
+        \cellBf{0}{4}{1}{5}
+        \cellAf{1}{4}{2}{5}
+        \cellG{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cellBf{4}{4}{5}{5}
+        \cellEf{5}{4}{6}{5}
+        \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
 \end{center}
 \end{exmp}
@@ -1322,11 +1324,11 @@ It turns out that it is simpler to enumerate the number of mosaics that \textit{
 \begin{center}
 \begin{tikzpicture}
     % row1
-    \cellD{0}{0}{1}{1}
-    \cellC{1}{0}{2}{1}
+    \cellC{0}{0}{1}{1}
+    \cellD{1}{0}{2}{1}
     % row2
-    \cellA{0}{1}{1}{2}
-    \cellB{1}{1}{2}{2}
+    \cellB{0}{1}{1}{2}
+    \cellA{1}{1}{2}{2}
 \end{tikzpicture}
 \end{center}
 

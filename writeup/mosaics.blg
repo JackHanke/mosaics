@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'mosaics.blg'
-[39] biber-darwin:340> INFO - === Wed Feb 19, 2025, 17:53:24
-[49] Biber.pm:419> INFO - Reading 'mosaics.bcf'
-[95] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
-[103] Biber.pm:4419> INFO - Processing section 0
-[110] Biber.pm:4610> INFO - Looking for bibtex file './bibb.bib' for section 0
-[111] bibtex.pm:1713> INFO - LaTeX decoding ...
-[114] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
-[137] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[137] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[137] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[137] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[141] bbl.pm:660> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
-[142] bbl.pm:763> INFO - Output to mosaics.bbl
+[37] biber-darwin:340> INFO - === Mon May 19, 2025, 14:40:59
+[45] Biber.pm:419> INFO - Reading 'mosaics.bcf'
+[90] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
+[98] Biber.pm:4419> INFO - Processing section 0
+[104] Biber.pm:4610> INFO - Looking for bibtex file './bibb.bib' for section 0
+[105] bibtex.pm:1713> INFO - LaTeX decoding ...
+[181] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
+[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[202] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[202] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[205] bbl.pm:660> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
+[205] bbl.pm:763> INFO - Output to mosaics.bbl

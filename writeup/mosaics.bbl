@@ -64,25 +64,6 @@
       \verb http://dx.doi.org/10.4153/CMB-2017-072-x
       \endverb
     \endentry
-    \entry{oeis}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=d15e73d058a3f9fe1be220f9200b671a}{%
-           family={{OEIS Foundation Inc.}},
-           familyi={O\bibinitperiod}}}%
-      }
-      \strng{namehash}{d15e73d058a3f9fe1be220f9200b671a}
-      \strng{fullhash}{d15e73d058a3f9fe1be220f9200b671a}
-      \strng{bibnamehash}{d15e73d058a3f9fe1be220f9200b671a}
-      \strng{authorbibnamehash}{d15e73d058a3f9fe1be220f9200b671a}
-      \strng{authornamehash}{d15e73d058a3f9fe1be220f9200b671a}
-      \strng{authorfullhash}{d15e73d058a3f9fe1be220f9200b671a}
-      \field{sortinit}{O}
-      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Published electronically at \url{http://oeis.org}}
-      \field{title}{The {O}n-{L}ine {E}ncyclopedia of {I}nteger {S}equences}
-    \endentry
   \enddatalist
 \endrefsection
 \endinput
