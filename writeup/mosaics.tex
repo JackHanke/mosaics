@@ -2,10 +2,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{tikz}
-\usepackage{subfig}
+% \usepackage{subfig}
 \usepackage[english]{babel}
 \usepackage{capt-of}
 \usepackage{tabularray}
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{subcaption}
+% \captionsetup{compatibility=false}
+\usepackage{graphicx}
 \newtheorem{theorem}{Theorem}
 \usetikzlibrary{calc}
 \usetikzlibrary{shapes}
@@ -114,8 +119,8 @@
 \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
 \newcommand{\cellGf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
 \newcommand{\cellHf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellIf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellJf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+\newcommand{\cellIf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+\newcommand{\cellJf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 
 \newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=5pt] (A) at ( #1 , #2 ) {#3};}
@@ -124,19 +129,16 @@
 \usepackage[margin=1in]{geometry}
 \date{}
 %doc info
-% $\text{Hanke, Jack}^*$\\
-% $\text{Schank, Richard}$\\
-% $\text{Maltenfort, Michael}^*$
 \author{
     \textbf{Jack Hanke}\\
     Northwestern University
     \and
-    \textbf{Richard Schank}\\
-    \and
     \textbf{Michael Maltenfort}\\
     Northwestern University
+    \and
+    \textbf{Richard Schank}\\
     }
-\title{\textbf{Exact Enumeration of Polygon Mosaics}}
+\title{\textbf{Enumeration of Mosaic Systems}}
 % \date{\today}
 
 \begin{document}
@@ -145,35 +147,14 @@
 \begin{center}
 
     \begin{abstract}
-        Hong and Oh calculated upper and lower bounds on the number of polygon mosaics for $7$ distinct tiles that together model multiple ring polymers in physics. We exactly enumerate these polygon mosaics. The method we introduce generalizes to various other tile sets. We also introduce and enumerate a variation on polygon mosaics called messy polygon mosaics for various tile sets.
+        Lomonaco and Kauffman introduced a mosaic system to model quantum knots composed of an $m \times n$ grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion to exactly enumerate mosaics that have the property of being suitably connected. Hong and Oh later calculated upper and lower bounds on a modified mosaic system with $7$ tiles. We introduce a general method for enumerating these mosaic systems. We also introduce a variant to mosaics we call messy mosaics that can also enumerated using our method.
     \end{abstract}
 
 \end{center}
 
 \section{Introduction}
 
-Consider the following set of $7$ symbols labeled $\{ T_0, \dots T_6 \}$ composed of unit squares and dotted lines connecting pairs of sides at their midpoints.
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-        \( \lablnode{0.5}{-0.5}{$T_0$} \) 
-        \cellA{1.5}{0}{2.5}{1}
-        \( \lablnode{2}{-0.5}{$T_1$} \) 
-        \cellB{3}{0}{4}{1}
-        \( \lablnode{3.5}{-0.5}{$T_2$} \) 
-        \cellC{4.5}{0}{5.5}{1}
-        \( \lablnode{5}{-0.5}{$T_3$} \) 
-        \cellD{6}{0}{7}{1}
-        \( \lablnode{6.5}{-0.5}{$T_4$} \) 
-        \cellE{7.5}{0}{8.5}{1}
-        \( \lablnode{8}{-0.5}{$T_5$} \) 
-        \cellF{9}{0}{10}{1}
-        \( \lablnode{9.5}{-0.5}{$T_6$} \) 
-    \end{tikzpicture}
-\end{center}
-
-TODO move following diagram somewhere else
+Lomonaco and Kauffman \cite{Lomonaco08} introduced a model for quantum knots in which an $m \times n$ matrix is constructed using $11$ distinct symbols called \textit{tiles}. These tiles, diagrammed below, are composed of unit squares with dotted lines connecting $2$ or $4$ sides at their midpoint.
 
 \begin{center}
     \begin{tikzpicture}
@@ -202,15 +183,17 @@ TODO move following diagram somewhere else
     \end{tikzpicture}
 \end{center}
 
-Call these symbols \textit{tiles}. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix of these tiles. For example, below is a mosaic of size $(5,7)$.
+We denote this set of tiles as $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements in $\mathbb{T}$, and a \textit{mosaic system} is a collection of mosaics with some property. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$.
 
-\begin{center}
-    \begin{tikzpicture}
+\begin{figure}[h!]
+    \begin{center}
+    \begin{subfigure}{0.4\textwidth}
+        \begin{tikzpicture}
         % row1
         \cellA{0}{0}{1}{1}
         \cellB{1}{0}{2}{1}
         \cellF{2}{0}{3}{1}
-        \cellA{3}{0}{4}{1}
+        \cellH{3}{0}{4}{1}
         \cellC{4}{0}{5}{1}
         \cell{5}{0}{6}{1}
         \cellD{6}{0}{7}{1}
@@ -225,19 +208,19 @@ Call these symbols \textit{tiles}. A \textit{mosaic} of size $(m,n)$ is an $m \t
         % row3
         \cellA{0}{2}{1}{3}
         \cellB{1}{2}{2}{3}
-        \cellA{2}{2}{3}{3}
+        \cellJ{2}{2}{3}{3}
         \cellB{3}{2}{4}{3}
         \cellA{4}{2}{5}{3}
         \cell{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
+        \cellJ{6}{2}{7}{3}
         % row4
         \cellF{0}{3}{1}{4}
-        \cellE{1}{3}{2}{4}
+        \cellI{1}{3}{2}{4}
         \cell{2}{3}{3}{4}
         \cell{3}{3}{4}{4}
         \cellE{4}{3}{5}{4}
         \cellD{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
+        \cellG{6}{3}{7}{4}
         % row5
         \cellA{0}{4}{1}{5}
         \cellD{1}{4}{2}{5}
@@ -246,32 +229,27 @@ Call these symbols \textit{tiles}. A \textit{mosaic} of size $(m,n)$ is an $m \t
         \cellD{4}{4}{5}{5}
         \cell{5}{4}{6}{5}
         \cell{6}{4}{7}{5}
-\end{tikzpicture}
-\end{center}
-
-Consider a edge shared between two tiles in the above figure. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{polygon mosaic} to be a mosaic that has all unit edges having $0$ or $2$ dotted lines drawn from their midpoint.
-
-We call these polygon mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. 
-
-\begin{exmp}
-\label{exmp: clean sap}
-Below is an example of a polygon mosaic of size $(5,7)$ that contains $3$ polygons, with the squares that make them up hilighted in gray.
-
-\begin{center}
+        \end{tikzpicture}
+    \caption{A mosaic}
+    \label{fig:example mosaic}
+    \end{subfigure}
+% \hfill
+\hspace{0.05\textwidth}
+\begin{subfigure}{0.4\textwidth}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cellCf{2}{0}{3}{1}
-        \cellEf{3}{0}{4}{1}
+        \cellCf{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellCf{3}{0}{4}{1}
         \cellEf{4}{0}{5}{1}
         \cellEf{5}{0}{6}{1}
         \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cellFf{2}{1}{3}{2}
-        \cell{3}{1}{4}{2}
+        \cellBf{1}{1}{2}{2}
+        \cellIf{2}{1}{3}{2}
+        \cellAf{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
         \cellDf{5}{1}{6}{2}
         \cellFf{6}{1}{7}{2}
@@ -300,26 +278,57 @@ Below is an example of a polygon mosaic of size $(5,7)$ that contains $3$ polygo
         \cellEf{5}{4}{6}{5}
         \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
+    \caption{A knot mosaic, with knots hilighted}
+    \label{fig:example knot mosaic}
+\end{subfigure}
+
 \end{center}
-\end{exmp}
+\caption{Examples of mosaics of size $(5,7)$ made of tiles in $\mathbb{T}$}
+\label{fig:example mosaics}
+\end{figure}
 
-Note that in large enough mosaics, it is possible for larger polygons to surround smaller polygons. 
+Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{knot mosaic} to be a mosaic of tiles from $\mathbb{T}$ that has all edges having $0$ or $2$ dotted lines drawn from their midpoint.
 
-Let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one cannot construct a polygon mosaic, so 
-$$p_{m,1} = p_{1,n} = 0.$$
+Lomonaco and Kauffman \cite{Lomonaco08} call these knot mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form  \textit{knots}. Figure \ref{fig:example knot mosaic} shows a knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knot hilighted in gray. Note that a mosaic can contain knots isomorphic to the unknot, as well as knots that encompass other knots. 
 
-Hong and Oh \cite[Hong2018]{Hong2018} gave the following upper and lower bounds\footnote{The authors did not consider the mosaic containing all $T_1$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.} for $m,n \geq 2$. 
+Let $k_{m,n}$ be the number of knot mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one can only construct a knot mosaic wtih $T_0$, so $k_{m,1} = k_{1,n} = 1.$ Oh et al. \cite{Oh2014} showed the following for $m,n \geq 2$.
 
-$$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+\begin{thm}[\cite{Oh2014}]
+    \label{thm:Oh2014}
+    The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $k_{m,n} = 2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
-In Theorem \ref{thm: main theorem}, we provide an exact expression for $p_{m,n}$ for $m,n \geq 2$. We also introduce messy polygon mosaics—a variant of polygon mosaics—and enumerate them using a similar strategy.
+    $$ X_{k+1} = \begin{bmatrix}
+        X_k & O_k \\
+        O_k & X_k
+    \end{bmatrix}
+    \text{ and }
+    O_{k+1} = \begin{bmatrix}
+        O_k & X_k \\
+        X_k & 4O_k
+    \end{bmatrix}, $$
+    
+    for $k=0,1,\dots,m-3$, and $\left\| N \right\|$ denotes the sum of elements of matrix $N.$
+\end{thm}
 
-First we define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $p_{m,n}$.
+Oh and colleagues utilize the state matrix recursion in Theorem \ref{thm:Oh2014} to bound the growth rate $\delta = \lim_{n\ to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. 
+
+Finally, Hong and Oh \cite{Hong2018} study the mosaic system with the tile set $\mathbb{T}^* = \{T_0, \dots,T_7\}$. This tile set constructs shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. If we let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$, Hong and Oh showed the following results\footnote{The authors did not consider the mosaic containing all $T_0$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.}. 
+
+\begin{thm}[\cite{Hong2018}]
+    \label{thm:Hong2018}
+    The number of polygon mosaics of size $(m,n)$ $p_{m,n}$ for $m,n \geq 2$ has
+
+    $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+\end{thm}
+
+The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}.
+
+We first re-prove the enumeration of $k_{n,m}$ from Theorem \ref{thm:Oh2014} using our general method for enumerating mosaic systems, and show it immediately gives an an analagous result for $p_{n,m}$. We state the enumeration of $p_{n,m}$ for $m,n \geq 2$ in Theorem \ref{thm: main theorem}. First we define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ for integers $m \geq 2$, which we use to enumerate $p_{m,n}$. To be clear, throughtout the paper we index the rows and columns of matrices starting at $0$.
 
 \begin{defn}
 \label{defn: A}
 
-First define $A(2) = \begin{bmatrix}
+Let $A(2) = \begin{bmatrix}
 1 & 1 \\
 1 & 1
 \end{bmatrix}
@@ -329,7 +338,7 @@ A(k) = \begin{bmatrix}
 A_{0,0} & A_{0,1} \\
 A_{1,0} & A_{1,1}
 \end{bmatrix}
-$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
+$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then define
 
 $$
 A(k+1) = \begin{bmatrix}
@@ -346,57 +355,61 @@ Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$.
 
 \begin{thm}
 \label{thm: main theorem}    
-The number of polygon mosaics $p_{m,n}$ is the $(0,0)$-th entry of $A(m)^n$.
+The number of polygon mosaics $p_{m,n}$ is the $(0,0)$ entry of $A(m)^n$.
 \end{thm}
+
+We then introduce messy knot mosaics—a variant of knot mosaics— in Section \ref{section:messy mosaics} and enumerate them.
 
 \section{Proof of Theorem \ref{thm: main theorem}}
 
 \begin{proof}
 
-For a given mosaic, label the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. To make a \textit{vertex labeling} we also remove the dotted lines from all tiles in the mosaic. Using the mosaic from Example \ref{exmp: clean sap}, we show both the labeling of the vertices, and then the removal of the dotted lines.
+% In doing so, we avoid the use of the so-called \textit{twofold rule} in \cite{Oh2014} to 
+
+For a given mosaic, label the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. To make a \textit{vertex labeling} we also remove the dotted lines from all tiles in the mosaic. Using the mosaic from Figure \ref{fig:example knot mosaic}, we show both the labeling of the vertices, and then the removal of the dotted lines.
 
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
+        \cellC{1}{0}{2}{1}
         \cellD{2}{0}{3}{1}
         \cellC{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        \cell{5}{0}{6}{1}
-        \cell{6}{0}{7}{1}
+        \cellE{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cellE{2}{1}{3}{2}
+        \cellB{1}{1}{2}{2}
+        \cellI{2}{1}{3}{2}
         \cellA{3}{1}{4}{2}
         \cellC{4}{1}{5}{2}
-        \cell{5}{1}{6}{2}
-        \cell{6}{1}{7}{2}
+        \cellD{5}{1}{6}{2}
+        \cellF{6}{1}{7}{2}
         % row3
         \cell{0}{2}{1}{3}
         \cell{1}{2}{2}{3}
-        \cellA{2}{2}{3}{3}
-        \cellF{3}{2}{4}{3}
+        \cellF{2}{2}{3}{3}
+        \cell{3}{2}{4}{3}
         \cellB{4}{2}{5}{3}
-        \cell{5}{2}{6}{3}
-        \cell{6}{2}{7}{3}
+        \cellA{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
         % row4
-        \cellD{0}{3}{1}{4}
-        \cellC{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
-        \cell{3}{3}{4}{4}
-        \cell{4}{3}{5}{4}
+        \cellC{0}{3}{1}{4}
+        \cellD{1}{3}{2}{4}
+        \cellB{2}{3}{3}{4}
+        \cellE{3}{3}{4}{4}
+        \cellD{4}{3}{5}{4}
         \cell{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
+        \cellF{6}{3}{7}{4}
         % row5
-        \cellA{0}{4}{1}{5}
-        \cellB{1}{4}{2}{5}
+        \cellB{0}{4}{1}{5}
+        \cellA{1}{4}{2}{5}
         \cell{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
-        \cell{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cell{6}{4}{7}{5}
+        \cellB{4}{4}{5}{5}
+        \cellE{5}{4}{6}{5}
+        \cellA{6}{4}{7}{5}
         % label for row1
         \( \lablvertex{0}{0}{$0$} \)
         \( \lablvertex{1}{0}{$0$} \)
@@ -409,11 +422,11 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         % label for row1
         \( \lablvertex{0}{1}{$0$} \)
         \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-        \( \lablvertex{6}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{6}{1}{$1$} \)
         \( \lablvertex{7}{1}{$0$} \)
         % label for row1
         \( \lablvertex{0}{2}{$0$} \)
@@ -422,16 +435,16 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         \( \lablvertex{3}{2}{$1$} \)
         \( \lablvertex{4}{2}{$1$} \)
         \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{6}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
         \( \lablvertex{7}{2}{$0$} \)
         % label for row1
         \( \lablvertex{0}{3}{$0$} \)
         \( \lablvertex{1}{3}{$0$} \)
         \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$1$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$1$} \)
+        \( \lablvertex{6}{3}{$1$} \)
         \( \lablvertex{7}{3}{$0$} \)
         % label for row1
         \( \lablvertex{0}{4}{$0$} \)
@@ -439,8 +452,8 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         \( \lablvertex{2}{4}{$0$} \)
         \( \lablvertex{3}{4}{$0$} \)
         \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{5}{4}{$0$} \)
-        \( \lablvertex{6}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$1$} \)
+        \( \lablvertex{6}{4}{$1$} \)
         \( \lablvertex{7}{4}{$0$} \)
         % label for row1
         \( \lablvertex{0}{5}{$0$} \)
@@ -507,11 +520,11 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         % label for row1
         \( \lablvertex{8}{1}{$0$} \)
         \( \lablvertex{9}{1}{$0$} \)
-        \( \lablvertex{10}{1}{$0$} \)
-        \( \lablvertex{11}{1}{$1$} \)
-        \( \lablvertex{12}{1}{$0$} \)
-        \( \lablvertex{13}{1}{$0$} \)
-        \( \lablvertex{14}{1}{$0$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$0$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
         \( \lablvertex{15}{1}{$0$} \)
         % label for row1
         \( \lablvertex{8}{2}{$0$} \)
@@ -520,16 +533,16 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         \( \lablvertex{11}{2}{$1$} \)
         \( \lablvertex{12}{2}{$1$} \)
         \( \lablvertex{13}{2}{$0$} \)
-        \( \lablvertex{14}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
         \( \lablvertex{15}{2}{$0$} \)
         % label for row1
         \( \lablvertex{8}{3}{$0$} \)
         \( \lablvertex{9}{3}{$0$} \)
         \( \lablvertex{10}{3}{$0$} \)
-        \( \lablvertex{11}{3}{$0$} \)
-        \( \lablvertex{12}{3}{$0$} \)
-        \( \lablvertex{13}{3}{$0$} \)
-        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$1$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$1$} \)
         \( \lablvertex{15}{3}{$0$} \)
         % label for row1
         \( \lablvertex{8}{4}{$0$} \)
@@ -537,8 +550,8 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
         \( \lablvertex{10}{4}{$0$} \)
         \( \lablvertex{11}{4}{$0$} \)
         \( \lablvertex{12}{4}{$0$} \)
-        \( \lablvertex{13}{4}{$0$} \)
-        \( \lablvertex{14}{4}{$0$} \)
+        \( \lablvertex{13}{4}{$1$} \)
+        \( \lablvertex{14}{4}{$1$} \)
         \( \lablvertex{15}{4}{$0$} \)
         % label for row1
         \( \lablvertex{8}{5}{$0$} \)
@@ -553,7 +566,7 @@ For a given mosaic, label the vertices of the tiles as follows. If the vertex is
     \end{tikzpicture}
 \end{center}
 
-The critical point is this: even with the dotted lines removed, the vertex labeling uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. This is because the vertex labeling of an individual cell, which we will call a \textit{cell-labeling}, uniquely corresponds with a cell $T_i$. This is shown below.
+The critical point is this: even with the dotted lines removed, the vertex labeling uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. This is because the vertex labeling of an individual cell, which we will call a \textit{cell labeling}, uniquely corresponds with a cell $T_i$. This is shown below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -663,9 +676,9 @@ The critical point is this: even with the dotted lines removed, the vertex label
     \end{tikzpicture}
 \end{center}
 
-We can then enumerate $p_{m,n}$ by enumerating the number of vertex labelings that correspond with a valid polygon mosaic. 
+We can then enumerate $p_{m,n}$ by enumerating the number of vertex labelings that correspond to a polygon mosaic. 
 
-Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labeled $0$, and each interior vertex is labeled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell-labelings.
+Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labeled $0$, and each interior vertex is labeled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell labelings.
 
 \begin{center}
     \begin{tikzpicture}
@@ -686,7 +699,7 @@ Consider the collection of vertex labelings for a $m \times n$ grid of cells. To
     \end{tikzpicture}
 \end{center}
 
-These two cell-labelings aren't associated with any of the cells $T_1, \dots, T_7$, and so cannot correspond with a polygon mosaic. We seek a recursive solution to enumerate the number of vertex labelings for a $m \times n$ grid with these  conditions: the labeling has a boundary of all $0$'s and does not contain the above cell-labelings. 
+These two cell labelings aren't associated with any of the cells $T_1, \dots, T_7$, and so cannot correspond with a polygon mosaic. We seek a recursive solution to enumerate the number of vertex labelings for an $m \times n$ grid with these  conditions: the labeling has a boundary of all $0$'s and does not contain the above cell labelings. 
 
 Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labeled $0$. One of these columns for $m=3$ is below.
 
@@ -779,7 +792,7 @@ Next consider a column with index $(0, b_{1})$ for some $b_{1} \in [0,2^{m-1}-1]
     \end{tikzpicture}
 \end{center}
 
-Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell-labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell-labeling. 
+Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell labeling. 
 
 Finally, if we further appended a column with label $(b_2,0)$, we would have created a vertex labeling with a boundary of all $0$'s. For this reason, let's call a column with index $(b,0)$ for $b \in [0,2^{m-1}-1]$ an \textit{ending column}. This vertex labeling would correspond with $1$ polygon mosaic if the middle column had index $(2,3)$, but not if the middle column had index $(2,1)$.
 
@@ -1082,7 +1095,7 @@ The final component of the proof is constructing $A(m)$ for any $m$. Begin by  c
     \end{tikzpicture}
 \end{center}
 
-Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell-labelings below. 
+Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell labelings below. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1265,7 +1278,7 @@ which completes the proof.
 
 The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile sets, which we tabularize in Section \ref{section: summary of results} without proof. Interestingly, the method not only generalizes to other tile sets, but can also be augmented to enumerate the more complicated ``messy" polygon mosaics.
 
-\section{Messy Polygon Mosaics}
+\section{Messy Polygon Mosaics}\label{section:messy mosaics}
 
 A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon, with no restriction on other shared edges. 
 
@@ -1368,7 +1381,7 @@ The number of mosaics that \textit{do not} contain a polygon is the $(0,0)$-th e
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
 \begin{proof}
-We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell-labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell-labeling.
+We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell labeling.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1482,7 +1495,7 @@ We consider the same vertex labeling in the proof of Theorem \ref{thm: main theo
     \end{tikzpicture}
 \end{center}
 
-The proof of Theorem \ref{thm: main theorem} can be seen as assigning $w_{7} = w_{10} = 0$, and all other weights to $1$. The usefulness of this view can be seen when considering the operation for creating the recursive definition for $A(k)$ in the previous proof. Previously, we defined the coefficient matrix $V$ by computing $A(2)$ and $A(3)$ directly and comparing. Now with a weight assigned to individual cell-labelings, we can define the values of $A(2)$ and $V$ directly in terms of these weights.
+The proof of Theorem \ref{thm: main theorem} can be seen as assigning $w_{7} = w_{10} = 0$, and all other weights to $1$. The usefulness of this view can be seen when considering the operation for creating the recursive definition for $A(k)$ in the previous proof. Previously, we defined the coefficient matrix $V$ by computing $A(2)$ and $A(3)$ directly and comparing. Now with a weight assigned to individual cell labelings, we can define the values of $A(2)$ and $V$ directly in terms of these weights.
 
 $$
 A(2) = 
@@ -1508,7 +1521,7 @@ $$
 
 With this identity, we can enumerate $t_{m,n}$ once we have proper assignments for the $16$ weights. As in the previous proof, we have $w_{7}=w_{10}=0$, as again these are impossible vertex labelings for our tile set. 
 
-Next consider the cell labellings for $w_{1}$ and $w_{16}$. When enumerating polygon mosaics (and their messy variant), these cell-labelings do not contribute to the cells of a polygon. For polygon mosaics, only the $T_1$ tile are permitted to not contribute to the shape of a polygon. However, in messy polygon mosaics, all $7$ tiles are permitted to not contribute to the shape of the polygon, so $w_{1} = w_{16}=7$.
+Next consider the cell labelings for $w_{1}$ and $w_{16}$. When enumerating polygon mosaics (and their messy variant), these cell labelings do not contribute to the cells of a polygon. For polygon mosaics, only the $T_1$ tile are permitted to not contribute to the shape of a polygon. However, in messy polygon mosaics, all $7$ tiles are permitted to not contribute to the shape of the polygon, so $w_{1} = w_{16}=7$.
 
 However, this means we now lose the uniqueness of the map from vertex labeling to messy polygon mosaics. For instance, the sub-grid vertex labelings below are now ambiguous as to whether or not they represent a polygon.
 
@@ -1557,7 +1570,7 @@ This ambiguity is explored in the following example.
 
 \begin{exmp}\label{exmp: iep}
 
-Consider the four vertex labelings below, along with the messy polygon mosaic on the right. Write the product of the weights of all cell-labellings below each, assuming all weights not defined above are $1$.
+Consider the four vertex labelings below, along with the messy polygon mosaic on the right. Write the product of the weights of all cell labelings below each, assuming all weights not defined above are $1$.
 
 \begin{center}
     \begin{tikzpicture}
@@ -1703,11 +1716,11 @@ Consider the four vertex labelings below, along with the messy polygon mosaic on
     \end{tikzpicture}
 \end{center}
 
-Notice that each vertex labelling could include the right-most messy polygon mosaic. In fact, the left-most vertex labeling contains all possible mosaics! If we were to add these weight products together, we would count the right messy polygon mosaic $4$ times.
+Notice that each vertex labeling could include the right-most messy polygon mosaic. In fact, the left-most vertex labeling contains all possible mosaics! If we were to add these weight products together, we would count the right messy polygon mosaic $4$ times.
 
 \end{exmp}
 
-The double counting demonstrated in Example \ref{exmp: iep} motivates the following idea. If vertex labellings with an odd number of polygons are negative, then the addition of these weight products would incorporate the \textit{inclusion-exclusion principle}, mitigating the double counting. In Example \ref{exmp: iep}, the sum $7^8 - 7^4 - 7^4 + 7^0$ would then represent the number of mosaics that \textit{do not} contain the following three classes of messy polygon mosaics, where cells that can be any tile are marked with a dot.
+The double counting demonstrated in Example \ref{exmp: iep} motivates the following idea. If vertex labelings with an odd number of polygons are negative, then the addition of these weight products would incorporate the \textit{inclusion-exclusion principle}, mitigating the double counting. In Example \ref{exmp: iep}, the sum $7^8 - 7^4 - 7^4 + 7^0$ would then represent the number of mosaics that \textit{do not} contain the following three classes of messy polygon mosaics, where cells that can be any tile are marked with a dot.
 
 \begin{center}
 \begin{tikzpicture}
@@ -1752,7 +1765,7 @@ The double counting demonstrated in Example \ref{exmp: iep} motivates the follow
 
 Therefore, the sum over the products for all vertex labelings, where the product is negative if the vertex labeling represents an odd number of polygons in the mosaic, would be the number of mosaics that \textit{do not} include messy polygon mosaics.
 
-We can accomplish this by finding a weight assignment such that the product over the cell-labeling weights of \textit{any} single polygon equals $-1$. It is not obvious that such an assignment can even be found! 
+We can accomplish this by finding a weight assignment such that the product over the cell labeling weights of \textit{any} single polygon equals $-1$. It is not obvious that such an assignment can even be found! 
 
 Luckily such assignments exist. The proof of this fact can be found in the Appendix, and choosing an assignment gives us the following weight assignments.
 
@@ -2026,7 +2039,7 @@ As demonstrated in the proof of Theorem \ref{thm: messy mosaics}, the enumeratio
 
 \section{Appendix}
 
-We demonstrate that weight assignments exist such that the product over the cell-labeling weights of \textit{all} single polygons equals $-1$. We do this by first asserting that the product of the weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1$. 
+We demonstrate that weight assignments exist such that the product over the cell labeling weights of \textit{all} single polygons equals $-1$. We do this by first asserting that the product of the weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1$. 
 
 \begin{lemma}\label{lemma: build bigger saps}
     One can construct all larger polygons from the smallest polygon using a finite set of transformations $S$.

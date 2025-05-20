@@ -1,15 +1,24 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'mosaics.blg'
-[37] biber-darwin:340> INFO - === Mon May 19, 2025, 14:40:59
-[45] Biber.pm:419> INFO - Reading 'mosaics.bcf'
-[90] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
-[98] Biber.pm:4419> INFO - Processing section 0
-[104] Biber.pm:4610> INFO - Looking for bibtex file './bibb.bib' for section 0
-[105] bibtex.pm:1713> INFO - LaTeX decoding ...
-[181] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
-[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[202] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[202] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[202] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[205] bbl.pm:660> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
-[205] bbl.pm:763> INFO - Output to mosaics.bbl
+[42] biber-darwin:340> INFO - === Tue May 20, 2025, 01:02:01
+[53] Biber.pm:419> INFO - Reading 'mosaics.bcf'
+[100] Biber.pm:979> INFO - Found 9 citekeys in bib section 0
+[111] Biber.pm:4419> INFO - Processing section 0
+[118] Biber.pm:4610> INFO - Looking for bibtex file './bibb.bib' for section 0
+[119] bibtex.pm:1713> INFO - LaTeX decoding ...
+[200] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
+[252] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[252] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[252] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[252] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[260] bbl.pm:660> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
+[264] bbl.pm:763> INFO - Output to mosaics.bbl
+[265] Biber.pm:131> WARN - article entry 'Lomonaco08' (./bibb.bib): Invalid format '2008/06/01' of date field 'date' - ignoring
+[265] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Lomonaco08' is invalid - run biber with '--validate_datamodel' for details.
+[265] Biber.pm:131> WARN - article entry 'Oh2014' (./bibb.bib): Invalid format '2015/03/01' of date field 'date' - ignoring
+[265] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2014' is invalid - run biber with '--validate_datamodel' for details.
+[265] Biber.pm:131> WARN - article entry 'Oh2019' (./bibb.bib): Invalid format '2019/06/12' of date field 'date' - ignoring
+[265] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2019' is invalid - run biber with '--validate_datamodel' for details.
+[265] Biber.pm:131> WARN - legacy month field 'APR' in entry 'Oh2018Aztec' is not an integer - this will probably not sort properly.
+[265] Biber.pm:131> WARN - legacy month field 'MAY' in entry 'Oh2019tiling' is not an integer - this will probably not sort properly.
+[265] Biber.pm:133> INFO - WARNINGS: 8

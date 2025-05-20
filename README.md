@@ -35,12 +35,11 @@ A video summarizing this work can be found [here](https://www.youtube.com/watch?
 
 ## Developer Notes
 
-To refresh bibtex references, run `biber mosaics` .
+To refresh bib references, run `biber mosaics` .
 
+## Citations w/ Links
 
-## TODOs
-
-As the titles are very similar, all papers I list in this email are in the form: #. paper title (year published to arXiv / published).
+Papers are of the form: #. paper title (year published to arXiv / published).
 
 To begin,
 0. [Quantum Knots and Mosaics (2008)](https://arxiv.org/abs/0805.0339): The knot tileset and its apparent relationship with quantum mechanics is introduced
@@ -60,5 +59,3 @@ Additionally, the journals these papers are published in are as follows:
 0. 1. 2. and 3. are published in [Quantum Information Processing](https://link.springer.com/journal/11128)
 4. is published in [Reviews in Mathematical Physics](https://worldscientific.com/worldscinet/rmp)
 5. is published in [Canadian Mathematical Bulletin](https://www.cambridge.org/core/journals/canadian-mathematical-bulletin)
-
-The work Richard and I did amounts to adapting the solution in 1 to exactly solve 5, as well as introducing and enumerating messy polygon mosaics, using solution in 1 & unique solutions to address messy enumeration. I suspect that if our work is publishable at all, the best bet would be to submit to the same journal as 5. Do you think, with all this in mind, that this is still worth pursuing?  

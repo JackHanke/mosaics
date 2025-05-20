@@ -19,6 +19,60 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{Choi2024}{article}{}
+      \name{author}{4}{}{%
+        {{hash=52aa0b5a9ebe76c58ecb7230b4e5cbf4}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Dooho},
+           giveni={D\bibinitperiod}}}%
+        {{hash=9be93e1206d130641391f2dbde078ea4}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Hyoungjun},
+           giveni={H\bibinitperiod}}}%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bf7cdb993c7da313ad93317ab4cce726}{%
+           family={Yoo},
+           familyi={Y\bibinitperiod},
+           given={Hyungkee},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{92b0df56be9fd079f79e4b09a3184e15}
+      \strng{fullhash}{f715759952cec01893f3f549b5e054f0}
+      \strng{bibnamehash}{92b0df56be9fd079f79e4b09a3184e15}
+      \strng{authorbibnamehash}{92b0df56be9fd079f79e4b09a3184e15}
+      \strng{authornamehash}{92b0df56be9fd079f79e4b09a3184e15}
+      \strng{authorfullhash}{f715759952cec01893f3f549b5e054f0}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The discovery of the Jones polynomial made an important connection between quantum physics and knot theory. Kauffman and Lomonaco introduced the knot mosaic system to define the quantum knot system for the purpose of representing an actual physical quantum system. This paper is inspired by an open question about the knot mosaic enumeration suggested by them. A knot m × n-mosaic is an m × n array of 11 mosaic tiles representing a knot diagram by adjoining properly. The total number Dm×n of knot m × n-mosaics, which indicates the dimension of the Hilbert space of the quantum knot system, is known to grow in a quadratic exponential rate. Recently, Oh et al. developed the state matrix recursion method producing the exact enumeration of knot mosaics, which uses a recursion formula of state matrices. Furthermore, they showed the existence of the knot mosaic constant δ =limm,n→∞(Dm×n) 1 mn and found its upper and lower bounds in a series of papers. The latest upper bound was obtained through two new concepts: quasimosaics and cling mosaics. As a sequel to this research program, we adjust the state matrix recursion method to handle cling mosaics inside a quasimosaic, which is called the progressive state matrix recursion method. This method provides recursive matrix-relations producing a sharper bound of the knot mosaic constant: 4 ≤ δ ≤ 4.1035507⋯.}
+      \field{journaltitle}{Reviews in Mathematical Physics}
+      \field{number}{10}
+      \field{title}{Quantum knot mosaics and bounds of the growth constant}
+      \field{volume}{36}
+      \field{year}{2024}
+      \field{pages}{2450025}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1142/S0129055X24500259
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1142/S0129055X24500259
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1142/S0129055X24500259
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1142/S0129055X24500259
+      \endverb
+    \endentry
     \entry{Hong2018}{article}{}
       \name{author}{2}{}{%
         {{hash=3413b395b2bef2da272660a3967f6683}{%
@@ -63,6 +117,266 @@
       \verb{url}
       \verb http://dx.doi.org/10.4153/CMB-2017-072-x
       \endverb
+    \endentry
+    \entry{Lomonaco08}{article}{}
+      \name{author}{2}{}{%
+        {{hash=54c1474aa424a865860d283513885a4a}{%
+           family={Lomonaco},
+           familyi={L\bibinitperiod},
+           given={Samuel\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=0e5e64c859b123143b26143f983bd33b}{%
+           family={Kauffman},
+           familyi={K\bibinitperiod},
+           given={Louis\bibnamedelima H.},
+           giveni={L\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{77910195611a4da010d7295d10055fb5}
+      \strng{fullhash}{77910195611a4da010d7295d10055fb5}
+      \strng{bibnamehash}{77910195611a4da010d7295d10055fb5}
+      \strng{authorbibnamehash}{77910195611a4da010d7295d10055fb5}
+      \strng{authornamehash}{77910195611a4da010d7295d10055fb5}
+      \strng{authorfullhash}{77910195611a4da010d7295d10055fb5}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, we give a precise and workable definition of a quantum knot system, the states of which are called quantum knots. This definition can be viewed as a blueprint for the construction of an actual physical quantum system. Moreover, this definition of a quantum knot system is intended to represent the ``quantum embodiment''of a closed knotted physical piece of rope. A quantum knot, as a state of this system, represents the state of such a knotted closed piece of rope, i.e., the particular spatial configuration of the knot tied in the rope. Associated with a quantum knot system is a group of unitary transformations, called the ambient group, which represents all possible ways of moving the rope around (without cutting the rope, and without letting the rope pass through itself.) Of course, unlike a classical closed piece of rope, a quantum knot can exhibit non-classical behavior, such as quantum superposition and quantum entanglement. This raises some interesting and puzzling questions about the relation between topological and quantum entanglement. The knot type of a quantum knot is simply the orbit of the quantum knot under the action of the ambient group. We investigate quantum observables which are invariants of quantum knot type. We also study the Hamiltonians associated with the generators of the ambient group, and briefly look at the quantum tunneling of overcrossings into undercrossings. A basic building block in this paper is a mosaic system which is a formal (rewriting) system of symbol strings. We conjecture that this formal system fully captures in an axiomatic way all of the properties of tame knot theory.}
+      \field{isbn}{1573-1332}
+      \field{journaltitle}{Quantum Information Processing}
+      \field{number}{2}
+      \field{title}{Quantum knots and mosaics}
+      \field{volume}{7}
+      \field{year}{2008}
+      \field{pages}{85\bibrangedash 115}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1007/s11128-008-0076-7
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s11128-008-0076-7
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s11128-008-0076-7
+      \endverb
+      \warn{\item article entry 'Lomonaco08' (./bibb.bib): Invalid format '2008/06/01' of date field 'date' - ignoring}
+    \endentry
+    \entry{oeis}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=d15e73d058a3f9fe1be220f9200b671a}{%
+           family={{OEIS Foundation Inc.}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{d15e73d058a3f9fe1be220f9200b671a}
+      \strng{fullhash}{d15e73d058a3f9fe1be220f9200b671a}
+      \strng{bibnamehash}{d15e73d058a3f9fe1be220f9200b671a}
+      \strng{authorbibnamehash}{d15e73d058a3f9fe1be220f9200b671a}
+      \strng{authornamehash}{d15e73d058a3f9fe1be220f9200b671a}
+      \strng{authorfullhash}{d15e73d058a3f9fe1be220f9200b671a}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Published electronically at \url{http://oeis.org}}
+      \field{title}{The {O}n-{L}ine {E}ncyclopedia of {I}nteger {S}equences}
+    \endentry
+    \entry{Oh2018Aztec}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{fullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{bibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorbibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authornamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorfullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \field{extraname}{1}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0012-365X}
+      \field{journaltitle}{DISCRETE MATHEMATICS}
+      \field{month}{4}
+      \field{number}{4}
+      \field{title}{Domino tilings of the expanded Aztec diamond}
+      \field{volume}{341}
+      \field{year}{2018}
+      \field{pages}{1185\bibrangedash 1191}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1016/j.disc.2017.10.016
+      \endverb
+    \endentry
+    \entry{Oh2016}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{fullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{bibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorbibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authornamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorfullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \field{extraname}{2}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Lomonaco and Kauffman introduced a knot mosaic system to give a precise and workable definition of a quantum knot system, the states of which are called quantum knots. This paper is inspired by an open question about the knot mosaic enumeration suggested by them. A knot n-mosaic is an n×n array of 11 mosaic tiles representing a knot or a link diagram by adjoining properly that is called suitably connected. The total number of knot n-mosaics is denoted by Dn which is known to grow in a quadratic exponential rate. In this paper, we show the existence of the knot mosaic constant δ=limn→∞⁡Dn1n2 and prove that4≤δ≤5+132(≈4.303).}
+      \field{issn}{0166-8641}
+      \field{journaltitle}{Topology and its Applications}
+      \field{title}{Quantum knot mosaics and the growth constant}
+      \field{volume}{210}
+      \field{year}{2016}
+      \field{pages}{311\bibrangedash 316}
+      \range{pages}{6}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.topol.2016.08.011
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0166864116301857
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0166864116301857
+      \endverb
+      \keyw{Quantum knot,Knot mosaic,Growth rate}
+    \endentry
+    \entry{Oh2019tiling}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{fullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{bibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorbibnamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authornamehash}{4606ceec05b45220b4630b275cd2f5ab}
+      \strng{authorfullhash}{4606ceec05b45220b4630b275cd2f5ab}
+      \field{extraname}{3}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0012-365X}
+      \field{journaltitle}{DISCRETE MATHEMATICS}
+      \field{month}{5}
+      \field{number}{5}
+      \field{title}{State matrix recursion method and monomer-dimer problem}
+      \field{volume}{342}
+      \field{year}{2019}
+      \field{pages}{1434\bibrangedash 1445}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1016/j.disc.2019.01.022
+      \endverb
+    \endentry
+    \entry{Oh2019}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c0a2c62dfd86ee1647013126caac8c14}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Youngin},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \strng{fullhash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \strng{bibnamehash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \strng{authorbibnamehash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \strng{authornamehash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \strng{authorfullhash}{5f34504f21cf9c22b35a6cbfe89def38}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Since the Jones polynomial was discovered, the connection between knot theory and quantum physics has been of great interest. Knot mosaic theory was introduced by Lomonaco and Kauffman in the paper `Quantum knots and mosaics'to give a precise and workable definition of quantum knots, intended to represent an actual physical quantum system. This paper is inspired by an open question about the knot mosaic enumeration suggested by them. A knot (m, n)-mosaic is an {\$}{\$}m {$\backslash$}times n{\$}{\$} array of 11 mosaic tiles representing a knot or a link diagram by adjoining properly. The total number {\$}{\$}D{\_}{\{}m,n{\}}{\$}{\$} of knot (m, n)-mosaics, which indicates the dimension of the Hilbert space of the quantum knot system, is known to grow in a quadratic exponential rate. Recently, the first author showed the existence of the knot mosaic constant {\$}{\$}{$\backslash$}delta = {$\backslash$}lim {\_}{\{}m, n {$\backslash$}rightarrow {$\backslash$}infty {\}} (D{\_}{\{}m,n{\}})\^{}{\{}{$\backslash$}frac{\{}1{\}}{\{}mn{\}}{\}}{\$}{\$} and proved {\$}{\$}4 {$\backslash$}le {$\backslash$}delta {$\backslash$}le {$\backslash$}frac{\{}5+ {$\backslash$}sqrt{\{}13{\}}{\}}{\{}2{\}} = 4.302{$\backslash$}cdots {\$}{\$} by developing an algorithm producing the exact enumeration of knot mosaics, which uses a recursion formula of state matrices. In this paper, we give a simpler proof of the lower bound and improve the upper bound of the knot mosaic constant as{\$}{\$}{$\backslash$}begin{\{}aligned{\}} 4 {$\backslash$}le {$\backslash$}delta {$\backslash$}le 4.113{$\backslash$}cdots {$\backslash$}end{\{}aligned{\}}{\$}{\$}4≤δ≤4.113⋯by introducing two new concepts: quasimosaics and cling mosaics.}
+      \field{isbn}{1573-1332}
+      \field{journaltitle}{Quantum Information Processing}
+      \field{number}{8}
+      \field{title}{Growth rate of quantum knot mosaics}
+      \field{volume}{18}
+      \field{year}{2019}
+      \field{pages}{238}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/s11128-019-2353-z
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s11128-019-2353-z
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s11128-019-2353-z
+      \endverb
+      \warn{\item article entry 'Oh2019' (./bibb.bib): Invalid format '2019/06/12' of date field 'date' - ignoring}
+    \endentry
+    \entry{Oh2014}{article}{}
+      \name{author}{4}{}{%
+        {{hash=4606ceec05b45220b4630b275cd2f5ab}{%
+           family={Oh},
+           familyi={O\bibinitperiod},
+           given={Seungsang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3413b395b2bef2da272660a3967f6683}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Kyungpyo},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6601c664a1f19c9548bbdd2ee2cad88f}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Ho},
+           giveni={H\bibinitperiod}}}%
+        {{hash=57b76463af9bd493c515710b6bab9b03}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Hwa\bibnamedelima Jeong},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9f6be9abad11ca075f0155f7688410d}
+      \strng{fullhash}{b883018de23e0a6f6f35d26198593292}
+      \strng{bibnamehash}{e9f6be9abad11ca075f0155f7688410d}
+      \strng{authorbibnamehash}{e9f6be9abad11ca075f0155f7688410d}
+      \strng{authornamehash}{e9f6be9abad11ca075f0155f7688410d}
+      \strng{authorfullhash}{b883018de23e0a6f6f35d26198593292}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Lomonaco and Kauffman developed a knot mosaic system to introduce a precise and workable definition of a quantum knot system. This definition is intended to represent an actual physical quantum system. A knot {\$}{\$}(m,n){\$}{\$}-mosaic is an {\$}{\$}m {$\backslash$}times n{\$}{\$}matrix of mosaic tiles ({\$}{\$}T{\_}0{\$}{\$}through {\$}{\$}T{\_}{\{}10{\}}{\$}{\$}depicted in the introduction) representing a knot or a link by adjoining properly that is called suitably connected. {\$}{\$}D\^{}{\{}(m,n){\}}{\$}{\$}is the total number of all knot {\$}{\$}(m,n){\$}{\$}-mosaics. This value indicates the dimension of the Hilbert space of these quantum knot system. {\$}{\$}D\^{}{\{}(m,n){\}}{\$}{\$}is already found for {\$}{\$}m,n {$\backslash$}le 6{\$}{\$}by the authors. In this paper, we construct an algorithm producing the precise value of {\$}{\$}D\^{}{\{}(m,n){\}}{\$}{\$}for {\$}{\$}m,n {$\backslash$}ge 2{\$}{\$}that uses recurrence relations of state matrices that turn out to be remarkably efficient to count knot mosaics. {\$}{\$}{$\backslash$}begin{\{}aligned{\}} D\^{}{\{}(m,n){\}} = 2 {$\backslash$}, {$\backslash$}Vert (X{\_}{\{}m-2{\}}+O{\_}{\{}m-2{\}})\^{}{\{}n-2{\}} {$\backslash$}Vert {$\backslash$}end{\{}aligned{\}}{\$}{\$}D(m,n)=2‖(Xm-2+Om-2)n-2‖where {\$}{\$}2\^{}{\{}m-2{\}} {$\backslash$}times 2\^{}{\{}m-2{\}}{\$}{\$}matrices {\$}{\$}X{\_}{\{}m-2{\}}{\$}{\$}and {\$}{\$}O{\_}{\{}m-2{\}}{\$}{\$}are defined by {\$}{\$}{$\backslash$}begin{\{}aligned{\}} X{\_}{\{}k+1{\}} = {$\backslash$}begin{\{}bmatrix{\}} X{\_}k\&O{\_}k {$\backslash$}{$\backslash$} O{\_}k\&X{\_}k {$\backslash$}end{\{}bmatrix{\}} {$\backslash$} {$\backslash$}hbox {\{}and {\}} {$\backslash$} O{\_}{\{}k+1{\}} = {$\backslash$}begin{\{}bmatrix{\}} O{\_}k\&X{\_}k {$\backslash$}{$\backslash$} X{\_}k\&4 {$\backslash$}, O{\_}k {$\backslash$}end{\{}bmatrix{\}} {$\backslash$}end{\{}aligned{\}}{\$}{\$}Xk+1=XkOkOkXkandOk+1=OkXkXk4Okfor {\$}{\$}k=0,1, {$\backslash$}cdots , m-3{\$}{\$}, with {\$}{\$}1 {$\backslash$}times 1{\$}{\$}matrices {\$}{\$}X{\_}0 = {$\backslash$}begin{\{}bmatrix{\}} 1 {$\backslash$}end{\{}bmatrix{\}}{\$}{\$}and {\$}{\$}O{\_}0 = {$\backslash$}begin{\{}bmatrix{\}} 1 {$\backslash$}end{\{}bmatrix{\}}{\$}{\$}. Here {\$}{\$}{$\backslash$}Vert N{$\backslash$}Vert {\$}{\$}denotes the sum of all entries of a matrix {\$}{\$}N{\$}{\$}. For {\$}{\$}n=2{\$}{\$}, {\$}{\$}(X{\_}{\{}m-2{\}}+O{\_}{\{}m-2{\}})\^{}0{\$}{\$}means the identity matrix of size {\$}{\$}2\^{}{\{}m-2{\}} {$\backslash$}times 2\^{}{\{}m-2{\}}{\$}{\$}.}
+      \field{isbn}{1573-1332}
+      \field{journaltitle}{Quantum Information Processing}
+      \field{number}{3}
+      \field{title}{Quantum knots and the number of knot mosaics}
+      \field{volume}{14}
+      \field{year}{2015}
+      \field{pages}{801\bibrangedash 811}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1007/s11128-014-0895-7
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s11128-014-0895-7
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s11128-014-0895-7
+      \endverb
+      \warn{\item article entry 'Oh2014' (./bibb.bib): Invalid format '2015/03/01' of date field 'date' - ignoring}
     \endentry
   \enddatalist
 \endrefsection
