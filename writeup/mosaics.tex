@@ -36,7 +36,8 @@
 %%% With amsthm package, creates environments for nicely formatted,
 %%% labeled, and numbered propositions, etc.
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}
+
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{lemma}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{conj}[thm]{Conjecture}
@@ -47,7 +48,8 @@
 
 \theoremstyle{definition}
 \newtheorem{eg}[thm]{Example}
-\newtheorem{defn}[thm]{Definition}
+% \newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{observ}[thm]{Observation}
 \newtheorem{open}[thm]{Open Problem}
@@ -60,7 +62,7 @@
 \newtheorem{note}[thm]{Note}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+% \newtheorem{definition}{Definition}[section]
 \newtheorem{exmp}{Example}[section]
 
 %custom commands
@@ -133,12 +135,12 @@
     \textbf{Jack Hanke}\\
     Northwestern University
     \and
-    \textbf{Michael Maltenfort}\\
-    Northwestern University
-    \and
+    % \textbf{Michael Maltenfort}\\
+    % Northwestern University
+    % \and
     \textbf{Richard Schank}\\
     }
-\title{\textbf{Enumeration of Mosaic Systems}}
+\title{\textbf{Enumeration of Messy Mosaics}}
 % \date{\today}
 
 \begin{document}
@@ -147,7 +149,7 @@
 \begin{center}
 
     \begin{abstract}
-        Lomonaco and Kauffman introduced a mosaic system to model quantum knots composed of an $m \times n$ grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion to exactly enumerate mosaics that have the property of being suitably connected. Hong and Oh later calculated upper and lower bounds on a modified mosaic system with $7$ tiles. We introduce a general method for enumerating these mosaic systems. We also introduce a variant to mosaics we call messy mosaics that can also enumerated using our method.
+        Lomonaco and Kauffman introduced a system of mosaics to model quantum knots composed of an $m \times n$ grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion method to exactly enumerate mosaics that have the property of being suitably connected. We introduce and enumerate mosaics with the related property in which all tiles need not be suitably connected. We call these messy mosaics.
     \end{abstract}
 
 \end{center}
@@ -183,7 +185,7 @@ Lomonaco and Kauffman \cite{Lomonaco08} introduced a model for quantum knots in 
     \end{tikzpicture}
 \end{center}
 
-We denote this set of tiles as $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements in $\mathbb{T}$, and a \textit{mosaic system} is a collection of mosaics with some property. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$.
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$. We denote the set of all mosaics of size $(m,n)$ as $\mathbb{M}^{(m,n)}$. As there are $11$ elements in $\mathbb{T}$, there are $11^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. A \textit{mosaic system} is a subset of $\mathbb{M}^{(m,n)}$ with some property. 
 
 \begin{figure}[h!]
     \begin{center}
@@ -278,7 +280,7 @@ We denote this set of tiles as $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mo
         \cellEf{5}{4}{6}{5}
         \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
-    \caption{A knot mosaic, with knots hilighted}
+    \caption{A knot mosaic}
     \label{fig:example knot mosaic}
 \end{subfigure}
 
@@ -287,11 +289,11 @@ We denote this set of tiles as $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mo
 \label{fig:example mosaics}
 \end{figure}
 
-Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. We define a \textit{knot mosaic} to be a mosaic of tiles from $\mathbb{T}$ that has all edges having $0$ or $2$ dotted lines drawn from their midpoint.
+We are interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint.
 
-Lomonaco and Kauffman \cite{Lomonaco08} call these knot mosaics because, other than the mosaic consisting of all $T_1$ tiles, the dotted lines form  \textit{knots}. Figure \ref{fig:example knot mosaic} shows a knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knot hilighted in gray. Note that a mosaic can contain knots isomorphic to the unknot, as well as knots that encompass other knots. 
+Lomonaco and Kauffman \cite{Lomonaco08} call these \textit{knot mosaics} because, other than the mosaic consisting of all $T_0$ tiles, the dotted lines form  \textit{knots}. Following the notation in \cite{Oh2014} we denote the subset of mosaics of size $(m,n)$ that are knot mosaics as $\mathbb{K}^{(m,n)}$. Figure \ref{fig:example knot mosaic} shows a knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knots highlighted in gray. Note that a mosaic can contain knots isomorphic to the unknot, as well as knots that encompass other knots. 
 
-Let $k_{m,n}$ be the number of knot mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one can only construct a knot mosaic wtih $T_0$, so $k_{m,1} = k_{1,n} = 1.$ Oh et al. \cite{Oh2014} showed the following for $m,n \geq 2$.
+Let $k_{m,n} = |\mathbb{K}^{(m,n)}|$ be the number of knot mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one can only construct a knot mosaic using $T_0$ tiles, so $k_{m,1} = k_{1,n} = 1.$ Oh et al. \cite{Oh2014} showed the following for $m,n \geq 2$.
 
 \begin{thm}[\cite{Oh2014}]
     \label{thm:Oh2014}
@@ -307,1000 +309,32 @@ Let $k_{m,n}$ be the number of knot mosaics of size $(m,n)$. First notice that i
         X_k & 4O_k
     \end{bmatrix}, $$
     
-    for $k=0,1,\dots,m-3$, and $\left\| N \right\|$ denotes the sum of elements of matrix $N.$
+    for $k=0,1,\dots,m-3$, and $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
-Oh and colleagues utilize the state matrix recursion in Theorem \ref{thm:Oh2014} to bound the growth rate $\delta = \lim_{n\ to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. 
+Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics $\delta = \lim_{n \to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy knot mosaics}.
 
-Finally, Hong and Oh \cite{Hong2018} study the mosaic system with the tile set $\mathbb{T}^* = \{T_0, \dots,T_7\}$. This tile set constructs shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. If we let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$, Hong and Oh showed the following results\footnote{The authors did not consider the mosaic containing all $T_0$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.}. 
 
-\begin{thm}[\cite{Hong2018}]
-    \label{thm:Hong2018}
-    The number of polygon mosaics of size $(m,n)$ $p_{m,n}$ for $m,n \geq 2$ has
+\section{Messy Knot Mosaics}\label{section:messy mosaics}
 
-    $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
-\end{thm}
+A \textit{messy knot mosaic} is a mosaic that contains at least one knot, with no restriction on other shared edges. Figure \ref{fig:messy mosaic example} shows a messy knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knots highlighted in gray. 
 
-The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}.
-
-We first re-prove the enumeration of $k_{n,m}$ from Theorem \ref{thm:Oh2014} using our general method for enumerating mosaic systems, and show it immediately gives an an analagous result for $p_{n,m}$. We state the enumeration of $p_{n,m}$ for $m,n \geq 2$ in Theorem \ref{thm: main theorem}. First we define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ for integers $m \geq 2$, which we use to enumerate $p_{m,n}$. To be clear, throughtout the paper we index the rows and columns of matrices starting at $0$.
-
-\begin{defn}
-\label{defn: A}
-
-Let $A(2) = \begin{bmatrix}
-1 & 1 \\
-1 & 1
-\end{bmatrix}
-$. We recursively define $A(k+1)$ given $A(k)$. Begin by writing
-$
-A(k) = \begin{bmatrix}
-A_{0,0} & A_{0,1} \\
-A_{1,0} & A_{1,1}
-\end{bmatrix}
-$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then define
-
-$$
-A(k+1) = \begin{bmatrix}
-A_{0,0} & A_{0,0} & A_{0,1} & A_{0,1} \\
-A_{0,0} & A_{0,0} & 0A_{0,1} & A_{0,1} \\
-A_{1,0} & 0A_{1,0} & A_{1,1} & A_{1,1} \\
-A_{1,0} & A_{1,0} & A_{1,1} & A_{1,1} \\
-\end{bmatrix},
-$$
-
-Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
-
-\end{defn}
-
-\begin{thm}
-\label{thm: main theorem}    
-The number of polygon mosaics $p_{m,n}$ is the $(0,0)$ entry of $A(m)^n$.
-\end{thm}
-
-We then introduce messy knot mosaics—a variant of knot mosaics— in Section \ref{section:messy mosaics} and enumerate them.
-
-\section{Proof of Theorem \ref{thm: main theorem}}
-
-\begin{proof}
-
-% In doing so, we avoid the use of the so-called \textit{twofold rule} in \cite{Oh2014} to 
-
-For a given mosaic, label the vertices of the tiles as follows. If the vertex is surrounded by an even number of polygons, label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. To make a \textit{vertex labeling} we also remove the dotted lines from all tiles in the mosaic. Using the mosaic from Figure \ref{fig:example knot mosaic}, we show both the labeling of the vertices, and then the removal of the dotted lines.
-
+\begin{figure}[h!]
 \begin{center}
     \begin{tikzpicture}
         % row1
-        \cell{0}{0}{1}{1}
-        \cellC{1}{0}{2}{1}
-        \cellD{2}{0}{3}{1}
-        \cellC{3}{0}{4}{1}
-        \cellE{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cellB{1}{1}{2}{2}
-        \cellI{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellC{4}{1}{5}{2}
-        \cellD{5}{1}{6}{2}
-        \cellF{6}{1}{7}{2}
-        % row3
-        \cell{0}{2}{1}{3}
-        \cell{1}{2}{2}{3}
-        \cellF{2}{2}{3}{3}
-        \cell{3}{2}{4}{3}
-        \cellB{4}{2}{5}{3}
-        \cellA{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
-        % row4
-        \cellC{0}{3}{1}{4}
-        \cellD{1}{3}{2}{4}
-        \cellB{2}{3}{3}{4}
-        \cellE{3}{3}{4}{4}
-        \cellD{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
-        \cellF{6}{3}{7}{4}
-        % row5
-        \cellB{0}{4}{1}{5}
-        \cellA{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
-        \cell{3}{4}{4}{5}
-        \cellB{4}{4}{5}{5}
-        \cellE{5}{4}{6}{5}
-        \cellA{6}{4}{7}{5}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{7}{0}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{7}{2}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{3}{$1$} \)
-        \( \lablvertex{4}{3}{$1$} \)
-        \( \lablvertex{5}{3}{$1$} \)
-        \( \lablvertex{6}{3}{$1$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{1}{4}{$1$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{5}{4}{$1$} \)
-        \( \lablvertex{6}{4}{$1$} \)
-        \( \lablvertex{7}{4}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{5}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-        \( \lablvertex{4}{5}{$0$} \)
-        \( \lablvertex{5}{5}{$0$} \)
-        \( \lablvertex{6}{5}{$0$} \)
-        \( \lablvertex{7}{5}{$0$} \)
-        % arrow
-        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
-
-        % row1
-        \cell{8}{0}{9}{1}
-        \cell{9}{0}{10}{1}
-        \cell{10}{0}{11}{1}
-        \cell{11}{0}{12}{1}
-        \cell{12}{0}{13}{1}
-        \cell{13}{0}{14}{1}
-        \cell{14}{0}{15}{1}
-        % row2
-        \cell{8}{1}{9}{2}
-        \cell{9}{1}{10}{2}
-        \cell{10}{1}{11}{2}
-        \cell{11}{1}{12}{2}
-        \cell{12}{1}{13}{2}
-        \cell{13}{1}{14}{2}
-        \cell{14}{1}{15}{2}
-        % row3
-        \cell{8}{2}{9}{3}
-        \cell{9}{2}{10}{3}
-        \cell{10}{2}{11}{3}
-        \cell{11}{2}{12}{3}
-        \cell{12}{2}{13}{3}
-        \cell{13}{2}{14}{3}
-        \cell{14}{2}{15}{3}
-        % row4
-        \cell{8}{3}{9}{4}
-        \cell{9}{3}{10}{4}
-        \cell{10}{3}{11}{4}
-        \cell{11}{3}{12}{4}
-        \cell{12}{3}{13}{4}
-        \cell{13}{3}{14}{4}
-        \cell{14}{3}{15}{4}
-        % row5
-        \cell{8}{4}{9}{5}
-        \cell{9}{4}{10}{5}
-        \cell{10}{4}{11}{5}
-        \cell{11}{4}{12}{5}
-        \cell{12}{4}{13}{5}
-        \cell{13}{4}{14}{5}
-        \cell{14}{4}{15}{5}
-
-        % label for row1
-        \( \lablvertex{8}{0}{$0$} \)
-        \( \lablvertex{9}{0}{$0$} \)
-        \( \lablvertex{10}{0}{$0$} \)
-        \( \lablvertex{11}{0}{$0$} \)
-        \( \lablvertex{12}{0}{$0$} \)
-        \( \lablvertex{13}{0}{$0$} \)
-        \( \lablvertex{14}{0}{$0$} \)
-        \( \lablvertex{15}{0}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{1}{$0$} \)
-        \( \lablvertex{9}{1}{$0$} \)
-        \( \lablvertex{10}{1}{$1$} \)
-        \( \lablvertex{11}{1}{$0$} \)
-        \( \lablvertex{12}{1}{$1$} \)
-        \( \lablvertex{13}{1}{$1$} \)
-        \( \lablvertex{14}{1}{$1$} \)
-        \( \lablvertex{15}{1}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{2}{$0$} \)
-        \( \lablvertex{9}{2}{$0$} \)
-        \( \lablvertex{10}{2}{$0$} \)
-        \( \lablvertex{11}{2}{$1$} \)
-        \( \lablvertex{12}{2}{$1$} \)
-        \( \lablvertex{13}{2}{$0$} \)
-        \( \lablvertex{14}{2}{$1$} \)
-        \( \lablvertex{15}{2}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{3}{$0$} \)
-        \( \lablvertex{9}{3}{$0$} \)
-        \( \lablvertex{10}{3}{$0$} \)
-        \( \lablvertex{11}{3}{$1$} \)
-        \( \lablvertex{12}{3}{$1$} \)
-        \( \lablvertex{13}{3}{$1$} \)
-        \( \lablvertex{14}{3}{$1$} \)
-        \( \lablvertex{15}{3}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{4}{$0$} \)
-        \( \lablvertex{9}{4}{$1$} \)
-        \( \lablvertex{10}{4}{$0$} \)
-        \( \lablvertex{11}{4}{$0$} \)
-        \( \lablvertex{12}{4}{$0$} \)
-        \( \lablvertex{13}{4}{$1$} \)
-        \( \lablvertex{14}{4}{$1$} \)
-        \( \lablvertex{15}{4}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{5}{$0$} \)
-        \( \lablvertex{9}{5}{$0$} \)
-        \( \lablvertex{10}{5}{$0$} \)
-        \( \lablvertex{11}{5}{$0$} \)
-        \( \lablvertex{12}{5}{$0$} \)
-        \( \lablvertex{13}{5}{$0$} \)
-        \( \lablvertex{14}{5}{$0$} \)
-        \( \lablvertex{15}{5}{$0$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-The critical point is this: even with the dotted lines removed, the vertex labeling uniquely identifies the polygon mosaic. This is true even if there are polygons surrounding other polygons. This is because the vertex labeling of an individual cell, which we will call a \textit{cell labeling}, uniquely corresponds with a cell $T_i$. This is shown below.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row 1
-        \cell{-2}{0}{-1}{1}
-        \( \lablnode{-1.5}{-0.5}{$T_1$} \) 
         \cellA{0}{0}{1}{1}
-        \( \lablnode{0.5}{-0.5}{$T_2$} \) 
-        \cellB{2}{0}{3}{1}
-        \( \lablnode{2.5}{-0.5}{$T_3$} \) 
-        \cellC{4}{0}{5}{1}
-        \( \lablnode{4.5}{-0.5}{$T_4$} \) 
-        \cellD{6}{0}{7}{1}
-        \( \lablnode{6.5}{-0.5}{$T_5$} \) 
-        \cellE{8}{0}{9}{1}
-        \( \lablnode{8.5}{-0.5}{$T_6$} \) 
-        \cellF{10}{0}{11}{1}
-        \( \lablnode{10.5}{-0.5}{$T_7$} \) 
-
-        \( \lablvertex{-2}{0}{$1$} \)
-        \( \lablvertex{-2}{1}{$1$} \)
-        \( \lablvertex{-1}{0}{$1$} \)
-        \( \lablvertex{-1}{1}{$1$} \)
-
-        \( \lablvertex{0}{0}{$1$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{5}{0}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-
-        \( \lablvertex{6}{0}{$1$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{7}{0}{$1$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-
-        \( \lablvertex{8}{0}{$1$} \)
-        \( \lablvertex{8}{1}{$1$} \)
-        \( \lablvertex{9}{0}{$0$} \)
-        \( \lablvertex{9}{1}{$0$} \)
-
-        \( \lablvertex{10}{0}{$1$} \)
-        \( \lablvertex{10}{1}{$0$} \)
-        \( \lablvertex{11}{0}{$1$} \)
-        \( \lablvertex{11}{1}{$0$} \)
-
-
-        % row 2
-        \cell{-2}{2}{-1}{3}
-        \( \lablnode{-1.5}{1.5}{$T_1$} \) 
-        \cellA{0}{2}{1}{3}
-        \( \lablnode{0.5}{1.5}{$T_2$} \) 
-        \cellB{2}{2}{3}{3}
-        \( \lablnode{2.5}{1.5}{$T_3$} \) 
-        \cellC{4}{2}{5}{3}
-        \( \lablnode{4.5}{1.5}{$T_4$} \) 
-        \cellD{6}{2}{7}{3}
-        \( \lablnode{6.5}{1.5}{$T_5$} \) 
-        \cellE{8}{2}{9}{3}
-        \( \lablnode{8.5}{1.5}{$T_6$} \) 
-        \cellF{10}{2}{11}{3}
-        \( \lablnode{10.5}{1.5}{$T_7$} \) 
-
-
-        \( \lablvertex{-2}{2}{$0$} \)
-        \( \lablvertex{-2}{3}{$0$} \)
-        \( \lablvertex{-1}{2}{$0$} \)
-        \( \lablvertex{-1}{3}{$0$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{2}{$1$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-
-        \( \lablvertex{2}{2}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{4}{3}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-
-        \( \lablvertex{6}{2}{$0$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-        \( \lablvertex{7}{2}{$0$} \)
-        \( \lablvertex{7}{3}{$1$} \)
-
-        \( \lablvertex{8}{2}{$0$} \)
-        \( \lablvertex{8}{3}{$0$} \)
-        \( \lablvertex{9}{2}{$1$} \)
-        \( \lablvertex{9}{3}{$1$} \)
-
-        \( \lablvertex{10}{2}{$0$} \)
-        \( \lablvertex{10}{3}{$1$} \)
-        \( \lablvertex{11}{2}{$0$} \)
-        \( \lablvertex{11}{3}{$1$} \)
-    \end{tikzpicture}
-\end{center}
-
-We can then enumerate $p_{m,n}$ by enumerating the number of vertex labelings that correspond to a polygon mosaic. 
-
-Consider the collection of vertex labelings for a $m \times n$ grid of cells. To correspond with a polygon mosaic, each boundary vertex is necessarily labeled $0$, and each interior vertex is labeled $0$ or $1$. Additionally, of these $2^{(m-1)(n-1)}$ labelings, the labelings that correspond with valid polygon mosaics are ones that do not contain the following two cell labelings.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{0}{$1$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-
-        \( \lablvertex{2}{0}{$1$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        
-    \end{tikzpicture}
-\end{center}
-
-These two cell labelings aren't associated with any of the cells $T_1, \dots, T_7$, and so cannot correspond with a polygon mosaic. We seek a recursive solution to enumerate the number of vertex labelings for an $m \times n$ grid with these  conditions: the labeling has a boundary of all $0$'s and does not contain the above cell labelings. 
-
-Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labeled $0$. One of these columns for $m=3$ is below.
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        % col 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        % col 2
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        % index
-        % \( \lablnode{0.5}{-1}{$(0,2)$} \)
-    \end{tikzpicture}
-\end{center}
-
-It is useful to define an index for vertex labelings of these $m \times 1$ columns. To do this, consider reading a column of vertex labelings from bottom to top, ignoring the first and last $0$'s. If we interpret these sequences for the left and right column as binary numbers $b_{left}$ and $b_{right}$, the index in base ten is the pair $(b_{left}, b_{right})$. For example, for the above $m=3$ column, we have sequences $00$ for the left column and $10$ for the right column, so the index is $(0,2)$.
-
-Next consider a column with index $(0, b_{1})$ for some $b_{1} \in [0,2^{m-1}-1]$. For reasons we will see later, let's call this the \textit{starting column}. Now consider appending a column with index $(b_{1}, b_{2})$ for some $b_{2} \in [0,2^{m-1}-1]$. For example, below is a diagram for appending our starting column $(0,2)$ with column $(2,3)$. 
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-        % col 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        % col 2
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-
-        % plus
-        \( \lablnode{1.5}{1.5}{$\pmb{+}$} \)
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-        % col 1
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        % col 1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-
-        \( \lablnode{3.5}{1.5}{$\pmb{\to}$} \)
-
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-        \cell{5}{0}{6}{1}
-        \cell{5}{1}{6}{2}
-        \cell{5}{2}{6}{3}
-
-        % col 1
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        % col 2
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        % col 3
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-
-
-    \end{tikzpicture}
-\end{center}
-
-Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell labeling. 
-
-Finally, if we further appended a column with label $(b_2,0)$, we would have created a vertex labeling with a boundary of all $0$'s. For this reason, let's call a column with index $(b,0)$ for $b \in [0,2^{m-1}-1]$ an \textit{ending column}. This vertex labeling would correspond with $1$ polygon mosaic if the middle column had index $(2,3)$, but not if the middle column had index $(2,1)$.
-
-This motivates the creation of a matrix $A(m)$ to every column index $(i,j)$, where $A(m)_{i,j}=1$ if the column labeling corresponds with a legal polygon mosaic, and $0$ otherwise. For example, the $A(3)$ matrix corresponds with the following labeled columns. 
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-
-        \cell{6}{0}{7}{1}
-        \cell{6}{1}{7}{2}
-        \cell{6}{2}{7}{3}
-        % row2
-        \cell{0}{4}{1}{5}
-        \cell{0}{5}{1}{6}
-        \cell{0}{6}{1}{7}
-
-        \cell{2}{4}{3}{5}
-        \cell{2}{5}{3}{6}
-        \cell{2}{6}{3}{7}
-
-        \cell{4}{4}{5}{5}
-        \cell{4}{5}{5}{6}
-        \cell{4}{6}{5}{7}
-
-        \cell{6}{4}{7}{5}
-        \cell{6}{5}{7}{6}
-        \cell{6}{6}{7}{7}
-        % row3
-        \cell{0}{8}{1}{9}
-        \cell{0}{9}{1}{10}
-        \cell{0}{10}{1}{11}
-
-        \cell{2}{8}{3}{9}
-        \cell{2}{9}{3}{10}
-        \cell{2}{10}{3}{11}
-
-        \cell{4}{8}{5}{9}
-        \cell{4}{9}{5}{10}
-        \cell{4}{10}{5}{11}
-
-        \cell{6}{8}{7}{9}
-        \cell{6}{9}{7}{10}
-        \cell{6}{10}{7}{11}
-        % row4
-        \cell{0}{12}{1}{13}
-        \cell{0}{13}{1}{14}
-        \cell{0}{14}{1}{15}
-
-        \cell{2}{12}{3}{13}
-        \cell{2}{13}{3}{14}
-        \cell{2}{14}{3}{15}
-
-        \cell{4}{12}{5}{13}
-        \cell{4}{13}{5}{14}
-        \cell{4}{14}{5}{15}
-
-        \cell{6}{12}{7}{13}
-        \cell{6}{13}{7}{14}
-        \cell{6}{14}{7}{15}
-        % row 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{0}{2}{$1$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-        
-        \( \lablvertex{7}{0}{$0$} \)
-        \( \lablvertex{7}{1}{$1$} \)
-        \( \lablvertex{7}{2}{$1$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        % row 2
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$1$} \)
-        \( \lablvertex{0}{6}{$0$} \)
-        \( \lablvertex{0}{7}{$0$} \)
-        
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        \( \lablvertex{1}{6}{$0$} \)
-        \( \lablvertex{1}{7}{$0$} \)
-        
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$1$} \)
-        \( \lablvertex{2}{6}{$0$} \)
-        \( \lablvertex{2}{7}{$0$} \)
-        
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-        \( \lablvertex{3}{6}{$1$} \)
-        \( \lablvertex{3}{7}{$0$} \)
-        
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{4}{5}{$1$} \)
-        \( \lablvertex{4}{6}{$0$} \)
-        \( \lablvertex{4}{7}{$0$} \)
-        
-        \( \lablvertex{5}{4}{$0$} \)
-        \( \lablvertex{5}{5}{$1$} \)
-        \( \lablvertex{5}{6}{$0$} \)
-        \( \lablvertex{5}{7}{$0$} \)
-        
-        \( \lablvertex{6}{4}{$0$} \)
-        \( \lablvertex{6}{5}{$1$} \)
-        \( \lablvertex{6}{6}{$0$} \)
-        \( \lablvertex{6}{7}{$0$} \)
-        
-        \( \lablvertex{7}{4}{$0$} \)
-        \( \lablvertex{7}{5}{$1$} \)
-        \( \lablvertex{7}{6}{$1$} \)
-        \( \lablvertex{7}{7}{$0$} \)
-        % row 3
-        \( \lablvertex{0}{8}{$0$} \)
-        \( \lablvertex{0}{9}{$0$} \)
-        \( \lablvertex{0}{10}{$1$} \)
-        \( \lablvertex{0}{11}{$0$} \)
-        
-        \( \lablvertex{1}{8}{$0$} \)
-        \( \lablvertex{1}{9}{$0$} \)
-        \( \lablvertex{1}{10}{$0$} \)
-        \( \lablvertex{1}{11}{$0$} \)
-        
-        \( \lablvertex{2}{8}{$0$} \)
-        \( \lablvertex{2}{9}{$0$} \)
-        \( \lablvertex{2}{10}{$1$} \)
-        \( \lablvertex{2}{11}{$0$} \)
-        
-        \( \lablvertex{3}{8}{$0$} \)
-        \( \lablvertex{3}{9}{$0$} \)
-        \( \lablvertex{3}{10}{$1$} \)
-        \( \lablvertex{3}{11}{$0$} \)
-        
-        \( \lablvertex{4}{8}{$0$} \)
-        \( \lablvertex{4}{9}{$0$} \)
-        \( \lablvertex{4}{10}{$1$} \)
-        \( \lablvertex{4}{11}{$0$} \)
-        
-        \( \lablvertex{5}{8}{$0$} \)
-        \( \lablvertex{5}{9}{$1$} \)
-        \( \lablvertex{5}{10}{$0$} \)
-        \( \lablvertex{5}{11}{$0$} \)
-        
-        \( \lablvertex{6}{8}{$0$} \)
-        \( \lablvertex{6}{9}{$0$} \)
-        \( \lablvertex{6}{10}{$1$} \)
-        \( \lablvertex{6}{11}{$0$} \)
-        
-        \( \lablvertex{7}{8}{$0$} \)
-        \( \lablvertex{7}{9}{$1$} \)
-        \( \lablvertex{7}{10}{$1$} \)
-        \( \lablvertex{7}{11}{$0$} \)
-        % row 4
-        \( \lablvertex{0}{12}{$0$} \)
-        \( \lablvertex{0}{13}{$0$} \)
-        \( \lablvertex{0}{14}{$0$} \)
-        \( \lablvertex{0}{15}{$0$} \)
-        
-        \( \lablvertex{1}{12}{$0$} \)
-        \( \lablvertex{1}{13}{$0$} \)
-        \( \lablvertex{1}{14}{$0$} \)
-        \( \lablvertex{1}{15}{$0$} \)
-        
-        \( \lablvertex{2}{12}{$0$} \)
-        \( \lablvertex{2}{13}{$0$} \)
-        \( \lablvertex{2}{14}{$0$} \)
-        \( \lablvertex{2}{15}{$0$} \)
-        
-        \( \lablvertex{3}{12}{$0$} \)
-        \( \lablvertex{3}{13}{$0$} \)
-        \( \lablvertex{3}{14}{$1$} \)
-        \( \lablvertex{3}{15}{$0$} \)
-        
-        \( \lablvertex{4}{12}{$0$} \)
-        \( \lablvertex{4}{13}{$0$} \)
-        \( \lablvertex{4}{14}{$0$} \)
-        \( \lablvertex{4}{15}{$0$} \)
-        
-        \( \lablvertex{5}{12}{$0$} \)
-        \( \lablvertex{5}{13}{$1$} \)
-        \( \lablvertex{5}{14}{$0$} \)
-        \( \lablvertex{5}{15}{$0$} \)
-        
-        \( \lablvertex{6}{12}{$0$} \)
-        \( \lablvertex{6}{13}{$0$} \)
-        \( \lablvertex{6}{14}{$0$} \)
-        \( \lablvertex{6}{15}{$0$} \)
-        
-        \( \lablvertex{7}{12}{$0$} \)
-        \( \lablvertex{7}{13}{$1$} \)
-        \( \lablvertex{7}{14}{$1$} \)
-        \( \lablvertex{7}{15}{$0$} \)
-
-        % arrow
-        \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
-        % matrix
-        \( \lablnode{12}{7.5}{$\begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix}$} \)
-
-        \( \lablnode{12}{5.5}{$A(3)$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-$A(m)$ has the property that the $0$-th row represets all starting columns, and the $0$-th column represents all ending columns. Even more importantly, notice that $A(m)^2_{i,j}$ represents the number of $m \times 2$ grids with left-most index $i$ and right-most index $j$ that correspond with a legal polygon mosaic. In general, $(A(m)^n)_{i,j}$ represents this quantity for an $m \times n$ grid of cells, and so if we know $A(m)$ for some $m$, then $(A(m)^n)_{0,0} = p_{m,n}.$
-
-The final component of the proof is constructing $A(m)$ for any $m$. Begin by  calculating $A(2)$ by identifying the number of legal polygon mosaics that correspond with each vertex coloring index $\{(0,0),(0,1),(1,0),(1,1)\}$, like so.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        
-        % row2
-        \cell{0}{3}{1}{4}
-        \cell{0}{4}{1}{5}
-        
-        \cell{2}{3}{3}{4}
-        \cell{2}{4}{3}{5}
-        % row 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$0$} \)
-        % row 2
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$0$} \)
-        
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{3}{4}{$1$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-
-        % arrow
-        \( \lablnode{5}{2.5}{$\pmb{\to}$} \)
-        % matrix
-        \( \lablnode{7}{2.5}{$\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell labelings below. 
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-        \cell{4}{0}{5}{1}
-        \cell{6}{0}{7}{1}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$1$} \)
-        \( \lablvertex{7}{0}{$1$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-        \( \lablvertex{6}{1}{$0$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        
-    \end{tikzpicture}
-\end{center}
-
-For example, for the $m=2$ column with index $(0,1)$, this operation looks like the following.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{-4.5}{2.5}{-3.5}{3.5}
-        \cell{-4.5}{3.5}{-3.5}{4.5}
-
-        % row 1
-        \( \lablvertex{-4.5}{2.5}{$0$} \)
-        \( \lablvertex{-4.5}{3.5}{$0$} \)
-        \( \lablvertex{-4.5}{4.5}{$0$} \)
-        
-        \( \lablvertex{-3.5}{2.5}{$0$} \)
-        \( \lablvertex{-3.5}{3.5}{$1$} \)
-        \( \lablvertex{-3.5}{4.5}{$0$} \)
-
-        % label
-        \( \lablnode{-4}{1.5}{$A(2)_{0,1}$} \)
-
-        % arrow
-        \( \lablnode{-2}{3.5}{$\pmb{\to}$} \)
-
-        % four columns
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$1$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{2}{2}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        
-        \cell{0}{4}{1}{5}
-        \cell{0}{5}{1}{6}
-        \cell{0}{6}{1}{7}
-        
-        \cell{2}{4}{3}{5}
-        \cell{2}{5}{3}{6}
-        \cell{2}{6}{3}{7}
-
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$0$} \)
-        \( \lablvertex{0}{6}{$0$} \)
-        \( \lablvertex{0}{7}{$0$} \)
-        
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$1$} \)
-        \( \lablvertex{1}{6}{$0$} \)
-        \( \lablvertex{1}{7}{$0$} \)
-        
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        \( \lablvertex{2}{6}{$0$} \)
-        \( \lablvertex{2}{7}{$0$} \)
-        
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{3}{5}{$1$} \)
-        \( \lablvertex{3}{6}{$1$} \)
-        \( \lablvertex{3}{7}{$0$} \)
-
-        \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
-
-        \( \lablnode{7.5}{3.5}{$\begin{bmatrix} A(3)_{0,2} & A(3)_{0,3} \\ A(3)_{1,2} & A(3)_{1,3} \end{bmatrix}$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-This operation results in $4$ new columns that are represented in $A(k+1)$. In our example, specifically we get the following. 
-
-$$
-\begin{bmatrix} 
-    A(3)_{0,2} & A(3)_{0,3} \\ 
-    A(3)_{1,2} & A(3)_{1,3} 
-\end{bmatrix} = 
-\begin{bmatrix} 
-    1A(2)_{i,j} & 1A(2)_{i,j} \\ 
-    0A(2)_{i,j} & 1A(2)_{i,j} 
-\end{bmatrix},
-$$
-
-Critically, this transformation \textit{only} changes the identity of the top two tiles. This implies that the same value coefficients computed by comparing $A(2)$ and $A(3)$ can be used for any $m \times 1$ column, as long as both column indices $(i,j)$ are congruent $\text{mod } 2$. Furthermore, if one writes $A(k)$ as the block matrix
-
-$$A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$$
-
-where $A_{\hat{i},\hat{j}} \in \mathbb{R}^{2^{k-2} \times 2^{k-2}}$, then all column's represented in $A_{\hat{i},\hat{j}}$ have indices $(i,j) \equiv (\hat{i},\hat{j}) \text{ mod } 2$. This allows us to write that in general, if $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$
-then
-
-\begin{equation}\label{eqn: coefficient matrix prod}
-    \begin{bmatrix}
-        V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
-        V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
-        V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
-        V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
-    \end{bmatrix}.
-\end{equation}
-
-
-where $V \in \mathbb{R}^{4 \times 4}$ can be found after directly computing $A(2)$ and $A(3)$, then solving the following equation.
-
-$$
-\begin{bmatrix}
-    A(3)_{0,0} & A(3)_{0,1} & A(3)_{0,2} & A(3)_{0,3} \\
-    A(3)_{1,0} & A(3)_{1,1} & A(3)_{1,2} & A(3)_{1,3} \\
-    A(3)_{2,0} & A(3)_{2,1} & A(3)_{2,2} & A(3)_{2,3} \\
-    A(3)_{3,0} & A(3)_{3,1} & A(3)_{3,2} & A(3)_{3,3} \\
-\end{bmatrix} = 
-\begin{bmatrix}
-    V_{0,0}A(2)_{0,0} & V_{0,1}A(2)_{0,0} & V_{0,2}A(2)_{0,1} & V_{0,3}A(2)_{0,1} \\
-    V_{1,0}A(2)_{0,0} & V_{1,1}A(2)_{0,0} & V_{1,2}A(2)_{0,1} & V_{1,3}A(2)_{0,1} \\
-    V_{2,0}A(2)_{1,0} & V_{2,1}A(2)_{1,0} & V_{2,2}A(2)_{1,1} & V_{2,3}A(2)_{1,1} \\
-    V_{3,0}A(2)_{1,0} & V_{3,1}A(2)_{1,0} & V_{3,2}A(2)_{1,1} & V_{3,3}A(2)_{1,1} \\
-\end{bmatrix}
-$$
-
-This is solved by
-
-$$V = 
-\begin{bmatrix} 
-    1 & 1 & 1 & 1 \\ 
-    1 & 1 & 0 & 1 \\ 
-    1 & 0 & 1 & 1 \\ 
-    1 & 1 & 1 & 1 
-\end{bmatrix}
-$$
-
-
-which completes the proof.
-
-\end{proof}
-
-The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile sets, which we tabularize in Section \ref{section: summary of results} without proof. Interestingly, the method not only generalizes to other tile sets, but can also be augmented to enumerate the more complicated ``messy" polygon mosaics.
-
-\section{Messy Polygon Mosaics}\label{section:messy mosaics}
-
-A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon, with no restriction on other shared edges. 
-
-\begin{exmp}
-\label{exmp: messy sap}
-Below is a messy polygon mosaic of size $(5,7)$ that contains $1$ polygon, with the squares that make it up hilighted in gray. 
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellE{0}{0}{1}{1}
-        \cellA{1}{0}{2}{1}
-        \cellCf{2}{0}{3}{1}
-        \cellEf{3}{0}{4}{1}
+        \cellCf{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellCf{3}{0}{4}{1}
         \cellEf{4}{0}{5}{1}
         \cellEf{5}{0}{6}{1}
         \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cellD{1}{1}{2}{2}
-        \cellFf{2}{1}{3}{2}
-        \cell{3}{1}{4}{2}
+        \cellBf{1}{1}{2}{2}
+        \cellIf{2}{1}{3}{2}
+        \cellAf{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
         \cellDf{5}{1}{6}{2}
         \cellFf{6}{1}{7}{2}
@@ -1330,9 +364,13 @@ Below is a messy polygon mosaic of size $(5,7)$ that contains $1$ polygon, with 
         \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
 \end{center}
-\end{exmp}
+\caption{A messy knot mosaic}
+\label{fig:messy mosaic example}
+\end{figure}
 
-It turns out that it is simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $t_{m,n}$ be the number of mosaics that do not contain a polygon. Also from the fact that the smallest polygon is
+It turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a knot. Let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a knot, and let $|\mathbb{S}^{(m,n)}| = s_{m,n}$. 
+
+From the fact that the smallest knot is 
 
 \begin{center}
 \begin{tikzpicture}
@@ -1345,11 +383,11 @@ It turns out that it is simpler to enumerate the number of mosaics that \textit{
 \end{tikzpicture}
 \end{center}
 
-we have that $t_{n,1}=7^n$, and $t_{2,2} = 7^4 - 1$. We can use similar techniques to Theorem \ref{thm: main theorem} to enumerate messy polygon mosaics. We define $A(m) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$, which we use to enumerate $t_{m,n}$.
+we have that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
 
-\begin{defn}
+\begin{definition}
 
-First define $A(2) = \begin{bmatrix}
+Define $A(2) = \begin{bmatrix}
 7^2 & 1 \\
 -1 & 1
 \end{bmatrix}$. We recursively define $A(k+1) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ given $A(k)$. Begin by writing
@@ -1371,7 +409,7 @@ $$
 
 Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
 
-\end{defn}
+\end{definition}
 
 \begin{thm}
 \label{thm: messy mosaics}
@@ -1379,6 +417,8 @@ The number of mosaics that \textit{do not} contain a polygon is the $(0,0)$-th e
 \end{thm}
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
+
+The proof of Theorem \ref{thm: messy mosaics} \textbf{TODO}
 
 \begin{proof}
 We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell labeling.
@@ -1902,137 +942,26 @@ Subsituting $V$ into Equation \ref{eqn: coefficient matrix prod} gives the resul
 
 \end{proof}
 
-% \begin{theorem}
-%     \label{thm: growth rate}    
-%     Let the probability that an $(m,n)$-mosaic \textit{does not} contain a SAP be denoted $p_{m,n} = \frac{t_{m,n}}{7^{nm}}$. Then the growth rate of the main diagonal $p_{n,n}$ has
-%     $$\gamma = \lim_{n \to \infty} \frac{p_{n+1,n+1}p_{n-1,n-1}}{p_{n,n}^2} = ?$$
-% \end{theorem}
 
+\section{Extensions}
+\label{section: Extensions}
 
-\section{Summary of Results}
-\label{section: summary of results}
+Hong and Oh \cite{Hong2018} study the mosaic system with the tile set $\mathbb{T}^* = \{T_0, \dots,T_7\}$. This tile set constructs shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. If we let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$, Hong and Oh showed the following results\footnote{The authors did not consider the mosaic containing all $T_0$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.}. 
 
-As demonstrated in the proof of Theorem \ref{thm: messy mosaics}, the enumeration of both polygon mosaics and mosaics that do not contain a polygon share the same structure, and only differ by the identity of the matrices $A(2), V$. We summarize these matrices for various collections of tiles below.
+\begin{thm}[\cite{Hong2018}]
+    \label{thm:Hong2018}
+    The number of polygon mosaics of size $(m,n)$ $p_{m,n}$ for $m,n \geq 2$ has
 
-\begin{center}
-    \begin{tblr}{
-  colspec = {X[c,h]X[c]X[c]X[c]},
-  stretch = 0,
-  rowsep = 6pt,
-  hlines = {black, 1pt},
-  vlines = {black, 1pt},
-}
-  \textbf{Tile Set} & \textbf{Polygon Mosaics} & \textbf{Messy Polygon Mosaics}\\
-  
-  \resizebox{0.3\textwidth}{!}{%
-  \begin{tikzpicture}
-      \cellA{0}{0}{1}{1}
-      \cellB{2}{0}{3}{1}
-      \cellC{0}{2}{1}{3}
-      \cellD{2}{2}{3}{3}
-      
-      \cellE{4}{0}{5}{1}
-      \cellF{4}{2}{5}{3}
+    $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+\end{thm}
 
-      \cell{6}{1}{7}{2}
+Though not stated in Hong and Oh \cite{Hong2018}, $p_{m,n}$ is exactly enumerated by Theorem \ref{thm:Oh2014} by replacing the $4$ in the definition of $O_{k+1}$ with a $0$.The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}. 
 
-    \end{tikzpicture}
-    } 
-    & 
-    $\begin{bmatrix}
-    1 & 1 \\
-    1 & 1
-    \end{bmatrix},
-    \begin{bmatrix} 
-    1 & 1 & 1 & 1 \\ 
-    1 & 1 & 0 & 1 \\ 
-    1 & 0 & 1 & 1 \\ 
-    1 & 1 & 1 & 1 
-    \end{bmatrix}$
-    & 
-    $\begin{bmatrix}
-        7^2 & 1 \\
-        -1 & 1
-    \end{bmatrix},
-    \begin{bmatrix}
-        7 & \frac{1}{7} & 7 & 1 \\
-        -\frac{1}{7} & 1 & 0 & 1 \\
-        7 & 0 & 7  & 1 \\
-        1 & -1 & 1 & 7 \\
-    \end{bmatrix}$
-    \\
-    
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        
-        \cellE{4}{0}{5}{1}
-        \cellF{4}{2}{5}{3}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-    \end{tikzpicture}
-    } 
-    & 
-    TODO 
-    & 
-    $\begin{bmatrix}
-        6^2 & 1 \\
-        -1 & 1
-    \end{bmatrix},
-    \begin{bmatrix}
-        6 & \frac{1}{6} & 6 & 1 \\
-        -\frac{1}{6} & 1 & 0 & 1 \\
-        6 & 0 & 6  & 1 \\
-        1 & -1 & 1 & 6 \\
-    \end{bmatrix}$ 
-    \\
+\textbf{TODO}
 
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        
-        \cell{4}{1}{5}{2}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-        
-    \end{tikzpicture}
-    } 
-    & 
-    $\begin{bmatrix}
-        1 & 1 \\
-        1 & 0
-    \end{bmatrix}$, TODO 
-    & 
-    TODO
-    \\
+\section{Acknowledgements}
 
-    \resizebox{0.3\textwidth}{!}{%
-    \begin{tikzpicture}
-        \cellA{0}{0}{1}{1}
-        \cellB{2}{0}{3}{1}
-        \cellC{0}{2}{1}{3}
-        \cellD{2}{2}{3}{3}
-        % invisible cell for spacing
-        \spacecell{4}{1}{5}{2}
-        % invisible cell for spacing
-        \spacecell{6}{1}{7}{2}
-    \end{tikzpicture}
-      } 
-    & 
-    TODO
-    & 
-    TODO 
-    \\
-  
-\end{tblr}
-\end{center}
-
+The authors would like to thank Michael Maltenfort for the edits, improvements and ideas for this paper. 
 
 \printbibliography
 
@@ -2046,7 +975,7 @@ We demonstrate that weight assignments exist such that the product over the cell
 \end{lemma}
 
 \begin{proof}
-    TODO Something about chaging vertex values
+    TODO Something about changing vertex values
 \end{proof}
 
 This is because one can find $w_{1} , \dots, w_{16}$ so that the following two constraints hold:
