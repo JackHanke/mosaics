@@ -44,10 +44,10 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>mosaics.bcf</file>
+      <file>old-mosaics.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>mosaics.bbl</file>
+      <file>old-mosaics.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -64,19 +64,19 @@
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>mosaics</infile>
+      <infile>old-mosaics</infile>
     </cmdline>
     <input>
-      <file>mosaics.bcf</file>
+      <file>old-mosaics.bcf</file>
     </input>
     <output>
-      <file>mosaics.bbl</file>
+      <file>old-mosaics.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>mosaics.bbl</file>
+      <file>old-mosaics.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>mosaics.bcf</file>
+      <file>old-mosaics.bcf</file>
     </requires>
     <requires type="editable">
       <file>./bibb.bib</file>

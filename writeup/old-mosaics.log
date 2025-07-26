@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  26 JUL 2025 17:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  21 JUL 2025 09:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**mosaics.tex
-(./mosaics.tex
+**old-mosaics.tex
+(./old-mosaics.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -1042,66 +1042,47 @@ Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
 \c@definition=\count465
 \c@exmp=\count466
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
-\Gm@cnth=\count467
-\Gm@cntv=\count468
-\c@Gm@tempcnt=\count469
-\Gm@bindingoffset=\dimen313
-\Gm@wd@mp=\dimen314
-\Gm@odd@mp=\dimen315
-\Gm@even@mp=\dimen316
-\Gm@layoutwidth=\dimen317
-\Gm@layoutheight=\dimen318
-\Gm@layouthoffset=\dimen319
-\Gm@layoutvoffset=\dimen320
-\Gm@dimlist=\toks43
-)
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count470
-\@quotereset=\count471
-(./mosaics.aux)
-\openout1 = `mosaics.aux'.
+\@quotelevel=\count467
+\@quotereset=\count468
+(./old-mosaics.aux)
+\openout1 = `old-mosaics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
-LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count472
-\scratchdimen=\dimen321
+\scratchcounter=\count469
+\scratchdimen=\dimen313
 \scratchbox=\box109
-\nofMPsegments=\count473
-\nofMParguments=\count474
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count475
-\MPscratchDim=\dimen322
-\MPnumerator=\count476
-\makeMPintoPDFobject=\count477
-\everyMPtoPDFconversion=\toks45
+\nofMPsegments=\count470
+\nofMParguments=\count471
+\everyMPshowfont=\toks43
+\MPscratchCnt=\count472
+\MPscratchDim=\dimen314
+\MPnumerator=\count473
+\makeMPintoPDFobject=\count474
+\everyMPtoPDFconversion=\toks44
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1117,11 +1098,11 @@ Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 147.
+Package hyperref Info: Link coloring OFF on input line 136.
 
-(./mosaics.out) (./mosaics.out)
+(./old-mosaics.out) (./old-mosaics.out)
 \@outlinefile=\write5
-\openout5 = `mosaics.out'.
+\openout5 = `old-mosaics.out'.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -1132,151 +1113,119 @@ File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout4 = `mosaics.bcf'.
+\openout4 = `old-mosaics.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'mosaics.bbl' found.
+Package biblatex Info: ... file 'old-mosaics.bbl' not found.
 
-(./mosaics.bbl
-
-Package biblatex Warning: Biber reported the following issues
-(biblatex)                with 'Lomonaco08':
-(biblatex)                - article entry 'Lomonaco08' (./bibb.bib): Invalid fo
-rmat '2008/06/01' of date field 'date' - ignoring.
-
-
-Package biblatex Warning: Biber reported the following issues
-(biblatex)                with 'Oh2019':
-(biblatex)                - article entry 'Oh2019' (./bibb.bib): Invalid format
- '2019/06/12' of date field 'date' - ignoring.
-
-
-Package biblatex Warning: Biber reported the following issues
-(biblatex)                with 'Oh2014':
-(biblatex)                - article entry 'Oh2014' (./bibb.bib): Invalid format
- '2015/03/01' of date field 'date' - ignoring.
-
-)
-Package biblatex Info: Reference section=0 on input line 147.
-Package biblatex Info: Reference segment=0 on input line 147.
-
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 149
+No file old-mosaics.bbl.
+Package biblatex Info: Reference section=0 on input line 136.
+Package biblatex Info: Reference segment=0 on input line 136.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 167
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 149
+LaTeX Font Info:    Trying to load font information for U+msb on input line 167
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (12.07005pt too wide) in paragraph at lines 235--236
-[][] 
- []
 
-
-Overfull \hbox (12.07005pt too wide) in paragraph at lines 283--284
-[][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `thm:Oh2014' on page 1 undefined on input line 414.
 
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (12.07005pt too wide) in paragraph at lines 372--373
-[][] 
+
+LaTeX Warning: Reference `section:messy mosaics' on page 2 undefined on input l
+ine 449.
+
+
+LaTeX Warning: Reference `fig:example knot mosaic' on page 2 undefined on input
+ line 457.
+
+
+Overfull \hbox (52.11586pt too wide) in paragraph at lines 654--655
+ [] 
+ []
+
+[2] [3] [4]
+Overfull \hbox (4.25226pt too wide) in paragraph at lines 1123--1124
+ [] 
+ []
+
+[5] [6]
+Overfull \hbox (7.70024pt too wide) in paragraph at lines 1301--1302
+ [] 
+ []
+
+[7] [8]
+Overfull \hbox (72.11615pt too wide) detected at line 1349
+[] \OT1/cmr/m/n/12 = []
  []
 
 
-Overfull \hbox (12.07005pt too wide) in paragraph at lines 418--419
-[][] 
+LaTeX Warning: Reference `section: summary of results' on page 9 undefined on i
+nput line 1367.
+
+
+LaTeX Warning: Reference `thm: messy mosaics' on page 9 undefined on input line
+ 1371.
+
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+ []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2] [3] [4] [5] [6] [7] [8]
-
-LaTeX Warning: Reference `thm: main theorem' on page 9 undefined on input line 
-1217.
-
-
-LaTeX Warning: Reference `thm: main theorem' on page 9 undefined on input line 
-1331.
-
-
-Overfull \hbox (4.1116pt too wide) detected at line 1353
-\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (2) = [] \OML/cmm/m/it/12 ; V \OT1/cmr/m/n/12
- = [] = [] \OML/cmm/m/it/12 :
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+ []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
-[9] [10]
+> Step: build the whole table.
 
-LaTeX Warning: Reference `eqn: coefficient matrix prod' on page 11 undefined on
- input line 1734.
-
-[11]
-Overfull \hbox (20.75667pt too wide) in paragraph at lines 1760--1760
-\OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
-, p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
-42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+ []$[] \OML/cmm/m/it/12 ; []$ 
  []
+
+
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+ []$[] \OML/cmm/m/it/12 ; []$ 
+ []
+
+[9] [10] [11]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1679.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1696.
+See the caption package documentation for explanation.
 
 [12]
-Overfull \hbox (26.94182pt too wide) in paragraph at lines 1777--1778
-[][]\OT1/cmr/bx/n/12 Constraint 9.2. []\OT1/cmr/m/it/12 The weights as-so-ci-at
-ed with the small-est poly-gon mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/
-12 1$\OT1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
- []
-
-[13]
-Overfull \hbox (2.49498pt too wide) in alignment at lines 1889--1906
- [][][] []
+Overfull \hbox (12.51701pt too wide) in paragraph at lines 1710--1711
+[]\OT1/cmr/m/n/12 For $\OML/cmm/m/it/12 t[]$ \OT1/cmr/m/n/12 we di-rectly com-p
+ute the gen-er-at-ing func-tion $\OML/cmm/m/it/12 T[]\OT1/cmr/m/n/12 (\OML/cmm/
+m/it/12 x\OT1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 t[]x[]$
  []
 
 
-Overfull \hbox (4.99469pt too wide) in alignment at lines 1910--1922
- [][][] []
- []
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 1727.
+See the caption package documentation for explanation.
 
-[14] [15] [16] (./mosaics.aux)
+[13] [14] [15] [16] (./old-mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1285,46 +1234,37 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 8AA64EFBB92DB91C8896271367536751;1051.
-Package logreq Info: Writing requests to 'mosaics.run.xml'.
-\openout1 = `mosaics.run.xml'.
+Package rerunfilecheck Info: File `old-mosaics.out' has not changed.
+(rerunfilecheck)             Checksum: 95D98513E0BCCE12A17087ED890B04D4;470.
+Package logreq Info: Writing requests to 'old-mosaics.run.xml'.
+\openout1 = `old-mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34892 strings out of 474116
- 693127 string characters out of 5743681
- 2012187 words of memory out of 5000000
- 56706 multiletter control sequences out of 15000+600000
- 572706 words of font info for 91 fonts, out of 8000000 for 9000
+ 34218 strings out of 474116
+ 684878 string characters out of 5743681
+ 2024187 words of memory out of 5000000
+ 56088 multiletter control sequences out of 15000+600000
+ 565421 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (16 pages, 349675 bytes).
+ 102i,14n,110p,684b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on old-mosaics.pdf (16 pages, 220172 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 187 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

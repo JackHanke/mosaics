@@ -45,6 +45,7 @@
 \newtheorem{claim}[thm]{Claim}
 \newtheorem{fact}[thm]{Fact}
 \newtheorem{constraint}[thm]{Constraint}
+\newtheorem{condition}[thm]{Condition}
 
 \theoremstyle{definition}
 \newtheorem{eg}[thm]{Example}
@@ -140,7 +141,7 @@
     % \and
     \textbf{Richard Schank}\\
     }
-\title{\textbf{Enumeration of Messy Mosaics}}
+\title{\textbf{Enumeration of Messy Knot Mosaics}}
 % \date{\today}
 
 \begin{document}
@@ -149,7 +150,7 @@
 \begin{center}
 
     \begin{abstract}
-        Lomonaco and Kauffman introduced a system of mosaics to model quantum knots composed of an $m \times n$ grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion method to exactly enumerate mosaics that have the property of being suitably connected. We introduce and enumerate mosaics with the related property in which all tiles need not be suitably connected. We call these messy mosaics.
+        Lomonaco and Kauffman introduced a system of mosaics to model quantum knots. These systems of mosaics are composed of an $m \times n$ rectangular grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion method to exactly enumerate a subset of these mosaics that have the property of being suitably connected, which they call knot mosaics. We introduce and enumerate mosaics with the related property in which only some tiles must be suitably connected, which we call messy knot mosaics.
     \end{abstract}
 
 \end{center}
@@ -185,7 +186,7 @@ Lomonaco and Kauffman \cite{Lomonaco08} introduced a model for quantum knots in 
     \end{tikzpicture}
 \end{center}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$. We denote the set of all mosaics of size $(m,n)$ as $\mathbb{M}^{(m,n)}$. As there are $11$ elements in $\mathbb{T}$, there are $11^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. A \textit{mosaic system} is a subset of $\mathbb{M}^{(m,n)}$ with some property. 
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$. We denote the set of all mosaics of size $(m,n)$ as $\mathbb{M}^{(m,n)}$. As there are $11$ elements in $\mathbb{T}$, there are $11^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. A \textit{mosaic system} is then a subset of $\mathbb{M}^{(m,n)}$ with some property. 
 
 \begin{figure}[h!]
     \begin{center}
@@ -317,12 +318,18 @@ Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matri
 
 \section{Messy Knot Mosaics}\label{section:messy mosaics}
 
-A \textit{messy knot mosaic} is a mosaic that contains at least one knot, with no restriction on other shared edges. Figure \ref{fig:messy mosaic example} shows a messy knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knots highlighted in gray. 
+\begin{definition}
+    A \textit{messy knot mosaic} is a mosaic that contains at least one knot. 
+\end{definition}
+
+Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of size $(5,7)$ that contains $3$ knots\footnote{Certain permutations of $\{T_1, T_2, T_3, T_4\}$ and $\{T_7,T_8\}$ can make shapes that appear to be knots but have hanging connections, as seen in the $(0,4)$ position in the right example in Figure \ref{fig:messy mosaic example}. These are not considered knots by this paper and all referenced works.}, with the tiles that make up the knots highlighted in gray. All knot mosaics are messy knot mosaics.
 
 \begin{figure}[h!]
-\begin{center}
+    \begin{center}
+
+\begin{subfigure}{0.4\textwidth}
     \begin{tikzpicture}
-        % row1
+       % row1
         \cellA{0}{0}{1}{1}
         \cellCf{1}{0}{2}{1}
         \cellDf{2}{0}{3}{1}
@@ -363,14 +370,62 @@ A \textit{messy knot mosaic} is a mosaic that contains at least one knot, with n
         \cellEf{5}{4}{6}{5}
         \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
+\end{subfigure}
+% \hfill
+\hspace{0.05\textwidth}
+\begin{subfigure}{0.4\textwidth}
+        \begin{tikzpicture}
+        % row1
+        \cellD{0}{0}{1}{1}
+        \cellCf{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellF{3}{0}{4}{1}
+        \cellE{4}{0}{5}{1}
+        \cellCf{5}{0}{6}{1}
+        \cellDf{6}{0}{7}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cellBf{1}{1}{2}{2}
+        \cellAf{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellC{4}{1}{5}{2}
+        \cellFf{5}{1}{6}{2}
+        \cellFf{6}{1}{7}{2}
+        % row3
+        \cellCf{0}{2}{1}{3}
+        \cellDf{1}{2}{2}{3}
+        \cellH{2}{2}{3}{3}
+        \cellA{3}{2}{4}{3}
+        \cellA{4}{2}{5}{3}
+        \cellBf{5}{2}{6}{3}
+        \cellAf{6}{2}{7}{3}
+        % row4
+        \cellBf{0}{3}{1}{4}
+        \cellAf{1}{3}{2}{4}
+        \cell{2}{3}{3}{4}
+        \cellC{3}{3}{4}{4}
+        \cellC{4}{3}{5}{4}
+        \cellH{5}{3}{6}{4}
+        \cellI{6}{3}{7}{4}
+        % row5
+        \cellF{0}{4}{1}{5}
+        \cellD{1}{4}{2}{5}
+        \cellG{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cellB{4}{4}{5}{5}
+        \cellG{5}{4}{6}{5}
+        \cell{6}{4}{7}{5}
+    \end{tikzpicture}
+\end{subfigure}
+
 \end{center}
-\caption{A messy knot mosaic}
+\caption{Messy knot mosaics}
 \label{fig:messy mosaic example}
 \end{figure}
 
-It turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a knot. Let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a knot, and let $|\mathbb{S}^{(m,n)}| = s_{m,n}$. 
+It turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a knot. Therefore, let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a knot, and let $|\mathbb{S}^{(m,n)}| = s_{m,n}$. Clearly the number of messy knot mosaics is then $11^{mn} - s_{m,n}$.
 
-From the fact that the smallest knot is 
+First, note that the knot made up of the least amount of cells is this: 
 
 \begin{center}
 \begin{tikzpicture}
@@ -383,27 +438,27 @@ From the fact that the smallest knot is
 \end{tikzpicture}
 \end{center}
 
-we have that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
+We can then conclude that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
 
 \begin{definition}
 
 Define $A(2) = \begin{bmatrix}
-7^2 & 1 \\
+11^2 & 1 \\
 -1 & 1
-\end{bmatrix}$. We recursively define $A(k+1) \in \mathbb{Z}^{2^{m-1} \times 2^{m-1}}$ given $A(k)$. Begin by writing
+\end{bmatrix}$. We recursively define $A(k+1) \in \mathbb{N}^{2^{k} \times 2^{k}}$ given $A(k)$. Begin by writing
 $
 A(k) = \begin{bmatrix}
 A_{0,0} & A_{0,1} \\
 A_{1,0} & A_{1,1}
 \end{bmatrix}
-$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-2} \times 2^{k-2}$. We then have
+$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
 
 $$
 A(k+1) = \begin{bmatrix}
-    7A_{0,0} & \frac{1}{7}A_{0,0} & 7A_{0,1} & A_{0,1} \\
-    -\frac{1}{7}A_{0,0} & A_{0,0} & 0A_{0,1} & A_{0,1} \\
-    7A_{1,0} & 0A_{1,0} & 7A_{1,1}  & A_{1,1} \\
-    A_{1,0} & -A_{1,0} & A_{1,1} & 7A_{1,1} \\
+    11A_{0,0} & \frac{1}{11}A_{0,0} & 11A_{0,1} & A_{0,1} \\
+    -\frac{1}{11}A_{0,0} & \frac{1}{11}A_{0,0} & 4A_{0,1} & A_{0,1} \\
+    11A_{1,0} & -4A_{1,0} & 11A_{1,1}  & A_{1,1} \\
+    A_{1,0} & -A_{1,0} & A_{1,1} & 11A_{1,1} \\
 \end{bmatrix}.
 $$
 
@@ -413,12 +468,750 @@ Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$.
 
 \begin{thm}
 \label{thm: messy mosaics}
-The number of mosaics that \textit{do not} contain a polygon is the $(0,0)$-th entry of $A(m)^n$.
+The number of mosaics of size $(m,n)$ that \textit{do not} contain a knot is the $(0,0)$ entry of $A(m)^n$.
 \end{thm}
+
+\section{Preliminaries}
+
+We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to a \textit{binary lattice} of size $(m,n)$. A binary lattice of size $(m,n)$ is a rectangular lattice of $m+1$ by $n+1$ vertices, in which the boundary vertices are labeled $0$, and the interior vertices are either $0$ or $1$. An example of a binary lattice of size $(5,7)$ is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all binary lattices of size $(m,n)$, which gives $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
+
+\begin{definition}
+
+$f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of knots (including $0$ knots), label it $0$. If the vertex is surrounded by an odd number of knots, label it $1$. Removing the red dotted lines from the tiles gives the binary lattice. 
+    
+\end{definition}
+
+Similarly, define the \textit{preimage} of a set $L$ under $f$ to be
+
+$$f^{-1}(L) = \{m \in \mathbb{M}^{(m,n)} | f(m) \in L\}.$$
+
+We want to compute $s_{m,n}$ by computing $f^{-1}(\ell)$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We begin by finding a simple way to compute $f^{-1}(\ell)$ for a binary lattice $\ell$ by examining the structure of $\ell$.
+
+\begin{figure}
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cellC{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
+        \cellC{3}{0}{4}{1}
+        \cellE{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cellB{1}{1}{2}{2}
+        \cellI{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellC{4}{1}{5}{2}
+        \cellD{5}{1}{6}{2}
+        \cellF{6}{1}{7}{2}
+        % row3
+        \cell{0}{2}{1}{3}
+        \cell{1}{2}{2}{3}
+        \cellF{2}{2}{3}{3}
+        \cell{3}{2}{4}{3}
+        \cellB{4}{2}{5}{3}
+        \cellA{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellC{0}{3}{1}{4}
+        \cellD{1}{3}{2}{4}
+        \cellB{2}{3}{3}{4}
+        \cellE{3}{3}{4}{4}
+        \cellD{4}{3}{5}{4}
+        \cell{5}{3}{6}{4}
+        \cellF{6}{3}{7}{4}
+        % row5
+        \cellB{0}{4}{1}{5}
+        \cellA{1}{4}{2}{5}
+        \cell{2}{4}{3}{5}
+        \cell{3}{4}{4}{5}
+        \cellB{4}{4}{5}{5}
+        \cellE{5}{4}{6}{5}
+        \cellA{6}{4}{7}{5}
+        % label for row1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{7}{0}{$0$} \)
+        % label for row1
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        % label for row1
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$0$} \)
+        % label for row1
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$1$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$1$} \)
+        \( \lablvertex{6}{3}{$1$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        % label for row1
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$1$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$1$} \)
+        \( \lablvertex{6}{4}{$1$} \)
+        \( \lablvertex{7}{4}{$0$} \)
+        % label for row1
+        \( \lablvertex{0}{5}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        \( \lablvertex{3}{5}{$0$} \)
+        \( \lablvertex{4}{5}{$0$} \)
+        \( \lablvertex{5}{5}{$0$} \)
+        \( \lablvertex{6}{5}{$0$} \)
+        \( \lablvertex{7}{5}{$0$} \)
+        % arrow
+        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
+        % 
+        \( \lablnode{7.5}{1.9}{$\pmb{f}$} \)
+
+        % row1
+        \cell{8}{0}{9}{1}
+        \cell{9}{0}{10}{1}
+        \cell{10}{0}{11}{1}
+        \cell{11}{0}{12}{1}
+        \cell{12}{0}{13}{1}
+        \cell{13}{0}{14}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{8}{1}{9}{2}
+        \cell{9}{1}{10}{2}
+        \cell{10}{1}{11}{2}
+        \cell{11}{1}{12}{2}
+        \cell{12}{1}{13}{2}
+        \cell{13}{1}{14}{2}
+        \cell{14}{1}{15}{2}
+        % row3
+        \cell{8}{2}{9}{3}
+        \cell{9}{2}{10}{3}
+        \cell{10}{2}{11}{3}
+        \cell{11}{2}{12}{3}
+        \cell{12}{2}{13}{3}
+        \cell{13}{2}{14}{3}
+        \cell{14}{2}{15}{3}
+        % row4
+        \cell{8}{3}{9}{4}
+        \cell{9}{3}{10}{4}
+        \cell{10}{3}{11}{4}
+        \cell{11}{3}{12}{4}
+        \cell{12}{3}{13}{4}
+        \cell{13}{3}{14}{4}
+        \cell{14}{3}{15}{4}
+        % row5
+        \cell{8}{4}{9}{5}
+        \cell{9}{4}{10}{5}
+        \cell{10}{4}{11}{5}
+        \cell{11}{4}{12}{5}
+        \cell{12}{4}{13}{5}
+        \cell{13}{4}{14}{5}
+        \cell{14}{4}{15}{5}
+
+        % label for row1
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$0$} \)
+        \( \lablvertex{12}{0}{$0$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$0$} \)
+        \( \lablvertex{15}{0}{$0$} \)
+        % label for row1
+        \( \lablvertex{8}{1}{$0$} \)
+        \( \lablvertex{9}{1}{$0$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$0$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
+        \( \lablvertex{15}{1}{$0$} \)
+        % label for row1
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
+        \( \lablvertex{15}{2}{$0$} \)
+        % label for row1
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$0$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$1$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$1$} \)
+        \( \lablvertex{15}{3}{$0$} \)
+        % label for row1
+        \( \lablvertex{8}{4}{$0$} \)
+        \( \lablvertex{9}{4}{$1$} \)
+        \( \lablvertex{10}{4}{$0$} \)
+        \( \lablvertex{11}{4}{$0$} \)
+        \( \lablvertex{12}{4}{$0$} \)
+        \( \lablvertex{13}{4}{$1$} \)
+        \( \lablvertex{14}{4}{$1$} \)
+        \( \lablvertex{15}{4}{$0$} \)
+        % label for row1
+        \( \lablvertex{8}{5}{$0$} \)
+        \( \lablvertex{9}{5}{$0$} \)
+        \( \lablvertex{10}{5}{$0$} \)
+        \( \lablvertex{11}{5}{$0$} \)
+        \( \lablvertex{12}{5}{$0$} \)
+        \( \lablvertex{13}{5}{$0$} \)
+        \( \lablvertex{14}{5}{$0$} \)
+        \( \lablvertex{15}{5}{$0$} \)
+
+    \end{tikzpicture}
+\end{center}
+\caption{$f$ applied to the left mosaic in Figure \ref{fig:messy mosaic example}, resulting in a binary lattice}
+\label{fig:example of f mapping}
+\end{figure}
+
+\begin{definition}
+    Let a \textit{cell} be the portion of the binary lattice that an individual tile maps to, and let $C$ be the set of unique cells. 
+\end{definition}
+
+For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. Below is a diagram of all $2^4$ cells with their indexes listed below.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{-0.5}{1}{0.5}
+        \cell{2}{-0.5}{3}{0.5}
+        \cell{4}{-0.5}{5}{0.5}
+        \cell{6}{-0.5}{7}{0.5}
+        \cell{8}{-0.5}{9}{0.5}
+        \cell{10}{-0.5}{11}{0.5}
+        \cell{12}{-0.5}{13}{0.5}
+        \cell{14}{-0.5}{15}{0.5}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
+
+        % label for row 1
+        \( \lablvertex{0}{-0.5}{$1$} \)
+        \( \lablvertex{1}{-0.5}{$0$} \)
+        \( \lablvertex{2}{-0.5}{$1$} \)
+        \( \lablvertex{3}{-0.5}{$0$} \)
+        \( \lablvertex{4}{-0.5}{$1$} \)
+        \( \lablvertex{5}{-0.5}{$0$} \)
+        \( \lablvertex{6}{-0.5}{$1$} \)
+        \( \lablvertex{7}{-0.5}{$0$} \)
+        \( \lablvertex{8}{-0.5}{$1$} \)
+        \( \lablvertex{9}{-0.5}{$1$} \)
+        \( \lablvertex{10}{-0.5}{$1$} \)
+        \( \lablvertex{11}{-0.5}{$1$} \)
+        \( \lablvertex{12}{-0.5}{$1$} \)
+        \( \lablvertex{13}{-0.5}{$1$} \)
+        \( \lablvertex{14}{-0.5}{$1$} \)
+        \( \lablvertex{15}{-0.5}{$1$} \)
+        
+        % label for row 2
+        \( \lablvertex{0}{0.5}{$0$} \)
+        \( \lablvertex{1}{0.5}{$0$} \)
+        \( \lablvertex{2}{0.5}{$0$} \)
+        \( \lablvertex{3}{0.5}{$1$} \)
+        \( \lablvertex{4}{0.5}{$1$} \)
+        \( \lablvertex{5}{0.5}{$0$} \)
+        \( \lablvertex{6}{0.5}{$1$} \)
+        \( \lablvertex{7}{0.5}{$1$} \)
+        \( \lablvertex{8}{0.5}{$0$} \)
+        \( \lablvertex{9}{0.5}{$0$} \)
+        \( \lablvertex{10}{0.5}{$0$} \)
+        \( \lablvertex{11}{0.5}{$1$} \)
+        \( \lablvertex{12}{0.5}{$1$} \)
+        \( \lablvertex{13}{0.5}{$0$} \)
+        \( \lablvertex{14}{0.5}{$1$} \)
+        \( \lablvertex{15}{0.5}{$1$} \)
+
+        % label for row 3
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$0$} \)
+        \( \lablvertex{7}{2}{$0$} \)
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$1$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$0$} \)
+        \( \lablvertex{13}{2}{$1$} \)
+        \( \lablvertex{14}{2}{$0$} \)
+        \( \lablvertex{15}{2}{$1$} \)
+        
+        % label for row 4
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$1$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$1$} \)
+        \( \lablvertex{7}{3}{$1$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$0$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$1$} \)
+        \( \lablvertex{13}{3}{$0$} \)
+        \( \lablvertex{14}{3}{$1$} \)
+        \( \lablvertex{15}{3}{$1$} \)
+
+        % numbers row 1
+        \( \lablnode{0.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+        \( \lablnode{2.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+        \( \lablnode{4.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{10}$\textbf{)}} \)
+        \( \lablnode{6.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{11}$\textbf{)}} \)
+        \( \lablnode{8.5}{1.4}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+        \( \lablnode{10.5}{1.4}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+        \( \lablnode{12.5}{1.4}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{10}$\textbf{)}} \)
+        \( \lablnode{14.5}{1.4}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{11}$\textbf{)}} \)
+        
+        % numbers row 2
+        \( \lablnode{0.5}{-1.1}{\textbf{(}$\mathbf{10}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+        \( \lablnode{2.5}{-1.1}{\textbf{(}$\mathbf{10}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+        \( \lablnode{4.5}{-1.1}{\textbf{(}$\mathbf{10}$\textbf{,} $\mathbf{10}$\textbf{)}} \)
+        \( \lablnode{6.5}{-1.1}{\textbf{(}$\mathbf{10}$\textbf{,} $\mathbf{11}$\textbf{)}} \)
+        \( \lablnode{8.5}{-1.1}{\textbf{(}$\mathbf{11}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+        \( \lablnode{10.5}{-1.1}{\textbf{(}$\mathbf{11}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+        \( \lablnode{12.5}{-1.1}{\textbf{(}$\mathbf{11}$\textbf{,} $\mathbf{10}$\textbf{)}} \)
+        \( \lablnode{14.5}{-1.1}{\textbf{(}$\mathbf{11}$\textbf{,} $\mathbf{11}$\textbf{)}} \)
+    \end{tikzpicture}
+\end{center}
+
+Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a knot in certain ways. For example, $u_{(00, 01)} = 1$, as cell $(00,01)$ can only be formed by a mosaic with $T_3$ in that location. We can see that $u_{(01,10)}=4$, as cell $(01,10)$ can be from the $T_7,T_8,T_9$, or $T_{10}$ tiles. Finally, we have $u_{(00,00)}=11$, as any tile can fail to contribute to forming a knot. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
+
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{ |c|l|c|c|l|c| } 
+            \hline
+            \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & \textbf{Preimage} & $\mathbf{u_{(i,j)}}$ & \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & \textbf{Preimage} & $\mathbf{u_{(i,j)}}$ \\ 
+            \hline
+            $(00, 00)$ & $\mathbb{T}$ & $11$ & $(10, 00)$ & $T_1$ & $1$ \\
+            \hline
+            $(00, 01)$ & $T_3$ & $1$ & $(10, 01)$ & $T_{7},T_{8},T_{9},T_{10}$ & $4$ \\
+            \hline
+            $(00, 10)$ & $T_4$ & $1$ & $(10, 10)$ & $T_6$ & $1$ \\
+            \hline
+            $(00, 11)$ & $T_5$ & $1$ & $(10, 11)$ & $T_2$ & $1$ \\
+            \hline
+            $(01, 00)$ & $T_2$ & $1$ & $(11, 00)$ & $T_5$ & $1$ \\
+            \hline
+            $(01, 01)$ & $T_6$ & $1$ & $(11, 01)$ & $T_4$ & $1$ \\
+            \hline
+            $(01, 10)$ & $T_{7},T_{8},T_{9},T_{10}$ & $4$ & $(11, 10)$ & $T_1$ & $1$ \\
+            \hline
+            $(01, 11)$ & $T_1$ & $1$ & $(11, 11)$ & $\mathbb{T}$ & $11$ \\
+            \hline
+        \end{tabular}
+        \caption{Preimages of each unique cell}
+        \label{tbl:Preimage of binary cell lattice}
+    \end{center}
+\end{table}
+
+However, for some binary lattice $\ell$ the quantity 
+
+\begin{equation}
+    U(\ell) := \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)}
+\end{equation}
+
+is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
+
+\begin{exmp}
+
+Consider the following binary lattices for $s_{4,2}$. 
+
+\begin{center}
+    \begin{tikzpicture}
+
+        % row1
+        \cell{-3}{0}{-2}{1}
+        \cell{-3}{1}{-2}{2}
+        \cell{-3}{2}{-2}{3}
+        \cell{-3}{3}{-2}{4}
+        \cell{-2}{0}{-1}{1}
+        \cell{-2}{1}{-1}{2}
+        \cell{-2}{2}{-1}{3}
+        \cell{-2}{3}{-1}{4}
+
+        \( \lablnode{-2}{-1}{$U(\ell_{1}) = 11^4$} \)
+
+        \( \lablvertex{-3}{0}{$0$} \)
+        \( \lablvertex{-2}{0}{$0$} \)
+        \( \lablvertex{-1}{0}{$0$} \)
+
+        \( \lablvertex{-3}{1}{$0$} \)
+        \( \lablvertex{-2}{1}{$0$} \)
+        \( \lablvertex{-1}{1}{$0$} \)
+
+        \( \lablvertex{-3}{2}{$0$} \)
+        \( \lablvertex{-2}{2}{$0$} \)
+        \( \lablvertex{-1}{2}{$0$} \)
+
+        \( \lablvertex{-3}{3}{$0$} \)
+        \( \lablvertex{-2}{3}{$1$} \)
+        \( \lablvertex{-1}{3}{$0$} \)
+
+        \( \lablvertex{-3}{4}{$0$} \)
+        \( \lablvertex{-2}{4}{$0$} \)
+        \( \lablvertex{-1}{4}{$0$} \)
+
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        \cell{0}{3}{1}{4}
+        \cell{1}{0}{2}{1}
+        \cell{1}{1}{2}{2}
+        \cell{1}{2}{2}{3}
+        \cell{1}{3}{2}{4}
+
+        \( \lablnode{1}{-1}{$U(\ell_{2}) =11^4$} \)
+        
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{3}{1}{4}{2}
+        \cell{3}{2}{4}{3}
+        \cell{3}{3}{4}{4}
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+        \cell{4}{3}{5}{4}
+
+        \( \lablnode{4}{-1}{$U(\ell_{3}) = 11^0$} \)
+
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$0$} \)
+
+        \cell{6}{0}{7}{1}
+        \cellF{7}{0}{8}{1}
+
+        \cellE{6}{1}{7}{2}
+        \cellB{7}{1}{8}{2}
+
+        \cellC{6}{2}{7}{3}
+        \cellD{7}{2}{8}{3}    
+
+        \cellB{6}{3}{7}{4}
+        \cellA{7}{3}{8}{4}    
+
+        \( \lablnode{7}{-1}{Mosaic $1$} \)
+
+        \cellC{9}{0}{10}{1}
+        \cellD{10}{0}{11}{1}
+
+        \cellB{9}{1}{10}{2}
+        \cellA{10}{1}{11}{2}
+
+        \cellC{9}{2}{10}{3}
+        \cellD{10}{2}{11}{3}    
+
+        \cellB{9}{3}{10}{4}
+        \cellA{10}{3}{11}{4}    
+
+        \( \lablnode{10}{-1}{Mosaic $2$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. 
+
+\label{exmp:U doesnt work}
+\end{exmp}
+
+\begin{definition}
+    A knot is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the knot.
+\end{definition}
+
+\begin{exmp}
+    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the knot in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the knot in the bottom $2$ rows of Mosaic $2$.
+\label{exmp:specifying example}
+\end{exmp}
+
+\begin{definition}
+    Let $K: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of knots specified in $\ell$.
+\end{definition}
+
+\begin{exmp}
+    From Example \ref{exmp:U doesnt work}, $K(\ell_1) =1$, $K(\ell_2) =1$,  and $K(\ell_3) =2$.
+
+\label{exmp:counting knots}
+\end{exmp}
+
+\begin{definition}
+For a binary lattice $\ell$, let $\mathbb{U}(\ell)$ be the set of binary lattices whose preimage mosaics under $f$ are counted by $U(\ell)$. A binary lattice $\ell'$ is in $\mathbb{U}(\ell)$ if one can replace either some number of $(00,00)$ or $(11,11)$ cells in $\ell$ with other cells in $C$ to create $\ell'$. This corresponds with specifying new knots in the mosaics in the preimage of $\ell$ while leaving all knots specified by $\ell$ unchanged. 
+\end{definition}
+
+\begin{exmp}
+From Example \ref{exmp:U doesnt work}, $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
+
+% $$\left|f^{-1}(\{\ell_1,\ell_2,\ell_3\})\right| = \left|f^{-1}(\mathbb{U}(\ell_1) \cup \mathbb{U}(\ell_2) \cup \mathbb{U}(\ell_3))\right| = U(\ell_1) + U(\ell_2) - U(\ell_3).$$
+
+\label{exmp:four two mosaics}
+\end{exmp}
+
+From the definition of $\mathbb{U}$, we have
+
+\begin{equation}
+    U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')|.
+    \label{eq:U identity}
+\end{equation}
+
+Therefore
+
+$$s_{m,n} \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell),$$
+
+as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. For instance, consider the binary lattice $\ell^*$ made up of all $(00,00)$ cells. $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, which clearly overcounts $s_{m,n}$. Also note that $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
+
+
+\begin{prop}
+    By regrouping terms we have
+
+    \begin{equation}
+        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\binom{K(\ell)}{0} + \dots + \binom{K(\ell)}{K(\ell)}\right)|f^{-1}(\ell)|.
+        \label{eq:double counting terms}
+    \end{equation}
+\end{prop}
+
+\begin{proof}
+    The first equality follows directly from Equation \ref{eq:U identity}. For the second equality, consider a binary lattice $\ell$ with $K(\ell)>0$. From the definition of $\mathbb{U}$, 
+
+    \textbf{TODO}
+\end{proof}
+
+\begin{prop}
+    The number of mosaics of size $(m,n)$ that do not contain a knot $s_{m,n}$ has
+
+    \begin{equation}
+    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell).
+    \label{eq:ugly inc excl}
+    \end{equation}
+\end{prop}
+
+\begin{proof}
+    By the binomial theorem,
+    
+    $$0 = (1-1)^{K(\ell)} = \left(\binom{K(\ell)}{0} - \binom{K(\ell)}{1} + \dots + (-1)^{K(\ell)}\binom{K(\ell)}{K(\ell)}\right),$$
+    
+    all terms in Equation \ref{eq:double counting terms} where $\ell \neq \ell^*$ are $0$. Therefore, 
+    
+    $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = s_{m,n}.$$
+\end{proof}
+
+It is important to note here that a knot that contains tiles $T_7$ or $T_8$ can appear to be two separate knots which we consider as $1$ knot.
+
+\begin{exmp}
+Figure \ref{fig:messy multi knot} shows a mosaic that appears to have $2$ knots, but we only consider as $1$ knot. A rule of thumb that can be followed is if knots that contain $T_7$ or $T_8$ tiles can be replaced by $T_9$ or $T_{10}$ tiles to form a single knot, then the original ``knots" we consider as $1$ knot.
+
+\begin{figure}[h!]
+\begin{center}
+
+\begin{tikzpicture}
+    % row1
+    \cellD{0}{0}{1}{1}
+    \cellCf{1}{0}{2}{1}
+    \cellDf{2}{0}{3}{1}
+    \cellF{3}{0}{4}{1}
+    \cellE{4}{0}{5}{1}
+    \cellG{5}{0}{6}{1}
+    \cellH{6}{0}{7}{1}
+    % row2
+    \cell{0}{1}{1}{2}
+    \cellFf{1}{1}{2}{2}
+    \cellFf{2}{1}{3}{2}
+    \cellA{3}{1}{4}{2}
+    \cellC{4}{1}{5}{2}
+    \cellF{5}{1}{6}{2}
+    \cellE{6}{1}{7}{2}
+    % row3
+    \cellCf{0}{2}{1}{3}
+    \cellHf{1}{2}{2}{3}
+    \cellAf{2}{2}{3}{3}
+    \cellA{3}{2}{4}{3}
+    \cellA{4}{2}{5}{3}
+    \cellB{5}{2}{6}{3}
+    \cellB{6}{2}{7}{3}
+    % row4
+    \cellBf{0}{3}{1}{4}
+    \cellAf{1}{3}{2}{4}
+    \cell{2}{3}{3}{4}
+    \cellC{3}{3}{4}{4}
+    \cellC{4}{3}{5}{4}
+    \cellH{5}{3}{6}{4}
+    \cellI{6}{3}{7}{4}
+    % row5
+    \cellF{0}{4}{1}{5}
+    \cellD{1}{4}{2}{5}
+    \cellG{2}{4}{3}{5}
+    \cell{3}{4}{4}{5}
+    \cellE{4}{4}{5}{5}
+    \cellG{5}{4}{6}{5}
+    \cell{6}{4}{7}{5}
+\end{tikzpicture}
+
+\end{center}
+\caption{A messy knot mosaic with $1$ knot}
+\label{fig:messy multi knot}
+\end{figure}
+
+\end{exmp}
+
+\section{A ``Per-Cell" Identity}
+
+Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, the $K$ function is a function that references the entire, global structure of $\ell$. It is useful to recover the $(-1)^{K(\ell)}$ term using only ``per-cell", local information.
+
+\begin{prop}
+    Let $\mathcal{K}$ be the set of cells in a binary lattice $\ell$ that specify a knot.
+    
+    There exists $p_{(i,j)} \in \{-1,1\}$ so that
+
+    \begin{equation}
+        \prod_{\text{Cell } (i,j) \in \mathcal{K}} p_{(i,j)} = -1
+        \label{eq:neg prod knot condition}
+    \end{equation}
+
+    for all possible $\mathcal{K}$.
+    \label{prop:neg prod prop}
+\end{prop}
+
+\begin{proof}
+    \textbf{TODO}
+\end{proof}
+
+Proposition \ref{prop:neg prod prop} allows us to rewrite the term in the sum of Equation \ref{eq:ugly inc excl} to
+
+\begin{equation}
+    (-1)^{K(\ell)}U(\ell) = (-1)^{K(\ell)} \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)} = \prod_{\text{Cell }(i,j) \in \ell} p_{(i,j)}u_{(i,j)} \text{ $\forall \ell$}.
+    \label{eq:term fix}
+\end{equation}
+
+We summarize the values of $v_{(i,j)} := p_{(i,j)}u_{(i,j)}$ in Table \ref{tbl:values of p and v}.
+
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{ |c|r|r|r|c|r|r|r| } 
+            \hline
+            \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ & \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ \\ 
+            \hline
+            $(00, 00)$ & $11$ & $1$ & $11$ & $(10, 00)$ & $1$ & $-1$ & $-1$ \\
+            \hline
+            $(00, 01)$ & $1$ & $1$ & $1$ & $(10, 01)$ & $4$ & $1$ & $4$ \\
+            \hline
+            $(00, 10)$ & $1$ & $1$ & $1$ & $(10, 10)$ & $1$ & $1$ & $1$ \\
+            \hline
+            $(00, 11)$ & $1$ & $1$ & $1$ & $(10, 11)$ & $1$ & $1$ & $1$ \\
+            \hline
+            $(01, 00)$ & $1$ & $1$ & $1$ & $(11, 00)$ & $1$ & $1$ & $1$ \\
+            \hline
+            $(01, 01)$ & $1$ & $1$ & $1$ & $(11, 01)$ & $1$ & $1$ & $1$ \\
+            \hline
+            $(01, 10)$ & $4$ & $-1$ & $-4$ & $(11, 10)$ & $1$ & $-1$ & $-1$ \\
+            \hline
+            $(01, 11)$ & $1$ & $1$ & $1$ & $(11, 11)$ & $11$ & $1$ & $11$ \\
+            \hline
+        \end{tabular}
+        \caption{Values of $p_{(i,j)}$ and $v_{(i,j)}$}
+        \label{tbl:values of p and v}
+    \end{center}
+\end{table}
+
+Equation \ref{eq:term fix} allows us to simplify Equation \ref{eq:ugly inc excl} to
+
+\begin{equation}
+    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}} \prod_{\text{Cell }(i,j) \in \ell} v_{(i,j)}.
+\label{eq:technically correct}
+\end{equation}
+
+$s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in Theorem \ref{thm:Oh2014}.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-The proof of Theorem \ref{thm: messy mosaics} \textbf{TODO}
+
+
+\textbf{TODO} induction and definition for state matrix
+
+\textbf{TODO} induction for matrix powers
+
+
+\textbf{TODO} complexity 
+
+Equation \ref{eq:technically correct} has $mn 2^{(m-1)(n-1)}$ multiplications.
+
+Theorem \ref{thm: messy mosaics} uses $4^2 + 4^3 + 4^4 + 4^{m-1} = 4^2 \frac{4^{m-2}-1}{4-1}$ multiplications for the construction of $A(m)$, and using the naive matrix multiplication algorithm we have ${2^{3(m-1)}}\left\lceil \log_2(n) \right\rceil$ multiplications to compute $A(m)^n$.
+
+If we set $m=n$, calculating $s_{m,m}$ with Equation \ref{eq:technically correct} is $O(m^2 2^{m^2})$, while Theorem \ref{thm: messy mosaics} is $O(\log(m)8^m)$.
+
+\section{OLD STUFF}
 
 \begin{proof}
 We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell labeling.
