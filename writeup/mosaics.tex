@@ -425,20 +425,22 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of
 
 It turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a knot. Therefore, let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a knot, and let $|\mathbb{S}^{(m,n)}| = s_{m,n}$. Clearly the number of messy knot mosaics is then $11^{mn} - s_{m,n}$.
 
-First, note that the knot made up of the least amount of cells is this: 
+From the fact that the smallest knot is made of four tiles, shown in Figure \ref{fig:smallest knot}, we can then conclude that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
 
-\begin{center}
-\begin{tikzpicture}
-    % row1
-    \cellC{0}{0}{1}{1}
-    \cellD{1}{0}{2}{1}
-    % row2
-    \cellB{0}{1}{1}{2}
-    \cellA{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-
-We can then conclude that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
+\begin{figure}[h!]
+    \begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellC{0}{0}{1}{1}
+        \cellD{1}{0}{2}{1}
+        % row2
+        \cellB{0}{1}{1}{2}
+        \cellA{1}{1}{2}{2}
+    \end{tikzpicture}
+    \end{center}
+    \caption{The smallest knot}
+    \label{fig:smallest knot}
+\end{figure}
 
 \begin{definition}
 
@@ -984,7 +986,7 @@ Consider the following binary lattices for $s_{4,2}$.
     \end{tikzpicture}
 \end{center}
 
-$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. 
+$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $11$ possible cells, though taken together $1$ of those $11^4$ permutations results in a new knot. 
 
 \label{exmp:U doesnt work}
 \end{exmp}
@@ -1027,11 +1029,14 @@ From the definition of $\mathbb{U}$, we have
     \label{eq:U identity}
 \end{equation}
 
-Therefore
+Therefore $s_{m,n} \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell)$, as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. 
 
-$$s_{m,n} \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell),$$
+\begin{definition}
+    Let $\ell^* \in \mathbb{L}^{(m,n)}$ be the binary lattice made up of all $(00,00)$ cells.
+    \label{def:all zeros}
+\end{definition}
 
-as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. For instance, consider the binary lattice $\ell^*$ made up of all $(00,00)$ cells. $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, which clearly overcounts $s_{m,n}$. Also note that $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
+$\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, which clearly overcounts $s_{m,n}$. Also note that $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
 
 
 \begin{prop}
@@ -1044,9 +1049,13 @@ as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{
 \end{prop}
 
 \begin{proof}
-    The first equality follows directly from Equation \ref{eq:U identity}. For the second equality, consider a binary lattice $\ell$ with $K(\ell)>0$. From the definition of $\mathbb{U}$, 
+    The first equality follows directly from Equation \ref{eq:U identity}. For the second equality, notice that the number of times $|f^{-1}(\ell)|$ appears in the second sum of Equation \ref{eq:double counting terms} is the number of times a binary lattice $\ell$ appears in the set
 
-    \textbf{TODO}
+    $$\bigcup_{\ell \in \mathbb{L}^{(m,n)}} \{\mathbb{U}(\ell)\}.$$
+    
+    If $\ell$ has $K(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ knots (ie. $\ell^*$). $\ell$ appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the knots in $\ell$. $\ell$ appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the knots in $\ell$, and so on up to specifying $K(\ell)$ knots. As the number of times each subset of knots are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
+
+    If $\ell = \ell^*$, we have that $K(\ell^*)=0$, so $|f^{-1}(\ell^*)|$ is only counted once. As $\binom{0}{0}=1$, this completes the proof.
 \end{proof}
 
 \begin{prop}
@@ -1063,7 +1072,7 @@ as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{
     
     $$0 = (1-1)^{K(\ell)} = \left(\binom{K(\ell)}{0} - \binom{K(\ell)}{1} + \dots + (-1)^{K(\ell)}\binom{K(\ell)}{K(\ell)}\right),$$
     
-    all terms in Equation \ref{eq:double counting terms} where $\ell \neq \ell^*$ are $0$. Therefore, 
+    so all terms in Equation \ref{eq:double counting terms} where $\ell \neq \ell^*$ are $0$. Therefore, 
     
     $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = s_{m,n}.$$
 \end{proof}
@@ -1126,26 +1135,172 @@ Figure \ref{fig:messy multi knot} shows a mosaic that appears to have $2$ knots,
 
 \end{exmp}
 
-\section{A ``Per-Cell" Identity}
+\section{A Cell-Level Identity}
 
-Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, the $K$ function is a function that references the entire, global structure of $\ell$. It is useful to recover the $(-1)^{K(\ell)}$ term using only ``per-cell", local information.
+Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, computing the number of knots specified in a binary lattice $K(\ell)$ requires examining the entire, global structure of $\ell$. It will be more efficient to recover the $(-1)^{K(\ell)}$ term at the cell level. The idea is to add a coefficient $p_{(i,j)}$ to each value of $u_{(i,j)}$ so that the $(-1)^{K(\ell)}$ term is recovered.
 
-\begin{prop}
-    Let $\mathcal{K}$ be the set of cells in a binary lattice $\ell$ that specify a knot.
+\begin{condition}
+    A the set of cells $\mathcal{K}$ in a binary lattice $\ell$ meets this condition if
     
-    There exists $p_{(i,j)} \in \{-1,1\}$ so that
-
     \begin{equation}
-        \prod_{\text{Cell } (i,j) \in \mathcal{K}} p_{(i,j)} = -1
+        \prod_{\text{Cell } (i,j) \in \mathcal{K}} p_{(i,j)} = -1,
         \label{eq:neg prod knot condition}
     \end{equation}
+    with $p_{(i,j)} \in \{-1,1\}$.
+    \label{cond:neg prod condition}
+\end{condition}
 
-    for all possible $\mathcal{K}$.
+If there exists values for $p_{(i,j)}$ Condition \ref{cond:neg prod condition}
+
+\begin{prop}
+    There exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds for any set of cells that specify a knot.
     \label{prop:neg prod prop}
 \end{prop}
 
 \begin{proof}
-    \textbf{TODO}
+
+We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as the sign should be unchanged for cells that do not specify a tile to recover $(-1)^{K(\ell)}$.
+
+For the remaining values of $p_{(i,j)}$, we examine the cells that map to the smallest knot, shown in Figure \ref{fig:smallest knot}. Condition \ref{cond:neg prod condition} amounts to
+
+\begin{equation}
+    \begin{array}{r@{}l}
+        p_{(00,01)} p_{(00,10)} p_{(01,00)} p_{(10,00)} &{} = -1 \\
+        p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} &{} = -1
+    \end{array}
+    \label{eq:small sap constraint}
+\end{equation}
+
+for both sets of cells that map to this knot. We refer to these equations as \textit{constraints}. 
+
+Next note that in a binary lattice, a specified knot corresponds with a set of edge-and-corner-wise connected $0$'s or $1$'s that do not include the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where $3$ knots correspond with $3$ edge-and-corner connected regions, excluding the region that contains the boundary. 
+
+Let's suppose, without loss of generality, that the knot we are concerned with is specified by an edge-and-corner-wise connected set of $1$'s.
+
+The idea is to describe all possible ways to build larger knots from smaller knots by changing a neighboring $0$ to a $1$. This flipping of the parity of the vertex corresponds with changing the identity of the four surrounding tiles. As the surrounding $8$ vertices are held fixed, this creates $2^8$ constraints to solve for. 
+
+Flipping of parity of a single vertex results in $2$ distinct types of constraints. 
+
+\begin{figure}[h!]
+    \begin{center}
+
+\begin{subfigure}{0.4\textwidth}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        % label for row1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$1$} \)
+        \( \lablvertex{2}{0}{$1$} \)
+        % label for row2
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        % label for row3
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        % row2
+        \cell{3}{1}{4}{2}
+        \cell{4}{1}{5}{2}
+        % label for row1
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$1$} \)
+        % label for row2
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        % label for row3
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+
+        \( \lablnode{2.5}{1}{$\rightarrow$} \)
+    \end{tikzpicture}
+    \caption{Type 1 parity flip}
+    \label{fig:type 1 parity flip}
+\end{subfigure}
+% \hfill
+\hspace{0.05\textwidth}
+\begin{subfigure}{0.4\textwidth}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        % row2
+        \cell{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        % label for row1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        % label for row2
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        % label for row3
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+        % row2
+        \cell{3}{1}{4}{2}
+        \cell{4}{1}{5}{2}
+        % label for row1
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        % label for row2
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        % label for row3
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+
+        \( \lablnode{2.5}{1}{$\rightarrow$} \)
+    \end{tikzpicture}
+    \caption{Type 2 parity flip}
+    \label{fig:type 2 parity flip}
+\end{subfigure}
+
+\end{center}
+\caption{Parity flips for binary lattices}
+\label{fig:messy mosaic example}
+\end{figure}
+
+Let a constraint of \textit{Type 1} be a parity flip that does not change the number of knots specified in the binary lattice. For example, Figure \ref{fig:type 1 parity flip} represents the constraint
+
+\begin{equation}
+    p_{(01,00)}p_{(11,01)}p_{(00,00)}p_{(01,00)} = p_{(01,01)}p_{(11,11)}p_{(01,00)}p_{(11,00)}.
+\end{equation}
+
+Now let a constraint of \textit{Type 2} be a parity flip that does change the number of knots specified. For example, Figure \ref{fig:type 2 parity flip} represents the constraint
+
+\begin{equation}
+    p_{(00,10)}p_{(00,01)}p_{(10,00)}p_{(01,00)} = -p_{(00,11)}p_{(00,11)}p_{(11,00)}p_{(11,00)}.
+\end{equation}
+
+The transformation in Figure \ref{fig:type 2 parity flip} corresponds with \textit{either} two distinct knot joining into one knot \textit{or} one knot splitting into two distinct knot. In either case, we want the sign of the product to change. 
+
+After calculating all $2^8$ constraints, we combine them with the constraints in Equation \ref{eq:small sap constraint}. We also assume that $p_{(00,01)} p_{(00,10)} p_{(01,00)} = 1$ and $p_{(10,00)} = -1$ is the solution for the first constrain in Equation \ref{eq:small sap constraint}. We can then calculate the  Gröbner basis of the system to arrive at
+
+\textbf{TODO}
+
+All unsimplified Type 1 and Type 2 constraints can be found in the Appendix.
+
 \end{proof}
 
 Proposition \ref{prop:neg prod prop} allows us to rewrite the term in the sum of Equation \ref{eq:ugly inc excl} to
@@ -1196,9 +1351,588 @@ $s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technicall
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-
-
 \textbf{TODO} induction and definition for state matrix
+
+Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labeled $0$. One of these columns for $m=3$ is below.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        % col 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        % col 2
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        % index
+        % \( \lablnode{0.5}{-1}{$(0,2)$} \)
+    \end{tikzpicture}
+\end{center}
+
+It is useful to define an index for vertex labelings of these $m \times 1$ columns. To do this, consider reading a column of vertex labelings from bottom to top, ignoring the first and last $0$'s. If we interpret these sequences for the left and right column as binary numbers $b_{left}$ and $b_{right}$, the index in base ten is the pair $(b_{left}, b_{right})$. For example, for the above $m=3$ column, we have sequences $00$ for the left column and $10$ for the right column, so the index is $(0,2)$.
+
+Next consider a column with index $(0, b_{1})$ for some $b_{1} \in [0,2^{m-1}-1]$. For reasons we will see later, let's call this the \textit{starting column}. Now consider appending a column with index $(b_{1}, b_{2})$ for some $b_{2} \in [0,2^{m-1}-1]$. For example, below is a diagram for appending our starting column $(0,2)$ with column $(2,3)$. 
+
+\begin{center}
+    \begin{tikzpicture}
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        % col 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        % col 2
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+
+        % plus
+        \( \lablnode{1.5}{1.5}{$\pmb{+}$} \)
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+        % col 1
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        % col 1
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+
+        \( \lablnode{3.5}{1.5}{$\pmb{\to}$} \)
+
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+        \cell{5}{0}{6}{1}
+        \cell{5}{1}{6}{2}
+        \cell{5}{2}{6}{3}
+
+        % col 1
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        % col 2
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        % col 3
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+
+
+    \end{tikzpicture}
+\end{center}
+
+Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell labeling. 
+
+Finally, if we further appended a column with label $(b_2,0)$, we would have created a vertex labeling with a boundary of all $0$'s. For this reason, let's call a column with index $(b,0)$ for $b \in [0,2^{m-1}-1]$ an \textit{ending column}. This vertex labeling would correspond with $1$ polygon mosaic if the middle column had index $(2,3)$, but not if the middle column had index $(2,1)$.
+
+This motivates the creation of a matrix $A(m)$ to every column index $(i,j)$, where $A(m)_{i,j}=1$ if the column labeling corresponds with a legal polygon mosaic, and $0$ otherwise. For example, the $A(3)$ matrix corresponds with the following labeled columns. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+
+        \cell{6}{0}{7}{1}
+        \cell{6}{1}{7}{2}
+        \cell{6}{2}{7}{3}
+        % row2
+        \cell{0}{4}{1}{5}
+        \cell{0}{5}{1}{6}
+        \cell{0}{6}{1}{7}
+
+        \cell{2}{4}{3}{5}
+        \cell{2}{5}{3}{6}
+        \cell{2}{6}{3}{7}
+
+        \cell{4}{4}{5}{5}
+        \cell{4}{5}{5}{6}
+        \cell{4}{6}{5}{7}
+
+        \cell{6}{4}{7}{5}
+        \cell{6}{5}{7}{6}
+        \cell{6}{6}{7}{7}
+        % row3
+        \cell{0}{8}{1}{9}
+        \cell{0}{9}{1}{10}
+        \cell{0}{10}{1}{11}
+
+        \cell{2}{8}{3}{9}
+        \cell{2}{9}{3}{10}
+        \cell{2}{10}{3}{11}
+
+        \cell{4}{8}{5}{9}
+        \cell{4}{9}{5}{10}
+        \cell{4}{10}{5}{11}
+
+        \cell{6}{8}{7}{9}
+        \cell{6}{9}{7}{10}
+        \cell{6}{10}{7}{11}
+        % row4
+        \cell{0}{12}{1}{13}
+        \cell{0}{13}{1}{14}
+        \cell{0}{14}{1}{15}
+
+        \cell{2}{12}{3}{13}
+        \cell{2}{13}{3}{14}
+        \cell{2}{14}{3}{15}
+
+        \cell{4}{12}{5}{13}
+        \cell{4}{13}{5}{14}
+        \cell{4}{14}{5}{15}
+
+        \cell{6}{12}{7}{13}
+        \cell{6}{13}{7}{14}
+        \cell{6}{14}{7}{15}
+        % row 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{0}{2}{$1$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        
+        \( \lablvertex{7}{0}{$0$} \)
+        \( \lablvertex{7}{1}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        % row 2
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$1$} \)
+        \( \lablvertex{0}{6}{$0$} \)
+        \( \lablvertex{0}{7}{$0$} \)
+        
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        \( \lablvertex{1}{6}{$0$} \)
+        \( \lablvertex{1}{7}{$0$} \)
+        
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$1$} \)
+        \( \lablvertex{2}{6}{$0$} \)
+        \( \lablvertex{2}{7}{$0$} \)
+        
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{3}{5}{$0$} \)
+        \( \lablvertex{3}{6}{$1$} \)
+        \( \lablvertex{3}{7}{$0$} \)
+        
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{4}{5}{$1$} \)
+        \( \lablvertex{4}{6}{$0$} \)
+        \( \lablvertex{4}{7}{$0$} \)
+        
+        \( \lablvertex{5}{4}{$0$} \)
+        \( \lablvertex{5}{5}{$1$} \)
+        \( \lablvertex{5}{6}{$0$} \)
+        \( \lablvertex{5}{7}{$0$} \)
+        
+        \( \lablvertex{6}{4}{$0$} \)
+        \( \lablvertex{6}{5}{$1$} \)
+        \( \lablvertex{6}{6}{$0$} \)
+        \( \lablvertex{6}{7}{$0$} \)
+        
+        \( \lablvertex{7}{4}{$0$} \)
+        \( \lablvertex{7}{5}{$1$} \)
+        \( \lablvertex{7}{6}{$1$} \)
+        \( \lablvertex{7}{7}{$0$} \)
+        % row 3
+        \( \lablvertex{0}{8}{$0$} \)
+        \( \lablvertex{0}{9}{$0$} \)
+        \( \lablvertex{0}{10}{$1$} \)
+        \( \lablvertex{0}{11}{$0$} \)
+        
+        \( \lablvertex{1}{8}{$0$} \)
+        \( \lablvertex{1}{9}{$0$} \)
+        \( \lablvertex{1}{10}{$0$} \)
+        \( \lablvertex{1}{11}{$0$} \)
+        
+        \( \lablvertex{2}{8}{$0$} \)
+        \( \lablvertex{2}{9}{$0$} \)
+        \( \lablvertex{2}{10}{$1$} \)
+        \( \lablvertex{2}{11}{$0$} \)
+        
+        \( \lablvertex{3}{8}{$0$} \)
+        \( \lablvertex{3}{9}{$0$} \)
+        \( \lablvertex{3}{10}{$1$} \)
+        \( \lablvertex{3}{11}{$0$} \)
+        
+        \( \lablvertex{4}{8}{$0$} \)
+        \( \lablvertex{4}{9}{$0$} \)
+        \( \lablvertex{4}{10}{$1$} \)
+        \( \lablvertex{4}{11}{$0$} \)
+        
+        \( \lablvertex{5}{8}{$0$} \)
+        \( \lablvertex{5}{9}{$1$} \)
+        \( \lablvertex{5}{10}{$0$} \)
+        \( \lablvertex{5}{11}{$0$} \)
+        
+        \( \lablvertex{6}{8}{$0$} \)
+        \( \lablvertex{6}{9}{$0$} \)
+        \( \lablvertex{6}{10}{$1$} \)
+        \( \lablvertex{6}{11}{$0$} \)
+        
+        \( \lablvertex{7}{8}{$0$} \)
+        \( \lablvertex{7}{9}{$1$} \)
+        \( \lablvertex{7}{10}{$1$} \)
+        \( \lablvertex{7}{11}{$0$} \)
+        % row 4
+        \( \lablvertex{0}{12}{$0$} \)
+        \( \lablvertex{0}{13}{$0$} \)
+        \( \lablvertex{0}{14}{$0$} \)
+        \( \lablvertex{0}{15}{$0$} \)
+        
+        \( \lablvertex{1}{12}{$0$} \)
+        \( \lablvertex{1}{13}{$0$} \)
+        \( \lablvertex{1}{14}{$0$} \)
+        \( \lablvertex{1}{15}{$0$} \)
+        
+        \( \lablvertex{2}{12}{$0$} \)
+        \( \lablvertex{2}{13}{$0$} \)
+        \( \lablvertex{2}{14}{$0$} \)
+        \( \lablvertex{2}{15}{$0$} \)
+        
+        \( \lablvertex{3}{12}{$0$} \)
+        \( \lablvertex{3}{13}{$0$} \)
+        \( \lablvertex{3}{14}{$1$} \)
+        \( \lablvertex{3}{15}{$0$} \)
+        
+        \( \lablvertex{4}{12}{$0$} \)
+        \( \lablvertex{4}{13}{$0$} \)
+        \( \lablvertex{4}{14}{$0$} \)
+        \( \lablvertex{4}{15}{$0$} \)
+        
+        \( \lablvertex{5}{12}{$0$} \)
+        \( \lablvertex{5}{13}{$1$} \)
+        \( \lablvertex{5}{14}{$0$} \)
+        \( \lablvertex{5}{15}{$0$} \)
+        
+        \( \lablvertex{6}{12}{$0$} \)
+        \( \lablvertex{6}{13}{$0$} \)
+        \( \lablvertex{6}{14}{$0$} \)
+        \( \lablvertex{6}{15}{$0$} \)
+        
+        \( \lablvertex{7}{12}{$0$} \)
+        \( \lablvertex{7}{13}{$1$} \)
+        \( \lablvertex{7}{14}{$1$} \)
+        \( \lablvertex{7}{15}{$0$} \)
+
+        % arrow
+        \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
+        % matrix
+        \( \lablnode{12}{7.5}{$\begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix}$} \)
+
+        \( \lablnode{12}{5.5}{$A(3)$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+$A(m)$ has the property that the $0$-th row represets all starting columns, and the $0$-th column represents all ending columns. Even more importantly, notice that $A(m)^2_{i,j}$ represents the number of $m \times 2$ grids with left-most index $i$ and right-most index $j$ that correspond with a legal polygon mosaic. In general, $(A(m)^n)_{i,j}$ represents this quantity for an $m \times n$ grid of cells, and so if we know $A(m)$ for some $m$, then $(A(m)^n)_{0,0} = p_{m,n}.$
+
+The final component of the proof is constructing $A(m)$ for any $m$. Begin by  calculating $A(2)$ by identifying the number of legal polygon mosaics that correspond with each vertex coloring index $\{(0,0),(0,1),(1,0),(1,1)\}$, like so.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        
+        % row2
+        \cell{0}{3}{1}{4}
+        \cell{0}{4}{1}{5}
+        
+        \cell{2}{3}{3}{4}
+        \cell{2}{4}{3}{5}
+        % row 1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{0}{2}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$0$} \)
+        % row 2
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$0$} \)
+        
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$0$} \)
+        
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{3}{4}{$1$} \)
+        \( \lablvertex{3}{5}{$0$} \)
+
+        % arrow
+        \( \lablnode{5}{2.5}{$\pmb{\to}$} \)
+        % matrix
+        \( \lablnode{7}{2.5}{$\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell labelings below. 
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$0$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        
+    \end{tikzpicture}
+\end{center}
+
+For example, for the $m=2$ column with index $(0,1)$, this operation looks like the following.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{-4.5}{2.5}{-3.5}{3.5}
+        \cell{-4.5}{3.5}{-3.5}{4.5}
+
+        % row 1
+        \( \lablvertex{-4.5}{2.5}{$0$} \)
+        \( \lablvertex{-4.5}{3.5}{$0$} \)
+        \( \lablvertex{-4.5}{4.5}{$0$} \)
+        
+        \( \lablvertex{-3.5}{2.5}{$0$} \)
+        \( \lablvertex{-3.5}{3.5}{$1$} \)
+        \( \lablvertex{-3.5}{4.5}{$0$} \)
+
+        % label
+        \( \lablnode{-4}{1.5}{$A(2)_{0,1}$} \)
+
+        % arrow
+        \( \lablnode{-2}{3.5}{$\pmb{\to}$} \)
+
+        % four columns
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+
+        \cell{2}{0}{3}{1}
+        \cell{2}{1}{3}{2}
+        \cell{2}{2}{3}{3}
+
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{0}{2}{$1$} \)
+        \( \lablvertex{0}{3}{$0$} \)
+        
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{2}{2}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        
+        \cell{0}{4}{1}{5}
+        \cell{0}{5}{1}{6}
+        \cell{0}{6}{1}{7}
+        
+        \cell{2}{4}{3}{5}
+        \cell{2}{5}{3}{6}
+        \cell{2}{6}{3}{7}
+
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{0}{5}{$0$} \)
+        \( \lablvertex{0}{6}{$0$} \)
+        \( \lablvertex{0}{7}{$0$} \)
+        
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{1}{5}{$1$} \)
+        \( \lablvertex{1}{6}{$0$} \)
+        \( \lablvertex{1}{7}{$0$} \)
+        
+        \( \lablvertex{2}{4}{$0$} \)
+        \( \lablvertex{2}{5}{$0$} \)
+        \( \lablvertex{2}{6}{$0$} \)
+        \( \lablvertex{2}{7}{$0$} \)
+        
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{3}{5}{$1$} \)
+        \( \lablvertex{3}{6}{$1$} \)
+        \( \lablvertex{3}{7}{$0$} \)
+
+        \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
+
+        \( \lablnode{7.5}{3.5}{$\begin{bmatrix} A(3)_{0,2} & A(3)_{0,3} \\ A(3)_{1,2} & A(3)_{1,3} \end{bmatrix}$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+This operation results in $4$ new columns that are represented in $A(k+1)$. In our example, specifically we get the following. 
+
+$$
+\begin{bmatrix} 
+    A(3)_{0,2} & A(3)_{0,3} \\ 
+    A(3)_{1,2} & A(3)_{1,3} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+    1A(2)_{i,j} & 1A(2)_{i,j} \\ 
+    0A(2)_{i,j} & 1A(2)_{i,j} 
+\end{bmatrix},
+$$
+
+Critically, this transformation \textit{only} changes the identity of the top two tiles. This implies that the same value coefficients computed by comparing $A(2)$ and $A(3)$ can be used for any $m \times 1$ column, as long as both column indices $(i,j)$ are congruent $\text{mod } 2$. Furthermore, if one writes $A(k)$ as the block matrix
+
+$$A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$$
+
+where $A_{\hat{i},\hat{j}} \in \mathbb{R}^{2^{k-2} \times 2^{k-2}}$, then all column's represented in $A_{\hat{i},\hat{j}}$ have indices $(i,j) \equiv (\hat{i},\hat{j}) \text{ mod } 2$. This allows us to write that in general, if $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$
+then
+
+\begin{equation}\label{eqn: coefficient matrix prod}
+    \begin{bmatrix}
+        V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
+        V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
+        V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
+        V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
+    \end{bmatrix}.
+\end{equation}
+
+
+where $V \in \mathbb{R}^{4 \times 4}$ can be found after directly computing $A(2)$ and $A(3)$, then solving the following equation.
+
+$$
+\begin{bmatrix}
+    A(3)_{0,0} & A(3)_{0,1} & A(3)_{0,2} & A(3)_{0,3} \\
+    A(3)_{1,0} & A(3)_{1,1} & A(3)_{1,2} & A(3)_{1,3} \\
+    A(3)_{2,0} & A(3)_{2,1} & A(3)_{2,2} & A(3)_{2,3} \\
+    A(3)_{3,0} & A(3)_{3,1} & A(3)_{3,2} & A(3)_{3,3} \\
+\end{bmatrix} = 
+\begin{bmatrix}
+    V_{0,0}A(2)_{0,0} & V_{0,1}A(2)_{0,0} & V_{0,2}A(2)_{0,1} & V_{0,3}A(2)_{0,1} \\
+    V_{1,0}A(2)_{0,0} & V_{1,1}A(2)_{0,0} & V_{1,2}A(2)_{0,1} & V_{1,3}A(2)_{0,1} \\
+    V_{2,0}A(2)_{1,0} & V_{2,1}A(2)_{1,0} & V_{2,2}A(2)_{1,1} & V_{2,3}A(2)_{1,1} \\
+    V_{3,0}A(2)_{1,0} & V_{3,1}A(2)_{1,0} & V_{3,2}A(2)_{1,1} & V_{3,3}A(2)_{1,1} \\
+\end{bmatrix}
+$$
+
+This is solved by
+
+$$V = 
+\begin{bmatrix} 
+    1 & 1 & 1 & 1 \\ 
+    1 & 1 & 0 & 1 \\ 
+    1 & 0 & 1 & 1 \\ 
+    1 & 1 & 1 & 1 
+\end{bmatrix}
+$$
+
+
+which completes the proof.
+
+% \end{proof}
+
+The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile sets, which we tabularize in Section \ref{section: summary of results} without proof. Interestingly, the method not only generalizes to other tile sets, but can also be augmented to enumerate the more complicated ``messy" polygon mosaics.
+
+
+
+As demonstrated in the proof of Theorem \ref{thm: messy mosaics}, the enumeration of both polygon mosaics and mosaics that do not contain a polygon share the same structure, and only differ by the identity of the matrices $A(2), V$. We summarize these matrices for various collections of tiles below.
 
 \textbf{TODO} induction for matrix powers
 
@@ -1210,531 +1944,6 @@ Equation \ref{eq:technically correct} has $mn 2^{(m-1)(n-1)}$ multiplications.
 Theorem \ref{thm: messy mosaics} uses $4^2 + 4^3 + 4^4 + 4^{m-1} = 4^2 \frac{4^{m-2}-1}{4-1}$ multiplications for the construction of $A(m)$, and using the naive matrix multiplication algorithm we have ${2^{3(m-1)}}\left\lceil \log_2(n) \right\rceil$ multiplications to compute $A(m)^n$.
 
 If we set $m=n$, calculating $s_{m,m}$ with Equation \ref{eq:technically correct} is $O(m^2 2^{m^2})$, while Theorem \ref{thm: messy mosaics} is $O(\log(m)8^m)$.
-
-\section{OLD STUFF}
-
-\begin{proof}
-We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell labeling.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-        \cell{4}{0}{5}{1}
-        \cell{6}{0}{7}{1}
-        \cell{8}{0}{9}{1}
-        \cell{10}{0}{11}{1}
-        \cell{12}{0}{13}{1}
-        \cell{14}{0}{15}{1}
-        % row2
-        \cell{0}{2}{1}{3}
-        \cell{2}{2}{3}{3}
-        \cell{4}{2}{5}{3}
-        \cell{6}{2}{7}{3}
-        \cell{8}{2}{9}{3}
-        \cell{10}{2}{11}{3}
-        \cell{12}{2}{13}{3}
-        \cell{14}{2}{15}{3}
-
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$1$} \)
-        \( \lablvertex{7}{0}{$1$} \)
-        \( \lablvertex{8}{0}{$0$} \)
-        \( \lablvertex{9}{0}{$0$} \)
-        \( \lablvertex{10}{0}{$0$} \)
-        \( \lablvertex{11}{0}{$1$} \)
-        \( \lablvertex{12}{0}{$1$} \)
-        \( \lablvertex{13}{0}{$0$} \)
-        \( \lablvertex{14}{0}{$1$} \)
-        \( \lablvertex{15}{0}{$1$} \)
-        
-        % label for row1
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        \( \lablvertex{8}{1}{$1$} \)
-        \( \lablvertex{9}{1}{$1$} \)
-        \( \lablvertex{10}{1}{$1$} \)
-        \( \lablvertex{11}{1}{$1$} \)
-        \( \lablvertex{12}{1}{$1$} \)
-        \( \lablvertex{13}{1}{$1$} \)
-        \( \lablvertex{14}{1}{$1$} \)
-        \( \lablvertex{15}{1}{$1$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{7}{2}{$1$} \)
-        \( \lablvertex{8}{2}{$0$} \)
-        \( \lablvertex{9}{2}{$0$} \)
-        \( \lablvertex{10}{2}{$0$} \)
-        \( \lablvertex{11}{2}{$1$} \)
-        \( \lablvertex{12}{2}{$1$} \)
-        \( \lablvertex{13}{2}{$0$} \)
-        \( \lablvertex{14}{2}{$1$} \)
-        \( \lablvertex{15}{2}{$1$} \)
-
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        \( \lablvertex{8}{3}{$0$} \)
-        \( \lablvertex{9}{3}{$1$} \)
-        \( \lablvertex{10}{3}{$0$} \)
-        \( \lablvertex{11}{3}{$1$} \)
-        \( \lablvertex{12}{3}{$0$} \)
-        \( \lablvertex{13}{3}{$1$} \)
-        \( \lablvertex{14}{3}{$0$} \)
-        \( \lablvertex{15}{3}{$1$} \)
-
-        % numbers row 1
-        \( \lablnode{0.5}{-0.5}{$w_{9}$} \)
-        \( \lablnode{2.5}{-0.5}{$w_{10}$} \)
-        \( \lablnode{4.5}{-0.5}{$w_{11}$} \)
-        \( \lablnode{6.5}{-0.5}{$w_{12}$} \)
-        \( \lablnode{8.5}{-0.5}{$w_{13}$} \)
-        \( \lablnode{10.5}{-0.5}{$w_{14}$} \)
-        \( \lablnode{12.5}{-0.5}{$w_{15}$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}$} \)
-        % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}$} \)
-        \( \lablnode{2.5}{1.5}{$w_{2}$} \)
-        \( \lablnode{4.5}{1.5}{$w_{3}$} \)
-        \( \lablnode{6.5}{1.5}{$w_{4}$} \)
-        \( \lablnode{8.5}{1.5}{$w_{5}$} \)
-        \( \lablnode{10.5}{1.5}{$w_{6}$} \)
-        \( \lablnode{12.5}{1.5}{$w_{7}$} \)
-        \( \lablnode{14.5}{1.5}{$w_{8}$} \)
-    \end{tikzpicture}
-\end{center}
-
-The proof of Theorem \ref{thm: main theorem} can be seen as assigning $w_{7} = w_{10} = 0$, and all other weights to $1$. The usefulness of this view can be seen when considering the operation for creating the recursive definition for $A(k)$ in the previous proof. Previously, we defined the coefficient matrix $V$ by computing $A(2)$ and $A(3)$ directly and comparing. Now with a weight assigned to individual cell labelings, we can define the values of $A(2)$ and $V$ directly in terms of these weights.
-
-$$
-A(2) = 
-\begin{bmatrix}
-    w_{1}w_{1} & w_{2} w_{5} \\
-    w_{3} w_{9} & w_{4} w_{13}
-\end{bmatrix},
-V = 
-\begin{bmatrix}
-    \frac{w_{1} w_{1}}{w_{1}} & \frac{w_{2} w_{5}}{w_{1}} & \frac{w_{1} w_{2}}{w_{2}} & \frac{w_{2} w_{6}}{w_{2}} \\
-    \frac{w_{3} w_{9}}{w_{1}} & \frac{w_{4} w_{13}}{w_{1}} & \frac{w_{3} w_{10}}{w_{2}} & \frac{w_{4} w_{14}}{w_{2}} \\
-    \frac{w_{1} w_{3}}{w_{3}} & \frac{w_{2} w_{7}}{w_{3}} & \frac{w_{1} w_{4}}{w_{4}} & \frac{w_{2} w_{8}}{w_{4}} \\
-    \frac{w_{3} w_{11}}{w_{3}} & \frac{w_{4} w_{15}}{w_{3}} & \frac{w_{3} w_{12}}{w_{4}} & \frac{w_{4} w_{16}}{w_{4}}
-\end{bmatrix}
-= 
-\begin{bmatrix}
-    w_{1} & \frac{w_{2} w_{5}}{w_{1}} & w_{1} & w_{6} \\
-    \frac{w_{3} w_{9}}{w_{1}} & \frac{w_{4} w_{13}}{w_{1}} & \frac{w_{3} w_{10}}{w_{2}} & \frac{w_{4} w_{14}}{w_{2}} \\
-    w_{1} & \frac{w_{2} w_{7}}{w_{3}} & w_{1} & \frac{w_{2} w_{8}}{w_{4}} \\
-    w_{11} & \frac{w_{4} w_{15}}{w_{3}} & \frac{w_{3} w_{12}}{w_{4}} & w_{16}
-\end{bmatrix}.
-$$
-
-With this identity, we can enumerate $t_{m,n}$ once we have proper assignments for the $16$ weights. As in the previous proof, we have $w_{7}=w_{10}=0$, as again these are impossible vertex labelings for our tile set. 
-
-Next consider the cell labelings for $w_{1}$ and $w_{16}$. When enumerating polygon mosaics (and their messy variant), these cell labelings do not contribute to the cells of a polygon. For polygon mosaics, only the $T_1$ tile are permitted to not contribute to the shape of a polygon. However, in messy polygon mosaics, all $7$ tiles are permitted to not contribute to the shape of the polygon, so $w_{1} = w_{16}=7$.
-
-However, this means we now lose the uniqueness of the map from vertex labeling to messy polygon mosaics. For instance, the sub-grid vertex labelings below are now ambiguous as to whether or not they represent a polygon.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{1}{0}{2}{1}
-        \cell{1}{1}{2}{2}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{3}{1}{4}{2}
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$1$} \)
-
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{5}{2}{$1$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-This ambiguity is explored in the following example.
-
-\begin{exmp}\label{exmp: iep}
-
-Consider the four vertex labelings below, along with the messy polygon mosaic on the right. Write the product of the weights of all cell labelings below each, assuming all weights not defined above are $1$.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{-6}{0}{-5}{1}
-        \cell{-6}{1}{-5}{2}
-        \cell{-6}{2}{-5}{3}
-        \cell{-6}{3}{-5}{4}
-        \cell{-5}{0}{-4}{1}
-        \cell{-5}{1}{-4}{2}
-        \cell{-5}{2}{-4}{3}
-        \cell{-5}{3}{-4}{4}
-
-        \( \lablnode{-5}{-1}{$7^8$} \)
-
-        \( \lablvertex{-6}{0}{$0$} \)
-        \( \lablvertex{-5}{0}{$0$} \)
-        \( \lablvertex{-4}{0}{$0$} \)
-
-        \( \lablvertex{-6}{1}{$0$} \)
-        \( \lablvertex{-5}{1}{$0$} \)
-        \( \lablvertex{-4}{1}{$0$} \)
-
-        \( \lablvertex{-6}{2}{$0$} \)
-        \( \lablvertex{-5}{2}{$0$} \)
-        \( \lablvertex{-4}{2}{$0$} \)
-
-        \( \lablvertex{-6}{3}{$0$} \)
-        \( \lablvertex{-5}{3}{$0$} \)
-        \( \lablvertex{-4}{3}{$0$} \)
-
-        \( \lablvertex{-6}{4}{$0$} \)
-        \( \lablvertex{-5}{4}{$0$} \)
-        \( \lablvertex{-4}{4}{$0$} \)
-        % row1
-        \cell{-3}{0}{-2}{1}
-        \cell{-3}{1}{-2}{2}
-        \cell{-3}{2}{-2}{3}
-        \cell{-3}{3}{-2}{4}
-        \cell{-2}{0}{-1}{1}
-        \cell{-2}{1}{-1}{2}
-        \cell{-2}{2}{-1}{3}
-        \cell{-2}{3}{-1}{4}
-
-        \( \lablnode{-2}{-1}{$7^4$} \)
-
-        \( \lablvertex{-3}{0}{$0$} \)
-        \( \lablvertex{-2}{0}{$0$} \)
-        \( \lablvertex{-1}{0}{$0$} \)
-
-        \( \lablvertex{-3}{1}{$0$} \)
-        \( \lablvertex{-2}{1}{$0$} \)
-        \( \lablvertex{-1}{1}{$0$} \)
-
-        \( \lablvertex{-3}{2}{$0$} \)
-        \( \lablvertex{-2}{2}{$0$} \)
-        \( \lablvertex{-1}{2}{$0$} \)
-
-        \( \lablvertex{-3}{3}{$0$} \)
-        \( \lablvertex{-2}{3}{$1$} \)
-        \( \lablvertex{-1}{3}{$0$} \)
-
-        \( \lablvertex{-3}{4}{$0$} \)
-        \( \lablvertex{-2}{4}{$0$} \)
-        \( \lablvertex{-1}{4}{$0$} \)
-
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-        \cell{0}{3}{1}{4}
-        \cell{1}{0}{2}{1}
-        \cell{1}{1}{2}{2}
-        \cell{1}{2}{2}{3}
-        \cell{1}{3}{2}{4}
-
-        \( \lablnode{1}{-1}{$7^4$} \)
-        
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{3}{1}{4}{2}
-        \cell{3}{2}{4}{3}
-        \cell{3}{3}{4}{4}
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-        \cell{4}{3}{5}{4}
-
-        \( \lablnode{4}{-1}{$7^0$} \)
-
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{4}{3}{$1$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{5}{4}{$0$} \)
-
-        \cellD{6}{0}{7}{1}
-        \cellC{7}{0}{8}{1}
-
-        \cellA{6}{1}{7}{2}
-        \cellB{7}{1}{8}{2}
-
-        \cellD{6}{2}{7}{3}
-        \cellC{7}{2}{8}{3}    
-
-        \cellA{6}{3}{7}{4}
-        \cellB{7}{3}{8}{4}    
-
-    \end{tikzpicture}
-\end{center}
-
-Notice that each vertex labeling could include the right-most messy polygon mosaic. In fact, the left-most vertex labeling contains all possible mosaics! If we were to add these weight products together, we would count the right messy polygon mosaic $4$ times.
-
-\end{exmp}
-
-The double counting demonstrated in Example \ref{exmp: iep} motivates the following idea. If vertex labelings with an odd number of polygons are negative, then the addition of these weight products would incorporate the \textit{inclusion-exclusion principle}, mitigating the double counting. In Example \ref{exmp: iep}, the sum $7^8 - 7^4 - 7^4 + 7^0$ would then represent the number of mosaics that \textit{do not} contain the following three classes of messy polygon mosaics, where cells that can be any tile are marked with a dot.
-
-\begin{center}
-\begin{tikzpicture}
-    %
-    \cellopen{0}{0}{1}{1}
-    \cellopen{1}{0}{2}{1}
-
-    \cellopen{0}{1}{1}{2}
-    \cellopen{1}{1}{2}{2}
-
-    \cellD{0}{2}{1}{3}
-    \cellC{1}{2}{2}{3}    
-
-    \cellA{0}{3}{1}{4}
-    \cellB{1}{3}{2}{4}
-    %
-    \cellD{3}{0}{4}{1}
-    \cellC{4}{0}{5}{1}
-
-    \cellA{3}{1}{4}{2}
-    \cellB{4}{1}{5}{2}
-
-    \cellopen{3}{2}{4}{3}
-    \cellopen{4}{2}{5}{3}    
-
-    \cellopen{3}{3}{4}{4}
-    \cellopen{4}{3}{5}{4}
-    %
-    \cellD{6}{0}{7}{1}
-    \cellC{7}{0}{8}{1}
-
-    \cellA{6}{1}{7}{2}
-    \cellB{7}{1}{8}{2}
-
-    \cellD{6}{2}{7}{3}
-    \cellC{7}{2}{8}{3}    
-
-    \cellA{6}{3}{7}{4}
-    \cellB{7}{3}{8}{4}
-\end{tikzpicture}
-\end{center}
-
-Therefore, the sum over the products for all vertex labelings, where the product is negative if the vertex labeling represents an odd number of polygons in the mosaic, would be the number of mosaics that \textit{do not} include messy polygon mosaics.
-
-We can accomplish this by finding a weight assignment such that the product over the cell labeling weights of \textit{any} single polygon equals $-1$. It is not obvious that such an assignment can even be found! 
-
-Luckily such assignments exist. The proof of this fact can be found in the Appendix, and choosing an assignment gives us the following weight assignments.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-        \cell{4}{0}{5}{1}
-        \cell{6}{0}{7}{1}
-        \cell{8}{0}{9}{1}
-        \cell{10}{0}{11}{1}
-        \cell{12}{0}{13}{1}
-        \cell{14}{0}{15}{1}
-        % row2
-        \cell{0}{2}{1}{3}
-        \cell{2}{2}{3}{3}
-        \cell{4}{2}{5}{3}
-        \cell{6}{2}{7}{3}
-        \cell{8}{2}{9}{3}
-        \cell{10}{2}{11}{3}
-        \cell{12}{2}{13}{3}
-        \cell{14}{2}{15}{3}
-
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$1$} \)
-        \( \lablvertex{7}{0}{$1$} \)
-        \( \lablvertex{8}{0}{$0$} \)
-        \( \lablvertex{9}{0}{$0$} \)
-        \( \lablvertex{10}{0}{$0$} \)
-        \( \lablvertex{11}{0}{$1$} \)
-        \( \lablvertex{12}{0}{$1$} \)
-        \( \lablvertex{13}{0}{$0$} \)
-        \( \lablvertex{14}{0}{$1$} \)
-        \( \lablvertex{15}{0}{$1$} \)
-        
-        % label for row1
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        \( \lablvertex{8}{1}{$1$} \)
-        \( \lablvertex{9}{1}{$1$} \)
-        \( \lablvertex{10}{1}{$1$} \)
-        \( \lablvertex{11}{1}{$1$} \)
-        \( \lablvertex{12}{1}{$1$} \)
-        \( \lablvertex{13}{1}{$1$} \)
-        \( \lablvertex{14}{1}{$1$} \)
-        \( \lablvertex{15}{1}{$1$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{7}{2}{$1$} \)
-        \( \lablvertex{8}{2}{$0$} \)
-        \( \lablvertex{9}{2}{$0$} \)
-        \( \lablvertex{10}{2}{$0$} \)
-        \( \lablvertex{11}{2}{$1$} \)
-        \( \lablvertex{12}{2}{$1$} \)
-        \( \lablvertex{13}{2}{$0$} \)
-        \( \lablvertex{14}{2}{$1$} \)
-        \( \lablvertex{15}{2}{$1$} \)
-
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        \( \lablvertex{8}{3}{$0$} \)
-        \( \lablvertex{9}{3}{$1$} \)
-        \( \lablvertex{10}{3}{$0$} \)
-        \( \lablvertex{11}{3}{$1$} \)
-        \( \lablvertex{12}{3}{$0$} \)
-        \( \lablvertex{13}{3}{$1$} \)
-        \( \lablvertex{14}{3}{$0$} \)
-        \( \lablvertex{15}{3}{$1$} \)
-
-        % numbers row 1
-        \( \lablnode{0.5}{-0.5}{$w_{9}=-1$} \)
-        \( \lablnode{2.5}{-0.5}{$w_{10}=0$} \)
-        \( \lablnode{4.5}{-0.5}{$w_{11}=1$} \)
-        \( \lablnode{6.5}{-0.5}{$w_{12}=1$} \)
-        \( \lablnode{8.5}{-0.5}{$w_{13}=1$} \)
-        \( \lablnode{10.5}{-0.5}{$w_{14}=1$} \)
-        \( \lablnode{12.5}{-0.5}{$w_{15}=-1$} \)
-        \( \lablnode{14.5}{-0.5}{$w_{16}=7$} \)
-        % numbers row 2
-        \( \lablnode{0.5}{1.5}{$w_{1}=7$} \)
-        \( \lablnode{2.5}{1.5}{$w_{2}=1$} \)
-        \( \lablnode{4.5}{1.5}{$w_{3}=1$} \)
-        \( \lablnode{6.5}{1.5}{$w_{4}=1$} \)
-        \( \lablnode{8.5}{1.5}{$w_{5}=1$} \)
-        \( \lablnode{10.5}{1.5}{$w_{6}=1$} \)
-        \( \lablnode{12.5}{1.5}{$w_{7}=0$} \)
-        \( \lablnode{14.5}{1.5}{$w_{8}=1$} \)
-    \end{tikzpicture}
-\end{center}
-
-This immediately gives us a way to construct an analagous definition for $A(k+1)$ given $A(k)$. Once we write $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix}$, we have
-
-$$
-A(2) = 
-\begin{bmatrix}
-    7^2 & 1 \\
-    -1 & 1
-\end{bmatrix},
-V = 
-\begin{bmatrix}
-    7 & \frac{1}{7} & 7 & 1 \\
-    -\frac{1}{7} & 1 & 0 & 1 \\
-    7 & 0 & 7  & 1 \\
-    1 & -1 & 1 & 7 \\
-\end{bmatrix}
-$$
-
-Subsituting $V$ into Equation \ref{eqn: coefficient matrix prod} gives the result.
-
-\end{proof}
-
 
 \section{Extensions}
 \label{section: Extensions}
@@ -1756,214 +1965,12 @@ Though not stated in Hong and Oh \cite{Hong2018}, $p_{m,n}$ is exactly enumerate
 
 The authors would like to thank Michael Maltenfort for the edits, improvements and ideas for this paper. 
 
-\printbibliography
+\newpage
 
+\printbibliography
 
 \section{Appendix}
 
-We demonstrate that weight assignments exist such that the product over the cell labeling weights of \textit{all} single polygons equals $-1$. We do this by first asserting that the product of the weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1$. 
-
-\begin{lemma}\label{lemma: build bigger saps}
-    One can construct all larger polygons from the smallest polygon using a finite set of transformations $S$.
-\end{lemma}
-
-\begin{proof}
-    TODO Something about changing vertex values
-\end{proof}
-
-This is because one can find $w_{1} , \dots, w_{16}$ so that the following two constraints hold:
-
-\begin{constraint}\label{constraint: smallest sap prod}
-    The weights associated with the smallest polygon multiply to $-1$, ie. $w_2 w_3 w_5 w_9 = -1.$ 
-\end{constraint}
-
-\begin{constraint}\label{constraint: prod works}
-    All transformations in $S$ preserve the weight product of a changed polygon.
-\end{constraint}
-
-Constraint \ref{constraint: smallest sap prod} and Constraint \ref{constraint: prod works} amount to a series of constraints on the values of $w_i$. Choosing a solution set from these constraints gives the following weights.
-
-Flipping the parity of a single vertex in a vertex labeling changes the $4$ surrounding cells. This creates a constraint on a subset of $w_1 ,\dots, w_{16}.$ 
-
-The flipping of parity of a single vertex results in $2$ distinct types of constraints. Let a constraint of \textit{Type 1} be a parity flip that does not change the number of polygons represented in the vertex labeling. For example, consider the following flip of the center vertex in the following sub vertex labeling.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$1$} \)
-        \( \lablvertex{2}{0}{$1$} \)
-        % label for row2
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        % row2
-        \cell{3}{1}{4}{2}
-        \cell{4}{1}{5}{2}
-        % label for row1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$1$} \)
-        % label for row2
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablnode{2.5}{1}{$\rightarrow$} \)
-    \end{tikzpicture}
-\end{center}
-
-As this does not change the associated number of polygons in the larger vertex labeling, we want this to preserve the sign of the weight product. This gives the following associated constraint. 
-
-$$\text{sign}(w_{1}w_{2}w_{5}w_{9}) = \text{sign}(w_{2}w_{4}w_{6}w_{16}).$$
-
-Now let a constraint of \textit{Type 2} be a parity flip that does change the number of polygons. For example, consider flipping the center vertex of the following portion of a vertex labeling.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        % label for row2
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        % row2
-        \cell{3}{1}{4}{2}
-        \cell{4}{1}{5}{2}
-        % label for row1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        % label for row2
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablnode{2.5}{1}{$\rightarrow$} \)
-    \end{tikzpicture}
-\end{center}
-
-The above transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to switch. This corresponds with the following constraint.
-
-$$\text{sign}(w_{3}w_{2}w_{9}w_{5}) = -\text{sign}(w_{4}w_{4}w_{13}w_{13}).$$
-
-All Type 1 constraints are as follows. For the following set of equations, assume the equals sign ($=$) means \textit{only} equal in sign.
-
-\begin{eqnarray*}
-    w_{1}w_{1}w_{2}w_{3} = w_{2}w_{3}w_{6}w_{11} & w_{1}w_{1}w_{2}w_{4} = w_{2}w_{3}w_{6}w_{12} & w_{1}w_{1}w_{4}w_{3} = w_{2}w_{3}w_{8}w_{11} \\
-    w_{1}w_{1}w_{4}w_{4} = w_{2}w_{3}w_{8}w_{12} & w_{1}w_{2}w_{1}w_{5} = w_{2}w_{4}w_{5}w_{13} & w_{1}w_{2}w_{1}w_{6} = w_{2}w_{4}w_{5}w_{14} \\
-    w_{1}w_{2}w_{2}w_{8} = w_{2}w_{4}w_{6}w_{16} & w_{1}w_{2}w_{4}w_{8} = w_{2}w_{4}w_{8}w_{16} & w_{3}w_{1}w_{9}w_{1} = w_{4}w_{3}w_{13}w_{9} \\
-    w_{3}w_{1}w_{11}w_{1} = w_{4}w_{3}w_{15}w_{9} & w_{3}w_{1}w_{12}w_{3} = w_{4}w_{3}w_{16}w_{11} & w_{3}w_{1}w_{12}w_{4} = w_{4}w_{3}w_{16}w_{12} \\
-    w_{3}w_{2}w_{12}w_{8} = w_{4}w_{4}w_{16}w_{16} & w_{1}w_{6}w_{1}w_{5} = w_{2}w_{8}w_{5}w_{13} & w_{1}w_{6}w_{1}w_{6} = w_{2}w_{8}w_{5}w_{14} \\
-    w_{1}w_{6}w_{2}w_{8} = w_{2}w_{8}w_{6}w_{16} & w_{1}w_{6}w_{4}w_{8} = w_{2}w_{8}w_{8}w_{16} & w_{3}w_{6}w_{12}w_{8} = w_{4}w_{8}w_{16}w_{16} \\
-    w_{5}w_{9}w_{1}w_{1} = w_{6}w_{11}w_{5}w_{9} & w_{5}w_{13}w_{1}w_{1} = w_{6}w_{15}w_{5}w_{9} & w_{5}w_{14}w_{1}w_{5} = w_{6}w_{16}w_{5}w_{13} \\
-    w_{5}w_{14}w_{1}w_{6} = w_{6}w_{16}w_{5}w_{14} & w_{5}w_{14}w_{2}w_{8} = w_{6}w_{16}w_{6}w_{16} & w_{5}w_{14}w_{4}w_{8} = w_{6}w_{16}w_{8}w_{16} \\
-    w_{11}w_{1}w_{9}w_{1} = w_{12}w_{3}w_{13}w_{9} & w_{11}w_{1}w_{11}w_{1} = w_{12}w_{3}w_{15}w_{9} & w_{11}w_{1}w_{12}w_{3} = w_{12}w_{3}w_{16}w_{11} \\
-    w_{11}w_{1}w_{12}w_{4} = w_{12}w_{3}w_{16}w_{12} & w_{11}w_{2}w_{12}w_{8} = w_{12}w_{4}w_{16}w_{16} & w_{11}w_{6}w_{12}w_{8} = w_{12}w_{8}w_{16}w_{16} \\
-    w_{13}w_{9}w_{1}w_{1} = w_{14}w_{11}w_{5}w_{9} & w_{15}w_{9}w_{9}w_{1} = w_{16}w_{11}w_{13}w_{9} & w_{15}w_{9}w_{11}w_{1} = w_{16}w_{11}w_{15}w_{9} \\
-    w_{15}w_{9}w_{12}w_{3} = w_{16}w_{11}w_{16}w_{11} & w_{15}w_{9}w_{12}w_{4} = w_{16}w_{11}w_{16}w_{12} & w_{13}w_{13}w_{1}w_{1} = w_{14}w_{15}w_{5}w_{9} \\
-    w_{13}w_{14}w_{1}w_{5} = w_{14}w_{16}w_{5}w_{13} & w_{13}w_{14}w_{1}w_{6} = w_{14}w_{16}w_{5}w_{14} & w_{13}w_{14}w_{2}w_{8} = w_{14}w_{16}w_{6}w_{16} \\
-    w_{13}w_{14}w_{4}w_{8} = w_{14}w_{16}w_{8}w_{16} & w_{15}w_{13}w_{9}w_{1} = w_{16}w_{15}w_{13}w_{9} & w_{15}w_{13}w_{11}w_{1} = w_{16}w_{15}w_{15}w_{9} \\
-    w_{15}w_{13}w_{12}w_{3} = w_{16}w_{15}w_{16}w_{11} & w_{15}w_{13}w_{12}w_{4} = w_{16}w_{15}w_{16}w_{12} & w_{15}w_{14}w_{9}w_{5} = w_{16}w_{16}w_{13}w_{13} \\
-    w_{15}w_{14}w_{9}w_{6} = w_{16}w_{16}w_{13}w_{14} & w_{15}w_{14}w_{11}w_{5} = w_{16}w_{16}w_{15}w_{13} & w_{15}w_{14}w_{11}w_{6} = w_{16}w_{16}w_{15}w_{14} \\
-\end{eqnarray*}
-
-Similarly, all Type 2 constraints are as follows. Again, for the following set of equations, assume the equals sign ($=$) means \textit{only} equal in sign.
-
-\begin{eqnarray*}
-        -w_{3}w_{2}w_{9}w_{5} = w_{4}w_{4}w_{13}w_{13} & -w_{3}w_{2}w_{9}w_{6} = w_{4}w_{4}w_{13}w_{14} & -w_{3}w_{2}w_{11}w_{5} = w_{4}w_{4}w_{15}w_{13} \\
-        -w_{3}w_{2}w_{11}w_{6} = w_{4}w_{4}w_{15}w_{14} & -w_{3}w_{6}w_{9}w_{5} = w_{4}w_{8}w_{13}w_{13} & -w_{3}w_{6}w_{9}w_{6} = w_{4}w_{8}w_{13}w_{14} \\
-        -w_{3}w_{6}w_{11}w_{5} = w_{4}w_{8}w_{15}w_{13} & -w_{3}w_{6}w_{11}w_{6} = w_{4}w_{8}w_{15}w_{14} & -w_{5}w_{9}w_{2}w_{3} = w_{6}w_{11}w_{6}w_{11} \\
-        -w_{5}w_{9}w_{2}w_{4} = w_{6}w_{11}w_{6}w_{12} & -w_{5}w_{9}w_{4}w_{3} = w_{6}w_{11}w_{8}w_{11} & -w_{5}w_{9}w_{4}w_{4} = w_{6}w_{11}w_{8}w_{12} \\
-        -w_{5}w_{13}w_{2}w_{3} = w_{6}w_{15}w_{6}w_{11} & -w_{5}w_{13}w_{2}w_{4} = w_{6}w_{15}w_{6}w_{12} & -w_{5}w_{13}w_{4}w_{3} = w_{6}w_{15}w_{8}w_{11} \\
-        -w_{5}w_{13}w_{4}w_{4} = w_{6}w_{15}w_{8}w_{12} & -w_{11}w_{2}w_{9}w_{5} = w_{12}w_{4}w_{13}w_{13} & -w_{11}w_{2}w_{9}w_{6} = w_{12}w_{4}w_{13}w_{14} \\
-        -w_{11}w_{2}w_{11}w_{5} = w_{12}w_{4}w_{15}w_{13} & -w_{11}w_{2}w_{11}w_{6} = w_{12}w_{4}w_{15}w_{14} & -w_{11}w_{6}w_{9}w_{5} = w_{12}w_{8}w_{13}w_{13} \\
-        -w_{11}w_{6}w_{9}w_{6} = w_{12}w_{8}w_{13}w_{14} & -w_{11}w_{6}w_{11}w_{5} = w_{12}w_{8}w_{15}w_{13} & -w_{11}w_{6}w_{11}w_{6} = w_{12}w_{8}w_{15}w_{14} \\
-        -w_{13}w_{9}w_{2}w_{3} = w_{14}w_{11}w_{6}w_{11} & -w_{13}w_{9}w_{2}w_{4} = w_{14}w_{11}w_{6}w_{12} & -w_{13}w_{9}w_{4}w_{3} = w_{14}w_{11}w_{8}w_{11} \\
-        -w_{13}w_{9}w_{4}w_{4} = w_{14}w_{11}w_{8}w_{12} & -w_{13}w_{13}w_{2}w_{3} = w_{14}w_{15}w_{6}w_{11} & -w_{13}w_{13}w_{2}w_{4} = w_{14}w_{15}w_{6}w_{12} \\
-        -w_{13}w_{13}w_{4}w_{3} = w_{14}w_{15}w_{8}w_{11} & -w_{13}w_{13}w_{4}w_{4} = w_{14}w_{15}w_{8}w_{12} & 
-\end{eqnarray*}
-
-Solving all Type 1 and Type 2 constraints gives the following solution set.
-
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} 
-\hline
-$w_{1}$ & $w_{2}$ & $w_{3}$ & $w_{4}$ & $w_{5}$ & $w_{6}$ & $w_{7}$ & $w_{8}$ & $w_{9}$ & $w_{10}$ & $w_{11}$ & $w_{12}$ & $w_{13}$ & $w_{14}$ & $w_{15}$ & $w_{16}$ \\
-\hline
-7 & -1 & -1 & -1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & -1 & -1 & 1 & 7 \\
-7 & -1 & -1 & -1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & -1 & 1 & -1 & 7 \\
-7 & -1 & -1 & -1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & -1 & 1 & -1 & 7 \\
-7 & -1 & -1 & -1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & -1 & -1 & 1 & 7 \\
-7 & -1 & -1 & 1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & 1 & 1 & -1 & 7 \\
-7 & -1 & -1 & 1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & 1 & -1 & 1 & 7 \\
-7 & -1 & -1 & 1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & 1 & -1 & 1 & 7 \\
-7 & -1 & -1 & 1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & 1 & 1 & -1 & 7 \\
-7 & -1 & 1 & -1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & -1 & -1 & -1 & 7 \\
-7 & -1 & 1 & -1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & -1 & 1 & 1 & 7 \\
-7 & -1 & 1 & -1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & -1 & 1 & 1 & 7 \\
-7 & -1 & 1 & -1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & -1 & -1 & -1 & 7 \\
-7 & -1 & 1 & 1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & 1 & 1 & 1 & 7 \\
-7 & -1 & 1 & 1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 1 & -1 & -1 & 7 \\
-7 & -1 & 1 & 1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & 1 & -1 & -1 & 7 \\
-7 & -1 & 1 & 1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 7 \\
-7 & 1 & -1 & -1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & -1 & -1 & -1 & 7 \\
-7 & 1 & -1 & -1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & -1 & 1 & 1 & 7 \\
-7 & 1 & -1 & -1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & -1 & 1 & 1 & 7 \\
-7 & 1 & -1 & -1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & -1 & -1 & -1 & 7 \\
-7 & 1 & -1 & 1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & 1 & 1 & 1 & 7 \\
-7 & 1 & -1 & 1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & 1 & -1 & -1 & 7 \\
-7 & 1 & -1 & 1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & 1 & -1 & -1 & 7 \\
-7 & 1 & -1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & 1 & 1 & 1 & 7 \\
-7 & 1 & 1 & -1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & -1 & -1 & 1 & 7 \\
-7 & 1 & 1 & -1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & -1 & 1 & -1 & 7 \\
-7 & 1 & 1 & -1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & -1 & 1 & -1 & 7 \\
-7 & 1 & 1 & -1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & -1 & -1 & 1 & 7 \\
-7 & 1 & 1 & 1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & 1 & 1 & -1 & 7 \\
-7 & 1 & 1 & 1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & -1 & 1 & 7 \\
-7 & 1 & 1 & 1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & 1 & -1 & 1 & 7 \\
-7 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & 7 \\
-\hline
-\end{tabular}
-\end{center}
-
-Any of these assignments are sufficient for calculating $t_{m,n}$. 
+\textbf{TODO}
 
 \end{document}

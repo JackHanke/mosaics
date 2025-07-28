@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  21 JUL 2025 09:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  27 JUL 2025 18:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1121,58 +1121,91 @@ Package biblatex Info: ... file 'old-mosaics.bbl' not found.
 No file old-mosaics.bbl.
 Package biblatex Info: Reference section=0 on input line 136.
 Package biblatex Info: Reference segment=0 on input line 136.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 167
+LaTeX Font Info:    Trying to load font information for U+msa on input line 157
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 167
+LaTeX Font Info:    Trying to load font information for U+msb on input line 157
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+Overfull \hbox (52.11586pt too wide) in paragraph at lines 268--269
+ [] 
+ []
 
-LaTeX Warning: Reference `thm:Oh2014' on page 1 undefined on input line 414.
+
+Overfull \hbox (406.58322pt too wide) detected at line 293
+\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (2) = [] \OML/cmm/m/it/12 ; V \OT1/cmr/m/n/12
+ = [] = [] \OML/cmm/m/it/12 :
+ []
 
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `section:messy mosaics' on page 2 undefined on input l
-ine 449.
-
-
-LaTeX Warning: Reference `fig:example knot mosaic' on page 2 undefined on input
- line 457.
-
-
-Overfull \hbox (52.11586pt too wide) in paragraph at lines 654--655
+Overfull \hbox (16.40076pt too wide) in paragraph at lines 489--490
  [] 
  []
 
-[2] [3] [4]
-Overfull \hbox (4.25226pt too wide) in paragraph at lines 1123--1124
+[2]
+
+LaTeX Warning: Reference `exmp: iep' on page 3 undefined on input line 496.
+
+
+LaTeX Warning: Reference `exmp: iep' on page 3 undefined on input line 496.
+
+[3]
+Overfull \hbox (68.09622pt too wide) in paragraph at lines 654--655
  [] 
  []
 
-[5] [6]
-Overfull \hbox (7.70024pt too wide) in paragraph at lines 1301--1302
+
+Overfull \hbox (42.1391pt too wide) in paragraph at lines 682--720
  [] 
  []
 
-[7] [8]
-Overfull \hbox (72.11615pt too wide) detected at line 1349
+[4] [5]
+
+LaTeX Warning: Reference `thm:Oh2014' on page 6 undefined on input line 985.
+
+[6]
+
+LaTeX Warning: Reference `section:messy mosaics' on page 7 undefined on input l
+ine 1020.
+
+
+LaTeX Warning: Reference `fig:example knot mosaic' on page 7 undefined on input
+ line 1028.
+
+
+Overfull \hbox (52.11586pt too wide) in paragraph at lines 1225--1226
+ [] 
+ []
+
+[7] [8] [9]
+Overfull \hbox (4.25226pt too wide) in paragraph at lines 1694--1695
+ [] 
+ []
+
+[10]
+Overfull \hbox (7.70024pt too wide) in paragraph at lines 1872--1873
+ [] 
+ []
+
+[11] [12]
+Overfull \hbox (72.11615pt too wide) detected at line 1920
 [] \OT1/cmr/m/n/12 = []
  []
 
 
-LaTeX Warning: Reference `section: summary of results' on page 9 undefined on i
-nput line 1367.
+LaTeX Warning: Reference `section: summary of results' on page 13 undefined on 
+input line 1938.
 
 
-LaTeX Warning: Reference `thm: messy mosaics' on page 9 undefined on input line
- 1371.
+LaTeX Warning: Reference `thm: messy mosaics' on page 13 undefined on input lin
+e 1942.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -1182,39 +1215,39 @@ LaTeX Warning: Reference `thm: messy mosaics' on page 9 undefined on input line
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 
-Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 2060--2060
  []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
 
-Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 2060--2060
  []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
 > Step: build the whole table.
 
-Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 2060--2060
  []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
 
-Overfull \hbox (23.2887pt too wide) in paragraph at lines 1489--1489
+Overfull \hbox (23.2887pt too wide) in paragraph at lines 2060--2060
  []$[] \OML/cmm/m/it/12 ; []$ 
  []
 
-[9] [10] [11]
+[13] [14] [15]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1679.
+(caption)                particular \caption on input line 2250.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1696.
+(caption)                particular \caption on input line 2267.
 See the caption package documentation for explanation.
 
-[12]
-Overfull \hbox (12.51701pt too wide) in paragraph at lines 1710--1711
+[16]
+Overfull \hbox (12.51701pt too wide) in paragraph at lines 2281--2282
 []\OT1/cmr/m/n/12 For $\OML/cmm/m/it/12 t[]$ \OT1/cmr/m/n/12 we di-rectly com-p
 ute the gen-er-at-ing func-tion $\OML/cmm/m/it/12 T[]\OT1/cmr/m/n/12 (\OML/cmm/
 m/it/12 x\OT1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 t[]x[]$
@@ -1222,10 +1255,10 @@ m/it/12 x\OT1/cmr/m/n/12 ) = [][] \OML/cmm/m/it/12 t[]x[]$
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 1727.
+(caption)                particular \caption on input line 2298.
 See the caption package documentation for explanation.
 
-[13] [14] [15] [16] (./old-mosaics.aux)
+[17] [18] [19] [20] (./old-mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1234,37 +1267,58 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `old-mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 95D98513E0BCCE12A17087ED890B04D4;470.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `old-mosaics.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `old-mosaics.out':
+(rerunfilecheck)             Before: 95D98513E0BCCE12A17087ED890B04D4;470
+(rerunfilecheck)             After:  F86D3BD92B56F9074643659824CBF082;561.
 Package logreq Info: Writing requests to 'old-mosaics.run.xml'.
 \openout1 = `old-mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34218 strings out of 474116
- 684878 string characters out of 5743681
- 2024187 words of memory out of 5000000
- 56088 multiletter control sequences out of 15000+600000
+ 34233 strings out of 474116
+ 685074 string characters out of 5743681
+ 2037187 words of memory out of 5000000
+ 56094 multiletter control sequences out of 15000+600000
  565421 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,14n,110p,684b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on old-mosaics.pdf (16 pages, 220172 bytes).
+ 102i,14n,110p,684b,1778s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{equation.3.3} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.2.1} has been referenced but does not exis
+t, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{thm.1.1} has been referenced but does not exist, re
+placed by a fixed one
+
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on old-mosaics.pdf (20 pages, 254122 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 216 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

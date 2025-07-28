@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  26 JUL 2025 17:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  27 JUL 2025 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1067,7 +1067,11 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count470
 \@quotereset=\count471
-(./mosaics.aux)
+(./mosaics.aux
+
+LaTeX Warning: Label `fig:messy mosaic example' multiply defined.
+
+)
 \openout1 = `mosaics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
@@ -1088,8 +1092,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
 LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
 LaTeX Font Info:    ... okay on input line 147.
-
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count472
 \scratchdimen=\dimen321
@@ -1232,51 +1235,39 @@ Overfull \hbox (12.07005pt too wide) in paragraph at lines 418--419
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2] [3] [4] [5] [6] [7] [8]
+[2] [3] [4] [5] [6]
 
-LaTeX Warning: Reference `thm: main theorem' on page 9 undefined on input line 
-1217.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[7] [8]
 
-LaTeX Warning: Reference `thm: main theorem' on page 9 undefined on input line 
-1331.
-
-
-Overfull \hbox (4.1116pt too wide) detected at line 1353
-\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 (2) = [] \OML/cmm/m/it/12 ; V \OT1/cmr/m/n/12
- = [] = [] \OML/cmm/m/it/12 :
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [9] [10]
+Overfull \hbox (2.30101pt too wide) in paragraph at lines 1451--1452
+[]\OT1/cmr/m/n/12 This mo-ti-vates the cre-ation of a ma-trix $\OML/cmm/m/it/12
+ A\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )$ to ev-ery col-umn in-de
+x $(\OML/cmm/m/it/12 i; j\OT1/cmr/m/n/12 )$, where $\OML/cmm/m/it/12 A\OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )[] =
+ []
 
-LaTeX Warning: Reference `eqn: coefficient matrix prod' on page 11 undefined on
- input line 1734.
+[11] [12] [13]
 
-[11]
-Overfull \hbox (20.75667pt too wide) in paragraph at lines 1760--1760
+LaTeX Warning: Reference `thm: main theorem' on page 14 undefined on input line
+ 1931.
+
+
+LaTeX Warning: Reference `section: summary of results' on page 14 undefined on 
+input line 1931.
+
+[14] [15]
+Overfull \hbox (20.75667pt too wide) in paragraph at lines 1971--1971
 \OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
 , p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
 42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
  []
 
-[12]
-Overfull \hbox (26.94182pt too wide) in paragraph at lines 1777--1778
-[][]\OT1/cmr/bx/n/12 Constraint 9.2. []\OT1/cmr/m/it/12 The weights as-so-ci-at
-ed with the small-est poly-gon mul-ti-ply to $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/
-12 1$\OT1/cmr/m/it/12 , ie. $\OML/cmm/m/it/12 w[]w[]w[]w[] \OT1/cmr/m/n/12 =
- []
-
-[13]
-Overfull \hbox (2.49498pt too wide) in alignment at lines 1889--1906
- [][][] []
- []
-
-
-Overfull \hbox (4.99469pt too wide) in alignment at lines 1910--1922
- [][][] []
- []
-
-[14] [15] [16] (./mosaics.aux)
+[16] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1285,20 +1276,23 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 8AA64EFBB92DB91C8896271367536751;1051.
+(rerunfilecheck)             Checksum: E15F41FE010F478757B83A490C4F18DA;955.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34892 strings out of 474116
- 693127 string characters out of 5743681
+ 34897 strings out of 474116
+ 693242 string characters out of 5743681
  2012187 words of memory out of 5000000
- 56706 multiletter control sequences out of 15000+600000
+ 56708 multiletter control sequences out of 15000+600000
  572706 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,11n,107p,2636b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -1321,10 +1315,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (16 pages, 349675 bytes).
+Output written on mosaics.pdf (16 pages, 345607 bytes).
 PDF statistics:
- 362 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 372 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

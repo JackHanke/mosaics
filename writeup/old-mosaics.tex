@@ -151,6 +151,577 @@
 
 \section{THIS IS NEW}
 
+\section{OLD STUFF}
+
+\begin{proof}
+We consider the same vertex labeling in the proof of Theorem \ref{thm: main theorem}, namely labeling a vertex by the number of polygons that contain it $\text{mod } 2$. Though avoided in the previous proof for clarity, it is important to think of each individual cell labeling as having its own weight, which corresponds with how many distinct tiles can map to the cell labeling.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{10}{0}{11}{1}
+        \cell{12}{0}{13}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
+
+        % label for row1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$1$} \)
+        \( \lablvertex{12}{0}{$1$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$1$} \)
+        \( \lablvertex{15}{0}{$1$} \)
+        
+        % label for row1
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        \( \lablvertex{8}{1}{$1$} \)
+        \( \lablvertex{9}{1}{$1$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$1$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
+        \( \lablvertex{15}{1}{$1$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
+        \( \lablvertex{15}{2}{$1$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$1$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$0$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{15}{3}{$1$} \)
+
+        % numbers row 1
+        \( \lablnode{0.5}{-0.5}{$p_{(00,10)}$} \)
+        \( \lablnode{2.5}{-0.5}{$p_{(01,10)}$} \)
+        \( \lablnode{4.5}{-0.5}{$p_{(10,10)}$} \)
+        \( \lablnode{6.5}{-0.5}{$p_{(11,10)}$} \)
+        \( \lablnode{8.5}{-0.5}{$p_{(00,11)}$} \)
+        \( \lablnode{10.5}{-0.5}{$p_{(01,11)}$} \)
+        \( \lablnode{12.5}{-0.5}{$p_{(10,11)}$} \)
+        \( \lablnode{14.5}{-0.5}{$p_{(11,11)}$} \)
+        % numbers row 2
+        \( \lablnode{0.5}{1.5}{$p_{(00,00)}$} \)
+        \( \lablnode{2.5}{1.5}{$p_{(01,00)}$} \)
+        \( \lablnode{4.5}{1.5}{$p_{(10,00)}$} \)
+        \( \lablnode{6.5}{1.5}{$p_{(11,00)}$} \)
+        \( \lablnode{8.5}{1.5}{$p_{(00,01)}$} \)
+        \( \lablnode{10.5}{1.5}{$p_{(01,01)}$} \)
+        \( \lablnode{12.5}{1.5}{$p_{(10,01)}$} \)
+        \( \lablnode{14.5}{1.5}{$p_{(11,01)}$} \)
+    \end{tikzpicture}
+\end{center}
+
+The proof of Theorem \ref{thm: main theorem} can be seen as assigning $p_{(10,01)} = p_{(01,10)} = 0$, and all other weights to $1$. The usefulness of this view can be seen when considering the operation for creating the recursive definition for $A(k)$ in the previous proof. Previously, we defined the coefficient matrix $V$ by computing $A(2)$ and $A(3)$ directly and comparing. Now with a weight assigned to individual cell labelings, we can define the values of $A(2)$ and $V$ directly in terms of these weights.
+
+$$
+A(2) = 
+\begin{bmatrix}
+    p_{(00,00)}p_{(00,00)} & p_{(01,00)} p_{(00,01)} \\
+    p_{(10,00)} p_{(00,10)} & p_{(11,00)} p_{(00,11)}
+\end{bmatrix},
+V = 
+\begin{bmatrix}
+    \frac{p_{(00,00)} p_{(00,00)}}{p_{(00,00)}} & \frac{p_{(01,00)} p_{(00,01)}}{p_{(00,00)}} & \frac{p_{(00,00)} p_{(01,00)}}{p_{(01,00)}} & \frac{p_{(01,00)} p_{(01,01)}}{p_{(01,00)}} \\
+    \frac{p_{(10,00)} p_{(00,10)}}{p_{(00,00)}} & \frac{p_{(11,00)} p_{(00,11)}}{p_{(00,00)}} & \frac{p_{(10,00)} p_{(01,10)}}{p_{(01,00)}} & \frac{p_{(11,00)} p_{(01,11)}}{p_{(01,00)}} \\
+    \frac{p_{(00,00)} p_{(10,00)}}{p_{(10,00)}} & \frac{p_{(01,00)} p_{(10,01)}}{p_{(10,00)}} & \frac{p_{(00,00)} p_{(11,00)}}{p_{(11,00)}} & \frac{p_{(01,00)} p_{(11,01)}}{p_{(11,00)}} \\
+    \frac{p_{(10,00)} p_{(10,10)}}{p_{(10,00)}} & \frac{p_{(11,00)} p_{(10,11)}}{p_{(10,00)}} & \frac{p_{(10,00)} p_{(11,10)}}{p_{(11,00)}} & \frac{p_{(11,00)} p_{(11,11)}}{p_{(11,00)}}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    p_{(00,00)} & \frac{p_{(01,00)} p_{(00,01)}}{p_{(00,00)}} & p_{(00,00)} & p_{(01,01)} \\
+    \frac{p_{(10,00)} p_{(00,10)}}{p_{(00,00)}} & \frac{p_{(11,00)} p_{(00,11)}}{p_{(00,00)}} & \frac{p_{(10,00)} p_{(01,10)}}{p_{(01,00)}} & \frac{p_{(11,00)} p_{(01,11)}}{p_{(01,00)}} \\
+    p_{(00,00)} & \frac{p_{(01,00)} p_{(10,01)}}{p_{(10,00)}} & p_{(00,00)} & \frac{p_{(01,00)} p_{(11,01)}}{p_{(11,00)}} \\
+    p_{(10,10)} & \frac{p_{(11,00)} p_{(10,11)}}{p_{(10,00)}} & \frac{p_{(10,00)} p_{(11,10)}}{p_{(11,00)}} & p_{(11,11)}
+\end{bmatrix}.
+$$
+
+With this identity, we can enumerate $t_{m,n}$ once we have proper assignments for the $16$ weights. As in the previous proof, we have $p_{(10,01)}=p_{(01,10)}=0$, as again these are impossible vertex labelings for our tile set. 
+
+Next consider the cell labelings for $p_{(00,00)}$ and $p_{(11,11)}$. When enumerating polygon mosaics (and their messy variant), these cell labelings do not contribute to the cells of a polygon. For polygon mosaics, only the $T_1$ tile are permitted to not contribute to the shape of a polygon. However, in messy polygon mosaics, all $7$ tiles are permitted to not contribute to the shape of the polygon, so $p_{(00,00)} = p_{(11,11)}=7$.
+
+However, this means we now lose the uniqueness of the map from vertex labeling to messy polygon mosaics. For instance, the sub-grid vertex labelings below are now ambiguous as to whether or not they represent a polygon.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{1}{0}{2}{1}
+        \cell{1}{1}{2}{2}
+
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{3}{1}{4}{2}
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$1$} \)
+
+        \( \lablvertex{3}{1}{$1$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$1$} \)
+
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$1$} \)
+
+    \end{tikzpicture}
+\end{center}
+
+This ambiguity is explored in the following example.
+
+\begin{exmp}\label{exmp: iep}
+
+Consider the four vertex labelings below, along with the messy polygon mosaic on the right. Write the product of the weights of all cell labelings below each, assuming all weights not defined above are $1$.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{-6}{0}{-5}{1}
+        \cell{-6}{1}{-5}{2}
+        \cell{-6}{2}{-5}{3}
+        \cell{-6}{3}{-5}{4}
+        \cell{-5}{0}{-4}{1}
+        \cell{-5}{1}{-4}{2}
+        \cell{-5}{2}{-4}{3}
+        \cell{-5}{3}{-4}{4}
+
+        \( \lablnode{-5}{-1}{$7^8$} \)
+
+        \( \lablvertex{-6}{0}{$0$} \)
+        \( \lablvertex{-5}{0}{$0$} \)
+        \( \lablvertex{-4}{0}{$0$} \)
+
+        \( \lablvertex{-6}{1}{$0$} \)
+        \( \lablvertex{-5}{1}{$0$} \)
+        \( \lablvertex{-4}{1}{$0$} \)
+
+        \( \lablvertex{-6}{2}{$0$} \)
+        \( \lablvertex{-5}{2}{$0$} \)
+        \( \lablvertex{-4}{2}{$0$} \)
+
+        \( \lablvertex{-6}{3}{$0$} \)
+        \( \lablvertex{-5}{3}{$0$} \)
+        \( \lablvertex{-4}{3}{$0$} \)
+
+        \( \lablvertex{-6}{4}{$0$} \)
+        \( \lablvertex{-5}{4}{$0$} \)
+        \( \lablvertex{-4}{4}{$0$} \)
+        % row1
+        \cell{-3}{0}{-2}{1}
+        \cell{-3}{1}{-2}{2}
+        \cell{-3}{2}{-2}{3}
+        \cell{-3}{3}{-2}{4}
+        \cell{-2}{0}{-1}{1}
+        \cell{-2}{1}{-1}{2}
+        \cell{-2}{2}{-1}{3}
+        \cell{-2}{3}{-1}{4}
+
+        \( \lablnode{-2}{-1}{$7^4$} \)
+
+        \( \lablvertex{-3}{0}{$0$} \)
+        \( \lablvertex{-2}{0}{$0$} \)
+        \( \lablvertex{-1}{0}{$0$} \)
+
+        \( \lablvertex{-3}{1}{$0$} \)
+        \( \lablvertex{-2}{1}{$0$} \)
+        \( \lablvertex{-1}{1}{$0$} \)
+
+        \( \lablvertex{-3}{2}{$0$} \)
+        \( \lablvertex{-2}{2}{$0$} \)
+        \( \lablvertex{-1}{2}{$0$} \)
+
+        \( \lablvertex{-3}{3}{$0$} \)
+        \( \lablvertex{-2}{3}{$1$} \)
+        \( \lablvertex{-1}{3}{$0$} \)
+
+        \( \lablvertex{-3}{4}{$0$} \)
+        \( \lablvertex{-2}{4}{$0$} \)
+        \( \lablvertex{-1}{4}{$0$} \)
+
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        \cell{0}{3}{1}{4}
+        \cell{1}{0}{2}{1}
+        \cell{1}{1}{2}{2}
+        \cell{1}{2}{2}{3}
+        \cell{1}{3}{2}{4}
+
+        \( \lablnode{1}{-1}{$7^4$} \)
+        
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$1$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+
+        % row1
+        \cell{3}{0}{4}{1}
+        \cell{3}{1}{4}{2}
+        \cell{3}{2}{4}{3}
+        \cell{3}{3}{4}{4}
+        \cell{4}{0}{5}{1}
+        \cell{4}{1}{5}{2}
+        \cell{4}{2}{5}{3}
+        \cell{4}{3}{5}{4}
+
+        \( \lablnode{4}{-1}{$7^0$} \)
+
+        \( \lablvertex{3}{0}{$0$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$1$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+
+        \( \lablvertex{3}{4}{$0$} \)
+        \( \lablvertex{4}{4}{$0$} \)
+        \( \lablvertex{5}{4}{$0$} \)
+
+        \cellD{6}{0}{7}{1}
+        \cellC{7}{0}{8}{1}
+
+        \cellA{6}{1}{7}{2}
+        \cellB{7}{1}{8}{2}
+
+        \cellD{6}{2}{7}{3}
+        \cellC{7}{2}{8}{3}    
+
+        \cellA{6}{3}{7}{4}
+        \cellB{7}{3}{8}{4}    
+
+    \end{tikzpicture}
+\end{center}
+
+Notice that each vertex labeling could include the right-most messy polygon mosaic. In fact, the left-most vertex labeling contains all possible mosaics! If we were to add these weight products together, we would count the right messy polygon mosaic $4$ times.
+
+\end{exmp}
+
+The double counting demonstrated in Example \ref{exmp: iep} motivates the following idea. If vertex labelings with an odd number of polygons are negative, then the addition of these weight products would incorporate the \textit{inclusion-exclusion principle}, mitigating the double counting. In Example \ref{exmp: iep}, the sum $7^8 - 7^4 - 7^4 + 7^0$ would then represent the number of mosaics that \textit{do not} contain the following three classes of messy polygon mosaics, where cells that can be any tile are marked with a dot.
+
+\begin{center}
+\begin{tikzpicture}
+    %
+    \cellopen{0}{0}{1}{1}
+    \cellopen{1}{0}{2}{1}
+
+    \cellopen{0}{1}{1}{2}
+    \cellopen{1}{1}{2}{2}
+
+    \cellD{0}{2}{1}{3}
+    \cellC{1}{2}{2}{3}    
+
+    \cellA{0}{3}{1}{4}
+    \cellB{1}{3}{2}{4}
+    %
+    \cellD{3}{0}{4}{1}
+    \cellC{4}{0}{5}{1}
+
+    \cellA{3}{1}{4}{2}
+    \cellB{4}{1}{5}{2}
+
+    \cellopen{3}{2}{4}{3}
+    \cellopen{4}{2}{5}{3}    
+
+    \cellopen{3}{3}{4}{4}
+    \cellopen{4}{3}{5}{4}
+    %
+    \cellD{6}{0}{7}{1}
+    \cellC{7}{0}{8}{1}
+
+    \cellA{6}{1}{7}{2}
+    \cellB{7}{1}{8}{2}
+
+    \cellD{6}{2}{7}{3}
+    \cellC{7}{2}{8}{3}    
+
+    \cellA{6}{3}{7}{4}
+    \cellB{7}{3}{8}{4}
+\end{tikzpicture}
+\end{center}
+
+Therefore, the sum over the products for all vertex labelings, where the product is negative if the vertex labeling represents an odd number of polygons in the mosaic, would be the number of mosaics that \textit{do not} include messy polygon mosaics.
+
+We can accomplish this by finding a weight assignment such that the product over the cell labeling weights of \textit{any} single polygon equals $-1$. It is not obvious that such an assignment can even be found! 
+
+Luckily such assignments exist. The proof of this fact can be found in the Appendix, and choosing an assignment gives us the following weight assignments.
+
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{2}{0}{3}{1}
+        \cell{4}{0}{5}{1}
+        \cell{6}{0}{7}{1}
+        \cell{8}{0}{9}{1}
+        \cell{10}{0}{11}{1}
+        \cell{12}{0}{13}{1}
+        \cell{14}{0}{15}{1}
+        % row2
+        \cell{0}{2}{1}{3}
+        \cell{2}{2}{3}{3}
+        \cell{4}{2}{5}{3}
+        \cell{6}{2}{7}{3}
+        \cell{8}{2}{9}{3}
+        \cell{10}{2}{11}{3}
+        \cell{12}{2}{13}{3}
+        \cell{14}{2}{15}{3}
+
+        % label for row1
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$1$} \)
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{7}{0}{$1$} \)
+        \( \lablvertex{8}{0}{$0$} \)
+        \( \lablvertex{9}{0}{$0$} \)
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{11}{0}{$1$} \)
+        \( \lablvertex{12}{0}{$1$} \)
+        \( \lablvertex{13}{0}{$0$} \)
+        \( \lablvertex{14}{0}{$1$} \)
+        \( \lablvertex{15}{0}{$1$} \)
+        
+        % label for row1
+        \( \lablvertex{0}{1}{$1$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$1$} \)
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$0$} \)
+        \( \lablvertex{8}{1}{$1$} \)
+        \( \lablvertex{9}{1}{$1$} \)
+        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{11}{1}{$1$} \)
+        \( \lablvertex{12}{1}{$1$} \)
+        \( \lablvertex{13}{1}{$1$} \)
+        \( \lablvertex{14}{1}{$1$} \)
+        \( \lablvertex{15}{1}{$1$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$0$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$1$} \)
+        \( \lablvertex{4}{2}{$1$} \)
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{8}{2}{$0$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{10}{2}{$0$} \)
+        \( \lablvertex{11}{2}{$1$} \)
+        \( \lablvertex{12}{2}{$1$} \)
+        \( \lablvertex{13}{2}{$0$} \)
+        \( \lablvertex{14}{2}{$1$} \)
+        \( \lablvertex{15}{2}{$1$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$0$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+        \( \lablvertex{3}{3}{$0$} \)
+        \( \lablvertex{4}{3}{$0$} \)
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$0$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        \( \lablvertex{8}{3}{$0$} \)
+        \( \lablvertex{9}{3}{$1$} \)
+        \( \lablvertex{10}{3}{$0$} \)
+        \( \lablvertex{11}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$0$} \)
+        \( \lablvertex{13}{3}{$1$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        \( \lablvertex{15}{3}{$1$} \)
+
+        % numbers row 1
+        \( \lablnode{0.5}{-0.5}{$p_{(00,10)}=-1$} \)
+        \( \lablnode{2.5}{-0.5}{$p_{(01,10)}=0$} \)
+        \( \lablnode{4.5}{-0.5}{$p_{(10,10)}=1$} \)
+        \( \lablnode{6.5}{-0.5}{$p_{(11,10)}=1$} \)
+        \( \lablnode{8.5}{-0.5}{$p_{(00,11)}=1$} \)
+        \( \lablnode{10.5}{-0.5}{$p_{(01,11)}=1$} \)
+        \( \lablnode{12.5}{-0.5}{$p_{(10,11)}=-1$} \)
+        \( \lablnode{14.5}{-0.5}{$p_{(11,11)}=7$} \)
+        % numbers row 2
+        \( \lablnode{0.5}{1.5}{$p_{(00,00)}=7$} \)
+        \( \lablnode{2.5}{1.5}{$p_{(01,00)}=1$} \)
+        \( \lablnode{4.5}{1.5}{$p_{(10,00)}=1$} \)
+        \( \lablnode{6.5}{1.5}{$p_{(11,00)}=1$} \)
+        \( \lablnode{8.5}{1.5}{$p_{(00,01)}=1$} \)
+        \( \lablnode{10.5}{1.5}{$p_{(01,01)}=1$} \)
+        \( \lablnode{12.5}{1.5}{$p_{(10,01)}=0$} \)
+        \( \lablnode{14.5}{1.5}{$p_{(11,01)}=1$} \)
+    \end{tikzpicture}
+\end{center}
+
+This immediately gives us a way to construct an analagous definition for $A(k+1)$ given $A(k)$. Once we write $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix}$, we have
+
+$$
+A(2) = 
+\begin{bmatrix}
+    7^2 & 1 \\
+    -1 & 1
+\end{bmatrix},
+V = 
+\begin{bmatrix}
+    7 & \frac{1}{7} & 7 & 1 \\
+    -\frac{1}{7} & 1 & 0 & 1 \\
+    7 & 0 & 7  & 1 \\
+    1 & -1 & 1 & 7 \\
+\end{bmatrix}
+$$
+
+Subsituting $V$ into Equation \ref{eqn: coefficient matrix prod} gives the result.
+
+\end{proof}
+
+
+Solving all Type 1 and Type 2 constraints gives the following solution set.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} 
+\hline
+$w_{1}$ & $w_{2}$ & $w_{3}$ & $w_{4}$ & $w_{5}$ & $w_{6}$ & $w_{7}$ & $w_{8}$ & $w_{9}$ & $w_{10}$ & $w_{11}$ & $w_{12}$ & $w_{13}$ & $w_{14}$ & $w_{15}$ & $w_{16}$ \\
+\hline
+7 & -1 & -1 & -1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & -1 & -1 & 1 & 7 \\
+7 & -1 & -1 & -1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & -1 & 1 & -1 & 7 \\
+7 & -1 & -1 & -1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & -1 & 1 & -1 & 7 \\
+7 & -1 & -1 & -1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & -1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & 1 & 1 & -1 & 7 \\
+7 & -1 & -1 & 1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & 1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & 1 & -1 & 1 & 7 \\
+7 & -1 & -1 & 1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & 1 & 1 & -1 & 7 \\
+7 & -1 & 1 & -1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & -1 & -1 & -1 & 7 \\
+7 & -1 & 1 & -1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & -1 & 1 & 1 & 7 \\
+7 & -1 & 1 & -1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & -1 & 1 & 1 & 7 \\
+7 & -1 & 1 & -1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & -1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & 1 & 1 & 1 & 7 \\
+7 & -1 & 1 & 1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & 1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & 1 & -1 & -1 & 7 \\
+7 & -1 & 1 & 1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & -1 & -1 & 0 & 1 & -1 & 0 & -1 & -1 & -1 & -1 & -1 & 7 \\
+7 & 1 & -1 & -1 & -1 & 1 & 0 & -1 & -1 & 0 & 1 & 1 & -1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & 1 & -1 & 0 & 1 & 1 & 0 & -1 & -1 & -1 & 1 & 1 & 7 \\
+7 & 1 & -1 & -1 & 1 & 1 & 0 & -1 & 1 & 0 & 1 & 1 & -1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & -1 & -1 & 0 & -1 & -1 & 0 & -1 & 1 & 1 & 1 & 1 & 7 \\
+7 & 1 & -1 & 1 & -1 & 1 & 0 & 1 & -1 & 0 & 1 & -1 & 1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & 1 & -1 & 0 & -1 & 1 & 0 & -1 & 1 & 1 & -1 & -1 & 7 \\
+7 & 1 & -1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & -1 & 1 & 1 & 1 & 7 \\
+7 & 1 & 1 & -1 & -1 & -1 & 0 & 1 & 1 & 0 & -1 & 1 & -1 & -1 & 1 & 7 \\
+7 & 1 & 1 & -1 & -1 & 1 & 0 & -1 & 1 & 0 & 1 & -1 & -1 & 1 & -1 & 7 \\
+7 & 1 & 1 & -1 & 1 & -1 & 0 & 1 & -1 & 0 & -1 & 1 & -1 & 1 & -1 & 7 \\
+7 & 1 & 1 & -1 & 1 & 1 & 0 & -1 & -1 & 0 & 1 & -1 & -1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & -1 & -1 & 0 & -1 & 1 & 0 & -1 & -1 & 1 & 1 & -1 & 7 \\
+7 & 1 & 1 & 1 & -1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & 1 & -1 & 0 & -1 & -1 & 0 & -1 & -1 & 1 & -1 & 1 & 7 \\
+7 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & -1 & 0 & 1 & 1 & 1 & 1 & -1 & 7 \\
+\hline
+\end{tabular}
+\end{center}
+
+Any of these assignments are sufficient for calculating $t_{m,n}$. 
+
+
 
 \begin{center}
     \begin{tikzpicture}
