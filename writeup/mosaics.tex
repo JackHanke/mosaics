@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{mathtools} % also loads amsmath
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{tikz}
 % \usepackage{subfig}
@@ -1383,10 +1384,14 @@ This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$
 
 \end{proof}
 
-If we let $v_{(i,j)} := p_{(i,j)}u_{(i,j)},$ Proposition \ref{prop:neg prod prop} allows us to rewrite the term in the sum of Equation \ref{eq:ugly inc excl} to
+If we let $v_{(i,j)} := p_{(i,j)}u_{(i,j)},$ and similarly define
+
+$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)},$$
+
+Proposition \ref{prop:neg prod prop} allows us to rewrite the term in the sum of Equation \ref{eq:ugly inc excl} to
 
 \begin{equation}
-    (-1)^{K(\ell)}U(\ell) = (-1)^{K(\ell)} \prod_{\text{Cell }(i,j) \in \ell} v_{(i,j)} = \prod_{\text{Cell }(i,j) \in \ell} p_{(i,j)}u_{(i,j)} \text{ $\forall \ell$}.
+    (-1)^{K(\ell)}U(\ell) = V(\ell) = \prod_{\text{Cell }(i,j) \in \ell} p_{(i,j)}u_{(i,j)} \text{ $\forall \ell$}.
     \label{eq:term fix}
 \end{equation}
 
@@ -1431,7 +1436,9 @@ $s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technicall
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p+1$ by $q+1$ vertices, in which only the left and right boundary vertices must be labeled $0$, and all other vertices can be labeled $0$ or $1$. Also let $\hat{\mathbb{L}}^{(p,q)}$ be the set of all binary sub-lattices of size $(p,q)$. We choose a similar indexing convention for binary sub-lattices as individual cells, in which we read the bottom row and the top row as two binary numbers $(i,j)$ respectively. For example, Figure \ref{fig:binary sub lattice example} is a binary sub-lattice of size $(2,4)$ with index $(011,100)$.
+This argument generally follows the proof in \cite{Oh2014}.
+
+Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p+1$ by $q+1$ vertices, in which only the left and right boundary vertices must be labeled $0$, and all other vertices can be labeled $0$ or $1$. Also let $\hat{\mathbb{L}}^{(p,q)}$ be the set of all binary sub-lattices of size $(p,q)$. We choose a similar indexing convention for binary sub-lattices as individual cells, in which we, ignoring the first and last $0$, read the bottom row and the top row as two binary numbers $(i,j)$ respectively. For example, Figure \ref{fig:binary sub lattice example} is a binary sub-lattice of size $(2,4)$ with index $(011,100)$.
 
 \begin{figure}[h!]
     \begin{center}
@@ -1446,7 +1453,6 @@ Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p
         \cell{1}{1}{2}{2}
         \cell{2}{1}{3}{2}
         \cell{3}{1}{4}{2}
-
 
         \( \lablvertex{0}{0}{$0$} \)
         \( \lablvertex{1}{0}{$0$} \)
@@ -1471,595 +1477,63 @@ Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p
 \label{fig:binary sub lattice example}
 \end{figure}
 
-Notice that all binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ is the same as $\mathbb{L}^{(p,q)}$. Additionally, for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$ we can compute $U(\hat{\ell})$ as with binary lattices.
+As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$.
 
-We next 
+We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A_{i,j})$ where element 
+
+$$A_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}).$$
+
+Here we $A_{i,j}$ is the entry in the $i$-th row read top-to-bottom, and in the $j$-th column read left-to-right. As binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ are just binary lattices, we have for a state matrix $A^{(p,q)}$ that 
+
+$$A_{0,0} = \sum_{\ell \in \mathbb{L}^{(p,q)}}V(\ell).$$
+
+Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A^{(p,q)}$.
 
 \begin{prop}
-    \textbf{TODO} induction and definition for state matrix
+For the set $\hat{\mathbb{L}}^{(1,q)}$ the associated state matrix $A^{(1,q)}$ can be computed by first defining $A^{(1,2)} = \begin{bmatrix}
+11^2 & 1 \\
+-1 & 1
+\end{bmatrix}$. We recursively define $A^{(1,q)} \in \mathbb{N}^{2^{q} \times 2^{q}}$ given $A^{(1,q-1)}$. Begin by writing
+$
+A^{(1,k)} = \begin{bmatrix}
+A_{[0,0]} & A_{[0,1]} \\
+A_{[1,0]} & A_{[1,1]}
+\end{bmatrix}
+$, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
+
+$$
+A^{(1,k+1)} = \begin{bmatrix*}[r]
+    11A_{[0,0]} & 11^{-1}A_{[0,0]} & 11A_{[0,1]} & A_{[0,1]} \\
+    -11^{-1}A_{[0,0]} & 11^{-1}A_{[0,0]} & 4A_{[0,1]} & A_{[0,1]} \\
+    11A_{[1,0]} & -4A_{[1,0]} & 11A_{[1,1]}  & A_{[1,1]} \\
+    A_{[1,0]} & -A_{[1,0]} & A_{[1,1]} & 11A_{[1,1]} \\
+\end{bmatrix*}.
+$$
+
+Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$. 
+
 \end{prop}
 
 \begin{proof}
-    TODO 
+    \textbf{TODO}
+
+    We use induction on $q$. We can immediately calculate $A^{(1,2)}$ by computing the values of $V$ for each $(1,2)$ sub-lattice. 
 \end{proof}
 
 \begin{prop}
     For the set $\mathbb{L}^{(p,q)}$, the state matrix has
-    $$A_{(p,q)} = A_{1,q}^p.$$
+    $$A^{(p,q)} = (A^{(1,q)})^p.$$
 \end{prop}
 
 \begin{proof}
-    TODO 
+    \textbf{TODO}
+    
+    We use induction on $p$. 
 \end{proof}
 
+\textbf{TODO}
 
 
-It is useful to define an index for vertex labelings of these $m \times 1$ columns. To do this, consider reading a column of vertex labelings from bottom to top, ignoring the first and last $0$'s. If we interpret these sequences for the left and right column as binary numbers $b_{left}$ and $b_{right}$, the index in base ten is the pair $(b_{left}, b_{right})$. For example, for the above $m=3$ column, we have sequences $00$ for the left column and $10$ for the right column, so the index is $(0,2)$.
-
-Next consider a column with index $(0, b_{1})$ for some $b_{1} \in [0,2^{m-1}-1]$. For reasons we will see later, let's call this the \textit{starting column}. Now consider appending a column with index $(b_{1}, b_{2})$ for some $b_{2} \in [0,2^{m-1}-1]$. For example, below is a diagram for appending our starting column $(0,2)$ with column $(2,3)$. 
-
-\begin{center}
-    \begin{tikzpicture}
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-        % col 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        % col 2
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-
-        % plus
-        \( \lablnode{1.5}{1.5}{$\pmb{+}$} \)
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-        % col 1
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        % col 1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-
-        \( \lablnode{3.5}{1.5}{$\pmb{\to}$} \)
-
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-        \cell{5}{0}{6}{1}
-        \cell{5}{1}{6}{2}
-        \cell{5}{2}{6}{3}
-
-        % col 1
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        % col 2
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        % col 3
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-
-
-    \end{tikzpicture}
-\end{center}
-
-Notice that in the above example we have created a vertex labeling for an $m \times 2$ grid of cells, in which the left-most vertex column labels are all $0$ (left index of $0$). Also note that we did not create either illegal cell labelings with column $(2,3)$. However, we could append the column $(2,1)$, which would create an illegal cell labeling. 
-
-Finally, if we further appended a column with label $(b_2,0)$, we would have created a vertex labeling with a boundary of all $0$'s. For this reason, let's call a column with index $(b,0)$ for $b \in [0,2^{m-1}-1]$ an \textit{ending column}. This vertex labeling would correspond with $1$ polygon mosaic if the middle column had index $(2,3)$, but not if the middle column had index $(2,1)$.
-
-This motivates the creation of a matrix $A(m)$ to every column index $(i,j)$, where $A(m)_{i,j}=1$ if the column labeling corresponds with a legal polygon mosaic, and $0$ otherwise. For example, the $A(3)$ matrix corresponds with the following labeled columns. 
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-
-        \cell{6}{0}{7}{1}
-        \cell{6}{1}{7}{2}
-        \cell{6}{2}{7}{3}
-        % row2
-        \cell{0}{4}{1}{5}
-        \cell{0}{5}{1}{6}
-        \cell{0}{6}{1}{7}
-
-        \cell{2}{4}{3}{5}
-        \cell{2}{5}{3}{6}
-        \cell{2}{6}{3}{7}
-
-        \cell{4}{4}{5}{5}
-        \cell{4}{5}{5}{6}
-        \cell{4}{6}{5}{7}
-
-        \cell{6}{4}{7}{5}
-        \cell{6}{5}{7}{6}
-        \cell{6}{6}{7}{7}
-        % row3
-        \cell{0}{8}{1}{9}
-        \cell{0}{9}{1}{10}
-        \cell{0}{10}{1}{11}
-
-        \cell{2}{8}{3}{9}
-        \cell{2}{9}{3}{10}
-        \cell{2}{10}{3}{11}
-
-        \cell{4}{8}{5}{9}
-        \cell{4}{9}{5}{10}
-        \cell{4}{10}{5}{11}
-
-        \cell{6}{8}{7}{9}
-        \cell{6}{9}{7}{10}
-        \cell{6}{10}{7}{11}
-        % row4
-        \cell{0}{12}{1}{13}
-        \cell{0}{13}{1}{14}
-        \cell{0}{14}{1}{15}
-
-        \cell{2}{12}{3}{13}
-        \cell{2}{13}{3}{14}
-        \cell{2}{14}{3}{15}
-
-        \cell{4}{12}{5}{13}
-        \cell{4}{13}{5}{14}
-        \cell{4}{14}{5}{15}
-
-        \cell{6}{12}{7}{13}
-        \cell{6}{13}{7}{14}
-        \cell{6}{14}{7}{15}
-        % row 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{0}{2}{$1$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{4}{3}{$0$} \)
-        
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-        
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{6}{3}{$0$} \)
-        
-        \( \lablvertex{7}{0}{$0$} \)
-        \( \lablvertex{7}{1}{$1$} \)
-        \( \lablvertex{7}{2}{$1$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        % row 2
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$1$} \)
-        \( \lablvertex{0}{6}{$0$} \)
-        \( \lablvertex{0}{7}{$0$} \)
-        
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        \( \lablvertex{1}{6}{$0$} \)
-        \( \lablvertex{1}{7}{$0$} \)
-        
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$1$} \)
-        \( \lablvertex{2}{6}{$0$} \)
-        \( \lablvertex{2}{7}{$0$} \)
-        
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-        \( \lablvertex{3}{6}{$1$} \)
-        \( \lablvertex{3}{7}{$0$} \)
-        
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{4}{5}{$1$} \)
-        \( \lablvertex{4}{6}{$0$} \)
-        \( \lablvertex{4}{7}{$0$} \)
-        
-        \( \lablvertex{5}{4}{$0$} \)
-        \( \lablvertex{5}{5}{$1$} \)
-        \( \lablvertex{5}{6}{$0$} \)
-        \( \lablvertex{5}{7}{$0$} \)
-        
-        \( \lablvertex{6}{4}{$0$} \)
-        \( \lablvertex{6}{5}{$1$} \)
-        \( \lablvertex{6}{6}{$0$} \)
-        \( \lablvertex{6}{7}{$0$} \)
-        
-        \( \lablvertex{7}{4}{$0$} \)
-        \( \lablvertex{7}{5}{$1$} \)
-        \( \lablvertex{7}{6}{$1$} \)
-        \( \lablvertex{7}{7}{$0$} \)
-        % row 3
-        \( \lablvertex{0}{8}{$0$} \)
-        \( \lablvertex{0}{9}{$0$} \)
-        \( \lablvertex{0}{10}{$1$} \)
-        \( \lablvertex{0}{11}{$0$} \)
-        
-        \( \lablvertex{1}{8}{$0$} \)
-        \( \lablvertex{1}{9}{$0$} \)
-        \( \lablvertex{1}{10}{$0$} \)
-        \( \lablvertex{1}{11}{$0$} \)
-        
-        \( \lablvertex{2}{8}{$0$} \)
-        \( \lablvertex{2}{9}{$0$} \)
-        \( \lablvertex{2}{10}{$1$} \)
-        \( \lablvertex{2}{11}{$0$} \)
-        
-        \( \lablvertex{3}{8}{$0$} \)
-        \( \lablvertex{3}{9}{$0$} \)
-        \( \lablvertex{3}{10}{$1$} \)
-        \( \lablvertex{3}{11}{$0$} \)
-        
-        \( \lablvertex{4}{8}{$0$} \)
-        \( \lablvertex{4}{9}{$0$} \)
-        \( \lablvertex{4}{10}{$1$} \)
-        \( \lablvertex{4}{11}{$0$} \)
-        
-        \( \lablvertex{5}{8}{$0$} \)
-        \( \lablvertex{5}{9}{$1$} \)
-        \( \lablvertex{5}{10}{$0$} \)
-        \( \lablvertex{5}{11}{$0$} \)
-        
-        \( \lablvertex{6}{8}{$0$} \)
-        \( \lablvertex{6}{9}{$0$} \)
-        \( \lablvertex{6}{10}{$1$} \)
-        \( \lablvertex{6}{11}{$0$} \)
-        
-        \( \lablvertex{7}{8}{$0$} \)
-        \( \lablvertex{7}{9}{$1$} \)
-        \( \lablvertex{7}{10}{$1$} \)
-        \( \lablvertex{7}{11}{$0$} \)
-        % row 4
-        \( \lablvertex{0}{12}{$0$} \)
-        \( \lablvertex{0}{13}{$0$} \)
-        \( \lablvertex{0}{14}{$0$} \)
-        \( \lablvertex{0}{15}{$0$} \)
-        
-        \( \lablvertex{1}{12}{$0$} \)
-        \( \lablvertex{1}{13}{$0$} \)
-        \( \lablvertex{1}{14}{$0$} \)
-        \( \lablvertex{1}{15}{$0$} \)
-        
-        \( \lablvertex{2}{12}{$0$} \)
-        \( \lablvertex{2}{13}{$0$} \)
-        \( \lablvertex{2}{14}{$0$} \)
-        \( \lablvertex{2}{15}{$0$} \)
-        
-        \( \lablvertex{3}{12}{$0$} \)
-        \( \lablvertex{3}{13}{$0$} \)
-        \( \lablvertex{3}{14}{$1$} \)
-        \( \lablvertex{3}{15}{$0$} \)
-        
-        \( \lablvertex{4}{12}{$0$} \)
-        \( \lablvertex{4}{13}{$0$} \)
-        \( \lablvertex{4}{14}{$0$} \)
-        \( \lablvertex{4}{15}{$0$} \)
-        
-        \( \lablvertex{5}{12}{$0$} \)
-        \( \lablvertex{5}{13}{$1$} \)
-        \( \lablvertex{5}{14}{$0$} \)
-        \( \lablvertex{5}{15}{$0$} \)
-        
-        \( \lablvertex{6}{12}{$0$} \)
-        \( \lablvertex{6}{13}{$0$} \)
-        \( \lablvertex{6}{14}{$0$} \)
-        \( \lablvertex{6}{15}{$0$} \)
-        
-        \( \lablvertex{7}{12}{$0$} \)
-        \( \lablvertex{7}{13}{$1$} \)
-        \( \lablvertex{7}{14}{$1$} \)
-        \( \lablvertex{7}{15}{$0$} \)
-
-        % arrow
-        \( \lablnode{9}{7.5}{$\pmb{\to}$} \)
-        % matrix
-        \( \lablnode{12}{7.5}{$\begin{bmatrix} 1 & 1 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \end{bmatrix}$} \)
-
-        \( \lablnode{12}{5.5}{$A(3)$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-$A(m)$ has the property that the $0$-th row represets all starting columns, and the $0$-th column represents all ending columns. Even more importantly, notice that $A(m)^2_{i,j}$ represents the number of $m \times 2$ grids with left-most index $i$ and right-most index $j$ that correspond with a legal polygon mosaic. In general, $(A(m)^n)_{i,j}$ represents this quantity for an $m \times n$ grid of cells, and so if we know $A(m)$ for some $m$, then $(A(m)^n)_{0,0} = p_{m,n}.$
-
-The final component of the proof is constructing $A(m)$ for any $m$. Begin by  calculating $A(2)$ by identifying the number of legal polygon mosaics that correspond with each vertex coloring index $\{(0,0),(0,1),(1,0),(1,1)\}$, like so.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        
-        % row2
-        \cell{0}{3}{1}{4}
-        \cell{0}{4}{1}{5}
-        
-        \cell{2}{3}{3}{4}
-        \cell{2}{4}{3}{5}
-        % row 1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$0$} \)
-        % row 2
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$0$} \)
-        
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{3}{4}{$1$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-
-        % arrow
-        \( \lablnode{5}{2.5}{$\pmb{\to}$} \)
-        % matrix
-        \( \lablnode{7}{2.5}{$\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-Next consider an arbitrary value $A(k)_{i,j}$ for any $k \geq 2$. This value is $1$ if the $k \times 1$ column with index $(i,j)$ can be part of a polygon mosaic, and $0$ otherwise. We can determine that specific values of $A(k+1)$ are multiples of $A(k)_{i,j}$ by considering the following operation on an arbitrary column with index $(i,j)$. Copy the column four times and replace the top two $0$'s of each column with the bottom row of labels from one of the four cell labelings below. 
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{2}{0}{3}{1}
-        \cell{4}{0}{5}{1}
-        \cell{6}{0}{7}{1}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$1$} \)
-        \( \lablvertex{7}{0}{$1$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-        \( \lablvertex{6}{1}{$0$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        
-    \end{tikzpicture}
-\end{center}
-
-For example, for the $m=2$ column with index $(0,1)$, this operation looks like the following.
-
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{-4.5}{2.5}{-3.5}{3.5}
-        \cell{-4.5}{3.5}{-3.5}{4.5}
-
-        % row 1
-        \( \lablvertex{-4.5}{2.5}{$0$} \)
-        \( \lablvertex{-4.5}{3.5}{$0$} \)
-        \( \lablvertex{-4.5}{4.5}{$0$} \)
-        
-        \( \lablvertex{-3.5}{2.5}{$0$} \)
-        \( \lablvertex{-3.5}{3.5}{$1$} \)
-        \( \lablvertex{-3.5}{4.5}{$0$} \)
-
-        % label
-        \( \lablnode{-4}{1.5}{$A(2)_{0,1}$} \)
-
-        % arrow
-        \( \lablnode{-2}{3.5}{$\pmb{\to}$} \)
-
-        % four columns
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-
-        \cell{2}{0}{3}{1}
-        \cell{2}{1}{3}{2}
-        \cell{2}{2}{3}{3}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$1$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{2}{2}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{3}{3}{$0$} \)
-        
-        \cell{0}{4}{1}{5}
-        \cell{0}{5}{1}{6}
-        \cell{0}{6}{1}{7}
-        
-        \cell{2}{4}{3}{5}
-        \cell{2}{5}{3}{6}
-        \cell{2}{6}{3}{7}
-
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{0}{5}{$0$} \)
-        \( \lablvertex{0}{6}{$0$} \)
-        \( \lablvertex{0}{7}{$0$} \)
-        
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{1}{5}{$1$} \)
-        \( \lablvertex{1}{6}{$0$} \)
-        \( \lablvertex{1}{7}{$0$} \)
-        
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        \( \lablvertex{2}{6}{$0$} \)
-        \( \lablvertex{2}{7}{$0$} \)
-        
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{3}{5}{$1$} \)
-        \( \lablvertex{3}{6}{$1$} \)
-        \( \lablvertex{3}{7}{$0$} \)
-
-        \( \lablnode{5}{3.5}{$\pmb{\to}$} \)
-
-        \( \lablnode{7.5}{3.5}{$\begin{bmatrix} A(3)_{0,2} & A(3)_{0,3} \\ A(3)_{1,2} & A(3)_{1,3} \end{bmatrix}$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-This operation results in $4$ new columns that are represented in $A(k+1)$. In our example, specifically we get the following. 
-
-$$
-\begin{bmatrix} 
-    A(3)_{0,2} & A(3)_{0,3} \\ 
-    A(3)_{1,2} & A(3)_{1,3} 
-\end{bmatrix} = 
-\begin{bmatrix} 
-    1A(2)_{i,j} & 1A(2)_{i,j} \\ 
-    0A(2)_{i,j} & 1A(2)_{i,j} 
-\end{bmatrix},
-$$
-
-Critically, this transformation \textit{only} changes the identity of the top two tiles. This implies that the same value coefficients computed by comparing $A(2)$ and $A(3)$ can be used for any $m \times 1$ column, as long as both column indices $(i,j)$ are congruent $\text{mod } 2$. Furthermore, if one writes $A(k)$ as the block matrix
-
-$$A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$$
-
-where $A_{\hat{i},\hat{j}} \in \mathbb{R}^{2^{k-2} \times 2^{k-2}}$, then all column's represented in $A_{\hat{i},\hat{j}}$ have indices $(i,j) \equiv (\hat{i},\hat{j}) \text{ mod } 2$. This allows us to write that in general, if $A(k) = \begin{bmatrix} A_{0,0} & A_{0,1} \\ A_{1,0} & A_{1,1} \end{bmatrix},$
-then
-
-\begin{equation}\label{eqn: coefficient matrix prod}
-    \begin{bmatrix}
-        V_{0,0}A_{0,0} & V_{0,1}A_{0,0} & V_{0,2}A_{0,1} & V_{0,3}A_{0,1} \\
-        V_{1,0}A_{0,0} & V_{1,1}A_{0,0} & V_{1,2}A_{0,1} & V_{1,3}A_{0,1} \\
-        V_{2,0}A_{1,0} & V_{2,1}A_{1,0} & V_{2,2}A_{1,1} & V_{2,3}A_{1,1} \\
-        V_{3,0}A_{1,0} & V_{3,1}A_{1,0} & V_{3,2}A_{1,1} & V_{3,3}A_{1,1} \\
-    \end{bmatrix}.
-\end{equation}
-
-
-where $V \in \mathbb{R}^{4 \times 4}$ can be found after directly computing $A(2)$ and $A(3)$, then solving the following equation.
-
-$$
-\begin{bmatrix}
-    A(3)_{0,0} & A(3)_{0,1} & A(3)_{0,2} & A(3)_{0,3} \\
-    A(3)_{1,0} & A(3)_{1,1} & A(3)_{1,2} & A(3)_{1,3} \\
-    A(3)_{2,0} & A(3)_{2,1} & A(3)_{2,2} & A(3)_{2,3} \\
-    A(3)_{3,0} & A(3)_{3,1} & A(3)_{3,2} & A(3)_{3,3} \\
-\end{bmatrix} = 
-\begin{bmatrix}
-    V_{0,0}A(2)_{0,0} & V_{0,1}A(2)_{0,0} & V_{0,2}A(2)_{0,1} & V_{0,3}A(2)_{0,1} \\
-    V_{1,0}A(2)_{0,0} & V_{1,1}A(2)_{0,0} & V_{1,2}A(2)_{0,1} & V_{1,3}A(2)_{0,1} \\
-    V_{2,0}A(2)_{1,0} & V_{2,1}A(2)_{1,0} & V_{2,2}A(2)_{1,1} & V_{2,3}A(2)_{1,1} \\
-    V_{3,0}A(2)_{1,0} & V_{3,1}A(2)_{1,0} & V_{3,2}A(2)_{1,1} & V_{3,3}A(2)_{1,1} \\
-\end{bmatrix}
-$$
-
-This is solved by
-
-$$V = 
-\begin{bmatrix} 
-    1 & 1 & 1 & 1 \\ 
-    1 & 1 & 0 & 1 \\ 
-    1 & 0 & 1 & 1 \\ 
-    1 & 1 & 1 & 1 
-\end{bmatrix}
-$$
-
-
-which completes the proof.
-
-% \end{proof}
-
-The method detailed in Theorem \ref{thm: main theorem} generalizes to other tile sets, which we tabularize in Section \ref{section: summary of results} without proof. Interestingly, the method not only generalizes to other tile sets, but can also be augmented to enumerate the more complicated ``messy" polygon mosaics.
-
-
-
-As demonstrated in the proof of Theorem \ref{thm: messy mosaics}, the enumeration of both polygon mosaics and mosaics that do not contain a polygon share the same structure, and only differ by the identity of the matrices $A(2), V$. We summarize these matrices for various collections of tiles below.
-
-\textbf{TODO} induction for matrix powers
-
-
-\textbf{TODO} complexity 
-
-Equation \ref{eq:technically correct} has $mn 2^{(m-1)(n-1)}$ multiplications.
-
-Theorem \ref{thm: messy mosaics} uses $4^2 + 4^3 + 4^4 + 4^{m-1} = 4^2 \frac{4^{m-2}-1}{4-1}$ multiplications for the construction of $A(m)$, and using the naive matrix multiplication algorithm we have ${2^{3(m-1)}}\left\lceil \log_2(n) \right\rceil$ multiplications to compute $A(m)^n$.
-
-If we set $m=n$, calculating $s_{m,m}$ with Equation \ref{eq:technically correct} is $O(m^2 2^{m^2})$, while Theorem \ref{thm: messy mosaics} is $O(\log(m)8^m)$.
 
 \section{Extensions}
 \label{section: Extensions}

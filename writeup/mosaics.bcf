@@ -2372,10 +2372,11 @@
     <bcf:citekey order="7" intorder="1">Oh2018Aztec</bcf:citekey>
     <bcf:citekey order="7" intorder="2">Oh2019tiling</bcf:citekey>
     <bcf:citekey order="8" intorder="1">Oh2014</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">Hong2018</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">Oh2014</bcf:citekey>
     <bcf:citekey order="10" intorder="1">Hong2018</bcf:citekey>
     <bcf:citekey order="11" intorder="1">Hong2018</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">oeis</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">Hong2018</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">oeis</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
