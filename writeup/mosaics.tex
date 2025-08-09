@@ -487,7 +487,7 @@ Similarly, define the \textit{preimage} of a set $L$ under $f$ to be
 
 $$f^{-1}(L) = \{m \in \mathbb{M}^{(m,n)} | f(m) \in L\}.$$
 
-We want to compute $s_{m,n}$ by computing $f^{-1}(\ell)$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We begin by finding a simple way to compute $f^{-1}(\ell)$ for a binary lattice $\ell$ by examining the structure of $\ell$.
+We want to compute $s_{m,n}$ by computing $f^{-1}(\{\ell\})$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We begin by finding a simple way to compute $f^{-1}(\ell)$ for a binary lattice $\ell$ by examining the structure of $\ell$.
 
 \begin{figure}
 \begin{center}
@@ -986,7 +986,7 @@ Consider the following binary lattices for $s_{4,2}$.
     \end{tikzpicture}
 \end{center}
 
-$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $11$ possible cells, though taken together $1$ of those $11^4$ permutations results in a new knot. 
+$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $11$ possible cells, though $1$ of those $11^4$ permutations contains a new knot. 
 
 \label{exmp:U doesnt work}
 \end{exmp}
@@ -996,7 +996,7 @@ $U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2}
 \end{definition}
 
 \begin{exmp}
-    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the knot in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the knot in the bottom $2$ rows of Mosaic $2$.
+    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the knot in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the knot in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both knots in Mosaic $2$.
 \label{exmp:specifying example}
 \end{exmp}
 
@@ -1053,7 +1053,7 @@ $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m
 
     $$\bigcup_{\ell \in \mathbb{L}^{(m,n)}} \{\mathbb{U}(\ell)\}.$$
     
-    If $\ell$ has $K(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ knots (ie. $\ell^*$). $\ell$ appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the knots in $\ell$. $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the knots in $\ell$, and so on up to specifying $K(\ell)$ knots. As the number of times each subset of knots are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
+    If $\ell$ has $K(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ knots (ie. $\ell^*$). $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the knots in $\ell$. $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the knots in $\ell$, and so on up to specifying $K(\ell)$ knots. As the number of ways $k \leq K(\ell)$ knots can specify $K(\ell)$ knots are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
 
     If $\ell = \ell^*$, we have that $K(\ell^*)=0$, so $|f^{-1}(\ell^*)|$ is only counted once. As $\binom{0}{0}=1$, this completes the proof.
 \end{proof}
@@ -1072,7 +1072,7 @@ $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m
     
     $$0 = (1-1)^{K(\ell)} = \left(\binom{K(\ell)}{0} - \binom{K(\ell)}{1} + \dots + (-1)^{K(\ell)}\binom{K(\ell)}{K(\ell)}\right),$$
     
-    so all terms in Equation \ref{eq:double counting terms} where $\ell \neq \ell^*$ are $0$. Therefore, 
+    so if we group terms as in Equation \ref{eq:double counting terms}, we get that all terms where $\ell \neq \ell^*$ are $0$. Therefore, 
     
     $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = s_{m,n}.$$
 \end{proof}
@@ -1140,7 +1140,7 @@ Figure \ref{fig:messy multi knot} shows a mosaic that appears to have $2$ knots,
 Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, computing the number of knots specified in a binary lattice $K(\ell)$ requires examining the entire, global structure of $\ell$. It will be more efficient to recover the $(-1)^{K(\ell)}$ term at the cell level. The idea is to add a coefficient $p_{(i,j)}$ to each value of $u_{(i,j)}$ so that the $(-1)^{K(\ell)}$ term is recovered.
 
 \begin{condition}
-    A set of cells $\mathcal{K}$ in a binary lattice $\ell$ meets this condition if
+    A subset of cells $\mathcal{K}$ in a binary lattice $\ell$ meets this condition if
     
     \begin{equation}
         \prod_{\text{Cell } (i,j) \in \mathcal{K}} p_{(i,j)} = -1,
@@ -1150,7 +1150,7 @@ Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, computing the num
     \label{cond:neg prod condition}
 \end{condition}
 
-By definition of $K(\ell)$, if there exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds only for cells $\mathcal{K}$ that specify a knot, then the $(-1)^{K(\ell)}$ is recovered at the cell level.
+By the definition of $K(\ell)$, if there exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds only for cells $\mathcal{K}$ that specify a knot, then the $(-1)^{K(\ell)}$ is recovered at the cell level.
 
 \begin{prop}
     There exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds for any set of cells that specify a knot.
@@ -1159,7 +1159,7 @@ By definition of $K(\ell)$, if there exists values $p_{(i,j)}$ for which Conditi
 
 \begin{proof}
 
-We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as cells $(00,00)$ and $(11,11)$ can never be a member of cells that specify a knot, and so must be positive.
+We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as cells $(00,00)$ and $(11,11)$ can never be in the collection of cells that specify a knot, and so must be positive.
 
 For the remaining values of $p_{(i,j)}$, we examine the cells that map to the smallest knot, shown in Figure \ref{fig:smallest knot}. 
 
@@ -1225,13 +1225,17 @@ Condition \ref{cond:neg prod condition} amounts to the following two equations
 
 one for each portion of a binary lattice in Figure \ref{fig:constraints i and ii}. We refer to the equations above as \textit{constraints}, as they constrain the possible assignments of $p_{(i,j)}$. Let the constraints in Equation \ref{eq:constraints i and ii} be numbered $1$ and $2$.
 
-Next note that in a binary lattice, a specified knot corresponds with a set of edge-and-corner-wise connected $0$'s or $1$'s, that if $0$ are not edge-and-corner-wise connected to the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where $3$ knots correspond with $3$ edge-and-corner connected regions, excluding the region that contains the boundary. 
+To define the remaining constraints, we next examine how specified knots arise in binary lattices.
 
-Let's suppose, without loss of generality, that the knot we are concerned with is specified by an edge-and-corner-wise connected set of $1$'s.
+\begin{definition}
+    A subset of vertices $X$ in a binary lattice $\ell$ is said to be \textit{connected} if all vertices are the same value, and for any pair of vertices $x_1, x_2 \in X$ there exists a path between $x_1$ and $x_2$ of unit vertical, horizontal, and diagonal moves so that all of vertices in the path are in $X$. 
+\end{definition}
 
-The idea is to describe all possible ways to build larger knots from smaller knots by changing a neighboring $0$ to a $1$. This flipping of the parity of the vertex corresponds with changing the identity of the four surrounding cells, and consequently the associated tiles. As the surrounding $8$ vertices are held fixed, this creates $2^8$ constraints to solve for. If $p_{(i,j)}$ exist that satisfy all $2^8 + 2$ constraints, then one can build any edge-and-corner-wise connected region (and therefore any knot) through some combination of the $2^8$ possible flips to the region's neighbors. This gives that Condition \ref{cond:neg prod condition} holds for all cells that specify a binary lattice.
+In a binary lattice, a specified knot corresponds with a set of connected $0$ or $1$ vertices, that if $0$ are not connected to the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where the $3$ knots correspond with $3$ edge-and-corner connected regions, excluding the region that is connected to the boundary. 
 
-However, there is a complication to this argument. Some of the $2^8$ possible surrounding vertices may themselves not be edge-and-corner-wise connected, which affects whether we want the sign to be preserved or to change. Therefore, the flipping of parity of a single vertex results in $2$ distinct types of constraints. 
+The idea is, starting with a single vertex labeled $1$, we can construct an arbitrary set of connected vertices labeled $1$ by continually flipping a neighboring $0$s to $1$s. This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex.
+
+As each cell has its associated $p_{(i,j)}$ value, it must be the case that the bit flip preserves Condition \ref{cond:neg prod condition} for the cells involved. Additionally, as the surrounding $8$ vertices are unchanged, this creates $2^8$ constraints. In each of these constraints, the parity of the number of connected regions of $1$s must either change or stay the same after the bit flip. If the parity remains unchanged, the bit flip is of \textit{Type 1}, and if the parity changes the bit flip is of \textit{Type 2}.
 
 \begin{figure}[h!]
     \begin{center}
@@ -1290,8 +1294,8 @@ However, there is a complication to this argument. Some of the $2^8$ possible su
         \cellE{4}{-2}{5}{-1}
 
     \end{tikzpicture}
-    \caption{Type 1 parity flip and associated tiles}
-    \label{fig:type 1 parity flip}
+    \caption{Type 1 bit flip and associated tiles}
+    \label{fig:type 1 bit flip}
 \end{subfigure}
 % \hfill
 \hspace{0.05\textwidth}
@@ -1350,32 +1354,28 @@ However, there is a complication to this argument. Some of the $2^8$ possible su
         \cellE{4}{-2}{5}{-1}
 
     \end{tikzpicture}
-    \caption{Type 2 parity flip and associated tiles}
-    \label{fig:type 2 parity flip}
+    \caption{Type 2 bit flip and associated tiles}
+    \label{fig:type 2 bit flip}
 \end{subfigure}
 
 \end{center}
-\caption{Parity flips for binary lattices}
-\label{fig:messy mosaic example}
+\caption{Bit flips for binary lattices}
+\label{fig:bit flip}
 \end{figure}
 
-Let a constraint of \textit{Type 1} be a parity flip that does not change the number of edge-and-corner-wise connected regions of $1$s $\mod 2$. Therefore, we want the signs of the left and right hand side to be equal. For example, Figure \ref{fig:type 1 parity flip} represents the constraint
+For a bit flip of \textit{Type 1}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must stay the same after the flip. For example, Figure \ref{fig:type 1 bit flip} represents the constraint
 
 \begin{equation}
     p_{(00,00)}p_{(00,01)}p_{(00,01)}p_{(01,11)} = p_{(00,01)}p_{(00,11)}p_{(01,01)}p_{(01,11)}.
 \end{equation}
 
-Now let a constraint of \textit{Type 2} be a parity flip that does change the number of edge-and-corner-wise connected regions of $1$s $\mod 2$. Therefore, we want the signs of the left and right hand side to change. For example, Figure \ref{fig:type 2 parity flip} represents the constraint
+For a bit flip of \textit{Type 2}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must change after the flip. For example, Figure \ref{fig:type 2 bit flip} represents the constraint\footnote{In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct knot joining into one knot \textit{or} one knot splitting into two distinct knot. In either case, we want the sign of the product to change.}
 
 \begin{equation}
     p_{(00,10)}p_{(00,01)}p_{(10,00)}p_{(01,00)} = -p_{(00,11)}p_{(00,11)}p_{(11,00)}p_{(11,00)}.
 \end{equation}
 
-In Figure \ref{fig:type 2 parity flip} the transformation corresponds with \textit{either} two distinct knot joining into one knot \textit{or} one knot splitting into two distinct knot. In either case, we want the sign of the product to change. 
-
-After defining all $2^8$ constraints, we combine them with the constraints in Equation \ref{eq:small sap constraint}. We also assume that $p_{(00,01)} p_{(00,10)} p_{(01,00)} = 1$ and $p_{(10,00)} = -1$ is the solution for the first constrain in Equation \ref{eq:constraints i and ii}. 
-
-We can then use software to verify that all $2^8 +2$ constraints admit a solution.
+This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. We can then use software to verify that all $2^8 +2$ constraints admit a solution.
 
 % We can then calculate the  Gröbner basis of the system to arrive at
 
@@ -1427,36 +1427,72 @@ Equation \ref{eq:term fix} allows us to simplify Equation \ref{eq:ugly inc excl}
 \label{eq:technically correct}
 \end{equation}
 
-$s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in Theorem \ref{thm:Oh2014}.
+$s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-\textbf{TODO} induction and definition for state matrix
+Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p+1$ by $q+1$ vertices, in which only the left and right boundary vertices must be labeled $0$, and all other vertices can be labeled $0$ or $1$. Also let $\hat{\mathbb{L}}^{(p,q)}$ be the set of all binary sub-lattices of size $(p,q)$. We choose a similar indexing convention for binary sub-lattices as individual cells, in which we read the bottom row and the top row as two binary numbers $(i,j)$ respectively. For example, Figure \ref{fig:binary sub lattice example} is a binary sub-lattice of size $(2,4)$ with index $(011,100)$.
 
-Our solution accomplishes this by building $m \times n$ vertex labelings for fixed $m$ using vertex labelings of $m \times 1$ columns of cells. These columns have vertex labelings such that the top and bottom edge all labeled $0$. One of these columns for $m=3$ is below.
-
-\begin{center}
+\begin{figure}[h!]
+    \begin{center}
     \begin{tikzpicture}
+        % row 1
         \cell{0}{0}{1}{1}
+        \cell{1}{0}{2}{1}
+        \cell{2}{0}{3}{1}
+        \cell{3}{0}{4}{1}
+        % row 2
         \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
+        \cell{1}{1}{2}{2}
+        \cell{2}{1}{3}{2}
+        \cell{3}{1}{4}{2}
 
-        % col 1
+
         \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{0}{3}{$0$} \)
-        
-        % col 2
         \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        
-        % index
-        % \( \lablnode{0.5}{-1}{$(0,2)$} \)
+        \( \lablvertex{2}{0}{$1$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{4}{0}{$0$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+        \( \lablvertex{4}{1}{$0$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+        \( \lablvertex{3}{2}{$0$} \)
+        \( \lablvertex{4}{2}{$0$} \)
     \end{tikzpicture}
-\end{center}
+    \end{center}
+\caption{A binary sub-lattice of size $(2,4)$ with index $(011,100)$}
+\label{fig:binary sub lattice example}
+\end{figure}
+
+Notice that all binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ is the same as $\mathbb{L}^{(p,q)}$. Additionally, for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$ we can compute $U(\hat{\ell})$ as with binary lattices.
+
+We next 
+
+\begin{prop}
+    \textbf{TODO} induction and definition for state matrix
+\end{prop}
+
+\begin{proof}
+    TODO 
+\end{proof}
+
+\begin{prop}
+    For the set $\mathbb{L}^{(p,q)}$, the state matrix has
+    $$A_{(p,q)} = A_{1,q}^p.$$
+\end{prop}
+
+\begin{proof}
+    TODO 
+\end{proof}
+
+
 
 It is useful to define an index for vertex labelings of these $m \times 1$ columns. To do this, consider reading a column of vertex labelings from bottom to top, ignoring the first and last $0$'s. If we interpret these sequences for the left and right column as binary numbers $b_{left}$ and $b_{right}$, the index in base ten is the pair $(b_{left}, b_{right})$. For example, for the above $m=3$ column, we have sequences $00$ for the left column and $10$ for the right column, so the index is $(0,2)$.
 

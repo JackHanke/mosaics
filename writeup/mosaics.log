@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  7 AUG 2025 16:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  8 AUG 2025 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1067,11 +1067,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count470
 \@quotereset=\count471
-(./mosaics.aux
-
-LaTeX Warning: Label `fig:messy mosaic example' multiply defined.
-
-)
+(./mosaics.aux)
 \openout1 = `mosaics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
@@ -1092,7 +1088,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
 LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
 LaTeX Font Info:    ... okay on input line 147.
- (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count472
 \scratchdimen=\dimen321
@@ -1239,30 +1236,25 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7] [8] [9]
-
-LaTeX Warning: Reference `eq:small sap constraint' on page 10 undefined on inpu
-t line 1376.
-
-[10]
-Overfull \hbox (2.30101pt too wide) in paragraph at lines 1537--1538
+[7] [8] [9] [10] [11]
+Overfull \hbox (2.30101pt too wide) in paragraph at lines 1556--1557
 []\OT1/cmr/m/n/12 This mo-ti-vates the cre-ation of a ma-trix $\OML/cmm/m/it/12
  A\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )$ to ev-ery col-umn in-de
 x $(\OML/cmm/m/it/12 i; j\OT1/cmr/m/n/12 )$, where $\OML/cmm/m/it/12 A\OT1/cmr/
 m/n/12 (\OML/cmm/m/it/12 m\OT1/cmr/m/n/12 )[] =
  []
 
-[11] [12] [13]
+[12] [13]
 
 LaTeX Warning: Reference `thm: main theorem' on page 14 undefined on input line
- 2017.
+ 2036.
 
 
 LaTeX Warning: Reference `section: summary of results' on page 14 undefined on 
-input line 2017.
+input line 2036.
 
 [14] [15]
-Overfull \hbox (20.75667pt too wide) in paragraph at lines 2057--2057
+Overfull \hbox (20.75667pt too wide) in paragraph at lines 2076--2076
 \OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
 , p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
 42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
@@ -1277,9 +1269,6 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
 (rerunfilecheck)             Checksum: E15F41FE010F478757B83A490C4F18DA;955.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
@@ -1287,13 +1276,13 @@ Package logreq Info: Writing requests to 'mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34904 strings out of 474116
- 693403 string characters out of 5743681
- 2012187 words of memory out of 5000000
- 56714 multiletter control sequences out of 15000+600000
- 572706 words of font info for 91 fonts, out of 8000000 for 9000
+ 34912 strings out of 474116
+ 693489 string characters out of 5743681
+ 2013187 words of memory out of 5000000
+ 56716 multiletter control sequences out of 15000+600000
+ 573052 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,107p,2636b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,11n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -1312,14 +1301,15 @@ e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-di
-st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mosaics.pdf (16 pages, 347213 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mosaics.pdf (16 pages, 359948 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 308 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
