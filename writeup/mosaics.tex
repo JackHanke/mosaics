@@ -316,7 +316,6 @@ Let $k_{m,n} = |\mathbb{K}^{(m,n)}|$ be the number of knot mosaics of size $(m,n
 
 Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics $\delta = \lim_{n \to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy knot mosaics}.
 
-
 \section{Messy Knot Mosaics}\label{section:messy mosaics}
 
 \begin{definition}
@@ -445,33 +444,33 @@ From the fact that the smallest knot is made of four tiles, shown in Figure \ref
 
 \begin{definition}
 
-Define $A(2) = \begin{bmatrix}
-11^2 & 1 \\
--1 & 1
-\end{bmatrix}$. We recursively define $A(k+1) \in \mathbb{N}^{2^{k} \times 2^{k}}$ given $A(k)$. Begin by writing
+Define $A^{(1,2)} = \begin{bmatrix}
+11^2 & -1 \\
+1 & 1
+\end{bmatrix}$. We recursively define $A^{(1,k+1)} \in \mathbb{Z}^{2^{k} \times 2^{k}}$ given $A^{(1,k)}$. Begin by writing
 $
-A(k) = \begin{bmatrix}
-A_{0,0} & A_{0,1} \\
-A_{1,0} & A_{1,1}
+A^{(1,k)} = \begin{bmatrix}
+A_{[0,0]} & A_{[0,1]} \\
+A_{[1,0]} & A_{[1,1]}
 \end{bmatrix}
-$, where the block matrices $A_{i,j}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
+$, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
 
 $$
-A(k+1) = \begin{bmatrix}
-    11A_{0,0} & \frac{1}{11}A_{0,0} & 11A_{0,1} & A_{0,1} \\
-    -\frac{1}{11}A_{0,0} & \frac{1}{11}A_{0,0} & 4A_{0,1} & A_{0,1} \\
-    11A_{1,0} & -4A_{1,0} & 11A_{1,1}  & A_{1,1} \\
-    A_{1,0} & -A_{1,0} & A_{1,1} & 11A_{1,1} \\
-\end{bmatrix}.
+A^{(1,k+1)} = \begin{bmatrix*}[r]
+    11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+    11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
+    11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
+\end{bmatrix*}.
 $$
 
-Construct $A(m)$ by starting with $k=2$ and recursing until $k=m$. 
+Construct $A^{(1,m)}$ by starting with $k=2$ and recursing until $k=m$. 
 
 \end{definition}
 
 \begin{thm}
 \label{thm: messy mosaics}
-The number of mosaics of size $(m,n)$ that \textit{do not} contain a knot is the $(0,0)$ entry of $A(m)^n$.
+The number of mosaics of size $(m,n)$ that \textit{do not} contain a knot is the $(0,0)$ entry of $(A^{(1,m)})^n$.
 \end{thm}
 
 \section{Preliminaries}
@@ -1386,14 +1385,7 @@ This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$
 
 If we let $v_{(i,j)} := p_{(i,j)}u_{(i,j)},$ and similarly define
 
-$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)},$$
-
-Proposition \ref{prop:neg prod prop} allows us to rewrite the term in the sum of Equation \ref{eq:ugly inc excl} to
-
-\begin{equation}
-    (-1)^{K(\ell)}U(\ell) = V(\ell) = \prod_{\text{Cell }(i,j) \in \ell} p_{(i,j)}u_{(i,j)} \text{ $\forall \ell$}.
-    \label{eq:term fix}
-\end{equation}
+$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)}.$$
 
 We summarize the values of $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
 
@@ -1425,18 +1417,18 @@ We summarize the values of $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
     \end{center}
 \end{table}
 
-Equation \ref{eq:term fix} allows us to simplify Equation \ref{eq:ugly inc excl} to
+We can then simplify Equation \ref{eq:ugly inc excl} to
 
 \begin{equation}
-    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}} \prod_{\text{Cell }(i,j) \in \ell} v_{(i,j)}.
+    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}}(-1)^{K(\ell)}U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}V(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}} \prod_{\text{Cell }(i,j) \in \ell} v_{(i,j)}.
 \label{eq:technically correct}
 \end{equation}
 
-$s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
+Following other work in mosaic systems, $s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-This argument generally follows the proof in \cite{Oh2014}.
+This argument is an adaptation of the proof in \cite{Oh2014} for binary lattices.
 
 Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p+1$ by $q+1$ vertices, in which only the left and right boundary vertices must be labeled $0$, and all other vertices can be labeled $0$ or $1$. Also let $\hat{\mathbb{L}}^{(p,q)}$ be the set of all binary sub-lattices of size $(p,q)$. We choose a similar indexing convention for binary sub-lattices as individual cells, in which we, ignoring the first and last $0$, read the bottom row and the top row as two binary numbers $(i,j)$ respectively. For example, Figure \ref{fig:binary sub lattice example} is a binary sub-lattice of size $(2,4)$ with index $(011,100)$.
 
@@ -1477,23 +1469,23 @@ Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p
 \label{fig:binary sub lattice example}
 \end{figure}
 
-As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$.
+Note that for $p>1$, this index does not uniquely define the binary sub-lattice.
 
-We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A_{i,j})$ where element 
+As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$. We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A_{i,j})$ where element 
 
-$$A_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}).$$
+$$A_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}) = s_{p,q}.$$
 
-Here we $A_{i,j}$ is the entry in the $i$-th row read top-to-bottom, and in the $j$-th column read left-to-right. As binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ are just binary lattices, we have for a state matrix $A^{(p,q)}$ that 
+Here $A_{i,j}$ is the entry in the $i$-th row of the matrix, read top-to-bottom, and in the $j$-th column of the matrix read left-to-right. As the binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ are just the binary lattices $\mathbb{L}^{(p,q)}$, we have for a state matrix $A^{(p,q)}$ that 
 
 $$A_{0,0} = \sum_{\ell \in \mathbb{L}^{(p,q)}}V(\ell).$$
 
-Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A^{(p,q)}$.
+Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A^{(p,q)}$.  
 
 \begin{prop}
 For the set $\hat{\mathbb{L}}^{(1,q)}$ the associated state matrix $A^{(1,q)}$ can be computed by first defining $A^{(1,2)} = \begin{bmatrix}
-11^2 & 1 \\
--1 & 1
-\end{bmatrix}$. We recursively define $A^{(1,q)} \in \mathbb{N}^{2^{q} \times 2^{q}}$ given $A^{(1,q-1)}$. Begin by writing
+11^2 & -1 \\
+1 & 1
+\end{bmatrix}$. We recursively define $A^{(1,q)} \in \mathbb{Z}^{2^{q} \times 2^{q}}$ given $A^{(1,q-1)}$. Begin by writing
 $
 A^{(1,k)} = \begin{bmatrix}
 A_{[0,0]} & A_{[0,1]} \\
@@ -1503,10 +1495,10 @@ $, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-
 
 $$
 A^{(1,k+1)} = \begin{bmatrix*}[r]
-    11A_{[0,0]} & 11^{-1}A_{[0,0]} & 11A_{[0,1]} & A_{[0,1]} \\
-    -11^{-1}A_{[0,0]} & 11^{-1}A_{[0,0]} & 4A_{[0,1]} & A_{[0,1]} \\
-    11A_{[1,0]} & -4A_{[1,0]} & 11A_{[1,1]}  & A_{[1,1]} \\
-    A_{[1,0]} & -A_{[1,0]} & A_{[1,1]} & 11A_{[1,1]} \\
+    11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+    11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
+    11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
 \end{bmatrix*}.
 $$
 
@@ -1515,9 +1507,343 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
 \end{prop}
 
 \begin{proof}
-    \textbf{TODO}
+    We use induction on $q$. We can immediately calculate the entries of $A^{(1,2)}$ by listing all size $(1,2)$ binary sub-lattices, then using Equation \ref{eq:technically correct}. 
 
-    We use induction on $q$. We can immediately calculate $A^{(1,2)}$ by computing the values of $V$ for each $(1,2)$ sub-lattice. 
+    \begin{center}
+        \begin{tikzpicture}
+            % row1
+            \cell{0}{0}{1}{1}
+            \cell{1}{0}{2}{1}
+
+            \cell{3}{0}{4}{1}
+            \cell{4}{0}{5}{1}
+            % row1
+            \cell{0}{2}{1}{3}
+            \cell{1}{2}{2}{3}
+
+            \cell{3}{2}{4}{3}
+            \cell{4}{2}{5}{3}
+
+            % row 1
+            \( \lablvertex{0}{0}{$0$} \)
+            \( \lablvertex{1}{0}{$1$} \)
+            \( \lablvertex{2}{0}{$0$} \)
+            
+            \( \lablvertex{0}{1}{$0$} \)
+            \( \lablvertex{1}{1}{$0$} \)
+            \( \lablvertex{2}{1}{$0$} \)
+            
+            \( \lablvertex{0}{2}{$0$} \)
+            \( \lablvertex{1}{2}{$0$} \)
+            \( \lablvertex{2}{2}{$0$} \)
+            
+            \( \lablvertex{0}{3}{$0$} \)
+            \( \lablvertex{1}{3}{$0$} \)
+            \( \lablvertex{2}{3}{$0$} \)
+            % row 2
+            \( \lablvertex{3}{0}{$0$} \)
+            \( \lablvertex{4}{0}{$1$} \)
+            \( \lablvertex{5}{0}{$0$} \)
+            
+            \( \lablvertex{3}{1}{$0$} \)
+            \( \lablvertex{4}{1}{$1$} \)
+            \( \lablvertex{5}{1}{$0$} \)
+            
+            \( \lablvertex{3}{2}{$0$} \)
+            \( \lablvertex{4}{2}{$0$} \)
+            \( \lablvertex{5}{2}{$0$} \)
+            
+            \( \lablvertex{3}{3}{$0$} \)
+            \( \lablvertex{4}{3}{$1$} \)
+            \( \lablvertex{5}{3}{$0$} \)
+
+            % % arrow
+            % \( \lablnode{5.75}{1.5}{$\pmb{\to}$} \)
+            % % % matrix
+            % \( \lablnode{10}{1.5}{$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(01,00)}v_{(10,00)} \\ v_{(00,01)}v_{(00,10)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 11^2 & -1 \\ 1 & 1 \end{bmatrix}$} \)
+        \end{tikzpicture}
+    \end{center}
+
+    Above gives
+
+    $$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(01,00)}v_{(10,00)} \\ v_{(00,01)}v_{(00,10)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 11^2 & -1 \\ 1 & 1 \end{bmatrix}.$$
+
+    We then assume that the statement for $A^{(1,k)}$ is true up to $k$. Within $A^{(1,k)}$, consider all the size $(1,k)$ binary sub-lattices counted in the entries of the upper left $2^{k-1} \times 2^{k-1}$ block matrix, which we denote $A_{[0,0]}$. By construction, all of these binary sub-lattices have indexes of the form $(0,\dots, 0\dots)$, in which both indexes begin with a $0$. Similarly, the upper right $2^{k-1} \times 2^{k-1}$ block matrix $A_{[0,1]}$ counts all binary sub-lattices with indexes like $(0,\dots, 1\dots)$, and so on. 
+
+    We then append one of each of the four cells in Figure \ref{fig:four appending cells} to the left of every size $(1,k)$ binary sub-lattices, such that the former left boundary $0$s are replaced.
+
+    \begin{figure}[h!]
+        \begin{center}
+            \begin{tikzpicture}
+                % row1
+                \cell{0}{-0.5}{1}{0.5}
+                \cell{2}{-0.5}{3}{0.5}
+                % row2
+                \cell{0}{2}{1}{3}
+                \cell{2}{2}{3}{3}
+                % label for row 1
+                \( \lablvertex{0}{-0.5}{$0$} \)
+                \( \lablvertex{1}{-0.5}{$1$} \)
+                \( \lablvertex{2}{-0.5}{$0$} \)
+                \( \lablvertex{3}{-0.5}{$1$} \)
+                % label for row 2
+                \( \lablvertex{0}{0.5}{$0$} \)
+                \( \lablvertex{1}{0.5}{$0$} \)
+                \( \lablvertex{2}{0.5}{$0$} \)
+                \( \lablvertex{3}{0.5}{$1$} \)
+                % label for row 3
+                \( \lablvertex{0}{2}{$0$} \)
+                \( \lablvertex{1}{2}{$0$} \)
+                \( \lablvertex{2}{2}{$0$} \)
+                \( \lablvertex{3}{2}{$0$} \)
+                % label for row 4
+                \( \lablvertex{0}{3}{$0$} \)
+                \( \lablvertex{1}{3}{$0$} \)
+                \( \lablvertex{2}{3}{$0$} \)
+                \( \lablvertex{3}{3}{$1$} \)
+                % numbers row 1
+                \( \lablnode{0.5}{-1.1}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+                \( \lablnode{2.5}{-1.1}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+                % numbers row 2
+                \( \lablnode{0.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
+                \( \lablnode{2.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
+            \end{tikzpicture}
+        \end{center}
+        \caption{Appending cells}
+        \label{fig:four appending cells}
+    \end{figure}
+
+    An example of appending cell $(00,01)$ to the size $(1,3)$ binary sub-lattice $(01,10)$ is shown below.
+
+    \begin{center}
+        \begin{tikzpicture}
+            % row1
+            \cell{-1}{0}{0}{1}
+
+            \( \lablnode{0.5}{0.5}{$\pmb{+}$} \)
+
+            \cell{1}{0}{2}{1}
+            \cell{2}{0}{3}{1}
+            \cell{3}{0}{4}{1}
+
+            \( \lablnode{4.5}{0.5}{$\pmb{\to}$} \)
+
+            \cell{5}{0}{6}{1}
+            \cell{6}{0}{7}{1}
+            \cell{7}{0}{8}{1}
+            \cell{8}{0}{9}{1}
+
+            % row 1
+            \( \lablvertex{-1}{0}{$0$} \)
+            \( \lablvertex{0}{0}{$1$} \)
+
+            \( \lablvertex{1}{0}{$0$} \)
+            \( \lablvertex{2}{0}{$0$} \)
+            \( \lablvertex{3}{0}{$1$} \)
+            \( \lablvertex{4}{0}{$0$} \)
+
+            \( \lablvertex{5}{0}{$0$} \)
+            \( \lablvertex{6}{0}{$1$} \)
+            \( \lablvertex{7}{0}{$0$} \)
+            \( \lablvertex{8}{0}{$1$} \)
+            \( \lablvertex{9}{0}{$0$} \)
+
+            % row 2
+            \( \lablvertex{-1}{1}{$0$} \)
+            \( \lablvertex{0}{1}{$0$} \)
+
+            \( \lablvertex{1}{1}{$0$} \)
+            \( \lablvertex{2}{1}{$1$} \)
+            \( \lablvertex{3}{1}{$0$} \)
+            \( \lablvertex{4}{1}{$0$} \)
+
+            \( \lablvertex{5}{1}{$0$} \)
+            \( \lablvertex{6}{1}{$0$} \)
+            \( \lablvertex{7}{1}{$1$} \)
+            \( \lablvertex{8}{1}{$0$} \)
+            \( \lablvertex{9}{1}{$0$} \)
+
+        \end{tikzpicture}
+    \end{center}
+    
+    This creates the size $(1,k+1)$ binary sub-lattice $(101,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the $(00,01)$ cell into cells $(01,00)$ and $(10,01)$. 
+
+    By construction, as every binary sub-lattice counted in the block matrix $A_{[0,1]}$ has an index of the form $(0\dots,1\dots)$, the entries in $A_{[0,1]}$ are all divisible by $v_{00,01}$. Therefore, the size $(1,k+1)$ binary sub-lattices with index of the form $(10\dots,01\dots)$ are counted by $(v_{01,00}v_{10,01}/v_{00,01})A_{[0,1]}$. 
+    
+    Performing the appending operation each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^(1,k)$.
+
+    \begin{center}
+        \begin{tikzpicture}
+            % row1
+            \cell{0}{0}{1}{1}
+            \cell{1}{0}{2}{1}
+            \( \lablvertex{0}{0}{$0$} \)
+            \( \lablvertex{1}{0}{$1$} \)
+            \( \lablvertex{2}{0}{$1$} \)
+            \( \lablvertex{0}{1}{$0$} \)
+            \( \lablvertex{1}{1}{$0$} \)
+            \( \lablvertex{2}{1}{$0$} \)
+            
+            \cell{3}{0}{4}{1}
+            \cell{4}{0}{5}{1}
+            \( \lablvertex{3}{0}{$0$} \)
+            \( \lablvertex{4}{0}{$1$} \)
+            \( \lablvertex{5}{0}{$1$} \)
+            \( \lablvertex{3}{1}{$0$} \)
+            \( \lablvertex{4}{1}{$0$} \)
+            \( \lablvertex{5}{1}{$1$} \)
+
+            \cell{6}{0}{7}{1}
+            \cell{7}{0}{8}{1}
+            \( \lablvertex{6}{0}{$0$} \)
+            \( \lablvertex{7}{0}{$1$} \)
+            \( \lablvertex{8}{0}{$1$} \)
+            \( \lablvertex{6}{1}{$0$} \)
+            \( \lablvertex{7}{1}{$1$} \)
+            \( \lablvertex{8}{1}{$0$} \)
+
+            \cell{9}{0}{10}{1}
+            \cell{10}{0}{11}{1}
+            \( \lablvertex{9}{0}{$0$} \)
+            \( \lablvertex{10}{0}{$1$} \)
+            \( \lablvertex{11}{0}{$1$} \)
+            \( \lablvertex{9}{1}{$0$} \)
+            \( \lablvertex{10}{1}{$1$} \)
+            \( \lablvertex{11}{1}{$1$} \)
+
+            % row2
+            \cell{0}{2}{1}{3}
+            \cell{1}{2}{2}{3}
+            \( \lablvertex{0}{2}{$0$} \)
+            \( \lablvertex{1}{2}{$1$} \)
+            \( \lablvertex{2}{2}{$0$} \)
+            \( \lablvertex{0}{3}{$0$} \)
+            \( \lablvertex{1}{3}{$0$} \)
+            \( \lablvertex{2}{3}{$0$} \)
+            
+            \cell{3}{2}{4}{3}
+            \cell{4}{2}{5}{3}
+            \( \lablvertex{3}{2}{$0$} \)
+            \( \lablvertex{4}{2}{$1$} \)
+            \( \lablvertex{5}{2}{$0$} \)
+            \( \lablvertex{3}{3}{$0$} \)
+            \( \lablvertex{4}{3}{$0$} \)
+            \( \lablvertex{5}{3}{$1$} \)
+
+            \cell{6}{2}{7}{3}
+            \cell{7}{2}{8}{3}
+            \( \lablvertex{6}{2}{$0$} \)
+            \( \lablvertex{7}{2}{$1$} \)
+            \( \lablvertex{8}{2}{$0$} \)
+            \( \lablvertex{6}{3}{$0$} \)
+            \( \lablvertex{7}{3}{$1$} \)
+            \( \lablvertex{8}{3}{$0$} \)
+
+            \cell{9}{2}{10}{3}
+            \cell{10}{2}{11}{3}
+            \( \lablvertex{9}{2}{$0$} \)
+            \( \lablvertex{10}{2}{$1$} \)
+            \( \lablvertex{11}{2}{$0$} \)
+            \( \lablvertex{9}{3}{$0$} \)
+            \( \lablvertex{10}{3}{$1$} \)
+            \( \lablvertex{11}{3}{$1$} \)
+
+            % row3
+            \cell{0}{4}{1}{5}
+            \cell{1}{4}{2}{5}
+            \( \lablvertex{0}{4}{$0$} \)
+            \( \lablvertex{1}{4}{$0$} \)
+            \( \lablvertex{2}{4}{$1$} \)
+            \( \lablvertex{0}{5}{$0$} \)
+            \( \lablvertex{1}{5}{$0$} \)
+            \( \lablvertex{2}{5}{$0$} \)
+            
+            \cell{3}{4}{4}{5}
+            \cell{4}{4}{5}{5}
+            \( \lablvertex{3}{4}{$0$} \)
+            \( \lablvertex{4}{4}{$0$} \)
+            \( \lablvertex{5}{4}{$1$} \)
+            \( \lablvertex{3}{5}{$0$} \)
+            \( \lablvertex{4}{5}{$0$} \)
+            \( \lablvertex{5}{5}{$1$} \)
+
+            \cell{6}{4}{7}{5}
+            \cell{7}{4}{8}{5}
+            \( \lablvertex{6}{4}{$0$} \)
+            \( \lablvertex{7}{4}{$0$} \)
+            \( \lablvertex{8}{4}{$1$} \)
+            \( \lablvertex{6}{5}{$0$} \)
+            \( \lablvertex{7}{5}{$1$} \)
+            \( \lablvertex{8}{5}{$0$} \)
+
+            \cell{9}{4}{10}{5}
+            \cell{10}{4}{11}{5}
+            \( \lablvertex{9}{4}{$0$} \)
+            \( \lablvertex{10}{4}{$0$} \)
+            \( \lablvertex{11}{4}{$1$} \)
+            \( \lablvertex{9}{5}{$0$} \)
+            \( \lablvertex{10}{5}{$1$} \)
+            \( \lablvertex{11}{5}{$1$} \)
+
+            % row4
+            \cell{0}{6}{1}{7}
+            \cell{1}{6}{2}{7}
+            \( \lablvertex{0}{6}{$0$} \)
+            \( \lablvertex{1}{6}{$0$} \)
+            \( \lablvertex{2}{6}{$0$} \)
+            \( \lablvertex{0}{7}{$0$} \)
+            \( \lablvertex{1}{7}{$0$} \)
+            \( \lablvertex{2}{7}{$0$} \)
+            
+            \cell{3}{6}{4}{7}
+            \cell{4}{6}{5}{7}
+            \( \lablvertex{3}{6}{$0$} \)
+            \( \lablvertex{4}{6}{$0$} \)
+            \( \lablvertex{5}{6}{$0$} \)
+            \( \lablvertex{3}{7}{$0$} \)
+            \( \lablvertex{4}{7}{$0$} \)
+            \( \lablvertex{5}{7}{$1$} \)
+
+            \cell{6}{6}{7}{7}
+            \cell{7}{6}{8}{7}
+            \( \lablvertex{6}{6}{$0$} \)
+            \( \lablvertex{7}{6}{$0$} \)
+            \( \lablvertex{8}{6}{$0$} \)
+            \( \lablvertex{6}{7}{$0$} \)
+            \( \lablvertex{7}{7}{$1$} \)
+            \( \lablvertex{8}{7}{$0$} \)
+
+            \cell{9}{6}{10}{7}
+            \cell{10}{6}{11}{7}
+            \( \lablvertex{9}{6}{$0$} \)
+            \( \lablvertex{10}{6}{$0$} \)
+            \( \lablvertex{11}{6}{$0$} \)
+            \( \lablvertex{9}{7}{$0$} \)
+            \( \lablvertex{10}{7}{$1$} \)
+            \( \lablvertex{11}{7}{$1$} \)
+        \end{tikzpicture}
+    \end{center}
+
+    The associated appending equations for the $v_{i,j}$ values are then
+
+    \begin{align*}
+        \frac{v_{(00,00)}v_{(00,00)}}{v_{(00,00)}} = & 11 & \frac{v_{(00,00)}v_{(00,01)}}{v_{(00,01)}} = & 11 & \frac{v_{(00,01)}v_{(00,10)}}{v_{(00,00)}} = & 11^{-1} & \frac{v_{(00,01)}v_{(00,11)}}{v_{(00,01)}} = & 1 \\
+        \frac{v_{(00,00)}v_{(01,00)}}{v_{(01,00)}} = & 11 & \frac{v_{(00,00)}v_{(01,01)}}{v_{(01,01)}} = & 11 & \frac{v_{(00,01)}v_{(01,10)}}{v_{(01,00)}} = & -4 & \frac{v_{(00,01)}v_{(01,11)}}{v_{(01,01)}} = & 1 \\
+        \frac{v_{(01,00)}v_{(10,00)}}{v_{(00,00)}} = & -11^{-1} & \frac{v_{(01,00)}v_{(10,01)}}{v_{(00,01)}} = & 4 & \frac{v_{(01,01)}v_{(10,10)}}{v_{(00,00)}} = & 11^{-1} & \frac{v_{(01,01)}v_{(10,11)}}{v_{(00,01)}} = & 1 \\
+        \frac{v_{(01,00)}v_{(11,00)}}{v_{(01,00)}} = & 1 & \frac{v_{(01,00)}v_{(11,01)}}{v_{(01,01)}} = & 1 & \frac{v_{(01,01)}v_{(11,10)}}{v_{(01,00)}} = & -1 & \frac{v_{(01,01)}v_{(11,11)}}{v_{(01,01)}} = & 11 \\
+    \end{align*}
+    
+    We can then determine that
+    
+    $$
+    A^{(1,k+1)} = \begin{bmatrix*}[r]
+        11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+        11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
+        11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
+        A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
+    \end{bmatrix*}.
+    $$
+
 \end{proof}
 
 \begin{prop}
@@ -1526,14 +1852,106 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
 \end{prop}
 
 \begin{proof}
-    \textbf{TODO}
-    
-    We use induction on $p$. 
+    We use induction on $p$, and assume $A^{(k,q)} = (A^{(1,q)})^k$. Therefore, $A^{(k,q)}_{i,j}$ 
+
+    $$A^{(k,q)}_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell})$$
+
+    for $\hat{\ell}$ of size $(k,q)$ and index $(i,j)$. Notice that we can build all binary sub-lattices of size $(k+1,q)$ with index $(i,j)$ by adjoining a size $(1,q)$ binary sub-lattice of index $(i,s)$ and a size $(k,q)$ binary sub-lattice of index $(s,j)$. For example, Figure \ref{fig:appending a row} adjoins a size $(2,3)$ binary sub-lattice with index $(10,01)$ to a size $(1,3)$ binary sub-lattice with index $(01,11)$.
+
+    \begin{figure}[h!]
+        \begin{center}
+            \begin{tikzpicture}
+                % row 1
+                \cell{0}{0}{1}{1}
+                \cell{1}{0}{2}{1}
+                \cell{2}{0}{3}{1}
+                % row 2
+                \cell{0}{1}{1}{2}
+                \cell{1}{1}{2}{2}
+                \cell{2}{1}{3}{2}
+                % row 3
+                \cell{0}{3}{1}{4}
+                \cell{1}{3}{2}{4}
+                \cell{2}{3}{3}{4}
+
+                \( \lablvertex{0}{0}{$0$} \)
+                \( \lablvertex{1}{0}{$1$} \)
+                \( \lablvertex{2}{0}{$0$} \)
+                \( \lablvertex{3}{0}{$0$} \)
+
+                \( \lablvertex{0}{1}{$0$} \)
+                \( \lablvertex{1}{1}{$0$} \)
+                \( \lablvertex{2}{1}{$0$} \)
+                \( \lablvertex{3}{1}{$0$} \)
+
+                \( \lablvertex{0}{2}{$0$} \)
+                \( \lablvertex{1}{2}{$0$} \)
+                \( \lablvertex{2}{2}{$1$} \)
+                \( \lablvertex{3}{2}{$0$} \)
+
+                \( \lablnode{1.5}{2.5}{$\pmb{+}$} \)
+
+                \( \lablvertex{0}{3}{$0$} \)
+                \( \lablvertex{1}{3}{$0$} \)
+                \( \lablvertex{2}{3}{$1$} \)
+                \( \lablvertex{3}{3}{$0$} \)
+
+                \( \lablvertex{0}{4}{$0$} \)
+                \( \lablvertex{1}{4}{$1$} \)
+                \( \lablvertex{2}{4}{$1$} \)
+                \( \lablvertex{3}{4}{$0$} \)
+
+                \( \lablnode{4}{1.5}{$\pmb{\to}$} \)
+
+                % row 1
+                \cell{5}{0}{6}{1}
+                \cell{6}{0}{7}{1}
+                \cell{7}{0}{8}{1}
+                % row 2
+                \cell{5}{1}{6}{2}
+                \cell{6}{1}{7}{2}
+                \cell{7}{1}{8}{2}
+                % row 3
+                \cell{5}{2}{6}{3}
+                \cell{6}{2}{7}{3}
+                \cell{7}{2}{8}{3}
+
+                \( \lablvertex{5}{0}{$0$} \)
+                \( \lablvertex{6}{0}{$1$} \)
+                \( \lablvertex{7}{0}{$0$} \)
+                \( \lablvertex{8}{0}{$0$} \)
+
+                \( \lablvertex{5}{1}{$0$} \)
+                \( \lablvertex{6}{1}{$0$} \)
+                \( \lablvertex{7}{1}{$0$} \)
+                \( \lablvertex{8}{1}{$0$} \)
+
+                \( \lablvertex{5}{2}{$0$} \)
+                \( \lablvertex{6}{2}{$0$} \)
+                \( \lablvertex{7}{2}{$1$} \)
+                \( \lablvertex{8}{2}{$0$} \)
+                
+                \( \lablvertex{5}{3}{$0$} \)
+                \( \lablvertex{6}{3}{$1$} \)
+                \( \lablvertex{7}{3}{$1$} \)
+                \( \lablvertex{8}{3}{$0$} \)
+            \end{tikzpicture}
+        \end{center}
+        \caption{Adjoins a size $(1,3)$ binary sub-lattice to a size $(2,3)$ sub-lattice}
+        \label{fig:appending a row}
+    \end{figure}
+
+    This operation amounts to
+
+    $$A_{i,j}^{(k+1,q)} = \sum_{s=1}^{2^{q}}A_{i,s}^{(k,q)} A_{s,j}^{(1,q)},$$
+
+    which gives 
+
+    $$A^{(k+1,q)} = A^{(k,q)}A^{(1,q)} = (A^{(1,q)})^{k+1}.$$
+
 \end{proof}
 
-\textbf{TODO}
-
-
+This state matrix recursion method, as explored in \cite{Oh2016, Oh2019, Choi2024, Oh2018Aztec, Oh2019tiling} is extremely versatile in various combinatorial questions. We highlight the most obvious extensions 
 
 \section{Extensions}
 \label{section: Extensions}
@@ -1547,20 +1965,20 @@ Hong and Oh \cite{Hong2018} study the mosaic system with the tile set $\mathbb{T
     $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
 \end{thm}
 
-Though not stated in Hong and Oh \cite{Hong2018}, $p_{m,n}$ is exactly enumerated by Theorem \ref{thm:Oh2014} by replacing the $4$ in the definition of $O_{k+1}$ with a $0$.The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}. 
+The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}. Though not stated in Hong and Oh \cite{Hong2018}, $p_{m,n}$ is exactly enumerated by Theorem \ref{thm:Oh2014} by replacing the $4$ in the definition of $O_{k+1}$ with a $0$. 
 
-\textbf{TODO}
+We can achieve similar enumerations results to Theorem \ref{thm: messy mosaics} when considering messy polygon mosaics with $\mathbb{T}^*$, simply by assigning $v_{10,01}=v_{01,10}=0$.
 
 \section{Acknowledgements}
 
 The authors would like to thank Michael Maltenfort for the edits, improvements and ideas for this paper. 
 
-\newpage
+% \newpage
 
 \printbibliography
 
-\section{Appendix}
+% \section{Appendix}
 
-\textbf{TODO}
+% \textbf{TODO}
 
 \end{document}
