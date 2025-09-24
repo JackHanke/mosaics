@@ -142,7 +142,7 @@
     % \and
     \textbf{Richard Schank}\\
     }
-\title{\textbf{Enumeration of Messy Knot Mosaics}}
+\title{\textbf{Enumeration of Messy Polygon Mosaics}}
 % \date{\today}
 
 \begin{document}
@@ -151,15 +151,16 @@
 \begin{center}
 
     \begin{abstract}
-        Lomonaco and Kauffman introduced a system of mosaics to model quantum knots. These systems of mosaics are composed of an $m \times n$ rectangular grid of $11$ possible tiles. Oh and colleagues introduced a state matrix recursion method to exactly enumerate a subset of these mosaics that have the property of being suitably connected, which they call knot mosaics. We introduce and enumerate mosaics with the related property in which only some tiles must be suitably connected, which we call messy knot mosaics.
+        Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ matrix is constructed from a selection of $7$ distinct tiles. These matrices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that have the property of being suitably connected, which they call polygon mosaics. We introduce and enumerate mosaics with the related property in which only some tiles must be suitably connected, which we call messy polygon mosaics.
     \end{abstract}
 
 \end{center}
 
 \section{Introduction}
 
-Lomonaco and Kauffman \cite{Lomonaco08} introduced a model for quantum knots in which an $m \times n$ matrix is constructed using $11$ distinct symbols called \textit{tiles}. These tiles, diagrammed below, are composed of unit squares with dotted lines connecting $2$ or $4$ sides at their midpoint.
+Hong and Oh \cite{Hong2018} introduced a model for multiple ring polymers in which an $m \times n$ matrix is constructed using $7$ distinct symbols callet \textit{tiles}. These tiles, diagrammed in Figure \ref{fig:tile set}, are composed of unit squares with dotted lines connecting $2$ sides at their midpoint, as well as the ``blank" tile $T_0$.
 
+\begin{figure}[h!]
 \begin{center}
     \begin{tikzpicture}
         \cell{0}{0}{1}{1}
@@ -176,18 +177,22 @@ Lomonaco and Kauffman \cite{Lomonaco08} introduced a model for quantum knots in 
         \( \lablnode{8}{-0.5}{$T_5$} \) 
         \cellF{9}{0}{10}{1}
         \( \lablnode{9.5}{-0.5}{$T_6$} \) 
-        \cellG{10.5}{0}{11.5}{1}
-        \( \lablnode{11}{-0.5}{$T_7$} \) 
-        \cellH{12}{0}{13}{1}
-        \( \lablnode{12.5}{-0.5}{$T_8$} \) 
-        \cellI{13.5}{0}{14.5}{1}
-        \( \lablnode{14}{-0.5}{$T_{9}$} \) 
-        \cellJ{15}{0}{16}{1}
-        \( \lablnode{15.5}{-0.5}{$T_{10}$} \) 
+        % \cellG{10.5}{0}{11.5}{1}
+        % \( \lablnode{11}{-0.5}{$T_7$} \) 
+        % \cellH{12}{0}{13}{1}
+        % \( \lablnode{12.5}{-0.5}{$T_8$} \) 
+        % \cellI{13.5}{0}{14.5}{1}
+        % \( \lablnode{14}{-0.5}{$T_{9}$} \) 
+        % \cellJ{15}{0}{16}{1}
+        % \( \lablnode{15.5}{-0.5}{$T_{10}$} \) 
     \end{tikzpicture}
 \end{center}
+\caption{The tile set $\mathbb{T}$}
+\label{fig:tile set}
+\end{figure}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic} of size $(m,n)$ is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example mosaic of size $(5,7)$. We denote the set of all mosaics of size $(m,n)$ as $\mathbb{M}^{(m,n)}$. As there are $11$ elements in $\mathbb{T}$, there are $11^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. A \textit{mosaic system} is then a subset of $\mathbb{M}^{(m,n)}$ with some property. 
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \textit{mosaic} is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example $(5,7)$ mosaic. We denote the set of all $(m,n)$ mosaics as $\mathbb{M}^{(m,n)}$. As there are $7$ elements in $\mathbb{T}$, there are $7^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. 
+% A \textit{mosaic system} is then a subset of $\mathbb{M}^{(m,n)}$ with some property. 
 
 \begin{figure}[h!]
     \begin{center}
@@ -197,7 +202,7 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic
         \cellA{0}{0}{1}{1}
         \cellB{1}{0}{2}{1}
         \cellF{2}{0}{3}{1}
-        \cellH{3}{0}{4}{1}
+        \cellC{3}{0}{4}{1}
         \cellC{4}{0}{5}{1}
         \cell{5}{0}{6}{1}
         \cellD{6}{0}{7}{1}
@@ -212,19 +217,19 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic
         % row3
         \cellA{0}{2}{1}{3}
         \cellB{1}{2}{2}{3}
-        \cellJ{2}{2}{3}{3}
+        \cellA{2}{2}{3}{3}
         \cellB{3}{2}{4}{3}
         \cellA{4}{2}{5}{3}
         \cell{5}{2}{6}{3}
-        \cellJ{6}{2}{7}{3}
+        \cellB{6}{2}{7}{3}
         % row4
-        \cellF{0}{3}{1}{4}
-        \cellI{1}{3}{2}{4}
+        \cellC{0}{3}{1}{4}
+        \cellD{1}{3}{2}{4}
         \cell{2}{3}{3}{4}
         \cell{3}{3}{4}{4}
         \cellE{4}{3}{5}{4}
         \cellD{5}{3}{6}{4}
-        \cellG{6}{3}{7}{4}
+        \cellE{6}{3}{7}{4}
         % row5
         \cellA{0}{4}{1}{5}
         \cellD{1}{4}{2}{5}
@@ -243,16 +248,16 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
-        \cellCf{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
+        \cell{1}{0}{2}{1}
+        \cell{2}{0}{3}{1}
         \cellCf{3}{0}{4}{1}
         \cellEf{4}{0}{5}{1}
         \cellEf{5}{0}{6}{1}
         \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cellBf{1}{1}{2}{2}
-        \cellIf{2}{1}{3}{2}
+        \cell{1}{1}{2}{2}
+        \cellCf{2}{1}{3}{2}
         \cellAf{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
         \cellDf{5}{1}{6}{2}
@@ -282,8 +287,8 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic
         \cellEf{5}{4}{6}{5}
         \cellAf{6}{4}{7}{5}
     \end{tikzpicture}
-    \caption{A knot mosaic}
-    \label{fig:example knot mosaic}
+    \caption{A polygon mosaic}
+    \label{fig:example polygon mosaic}
 \end{subfigure}
 
 \end{center}
@@ -291,15 +296,61 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{10}\}$. A \textit{mosaic
 \label{fig:example mosaics}
 \end{figure}
 
-We are interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint.
+The authors in \cite{Hong2018} are interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the outer edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint. The authors call these \textit{polygon mosaics} because, other than the mosaic consisting of all $T_0$ tiles, the dotted lines form \textit{polygons}.
 
-Lomonaco and Kauffman \cite{Lomonaco08} call these \textit{knot mosaics} because, other than the mosaic consisting of all $T_0$ tiles, the dotted lines form  \textit{knots}. Following the notation in \cite{Oh2014} we denote the subset of mosaics of size $(m,n)$ that are knot mosaics as $\mathbb{K}^{(m,n)}$. Figure \ref{fig:example knot mosaic} shows a knot mosaic of size $(5,7)$ that contains $3$ knots, with the tiles that make up the knots highlighted in gray. Note that a mosaic can contain knots isomorphic to the unknot, as well as knots that encompass other knots. 
+\begin{definition}
+    A \textit{polygon} $\mathcal{P}$ in a mosaic $\mathcal{M}$ is a non-empty subset of tiles in $\mathcal{M}$ such that if all cells in $\mathcal{P}^c$ are removed from $\mathcal{M}$, all remaining edges shared by $2$ tiles have $2$ dotted lines drawn from the midpoint, and all other edges have $0$ dotted lines drawn from their midpoint.\footnote{Polygons are more commonly refered to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}
+\end{definition}
 
-Let $k_{m,n} = |\mathbb{K}^{(m,n)}|$ be the number of knot mosaics of size $(m,n)$. First notice that if either $m$ or $n$ is $1$, one can only construct a knot mosaic using $T_0$ tiles, so $k_{m,1} = k_{1,n} = 1.$ Oh et al. \cite{Oh2014} showed the following for $m,n \geq 2$.
+\begin{exmp}
+Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that contains $3$ polygons, with the background of the tiles that make up the polygons highlighted in gray. Note that a mosaic can contain polygons that surround other polygons, such as in Figure \ref{fig:example polygon mosaic}. 
+
+\begin{figure}[h!]
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellC{3}{0}{4}{1}
+        \cellE{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellC{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellF{6}{1}{7}{2}
+        % row3
+        \cellF{2}{2}{3}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellB{2}{3}{3}{4}
+        \cellE{3}{3}{4}{4}
+        \cellD{4}{3}{5}{4}
+        \cellF{6}{3}{7}{4}
+        % row5
+        \cellB{4}{4}{5}{5}
+        \cellE{5}{4}{6}{5}
+        \cellA{6}{4}{7}{5}
+    \end{tikzpicture}
+\caption{The largest polygon in Figure \ref{fig:example polygon mosaic}}
+\label{fig: example polygon}
+\end{center}
+\end{figure}
+\end{exmp}
+
+Using the notation conventions in \cite{Oh2014}, we denote the subset of $(m,n)$ mosaics that are polygon mosaics\footnote{The array of values of $\mathbb{P}^{(m,n)}$ is sequence A181245 on the OEIS \cite[OEIS]{oeis}.} as $\mathbb{P}^{(m,n)}$.
+
+\begin{thm}[\cite{Hong2018}]
+    \label{thm:Hong2018}
+    The number of polygon $(m,n)$ mosaics $|\mathbb{P}^{(m,n)}|$ is bounded by
+    $$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq |\mathbb{P}^{(m,n)}| \leq 2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+\end{thm}
+
+We refer to the $(m,n)$ mosaic composed of all $T_0$ tiles as $\mathcal{M}^*$. This work differs in the definition of a polygon mosaic from \cite{Hong2018}, as we \textit{do} consider $\mathcal{M}^*$ a polygon mosaic. \cite{Hong2018} points out that Theorem \ref{thm:Hong2018} holds irrespective of this choice.
+
+In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors call mosaics constructed from this tile set that are suitably connected \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics.
 
 \begin{thm}[\cite{Oh2014}]
     \label{thm:Oh2014}
-    The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $k_{m,n} = 2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
+    The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
     $$ X_{k+1} = \begin{bmatrix}
         X_k & O_k \\
@@ -311,18 +362,18 @@ Let $k_{m,n} = |\mathbb{K}^{(m,n)}|$ be the number of knot mosaics of size $(m,n
         X_k & 4O_k
     \end{bmatrix}, $$
     
-    for $k=0,1,\dots,m-3$, and $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
+    for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
-Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics $\delta = \lim_{n \to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy knot mosaics}.
+Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics $\delta = \lim_{n \to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy polygon mosaics} using the tiles set $\mathbb{T}$ from \cite{Hong2018}, and which we enumerate with state matrices as in \cite{Oh2014}.
 
-\section{Messy Knot Mosaics}\label{section:messy mosaics}
+\section{Messy Polygon Mosaics}\label{section:messy mosaics}
 
 \begin{definition}
-    A \textit{messy knot mosaic} is a mosaic that contains at least one knot. 
+    A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon, or is $\mathcal{M}^*$. 
 \end{definition}
 
-Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of size $(5,7)$ that contains $3$ knots\footnote{Certain permutations of $\{T_1, T_2, T_3, T_4\}$ and $\{T_7,T_8\}$ can make shapes that appear to be knots but have hanging connections, as seen in the $(0,4)$ position in the right example in Figure \ref{fig:messy mosaic example}. These are not considered knots by this paper and all referenced works.}, with the tiles that make up the knots highlighted in gray. All knot mosaics are messy knot mosaics.
+Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)$ mosaics that contain $3$ polygons. In both examples, we highlight the background of the tiles that make up each polygon in gray.
 
 \begin{figure}[h!]
     \begin{center}
@@ -331,23 +382,23 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of
     \begin{tikzpicture}
        % row1
         \cellA{0}{0}{1}{1}
-        \cellCf{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
+        \cellC{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
         \cellCf{3}{0}{4}{1}
         \cellEf{4}{0}{5}{1}
         \cellEf{5}{0}{6}{1}
         \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cellBf{1}{1}{2}{2}
-        \cellIf{2}{1}{3}{2}
+        \cellB{1}{1}{2}{2}
+        \cellCf{2}{1}{3}{2}
         \cellAf{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
         \cellDf{5}{1}{6}{2}
         \cellFf{6}{1}{7}{2}
         % row3
-        \cellH{0}{2}{1}{3}
-        \cellI{1}{2}{2}{3}
+        \cellB{0}{2}{1}{3}
+        \cellE{1}{2}{2}{3}
         \cellFf{2}{2}{3}{3}
         \cellF{3}{2}{4}{3}
         \cellBf{4}{2}{5}{3}
@@ -364,7 +415,7 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of
         % row5
         \cellBf{0}{4}{1}{5}
         \cellAf{1}{4}{2}{5}
-        \cellG{2}{4}{3}{5}
+        \cellF{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
         \cellBf{4}{4}{5}{5}
         \cellEf{5}{4}{6}{5}
@@ -394,7 +445,7 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of
         % row3
         \cellCf{0}{2}{1}{3}
         \cellDf{1}{2}{2}{3}
-        \cellH{2}{2}{3}{3}
+        \cell{2}{2}{3}{3}
         \cellA{3}{2}{4}{3}
         \cellA{4}{2}{5}{3}
         \cellBf{5}{2}{6}{3}
@@ -405,27 +456,27 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy knot mosaic of
         \cell{2}{3}{3}{4}
         \cellC{3}{3}{4}{4}
         \cellC{4}{3}{5}{4}
-        \cellH{5}{3}{6}{4}
-        \cellI{6}{3}{7}{4}
+        \cell{5}{3}{6}{4}
+        \cell{6}{3}{7}{4}
         % row5
         \cellF{0}{4}{1}{5}
         \cellD{1}{4}{2}{5}
-        \cellG{2}{4}{3}{5}
+        \cell{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
         \cellB{4}{4}{5}{5}
-        \cellG{5}{4}{6}{5}
-        \cell{6}{4}{7}{5}
+        \cell{5}{4}{6}{5}
+        \cellA{6}{4}{7}{5}
     \end{tikzpicture}
 \end{subfigure}
 
 \end{center}
-\caption{Messy knot mosaics}
+\caption{Messy polygon mosaics}
 \label{fig:messy mosaic example}
 \end{figure}
 
-It turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a knot. Therefore, let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a knot, and let $|\mathbb{S}^{(m,n)}| = s_{m,n}$. Clearly the number of messy knot mosaics is then $11^{mn} - s_{m,n}$.
+The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a polygon. Clearly the number of messy polygon mosaics is then $7^{mn} - |\mathbb{S}^{(m,n)}|$.
 
-From the fact that the smallest knot is made of four tiles, shown in Figure \ref{fig:smallest knot}, we can then conclude that $s_{n,1}=11^n$, and $s_{2,2} = 11^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy knot mosaics.
+From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $s_{n,1}=7^n$, and $s_{2,2} = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
 
 \begin{figure}[h!]
     \begin{center}
@@ -438,14 +489,14 @@ From the fact that the smallest knot is made of four tiles, shown in Figure \ref
         \cellA{1}{1}{2}{2}
     \end{tikzpicture}
     \end{center}
-    \caption{The smallest knot}
-    \label{fig:smallest knot}
+    \caption{The smallest polygon}
+    \label{fig:smallest polygon}
 \end{figure}
 
 \begin{definition}
 
 Define $A^{(1,2)} = \begin{bmatrix}
-11^2 & -1 \\
+7^2 & -1 \\
 1 & 1
 \end{bmatrix}$. We recursively define $A^{(1,k+1)} \in \mathbb{Z}^{2^{k} \times 2^{k}}$ given $A^{(1,k)}$. Begin by writing
 $
@@ -453,24 +504,22 @@ A^{(1,k)} = \begin{bmatrix}
 A_{[0,0]} & A_{[0,1]} \\
 A_{[1,0]} & A_{[1,1]}
 \end{bmatrix}
-$, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
+$, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then define
 
 $$
 A^{(1,k+1)} = \begin{bmatrix*}[r]
-    11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-    11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
-    11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
+    7A_{[0,0]} & 7A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+    7A_{[1,0]} & 7A_{[1,1]} & 0A_{[1,0]} & A_{[1,1]} \\
+    -7^{-1}A_{[0,0]} & 0A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 7A_{[1,1]} \\
 \end{bmatrix*}.
 $$
-
-Construct $A^{(1,m)}$ by starting with $k=2$ and recursing until $k=m$. 
 
 \end{definition}
 
 \begin{thm}
 \label{thm: messy mosaics}
-The number of mosaics of size $(m,n)$ that \textit{do not} contain a knot is the $(0,0)$ entry of $(A^{(1,m)})^n$.
+$|\mathbb{S}^{(m,n)}|$ is the $(0,0)$ entry of $(A^{(1,m)})^n$.
 \end{thm}
 
 \section{Preliminaries}
@@ -479,31 +528,27 @@ We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to a \textit{bin
 
 \begin{definition}
 
-$f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of knots (including $0$ knots), label it $0$. If the vertex is surrounded by an odd number of knots, label it $1$. Removing the red dotted lines from the tiles gives the binary lattice. 
+$f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the binary lattice. 
     
 \end{definition}
 
-Similarly, define the \textit{preimage} of a set $L$ under $f$ to be
-
-$$f^{-1}(L) = \{m \in \mathbb{M}^{(m,n)} | f(m) \in L\}.$$
-
-We want to compute $s_{m,n}$ by computing $f^{-1}(\{\ell\})$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We begin by finding a simple way to compute $f^{-1}(\ell)$ for a binary lattice $\ell$ by examining the structure of $\ell$.
+We want to compute $|\mathbb{S}^{(m,n)}|$ by computing the preimage $f^{-1}(\{\ell\})$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We do this by examining individual \textit{cells} of the binary lattice.
 
 \begin{figure}
 \begin{center}
     \begin{tikzpicture}
         % row1
         \cell{0}{0}{1}{1}
-        \cellC{1}{0}{2}{1}
-        \cellD{2}{0}{3}{1}
+        \cell{1}{0}{2}{1}
+        \cell{2}{0}{3}{1}
         \cellC{3}{0}{4}{1}
         \cellE{4}{0}{5}{1}
         \cellE{5}{0}{6}{1}
         \cellD{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cellB{1}{1}{2}{2}
-        \cellI{2}{1}{3}{2}
+        \cell{1}{1}{2}{2}
+        \cellC{2}{1}{3}{2}
         \cellA{3}{1}{4}{2}
         \cellC{4}{1}{5}{2}
         \cellD{5}{1}{6}{2}
@@ -544,7 +589,7 @@ We want to compute $s_{m,n}$ by computing $f^{-1}(\{\ell\})$ for each $\ell \in 
         % label for row1
         \( \lablvertex{0}{1}{$0$} \)
         \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{2}{1}{$0$} \)
         \( \lablvertex{3}{1}{$0$} \)
         \( \lablvertex{4}{1}{$1$} \)
         \( \lablvertex{5}{1}{$1$} \)
@@ -644,7 +689,7 @@ We want to compute $s_{m,n}$ by computing $f^{-1}(\{\ell\})$ for each $\ell \in 
         % label for row1
         \( \lablvertex{8}{1}{$0$} \)
         \( \lablvertex{9}{1}{$0$} \)
-        \( \lablvertex{10}{1}{$1$} \)
+        \( \lablvertex{10}{1}{$0$} \)
         \( \lablvertex{11}{1}{$0$} \)
         \( \lablvertex{12}{1}{$1$} \)
         \( \lablvertex{13}{1}{$1$} \)
@@ -694,10 +739,29 @@ We want to compute $s_{m,n}$ by computing $f^{-1}(\{\ell\})$ for each $\ell \in 
 \end{figure}
 
 \begin{definition}
-    Let a \textit{cell} be the portion of the binary lattice that an individual tile maps to, and let $C$ be the set of unique cells. 
+    Let a \textit{cell} be the unit square and $4$ labelled vertices that a given tile maps to, and let $C$ be the set of unique cells. 
 \end{definition}
 
-For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. Below is a diagram of all $2^4$ cells with their indexes listed below.
+\begin{exmp}
+\label{exmp: tile to cell}
+Applying $f$ to the mosaic In Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell diagrammed below.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cellB{0}{0}{1}{1}
+        
+        \( \lablnode{1.5}{0.5}{$\pmb{\to}$} \)
+        \cell{2}{0}{3}{1}
+        
+        \( \lablvertex{2}{0}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{3}{1}{$0$} \)
+    \end{tikzpicture}
+\end{center}
+\end{exmp}
+
+For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. The cell in Example \ref{exmp: tile to cell} has index $(01,00)$. Below is a diagram of all $2^4$ cells with their indexes listed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -814,7 +878,7 @@ For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cel
     \end{tikzpicture}
 \end{center}
 
-Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a knot in certain ways. For example, $u_{(00, 01)} = 1$, as cell $(00,01)$ can only be formed by a mosaic with $T_3$ in that location. We can see that $u_{(01,10)}=4$, as cell $(01,10)$ can be from the $T_7,T_8,T_9$, or $T_{10}$ tiles. Finally, we have $u_{(00,00)}=11$, as any tile can fail to contribute to forming a knot. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
+Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as cell $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
 
 \begin{table}[h!]
     \begin{center}
@@ -822,21 +886,21 @@ Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell
             \hline
             \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & \textbf{Preimage} & $\mathbf{u_{(i,j)}}$ & \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & \textbf{Preimage} & $\mathbf{u_{(i,j)}}$ \\ 
             \hline
-            $(00, 00)$ & $\mathbb{T}$ & $11$ & $(10, 00)$ & $T_1$ & $1$ \\
+            $(00, 00)$ & $\mathbb{T}$ & $7$ & $(11, 11)$ & $\mathbb{T}$ & $7$ \\
             \hline
-            $(00, 01)$ & $T_3$ & $1$ & $(10, 01)$ & $T_{7},T_{8},T_{9},T_{10}$ & $4$ \\
+            $(00, 01)$ & $\{T_3\}$ & $1$ & $(11, 10)$ & $\{T_3\}$ & $1$ \\
             \hline
-            $(00, 10)$ & $T_4$ & $1$ & $(10, 10)$ & $T_6$ & $1$ \\
+            $(00, 10)$ & $\{T_4\}$ & $1$ & $(11, 01)$ & $\{T_4\}$ & $1$ \\
             \hline
-            $(00, 11)$ & $T_5$ & $1$ & $(10, 11)$ & $T_2$ & $1$ \\
+            $(00, 11)$ & $\{T_5\}$ & $1$ & $(11, 00)$ & $\{T_5\}$ & $1$ \\
             \hline
-            $(01, 00)$ & $T_2$ & $1$ & $(11, 00)$ & $T_5$ & $1$ \\
+            $(01, 00)$ & $\{T_2\}$ & $1$ & $(10, 11)$ & $\{T_2\}$ & $1$ \\
             \hline
-            $(01, 01)$ & $T_6$ & $1$ & $(11, 01)$ & $T_4$ & $1$ \\
+            $(01, 01)$ & $\{T_6\}$ & $1$ & $(10, 10)$ & $\{T_6\}$ & $1$ \\
             \hline
-            $(01, 10)$ & $T_{7},T_{8},T_{9},T_{10}$ & $4$ & $(11, 10)$ & $T_1$ & $1$ \\
+            $(01, 10)$ & $\{\}$ & $0$ & $(10, 01)$ & $\{\}$ & $0$ \\
             \hline
-            $(01, 11)$ & $T_1$ & $1$ & $(11, 11)$ & $\mathbb{T}$ & $11$ \\
+            $(01, 11)$ & $\{T_1\}$ & $1$ & $(10, 00)$ & $\{T_1\}$ & $1$ \\
             \hline
         \end{tabular}
         \caption{Preimages of each unique cell}
@@ -849,12 +913,11 @@ However, for some binary lattice $\ell$ the quantity
 \begin{equation}
     U(\ell) := \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)}
 \end{equation}
-
-is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
+is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. Therefore, there is not a simple way to compute $f^{-1}(\{\ell\})$ for a binary lattice $\ell$ just by examining the structure of $\ell$.
 
 \begin{exmp}
 
-Consider the following binary lattices for $s_{4,2}$. 
+Consider the following binary lattices and mosaics for $m=4,n=2$. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -869,7 +932,7 @@ Consider the following binary lattices for $s_{4,2}$.
         \cell{-2}{2}{-1}{3}
         \cell{-2}{3}{-1}{4}
 
-        \( \lablnode{-2}{-1}{$U(\ell_{1}) = 11^4$} \)
+        \( \lablnode{-2}{-1}{$\ell_{1}$} \)
 
         \( \lablvertex{-3}{0}{$0$} \)
         \( \lablvertex{-2}{0}{$0$} \)
@@ -901,7 +964,7 @@ Consider the following binary lattices for $s_{4,2}$.
         \cell{1}{2}{2}{3}
         \cell{1}{3}{2}{4}
 
-        \( \lablnode{1}{-1}{$U(\ell_{2}) =11^4$} \)
+        \( \lablnode{1}{-1}{$\ell_{2}$} \)
         
         \( \lablvertex{0}{0}{$0$} \)
         \( \lablvertex{1}{0}{$0$} \)
@@ -933,7 +996,7 @@ Consider the following binary lattices for $s_{4,2}$.
         \cell{4}{2}{5}{3}
         \cell{4}{3}{5}{4}
 
-        \( \lablnode{4}{-1}{$U(\ell_{3}) = 11^0$} \)
+        \( \lablnode{4}{-1}{$\ell_{3}$} \)
 
         \( \lablvertex{3}{0}{$0$} \)
         \( \lablvertex{4}{0}{$0$} \)
@@ -986,32 +1049,46 @@ Consider the following binary lattices for $s_{4,2}$.
     \end{tikzpicture}
 \end{center}
 
-$U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $11$ possible cells, though $1$ of those $11^4$ permutations contains a new knot. 
+We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $7$ possible cells, though $1$ of the $7^4$ permutations contains a new polygon. 
 
 \label{exmp:U doesnt work}
 \end{exmp}
 
 \begin{definition}
-    A knot is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the knot.
+    A polygon is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the polygon.
 \end{definition}
 
 \begin{exmp}
-    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the knot in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the knot in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both knots in Mosaic $2$.
+    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the polygon in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both polygons in Mosaic $2$.
 \label{exmp:specifying example}
 \end{exmp}
 
+We next point out how specified mosaics arise in binary lattices.
+
 \begin{definition}
-    Let $K: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of knots specified in $\ell$.
+    A subset of vertices $X$ in a binary lattice $\ell$ is said to be \textit{connected} if all vertices are the same value, and for any pair of vertices $x_1, x_2 \in X$ there exists a path between $x_1$ and $x_2$ of unit vertical, and horizontal moves so that all of vertices in the path are in $X$. 
+\end{definition}
+
+In a binary lattice, a specified polygon corresponds with a set of connected $0$ or $1$ vertices, that if $0$ are not connected to the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where the $3$ polygons correspond with $3$ connected regions, excluding the region that is connected to the boundary. 
+
+\begin{definition}
+    Let $P: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of polygons specified in $\ell$.
 \end{definition}
 
 \begin{exmp}
-    From Example \ref{exmp:U doesnt work}, $K(\ell_1) =1$, $K(\ell_2) =1$,  and $K(\ell_3) =2$.
+    From Example \ref{exmp:U doesnt work}, $P(\ell_1) =1$, $P(\ell_2) =1$,  and $P(\ell_3) =2$.
 
-\label{exmp:counting knots}
+\label{exmp:counting polygons}
 \end{exmp}
 
 \begin{definition}
-For a binary lattice $\ell$, let $\mathbb{U}(\ell)$ be the set of binary lattices whose preimage mosaics under $f$ are counted by $U(\ell)$. A binary lattice $\ell'$ is in $\mathbb{U}(\ell)$ if one can replace either some number of $(00,00)$ or $(11,11)$ cells in $\ell$ with other cells in $C$ to create $\ell'$. This corresponds with specifying new knots in the mosaics in the preimage of $\ell$ while leaving all knots specified by $\ell$ unchanged. 
+For a binary lattice $\ell$, let $\mathbb{U}(\ell)$ be the set of binary lattices whose preimage mosaics under $f$ are counted by $U(\ell)$. That is, $\mathbb{U}(\ell)$ is the set of binary lattices such that for all $\ell$
+
+\begin{equation}
+    U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')|.
+    \label{eq:U identity}
+\end{equation}
+
 \end{definition}
 
 \begin{exmp}
@@ -1022,28 +1099,22 @@ From Example \ref{exmp:U doesnt work}, $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$
 \label{exmp:four two mosaics}
 \end{exmp}
 
-From the definition of $\mathbb{U}$, we have
-
-\begin{equation}
-    U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')|.
-    \label{eq:U identity}
-\end{equation}
-
-Therefore $s_{m,n} \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell)$, as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. 
+A binary lattice $\ell'$ is in $\mathbb{U}(\ell)$ if one can replace either some number of $(00,00)$ or $(11,11)$ cells in $\ell$ with other cells in $C$ to create $\ell'$. This corresponds with fixing all polygons specified in $\ell$ and then specifying new polygons in the remaining space.
 
 \begin{definition}
     Let $\ell^* \in \mathbb{L}^{(m,n)}$ be the binary lattice made up of all $(00,00)$ cells.
     \label{def:all zeros}
 \end{definition}
 
-$\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, which clearly overcounts $s_{m,n}$. Also note that $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
+The binary lattice $\ell^*$ specifies $0$ polygons and has $U(\ell^*) = 7^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, and$\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$. This immediately gives $|\mathbb{M}^{(m,n)}| \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell)$, as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. 
 
+Surprisingly, we can recover $|\mathbb{S}^{(m,n)}|$ by calculating how much each preimage of $\ell$ is over counted. 
 
 \begin{prop}
     By regrouping terms we have
 
     \begin{equation}
-        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\binom{K(\ell)}{0} + \dots + \binom{K(\ell)}{K(\ell)}\right)|f^{-1}(\ell)|.
+        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\binom{P(\ell)}{0} + \dots + \binom{P(\ell)}{P(\ell)}\right)|f^{-1}(\ell)|.
         \label{eq:double counting terms}
     \end{equation}
 \end{prop}
@@ -1053,16 +1124,16 @@ $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m
 
     $$\bigcup_{\ell \in \mathbb{L}^{(m,n)}} \{\mathbb{U}(\ell)\}.$$
     
-    If $\ell$ has $K(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ knots (ie. $\ell^*$). $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the knots in $\ell$. $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the knots in $\ell$, and so on up to specifying $K(\ell)$ knots. As the number of ways $k \leq K(\ell)$ knots can specify $K(\ell)$ knots are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
+    If $\ell$ has $P(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ polygons (ie. $\ell^*$). $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the polygons in $\ell$. $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the polygons in $\ell$, and so on up to specifying $P(\ell)$ polygons. As the number of ways $p \leq P(\ell)$ polygons can specify $P(\ell)$ polygons are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
 
-    If $\ell = \ell^*$, we have that $K(\ell^*)=0$, so $|f^{-1}(\ell^*)|$ is only counted once. As $\binom{0}{0}=1$, this completes the proof.
+    If $\ell = \ell^*$, we have that $P(\ell^*)=0$, so $|f^{-1}(\ell^*)|$ is only counted once. As $\binom{0}{0}=1$, this completes the proof.
 \end{proof}
 
 \begin{prop}
-    The number of mosaics of size $(m,n)$ that do not contain a knot $s_{m,n}$ has
+    The number of mosaics of size $(m,n)$ that do not contain a polygon $|\mathbb{S}^{(m,n)}|$ has
 
     \begin{equation}
-    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell).
+    |\mathbb{S}^{(m,n)}| = \sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell).
     \label{eq:ugly inc excl}
     \end{equation}
 \end{prop}
@@ -1070,98 +1141,51 @@ $\ell^*$ specifies $0$ knots and has $U(\ell^*) = 11^{mn} = \left|\mathbb{M}^{(m
 \begin{proof}
     By the binomial theorem,
     
-    $$0 = (1-1)^{K(\ell)} = \left(\binom{K(\ell)}{0} - \binom{K(\ell)}{1} + \dots + (-1)^{K(\ell)}\binom{K(\ell)}{K(\ell)}\right),$$
+    $$0 = (1-1)^{P(\ell)} = \left(\binom{P(\ell)}{0} - \binom{P(\ell)}{1} + \dots + (-1)^{P(\ell)}\binom{P(\ell)}{P(\ell)}\right),$$
     
     so if we group terms as in Equation \ref{eq:double counting terms}, we get that all terms where $\ell \neq \ell^*$ are $0$. Therefore, 
     
-    $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{K(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = s_{m,n}.$$
+    $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
 \end{proof}
-
-It is important to note here that a knot that contains tiles $T_7$ or $T_8$ can appear to be two separate knots which we consider as $1$ knot.
-
-\begin{exmp}
-Figure \ref{fig:messy multi knot} shows a mosaic that appears to have $2$ knots, but we only consider as $1$ knot. A rule of thumb that can be followed is if knots that contain $T_7$ or $T_8$ tiles can be replaced by $T_9$ or $T_{10}$ tiles to form a single knot, then the original ``knots" we consider as $1$ knot.
-
-\begin{figure}[h!]
-\begin{center}
-
-\begin{tikzpicture}
-    % row1
-    \cellD{0}{0}{1}{1}
-    \cellCf{1}{0}{2}{1}
-    \cellDf{2}{0}{3}{1}
-    \cellF{3}{0}{4}{1}
-    \cellE{4}{0}{5}{1}
-    \cellG{5}{0}{6}{1}
-    \cellH{6}{0}{7}{1}
-    % row2
-    \cell{0}{1}{1}{2}
-    \cellFf{1}{1}{2}{2}
-    \cellFf{2}{1}{3}{2}
-    \cellA{3}{1}{4}{2}
-    \cellC{4}{1}{5}{2}
-    \cellF{5}{1}{6}{2}
-    \cellE{6}{1}{7}{2}
-    % row3
-    \cellCf{0}{2}{1}{3}
-    \cellHf{1}{2}{2}{3}
-    \cellAf{2}{2}{3}{3}
-    \cellA{3}{2}{4}{3}
-    \cellA{4}{2}{5}{3}
-    \cellB{5}{2}{6}{3}
-    \cellB{6}{2}{7}{3}
-    % row4
-    \cellBf{0}{3}{1}{4}
-    \cellAf{1}{3}{2}{4}
-    \cell{2}{3}{3}{4}
-    \cellC{3}{3}{4}{4}
-    \cellC{4}{3}{5}{4}
-    \cellH{5}{3}{6}{4}
-    \cellI{6}{3}{7}{4}
-    % row5
-    \cellF{0}{4}{1}{5}
-    \cellD{1}{4}{2}{5}
-    \cellG{2}{4}{3}{5}
-    \cell{3}{4}{4}{5}
-    \cellE{4}{4}{5}{5}
-    \cellG{5}{4}{6}{5}
-    \cell{6}{4}{7}{5}
-\end{tikzpicture}
-
-\end{center}
-\caption{A messy knot mosaic with $1$ knot}
-\label{fig:messy multi knot}
-\end{figure}
-
-\end{exmp}
 
 \section{A Cell-Level Identity}
 
-Though Equation \ref{eq:ugly inc excl} does compute $s_{m,n}$, computing the number of knots specified in a binary lattice $K(\ell)$ requires examining the entire, global structure of $\ell$. It will be more efficient to recover the $(-1)^{K(\ell)}$ term at the cell level. The idea is to add a coefficient $p_{(i,j)}$ to each value of $u_{(i,j)}$ so that the $(-1)^{K(\ell)}$ term is recovered.
+Though Equation \ref{eq:ugly inc excl} does compute $|\mathbb{S}^{(m,n)}|$, computing the number of polygons specified in a binary lattice $P(\ell)$ requires examining the entire, global structure of $\ell$. It will be more efficient to recover the $(-1)^{P(\ell)}$ term at the cell level. More concretely, we seek a function $V$ of the form
+
+$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)},$$
+
+such that for all $\ell$
+
+\begin{equation}
+    (-1)^{P(\ell)}U(\ell) = V(\ell).
+\label{eq:technically correct}
+\end{equation}
+
+The idea is to add a coefficient $p_{(i,j)} \in \{-1,1\}$ to each value of $u_{(i,j)}$ so that the $(-1)^{P(\ell)}$ term is recovered. Therefore we define $v_{(i,j)} := p_{(i,j)}u_{(i,j)}$.
 
 \begin{condition}
-    A subset of cells $\mathcal{K}$ in a binary lattice $\ell$ meets this condition if
+    A subset of cells $\mathcal{S}$ in a binary lattice $\ell$ meets this condition if
     
     \begin{equation}
-        \prod_{\text{Cell } (i,j) \in \mathcal{K}} p_{(i,j)} = -1,
-        \label{eq:neg prod knot condition}
+        \prod_{\text{Cell } (i,j) \in \mathcal{S}} p_{(i,j)} = -1,
+        \label{eq:neg prod polygon condition}
     \end{equation}
     with $p_{(i,j)} \in \{-1,1\}$.
     \label{cond:neg prod condition}
 \end{condition}
 
-By the definition of $K(\ell)$, if there exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds only for cells $\mathcal{K}$ that specify a knot, then the $(-1)^{K(\ell)}$ is recovered at the cell level.
+By the definition of $P(\ell)$, if there exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds only for cells $\mathcal{S}$ that specify a polygon, then the $(-1)^{P(\ell)}$ is recovered.
 
 \begin{prop}
-    There exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds for any set of cells that specify a knot.
+    There exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds for any set of cells that specify a polygon.
     \label{prop:neg prod prop}
 \end{prop}
 
 \begin{proof}
 
-We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as cells $(00,00)$ and $(11,11)$ can never be in the collection of cells that specify a knot, and so must be positive.
+We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as cells $(00,00)$ and $(11,11)$ can never be in the collection of cells that specify a polygon, and so must be positive.
 
-For the remaining values of $p_{(i,j)}$, we examine the cells that map to the smallest knot, shown in Figure \ref{fig:smallest knot}. 
+For the remaining values of $p_{(i,j)}$, we first examine the cells that map to the smallest polygon, shown in Figure \ref{fig:smallest polygon}. 
 
 \begin{figure}[h!]
 \begin{center}
@@ -1209,7 +1233,7 @@ For the remaining values of $p_{(i,j)}$, we examine the cells that map to the sm
     % \( \lablnode{8}{-0.5}{$p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} = -1$} \)
 \end{tikzpicture}
 \end{center}
-\caption{Portions of binary lattices associated with the smallest knot}
+\caption{Portions of binary lattices associated with the smallest polygon}
 \label{fig:constraints i and ii}
 \end{figure}
 
@@ -1225,15 +1249,7 @@ Condition \ref{cond:neg prod condition} amounts to the following two equations
 
 one for each portion of a binary lattice in Figure \ref{fig:constraints i and ii}. We refer to the equations above as \textit{constraints}, as they constrain the possible assignments of $p_{(i,j)}$. Let the constraints in Equation \ref{eq:constraints i and ii} be numbered $1$ and $2$.
 
-To define the remaining constraints, we next examine how specified knots arise in binary lattices.
-
-\begin{definition}
-    A subset of vertices $X$ in a binary lattice $\ell$ is said to be \textit{connected} if all vertices are the same value, and for any pair of vertices $x_1, x_2 \in X$ there exists a path between $x_1$ and $x_2$ of unit vertical, horizontal, and diagonal moves so that all of vertices in the path are in $X$. 
-\end{definition}
-
-In a binary lattice, a specified knot corresponds with a set of connected $0$ or $1$ vertices, that if $0$ are not connected to the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where the $3$ knots correspond with $3$ edge-and-corner connected regions, excluding the region that is connected to the boundary. 
-
-The idea is, starting with a single vertex labeled $1$, we can construct an arbitrary set of connected vertices labeled $1$ by continually flipping a neighboring $0$s to $1$s. This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex.
+To define the remaining constraints, we start with a single vertex labeled $1$. We can construct an arbitrary set of connected vertices labeled $1$ by continually flipping a neighboring $0$s to $1$s. This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex.
 
 As each cell has its associated $p_{(i,j)}$ value, it must be the case that the bit flip preserves Condition \ref{cond:neg prod condition} for the cells involved. Additionally, as the surrounding $8$ vertices are unchanged, this creates $2^8$ constraints. In each of these constraints, the parity of the number of connected regions of $1$s must either change or stay the same after the bit flip. If the parity remains unchanged, the bit flip is of \textit{Type 1}, and if the parity changes the bit flip is of \textit{Type 2}.
 
@@ -1366,16 +1382,18 @@ As each cell has its associated $p_{(i,j)}$ value, it must be the case that the 
 For a bit flip of \textit{Type 1}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must stay the same after the flip. For example, Figure \ref{fig:type 1 bit flip} represents the constraint
 
 \begin{equation}
-    p_{(00,00)}p_{(00,01)}p_{(00,01)}p_{(01,11)} = p_{(00,01)}p_{(00,11)}p_{(01,01)}p_{(01,11)}.
+    p_{(01,00)}p_{(11,01)}p_{(00,00)}p_{(01,00)} = p_{(01,01)}p_{(11,11)}p_{(01,00)}p_{(11,00)}.
 \end{equation}
 
-For a bit flip of \textit{Type 2}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must change after the flip. For example, Figure \ref{fig:type 2 bit flip} represents the constraint\footnote{In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct knot joining into one knot \textit{or} one knot splitting into two distinct knot. In either case, we want the sign of the product to change.}
+For a bit flip of \textit{Type 2}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must change after the flip. For example, Figure \ref{fig:type 2 bit flip} represents the constraint
 
 \begin{equation}
     p_{(00,10)}p_{(00,01)}p_{(10,00)}p_{(01,00)} = -p_{(00,11)}p_{(00,11)}p_{(11,00)}p_{(11,00)}.
 \end{equation}
 
-This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. We can then use software to verify that all $2^8 +2$ constraints admit a solution.
+In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to change.
+
+This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. We can then use software to verify that all $2^8 + 2$ constraints admit a solution.
 
 % We can then calculate the  Gröbner basis of the system to arrive at
 
@@ -1383,11 +1401,7 @@ This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$
 
 \end{proof}
 
-If we let $v_{(i,j)} := p_{(i,j)}u_{(i,j)},$ and similarly define
-
-$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)}.$$
-
-We summarize the values of $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
+We summarize the values of $p_{(i,j)}$ and $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
 
 \begin{table}[h!]
     \begin{center}
@@ -1395,21 +1409,21 @@ We summarize the values of $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
             \hline
             \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ & \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ \\ 
             \hline
-            $(00, 00)$ & $11$ & $1$ & $11$ & $(10, 00)$ & $1$ & $-1$ & $-1$ \\
+            $(00, 00)$ & $7$ & $1$ & $7$ & $(11, 11)$ & $7$ & $1$ & $7$ \\
             \hline
-            $(00, 01)$ & $1$ & $1$ & $1$ & $(10, 01)$ & $4$ & $1$ & $4$ \\
+            $(00, 01)$ & $1$ & $1$ & $1$ & $(11, 10)$ & $1$ & $-1$ & $-1$ \\
             \hline
-            $(00, 10)$ & $1$ & $1$ & $1$ & $(10, 10)$ & $1$ & $1$ & $1$ \\
+            $(00, 10)$ & $1$ & $1$ & $1$ & $(11, 01)$ & $1$ & $1$ & $1$ \\
             \hline
-            $(00, 11)$ & $1$ & $1$ & $1$ & $(10, 11)$ & $1$ & $1$ & $1$ \\
+            $(00, 11)$ & $1$ & $1$ & $1$ & $(11, 00)$ & $1$ & $1$ & $1$ \\
             \hline
-            $(01, 00)$ & $1$ & $1$ & $1$ & $(11, 00)$ & $1$ & $1$ & $1$ \\
+            $(01, 00)$ & $1$ & $1$ & $1$ & $(10, 11)$ & $1$ & $1$ & $1$ \\
             \hline
-            $(01, 01)$ & $1$ & $1$ & $1$ & $(11, 01)$ & $1$ & $1$ & $1$ \\
+            $(01, 01)$ & $1$ & $1$ & $1$ & $(10, 10)$ & $1$ & $1$ & $1$ \\
             \hline
-            $(01, 10)$ & $4$ & $-1$ & $-4$ & $(11, 10)$ & $1$ & $-1$ & $-1$ \\
+            $(01, 10)$ & $0$ & $-1$ & $0$ & $(10, 01)$ & $0$ & $1$ & $0$ \\
             \hline
-            $(01, 11)$ & $1$ & $1$ & $1$ & $(11, 11)$ & $11$ & $1$ & $11$ \\
+            $(01, 11)$ & $1$ & $1$ & $1$ & $(10, 00)$ & $1$ & $-1$ & $-1$ \\
             \hline
         \end{tabular}
         \caption{Values of $p_{(i,j)}$ and $v_{(i,j)}$}
@@ -1417,14 +1431,7 @@ We summarize the values of $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
     \end{center}
 \end{table}
 
-We can then simplify Equation \ref{eq:ugly inc excl} to
-
-\begin{equation}
-    s_{m,n} = \sum_{\ell \in \mathbb{L}^{(m,n)}}(-1)^{K(\ell)}U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}V(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}} \prod_{\text{Cell }(i,j) \in \ell} v_{(i,j)}.
-\label{eq:technically correct}
-\end{equation}
-
-Following other work in mosaic systems, $s_{m,n}$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
+Following other work in mosaic systems, $|\mathbb{S}^{(m,n)}|$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
@@ -1483,7 +1490,7 @@ Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A
 
 \begin{prop}
 For the set $\hat{\mathbb{L}}^{(1,q)}$ the associated state matrix $A^{(1,q)}$ can be computed by first defining $A^{(1,2)} = \begin{bmatrix}
-11^2 & -1 \\
+7^2 & -1 \\
 1 & 1
 \end{bmatrix}$. We recursively define $A^{(1,q)} \in \mathbb{Z}^{2^{q} \times 2^{q}}$ given $A^{(1,q-1)}$. Begin by writing
 $
@@ -1495,10 +1502,10 @@ $, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-
 
 $$
 A^{(1,k+1)} = \begin{bmatrix*}[r]
-    11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-    11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
-    11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
+    7A_{[0,0]} & 7A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+    7A_{[1,0]} & 7A_{[1,1]} & 0A_{[1,0]} & A_{[1,1]} \\
+    -7^{-1}A_{[0,0]} & 0A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 7A_{[1,1]} \\
 \end{bmatrix*}.
 $$
 
@@ -1566,9 +1573,9 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
 
     Above gives
 
-    $$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(01,00)}v_{(10,00)} \\ v_{(00,01)}v_{(00,10)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 11^2 & -1 \\ 1 & 1 \end{bmatrix}.$$
+    $$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(00,01)}v_{(00,10)} \\ v_{(01,00)}v_{(10,00)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 7^2 & -1 \\ 1 & 1 \end{bmatrix}.$$
 
-    We then assume that the statement for $A^{(1,k)}$ is true up to $k$. Within $A^{(1,k)}$, consider all the size $(1,k)$ binary sub-lattices counted in the entries of the upper left $2^{k-1} \times 2^{k-1}$ block matrix, which we denote $A_{[0,0]}$. By construction, all of these binary sub-lattices have indexes of the form $(0,\dots, 0\dots)$, in which both indexes begin with a $0$. Similarly, the upper right $2^{k-1} \times 2^{k-1}$ block matrix $A_{[0,1]}$ counts all binary sub-lattices with indexes like $(0,\dots, 1\dots)$, and so on. 
+    We then assume that the statement for $A^{(1,k)}$ is true up to $k$. Within $A^{(1,k)}$, consider all the size $(1,k)$ binary sub-lattices counted in the entries of the upper left $2^{k-1} \times 2^{k-1}$ block matrix, which we denote $A_{[0,0]}$. By construction, all of these binary sub-lattices have indexes of the form $(0\dots, 0\dots)$, in which both indexes begin with a $0$. Similarly, the upper right $2^{k-1} \times 2^{k-1}$ block matrix $A_{[0,1]}$ counts all binary sub-lattices with indexes like $(0,\dots, 1\dots)$, and so on. 
 
     We then append one of each of the four cells in Figure \ref{fig:four appending cells} to the left of every size $(1,k)$ binary sub-lattices, such that the former left boundary $0$s are replaced.
 
@@ -1613,7 +1620,7 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
         \label{fig:four appending cells}
     \end{figure}
 
-    An example of appending cell $(00,01)$ to the size $(1,3)$ binary sub-lattice $(01,10)$ is shown below.
+    An example of appending cell $(01,00)$ to the size $(1,3)$ binary sub-lattice $(11,10)$ is shown below.
 
     \begin{center}
         \begin{tikzpicture}
@@ -1638,13 +1645,13 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
             \( \lablvertex{0}{0}{$1$} \)
 
             \( \lablvertex{1}{0}{$0$} \)
-            \( \lablvertex{2}{0}{$0$} \)
+            \( \lablvertex{2}{0}{$1$} \)
             \( \lablvertex{3}{0}{$1$} \)
             \( \lablvertex{4}{0}{$0$} \)
 
             \( \lablvertex{5}{0}{$0$} \)
             \( \lablvertex{6}{0}{$1$} \)
-            \( \lablvertex{7}{0}{$0$} \)
+            \( \lablvertex{7}{0}{$1$} \)
             \( \lablvertex{8}{0}{$1$} \)
             \( \lablvertex{9}{0}{$0$} \)
 
@@ -1666,11 +1673,11 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
         \end{tikzpicture}
     \end{center}
     
-    This creates the size $(1,k+1)$ binary sub-lattice $(101,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the $(00,01)$ cell into cells $(01,00)$ and $(10,01)$. 
+    This creates the size $(1,k+1)$ binary sub-lattice $(111,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the $(01,01)$ cell into cells $(01,00)$ and $(11,01)$. 
 
-    By construction, as every binary sub-lattice counted in the block matrix $A_{[0,1]}$ has an index of the form $(0\dots,1\dots)$, the entries in $A_{[0,1]}$ are all divisible by $v_{00,01}$. Therefore, the size $(1,k+1)$ binary sub-lattices with index of the form $(10\dots,01\dots)$ are counted by $(v_{01,00}v_{10,01}/v_{00,01})A_{[0,1]}$. 
+    By construction, as every binary sub-lattice counted in the block matrix $A_{[1,1]}$ has an index of the form $(1\dots,1\dots)$, the entries in $A_{[1,1]}$ are all divisible by $v_{01,01}$. Therefore, the size $(1,k+1)$ binary sub-lattices with index of the form $(11\dots,01\dots)$ are counted by $(v_{01,00}v_{11,01}/v_{01,01})A_{[1,1]}$.
     
-    Performing the appending operation each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^(1,k)$.
+    Performing the appending operation each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^{(1,k)}$.
 
     \begin{center}
         \begin{tikzpicture}
@@ -1827,20 +1834,20 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
     The associated appending equations for the $v_{i,j}$ values are then
 
     \begin{align*}
-        \frac{v_{(00,00)}v_{(00,00)}}{v_{(00,00)}} = & 11 & \frac{v_{(00,00)}v_{(00,01)}}{v_{(00,01)}} = & 11 & \frac{v_{(00,01)}v_{(00,10)}}{v_{(00,00)}} = & 11^{-1} & \frac{v_{(00,01)}v_{(00,11)}}{v_{(00,01)}} = & 1 \\
-        \frac{v_{(00,00)}v_{(01,00)}}{v_{(01,00)}} = & 11 & \frac{v_{(00,00)}v_{(01,01)}}{v_{(01,01)}} = & 11 & \frac{v_{(00,01)}v_{(01,10)}}{v_{(01,00)}} = & -4 & \frac{v_{(00,01)}v_{(01,11)}}{v_{(01,01)}} = & 1 \\
-        \frac{v_{(01,00)}v_{(10,00)}}{v_{(00,00)}} = & -11^{-1} & \frac{v_{(01,00)}v_{(10,01)}}{v_{(00,01)}} = & 4 & \frac{v_{(01,01)}v_{(10,10)}}{v_{(00,00)}} = & 11^{-1} & \frac{v_{(01,01)}v_{(10,11)}}{v_{(00,01)}} = & 1 \\
-        \frac{v_{(01,00)}v_{(11,00)}}{v_{(01,00)}} = & 1 & \frac{v_{(01,00)}v_{(11,01)}}{v_{(01,01)}} = & 1 & \frac{v_{(01,01)}v_{(11,10)}}{v_{(01,00)}} = & -1 & \frac{v_{(01,01)}v_{(11,11)}}{v_{(01,01)}} = & 11 \\
+        \frac{v_{(00,00)}v_{(00,00)}}{v_{(00,00)}} = & 7 & \frac{v_{(00,00)}v_{(00,01)}}{v_{(00,01)}} = & 7 & \frac{v_{(00,01)}v_{(00,10)}}{v_{(00,00)}} = & 7^{-1} & \frac{v_{(00,01)}v_{(00,11)}}{v_{(00,01)}} = & 1 \\
+        \frac{v_{(00,00)}v_{(01,00)}}{v_{(01,00)}} = & 7 & \frac{v_{(00,00)}v_{(01,01)}}{v_{(01,01)}} = & 7 & \frac{v_{(00,01)}v_{(01,10)}}{v_{(01,00)}} = & 0 & \frac{v_{(00,01)}v_{(01,11)}}{v_{(01,01)}} = & 1 \\
+        \frac{v_{(01,00)}v_{(10,00)}}{v_{(00,00)}} = & -7^{-1} & \frac{v_{(01,00)}v_{(10,01)}}{v_{(00,01)}} = & 0 & \frac{v_{(01,01)}v_{(10,10)}}{v_{(00,00)}} = & 7^{-1} & \frac{v_{(01,01)}v_{(10,11)}}{v_{(00,01)}} = & 1 \\
+        \frac{v_{(01,00)}v_{(11,00)}}{v_{(01,00)}} = & 1 & \frac{v_{(01,00)}v_{(11,01)}}{v_{(01,01)}} = & 1 & \frac{v_{(01,01)}v_{(11,10)}}{v_{(01,00)}} = & -1 & \frac{v_{(01,01)}v_{(11,11)}}{v_{(01,01)}} = & 7 \\
     \end{align*}
     
-    We can then determine that
+    We can then determine
     
     $$
     A^{(1,k+1)} = \begin{bmatrix*}[r]
-        11A_{[0,0]} & 11A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-        11A_{[1,0]} & 11A_{[1,1]} & -4A_{[1,0]} & A_{[1,1]} \\
-        11^{-1}A_{[0,0]} & 4A_{[0,1]} & 11^{-1}A_{[0,0]} & A_{[0,1]} \\
-        A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 11A_{[1,1]} \\
+        7A_{[0,0]} & 7A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+        7A_{[1,0]} & 7A_{[1,1]} & 0A_{[1,0]} & A_{[1,1]} \\
+        -7^{-1}A_{[0,0]} & 0A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
+        A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 7A_{[1,1]} \\
     \end{bmatrix*}.
     $$
 
@@ -1950,24 +1957,6 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
     $$A^{(k+1,q)} = A^{(k,q)}A^{(1,q)} = (A^{(1,q)})^{k+1}.$$
 
 \end{proof}
-
-This state matrix recursion method, as explored in \cite{Oh2016, Oh2019, Choi2024, Oh2018Aztec, Oh2019tiling} is extremely versatile in various combinatorial questions. We highlight the most obvious extensions 
-
-\section{Extensions}
-\label{section: Extensions}
-
-Hong and Oh \cite{Hong2018} study the mosaic system with the tile set $\mathbb{T}^* = \{T_0, \dots,T_7\}$. This tile set constructs shapes we call \textit{polygons}\footnote{Polygons are more commonly called "self-avoiding polygons" in the literature to emphasize their relationship with self-avoiding walks.}. If we let $p_{m,n}$ be the number of polygon mosaics of size $(m,n)$, Hong and Oh showed the following results\footnote{The authors did not consider the mosaic containing all $T_0$ tiles a polygon mosaic, and so define $p_{m,n}$ as one less than what we define.}. 
-
-\begin{thm}[\cite{Hong2018}]
-    \label{thm:Hong2018}
-    The number of polygon mosaics of size $(m,n)$ $p_{m,n}$ for $m,n \geq 2$ has
-
-    $$2^{m+n-3} \left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq p_{m,n} \leq 2^{m+n-3} \left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
-\end{thm}
-
-The array $p_{n,m}$ is A181245 on the OEIS \cite[OEIS]{oeis}. Though not stated in Hong and Oh \cite{Hong2018}, $p_{m,n}$ is exactly enumerated by Theorem \ref{thm:Oh2014} by replacing the $4$ in the definition of $O_{k+1}$ with a $0$. 
-
-We can achieve similar enumerations results to Theorem \ref{thm: messy mosaics} when considering messy polygon mosaics with $\mathbb{T}^*$, simply by assigning $v_{10,01}=v_{01,10}=0$.
 
 \section{Acknowledgements}
 
