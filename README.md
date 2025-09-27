@@ -59,3 +59,12 @@ Additionally, the journals these papers are published in are as follows:
 0. 1. 2. and 3. are published in [Quantum Information Processing](https://link.springer.com/journal/11128)
 4. is published in [Reviews in Mathematical Physics](https://worldscientific.com/worldscinet/rmp)
 5. is published in [Canadian Mathematical Bulletin](https://www.cambridge.org/core/journals/canadian-mathematical-bulletin)
+
+
+
+###
+
+I've come a long way from failing math in middle school. I am happy to say that my math paper, Enumeration of Messy Polygon Mosaics, has been published in the x Journal. I would like to help my 
+
+
+

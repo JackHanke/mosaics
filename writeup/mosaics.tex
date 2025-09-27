@@ -344,7 +344,7 @@ Using the notation conventions in \cite{Oh2014}, we denote the subset of $(m,n)$
     $$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq |\mathbb{P}^{(m,n)}| \leq 2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
 \end{thm}
 
-We refer to the $(m,n)$ mosaic composed of all $T_0$ tiles as $\mathcal{M}^*$. This work differs in the definition of a polygon mosaic from \cite{Hong2018}, as we \textit{do} consider $\mathcal{M}^*$ a polygon mosaic. \cite{Hong2018} points out that Theorem \ref{thm:Hong2018} holds irrespective of this choice.
+This work follows \cite{Hong2018}, in that we do not consider the mosaic composed of all $T_0$ tiles a polygon mosaic, even though it is suitably connected. The authors \cite{Hong2018} point out Theorem \ref{thm:Hong2018} holds irrespective of this choice.
 
 In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors call mosaics constructed from this tile set that are suitably connected \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics.
 
@@ -365,12 +365,12 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
     for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
-Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics $\delta = \lim_{n \to \infty} k_{n,n}^{\frac{1}{n^2}}$ \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy polygon mosaics} using the tiles set $\mathbb{T}$ from \cite{Hong2018}, and which we enumerate with state matrices as in \cite{Oh2014}.
+Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy polygon mosaics} using the tiles set $\mathbb{T}$ from \cite{Hong2018}, and enumerate them with state matrices as in \cite{Oh2014}.
 
 \section{Messy Polygon Mosaics}\label{section:messy mosaics}
 
 \begin{definition}
-    A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon, or is $\mathcal{M}^*$. 
+    A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon. 
 \end{definition}
 
 Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)$ mosaics that contain $3$ polygons. In both examples, we highlight the background of the tiles that make up each polygon in gray.
@@ -474,9 +474,9 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)
 \label{fig:messy mosaic example}
 \end{figure}
 
-The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the set of mosaics that do not contain a polygon. Clearly the number of messy polygon mosaics is then $7^{mn} - |\mathbb{S}^{(m,n)}|$.
+The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the subset of mosaics that do not contain a polygon. Clearly the number of messy polygon mosaics is then $7^{mn} - |\mathbb{S}^{(m,n)}|$.
 
-From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $s_{n,1}=7^n$, and $s_{2,2} = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
+From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $|\mathbb{S}^{(n,1)}|=7^n$, and $|\mathbb{S}^{(2,2)}| = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
 
 \begin{figure}[h!]
     \begin{center}
@@ -531,8 +531,6 @@ We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to a \textit{bin
 $f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the binary lattice. 
     
 \end{definition}
-
-We want to compute $|\mathbb{S}^{(m,n)}|$ by computing the preimage $f^{-1}(\{\ell\})$ for each $\ell \in \mathbb{L}^{(m,n)}$, and then summing over all $\ell$. We do this by examining individual \textit{cells} of the binary lattice.
 
 \begin{figure}
 \begin{center}
@@ -738,13 +736,17 @@ We want to compute $|\mathbb{S}^{(m,n)}|$ by computing the preimage $f^{-1}(\{\e
 \label{fig:example of f mapping}
 \end{figure}
 
+Notice that by the definition of $f$, polygons draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s of the binary lattice. For example, in Figure \ref{fig:example of f mapping}, the three-polygons correspond with the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
+
+To enumerate $|\mathbb{S}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual \textit{cells} in a binary lattice.
+
 \begin{definition}
-    Let a \textit{cell} be the unit square and $4$ labelled vertices that a given tile maps to, and let $C$ be the set of unique cells. 
+Let a \textit{cell} be the unit square and $4$ labeled vertices in a binary lattice that a given tile maps to.
 \end{definition}
 
 \begin{exmp}
 \label{exmp: tile to cell}
-Applying $f$ to the mosaic In Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell diagrammed below.
+Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell diagrammed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -761,7 +763,7 @@ Applying $f$ to the mosaic In Figure \ref{fig:example of f mapping}  results in 
 \end{center}
 \end{exmp}
 
-For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. The cell in Example \ref{exmp: tile to cell} has index $(01,00)$. Below is a diagram of all $2^4$ cells with their indexes listed below.
+Let $C$ be the set of unique cells. For convenience, we give a pair of indexes to each of the $|C| = 2^4$ possible cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. The cell in Example \ref{exmp: tile to cell} has index $(01,00)$. Below is a diagram of all $2^4$ cells with their indexes listed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -878,7 +880,21 @@ For convenience, we give a pair of indexes to each of the $|C| = 2^4$ unique cel
     \end{tikzpicture}
 \end{center}
 
-Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as cell $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
+From the definition of $f$, mosaics that do not contain a polygon all map to the binary lattice of all $(00,00)$ cells.
+
+\begin{definition}
+    Let $\ell^*$ be the binary lattice made up of all $(00,00)$ cells.
+    \label{def:all zeros}
+\end{definition}
+
+Therefore, we have
+
+\begin{equation}
+\label{eq: guiding eq}
+|\mathbb{S}^{(m,n)}| = |f^{-1}(\{\ell^*\})|.
+\end{equation}
+
+Therefore, we need a way to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. We begin by examining the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$, which we denote $u_{(i,j)}$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as cell $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
 
 \begin{table}[h!]
     \begin{center}
@@ -903,7 +919,7 @@ Next let $u_{(i,j)}$ be the number of tiles in $\mathbb{T}$ that can map to cell
             $(01, 11)$ & $\{T_1\}$ & $1$ & $(10, 00)$ & $\{T_1\}$ & $1$ \\
             \hline
         \end{tabular}
-        \caption{Preimages of each unique cell}
+        \caption{Preimages of each unique cell under $f$}
         \label{tbl:Preimage of binary cell lattice}
     \end{center}
 \end{table}
@@ -913,7 +929,12 @@ However, for some binary lattice $\ell$ the quantity
 \begin{equation}
     U(\ell) := \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)}
 \end{equation}
-is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. Therefore, there is not a simple way to compute $f^{-1}(\{\ell\})$ for a binary lattice $\ell$ just by examining the structure of $\ell$.
+is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
+
+\begin{exmp}
+    We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
+\label{eq: U doesnt work l star}
+\end{exmp}
 
 \begin{exmp}
 
@@ -1049,108 +1070,168 @@ Consider the following binary lattices and mosaics for $m=4,n=2$.
     \end{tikzpicture}
 \end{center}
 
-We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $(00,00)$ cells in $\ell_1$ could have come from $7$ possible cells, though $1$ of the $7^4$ permutations contains a new polygon. 
+We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $\ell_1$ could have come from $7$ possible cells, though $1$ of the $7^4$ permutations contains a new polygon. 
 
 \label{exmp:U doesnt work}
 \end{exmp}
 
+Examples \ref{eq: U doesnt work l star} and \ref{exmp:U doesnt work} show we cannot compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$ just by examining the cells of $\ell$. Therefore $U$ counts the number of mosaics that map to some set of binary lattices under $f$. This set is defined in Definition \ref{def: set u}.
+
 \begin{definition}
-    A polygon is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the polygon.
+A polygon is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the polygon.
+\end{definition}
+
+\begin{definition}
+Let $P: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of polygons specified in a binary lattice $\ell$.
 \end{definition}
 
 \begin{exmp}
-    From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the polygon in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both polygons in Mosaic $2$.
+From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the polygon in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both polygons in Mosaic $2$. Therefore $P(\ell_1) = P(\ell_2) = 1$, and $P(\ell_3) = 2$.
 \label{exmp:specifying example}
 \end{exmp}
 
-We next point out how specified mosaics arise in binary lattices.
-
-\begin{definition}
-    A subset of vertices $X$ in a binary lattice $\ell$ is said to be \textit{connected} if all vertices are the same value, and for any pair of vertices $x_1, x_2 \in X$ there exists a path between $x_1$ and $x_2$ of unit vertical, and horizontal moves so that all of vertices in the path are in $X$. 
-\end{definition}
-
-In a binary lattice, a specified polygon corresponds with a set of connected $0$ or $1$ vertices, that if $0$ are not connected to the boundary $0$'s. This is illustrated in Figure \ref{fig:example of f mapping}, where the $3$ polygons correspond with $3$ connected regions, excluding the region that is connected to the boundary. 
-
-\begin{definition}
-    Let $P: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of polygons specified in $\ell$.
-\end{definition}
-
 \begin{exmp}
-    From Example \ref{exmp:U doesnt work}, $P(\ell_1) =1$, $P(\ell_2) =1$,  and $P(\ell_3) =2$.
-
-\label{exmp:counting polygons}
+The binary lattice $\ell^*$ specifies $0$ polygons, and so $P(\ell^*)=0$.
 \end{exmp}
 
+Notice that cells that specify a polygon must have $u_{(i,j)}=1$. 
+
 \begin{definition}
-For a binary lattice $\ell$, let $\mathbb{U}(\ell)$ be the set of binary lattices whose preimage mosaics under $f$ are counted by $U(\ell)$. That is, $\mathbb{U}(\ell)$ is the set of binary lattices such that for all $\ell$
+For binary lattices $\ell, \ell'$, we say $\ell' \leq \ell$ if one can construct $\ell'$ by flipping the parity of some number of vertices (possibly $0$ vertices) in $\ell$, such that all polygons specified by $\ell$ are unchanged and no cells with index $(01,10)$ or $(10,01)$ are created.
+\end{definition}
 
-\begin{equation}
-    U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')|.
-    \label{eq:U identity}
-\end{equation}
-
+\begin{definition}
+For a binary lattice $\ell$, let $\mathbb{U}(\ell) = \{\ell' | \ell' \leq \ell\}$.
+\label{def: set u}
 \end{definition}
 
 \begin{exmp}
-From Example \ref{exmp:U doesnt work}, $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
+From Example \ref{exmp:U doesnt work}, $\ell_3 \leq \ell_1$ as one can construct $\ell_3$ from $\ell_1$ by flipping the vertex at $(3,1)$ from $0$ to $1$. As $\ell_1$ specifies the polygon in the top two rows of Mosaic $2$, and this vertex flip does not change the top polygon, $\ell_3 \leq \ell_1$. We also have $\ell_1 \leq \ell_1$ simply by selecting no vertices to flip. As diagrammed below, constructing $\ell_4$ from $\ell_1$ by flipping the vertex at $(2,1)$ does change a polygon specified by $\ell_1$, and so $\ell_4 \nleq \ell_1$.
 
-% $$\left|f^{-1}(\{\ell_1,\ell_2,\ell_3\})\right| = \left|f^{-1}(\mathbb{U}(\ell_1) \cup \mathbb{U}(\ell_2) \cup \mathbb{U}(\ell_3))\right| = U(\ell_1) + U(\ell_2) - U(\ell_3).$$
+% \begin{figure}[h!]
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cell{0}{0}{1}{1}
+        \cell{0}{1}{1}{2}
+        \cell{0}{2}{1}{3}
+        \cell{0}{3}{1}{4}
+        \cell{1}{0}{2}{1}
+        \cell{1}{1}{2}{2}
+        \cell{1}{2}{2}{3}
+        \cell{1}{3}{2}{4}
+
+        \( \lablnode{1}{-1}{$\ell_{4}$} \)
+
+        \( \lablvertex{0}{0}{$0$} \)
+        \( \lablvertex{1}{0}{$0$} \)
+        \( \lablvertex{2}{0}{$0$} \)
+
+        \( \lablvertex{0}{1}{$0$} \)
+        \( \lablvertex{1}{1}{$0$} \)
+        \( \lablvertex{2}{1}{$0$} \)
+
+        \( \lablvertex{0}{2}{$0$} \)
+        \( \lablvertex{1}{2}{$1$} \)
+        \( \lablvertex{2}{2}{$0$} \)
+
+        \( \lablvertex{0}{3}{$0$} \)
+        \( \lablvertex{1}{3}{$1$} \)
+        \( \lablvertex{2}{3}{$0$} \)
+
+        \( \lablvertex{0}{4}{$0$} \)
+        \( \lablvertex{1}{4}{$0$} \)
+        \( \lablvertex{2}{4}{$0$} \)
+
+        \cellF{3}{0}{4}{1}
+        \cell{4}{0}{5}{1}
+
+        \cellC{3}{1}{4}{2}
+        \cellD{4}{1}{5}{2}
+
+        \cellF{3}{2}{4}{3}
+        \cellF{4}{2}{5}{3}    
+
+        \cellB{3}{3}{4}{4}
+        \cellA{4}{3}{5}{4}    
+
+        \( \lablnode{4}{-1}{Mosaic $3$} \)
+
+    \end{tikzpicture}
+\end{center}
+% \label{fig: ell 4}
+% \caption{}
+% \end{figure}
+
+Therefore $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$. Additionally, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
 
 \label{exmp:four two mosaics}
 \end{exmp}
 
-A binary lattice $\ell'$ is in $\mathbb{U}(\ell)$ if one can replace either some number of $(00,00)$ or $(11,11)$ cells in $\ell$ with other cells in $C$ to create $\ell'$. This corresponds with fixing all polygons specified in $\ell$ and then specifying new polygons in the remaining space.
+\begin{exmp}
+Every binary lattice $\ell$ has $\ell \leq \ell^*$, as $\ell^*$ specifies no polygons. Therefore for a given $(m,n)$, we have $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
+\end{exmp}
 
-\begin{definition}
-    Let $\ell^* \in \mathbb{L}^{(m,n)}$ be the binary lattice made up of all $(00,00)$ cells.
-    \label{def:all zeros}
-\end{definition}
+\begin{prop}
+$\mathbb{U}(\ell)$ is the set such that
+\begin{equation}
+U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})|.
+\label{eq:U identity}
+\end{equation}
+\label{prop:U counts mathbb U}
+\end{prop}
 
-The binary lattice $\ell^*$ specifies $0$ polygons and has $U(\ell^*) = 7^{mn} = \left|\mathbb{M}^{(m,n)}\right|$, and$\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$. This immediately gives $|\mathbb{M}^{(m,n)}| \neq \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell)$, as the sum overcounts mosaics for all $\ell$ that have $\mathbb{U}(\ell) \neq \{\ell\}$. 
+\begin{proof}
+For a binary lattice $\ell' \in \mathbb{U}(\ell)$, $\ell'$ specifies new polygons without changing any of the polygons specified in $\ell$. Denote the set of locations of the cells that specify the new polygons in $\ell'$ as $S$. Clearly these cells all have $u_{(i,j)}=1$. The cells in $\ell$ at $S$ must therefore be either cell $(00,00)$ or cell $(11,11)$, as otherwise the vertex flips would change atleast one polygon specified in $\ell$. As $u_{(00,00)} = u_{(11,11)} = |\mathbb{T}|$, $U(\ell)$ counts each possible tile configuration at $S$. Therefore, one of these contains the tiles that create the new polygons specified by $\ell'$, and so $\ell'$ is also counted by $U$.
+\end{proof}
 
-Surprisingly, we can recover $|\mathbb{S}^{(m,n)}|$ by calculating how much each preimage of $\ell$ is over counted. 
+Surprisingly, we can recover $|\mathbb{M}^{(m,n)}| = |f^{-1}(\{\ell^*\})|$ by first considering how much each preimage of $\ell \in \mathbb{L}^{(m,n)}$ is over counted in 
+
+\begin{equation}
+    \sum_{\ell \in \mathbb{L}^{(m,n)}}U(\ell)
+\end{equation}
+
+in Proposition \ref{prop: over counting term}, then manipulating the sum in Proposition \ref{prop: recover total}.
 
 \begin{prop}
     By regrouping terms we have
 
     \begin{equation}
-        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\ell')| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\binom{P(\ell)}{0} + \dots + \binom{P(\ell)}{P(\ell)}\right)|f^{-1}(\ell)|.
+        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}\right)|f^{-1}(\{\ell\})|.
         \label{eq:double counting terms}
     \end{equation}
+\label{prop: over counting term}
 \end{prop}
 
 \begin{proof}
-    The first equality follows directly from Equation \ref{eq:U identity}. For the second equality, notice that the number of times $|f^{-1}(\ell)|$ appears in the second sum of Equation \ref{eq:double counting terms} is the number of times a binary lattice $\ell$ appears in the set
+The first equality follows directly from Proposition \ref{prop:U counts mathbb U}. For the second equality, for a given binary lattice $\ell$ the coefficient of $|f^{-1}(\{\ell\})|$ is the number of elements in $\{\ell' | \ell \leq \ell'\}$. Therefore, a binary lattice is in $\{\ell' | \ell \leq \ell'\}$ if the binary lattice only specifies $0 \leq p \leq P(\ell)$ of the $P(\ell)$ polygons specified by $\ell$. As there are $\binom{P(\ell)}{p}$ ways to specify $p$ polygons from a choice of $P(\ell)$ polygons, this gives the second equality for all $P(\ell)>0$.
 
-    $$\bigcup_{\ell \in \mathbb{L}^{(m,n)}} \{\mathbb{U}(\ell)\}.$$
-    
-    If $\ell$ has $P(\ell)>0$, the definition of $\mathbb{U}$ gives that $\ell$ appears once in the $\mathbb{U}$ set for the binary lattice that specifies $0$ polygons (ie. $\ell^*$). $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $1$ of the polygons in $\ell$. $\ell$ also appears in the $\mathbb{U}$ set for each binary lattice that specifies $2$ of the polygons in $\ell$, and so on up to specifying $P(\ell)$ polygons. As the number of ways $p \leq P(\ell)$ polygons can specify $P(\ell)$ polygons are the binomial coefficients, this gives the second equality for all $\ell \neq \ell^*$.
-
-    If $\ell = \ell^*$, we have that $P(\ell^*)=0$, so $|f^{-1}(\ell^*)|$ is only counted once. As $\binom{0}{0}=1$, this completes the proof.
+If $\ell'$ has $P(\ell') = 0$, then $\ell' = \ell^*$. As $\{\ell' | \ell^* \leq \ell'\} = \{\ell^*\}$, the term $|f^{-1}(\ell')|$ is only counted once. As $1=\binom{0}{0}$, this completes the proof.
 \end{proof}
 
 \begin{prop}
-    The number of mosaics of size $(m,n)$ that do not contain a polygon $|\mathbb{S}^{(m,n)}|$ has
+    The number of $(m,n)$ mosaics that do not contain a polygon $|\mathbb{S}^{(m,n)}|$ has
 
     \begin{equation}
     |\mathbb{S}^{(m,n)}| = \sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell).
     \label{eq:ugly inc excl}
     \end{equation}
+\label{prop: recover total}
 \end{prop}
 
 \begin{proof}
-    By the binomial theorem,
+    By the binomial theorem, for $P(\ell) > 0$ we have
     
-    $$0 = (1-1)^{P(\ell)} = \left(\binom{P(\ell)}{0} - \binom{P(\ell)}{1} + \dots + (-1)^{P(\ell)}\binom{P(\ell)}{P(\ell)}\right),$$
+    $$0 = (1-1)^{P(\ell)} = \sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p}.$$
     
-    so if we group terms as in Equation \ref{eq:double counting terms}, we get that all terms where $\ell \neq \ell^*$ are $0$. Therefore, 
+    If we group terms as in the second equality of Equation \ref{eq:double counting terms}, we get that all terms where $P(\ell)>0$ are $0$. As the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
     
     $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
 \end{proof}
 
 \section{A Cell-Level Identity}
 
-Though Equation \ref{eq:ugly inc excl} does compute $|\mathbb{S}^{(m,n)}|$, computing the number of polygons specified in a binary lattice $P(\ell)$ requires examining the entire, global structure of $\ell$. It will be more efficient to recover the $(-1)^{P(\ell)}$ term at the cell level. More concretely, we seek a function $V$ of the form
+Though Equation \ref{eq:ugly inc excl} does compute $|\mathbb{S}^{(m,n)}|$, computing the number of polygons specified in a binary lattice $P(\ell)$ requires examining the entire structure of $\ell$. It will be more efficient to recover the $(-1)^{P(\ell)}$ term at the level of individual cells. More concretely, we seek a function $V$ of the form
 
 $$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)},$$
 
@@ -1161,29 +1242,29 @@ such that for all $\ell$
 \label{eq:technically correct}
 \end{equation}
 
-The idea is to add a coefficient $p_{(i,j)} \in \{-1,1\}$ to each value of $u_{(i,j)}$ so that the $(-1)^{P(\ell)}$ term is recovered. Therefore we define $v_{(i,j)} := p_{(i,j)}u_{(i,j)}$.
+The idea is to add a coefficient $p_{(i,j)} \in \{-1,1\}$ to each value of $u_{(i,j)}$ in such a way as to recover the $(-1)^{P(\ell)}$ term. With this in mind we define $v_{(i,j)} := p_{(i,j)}u_{(i,j)}$.
 
 \begin{condition}
-    A subset of cells $\mathcal{S}$ in a binary lattice $\ell$ meets this condition if
-    
-    \begin{equation}
-        \prod_{\text{Cell } (i,j) \in \mathcal{S}} p_{(i,j)} = -1,
-        \label{eq:neg prod polygon condition}
-    \end{equation}
-    with $p_{(i,j)} \in \{-1,1\}$.
-    \label{cond:neg prod condition}
+A subset of cells $\mathcal{S}$ in a binary lattice $\ell$ meets this condition if
+
+\begin{equation}
+    \prod_{\text{Cell } (i,j) \in \mathcal{S}} p_{(i,j)} = -1,
+    \label{eq:neg prod polygon condition}
+\end{equation}
+with $p_{(i,j)} \in \{-1,1\}$.
+\label{cond:neg prod condition}
 \end{condition}
 
-By the definition of $P(\ell)$, if there exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds only for cells $\mathcal{S}$ that specify a polygon, then the $(-1)^{P(\ell)}$ is recovered.
+Cells in a binary lattice either do or do not specify a polygon. To recover the $(-1)^{P(\ell)}$ term, the following must be true. Cells that cannot specify a polygon must all have $p_{(i,j)}=1$. Moreover, if a set of cells specifies any one polygon, it must meet Condition \ref{cond:neg prod condition}.
 
 \begin{prop}
-    There exists values $p_{(i,j)}$ for which Condition \ref{cond:neg prod condition} holds for any set of cells that specify a polygon.
-    \label{prop:neg prod prop}
+There exists values $p_{(i,j)}$ for which the cells that do not specify a polygon have $p_{(i,j)}=1$, and Condition \ref{cond:neg prod condition} holds for any set of cells that specify a polygon.
+\label{prop:neg prod prop}
 \end{prop}
 
 \begin{proof}
 
-We can immediately see $p_{(00,00)} = p_{(11,11)} = 1$, as cells $(00,00)$ and $(11,11)$ can never be in the collection of cells that specify a polygon, and so must be positive.
+We can immediately see $p_{(00,00)} = p_{(11,11)} = p_{(01,10)} = p_{(10,01)} = 1$, as cells $(00,00)$, $(11,11)$, $(01,10)$, and $(10,01)$ can never be in the subset of cells that specify a polygon, and so must be positive.
 
 For the remaining values of $p_{(i,j)}$, we first examine the cells that map to the smallest polygon, shown in Figure \ref{fig:smallest polygon}. 
 
@@ -1237,21 +1318,25 @@ For the remaining values of $p_{(i,j)}$, we first examine the cells that map to 
 \label{fig:constraints i and ii}
 \end{figure}
 
-Condition \ref{cond:neg prod condition} amounts to the following two equations
+For the portions of binary lattices in Figure \ref{fig:constraints i and ii}, Condition \ref{cond:neg prod condition} amounts to the following two equations
 
 \begin{equation}
   \begin{aligned}
   p_{(00,01)} p_{(00,10)} p_{(01,00)} p_{(10,00)} & = -1  \\
-  p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} & = -1,
+  p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} & = -1.
   \end{aligned}
   \label{eq:constraints i and ii}
 \end{equation}
 
-one for each portion of a binary lattice in Figure \ref{fig:constraints i and ii}. We refer to the equations above as \textit{constraints}, as they constrain the possible assignments of $p_{(i,j)}$. Let the constraints in Equation \ref{eq:constraints i and ii} be numbered $1$ and $2$.
+We refer to the equations above as \textit{constraints}, as they constrain the possible assignments of $p_{(i,j)}$. %Let the constraints in Equation \ref{eq:constraints i and ii} be numbered $1$ and $2$.
 
-To define the remaining constraints, we start with a single vertex labeled $1$. We can construct an arbitrary set of connected vertices labeled $1$ by continually flipping a neighboring $0$s to $1$s. This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex.
+To define the remaining constraints, consider the unbounded square lattice with all vertices labeled $0$, except for the origin labeled $1$. We refer to this as the \textit{starting position}.
 
-As each cell has its associated $p_{(i,j)}$ value, it must be the case that the bit flip preserves Condition \ref{cond:neg prod condition} for the cells involved. Additionally, as the surrounding $8$ vertices are unchanged, this creates $2^8$ constraints. In each of these constraints, the parity of the number of connected regions of $1$s must either change or stay the same after the bit flip. If the parity remains unchanged, the bit flip is of \textit{Type 1}, and if the parity changes the bit flip is of \textit{Type 2}.
+From the definition of $f$ we know that polygons are the boundary of edge-connected vertices of the same label. Clearly one can construct arbitrary sets of edge-connected $0$'s and $1$'s from the starting position by flipping the parity of a vertex one-by-one.
+
+This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex. As each cell has its associated $p_{(i,j)}$ value, it must be the case that the bit flip preserves Condition \ref{cond:neg prod condition} for the cells involved. Additionally, as the surrounding $8$ vertices are unchanged udner this operation, we must define $2^8$ constraints.
+
+In each of the constraints, the parity of the number of edge-connected regions of $1$s must either change or stay the same after the bit flip. If the parity remains unchanged, the bit flip is of \textit{Type 1}, and if the parity changes the bit flip is of \textit{Type 2}.
 
 \begin{figure}[h!]
     \begin{center}
@@ -1391,9 +1476,11 @@ For a bit flip of \textit{Type 2}, to adhere to Condition \ref{cond:neg prod con
     p_{(00,10)}p_{(00,01)}p_{(10,00)}p_{(01,00)} = -p_{(00,11)}p_{(00,11)}p_{(11,00)}p_{(11,00)}.
 \end{equation}
 
-In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to change.
+In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to change to adhere to Condition \ref{cond:neg prod condition}.
 
-This defines a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. We can then use software to verify that all $2^8 + 2$ constraints admit a solution.
+This gives a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. Before solving for $p_{(i,j)}$, we can discard any constraint that involves cells $(01,10)$ or $(10,01)$, as we don't consider any binary lattices with these cells. 
+
+Finally, we can then use software to verify that all remaining constraints admit a solution.
 
 % We can then calculate the  Gröbner basis of the system to arrive at
 
@@ -1421,7 +1508,7 @@ We summarize the values of $p_{(i,j)}$ and $v_{(i,j)}$ in Table \ref{tbl:values 
             \hline
             $(01, 01)$ & $1$ & $1$ & $1$ & $(10, 10)$ & $1$ & $1$ & $1$ \\
             \hline
-            $(01, 10)$ & $0$ & $-1$ & $0$ & $(10, 01)$ & $0$ & $1$ & $0$ \\
+            $(01, 10)$ & $0$ & $1$ & $0$ & $(10, 01)$ & $0$ & $1$ & $0$ \\
             \hline
             $(01, 11)$ & $1$ & $1$ & $1$ & $(10, 00)$ & $1$ & $-1$ & $-1$ \\
             \hline
@@ -1431,7 +1518,14 @@ We summarize the values of $p_{(i,j)}$ and $v_{(i,j)}$ in Table \ref{tbl:values 
     \end{center}
 \end{table}
 
-Following other work in mosaic systems, $|\mathbb{S}^{(m,n)}|$ can be calculated more efficiently than in Equation \ref{eq:technically correct} using the state matrix recursion introduced in \cite{Oh2014}.
+We can then write
+
+\begin{equation}
+    \label{eq: technically correct with v}
+    \sum_{\ell \in \mathbb{L}^{(m,n)}}V(\ell) = |\mathbb{S}^{(m,n)}|.
+\end{equation}
+
+Following other work with mosaics, $|\mathbb{S}^{(m,n)}|$ can be calculated more efficiently than in Equation \ref{eq: technically correct with v} using the state matrix recursion introduced in \cite{Oh2014}.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
@@ -1478,13 +1572,13 @@ Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p
 
 Note that for $p>1$, this index does not uniquely define the binary sub-lattice.
 
-As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$. We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A_{i,j})$ where element 
+As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$. We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A^{(p,q)}_{i,j})$ where element 
 
-$$A_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}) = s_{p,q}.$$
+$$A^{(p,q)}_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}).$$
 
 Here $A_{i,j}$ is the entry in the $i$-th row of the matrix, read top-to-bottom, and in the $j$-th column of the matrix read left-to-right. As the binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ are just the binary lattices $\mathbb{L}^{(p,q)}$, we have for a state matrix $A^{(p,q)}$ that 
 
-$$A_{0,0} = \sum_{\ell \in \mathbb{L}^{(p,q)}}V(\ell).$$
+$$A^{(p,q)}_{0,0} = \sum_{\ell \in \mathbb{L}^{(p,q)}}V(\ell).$$
 
 Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A^{(p,q)}$.  
 
@@ -1509,12 +1603,10 @@ A^{(1,k+1)} = \begin{bmatrix*}[r]
 \end{bmatrix*}.
 $$
 
-Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$. 
-
 \end{prop}
 
 \begin{proof}
-    We use induction on $q$. We can immediately calculate the entries of $A^{(1,2)}$ by listing all size $(1,2)$ binary sub-lattices, then using Equation \ref{eq:technically correct}. 
+    We use induction on $q$. We can immediately calculate the entries of $A^{(1,2)}$ by listing all size $(1,2)$ binary sub-lattices, then using the definition of $V$. 
 
     \begin{center}
         \begin{tikzpicture}
@@ -1577,7 +1669,7 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
 
     We then assume that the statement for $A^{(1,k)}$ is true up to $k$. Within $A^{(1,k)}$, consider all the size $(1,k)$ binary sub-lattices counted in the entries of the upper left $2^{k-1} \times 2^{k-1}$ block matrix, which we denote $A_{[0,0]}$. By construction, all of these binary sub-lattices have indexes of the form $(0\dots, 0\dots)$, in which both indexes begin with a $0$. Similarly, the upper right $2^{k-1} \times 2^{k-1}$ block matrix $A_{[0,1]}$ counts all binary sub-lattices with indexes like $(0,\dots, 1\dots)$, and so on. 
 
-    We then append one of each of the four cells in Figure \ref{fig:four appending cells} to the left of every size $(1,k)$ binary sub-lattices, such that the former left boundary $0$s are replaced.
+    To construct binary sub-lattices of size $(1,k+1)$, we then append one of each of the four cells in Figure \ref{fig:four appending cells} to the left of every size $(1,k)$ binary sub-lattices, such that the former left boundary $0$'s are replaced.
 
     \begin{figure}[h!]
         \begin{center}
@@ -1673,11 +1765,11 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
         \end{tikzpicture}
     \end{center}
     
-    This creates the size $(1,k+1)$ binary sub-lattice $(111,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the $(01,01)$ cell into cells $(01,00)$ and $(11,01)$. 
+    This creates the size $(1,4)$ binary sub-lattice $(111,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the left-most $(01,01)$ cell into cells $(01,00)$ and $(11,01)$. 
 
     By construction, as every binary sub-lattice counted in the block matrix $A_{[1,1]}$ has an index of the form $(1\dots,1\dots)$, the entries in $A_{[1,1]}$ are all divisible by $v_{01,01}$. Therefore, the size $(1,k+1)$ binary sub-lattices with index of the form $(11\dots,01\dots)$ are counted by $(v_{01,00}v_{11,01}/v_{01,01})A_{[1,1]}$.
     
-    Performing the appending operation each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^{(1,k)}$.
+    Performing the appending operation with each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^{(1,k)}$.
 
     \begin{center}
         \begin{tikzpicture}
@@ -1859,11 +1951,11 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
 \end{prop}
 
 \begin{proof}
-    We use induction on $p$, and assume $A^{(k,q)} = (A^{(1,q)})^k$. Therefore, $A^{(k,q)}_{i,j}$ 
+    We use induction on $p$, and assume $A^{(k,q)} = (A^{(1,q)})^k$. Therefore, 
 
     $$A^{(k,q)}_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell})$$
 
-    for $\hat{\ell}$ of size $(k,q)$ and index $(i,j)$. Notice that we can build all binary sub-lattices of size $(k+1,q)$ with index $(i,j)$ by adjoining a size $(1,q)$ binary sub-lattice of index $(i,s)$ and a size $(k,q)$ binary sub-lattice of index $(s,j)$. For example, Figure \ref{fig:appending a row} adjoins a size $(2,3)$ binary sub-lattice with index $(10,01)$ to a size $(1,3)$ binary sub-lattice with index $(01,11)$.
+    for $\hat{\ell}$ of size $(k,q)$ and index $(i,j)$. Notice that we can build all binary sub-lattices of size $(k+1,q)$ with index $(i,j)$ by the following. Append a size $(1,q)$ binary sub-lattice of index $(i,s)$ and a size $(k,q)$ binary sub-lattice of index $(s,j)$. For example, Figure \ref{fig:appending a row} adjoins a size $(2,3)$ binary sub-lattice with index $(10,01)$ to a size $(1,3)$ binary sub-lattice with index $(01,11)$.
 
     \begin{figure}[h!]
         \begin{center}
@@ -1944,13 +2036,13 @@ Construct $A^{(1,q)}$ by starting with $k=2$ and recursing until $k=q$.
                 \( \lablvertex{8}{3}{$0$} \)
             \end{tikzpicture}
         \end{center}
-        \caption{Adjoins a size $(1,3)$ binary sub-lattice to a size $(2,3)$ sub-lattice}
+        \caption{Appending a size $(1,3)$ binary sub-lattice to a size $(2,3)$ sub-lattice}
         \label{fig:appending a row}
     \end{figure}
 
-    This operation amounts to
+    Doing this append operation for all $s$ amounts to
 
-    $$A_{i,j}^{(k+1,q)} = \sum_{s=1}^{2^{q}}A_{i,s}^{(k,q)} A_{s,j}^{(1,q)},$$
+    $$A_{i,j}^{(k+1,q)} = \sum_{s=0}^{2^{q}-1}A_{i,s}^{(k,q)} A_{s,j}^{(1,q)},$$
 
     which gives 
 
