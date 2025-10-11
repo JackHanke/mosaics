@@ -77,54 +77,43 @@
 
 % open cell 
 \newcommand{\cellopen}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \node[shape=circle,draw=red,fill=red, inner sep=0pt,minimum size=3pt] (A) at ( #1 * 0.5 + #3 * 0.5 , #2 * 0.5 + #4 * 0.5 ){};}
-% /
-% \newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
-% \
-% \newcommand{\cellB}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
-% /
-% \newcommand{\cellC}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
-% L
-% \newcommand{\cellD}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
-% |
-% \newcommand{\cellE}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
-% % -
-% \newcommand{\cellF}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
-% \newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
-% \
-% \newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
-% /
-% \newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
-% L
-% \newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
-% |
-% \newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
-% % -
-% \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellB}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellC}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellD}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellE}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellF}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+
+\newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 
-\newcommand{\cellA}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellB}[4]{\draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellC}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellD}[4]{\draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellE}[4]{\draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellF}[4]{\draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellG}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellH}[4]{\draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellI}[4]{\draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellJ}[4]{\draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+% \newcommand{\cellA}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellB}[4]{\draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellC}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellD}[4]{\draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellE}[4]{\draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellF}[4]{\draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellG}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellH}[4]{\draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellI}[4]{\draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellJ}[4]{\draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=white, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
-
-\newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellGf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellHf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellIf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
-\newcommand{\cellJf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
+% \newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellDf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellGf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[red, thick, densely dotted] ( #1 + 0.5, #2 + 1 ) arc(180:270:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellHf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] ( #1 , #2 + 0.5 ) arc(-90:0:{0.5}); \draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellIf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+% \newcommand{\cellJf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5); \node[shape=circle,draw=none,fill=gray!40, inner sep=3pt,minimum size=5pt] (A) at ( #1 + 0.5 , #2 + 0.5 ) {}; \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 
 \newcommand{\lablnode}[3]{\node[shape=circle,draw=none,fill=none, inner sep=0pt,minimum size=0pt] (A) at ( #1 , #2 ) {#3};}
@@ -150,9 +139,9 @@
 
 \begin{center}
 
-    \begin{abstract}
-        Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ matrix is constructed from a selection of $7$ distinct tiles. These matrices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that have the property of being suitably connected, which they call polygon mosaics. We introduce and enumerate mosaics with the related property in which only some tiles must be suitably connected, which we call messy polygon mosaics.
-    \end{abstract}
+\begin{abstract}
+Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ matrix is constructed from a selection of $7$ distinct tiles. These matrices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that have the property of being suitably connected. The authors call these mosaics \textit{polygon mosaics} because the tiles in a suitably connected mosaic form polygons. We introduce and enumerate mosaics with the related property of containing at least one polygon, which we call messy polygon mosaics.
+\end{abstract}
 
 \end{center}
 
@@ -191,7 +180,7 @@ Hong and Oh \cite{Hong2018} introduced a model for multiple ring polymers in whi
 \label{fig:tile set}
 \end{figure}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \textit{mosaic} is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows an example $(5,7)$ mosaic. We denote the set of all $(m,n)$ mosaics as $\mathbb{M}^{(m,n)}$. As there are $7$ elements in $\mathbb{T}$, there are $7^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. 
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \textit{mosaic} is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows a $(5,7)$ mosaic. We denote the set of all $(m,n)$ mosaics as $\mathbb{M}^{(m,n)}$. As there are $7$ elements in $\mathbb{T}$, there are $7^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. 
 % A \textit{mosaic system} is then a subset of $\mathbb{M}^{(m,n)}$ with some property. 
 
 \begin{figure}[h!]
@@ -296,14 +285,10 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \texti
 \label{fig:example mosaics}
 \end{figure}
 
-The authors in \cite{Hong2018} are interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the outer edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint. The authors call these \textit{polygon mosaics} because, other than the mosaic consisting of all $T_0$ tiles, the dotted lines form \textit{polygons}.
-
-\begin{definition}
-    A \textit{polygon} $\mathcal{P}$ in a mosaic $\mathcal{M}$ is a non-empty subset of tiles in $\mathcal{M}$ such that if all cells in $\mathcal{P}^c$ are removed from $\mathcal{M}$, all remaining edges shared by $2$ tiles have $2$ dotted lines drawn from the midpoint, and all other edges have $0$ dotted lines drawn from their midpoint.\footnote{Polygons are more commonly refered to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}
-\end{definition}
+The authors in \cite{Hong2018} were interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the outer edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint. The authors call mosaics that are suitably connected and that contain at least one tile in $\mathbb{T}\setminus T_0$ \textit{polygon mosaics} because the dotted lines form \textit{polygons}\footnote{Polygons are more commonly refered to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}. Following \cite{Hong2018}, when we use the term polygon in this work, we specifically refer to the set of tiles for which the dotted lines form a polygon when part of a mosaic.
 
 \begin{exmp}
-Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that contains $3$ polygons, with the background of the tiles that make up the polygons highlighted in gray. Note that a mosaic can contain polygons that surround other polygons, such as in Figure \ref{fig:example polygon mosaic}. 
+Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that contains $3$ polygons, with the tiles that make up the polygons shaded in gray. Note that a mosaic can contain polygons that surround other polygons, such as in Figure \ref{fig:example polygon mosaic}. 
 
 \begin{figure}[h!]
 \begin{center}
@@ -330,39 +315,39 @@ Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that cont
         \cellE{5}{4}{6}{5}
         \cellA{6}{4}{7}{5}
     \end{tikzpicture}
-\caption{The largest polygon in Figure \ref{fig:example polygon mosaic}}
+\caption{A polygon in Figure \ref{fig:example polygon mosaic}}
 \label{fig: example polygon}
 \end{center}
 \end{figure}
 \end{exmp}
 
-Using the notation conventions in \cite{Oh2014}, we denote the subset of $(m,n)$ mosaics that are polygon mosaics\footnote{The array of values of $\mathbb{P}^{(m,n)}$ is sequence A181245 on the OEIS \cite[OEIS]{oeis}.} as $\mathbb{P}^{(m,n)}$.
+Using the notation conventions in \cite{Oh2014}, we denote the subset of $(m,n)$ mosaics that are polygon mosaics as $\mathbb{P}^{(m,n)}$.
 
 \begin{thm}[\cite{Hong2018}]
-    \label{thm:Hong2018}
-    The number of polygon $(m,n)$ mosaics $|\mathbb{P}^{(m,n)}|$ is bounded by
-    $$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq |\mathbb{P}^{(m,n)}| \leq 2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+\label{thm:Hong2018}
+The number of polygon $(m,n)$ mosaics $|\mathbb{P}^{(m,n)}|$ for $m,n \geq 3$ is bounded by
+$$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq |\mathbb{P}^{(m,n)}| \leq 2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
 \end{thm}
 
-This work follows \cite{Hong2018}, in that we do not consider the mosaic composed of all $T_0$ tiles a polygon mosaic, even though it is suitably connected. The authors \cite{Hong2018} point out Theorem \ref{thm:Hong2018} holds irrespective of this choice.
+The array of values of $|\mathbb{P}^{(m,n)}|+1$ is sequence A181245 on the OEIS \cite[OEIS]{oeis}.
 
 In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors call mosaics constructed from this tile set that are suitably connected \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics.
 
 \begin{thm}[\cite{Oh2014}]
-    \label{thm:Oh2014}
-    The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
+\label{thm:Oh2014}
+The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
-    $$ X_{k+1} = \begin{bmatrix}
-        X_k & O_k \\
-        O_k & X_k
-    \end{bmatrix}
-    \text{ and }
-    O_{k+1} = \begin{bmatrix}
-        O_k & X_k \\
-        X_k & 4O_k
-    \end{bmatrix}, $$
-    
-    for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
+$$ X_{k+1} = \begin{bmatrix}
+    X_k & O_k \\
+    O_k & X_k
+\end{bmatrix}
+\text{ and }
+O_{k+1} = \begin{bmatrix}
+    O_k & X_k \\
+    X_k & 4O_k
+\end{bmatrix}, $$
+
+for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
 Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy polygon mosaics} using the tiles set $\mathbb{T}$ from \cite{Hong2018}, and enumerate them with state matrices as in \cite{Oh2014}.
@@ -370,10 +355,10 @@ Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matri
 \section{Messy Polygon Mosaics}\label{section:messy mosaics}
 
 \begin{definition}
-    A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon. 
+A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon. 
 \end{definition}
 
-Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)$ mosaics that contain $3$ polygons. In both examples, we highlight the background of the tiles that make up each polygon in gray.
+Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)$ mosaics, both of which contain $3$ polygons. In both examples, we shade the tiles that make up each polygon in gray.
 
 \begin{figure}[h!]
     \begin{center}
@@ -517,6 +502,8 @@ $$
 
 \end{definition}
 
+Our main result is Theorem \ref{thm: messy mosaics}.
+
 \begin{thm}
 \label{thm: messy mosaics}
 $|\mathbb{S}^{(m,n)}|$ is the $(0,0)$ entry of $(A^{(1,m)})^n$.
@@ -524,7 +511,7 @@ $|\mathbb{S}^{(m,n)}|$ is the $(0,0)$ entry of $(A^{(1,m)})^n$.
 
 \section{Preliminaries}
 
-We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to a \textit{binary lattice} of size $(m,n)$. A binary lattice of size $(m,n)$ is a rectangular lattice of $m+1$ by $n+1$ vertices, in which the boundary vertices are labeled $0$, and the interior vertices are either $0$ or $1$. An example of a binary lattice of size $(5,7)$ is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all binary lattices of size $(m,n)$, which gives $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
+We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to an $(m,n)$ \textit{binary lattice}. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, in which the boundary vertices are labeled $0$, and the interior vertices are either $0$ or $1$. An example of a $(5,7)$ binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices, which gives $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
 
 \begin{definition}
 
@@ -536,26 +523,121 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each ve
 \begin{center}
     \begin{tikzpicture}
         % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cell{2}{0}{3}{1}
+        % \cell{0}{0}{1}{1}
+        % \cell{1}{0}{2}{1}
+        % \cell{2}{0}{3}{1}
+        % \cellC{3}{0}{4}{1}
+        % \cellE{4}{0}{5}{1}
+        % \cellE{5}{0}{6}{1}
+        % \cellD{6}{0}{7}{1}
+        % % row2
+        % \cell{0}{1}{1}{2}
+        % \cell{1}{1}{2}{2}
+        % \cellC{2}{1}{3}{2}
+        % \cellA{3}{1}{4}{2}
+        % \cellC{4}{1}{5}{2}
+        % \cellD{5}{1}{6}{2}
+        % \cellF{6}{1}{7}{2}
+        % % row3
+        % \cell{0}{2}{1}{3}
+        % \cell{1}{2}{2}{3}
+        % \cellF{2}{2}{3}{3}
+        % \cell{3}{2}{4}{3}
+        % \cellB{4}{2}{5}{3}
+        % \cellA{5}{2}{6}{3}
+        % \cellF{6}{2}{7}{3}
+        % % row4
+        % \cellC{0}{3}{1}{4}
+        % \cellD{1}{3}{2}{4}
+        % \cellB{2}{3}{3}{4}
+        % \cellE{3}{3}{4}{4}
+        % \cellD{4}{3}{5}{4}
+        % \cell{5}{3}{6}{4}
+        % \cellF{6}{3}{7}{4}
+        % % row5
+        % \cellB{0}{4}{1}{5}
+        % \cellA{1}{4}{2}{5}
+        % \cell{2}{4}{3}{5}
+        % \cell{3}{4}{4}{5}
+        % \cellB{4}{4}{5}{5}
+        % \cellE{5}{4}{6}{5}
+        % \cellA{6}{4}{7}{5}
+        % % label for row1
+        % \( \lablvertex{0}{0}{$0$} \)
+        % \( \lablvertex{1}{0}{$0$} \)
+        % \( \lablvertex{2}{0}{$0$} \)
+        % \( \lablvertex{3}{0}{$0$} \)
+        % \( \lablvertex{4}{0}{$0$} \)
+        % \( \lablvertex{5}{0}{$0$} \)
+        % \( \lablvertex{6}{0}{$0$} \)
+        % \( \lablvertex{7}{0}{$0$} \)
+        % % label for row1
+        % \( \lablvertex{0}{1}{$0$} \)
+        % \( \lablvertex{1}{1}{$0$} \)
+        % \( \lablvertex{2}{1}{$0$} \)
+        % \( \lablvertex{3}{1}{$0$} \)
+        % \( \lablvertex{4}{1}{$1$} \)
+        % \( \lablvertex{5}{1}{$1$} \)
+        % \( \lablvertex{6}{1}{$1$} \)
+        % \( \lablvertex{7}{1}{$0$} \)
+        % % label for row1
+        % \( \lablvertex{0}{2}{$0$} \)
+        % \( \lablvertex{1}{2}{$0$} \)
+        % \( \lablvertex{2}{2}{$0$} \)
+        % \( \lablvertex{3}{2}{$1$} \)
+        % \( \lablvertex{4}{2}{$1$} \)
+        % \( \lablvertex{5}{2}{$0$} \)
+        % \( \lablvertex{6}{2}{$1$} \)
+        % \( \lablvertex{7}{2}{$0$} \)
+        % % label for row1
+        % \( \lablvertex{0}{3}{$0$} \)
+        % \( \lablvertex{1}{3}{$0$} \)
+        % \( \lablvertex{2}{3}{$0$} \)
+        % \( \lablvertex{3}{3}{$1$} \)
+        % \( \lablvertex{4}{3}{$1$} \)
+        % \( \lablvertex{5}{3}{$1$} \)
+        % \( \lablvertex{6}{3}{$1$} \)
+        % \( \lablvertex{7}{3}{$0$} \)
+        % % label for row1
+        % \( \lablvertex{0}{4}{$0$} \)
+        % \( \lablvertex{1}{4}{$1$} \)
+        % \( \lablvertex{2}{4}{$0$} \)
+        % \( \lablvertex{3}{4}{$0$} \)
+        % \( \lablvertex{4}{4}{$0$} \)
+        % \( \lablvertex{5}{4}{$1$} \)
+        % \( \lablvertex{6}{4}{$1$} \)
+        % \( \lablvertex{7}{4}{$0$} \)
+        % % label for row1
+        % \( \lablvertex{0}{5}{$0$} \)
+        % \( \lablvertex{1}{5}{$0$} \)
+        % \( \lablvertex{2}{5}{$0$} \)
+        % \( \lablvertex{3}{5}{$0$} \)
+        % \( \lablvertex{4}{5}{$0$} \)
+        % \( \lablvertex{5}{5}{$0$} \)
+        % \( \lablvertex{6}{5}{$0$} \)
+        % \( \lablvertex{7}{5}{$0$} \)
+
+        % row1
+        \cellA{0}{0}{1}{1}
+        \cellC{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
         \cellC{3}{0}{4}{1}
         \cellE{4}{0}{5}{1}
         \cellE{5}{0}{6}{1}
         \cellD{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
+        \cellB{1}{1}{2}{2}
         \cellC{2}{1}{3}{2}
         \cellA{3}{1}{4}{2}
         \cellC{4}{1}{5}{2}
         \cellD{5}{1}{6}{2}
         \cellF{6}{1}{7}{2}
         % row3
-        \cell{0}{2}{1}{3}
-        \cell{1}{2}{2}{3}
+        \cellB{0}{2}{1}{3}
+        \cellE{1}{2}{2}{3}
         \cellF{2}{2}{3}{3}
-        \cell{3}{2}{4}{3}
+        \cellF{3}{2}{4}{3}
         \cellB{4}{2}{5}{3}
         \cellA{5}{2}{6}{3}
         \cellF{6}{2}{7}{3}
@@ -565,70 +647,16 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each ve
         \cellB{2}{3}{3}{4}
         \cellE{3}{3}{4}{4}
         \cellD{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
+        \cellA{5}{3}{6}{4}
         \cellF{6}{3}{7}{4}
         % row5
         \cellB{0}{4}{1}{5}
         \cellA{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
+        \cellF{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
         \cellB{4}{4}{5}{5}
         \cellE{5}{4}{6}{5}
         \cellA{6}{4}{7}{5}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        \( \lablvertex{6}{0}{$0$} \)
-        \( \lablvertex{7}{0}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        \( \lablvertex{6}{1}{$1$} \)
-        \( \lablvertex{7}{1}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{3}{2}{$1$} \)
-        \( \lablvertex{4}{2}{$1$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-        \( \lablvertex{6}{2}{$1$} \)
-        \( \lablvertex{7}{2}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-        \( \lablvertex{3}{3}{$1$} \)
-        \( \lablvertex{4}{3}{$1$} \)
-        \( \lablvertex{5}{3}{$1$} \)
-        \( \lablvertex{6}{3}{$1$} \)
-        \( \lablvertex{7}{3}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{1}{4}{$1$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{5}{4}{$1$} \)
-        \( \lablvertex{6}{4}{$1$} \)
-        \( \lablvertex{7}{4}{$0$} \)
-        % label for row1
-        \( \lablvertex{0}{5}{$0$} \)
-        \( \lablvertex{1}{5}{$0$} \)
-        \( \lablvertex{2}{5}{$0$} \)
-        \( \lablvertex{3}{5}{$0$} \)
-        \( \lablvertex{4}{5}{$0$} \)
-        \( \lablvertex{5}{5}{$0$} \)
-        \( \lablvertex{6}{5}{$0$} \)
-        \( \lablvertex{7}{5}{$0$} \)
         % arrow
         \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
         % 
@@ -736,17 +764,17 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each ve
 \label{fig:example of f mapping}
 \end{figure}
 
-Notice that by the definition of $f$, polygons draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s of the binary lattice. For example, in Figure \ref{fig:example of f mapping}, the three-polygons correspond with the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
+Notice that by the definition of $f$, in a binary lattice polygons draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
 
 To enumerate $|\mathbb{S}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual \textit{cells} in a binary lattice.
 
 \begin{definition}
-Let a \textit{cell} be the unit square and $4$ labeled vertices in a binary lattice that a given tile maps to.
+Let a \textit{cell} be the unit square and its $4$ labeled vertices in a binary lattice that a given tile maps to, along with its coordinate tuple.
 \end{definition}
 
 \begin{exmp}
 \label{exmp: tile to cell}
-Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell diagrammed below.
+Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell at coordinates $(0,0)$ diagrammed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -763,7 +791,7 @@ Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in 
 \end{center}
 \end{exmp}
 
-Let $C$ be the set of unique cells. For convenience, we give a pair of indexes to each of the $|C| = 2^4$ possible cells. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. The cell in Example \ref{exmp: tile to cell} has index $(01,00)$. Below is a diagram of all $2^4$ cells with their indexes listed below.
+Let $C$ be the set of unique cells ignoring location. For convenience, we give a pair of indexes to each of the $|C| = 2^4$ possible vertex configurations. The first index is the binary number formed by reading the bottom two vertices from left to right. The second index is the binary number formed by reading the top two vertices from left to right. The cell in Example \ref{exmp: tile to cell} has index $(01,00)$. Below is a diagram of all $2^4$ cells  with their indexes listed in bold below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -883,7 +911,7 @@ Let $C$ be the set of unique cells. For convenience, we give a pair of indexes t
 From the definition of $f$, mosaics that do not contain a polygon all map to the binary lattice of all $(00,00)$ cells.
 
 \begin{definition}
-    Let $\ell^*$ be the binary lattice made up of all $(00,00)$ cells.
+    Let $\ell^*$ be the binary lattice with all cells having index $(00,00)$.
     \label{def:all zeros}
 \end{definition}
 
@@ -891,10 +919,10 @@ Therefore, we have
 
 \begin{equation}
 \label{eq: guiding eq}
-|\mathbb{S}^{(m,n)}| = |f^{-1}(\{\ell^*\})|.
+\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}).
 \end{equation}
 
-Therefore, we need a way to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. We begin by examining the number of tiles in $\mathbb{T}$ that can map to cell $(i,j)$, which we denote $u_{(i,j)}$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as cell $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
+It suffices to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. We begin by examining the number of tiles in $\mathbb{T}$ that can map to a cell with index $(i,j)$, which we denote $u_{(i,j)}$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as a cell with index $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
 
 \begin{table}[h!]
     \begin{center}
@@ -924,21 +952,23 @@ Therefore, we need a way to compute $|f^{-1}(\{\ell\})|$ for a given binary latt
     \end{center}
 \end{table}
 
-However, for some binary lattice $\ell$ the quantity 
-
+\begin{definition}
 \begin{equation}
-    U(\ell) := \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)}
+% U(\ell) := \prod_{\text{Cell }(i,j) \in \ell} u_{(i,j)}
+U(\ell) := \prod_{\{\text{index} (i,j) \text{ of cell }|\text{cell}\in\ell\}} u_{(i,j)}
 \end{equation}
-is not necessarily equal to $\left|f^{-1}\left(\{\ell\}\right)\right|$, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
+\end{definition}
+
+Intuitively, we would hope that for a binary lattice $\ell$, $U(\ell)$ would equal $\left|f^{-1}\left(\{\ell\}\right)\right|$. However this is not necessarily the case, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
 
 \begin{exmp}
-    We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
+We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
 \label{eq: U doesnt work l star}
 \end{exmp}
 
 \begin{exmp}
 
-Consider the following binary lattices and mosaics for $m=4,n=2$. 
+Consider the following binary lattices and mosaics for $(m,n)=(4,2)$. 
 
 \begin{center}
     \begin{tikzpicture}
@@ -1070,15 +1100,19 @@ Consider the following binary lattices and mosaics for $m=4,n=2$.
     \end{tikzpicture}
 \end{center}
 
-We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ uniquely counts Mosaic $1$, but both $U(\ell_{1})$ and $U(\ell_{2})$ count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This is because each cell in the bottom two rows of $\ell_1$ could have come from $7$ possible cells, though $1$ of the $7^4$ permutations contains a new polygon. 
+We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ counts Mosaic $1$, but $U(\ell_{1})$, $U(\ell_{2})$ and $U(\ell_{3})$ each count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This over counting is due to the cell with index $(00,00)$ coming from any possible tile in $\mathbb{T}$. Each cell in the bottom two rows of $\ell_1$ could come from $7$ possible tiles, so $1$ of the $7^4$ permutations forms a new polygon. This is also true for the top two rows of $\ell_2$. Therefore we can write $U(\ell_1) = |f^{-1}(\ell_1)| + |f^{-1}(\ell_3)|$, $U(\ell_2) = |f^{-1}(\ell_2)| + |f^{-1}(\ell_3)|$, and $U(\ell_3) = |f^{-1}(\ell_3)|$. This gives 
+
+$$U(\ell_1) + U(\ell_2) + U(\ell_3) = |f^{-1}(\ell_1)| + |f^{-1}(\ell_2)| + 3|f^{-1}(\ell_3)|,$$ 
+
+so Mosaic $2$ is counted three times.
 
 \label{exmp:U doesnt work}
 \end{exmp}
 
-Examples \ref{eq: U doesnt work l star} and \ref{exmp:U doesnt work} show we cannot compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$ just by examining the cells of $\ell$. Therefore $U$ counts the number of mosaics that map to some set of binary lattices under $f$. This set is defined in Definition \ref{def: set u}.
+Examples \ref{eq: U doesnt work l star} and \ref{exmp:U doesnt work} show we cannot compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$ using $U(\ell)$, as cells $(00,00)$ and $(11,11)$ lead to over counting mosaics. Instead, $U$ counts the number of mosaics that map to some set of binary lattices under $f$. This set is defined in Definition \ref{def: set u}. To define this set, we first point out that a binary lattice can be split into the cells that have $u_{(i,j)}=7$ and the cells that have $u_{(i,j)} = 1$.
 
 \begin{definition}
-A polygon is \textit{specified} by a binary lattice $\ell$ if all mosaics in $f^{-1}(\{\ell\})$ contain the polygon.
+A polygon $\mathcal{P}$ is \textit{specified} by a binary lattice $\ell$ if the cells in $\ell$ that map to the tiles that make up $\mathcal{P}$ all have $u_{(i,j)}=1$.
 \end{definition}
 
 \begin{definition}
@@ -1086,7 +1120,7 @@ Let $P: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of polygons specified i
 \end{definition}
 
 \begin{exmp}
-From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $1$ and Mosaic $2$, but not the polygon in the bottom $2$ rows of Mosaic $2$. $\ell_3$ specifies both polygons in Mosaic $2$. Therefore $P(\ell_1) = P(\ell_2) = 1$, and $P(\ell_3) = 2$.
+From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $2$, as the cells in the top $2$ rows of $\ell_1$ all have $u_{(i,j)} = 1$. However $\ell_1$ does not specify the polygon in the bottom $2$ rows of Mosaic $2$, as the cells in the bottom $2$ rows of $\ell_1$ all have $u_{(i,j)}=7$. $\ell_3$ specifies both polygons in Mosaic $2$. Therefore $P(\ell_1) = P(\ell_2) = 1$, and $P(\ell_3) = 2$.
 \label{exmp:specifying example}
 \end{exmp}
 
@@ -1094,19 +1128,17 @@ From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top
 The binary lattice $\ell^*$ specifies $0$ polygons, and so $P(\ell^*)=0$.
 \end{exmp}
 
-Notice that cells that specify a polygon must have $u_{(i,j)}=1$. 
-
 \begin{definition}
-For binary lattices $\ell, \ell'$, we say $\ell' \leq \ell$ if one can construct $\ell'$ by flipping the parity of some number of vertices (possibly $0$ vertices) in $\ell$, such that all polygons specified by $\ell$ are unchanged and no cells with index $(01,10)$ or $(10,01)$ are created.
+For binary lattices $\ell, \ell'$, we say $\ell \leq \ell'$ if one can construct $\ell'$ by flipping the parity of some number of vertices (possibly $0$ vertices) in $\ell$, such that all polygons specified by $\ell$ are unchanged and no cells with index $(01,10)$ or $(10,01)$ are created.
 \end{definition}
 
 \begin{definition}
-For a binary lattice $\ell$, let $\mathbb{U}(\ell) = \{\ell' | \ell' \leq \ell\}$.
+For a binary lattice $\ell$, let $\mathbb{U}(\ell) = \{\ell' | \ell \leq \ell'\}$.
 \label{def: set u}
 \end{definition}
 
 \begin{exmp}
-From Example \ref{exmp:U doesnt work}, $\ell_3 \leq \ell_1$ as one can construct $\ell_3$ from $\ell_1$ by flipping the vertex at $(3,1)$ from $0$ to $1$. As $\ell_1$ specifies the polygon in the top two rows of Mosaic $2$, and this vertex flip does not change the top polygon, $\ell_3 \leq \ell_1$. We also have $\ell_1 \leq \ell_1$ simply by selecting no vertices to flip. As diagrammed below, constructing $\ell_4$ from $\ell_1$ by flipping the vertex at $(2,1)$ does change a polygon specified by $\ell_1$, and so $\ell_4 \nleq \ell_1$.
+From Example \ref{exmp:U doesnt work}, $\ell_1 \leq \ell_3$ as one can construct $\ell_3$ from $\ell_1$ by flipping the vertex at $(3,1)$ from $0$ to $1$. As $\ell_1$ specifies the polygon in the top two rows of Mosaic $2$, and this vertex flip does not change the top polygon, $\ell_1 \leq \ell_3$. We also have $\ell_1 \leq \ell_1$ simply by selecting no vertices to flip. As diagrammed below, constructing $\ell_4$ from $\ell_1$ by flipping the vertex at $(2,1)$ does change a polygon specified by $\ell_1$, and so $\ell_1 \nleq \ell_4$.
 
 % \begin{figure}[h!]
 \begin{center}
@@ -1163,17 +1195,17 @@ From Example \ref{exmp:U doesnt work}, $\ell_3 \leq \ell_1$ as one can construct
 % \caption{}
 % \end{figure}
 
-Therefore $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$. Additionally, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
+Therefore $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
 
 \label{exmp:four two mosaics}
 \end{exmp}
 
 \begin{exmp}
-Every binary lattice $\ell$ has $\ell \leq \ell^*$, as $\ell^*$ specifies no polygons. Therefore for a given $(m,n)$, we have $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
+Every binary lattice $\ell$ has $\ell^* \leq \ell$, as $\ell^*$ specifies $0$ polygons. Therefore for a given $(m,n)$, we have $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
 \end{exmp}
 
 \begin{prop}
-$\mathbb{U}(\ell)$ is the set such that
+For all $\ell$ we have
 \begin{equation}
 U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})|.
 \label{eq:U identity}
@@ -1182,20 +1214,16 @@ U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})|.
 \end{prop}
 
 \begin{proof}
-For a binary lattice $\ell' \in \mathbb{U}(\ell)$, $\ell'$ specifies new polygons without changing any of the polygons specified in $\ell$. Denote the set of locations of the cells that specify the new polygons in $\ell'$ as $S$. Clearly these cells all have $u_{(i,j)}=1$. The cells in $\ell$ at $S$ must therefore be either cell $(00,00)$ or cell $(11,11)$, as otherwise the vertex flips would change atleast one polygon specified in $\ell$. As $u_{(00,00)} = u_{(11,11)} = |\mathbb{T}|$, $U(\ell)$ counts each possible tile configuration at $S$. Therefore, one of these contains the tiles that create the new polygons specified by $\ell'$, and so $\ell'$ is also counted by $U$.
+For a binary lattice $\ell' \in \mathbb{U}(\ell)$, $\ell'$ specifies new polygons without changing any of the polygons specified in $\ell$. Consider the set of cells $S$ that differ between $\ell$ and $\ell'$. By definition, these cells in $\ell$ all have $u_{(i,j)}=7=|\mathbb{T}|$, while in $\ell'$ they all have $u_{(i,j)}=1$. Also by definition $U(\ell)$ enumerates every possible combination of tiles that could map to each cell in $S$. Therefore, the tiles sthat specify the new polygons in $\ell'$ are counted, and so $|f^{-1}(\ell')|$ is also counted by $U$.
 \end{proof}
 
-Surprisingly, we can recover $|\mathbb{M}^{(m,n)}| = |f^{-1}(\{\ell^*\})|$ by first considering how much each preimage of $\ell \in \mathbb{L}^{(m,n)}$ is over counted in 
+Surprisingly, we can recover $|\mathbb{S}^{(m,n)}|$ by first considering how much each mosaic is overcounted in
 
 \begin{equation}
-    \sum_{\ell \in \mathbb{L}^{(m,n)}}U(\ell)
+    \sum_{\ell \in \mathbb{L}^{(m,n)}}U(\ell).
 \end{equation}
 
-in Proposition \ref{prop: over counting term}, then manipulating the sum in Proposition \ref{prop: recover total}.
-
 \begin{prop}
-    By regrouping terms we have
-
     \begin{equation}
         \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}\right)|f^{-1}(\{\ell\})|.
         \label{eq:double counting terms}
@@ -1204,9 +1232,9 @@ in Proposition \ref{prop: over counting term}, then manipulating the sum in Prop
 \end{prop}
 
 \begin{proof}
-The first equality follows directly from Proposition \ref{prop:U counts mathbb U}. For the second equality, for a given binary lattice $\ell$ the coefficient of $|f^{-1}(\{\ell\})|$ is the number of elements in $\{\ell' | \ell \leq \ell'\}$. Therefore, a binary lattice is in $\{\ell' | \ell \leq \ell'\}$ if the binary lattice only specifies $0 \leq p \leq P(\ell)$ of the $P(\ell)$ polygons specified by $\ell$. As there are $\binom{P(\ell)}{p}$ ways to specify $p$ polygons from a choice of $P(\ell)$ polygons, this gives the second equality for all $P(\ell)>0$.
+The first equality follows directly from Proposition \ref{prop:U counts mathbb U}. For the second equality, for a given binary lattice $\ell$ the coefficient of $|f^{-1}(\{\ell\})|$ is the number of elements in $\{\ell' | \ell' \leq \ell\}$. Therefore, a binary lattice is in $\{\ell' | \ell' \leq \ell\}$ if the binary lattice only specifies $0 \leq p \leq P(\ell)$ of the $P(\ell)$ polygons specified by $\ell$. As there are $\binom{P(\ell)}{p}$ ways to specify $p$ polygons from a choice of $P(\ell)$ polygons, this gives the second equality for all $P(\ell)>0$.
 
-If $\ell'$ has $P(\ell') = 0$, then $\ell' = \ell^*$. As $\{\ell' | \ell^* \leq \ell'\} = \{\ell^*\}$, the term $|f^{-1}(\ell')|$ is only counted once. As $1=\binom{0}{0}$, this completes the proof.
+If $\ell'$ has $P(\ell') = 0$, then $\ell' = \ell^*$. As $\{\ell' | \ell' \leq \ell^*\} = \{\ell^*\}$, the term $|f^{-1}(\ell')|$ is only counted once. As $1=\binom{0}{0}$, this completes the proof.
 \end{proof}
 
 \begin{prop}
@@ -1220,13 +1248,17 @@ If $\ell'$ has $P(\ell') = 0$, then $\ell' = \ell^*$. As $\{\ell' | \ell^* \leq 
 \end{prop}
 
 \begin{proof}
-    By the binomial theorem, for $P(\ell) > 0$ we have
-    
-    $$0 = (1-1)^{P(\ell)} = \sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p}.$$
-    
-    If we group terms as in the second equality of Equation \ref{eq:double counting terms}, we get that all terms where $P(\ell)>0$ are $0$. As the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
-    
-    $$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
+If we group terms like the second equality of Equation \ref{eq:double counting terms}, we get 
+
+$$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p}\right)|f^{-1}(\{\ell\})|.$$
+
+By the binomial theorem, for $P(\ell) > 0$ we have
+
+$$\sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p} = (1-1)^{P(\ell)} = 0,$$
+
+so all terms where $P(\ell)>0$ are $0$. As the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
+
+$$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
 \end{proof}
 
 \section{A Cell-Level Identity}
