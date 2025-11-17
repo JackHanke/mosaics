@@ -132,6 +132,17 @@ def base_to_list(value, length, base):
 def identify_weights(vertices):
     v1,v2,v3,v4,v6,v7,v8,v9 = vertices
     # map vertex parity to weight index
+    '''
+    00 00 00 00 01 01 01 01
+    00 01 10 11 00 01 10 11
+    
+     1  2  3  4  5  6  7  8
+
+    01 01 01 01 11 11 11 11
+    00 01 10 11 00 01 10 11
+    
+     9 10 11 12 13 14 15 16
+    '''
     weight_map = {
         (0,0,0,0):0,
         (0,0,0,1):1,
@@ -257,19 +268,47 @@ if __name__ == '__main__':
     unique_As = []
     unique_Vs = []
 
+    pictogram_dict = {1: '⬜', -1: '⬛'}
+
+    print(f'       Pictogram of Constraints')
+    print('''   |
+   | 00 00 00 00 01 01 01 01
+   | 00 01 10 11 00 01 10 11
+   | 
+   |  1  2  3  4  5  6  7  8
+   | 
+   | 01 01 01 01 11 11 11 11
+   | 00 01 10 11 00 01 10 11
+   | 
+   |  9 10 11 12 13 14 15 16''')
+    print(f'   |')
+    print(f'KEY|  1 = ⬜, -1 = ⬛')
+    print(f'   |')
+    print(f'   |  0 1 2 3 4 5 6 7 8 9101112131415')
     for sol_num, sol in enumerate(solution_set):
-        sol_string = f'{sol_num+1} :: {sol}'
-        # for num in sol:
-        #     thing += str(num) + ' & '
-        # thing += ' \\\\'
+
+        ## raw sols
+        sol_string = f'{sol_num+1} | {sol}'
         # print(sol_string)
+
+        # pictogram 
+        if sol_num<9: pictogram_str = f'0{sol_num+1} | '
+        else: pictogram_str = f'{sol_num+1} | '
+        for pic in [pictogram_dict[num] for num in sol]:
+            pictogram_str += pic
+        print(pictogram_str)
+
+        thing = ''
+        for num in sol:
+            thing += str(num) + ' & '
+        thing += ' \\\\'
 
         # print(f'[w_1 ... w_16] & = & {[6] +sol[1:-1] + [6]} \\\\')
 
-        A = make_A_from_weights(weights=sol)
-        if A not in unique_As: unique_As.append(A)
-        V = make_V_from_weights(weights=sol)
-        if V not in unique_Vs: unique_As.append(V)
+        # A = make_A_from_weights(weights=sol)
+        # if A not in unique_As: unique_As.append(A)
+        # V = make_V_from_weights(weights=sol)
+        # if V not in unique_Vs: unique_As.append(V)
     
     
 
