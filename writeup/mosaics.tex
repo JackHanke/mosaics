@@ -459,9 +459,9 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)
 \label{fig:messy mosaic example}
 \end{figure}
 
-The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of messy polygon $(m,n)$ mosaics is then $7^{mn} - |\mathbb{S}^{(m,n)}|$.
+The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of messy polygon $(m,n)$ mosaics is then $7^{mn} - \left|\mathbb{S}^{(m,n)}\right|$.
 
-From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $|\mathbb{S}^{(n,1)}|=7^n$, and $|\mathbb{S}^{(2,2)}| = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
+From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $\left|\mathbb{S}^{(n,1)}\right|=7^n$, and $\left|\mathbb{S}^{(2,2)}\right| = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
 
 \begin{figure}[h!]
     \begin{center}
@@ -480,7 +480,7 @@ From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \r
 
 \begin{definition}
 
-Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$, and for integers $k > 1$,
+For integers $k \geq 1$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
 
 \begin{eqnarray*}
 A_{k+1} = \begin{pmatrix} 7A_{k} & B_{k} \\ C_{k} & D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} -A_{k} & B_{k} \\ 0C_{k} & D_{k} \end{pmatrix} \\
@@ -493,18 +493,18 @@ Our main result is Theorem \ref{thm: messy mosaics}.
 
 \begin{thm}
 \label{thm: messy mosaics}
-The number of $(m,n)$ mosaics that do not contain a polygon $|\mathbb{S}^{(m,n)}|$ is the $(0,0)$ entry of $A_{n}^m$.
+The number of $(m,n)$ mosaics that do not contain a polygon $\left|\mathbb{S}^{(m,n)}\right|$ is the $(0,0)$ entry of $A_{n}^m$.
 \end{thm}
 
 \section{Preliminaries}
 
 % TODO essentially change all this lol \begingroup $\setlength\arraycolsep{1pt}\arrayrowsep{1pt}\begin{matrix} 1 & 0 \\ 1 & 1 \\ \end{matrix}$\endgroup
 
-We begin by defining a mapping $f$ between $\mathbb{M}^{(m,n)}$ to an $(m,n)$ \textit{binary lattice}. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, in which the boundary vertices are labeled $0$, and the interior vertices are either $0$ or $1$. An example of a $(5,7)$ binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices, which gives $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
+We begin by defining a mapping $f$ between a mosaic in $\mathbb{M}^{(m,n)}$ to an $(m,n)$ \textit{binary lattice}. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices and $\mathbb{F}^{(m,n)}$ be the set of all $(m,n)$ framed binary lattices. We immediately have $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m+1)(n+1)}$, $\left|\mathbb{F}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
 
 \begin{definition}
 
-$f: \mathbb{M}^{(m,n)} \to \mathbb{L}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the binary lattice. 
+$f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
     
 \end{definition}
 
@@ -663,12 +663,12 @@ Notice that by the definition of $f$, in a binary lattice polygons draw out the 
 To enumerate $|\mathbb{S}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual \textit{cells} in a binary lattice.
 
 \begin{definition}
-Let a \textit{cell} be the unit square and its $4$ labeled vertices in a binary lattice that a given tile maps to, along with its coordinate tuple.
+Let a \textit{cell} be a $(1,1)$ binary lattice.
 \end{definition}
 
 \begin{exmp}
 \label{exmp: tile to cell}
-Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in the top-left tile $T_2$ mapping to the cell at coordinates $(0,0)$ diagrammed below.
+Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in the top-left tile $T_2$ mapping to the top-left cell diagrammed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -686,120 +686,17 @@ Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping}  results in 
 \end{exmp}
 
 For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels.  For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. The set of all unique cells is 
-
 $$\{\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\}.$$
 
-From the definition of $f$, mosaics that do not contain a polygon all map to the binary lattice of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
+It is critical that we are able to compute the number  $\left|f^{-1}(\ell)\right|$
 
 \begin{definition}
-    Let $\ell^*$ be the binary lattice with all cells having index $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$.
-    \label{def:all zeros}
+    $g: \mathbb{F}^{(m,n)} \to \mathbb{M}^{(m,n)}$ takes a framed binary lattice and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
 \end{definition}
 
-Therefore, we have
+Notice that $g$ only constructs polygon mosacis, and not messy polygon mosaics.
 
-\begin{equation}
-\label{eq: guiding eq}
-\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}).
-\end{equation}
-
-It suffices to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. We begin by examining the number of tiles in $\mathbb{T}$ that can map to a cell with index $(i,j)$, which we denote $u_{(i,j)}$. These values are simple to calculate, as each tile in $\mathbb{T}$ can only be part of a polygon in certain ways. For example, $u_{(01, 00)} = 1$, as a cell with index $(01,00)$ can only be formed by a mosaic with $T_2$ in that location. We can see that $u_{(01,10)}=0$, as cell $(01,10)$ cannot be formed from any tiles in $\mathbb{T}$. Finally, we have $u_{(00,00)}=7$, as any tile can fail to contribute to forming a polygon. Table \ref{tbl:Preimage of binary cell lattice} summarizes the tiles in the preimage for each cell $(i,j)$. 
-
-\begin{definition}
-    Define $v(\ell)$ for a binary lattice $\ell$ to be the product over all cells in $\ell$ with $$\begin{cases}
-        7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
-        0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
-        -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
-        1 & \text{otherwise,}
-    \end{cases}$$
-
-    and the empty product being $1$.
-\end{definition}
-
-\begin{prop} 
-Let $\ell$ be a binary lattice such that $v(\ell) \neq 0$. Let $q$ be the number of strings $01$ that appear in the top row of $\ell$. Let $p$ be the number of polygons in TODO Then the sign of $v(\ell)$ equals $(-1)^{p-q}$. 
-\end{prop}
-
-\begin{proof}
-TODO
-
-\begin{figure}[h!]
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-% row 1 labels
-\( \lablvertex{0}{0}{$0$} \)
-\( \lablvertex{1}{0}{\#} \)
-\( \lablvertex{2}{0}{$0$} \)
-% row 2 labels
-\( \lablvertex{0}{1}{$0$} \)
-\( \lablvertex{1}{1}{$0$} \)
-\( \lablvertex{2}{1}{$0$} \)
-\end{tikzpicture}
-\end{center}
-\caption{Bit Flip Case 1}
-\label{fig: bit flip case 1}
-\end{figure}
-
-\begin{figure}[h!]
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-% row 1 labels
-\( \lablvertex{0}{0}{c} \)
-\( \lablvertex{1}{0}{\#} \)
-\( \lablvertex{2}{0}{d} \)
-% row 2 labels
-\( \lablvertex{0}{1}{a} \)
-\( \lablvertex{1}{1}{$0$} \)
-\( \lablvertex{2}{1}{b} \)
-\end{tikzpicture}
-\end{center}
-\caption{Bit Flip Format of Cases}
-\label{fig: bit flip format of cases}
-\end{figure}
-
-\end{proof}
-
-\begin{prop}
-The number of $(m,n)$ mosaics that do not contain a polygon is 
-$$\sum_{\ell \in \mathbb{L}^{(m,n)}}v(\ell)$$
-\end{prop}
-
-\begin{proof}
-TODO
-\end{proof}
-
-\begin{definition}
-
-Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}), B_{1}=v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}), C_{1}=v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}), D_{1}=v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})$, and for integers $k > 1$,
-
-\begin{eqnarray*}
-A_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix} \\
-C_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix}.
-\end{eqnarray*}
-\end{definition}
-
-\begin{prop}
-The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry of $A_{n}^m$.
-\end{prop}
-
-\begin{proof}
-TODO
-\end{proof}
-
-Let the $k$ digit binary representation of the number $n$ be written as $\beta_k(n)$
-
-Intuitively, we would hope that for a binary lattice $\ell$, $U(\ell)$ would equal $\left|f^{-1}\left(\{\ell\}\right)\right|$. However this is not necessarily the case, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
-
-\begin{exmp}
-We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
-\label{eq: U doesnt work l star}
-\end{exmp}
+From the definition of $f$, mosaics that do not contain a polygon map to the binary lattice of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
 
 \begin{exmp}
 
@@ -943,6 +840,244 @@ so Mosaic $2$ is counted three times.
 
 \label{exmp:U doesnt work}
 \end{exmp}
+
+\begin{definition}
+    Let $\ell^*$ be the framed binary lattice with all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
+    \label{def:all zeros}
+\end{definition}
+
+Therefore, we have
+
+\begin{equation}
+\label{eq: guiding eq}
+\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}).
+\end{equation}
+
+It suffices to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. 
+
+\begin{definition}
+    Let $v(\ell)$ for a binary lattice $\ell$ to be the product over all cells in $\ell$ with $$\begin{cases}
+        7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
+        0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
+        -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
+        1 & \text{otherwise}
+    \end{cases}$$
+
+    and the empty product being $1$.
+\end{definition}
+
+\begin{exmp}
+\label{exmp: v on a ell}
+If we let $\ell$ be the binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$.
+\end{exmp}
+
+\begin{definition}
+    Define $q(\ell)$ to be the number of $01$ strings that appear in the top row of vertices of $\ell$.
+\end{definition}
+
+\begin{definition}
+    Define $p(\ell)$ to be the number of polygons in. TODO
+\end{definition}
+
+\begin{prop} 
+Let $\ell$ be a binary lattice such that the left-most and right-most column of vertices are labeled $0$ and $v(\ell) \neq 0$. Then we have 
+$$\text{sign}(v(\ell)) = (-1)^{p(\ell)-q(\ell)}.$$
+\end{prop}
+
+\begin{proof}
+TODO
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{c} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{d} \)
+% row 2 labels
+\( \lablvertex{0}{1}{a} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{b} \)
+\end{tikzpicture}
+\end{center}
+
+\caption{Case format}
+\label{fig: bit flip case format}
+\end{figure}
+
+
+\begin{figure}[h!]
+
+\centering
+
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 1}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$1$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$1$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 2}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 3}
+\end{subfigure}
+
+% \hfill
+
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$1$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$1$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 4}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 5}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$1$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$0$} \)
+\( \lablvertex{2}{1}{$1$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{fig: bit flip case 6}
+\end{subfigure}
+\caption{Bit Flip Cases}
+\end{figure}
+
+In Case \ref{fig: bit flip case 1} TODO
+
+\end{proof}
+
+\begin{prop}
+The number of $(m,n)$ mosaics that do not contain a polygon has
+$$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
+\end{prop}
+
+\begin{proof}
+TODO
+\end{proof}
+
+\begin{definition}
+
+Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}), B_{1}=v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}), C_{1}=v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}), D_{1}=v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})$, and for integers $k > 1$,
+
+\begin{eqnarray*}
+A_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix} \\
+C_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix}.
+\end{eqnarray*}
+\end{definition}
+
+\begin{prop}
+The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry of $A_{n}^m$.
+\end{prop}
+
+\begin{proof}
+TODO
+\end{proof}
+
+Let the $k$ digit binary representation of the number $n$ be written as $\beta_k(n)$
+
+Intuitively, we would hope that for a binary lattice $\ell$, $U(\ell)$ would equal $\left|f^{-1}\left(\{\ell\}\right)\right|$. However this is not necessarily the case, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
+
+\begin{exmp}
+We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
+\label{eq: U doesnt work l star}
+\end{exmp}
+
+
 
 Examples \ref{eq: U doesnt work l star} and \ref{exmp:U doesnt work} show we cannot compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$ using $U(\ell)$, as cells $(00,00)$ and $(11,11)$ lead to over counting mosaics. Instead, $U$ counts the number of mosaics that map to some set of binary lattices under $f$. This set is defined in Definition \ref{def: set u}. To define this set, we first point out that a binary lattice can be split into the cells that have $u_{(i,j)}=7$ and the cells that have $u_{(i,j)} = 1$.
 
