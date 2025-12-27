@@ -337,15 +337,15 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
 \label{thm:Oh2014}
 The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
-$$ X_{k+1} = \begin{bmatrix}
+$$ X_{k+1} = \begin{pmatrix}
     X_k & O_k \\
     O_k & X_k
-\end{bmatrix}
+\end{pmatrix}
 \text{ and }
-O_{k+1} = \begin{bmatrix}
+O_{k+1} = \begin{pmatrix}
     O_k & X_k \\
     X_k & 4O_k
-\end{bmatrix}, $$
+\end{pmatrix}, $$
 
 for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
@@ -688,15 +688,37 @@ Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in t
 For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels.  For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. The set of all unique cells is 
 $$\{\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\}.$$
 
-It is critical that we are able to compute the number  $\left|f^{-1}(\ell)\right|$
-
 \begin{definition}
-    $g: \mathbb{F}^{(m,n)} \to \mathbb{M}^{(m,n)}$ takes a framed binary lattice and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
+    For a given $(m,n)$, let $\ell^*$ be the framed binary lattice made of only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
+    \label{def:all zeros}
 \end{definition}
 
-Notice that $g$ only constructs polygon mosacis, and not messy polygon mosaics.
+Therefore, as all mosaics that do not contain a polygon map to $\ell^*$ under $f$, we have
 
-From the definition of $f$, mosaics that do not contain a polygon map to the binary lattice of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
+\begin{equation}
+\label{eq: guiding eq}
+\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}),
+\end{equation}
+
+and so it suffices to compute $|f^{-1}(\{\ell^*\})|$. 
+
+It would be convenient to compute $f^{-1}(\ell)$ for any binary lattice $\ell$ ``cell-by-cell''. Let $u: \mathbb{L}^{(m,n)} \to \mathbb{Z}$  map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
+        7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
+        0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
+        1 & \text{otherwise,}
+    \end{cases}$$
+
+where these terms come from the number of tiles that can map to a specific cell under $f$. However, as $|f^{-1}(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})| = 7$, for the $(m,n)$ binary lattice $\ell^*$, we would get
+
+$$u(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}| > |\mathbb{S}^{(m,n)}|.$$
+
+Clearly, this approach overcounts $|\mathbb{S}^{(m,n)}|$. We can examine this phenomena more closely by first definining $g$.
+
+\begin{definition}
+    $g: \mathbb{F}^{(m,n)} \to \mathbb{M}^{(m,n)}$ takes a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
+\end{definition}
+
+Notice that for some binary lattice $\ell$, $g(\ell)$ is not necessarily equal to $f^{-1}(\ell)$, as $g$ only returns polygon mosaics and not messy polygon mosaics. We can now examine the overcounting more closely.
 
 \begin{exmp}
 
@@ -802,10 +824,10 @@ Consider the following binary lattices and mosaics for $(m,n)=(4,2)$.
         \( \lablvertex{5}{4}{$0$} \)
 
         \cell{6}{0}{7}{1}
-        \cellF{7}{0}{8}{1}
+        \cell{7}{0}{8}{1}
 
-        \cellE{6}{1}{7}{2}
-        \cellB{7}{1}{8}{2}
+        \cell{6}{1}{7}{2}
+        \cell{7}{1}{8}{2}
 
         \cellC{6}{2}{7}{3}
         \cellD{7}{2}{8}{3}    
@@ -815,11 +837,11 @@ Consider the following binary lattices and mosaics for $(m,n)=(4,2)$.
 
         \( \lablnode{7}{-1}{Mosaic $1$} \)
 
-        \cellC{9}{0}{10}{1}
-        \cellD{10}{0}{11}{1}
+        \cell{9}{0}{10}{1}
+        \cellF{10}{0}{11}{1}
 
-        \cellB{9}{1}{10}{2}
-        \cellA{10}{1}{11}{2}
+        \cellE{9}{1}{10}{2}
+        \cellB{10}{1}{11}{2}
 
         \cellC{9}{2}{10}{3}
         \cellD{10}{2}{11}{3}    
@@ -829,34 +851,32 @@ Consider the following binary lattices and mosaics for $(m,n)=(4,2)$.
 
         \( \lablnode{10}{-1}{Mosaic $2$} \)
 
+        \cellC{12}{0}{13}{1}
+        \cellD{13}{0}{14}{1}
+
+        \cellB{12}{1}{13}{2}
+        \cellA{13}{1}{14}{2}
+
+        \cellC{12}{2}{13}{3}
+        \cellD{13}{2}{14}{3}    
+
+        \cellB{12}{3}{13}{4}
+        \cellA{13}{3}{14}{4}    
+
+        \( \lablnode{13}{-1}{Mosaic $3$} \)
+
     \end{tikzpicture}
 \end{center}
 
-We have $U(\ell_1) = 7^4, U(\ell_2) = 7^4,$ and $U(\ell_3) = 1$. $U(\ell_{1})$ counts Mosaic $1$, but $U(\ell_{1})$, $U(\ell_{2})$ and $U(\ell_{3})$ each count Mosaic $2$, for which $f(\text{Mosaic } 2) = \ell_3$. This over counting is due to the cell with index $(00,00)$ coming from any possible tile in $\mathbb{T}$. Each cell in the bottom two rows of $\ell_1$ could come from $7$ possible tiles, so $1$ of the $7^4$ permutations forms a new polygon. This is also true for the top two rows of $\ell_2$. Therefore we can write $U(\ell_1) = |f^{-1}(\ell_1)| + |f^{-1}(\ell_3)|$, $U(\ell_2) = |f^{-1}(\ell_2)| + |f^{-1}(\ell_3)|$, and $U(\ell_3) = |f^{-1}(\ell_3)|$. This gives 
-
-$$U(\ell_1) + U(\ell_2) + U(\ell_3) = |f^{-1}(\ell_1)| + |f^{-1}(\ell_2)| + 3|f^{-1}(\ell_3)|,$$ 
-
-so Mosaic $2$ is counted three times.
+We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. Note that any tile in $\mathbb{T}$ can map to cell $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$. Additionally, $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ permutations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
 
 \label{exmp:U doesnt work}
 \end{exmp}
 
-\begin{definition}
-    Let $\ell^*$ be the framed binary lattice with all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
-    \label{def:all zeros}
-\end{definition}
-
-Therefore, we have
-
-\begin{equation}
-\label{eq: guiding eq}
-\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}).
-\end{equation}
-
-It suffices to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$. 
+Surprisingly, this overcounting phenomena can be remedied by a small modificiation to $u$, which we call $v$.
 
 \begin{definition}
-    Let $v(\ell)$ for a binary lattice $\ell$ to be the product over all cells in $\ell$ with $$\begin{cases}
+    Let $v: \mathbb{L}^{(m,n)} \to \mathbb{Z}$ map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
         7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
         0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
         -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
@@ -868,19 +888,21 @@ It suffices to compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$.
 
 \begin{exmp}
 \label{exmp: v on a ell}
-If we let $\ell$ be the binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$.
+If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$.
 \end{exmp}
 
+We will first show that $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
+
 \begin{definition}
-    Define $q(\ell)$ to be the number of $01$ strings that appear in the top row of vertices of $\ell$.
+For a binary lattice $\ell$, let $q(\ell)$ to be the number of $01$ strings that appear in the top row of vertices.
 \end{definition}
 
 \begin{definition}
-    Define $p(\ell)$ to be the number of polygons in. TODO
+For a framed binary lattice $\ell$, let $p(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
 \end{definition}
 
 \begin{prop} 
-Let $\ell$ be a binary lattice such that the left-most and right-most column of vertices are labeled $0$ and $v(\ell) \neq 0$. Then we have 
+Let $\ell$ be a binary lattice such that the left-most and right-most column of vertices are labeled $0$ and $v(\ell) \neq 0$. We then have 
 $$\text{sign}(v(\ell)) = (-1)^{p(\ell)-q(\ell)}.$$
 \end{prop}
 
@@ -1049,6 +1071,8 @@ $$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
 \begin{proof}
 TODO
 \end{proof}
+
+As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the state matrix recursion method.
 
 \begin{definition}
 
