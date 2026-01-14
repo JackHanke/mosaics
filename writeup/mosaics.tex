@@ -725,7 +725,7 @@ Notice that for some binary lattice $\ell$, $g(\ell)$ is not necessarily equal t
 Consider the following binary lattices and mosaics for $(m,n)=(4,2)$. 
 
 \begin{center}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=0.95]
 
         % row1
         \cell{-3}{0}{-2}{1}
@@ -868,7 +868,7 @@ Consider the following binary lattices and mosaics for $(m,n)=(4,2)$.
     \end{tikzpicture}
 \end{center}
 
-We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. Note that any tile in $\mathbb{T}$ can map to cell $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$. Additionally, $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ permutations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
+We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. We also have $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ permutations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
 
 \label{exmp:U doesnt work}
 \end{exmp}
@@ -894,27 +894,71 @@ If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:ex
 We will first show that $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
 
 \begin{definition}
-For a binary lattice $\ell$, let $q(\ell)$ to be the number of $01$ strings that appear in the top row of vertices.
-\end{definition}
-
-\begin{definition}
 For a framed binary lattice $\ell$, let $p(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
 \end{definition}
 
 \begin{prop} 
-Let $\ell$ be a binary lattice such that the left-most and right-most column of vertices are labeled $0$ and $v(\ell) \neq 0$. We then have 
-$$\text{sign}(v(\ell)) = (-1)^{p(\ell)-q(\ell)}.$$
+If $\ell$ is a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then 
+\begin{equation}
+\text{sign}(v(\ell)) = (-1)^{p(\ell)}.
+\label{eq: sign prop}
+\end{equation}
+\label{prop: sign of v}
 \end{prop}
 
 \begin{proof}
-TODO
+
+For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(1,n)$ framed binary lattice $\ell$ for some $n \geq 1$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $v(\ell)=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
+
+For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labelled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
+
+\noindent\textbf{Procedure:} \\
+\indent \textbf{Step a.} Add a bottom row to $\ell$ of $n+1$ vertices all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_a$. \\
+\indent \textbf{Step b.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_a$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_b$.\\
+\indent \textbf{Step c.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_b$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
+
+For step a, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS, no new edge-connected regions are created, no new polygons are created in $g(\ell_a)$ so Equation \ref{eq: sign prop} is preserved by step a.
+
+For steps b and c, we encounter two distinct cases which we diagram in Figure \ref{fig: step diagrams}. These diagrams have $a,b,c,d \in [0, 1]$, and use the \# symbol to indicate the vertex being changed from a $0$ to a $1$.
 
 \begin{figure}[h!]
+\centering
+\begin{subfigure}[t]{0.4\textwidth}
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+% row 2 of cells
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{c} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{a} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{b} \)
+% row 3 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{Step b. Diagram}
+\label{subfig: step b diagram}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 1 of cells
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{c} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -923,24 +967,35 @@ TODO
 \( \lablvertex{0}{1}{a} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{b} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
-
-\caption{Case format}
-\label{fig: bit flip case format}
+\caption{Step c. Diagram}
+\label{subfig: step c diagram}
+\end{subfigure}
+\caption{Step Diagrams}
+\label{fig: step diagrams}
 \end{figure}
 
+For step b, Figure  \ref{subfig: step b diagram} depicts all possible cases one can encounter scanning left to right on $\ell_a$. Note that the vertex right of the \# symbol must be $0$, as the procedure moving left to right on $\ell_a$ gives that this vertex must be $0$.
+
+Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $p(\ell_a) = p(\ell_b)$, and so the RHS is preserved.
+
+For step c, Figure \ref{subfig: step c diagram} depicts all possible cases one can encounter scanning left to right on $\ell_b$. It cannot be the case that $a=1$ and $c=0$, as this would imply $\ell'$ contains $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Similarly, it cannot be the cases that $b=1$ and $d=0$, as this would imply $\ell_b$ contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Additionally, it cannot be the case that $b=0$ and $d=1$, as the procedure moves left-to-right. This results in the following $6$ cases, which we show each preserve Equation \ref{eq: sign prop}.
 
 \begin{figure}[h!]
-
 \centering
-
 \begin{subfigure}[t]{0.2\textwidth}
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -949,10 +1004,14 @@ TODO
 \( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$0$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 1}
+\label{subfig: bit flip case 1}
 \end{subfigure}
 ~
 \begin{subfigure}[t]{0.2\textwidth}
@@ -961,6 +1020,8 @@ TODO
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -969,10 +1030,14 @@ TODO
 \( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 2}
+\label{subfig: bit flip case 2}
 \end{subfigure}
 ~
 \begin{subfigure}[t]{0.2\textwidth}
@@ -981,6 +1046,8 @@ TODO
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -989,10 +1056,14 @@ TODO
 \( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$0$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 3}
+\label{subfig: bit flip case 3}
 \end{subfigure}
 
 % \hfill
@@ -1003,6 +1074,8 @@ TODO
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1011,10 +1084,14 @@ TODO
 \( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 4}
+\label{subfig: bit flip case 4}
 \end{subfigure}
 ~
 \begin{subfigure}[t]{0.2\textwidth}
@@ -1023,6 +1100,8 @@ TODO
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1031,10 +1110,14 @@ TODO
 \( \lablvertex{0}{1}{$1$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$0$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 5}
+\label{subfig: bit flip case 5}
 \end{subfigure}
 ~
 \begin{subfigure}[t]{0.2\textwidth}
@@ -1043,6 +1126,8 @@ TODO
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1051,21 +1136,39 @@ TODO
 \( \lablvertex{0}{1}{$1$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
 \caption{}
-\label{fig: bit flip case 6}
+\label{subfig: bit flip case 6}
 \end{subfigure}
-\caption{Bit Flip Cases}
+\caption{Step c. Cases}
+\label{fig: }
 \end{figure}
 
-In Case \ref{fig: bit flip case 1} TODO
+In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new edge-connected region, a new polygon is created, and so the sign of the RHS changes. 
 
+In Case \ref{subfig: bit flip case 2}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
+
+In Case \ref{subfig: bit flip case 3}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
+
+In Case \ref{subfig: bit flip case 4}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so $1$ polygon is created. Either way, the RHS changes.
+
+In Case \ref{subfig: bit flip case 5}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
+
+In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 4} applies, as the flip either removes or adds a polygon, so the RHS changes.
+
+As all cases preserve Equation \ref{eq: sign prop}, the $(m+1, n)$ framed binary lattice $\ell'$ also follows Equation \ref{eq: sign prop}.
 \end{proof}
+
+We point out here that the function $v$ if defined for all binary lattices, while Proposition \ref{prop: sign of v} only holds for framed binary lattices that do not contain cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
 
 \begin{prop}
 The number of $(m,n)$ mosaics that do not contain a polygon has
-$$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell) = \left|\mathbb{S}^{(m,n)}\right|.$$
 \end{prop}
 
 \begin{proof}
@@ -1093,6 +1196,8 @@ TODO
 \end{proof}
 
 Let the $k$ digit binary representation of the number $n$ be written as $\beta_k(n)$
+
+TODO new end?
 
 Intuitively, we would hope that for a binary lattice $\ell$, $U(\ell)$ would equal $\left|f^{-1}\left(\{\ell\}\right)\right|$. However this is not necessarily the case, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
 
