@@ -455,7 +455,7 @@ Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)
 \end{subfigure}
 
 \end{center}
-\caption{Messy polygon mosaics}
+\caption{Examples of $(5,7$) messy polygon mosaics}
 \label{fig:messy mosaic example}
 \end{figure}
 
@@ -702,13 +702,65 @@ Therefore, as all mosaics that do not contain a polygon map to $\ell^*$ under $f
 
 and so it suffices to compute $|f^{-1}(\{\ell^*\})|$. 
 
-It would be convenient to compute $f^{-1}(\ell)$ for any binary lattice $\ell$ ``cell-by-cell''. Let $u: \mathbb{L}^{(m,n)} \to \mathbb{Z}$  map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
+It would be convenient to compute $f^{-1}(\ell)$ for any binary lattice $\ell$ ``cell-by-cell''. Let $u: \mathbb{L}^{(m,n)} \to \mathbb{N}$  map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
         7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
         0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
         1 & \text{otherwise,}
     \end{cases}$$
 
-where these terms come from the number of tiles that can map to a specific cell under $f$. However, as $|f^{-1}(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})| = 7$, for the $(m,n)$ binary lattice $\ell^*$, we would get
+where these terms come from the number of tiles in $\mathbb{T}$ that can map to a specific cell under $f$. For a given binary lattice $\ell$ that does not contain  $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, the function $u(\ell)$ enumerates a set of mosaics of a specific form, in which at each square a tile is either uniquely specified, or can be any tile in $\mathbb{T}$. We can depict this set with a \textit{mosaic diagram}, where we introduce a notational tile with a red dot at the center to indicate that any tile in $\mathbb{T}$ can be in that location (to avoid confusion with the $T_0$ tile). For example, the mosaic diagram for the binary lattice in Figure \ref{fig:example of f mapping} is depicted in Figure \ref{fig: mosaic diagram}. Consequently, the mosaic in Figure \ref{fig:example of f mapping} is included in the set represented by the mosaic diagram in Figure \ref{fig: mosaic diagram}.
+
+\begin{figure}
+\begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellopen{0}{0}{1}{1}
+        \cellopen{1}{0}{2}{1}
+        \cellopen{2}{0}{3}{1}
+        \cellC{3}{0}{4}{1}
+        \cellE{4}{0}{5}{1}
+        \cellE{5}{0}{6}{1}
+        \cellD{6}{0}{7}{1}
+        % row2
+        \cellopen{0}{1}{1}{2}
+        \cellopen{1}{1}{2}{2}
+        \cellC{2}{1}{3}{2}
+        \cellA{3}{1}{4}{2}
+        \cellC{4}{1}{5}{2}
+        \cellD{5}{1}{6}{2}
+        \cellF{6}{1}{7}{2}
+        % row3
+        \cellopen{0}{2}{1}{3}
+        \cellopen{1}{2}{2}{3}
+        \cellF{2}{2}{3}{3}
+        \cellopen{3}{2}{4}{3}
+        \cellB{4}{2}{5}{3}
+        \cellA{5}{2}{6}{3}
+        \cellF{6}{2}{7}{3}
+        % row4
+        \cellC{0}{3}{1}{4}
+        \cellD{1}{3}{2}{4}
+        \cellB{2}{3}{3}{4}
+        \cellE{3}{3}{4}{4}
+        \cellD{4}{3}{5}{4}
+        \cellopen{5}{3}{6}{4}
+        \cellF{6}{3}{7}{4}
+        % row5
+        \cellB{0}{4}{1}{5}
+        \cellA{1}{4}{2}{5}
+        \cellopen{2}{4}{3}{5}
+        \cellopen{3}{4}{4}{5}
+        \cellB{4}{4}{5}{5}
+        \cellE{5}{4}{6}{5}
+        \cellA{6}{4}{7}{5}
+
+    \end{tikzpicture}
+\end{center}
+\caption{Mosaic Diagram of Binary Lattice in Figure \ref{fig:example of f mapping}}
+\label{fig: mosaic diagram}
+\end{figure}
+
+One would hope that the function $u$ could be used to compute $|\mathbb{S}^{(m,n)}|$ in some way. However for the $(m,n)$ binary lattice $\ell^*$, we have
 
 $$u(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}| > |\mathbb{S}^{(m,n)}|.$$
 
@@ -868,22 +920,33 @@ Consider the following binary lattices and mosaics for $(m,n)=(4,2)$.
     \end{tikzpicture}
 \end{center}
 
-We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. We also have $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ permutations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
+We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. We also have $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ combinations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
 
 \label{exmp:U doesnt work}
 \end{exmp}
 
+Example \ref{exmp:U doesnt work} leads us to conclude the following.
+
+\begin{prop}
+For a framed binary lattice $\ell$ that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, $u(\ell)$ counts the number of mosaics that have at least the polygons in $g(\ell)$.
+\label{prop: u counts atleast g l}
+\end{prop}
+
+\begin{proof}
+Choose an framed binary lattice $\ell$ that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. By the definition of $g$, the function $u(\ell)$ counts the number of mosaics that have exactly the polygons in $g(\ell)$. Additionally, as $u$ counts each possible combination of tiles for $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells, this includes all polygons that do not conflict with the polygons in $g(\ell)$.
+\end{proof}
+
 Surprisingly, this overcounting phenomena can be remedied by a small modificiation to $u$, which we call $v$.
 
 \begin{definition}
-    Let $v: \mathbb{L}^{(m,n)} \to \mathbb{Z}$ map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
-        7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
-        0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
-        -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
-        1 & \text{otherwise}
-    \end{cases}$$
+Let $v: \mathbb{L}^{(m,n)} \to \mathbb{Z}$ map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
+    7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
+    0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
+    -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
+    1 & \text{otherwise}
+\end{cases}$$
 
-    and the empty product being $1$.
+and the empty product being $1$.
 \end{definition}
 
 \begin{exmp}
@@ -894,13 +957,13 @@ If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:ex
 We will first show that $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
 
 \begin{definition}
-For a framed binary lattice $\ell$, let $p(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
+For a framed binary lattice $\ell$, let $P(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
 \end{definition}
 
 \begin{prop} 
 If $\ell$ is a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then 
 \begin{equation}
-\text{sign}(v(\ell)) = (-1)^{p(\ell)}.
+\text{sign}(v(\ell)) = (-1)^{P(\ell)}.
 \label{eq: sign prop}
 \end{equation}
 \label{prop: sign of v}
@@ -982,7 +1045,7 @@ For steps b and c, we encounter two distinct cases which we diagram in Figure \r
 
 For step b, Figure  \ref{subfig: step b diagram} depicts all possible cases one can encounter scanning left to right on $\ell_a$. Note that the vertex right of the \# symbol must be $0$, as the procedure moving left to right on $\ell_a$ gives that this vertex must be $0$.
 
-Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $p(\ell_a) = p(\ell_b)$, and so the RHS is preserved.
+Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $P(\ell_a) = P(\ell_b)$, and so the RHS is preserved.
 
 For step c, Figure \ref{subfig: step c diagram} depicts all possible cases one can encounter scanning left to right on $\ell_b$. It cannot be the case that $a=1$ and $c=0$, as this would imply $\ell'$ contains $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Similarly, it cannot be the cases that $b=1$ and $d=0$, as this would imply $\ell_b$ contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Additionally, it cannot be the case that $b=0$ and $d=1$, as the procedure moves left-to-right. This results in the following $6$ cases, which we show each preserve Equation \ref{eq: sign prop}.
 
@@ -1168,11 +1231,30 @@ We point out here that the function $v$ if defined for all binary lattices, whil
 
 \begin{prop}
 The number of $(m,n)$ mosaics that do not contain a polygon has
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell) = \left|\mathbb{S}^{(m,n)}\right|.$$
+$$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
 \end{prop}
 
 \begin{proof}
-TODO
+Choose a mosaic $\mathcal{M}$ that has $P(\ell')$ polygons, where $\ell' = f(\mathcal{M})$. We begin by determining how many times $\mathcal{M}$ is counted in the related sum
+
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell).$$
+
+Proposition \ref{prop: u counts atleast g l} shows that the function $u(\ell)$ counts the mosaics with at least the polygons in $g(\ell)$. Consequently, a binary lattice $\ell$ counts $\mathcal{M}$ if the polygons in $g(\ell)$ are a subset of the polygons in $\mathcal{M}$. Therefore, $\mathcal{M}$ is counted $\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}$ times, grouped by the size of the subset of polygons $p$. This then gives
+
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}\binom{P(f(\mathcal{M}))}{p} = \sum_{\ell \in \mathbb{F}^{(m,n)}}\left(\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}\right)\left|f^{-1}(\ell)\right|,$$
+
+where the second equality comes from grouping terms by the set of mosaics that map to the same binary lattice. Following the same logic along with by Proposition \ref{prop: sign of v} gives
+
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}(-1)^{p}\binom{P(f(\mathcal{M}))}{p} = \sum_{\ell \in \mathbb{F}^{(m,n)}}\left(\sum_{p=0}^{P(\ell)}(-1)^p\binom{P(\ell)}{p}\right)\left|f^{-1}(\ell)\right|,$$
+
+where the second equality also comes from grouping terms by the set of mosaics that map to the same binary lattice. Finally, by the binomial theorem, for $P(\ell) > 0$ we have
+
+$$\sum_{p=0}^{P(\ell)}(-1)^{p}\binom{P(\ell)}{p} = 0,$$
+
+and as the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
+
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
+
 \end{proof}
 
 As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the state matrix recursion method.
@@ -1192,7 +1274,7 @@ The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry
 \end{prop}
 
 \begin{proof}
-TODO
+TODO Substituting the values for $v$ completes the proof.
 \end{proof}
 
 Let the $k$ digit binary representation of the number $n$ be written as $\beta_k(n)$
