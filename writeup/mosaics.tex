@@ -947,6 +947,7 @@ Let $v: \mathbb{L}^{(m,n)} \to \mathbb{Z}$ map a binary lattice $\ell$ to the pr
 \end{cases}$$
 
 and the empty product being $1$.
+\label{def: def of v}
 \end{definition}
 
 \begin{exmp}
@@ -973,7 +974,7 @@ If $\ell$ is a framed binary lattice that does not contain the cells $\begin{sma
 
 For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(1,n)$ framed binary lattice $\ell$ for some $n \geq 1$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $v(\ell)=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
 
-For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labelled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
+For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labeled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
 
 \noindent\textbf{Procedure:} \\
 \indent \textbf{Step a.} Add a bottom row to $\ell$ of $n+1$ vertices all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_a$. \\
@@ -1232,6 +1233,7 @@ We point out here that the function $v$ if defined for all binary lattices, whil
 \begin{prop}
 The number of $(m,n)$ mosaics that do not contain a polygon has
 $$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
+\label{prop: sum of vs}
 \end{prop}
 
 \begin{proof}
@@ -1239,29 +1241,35 @@ Choose a mosaic $\mathcal{M}$ that has $P(\ell')$ polygons, where $\ell' = f(\ma
 
 $$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell).$$
 
-Proposition \ref{prop: u counts atleast g l} shows that the function $u(\ell)$ counts the mosaics with at least the polygons in $g(\ell)$. Consequently, a binary lattice $\ell$ counts $\mathcal{M}$ if the polygons in $g(\ell)$ are a subset of the polygons in $\mathcal{M}$. Therefore, $\mathcal{M}$ is counted $\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}$ times, grouped by the size of the subset of polygons $p$. This then gives
+We point out here that as $u(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}) = u(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}) = v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}) = v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}) = 0$, framed binary lattices with these cells don't contribute to either summation, and so can be ignored for the remainder of this argument.
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}\binom{P(f(\mathcal{M}))}{p} = \sum_{\ell \in \mathbb{F}^{(m,n)}}\left(\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}\right)\left|f^{-1}(\ell)\right|,$$
+Proposition \ref{prop: u counts atleast g l} shows that the function $u(\ell)$ counts the mosaics with at least the polygons in $g(\ell)$. Consequently, for a framed binary lattice $\ell$, $u(\ell)$ counts $\mathcal{M}$ if the polygons in $g(\ell)$ are a subset of the polygons in $\mathcal{M}$. Therefore, as the number of ways to choose a size $p$ subset of $P(\ell)$ polygons is $\binom{P(\ell)}{p}$, $\mathcal{M}$ is counted $\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}$ times. This then gives
 
-where the second equality comes from grouping terms by the set of mosaics that map to the same binary lattice. Following the same logic along with by Proposition \ref{prop: sign of v} gives
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}\binom{P(f(\mathcal{M}))}{p}.$$
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}(-1)^{p}\binom{P(f(\mathcal{M}))}{p} = \sum_{\ell \in \mathbb{F}^{(m,n)}}\left(\sum_{p=0}^{P(\ell)}(-1)^p\binom{P(\ell)}{p}\right)\left|f^{-1}(\ell)\right|,$$
+Following the same logic for $\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell)$, Proposition \ref{prop: sign of v} gives that size $p$ subsets where $p$ is odd are subtracted, which gives
 
-where the second equality also comes from grouping terms by the set of mosaics that map to the same binary lattice. Finally, by the binomial theorem, for $P(\ell) > 0$ we have
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}(-1)^{p}\binom{P(f(\mathcal{M}))}{p}.$$
+
+Finally, by the binomial theorem, for $P(\ell) > 0$ we have
 
 $$\sum_{p=0}^{P(\ell)}(-1)^{p}\binom{P(\ell)}{p} = 0,$$
 
 and as the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M}^{(m,n)} | P(f(\mathcal{M})) = 0\}}\binom{0}{0} = |f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
 
 \end{proof}
 
 As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the state matrix recursion method.
 
+\section{Proof of Theorem \ref{thm: messy mosaics}}
+
+We begin by defining the state matrices.
+
 \begin{definition}
 
-Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}), B_{1}=v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}), C_{1}=v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}), D_{1}=v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})$, and for integers $k > 1$,
+Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, B_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}, C_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, D_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}$, and for integers $k \geq 1$,
 
 \begin{eqnarray*}
 A_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix} \\
@@ -1269,1003 +1277,62 @@ C_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}
 \end{eqnarray*}
 \end{definition}
 
+\begin{definition}
+Let the $n$ digit binary representation of the number $k$ be written as $\beta_n(k)$. If $k$ is $0$, $\beta_k(n)$ returns the empty string.
+\end{definition}
+
+\begin{prop}
+The $(i,j)$-th entry of $A_{n}$ is $v(\ell)$, where $\ell$ is the $(1, n)$ binary lattice where the top row of vertices has labels $0\beta_{n-1}(i)0$ and the bottom row of vertices has labels $0\beta_{n-1}(j)0$, both read left to right. Furthermore, the same statement is true for $B_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $0\beta_{n-1}(j)0$, for $C_{n}$ with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$, and for $D_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$.
+\label{prop: one by n state matrix}
+\end{prop}
+
+\begin{proof}
+We prove by induction. For $n=1$, the definition of the state matrices gives $A_1$ is $v(\ell)$ where $\ell$ is the $(1,1)$ binary lattice with top row $0\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=00$, as $\beta_0(0)$ is the empty string. The same is true for $B_1$ with top row $0\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=00$, for $C_1$ with top row $1\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=10$, and for $D_1$ with top row $1\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=10$.
+
+We next assume matrices $A_n, B_n, C_n$, and $D_n$ follow their associated statements in Proposition \ref{prop: one by n state matrix}. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The argument is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
+
+$$v(\ell) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).$$
+
+We show that $A_{n+1}$ also follows Proposition \ref{prop: one by n state matrix}. From the definition, we have
+
+$$A_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix}.$$
+
+By construction, the $(i,j)$-th entry in $B_n$ is located in the $(i, j+2^{n-1})$-th entry of $A_{n+1}$, as each block matrix $A_n, B_n, C_n, D_n$ are $2^{n-1} \times 2^{n-1}$ matrices. Also by construction, the value in the $(i,j)$-th entry in $B_n$ which we call $v(\ell)$ is multiplied by $v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})$. The definition of $v$ gives
+
+$$v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})v(\ell) = v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\right)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
+
+Therefore, the $(i, j+2^{n-1})$-th entry of $A_{n+1}$ is $v(\ell)$ where $\ell$ is the $(1,n+1)$ binary lattice where the top row of vertices is $0\beta_{n}(i)0$ and the bottom row of vertices is $0\beta_{n}(j+2^{n-1})0$, which completes the induction step for $A_{n+1}$. Similar arguments hold for matrices $B_{n+1}$, $C_{n+1}$, $D_{n+1}$.
+
+\end{proof}
+
+\begin{prop}
+The $(i,j)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(j)0$, both read left to right.
+\label{prop: m by n state matrix}
+\end{prop}
+
+\begin{proof}
+We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n state matrix}, as the set $L$ only has the unique $(1,n)$ binary lattice.
+
+We next assume that the $(i,j)$-th entry of $A^{m}_{n}$ satisfies the statement in Proposition \ref{prop: m by n state matrix}, and show the statement also holds for $A^{m+1}_{n}$. To begin, consider the product $A^{m}_{n} \cdot A_n$, and choose an integer $k \in [0, 2^{n-1}-1]$. From the induction hypothesis the value at the $(i,k)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(k)0$. Similarly, the $(k, j)$-th entry of $A_n$ is the $(1,n)$ binary lattice $\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}.$
+
+Therefore, the dot product of the $i$-th row and the $j$-th column is $(i,j)$-th value of $A_n^{m+1}$, which is
+
+$$\sum_{k=0}^{2^{n-1}-1}v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(k) & 0 \end{smallmatrix}\right)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right),$$
+
+which gives the desired result for $A_n^{m+1}$.
+\end{proof}
+
 \begin{prop}
 The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry of $A_{n}^m$.
 \end{prop}
 
 \begin{proof}
-TODO Substituting the values for $v$ completes the proof.
-\end{proof}
-
-Let the $k$ digit binary representation of the number $n$ be written as $\beta_k(n)$
-
-TODO new end?
-
-Intuitively, we would hope that for a binary lattice $\ell$, $U(\ell)$ would equal $\left|f^{-1}\left(\{\ell\}\right)\right|$. However this is not necessarily the case, as $U(\ell)$ does not \textit{just} count the number of mosaics that map to $\ell$ under $f$. 
-
-\begin{exmp}
-We have $U(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}|$, which clearly overcounts $|\mathbb{S}^{(m,n)}|$.
-\label{eq: U doesnt work l star}
-\end{exmp}
-
-
-
-Examples \ref{eq: U doesnt work l star} and \ref{exmp:U doesnt work} show we cannot compute $|f^{-1}(\{\ell\})|$ for a given binary lattice $\ell$ using $U(\ell)$, as cells $(00,00)$ and $(11,11)$ lead to over counting mosaics. Instead, $U$ counts the number of mosaics that map to some set of binary lattices under $f$. This set is defined in Definition \ref{def: set u}. To define this set, we first point out that a binary lattice can be split into the cells that have $u_{(i,j)}=7$ and the cells that have $u_{(i,j)} = 1$.
-
-\begin{definition}
-A polygon $\mathcal{P}$ is \textit{specified} by a binary lattice $\ell$ if the cells in $\ell$ that map to the tiles that make up $\mathcal{P}$ all have $u_{(i,j)}=1$.
-\end{definition}
-
-\begin{definition}
-Let $P: \mathbb{L}^{(m,n)} \to \mathbb{N}$ be the number of polygons specified in a binary lattice $\ell$.
-\end{definition}
-
-\begin{exmp}
-From Example \ref{exmp:U doesnt work}, $\ell_1$ specifies the polygon in the top $2$ rows of Mosaic $2$, as the cells in the top $2$ rows of $\ell_1$ all have $u_{(i,j)} = 1$. However $\ell_1$ does not specify the polygon in the bottom $2$ rows of Mosaic $2$, as the cells in the bottom $2$ rows of $\ell_1$ all have $u_{(i,j)}=7$. $\ell_3$ specifies both polygons in Mosaic $2$. Therefore $P(\ell_1) = P(\ell_2) = 1$, and $P(\ell_3) = 2$.
-\label{exmp:specifying example}
-\end{exmp}
-
-\begin{exmp}
-The binary lattice $\ell^*$ specifies $0$ polygons, and so $P(\ell^*)=0$.
-\end{exmp}
-
-\begin{definition}
-For binary lattices $\ell, \ell'$, we say $\ell \leq \ell'$ if one can construct $\ell'$ by flipping the parity of some number of vertices (possibly $0$ vertices) in $\ell$, such that all polygons specified by $\ell$ are unchanged and no cells with index $(01,10)$ or $(10,01)$ are created.
-\end{definition}
-
-\begin{definition}
-For a binary lattice $\ell$, let $\mathbb{U}(\ell) = \{\ell' | \ell \leq \ell'\}$.
-\label{def: set u}
-\end{definition}
-
-\begin{exmp}
-From Example \ref{exmp:U doesnt work}, $\ell_1 \leq \ell_3$ as one can construct $\ell_3$ from $\ell_1$ by flipping the vertex at $(3,1)$ from $0$ to $1$. As $\ell_1$ specifies the polygon in the top two rows of Mosaic $2$, and this vertex flip does not change the top polygon, $\ell_1 \leq \ell_3$. We also have $\ell_1 \leq \ell_1$ simply by selecting no vertices to flip. As diagrammed below, constructing $\ell_4$ from $\ell_1$ by flipping the vertex at $(2,1)$ does change a polygon specified by $\ell_1$, and so $\ell_1 \nleq \ell_4$.
-
-% \begin{figure}[h!]
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-        \cell{0}{3}{1}{4}
-        \cell{1}{0}{2}{1}
-        \cell{1}{1}{2}{2}
-        \cell{1}{2}{2}{3}
-        \cell{1}{3}{2}{4}
-
-        \( \lablnode{1}{-1}{$\ell_{4}$} \)
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$1$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-
-        \cellF{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-
-        \cellC{3}{1}{4}{2}
-        \cellD{4}{1}{5}{2}
-
-        \cellF{3}{2}{4}{3}
-        \cellF{4}{2}{5}{3}    
-
-        \cellB{3}{3}{4}{4}
-        \cellA{4}{3}{5}{4}    
-
-        \( \lablnode{4}{-1}{Mosaic $3$} \)
-
-    \end{tikzpicture}
-\end{center}
-% \label{fig: ell 4}
-% \caption{}
-% \end{figure}
-
-Therefore $\mathbb{U}(\ell_1) = \{\ell_1, \ell_3\}$, $\mathbb{U}(\ell_2) = \{\ell_2, \ell_3\}$, and $\mathbb{U}(\ell_3) = \{\ell_3\}$.
-
-\label{exmp:four two mosaics}
-\end{exmp}
-
-\begin{exmp}
-Every binary lattice $\ell$ has $\ell^* \leq \ell$, as $\ell^*$ specifies $0$ polygons. Therefore for a given $(m,n)$, we have $\mathbb{U}(\ell^*) = \mathbb{L}^{(m,n)}$.
-\end{exmp}
-
-\begin{prop}
-For all $\ell$ we have
-\begin{equation}
-U(\ell) = \sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})|.
-\label{eq:U identity}
-\end{equation}
-\label{prop:U counts mathbb U}
-\end{prop}
-
-\begin{proof}
-For a binary lattice $\ell' \in \mathbb{U}(\ell)$, $\ell'$ specifies new polygons without changing any of the polygons specified in $\ell$. Consider the set of cells $S$ that differ between $\ell$ and $\ell'$. By definition, these cells in $\ell$ all have $u_{(i,j)}=7=|\mathbb{T}|$, while in $\ell'$ they all have $u_{(i,j)}=1$. Also by definition $U(\ell)$ enumerates every possible combination of tiles that could map to each cell in $S$. Therefore, the tiles sthat specify the new polygons in $\ell'$ are counted, and so $|f^{-1}(\ell')|$ is also counted by $U$.
-\end{proof}
-
-Surprisingly, we can recover $|\mathbb{S}^{(m,n)}|$ by first considering how much each mosaic is overcounted in
-
-\begin{equation}
-    \sum_{\ell \in \mathbb{L}^{(m,n)}}U(\ell).
-\end{equation}
-
-\begin{prop}
-    \begin{equation}
-        \sum_{\ell \in \mathbb{L}^{(m,n)}} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}}\sum_{\ell' \in \mathbb{U}(\ell)}|f^{-1}(\{\ell'\})| = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}\right)|f^{-1}(\{\ell\})|.
-        \label{eq:double counting terms}
-    \end{equation}
-\label{prop: over counting term}
-\end{prop}
-
-\begin{proof}
-The first equality follows directly from Proposition \ref{prop:U counts mathbb U}. For the second equality, for a given binary lattice $\ell$ the coefficient of $|f^{-1}(\{\ell\})|$ is the number of elements in $\{\ell' | \ell' \leq \ell\}$. Therefore, a binary lattice is in $\{\ell' | \ell' \leq \ell\}$ if the binary lattice only specifies $0 \leq p \leq P(\ell)$ of the $P(\ell)$ polygons specified by $\ell$. As there are $\binom{P(\ell)}{p}$ ways to specify $p$ polygons from a choice of $P(\ell)$ polygons, this gives the second equality for all $P(\ell)>0$.
-
-If $\ell'$ has $P(\ell') = 0$, then $\ell' = \ell^*$. As $\{\ell' | \ell' \leq \ell^*\} = \{\ell^*\}$, the term $|f^{-1}(\ell')|$ is only counted once. As $1=\binom{0}{0}$, this completes the proof.
-\end{proof}
-
-\begin{prop}
-    The number of $(m,n)$ mosaics that do not contain a polygon $|\mathbb{S}^{(m,n)}|$ has
-
-    \begin{equation}
-    |\mathbb{S}^{(m,n)}| = \sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell).
-    \label{eq:ugly inc excl}
-    \end{equation}
-\label{prop: recover total}
-\end{prop}
-
-\begin{proof}
-If we group terms like the second equality of Equation \ref{eq:double counting terms}, we get 
-
-$$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \sum_{\ell \in \mathbb{L}^{(m,n)}} \left(\sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p}\right)|f^{-1}(\{\ell\})|.$$
-
-By the binomial theorem, for $P(\ell) > 0$ we have
-
-$$\sum_{p=0}^{P(\ell)}(-1)^{P(\ell)}\binom{P(\ell)}{p} = (1-1)^{P(\ell)} = 0,$$
-
-so all terms where $P(\ell)>0$ are $0$. As the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
-
-$$\sum_{\ell \in \mathbb{L}^{(m,n)}} (-1)^{P(\ell)} U(\ell) = \binom{0}{0}|f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
-\end{proof}
-
-\section{A Cell-Level Identity}
-
-Though Equation \ref{eq:ugly inc excl} does compute $|\mathbb{S}^{(m,n)}|$, computing the number of polygons specified in a binary lattice $P(\ell)$ requires examining the entire structure of $\ell$. It will be more efficient to recover the $(-1)^{P(\ell)}$ term at the level of individual cells. More concretely, we seek a function $V$ of the form
-
-$$V(\ell) := \prod_{\text{Cell } (i,j) \in \ell} v_{(i,j)},$$
-
-such that for all $\ell$
-
-\begin{equation}
-    (-1)^{P(\ell)}U(\ell) = V(\ell).
-\label{eq:technically correct}
-\end{equation}
-
-The idea is to add a coefficient $p_{(i,j)} \in \{-1,1\}$ to each value of $u_{(i,j)}$ in such a way as to recover the $(-1)^{P(\ell)}$ term. With this in mind we define $v_{(i,j)} := p_{(i,j)}u_{(i,j)}$.
-
-\begin{condition}
-A subset of cells $\mathcal{S}$ in a binary lattice $\ell$ meets this condition if
-
-\begin{equation}
-    \prod_{\text{Cell } (i,j) \in \mathcal{S}} p_{(i,j)} = -1,
-    \label{eq:neg prod polygon condition}
-\end{equation}
-with $p_{(i,j)} \in \{-1,1\}$.
-\label{cond:neg prod condition}
-\end{condition}
-
-Cells in a binary lattice either do or do not specify a polygon. To recover the $(-1)^{P(\ell)}$ term, the following must be true. Cells that cannot specify a polygon must all have $p_{(i,j)}=1$. Moreover, if a set of cells specifies any one polygon, it must meet Condition \ref{cond:neg prod condition}.
-
-\begin{prop}
-There exists values $p_{(i,j)}$ for which the cells that do not specify a polygon have $p_{(i,j)}=1$, and Condition \ref{cond:neg prod condition} holds for any set of cells that specify a polygon.
-\label{prop:neg prod prop}
-\end{prop}
-
-\begin{proof}
-
-We can immediately see $p_{(00,00)} = p_{(11,11)} = p_{(01,10)} = p_{(10,01)} = 1$, as cells $(00,00)$, $(11,11)$, $(01,10)$, and $(10,01)$ can never be in the subset of cells that specify a polygon, and so must be positive.
-
-For the remaining values of $p_{(i,j)}$, we first examine the cells that map to the smallest polygon, shown in Figure \ref{fig:smallest polygon}. 
-
-\begin{figure}[h!]
-\begin{center}
-\begin{tikzpicture}
-    % row1
-    \cell{0}{0}{1}{1}
-    \cell{1}{0}{2}{1}
-    % row2
-    \cell{0}{1}{1}{2}
-    \cell{1}{1}{2}{2}
-    % label for row1
-    \( \lablvertex{0}{0}{$0$} \)
-    \( \lablvertex{1}{0}{$0$} \)
-    \( \lablvertex{2}{0}{$0$} \)
-    % label for row2
-    \( \lablvertex{0}{1}{$0$} \)
-    \( \lablvertex{1}{1}{$1$} \)
-    \( \lablvertex{2}{1}{$0$} \)
-    % label for row3
-    \( \lablvertex{0}{2}{$0$} \)
-    \( \lablvertex{1}{2}{$0$} \)
-    \( \lablvertex{2}{2}{$0$} \)
-
-    % \( \lablnode{1}{-0.5}{$p_{(00,01)} p_{(00,10)} p_{(01,00)} p_{(10,00)} = -1$} \)
-
-    % row1
-    \cell{7}{0}{8}{1}
-    \cell{8}{0}{9}{1}
-    % row2
-    \cell{7}{1}{8}{2}
-    \cell{8}{1}{9}{2}
-    % label for row1
-    \( \lablvertex{7}{0}{$1$} \)
-    \( \lablvertex{8}{0}{$1$} \)
-    \( \lablvertex{9}{0}{$1$} \)
-    % label for row2
-    \( \lablvertex{7}{1}{$1$} \)
-    \( \lablvertex{8}{1}{$0$} \)
-    \( \lablvertex{9}{1}{$1$} \)
-    % label for row3
-    \( \lablvertex{7}{2}{$1$} \)
-    \( \lablvertex{8}{2}{$1$} \)
-    \( \lablvertex{9}{2}{$1$} \)
-    
-    % \( \lablnode{8}{-0.5}{$p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} = -1$} \)
-\end{tikzpicture}
-\end{center}
-\caption{Portions of binary lattices associated with the smallest polygon}
-\label{fig:constraints i and ii}
-\end{figure}
-
-For the portions of binary lattices in Figure \ref{fig:constraints i and ii}, Condition \ref{cond:neg prod condition} amounts to the following two equations
-
-\begin{equation}
-  \begin{aligned}
-  p_{(00,01)} p_{(00,10)} p_{(01,00)} p_{(10,00)} & = -1  \\
-  p_{(11,10)} p_{(11,01)} p_{(10,11)} p_{(01,11)} & = -1.
-  \end{aligned}
-  \label{eq:constraints i and ii}
-\end{equation}
-
-We refer to the equations above as \textit{constraints}, as they constrain the possible assignments of $p_{(i,j)}$. %Let the constraints in Equation \ref{eq:constraints i and ii} be numbered $1$ and $2$.
-
-To define the remaining constraints, consider the unbounded square lattice with all vertices labeled $0$, except for the origin labeled $1$. We refer to this as the \textit{starting position}.
-
-From the definition of $f$ we know that polygons are the boundary of edge-connected vertices of the same label. Clearly one can construct arbitrary sets of edge-connected $0$'s and $1$'s from the starting position by flipping the parity of a vertex one-by-one.
-
-This \textit{bit flip} operation, depicted in Figure \ref{fig:bit flip}, corresponds with changing the identity of the four cells that share that vertex. As each cell has its associated $p_{(i,j)}$ value, it must be the case that the bit flip preserves Condition \ref{cond:neg prod condition} for the cells involved. Additionally, as the surrounding $8$ vertices are unchanged udner this operation, we must define $2^8$ constraints.
-
-In each of the constraints, the parity of the number of edge-connected regions of $1$s must either change or stay the same after the bit flip. If the parity remains unchanged, the bit flip is of \textit{Type 1}, and if the parity changes the bit flip is of \textit{Type 2}.
-
-\begin{figure}[h!]
-    \begin{center}
-
-\begin{subfigure}{0.4\textwidth}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$1$} \)
-        \( \lablvertex{2}{0}{$1$} \)
-        % label for row2
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        % row2
-        \cell{3}{1}{4}{2}
-        \cell{4}{1}{5}{2}
-        % label for row1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$1$} \)
-        \( \lablvertex{5}{0}{$1$} \)
-        % label for row2
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablnode{2.5}{1}{$\rightarrow$} \)
-        
-        \cellB{0}{-3}{1}{-2}
-        \cellD{1}{-3}{2}{-2}
-        \cell{0}{-2}{1}{-1}
-        \cellB{1}{-2}{2}{-1}
-        
-        \( \lablnode{2.5}{-2}{$\rightarrow$} \)
-
-        \cellF{3}{-3}{4}{-2}
-        \cell{4}{-3}{5}{-2}
-        \cellB{3}{-2}{4}{-1}
-        \cellE{4}{-2}{5}{-1}
-
-    \end{tikzpicture}
-    \caption{Type 1 bit flip and associated tiles}
-    \label{fig:type 1 bit flip}
-\end{subfigure}
-% \hfill
-\hspace{0.05\textwidth}
-\begin{subfigure}{0.4\textwidth}
-    \begin{tikzpicture}
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        % label for row1
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-        % label for row2
-        \( \lablvertex{0}{1}{$1$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{4}{0}{5}{1}
-        % row2
-        \cell{3}{1}{4}{2}
-        \cell{4}{1}{5}{2}
-        % label for row1
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-        % label for row2
-        \( \lablvertex{3}{1}{$1$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$1$} \)
-        % label for row3
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablnode{2.5}{1}{$\rightarrow$} \)
-
-        \cellD{0}{-3}{1}{-2}
-        \cellC{1}{-3}{2}{-2}
-        \cellA{0}{-2}{1}{-1}
-        \cellB{1}{-2}{2}{-1}
-        
-        \( \lablnode{2.5}{-2}{$\rightarrow$} \)
-
-        \cellE{3}{-3}{4}{-2}
-        \cellE{4}{-3}{5}{-2}
-        \cellE{3}{-2}{4}{-1}
-        \cellE{4}{-2}{5}{-1}
-
-    \end{tikzpicture}
-    \caption{Type 2 bit flip and associated tiles}
-    \label{fig:type 2 bit flip}
-\end{subfigure}
-
-\end{center}
-\caption{Bit flips for binary lattices}
-\label{fig:bit flip}
-\end{figure}
-
-For a bit flip of \textit{Type 1}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must stay the same after the flip. For example, Figure \ref{fig:type 1 bit flip} represents the constraint
-
-\begin{equation}
-    p_{(01,00)}p_{(11,01)}p_{(00,00)}p_{(01,00)} = p_{(01,01)}p_{(11,11)}p_{(01,00)}p_{(11,00)}.
-\end{equation}
-
-For a bit flip of \textit{Type 2}, to adhere to Condition \ref{cond:neg prod condition}, the associated constraint is that the sign of the product of the related cells must change after the flip. For example, Figure \ref{fig:type 2 bit flip} represents the constraint
-
-\begin{equation}
-    p_{(00,10)}p_{(00,01)}p_{(10,00)}p_{(01,00)} = -p_{(00,11)}p_{(00,11)}p_{(11,00)}p_{(11,00)}.
-\end{equation}
-
-In Figure \ref{fig:type 2 bit flip} the transformation corresponds with \textit{either} two distinct polygons joining into one polygon \textit{or} one polygon splitting into two distinct polygons. In either case, we want the sign of the product to change to adhere to Condition \ref{cond:neg prod condition}.
-
-This gives a procedure to define the $2^8$ bit flip constraints on $p_{(i,j)}$. Before solving for $p_{(i,j)}$, we can discard any constraint that involves cells $(01,10)$ or $(10,01)$, as we don't consider any binary lattices with these cells. 
-
-Finally, we can then use software to verify that all remaining constraints admit a solution.
-
-% We can then calculate the  Gröbner basis of the system to arrive at
-
-% All unsimplified Type 1 and Type 2 constraints can be found in the Appendix.
-
-\end{proof}
-
-We summarize the values of $p_{(i,j)}$ and $v_{(i,j)}$ in Table \ref{tbl:values of p and v}.
-
-\begin{table}[h!]
-    \begin{center}
-        \begin{tabular}{ |c|r|r|r|c|r|r|r| } 
-            \hline
-            \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ & \textbf{Cell (}$\mathbf{i}$\textbf{,} $\mathbf{j}$\textbf{)} & $\mathbf{u_{(i,j)}}$ & $\mathbf{p_{(i,j)}}$ & $\mathbf{v_{(i,j)}}$ \\ 
-            \hline
-            $(00, 00)$ & $7$ & $1$ & $7$ & $(11, 11)$ & $7$ & $1$ & $7$ \\
-            \hline
-            $(00, 01)$ & $1$ & $1$ & $1$ & $(11, 10)$ & $1$ & $-1$ & $-1$ \\
-            \hline
-            $(00, 10)$ & $1$ & $1$ & $1$ & $(11, 01)$ & $1$ & $1$ & $1$ \\
-            \hline
-            $(00, 11)$ & $1$ & $1$ & $1$ & $(11, 00)$ & $1$ & $1$ & $1$ \\
-            \hline
-            $(01, 00)$ & $1$ & $1$ & $1$ & $(10, 11)$ & $1$ & $1$ & $1$ \\
-            \hline
-            $(01, 01)$ & $1$ & $1$ & $1$ & $(10, 10)$ & $1$ & $1$ & $1$ \\
-            \hline
-            $(01, 10)$ & $0$ & $1$ & $0$ & $(10, 01)$ & $0$ & $1$ & $0$ \\
-            \hline
-            $(01, 11)$ & $1$ & $1$ & $1$ & $(10, 00)$ & $1$ & $-1$ & $-1$ \\
-            \hline
-        \end{tabular}
-        \caption{Values of $p_{(i,j)}$ and $v_{(i,j)}$}
-        \label{tbl:values of p and v}
-    \end{center}
-\end{table}
-
-We can then write
-
-\begin{equation}
-    \label{eq: technically correct with v}
-    \sum_{\ell \in \mathbb{L}^{(m,n)}}V(\ell) = |\mathbb{S}^{(m,n)}|.
-\end{equation}
-
-Following other work with mosaics, $|\mathbb{S}^{(m,n)}|$ can be calculated more efficiently than in Equation \ref{eq: technically correct with v} using the state matrix recursion introduced in \cite{Oh2014}.
-
-\section{Proof of Theorem \ref{thm: messy mosaics}}
-
-This argument is an adaptation of the proof in \cite{Oh2014} for binary lattices.
-
-Let a \textit{binary sub-lattice} of size $(p,q)$ be a rectangular lattice of $p+1$ by $q+1$ vertices, in which only the left and right boundary vertices must be labeled $0$, and all other vertices can be labeled $0$ or $1$. Also let $\hat{\mathbb{L}}^{(p,q)}$ be the set of all binary sub-lattices of size $(p,q)$. We choose a similar indexing convention for binary sub-lattices as individual cells, in which we, ignoring the first and last $0$, read the bottom row and the top row as two binary numbers $(i,j)$ respectively. For example, Figure \ref{fig:binary sub lattice example} is a binary sub-lattice of size $(2,4)$ with index $(011,100)$.
-
-\begin{figure}[h!]
-    \begin{center}
-    \begin{tikzpicture}
-        % row 1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cell{2}{0}{3}{1}
-        \cell{3}{0}{4}{1}
-        % row 2
-        \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cell{2}{1}{3}{2}
-        \cell{3}{1}{4}{2}
-
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$1$} \)
-        \( \lablvertex{3}{0}{$1$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$0$} \)
-        \( \lablvertex{2}{1}{$1$} \)
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$0$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$1$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-    \end{tikzpicture}
-    \end{center}
-\caption{A binary sub-lattice of size $(2,4)$ with index $(011,100)$}
-\label{fig:binary sub lattice example}
-\end{figure}
-
-Note that for $p>1$, this index does not uniquely define the binary sub-lattice.
-
-As with binary lattices, we can compute $V(\hat{\ell})$ for a binary sub-lattice $\hat{\ell} \in \hat{\mathbb{L}}^{(p,q)}$. We can now define the \textit{state matrix} for $\hat{\mathbb{L}}^{(p,q)}$ to be the $2^{q} \times 2^{q}$ matrix $A^{(p,q)} = (A^{(p,q)}_{i,j})$ where element 
-
-$$A^{(p,q)}_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell}).$$
-
-Here $A_{i,j}$ is the entry in the $i$-th row of the matrix, read top-to-bottom, and in the $j$-th column of the matrix read left-to-right. As the binary sub-lattices $\hat{\mathbb{L}}^{(p,q)}$ with index $(0\dots0,0\dots0)$ are just the binary lattices $\mathbb{L}^{(p,q)}$, we have for a state matrix $A^{(p,q)}$ that 
-
-$$A^{(p,q)}_{0,0} = \sum_{\ell \in \mathbb{L}^{(p,q)}}V(\ell).$$
-
-Theorem \ref{thm: messy mosaics} amounts to an efficient procedure to compute $A^{(p,q)}$.  
-
-\begin{prop}
-For the set $\hat{\mathbb{L}}^{(1,q)}$ the associated state matrix $A^{(1,q)}$ can be computed by first defining $A^{(1,2)} = \begin{bmatrix}
-7^2 & -1 \\
-1 & 1
-\end{bmatrix}$. We recursively define $A^{(1,q)} \in \mathbb{Z}^{2^{q} \times 2^{q}}$ given $A^{(1,q-1)}$. Begin by writing
-$
-A^{(1,k)} = \begin{bmatrix}
-A_{[0,0]} & A_{[0,1]} \\
-A_{[1,0]} & A_{[1,1]}
-\end{bmatrix}
-$, where the block matrices $A_{[i,j]}$ are square block matrices of size $2^{k-1} \times 2^{k-1}$. We then have
-
-$$
-A^{(1,k+1)} = \begin{bmatrix*}[r]
-    7A_{[0,0]} & 7A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
-    7A_{[1,0]} & 7A_{[1,1]} & 0A_{[1,0]} & A_{[1,1]} \\
-    -7^{-1}A_{[0,0]} & 0A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
-    A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 7A_{[1,1]} \\
-\end{bmatrix*}.
-$$
-
-\end{prop}
-
-\begin{proof}
-    We use induction on $q$. We can immediately calculate the entries of $A^{(1,2)}$ by listing all size $(1,2)$ binary sub-lattices, then using the definition of $V$. 
-
-    \begin{center}
-        \begin{tikzpicture}
-            % row1
-            \cell{0}{0}{1}{1}
-            \cell{1}{0}{2}{1}
-
-            \cell{3}{0}{4}{1}
-            \cell{4}{0}{5}{1}
-            % row1
-            \cell{0}{2}{1}{3}
-            \cell{1}{2}{2}{3}
-
-            \cell{3}{2}{4}{3}
-            \cell{4}{2}{5}{3}
-
-            % row 1
-            \( \lablvertex{0}{0}{$0$} \)
-            \( \lablvertex{1}{0}{$1$} \)
-            \( \lablvertex{2}{0}{$0$} \)
-            
-            \( \lablvertex{0}{1}{$0$} \)
-            \( \lablvertex{1}{1}{$0$} \)
-            \( \lablvertex{2}{1}{$0$} \)
-            
-            \( \lablvertex{0}{2}{$0$} \)
-            \( \lablvertex{1}{2}{$0$} \)
-            \( \lablvertex{2}{2}{$0$} \)
-            
-            \( \lablvertex{0}{3}{$0$} \)
-            \( \lablvertex{1}{3}{$0$} \)
-            \( \lablvertex{2}{3}{$0$} \)
-            % row 2
-            \( \lablvertex{3}{0}{$0$} \)
-            \( \lablvertex{4}{0}{$1$} \)
-            \( \lablvertex{5}{0}{$0$} \)
-            
-            \( \lablvertex{3}{1}{$0$} \)
-            \( \lablvertex{4}{1}{$1$} \)
-            \( \lablvertex{5}{1}{$0$} \)
-            
-            \( \lablvertex{3}{2}{$0$} \)
-            \( \lablvertex{4}{2}{$0$} \)
-            \( \lablvertex{5}{2}{$0$} \)
-            
-            \( \lablvertex{3}{3}{$0$} \)
-            \( \lablvertex{4}{3}{$1$} \)
-            \( \lablvertex{5}{3}{$0$} \)
-
-            % % arrow
-            % \( \lablnode{5.75}{1.5}{$\pmb{\to}$} \)
-            % % % matrix
-            % \( \lablnode{10}{1.5}{$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(01,00)}v_{(10,00)} \\ v_{(00,01)}v_{(00,10)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 11^2 & -1 \\ 1 & 1 \end{bmatrix}$} \)
-        \end{tikzpicture}
-    \end{center}
-
-    Above gives
-
-    $$\begin{bmatrix} v_{(00,00)}v_{(00,00)} & v_{(00,01)}v_{(00,10)} \\ v_{(01,00)}v_{(10,00)} & v_{(01,01)}v_{(10,10)} \end{bmatrix} = \begin{bmatrix} 7^2 & -1 \\ 1 & 1 \end{bmatrix}.$$
-
-    We then assume that the statement for $A^{(1,k)}$ is true up to $k$. Within $A^{(1,k)}$, consider all the size $(1,k)$ binary sub-lattices counted in the entries of the upper left $2^{k-1} \times 2^{k-1}$ block matrix, which we denote $A_{[0,0]}$. By construction, all of these binary sub-lattices have indexes of the form $(0\dots, 0\dots)$, in which both indexes begin with a $0$. Similarly, the upper right $2^{k-1} \times 2^{k-1}$ block matrix $A_{[0,1]}$ counts all binary sub-lattices with indexes like $(0,\dots, 1\dots)$, and so on. 
-
-    To construct binary sub-lattices of size $(1,k+1)$, we then append one of each of the four cells in Figure \ref{fig:four appending cells} to the left of every size $(1,k)$ binary sub-lattices, such that the former left boundary $0$'s are replaced.
-
-    \begin{figure}[h!]
-        \begin{center}
-            \begin{tikzpicture}
-                % row1
-                \cell{0}{-0.5}{1}{0.5}
-                \cell{2}{-0.5}{3}{0.5}
-                % row2
-                \cell{0}{2}{1}{3}
-                \cell{2}{2}{3}{3}
-                % label for row 1
-                \( \lablvertex{0}{-0.5}{$0$} \)
-                \( \lablvertex{1}{-0.5}{$1$} \)
-                \( \lablvertex{2}{-0.5}{$0$} \)
-                \( \lablvertex{3}{-0.5}{$1$} \)
-                % label for row 2
-                \( \lablvertex{0}{0.5}{$0$} \)
-                \( \lablvertex{1}{0.5}{$0$} \)
-                \( \lablvertex{2}{0.5}{$0$} \)
-                \( \lablvertex{3}{0.5}{$1$} \)
-                % label for row 3
-                \( \lablvertex{0}{2}{$0$} \)
-                \( \lablvertex{1}{2}{$0$} \)
-                \( \lablvertex{2}{2}{$0$} \)
-                \( \lablvertex{3}{2}{$0$} \)
-                % label for row 4
-                \( \lablvertex{0}{3}{$0$} \)
-                \( \lablvertex{1}{3}{$0$} \)
-                \( \lablvertex{2}{3}{$0$} \)
-                \( \lablvertex{3}{3}{$1$} \)
-                % numbers row 1
-                \( \lablnode{0.5}{-1.1}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
-                \( \lablnode{2.5}{-1.1}{\textbf{(}$\mathbf{01}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
-                % numbers row 2
-                \( \lablnode{0.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{00}$\textbf{)}} \)
-                \( \lablnode{2.5}{1.4}{\textbf{(}$\mathbf{00}$\textbf{,} $\mathbf{01}$\textbf{)}} \)
-            \end{tikzpicture}
-        \end{center}
-        \caption{Appending cells}
-        \label{fig:four appending cells}
-    \end{figure}
-
-    An example of appending cell $(01,00)$ to the size $(1,3)$ binary sub-lattice $(11,10)$ is shown below.
-
-    \begin{center}
-        \begin{tikzpicture}
-            % row1
-            \cell{-1}{0}{0}{1}
-
-            \( \lablnode{0.5}{0.5}{$\pmb{+}$} \)
-
-            \cell{1}{0}{2}{1}
-            \cell{2}{0}{3}{1}
-            \cell{3}{0}{4}{1}
-
-            \( \lablnode{4.5}{0.5}{$\pmb{\to}$} \)
-
-            \cell{5}{0}{6}{1}
-            \cell{6}{0}{7}{1}
-            \cell{7}{0}{8}{1}
-            \cell{8}{0}{9}{1}
-
-            % row 1
-            \( \lablvertex{-1}{0}{$0$} \)
-            \( \lablvertex{0}{0}{$1$} \)
-
-            \( \lablvertex{1}{0}{$0$} \)
-            \( \lablvertex{2}{0}{$1$} \)
-            \( \lablvertex{3}{0}{$1$} \)
-            \( \lablvertex{4}{0}{$0$} \)
-
-            \( \lablvertex{5}{0}{$0$} \)
-            \( \lablvertex{6}{0}{$1$} \)
-            \( \lablvertex{7}{0}{$1$} \)
-            \( \lablvertex{8}{0}{$1$} \)
-            \( \lablvertex{9}{0}{$0$} \)
-
-            % row 2
-            \( \lablvertex{-1}{1}{$0$} \)
-            \( \lablvertex{0}{1}{$0$} \)
-
-            \( \lablvertex{1}{1}{$0$} \)
-            \( \lablvertex{2}{1}{$1$} \)
-            \( \lablvertex{3}{1}{$0$} \)
-            \( \lablvertex{4}{1}{$0$} \)
-
-            \( \lablvertex{5}{1}{$0$} \)
-            \( \lablvertex{6}{1}{$0$} \)
-            \( \lablvertex{7}{1}{$1$} \)
-            \( \lablvertex{8}{1}{$0$} \)
-            \( \lablvertex{9}{1}{$0$} \)
-
-        \end{tikzpicture}
-    \end{center}
-    
-    This creates the size $(1,4)$ binary sub-lattice $(111,010).$ Notice this operation only changes the identity of the two left-most cells, namely changing the left-most $(01,01)$ cell into cells $(01,00)$ and $(11,01)$. 
-
-    By construction, as every binary sub-lattice counted in the block matrix $A_{[1,1]}$ has an index of the form $(1\dots,1\dots)$, the entries in $A_{[1,1]}$ are all divisible by $v_{01,01}$. Therefore, the size $(1,k+1)$ binary sub-lattices with index of the form $(11\dots,01\dots)$ are counted by $(v_{01,00}v_{11,01}/v_{01,01})A_{[1,1]}$.
-    
-    Performing the appending operation with each of the four cells from Figure \ref{fig:four appending cells} to each other gives $16$ possible pairs, which we diagram below such that it is consistent with the indexing for $A^{(1,k)}$.
-
-    \begin{center}
-        \begin{tikzpicture}
-            % row1
-            \cell{0}{0}{1}{1}
-            \cell{1}{0}{2}{1}
-            \( \lablvertex{0}{0}{$0$} \)
-            \( \lablvertex{1}{0}{$1$} \)
-            \( \lablvertex{2}{0}{$1$} \)
-            \( \lablvertex{0}{1}{$0$} \)
-            \( \lablvertex{1}{1}{$0$} \)
-            \( \lablvertex{2}{1}{$0$} \)
-            
-            \cell{3}{0}{4}{1}
-            \cell{4}{0}{5}{1}
-            \( \lablvertex{3}{0}{$0$} \)
-            \( \lablvertex{4}{0}{$1$} \)
-            \( \lablvertex{5}{0}{$1$} \)
-            \( \lablvertex{3}{1}{$0$} \)
-            \( \lablvertex{4}{1}{$0$} \)
-            \( \lablvertex{5}{1}{$1$} \)
-
-            \cell{6}{0}{7}{1}
-            \cell{7}{0}{8}{1}
-            \( \lablvertex{6}{0}{$0$} \)
-            \( \lablvertex{7}{0}{$1$} \)
-            \( \lablvertex{8}{0}{$1$} \)
-            \( \lablvertex{6}{1}{$0$} \)
-            \( \lablvertex{7}{1}{$1$} \)
-            \( \lablvertex{8}{1}{$0$} \)
-
-            \cell{9}{0}{10}{1}
-            \cell{10}{0}{11}{1}
-            \( \lablvertex{9}{0}{$0$} \)
-            \( \lablvertex{10}{0}{$1$} \)
-            \( \lablvertex{11}{0}{$1$} \)
-            \( \lablvertex{9}{1}{$0$} \)
-            \( \lablvertex{10}{1}{$1$} \)
-            \( \lablvertex{11}{1}{$1$} \)
-
-            % row2
-            \cell{0}{2}{1}{3}
-            \cell{1}{2}{2}{3}
-            \( \lablvertex{0}{2}{$0$} \)
-            \( \lablvertex{1}{2}{$1$} \)
-            \( \lablvertex{2}{2}{$0$} \)
-            \( \lablvertex{0}{3}{$0$} \)
-            \( \lablvertex{1}{3}{$0$} \)
-            \( \lablvertex{2}{3}{$0$} \)
-            
-            \cell{3}{2}{4}{3}
-            \cell{4}{2}{5}{3}
-            \( \lablvertex{3}{2}{$0$} \)
-            \( \lablvertex{4}{2}{$1$} \)
-            \( \lablvertex{5}{2}{$0$} \)
-            \( \lablvertex{3}{3}{$0$} \)
-            \( \lablvertex{4}{3}{$0$} \)
-            \( \lablvertex{5}{3}{$1$} \)
-
-            \cell{6}{2}{7}{3}
-            \cell{7}{2}{8}{3}
-            \( \lablvertex{6}{2}{$0$} \)
-            \( \lablvertex{7}{2}{$1$} \)
-            \( \lablvertex{8}{2}{$0$} \)
-            \( \lablvertex{6}{3}{$0$} \)
-            \( \lablvertex{7}{3}{$1$} \)
-            \( \lablvertex{8}{3}{$0$} \)
-
-            \cell{9}{2}{10}{3}
-            \cell{10}{2}{11}{3}
-            \( \lablvertex{9}{2}{$0$} \)
-            \( \lablvertex{10}{2}{$1$} \)
-            \( \lablvertex{11}{2}{$0$} \)
-            \( \lablvertex{9}{3}{$0$} \)
-            \( \lablvertex{10}{3}{$1$} \)
-            \( \lablvertex{11}{3}{$1$} \)
-
-            % row3
-            \cell{0}{4}{1}{5}
-            \cell{1}{4}{2}{5}
-            \( \lablvertex{0}{4}{$0$} \)
-            \( \lablvertex{1}{4}{$0$} \)
-            \( \lablvertex{2}{4}{$1$} \)
-            \( \lablvertex{0}{5}{$0$} \)
-            \( \lablvertex{1}{5}{$0$} \)
-            \( \lablvertex{2}{5}{$0$} \)
-            
-            \cell{3}{4}{4}{5}
-            \cell{4}{4}{5}{5}
-            \( \lablvertex{3}{4}{$0$} \)
-            \( \lablvertex{4}{4}{$0$} \)
-            \( \lablvertex{5}{4}{$1$} \)
-            \( \lablvertex{3}{5}{$0$} \)
-            \( \lablvertex{4}{5}{$0$} \)
-            \( \lablvertex{5}{5}{$1$} \)
-
-            \cell{6}{4}{7}{5}
-            \cell{7}{4}{8}{5}
-            \( \lablvertex{6}{4}{$0$} \)
-            \( \lablvertex{7}{4}{$0$} \)
-            \( \lablvertex{8}{4}{$1$} \)
-            \( \lablvertex{6}{5}{$0$} \)
-            \( \lablvertex{7}{5}{$1$} \)
-            \( \lablvertex{8}{5}{$0$} \)
-
-            \cell{9}{4}{10}{5}
-            \cell{10}{4}{11}{5}
-            \( \lablvertex{9}{4}{$0$} \)
-            \( \lablvertex{10}{4}{$0$} \)
-            \( \lablvertex{11}{4}{$1$} \)
-            \( \lablvertex{9}{5}{$0$} \)
-            \( \lablvertex{10}{5}{$1$} \)
-            \( \lablvertex{11}{5}{$1$} \)
-
-            % row4
-            \cell{0}{6}{1}{7}
-            \cell{1}{6}{2}{7}
-            \( \lablvertex{0}{6}{$0$} \)
-            \( \lablvertex{1}{6}{$0$} \)
-            \( \lablvertex{2}{6}{$0$} \)
-            \( \lablvertex{0}{7}{$0$} \)
-            \( \lablvertex{1}{7}{$0$} \)
-            \( \lablvertex{2}{7}{$0$} \)
-            
-            \cell{3}{6}{4}{7}
-            \cell{4}{6}{5}{7}
-            \( \lablvertex{3}{6}{$0$} \)
-            \( \lablvertex{4}{6}{$0$} \)
-            \( \lablvertex{5}{6}{$0$} \)
-            \( \lablvertex{3}{7}{$0$} \)
-            \( \lablvertex{4}{7}{$0$} \)
-            \( \lablvertex{5}{7}{$1$} \)
-
-            \cell{6}{6}{7}{7}
-            \cell{7}{6}{8}{7}
-            \( \lablvertex{6}{6}{$0$} \)
-            \( \lablvertex{7}{6}{$0$} \)
-            \( \lablvertex{8}{6}{$0$} \)
-            \( \lablvertex{6}{7}{$0$} \)
-            \( \lablvertex{7}{7}{$1$} \)
-            \( \lablvertex{8}{7}{$0$} \)
-
-            \cell{9}{6}{10}{7}
-            \cell{10}{6}{11}{7}
-            \( \lablvertex{9}{6}{$0$} \)
-            \( \lablvertex{10}{6}{$0$} \)
-            \( \lablvertex{11}{6}{$0$} \)
-            \( \lablvertex{9}{7}{$0$} \)
-            \( \lablvertex{10}{7}{$1$} \)
-            \( \lablvertex{11}{7}{$1$} \)
-        \end{tikzpicture}
-    \end{center}
-
-    The associated appending equations for the $v_{i,j}$ values are then
-
-    \begin{align*}
-        \frac{v_{(00,00)}v_{(00,00)}}{v_{(00,00)}} = & 7 & \frac{v_{(00,00)}v_{(00,01)}}{v_{(00,01)}} = & 7 & \frac{v_{(00,01)}v_{(00,10)}}{v_{(00,00)}} = & 7^{-1} & \frac{v_{(00,01)}v_{(00,11)}}{v_{(00,01)}} = & 1 \\
-        \frac{v_{(00,00)}v_{(01,00)}}{v_{(01,00)}} = & 7 & \frac{v_{(00,00)}v_{(01,01)}}{v_{(01,01)}} = & 7 & \frac{v_{(00,01)}v_{(01,10)}}{v_{(01,00)}} = & 0 & \frac{v_{(00,01)}v_{(01,11)}}{v_{(01,01)}} = & 1 \\
-        \frac{v_{(01,00)}v_{(10,00)}}{v_{(00,00)}} = & -7^{-1} & \frac{v_{(01,00)}v_{(10,01)}}{v_{(00,01)}} = & 0 & \frac{v_{(01,01)}v_{(10,10)}}{v_{(00,00)}} = & 7^{-1} & \frac{v_{(01,01)}v_{(10,11)}}{v_{(00,01)}} = & 1 \\
-        \frac{v_{(01,00)}v_{(11,00)}}{v_{(01,00)}} = & 1 & \frac{v_{(01,00)}v_{(11,01)}}{v_{(01,01)}} = & 1 & \frac{v_{(01,01)}v_{(11,10)}}{v_{(01,00)}} = & -1 & \frac{v_{(01,01)}v_{(11,11)}}{v_{(01,01)}} = & 7 \\
-    \end{align*}
-    
-    We can then determine
-    
-    $$
-    A^{(1,k+1)} = \begin{bmatrix*}[r]
-        7A_{[0,0]} & 7A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
-        7A_{[1,0]} & 7A_{[1,1]} & 0A_{[1,0]} & A_{[1,1]} \\
-        -7^{-1}A_{[0,0]} & 0A_{[0,1]} & 7^{-1}A_{[0,0]} & A_{[0,1]} \\
-        A_{[1,0]} & A_{[1,1]} & -A_{[1,0]} & 7A_{[1,1]} \\
-    \end{bmatrix*}.
-    $$
-
-\end{proof}
-
-\begin{prop}
-    For the set $\mathbb{L}^{(p,q)}$, the state matrix has
-    $$A^{(p,q)} = (A^{(1,q)})^p.$$
-\end{prop}
-
-\begin{proof}
-    We use induction on $p$, and assume $A^{(k,q)} = (A^{(1,q)})^k$. Therefore, 
-
-    $$A^{(k,q)}_{i,j} = \sum_{\hat{\ell}\text{ with index } (i,j)}V(\hat{\ell})$$
-
-    for $\hat{\ell}$ of size $(k,q)$ and index $(i,j)$. Notice that we can build all binary sub-lattices of size $(k+1,q)$ with index $(i,j)$ by the following. Append a size $(1,q)$ binary sub-lattice of index $(i,s)$ and a size $(k,q)$ binary sub-lattice of index $(s,j)$. For example, Figure \ref{fig:appending a row} adjoins a size $(2,3)$ binary sub-lattice with index $(10,01)$ to a size $(1,3)$ binary sub-lattice with index $(01,11)$.
-
-    \begin{figure}[h!]
-        \begin{center}
-            \begin{tikzpicture}
-                % row 1
-                \cell{0}{0}{1}{1}
-                \cell{1}{0}{2}{1}
-                \cell{2}{0}{3}{1}
-                % row 2
-                \cell{0}{1}{1}{2}
-                \cell{1}{1}{2}{2}
-                \cell{2}{1}{3}{2}
-                % row 3
-                \cell{0}{3}{1}{4}
-                \cell{1}{3}{2}{4}
-                \cell{2}{3}{3}{4}
-
-                \( \lablvertex{0}{0}{$0$} \)
-                \( \lablvertex{1}{0}{$1$} \)
-                \( \lablvertex{2}{0}{$0$} \)
-                \( \lablvertex{3}{0}{$0$} \)
-
-                \( \lablvertex{0}{1}{$0$} \)
-                \( \lablvertex{1}{1}{$0$} \)
-                \( \lablvertex{2}{1}{$0$} \)
-                \( \lablvertex{3}{1}{$0$} \)
-
-                \( \lablvertex{0}{2}{$0$} \)
-                \( \lablvertex{1}{2}{$0$} \)
-                \( \lablvertex{2}{2}{$1$} \)
-                \( \lablvertex{3}{2}{$0$} \)
-
-                \( \lablnode{1.5}{2.5}{$\pmb{+}$} \)
-
-                \( \lablvertex{0}{3}{$0$} \)
-                \( \lablvertex{1}{3}{$0$} \)
-                \( \lablvertex{2}{3}{$1$} \)
-                \( \lablvertex{3}{3}{$0$} \)
-
-                \( \lablvertex{0}{4}{$0$} \)
-                \( \lablvertex{1}{4}{$1$} \)
-                \( \lablvertex{2}{4}{$1$} \)
-                \( \lablvertex{3}{4}{$0$} \)
-
-                \( \lablnode{4}{1.5}{$\pmb{\to}$} \)
-
-                % row 1
-                \cell{5}{0}{6}{1}
-                \cell{6}{0}{7}{1}
-                \cell{7}{0}{8}{1}
-                % row 2
-                \cell{5}{1}{6}{2}
-                \cell{6}{1}{7}{2}
-                \cell{7}{1}{8}{2}
-                % row 3
-                \cell{5}{2}{6}{3}
-                \cell{6}{2}{7}{3}
-                \cell{7}{2}{8}{3}
-
-                \( \lablvertex{5}{0}{$0$} \)
-                \( \lablvertex{6}{0}{$1$} \)
-                \( \lablvertex{7}{0}{$0$} \)
-                \( \lablvertex{8}{0}{$0$} \)
-
-                \( \lablvertex{5}{1}{$0$} \)
-                \( \lablvertex{6}{1}{$0$} \)
-                \( \lablvertex{7}{1}{$0$} \)
-                \( \lablvertex{8}{1}{$0$} \)
-
-                \( \lablvertex{5}{2}{$0$} \)
-                \( \lablvertex{6}{2}{$0$} \)
-                \( \lablvertex{7}{2}{$1$} \)
-                \( \lablvertex{8}{2}{$0$} \)
-                
-                \( \lablvertex{5}{3}{$0$} \)
-                \( \lablvertex{6}{3}{$1$} \)
-                \( \lablvertex{7}{3}{$1$} \)
-                \( \lablvertex{8}{3}{$0$} \)
-            \end{tikzpicture}
-        \end{center}
-        \caption{Appending a size $(1,3)$ binary sub-lattice to a size $(2,3)$ sub-lattice}
-        \label{fig:appending a row}
-    \end{figure}
-
-    Doing this append operation for all $s$ amounts to
-
-    $$A_{i,j}^{(k+1,q)} = \sum_{s=0}^{2^{q}-1}A_{i,s}^{(k,q)} A_{s,j}^{(1,q)},$$
-
-    which gives 
-
-    $$A^{(k+1,q)} = A^{(k,q)}A^{(1,q)} = (A^{(1,q)})^{k+1}.$$
-
+By Proposition \ref{prop: m by n state matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Proposition \ref{prop: sum of vs}, which completes the proof.
 \end{proof}
 
 \section{Acknowledgements}
 
-The authors would like to thank Michael Maltenfort for the edits, improvements and ideas for this paper. 
+The authors would like to thank Richard Schank for his suggestions, including proposing the definition for $f$ and working to develop the state matrix recursion matrix solution.
 
 % \newpage
 
