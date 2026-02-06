@@ -3,6 +3,7 @@
 \usepackage{mathtools} % also loads amsmath
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{tikz}
+
 % \usepackage{subfig}
 \usepackage[english]{babel}
 \usepackage{capt-of}
@@ -85,6 +86,8 @@
 \newcommand{\cellE}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 \newcommand{\cellF}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
+\newcommand{\cellf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
+
 \newcommand{\cellAf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
 \newcommand{\cellBf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
 \newcommand{\cellCf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
@@ -126,10 +129,10 @@
     \textbf{Jack Hanke}\\
     Northwestern University
     \and
+    \textbf{Richard Schank}\\
+    \and
     \textbf{Michael Maltenfort}\\
     Northwestern University
-    % \and
-    % \textbf{Richard Schank}\\
     }
 \title{\textbf{Enumeration of Messy Polygon Mosaics}}
 % \date{\today}
@@ -140,14 +143,14 @@
 \begin{center}
 
 \begin{abstract}
-Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ matrix is constructed from a selection of $7$ distinct tiles. These matrices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that have the property of being suitably connected. These mosaics are called \textit{polygon mosaics} because the tiles in a suitably connected mosaic form polygons. We introduce and enumerate mosaics with the related property of containing at least one polygon, which we call messy polygon mosaics.
+Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ retangular lattice is constructed from a selection of $7$ distinct tiles. These lattices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that both contain polygons and have all other tiles that are not part of a polygon set to the blank tile. We introduce and enumerate mosaics with the relaxed property of containing at least one polygon, which we call messy polygon mosaics.
 \end{abstract}
 
 \end{center}
 
 \section{Introduction}
 
-Hong and Oh \cite{Hong2018} introduced a model for multiple ring polymers in which an $m \times n$ matrix is constructed using $7$ distinct symbols callet \textit{tiles}. These tiles, diagrammed in Figure \ref{fig:tile set}, are composed of unit squares with dotted lines connecting $2$ sides at their midpoint, as well as the ``blank" tile $T_0$.
+Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, blindfolded. At your disposal is an unending supply of $7$ distinct types of tiles. These tiles, diagrammed in Figure \ref{fig:tile set}, are composed of unit squares with dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile $T_0$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -166,22 +169,13 @@ Hong and Oh \cite{Hong2018} introduced a model for multiple ring polymers in whi
         \( \lablnode{8}{-0.5}{$T_5$} \) 
         \cellF{9}{0}{10}{1}
         \( \lablnode{9.5}{-0.5}{$T_6$} \) 
-        % \cellG{10.5}{0}{11.5}{1}
-        % \( \lablnode{11}{-0.5}{$T_7$} \) 
-        % \cellH{12}{0}{13}{1}
-        % \( \lablnode{12.5}{-0.5}{$T_8$} \) 
-        % \cellI{13.5}{0}{14.5}{1}
-        % \( \lablnode{14}{-0.5}{$T_{9}$} \) 
-        % \cellJ{15}{0}{16}{1}
-        % \( \lablnode{15.5}{-0.5}{$T_{10}$} \) 
     \end{tikzpicture}
 \end{center}
 \caption{The tile set $\mathbb{T}$}
 \label{fig:tile set}
 \end{figure}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \textit{mosaic} is an $m \times n$ matrix made up of elements from $\mathbb{T}$. Figure \ref{fig:example mosaic} shows a $(5,7)$ mosaic. We denote the set of all $(m,n)$ mosaics as $\mathbb{M}^{(m,n)}$. As there are $7$ elements in $\mathbb{T}$, there are $7^{mn}$ mosaics in $\mathbb{M}^{(m,n)}$. 
-% A \textit{mosaic system} is then a subset of $\mathbb{M}^{(m,n)}$ with some property. 
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is complete once you place $mn$ randomly selected tiles from $\mathbb{T}$ to cover the floor, after which you remove your blindfold. We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}.
 
 \begin{figure}[h!]
     \begin{center}
@@ -236,26 +230,26 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \texti
 \begin{subfigure}{0.4\textwidth}
     \begin{tikzpicture}
         % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cell{2}{0}{3}{1}
+        \cellA{0}{0}{1}{1}
+        \cellC{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
         \cellCf{3}{0}{4}{1}
         \cellEf{4}{0}{5}{1}
         \cellEf{5}{0}{6}{1}
         \cellDf{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
+        \cellB{1}{1}{2}{2}
         \cellCf{2}{1}{3}{2}
         \cellAf{3}{1}{4}{2}
         \cellCf{4}{1}{5}{2}
         \cellDf{5}{1}{6}{2}
         \cellFf{6}{1}{7}{2}
         % row3
-        \cell{0}{2}{1}{3}
-        \cell{1}{2}{2}{3}
+        \cellA{0}{2}{1}{3}
+        \cellE{1}{2}{2}{3}
         \cellFf{2}{2}{3}{3}
-        \cell{3}{2}{4}{3}
+        \cellB{3}{2}{4}{3}
         \cellBf{4}{2}{5}{3}
         \cellAf{5}{2}{6}{3}
         \cellFf{6}{2}{7}{3}
@@ -264,20 +258,20 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \texti
         \cellDf{1}{3}{2}{4}
         \cellBf{2}{3}{3}{4}
         \cellEf{3}{3}{4}{4}
-        \cellDf{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
-        \cellFf{6}{3}{7}{4}
+        \cellEf{4}{3}{5}{4}
+        \cellEf{5}{3}{6}{4}
+        \cellAf{6}{3}{7}{4}
         % row5
         \cellBf{0}{4}{1}{5}
         \cellAf{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
+        \cellF{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
-        \cellBf{4}{4}{5}{5}
-        \cellEf{5}{4}{6}{5}
-        \cellAf{6}{4}{7}{5}
+        \cellB{4}{4}{5}{5}
+        \cellE{5}{4}{6}{5}
+        \cellD{6}{4}{7}{5}
     \end{tikzpicture}
-    \caption{A polygon mosaic}
-    \label{fig:example polygon mosaic}
+    \caption{A messy polygon mosaic}
+    \label{fig:example messy polygon mosaic}
 \end{subfigure}
 
 \end{center}
@@ -285,10 +279,18 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. An $(m,n)$ \texti
 \label{fig:example mosaics}
 \end{figure}
 
-The authors in \cite{Hong2018} were interested in mosaics with the property of being \textit{suitably connected}, which is defined as follows. Consider an edge shared between two tiles in Figure \ref{fig:example mosaic}. The edge has either $0$, $1$, or $2$ dotted lines drawn from its midpoint. Also note that the outer edges of the tiles on the boundary of the matrix are not shared by another tile. Therefore these edges only have $0$ or $1$ dotted lines drawn from their midpoint. A mosaic is suitably connected if all edges have $0$ or $2$ dotted lines drawn from their midpoint. The authors call mosaics that are suitably connected and that contain at least one tile in $\mathbb{T}\setminus T_0$ \textit{polygon mosaics} because the dotted lines form \textit{polygons}\footnote{Polygons are more commonly refered to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}. Following \cite{Hong2018}, when we use the term polygon in this work, we specifically refer to the set of tiles for which the dotted lines form a polygon when part of a mosaic.
+If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the tiles form multiple polygons, which we highlight in gray. 
+
+\begin{definition}
+A \textit{polygon}\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.} is a nonempty subset $p$ of edge-wise connected tiles such that if one chooses any starting tile in $p$, one can visit each tile in the set exactly once by doing the following. Identify an edge that is shared between the current tile and a tile that has not been visited and has $2$ dotted lines drawn from the edge's midpoint. Set the current tile to this new tile. Repeat the procedure until the new tile is the starting tile.
+\end{definition}
+
+\begin{definition}
+An \textit{messy polygon} $(m,n)$ {mosaic} is an $(m,n)$ mosaic that contains at least one polygon. 
+\end{definition}
 
 \begin{exmp}
-Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that contains $3$ polygons, with the tiles that make up the polygons shaded in gray. Note that a mosaic can contain polygons that surround other polygons, such as in Figure \ref{fig:example polygon mosaic}. 
+Below is one of the polygons in the messy polygon mosaic in Figure \ref{fig:example messy polygon mosaic}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -308,34 +310,66 @@ Figure \ref{fig:example polygon mosaic} shows a polygon $(5,7)$ mosaic that cont
         % row4
         \cellB{2}{3}{3}{4}
         \cellE{3}{3}{4}{4}
-        \cellD{4}{3}{5}{4}
-        \cellF{6}{3}{7}{4}
-        % row5
-        \cellB{4}{4}{5}{5}
-        \cellE{5}{4}{6}{5}
-        \cellA{6}{4}{7}{5}
+        \cellE{4}{3}{5}{4}
+        \cellE{5}{3}{6}{4}
+        \cellA{6}{3}{7}{4}
     \end{tikzpicture}
-\caption{A polygon in Figure \ref{fig:example polygon mosaic}}
+\caption{A polygon in Figure \ref{fig:example messy polygon mosaic}}
 \label{fig: example polygon}
 \end{center}
 \end{figure}
+
+As in Figure \ref{fig:example messy polygon mosaic}, a mosaic can contain polygons that surround other polygons. 
 \end{exmp}
 
-Using the notation conventions in \cite{Oh2014}, we denote the subset of $(m,n)$ mosaics that are polygon mosaics as $\mathbb{P}^{(m,n)}$.
+Further note that when a part of a mosaic, both tiles and polygons also have an associated location within the mosaic. The mosaic in Figure \ref{fig:example messy polygon mosaic} contains $3$ polygons, although two of the polygons are the same up to location.
+
+
+What is the probability of constructing a messy polygon mosaic, given the dimensions of the bathroom $m,n$? As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the total number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of messy polygon $(m,n)$ mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
+
+From the fact that the smallest polygon is made of $4$ tiles (appearing twice in Figure \ref{fig:example messy polygon mosaic}), we can conclude that $\left|\mathbb{P}^{(n,1)}\right|=7^n$, and $\left|\mathbb{P}^{(2,2)}\right| = 7^4 - 1$. For $m, n \geq 2$, we first define the matrices for messy polygon mosaics.
+
+\begin{definition}
+
+For integers $k \geq 1$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
+
+\begin{eqnarray*}
+A_{k+1} = \begin{pmatrix} 7A_{k} & B_{k} \\ C_{k} & D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} -A_{k} & B_{k} \\ 0C_{k} & D_{k} \end{pmatrix} \\
+C_{k+1} = \begin{pmatrix} A_{k} & 0B_{k} \\ C_{k} & D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} A_{k} & -B_{k} \\ C_{k} & 7D_{k} \end{pmatrix}.
+\end{eqnarray*}
+
+\end{definition}
+
+Throughout this work, we index elements in matrices, mosaics, and later binary lattices with a pair of coordinates. The first coordinate is the row index, counted top to bottom, and the second coordinate is the column index, counted left to right, both beginning at $0$. 
+
+Here is our main result.
+
+\begin{thm}
+\label{thm: messy mosaics}
+The number of $(m,n)$ mosaics that do not contain a polygon $\left|\mathbb{P}^{(m,n)}\right|$ is the $(0,0)$ entry of $A_{n}^m$.
+\end{thm}
+
+\section{Related Work}
+
+Hong and Oh \cite{Hong2018} studied a similar question in which they construct mosaics from $\mathbb{T}$, but were interested in the number of polygon mosaics.
+
+\begin{definition}
+An \textit{polygon} $(m,n)$ {mosaic} is an $(m,n)$ mosaic that contains at least one polygon and every tile that is not part of a polygon is $T_0$.
+\end{definition}
+
+Clearly, all polygon mosaics are messy polygon mosaics. The sequence A181245 on the OEIS \cite{oeis} is the array of $1 +$ the number of polygon $(m,n)$ mosaics. The authors in \cite{Hong2018} provide bounds for the number of polygon mosaics.
 
 \begin{thm}[\cite{Hong2018}]
 \label{thm:Hong2018}
-The number of polygon $(m,n)$ mosaics $|\mathbb{P}^{(m,n)}|$ for $m,n \geq 3$ is bounded by
-$$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)} \leq |\mathbb{P}^{(m,n)}| \leq 2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$$
+The number of polygon $(m,n)$ mosaics for $m,n \geq 3$ is bounded between
+$2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$
 \end{thm}
 
-The array of values of $|\mathbb{P}^{(m,n)}|+1$ is sequence A181245 on the OEIS \cite[OEIS]{oeis}.
-
-In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors call mosaics constructed from this tile set that are suitably connected \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics.
+In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors were interested in a subset of mosaics which they call \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics.
 
 \begin{thm}[\cite{Oh2014}]
 \label{thm:Oh2014}
-The number of knot mosaics of size $(m,n)$ for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
+The number of knot $(m,n)$ mosaics for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
 $$ X_{k+1} = \begin{pmatrix}
     X_k & O_k \\
@@ -350,165 +384,21 @@ O_{k+1} = \begin{pmatrix}
 for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
-Oh and colleagues refer to these matrices $X_k$ and $O_k$ as \textit{state matrices}. The authors utilize this state matrix recursion to bound the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. An unexamined direction in this research program is modifying the suitably connected property. This motivates us to introduce \textit{messy polygon mosaics} using the tiles set $\mathbb{T}$ from \cite{Hong2018}, and enumerate them with state matrices as in \cite{Oh2014}.
+Oh and colleagues go beyond enumeration by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts the matrix recursion method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to enumerate the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
 
-\section{Messy Polygon Mosaics}\label{section:messy mosaics}
-
-\begin{definition}
-A \textit{messy polygon mosaic} is a mosaic that contains at least one polygon. 
-\end{definition}
-
-Figure \ref{fig:messy mosaic example} shows two examples of messy polygon $(5,7)$ mosaics, both of which contain $3$ polygons. In both examples, we shade the tiles that make up each polygon in gray.
-
-\begin{figure}[h!]
-    \begin{center}
-
-\begin{subfigure}{0.4\textwidth}
-    \begin{tikzpicture}
-       % row1
-        \cellA{0}{0}{1}{1}
-        \cellC{1}{0}{2}{1}
-        \cellD{2}{0}{3}{1}
-        \cellCf{3}{0}{4}{1}
-        \cellEf{4}{0}{5}{1}
-        \cellEf{5}{0}{6}{1}
-        \cellDf{6}{0}{7}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cellB{1}{1}{2}{2}
-        \cellCf{2}{1}{3}{2}
-        \cellAf{3}{1}{4}{2}
-        \cellCf{4}{1}{5}{2}
-        \cellDf{5}{1}{6}{2}
-        \cellFf{6}{1}{7}{2}
-        % row3
-        \cellB{0}{2}{1}{3}
-        \cellE{1}{2}{2}{3}
-        \cellFf{2}{2}{3}{3}
-        \cellF{3}{2}{4}{3}
-        \cellBf{4}{2}{5}{3}
-        \cellAf{5}{2}{6}{3}
-        \cellFf{6}{2}{7}{3}
-        % row4
-        \cellCf{0}{3}{1}{4}
-        \cellDf{1}{3}{2}{4}
-        \cellBf{2}{3}{3}{4}
-        \cellEf{3}{3}{4}{4}
-        \cellDf{4}{3}{5}{4}
-        \cellA{5}{3}{6}{4}
-        \cellFf{6}{3}{7}{4}
-        % row5
-        \cellBf{0}{4}{1}{5}
-        \cellAf{1}{4}{2}{5}
-        \cellF{2}{4}{3}{5}
-        \cell{3}{4}{4}{5}
-        \cellBf{4}{4}{5}{5}
-        \cellEf{5}{4}{6}{5}
-        \cellAf{6}{4}{7}{5}
-    \end{tikzpicture}
-\end{subfigure}
-% \hfill
-\hspace{0.05\textwidth}
-\begin{subfigure}{0.4\textwidth}
-        \begin{tikzpicture}
-        % row1
-        \cellD{0}{0}{1}{1}
-        \cellCf{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellF{3}{0}{4}{1}
-        \cellE{4}{0}{5}{1}
-        \cellCf{5}{0}{6}{1}
-        \cellDf{6}{0}{7}{1}
-        % row2
-        \cell{0}{1}{1}{2}
-        \cellBf{1}{1}{2}{2}
-        \cellAf{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellC{4}{1}{5}{2}
-        \cellFf{5}{1}{6}{2}
-        \cellFf{6}{1}{7}{2}
-        % row3
-        \cellCf{0}{2}{1}{3}
-        \cellDf{1}{2}{2}{3}
-        \cell{2}{2}{3}{3}
-        \cellA{3}{2}{4}{3}
-        \cellA{4}{2}{5}{3}
-        \cellBf{5}{2}{6}{3}
-        \cellAf{6}{2}{7}{3}
-        % row4
-        \cellBf{0}{3}{1}{4}
-        \cellAf{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
-        \cellC{3}{3}{4}{4}
-        \cellC{4}{3}{5}{4}
-        \cell{5}{3}{6}{4}
-        \cell{6}{3}{7}{4}
-        % row5
-        \cellF{0}{4}{1}{5}
-        \cellD{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
-        \cell{3}{4}{4}{5}
-        \cellB{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cellA{6}{4}{7}{5}
-    \end{tikzpicture}
-\end{subfigure}
-
-\end{center}
-\caption{Examples of $(5,7$) messy polygon mosaics}
-\label{fig:messy mosaic example}
-\end{figure}
-
-The main goal of this paper is to enumerate messy polygon mosaics, but it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{S}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of messy polygon $(m,n)$ mosaics is then $7^{mn} - \left|\mathbb{S}^{(m,n)}\right|$.
-
-From the fact that the smallest polygon is made of $4$ tiles, shown in Figure \ref{fig:smallest polygon}, we can conclude that $\left|\mathbb{S}^{(n,1)}\right|=7^n$, and $\left|\mathbb{S}^{(2,2)}\right| = 7^4 - 1$. For $n,m \geq 2$, we first define the state matrices for messy polygon mosaics.
-
-\begin{figure}[h!]
-    \begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellC{0}{0}{1}{1}
-        \cellD{1}{0}{2}{1}
-        % row2
-        \cellB{0}{1}{1}{2}
-        \cellA{1}{1}{2}{2}
-    \end{tikzpicture}
-    \end{center}
-    \caption{The smallest polygon}
-    \label{fig:smallest polygon}
-\end{figure}
-
-\begin{definition}
-
-For integers $k \geq 1$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
-
-\begin{eqnarray*}
-A_{k+1} = \begin{pmatrix} 7A_{k} & B_{k} \\ C_{k} & D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} -A_{k} & B_{k} \\ 0C_{k} & D_{k} \end{pmatrix} \\
-C_{k+1} = \begin{pmatrix} A_{k} & 0B_{k} \\ C_{k} & D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} A_{k} & -B_{k} \\ C_{k} & 7D_{k} \end{pmatrix}.
-\end{eqnarray*}
-
-\end{definition}
-
-Our main result is Theorem \ref{thm: messy mosaics}.
-
-\begin{thm}
-\label{thm: messy mosaics}
-The number of $(m,n)$ mosaics that do not contain a polygon $\left|\mathbb{S}^{(m,n)}\right|$ is the $(0,0)$ entry of $A_{n}^m$.
-\end{thm}
+Our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further generalizing the techniques in Oh et al. \cite{Oh2014} to explore a new direction in mosaic enumeration.
 
 \section{Preliminaries}
 
-% TODO essentially change all this lol \begingroup $\setlength\arraycolsep{1pt}\arrayrowsep{1pt}\begin{matrix} 1 & 0 \\ 1 & 1 \\ \end{matrix}$\endgroup
-
-We begin by defining a mapping $f$ between a mosaic in $\mathbb{M}^{(m,n)}$ to an $(m,n)$ \textit{binary lattice}. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices and $\mathbb{F}^{(m,n)}$ be the set of all $(m,n)$ framed binary lattices. We immediately have $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m+1)(n+1)}$, $\left|\mathbb{F}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
+We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ binary lattice. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices and $\mathbb{F}^{(m,n)}$ be the set of all $(m,n)$ framed binary lattices. We immediately have $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m+1)(n+1)}$, $\left|\mathbb{F}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
 
 \begin{definition}
 
-$f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each vertex with the following rule. If the vertex is surrounded by an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
+Let $f$ map an $(m,n)$ mosaic and labels each vertex with the following rule. If the vertex is surrounded by the red dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the red dotted lines of an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
     
 \end{definition}
 
-\begin{figure}
+\begin{figure}[h!]
 \begin{center}
     \begin{tikzpicture}
         % row1
@@ -521,18 +411,18 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each ve
         \cellD{6}{0}{7}{1}
         % row2
         \cell{0}{1}{1}{2}
-        \cellB{1}{1}{2}{2}
+        \cellBf{1}{1}{2}{2}
         \cellC{2}{1}{3}{2}
         \cellA{3}{1}{4}{2}
         \cellC{4}{1}{5}{2}
         \cellD{5}{1}{6}{2}
         \cellF{6}{1}{7}{2}
         % row3
-        \cellB{0}{2}{1}{3}
+        \cellA{0}{2}{1}{3}
         \cellE{1}{2}{2}{3}
         \cellF{2}{2}{3}{3}
-        \cellF{3}{2}{4}{3}
-        \cellB{4}{2}{5}{3}
+        \cellBf{3}{2}{4}{3}
+        \cellBf{4}{2}{5}{3}
         \cellA{5}{2}{6}{3}
         \cellF{6}{2}{7}{3}
         % row4
@@ -540,17 +430,17 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each ve
         \cellD{1}{3}{2}{4}
         \cellB{2}{3}{3}{4}
         \cellE{3}{3}{4}{4}
-        \cellD{4}{3}{5}{4}
-        \cellA{5}{3}{6}{4}
-        \cellF{6}{3}{7}{4}
+        \cellE{4}{3}{5}{4}
+        \cellE{5}{3}{6}{4}
+        \cellA{6}{3}{7}{4}
         % row5
-        \cellB{0}{4}{1}{5}
+        \cellBf{0}{4}{1}{5}
         \cellA{1}{4}{2}{5}
         \cellF{2}{4}{3}{5}
         \cell{3}{4}{4}{5}
         \cellB{4}{4}{5}{5}
         \cellE{5}{4}{6}{5}
-        \cellA{6}{4}{7}{5}
+        \cellD{6}{4}{7}{5}
         % arrow
         \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
         % 
@@ -639,8 +529,8 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each ve
         \( \lablvertex{10}{4}{$0$} \)
         \( \lablvertex{11}{4}{$0$} \)
         \( \lablvertex{12}{4}{$0$} \)
-        \( \lablvertex{13}{4}{$1$} \)
-        \( \lablvertex{14}{4}{$1$} \)
+        \( \lablvertex{13}{4}{$0$} \)
+        \( \lablvertex{14}{4}{$0$} \)
         \( \lablvertex{15}{4}{$0$} \)
         % label for row1
         \( \lablvertex{8}{5}{$0$} \)
@@ -654,13 +544,13 @@ $f: \mathbb{M}^{(m,n)} \to \mathbb{F}^{(m,n)}$ takes a mosaic and labels each ve
 
     \end{tikzpicture}
 \end{center}
-\caption{$f$ applied to the left mosaic in Figure \ref{fig:messy mosaic example}, resulting in a binary lattice}
+\caption{$f$ applied to the left mosaic in Figure \ref{fig:example messy polygon mosaic}, resulting in a binary lattice. We highlight each possible way a $T_2$ tile can map to a cell by shading a representative tile in gray.}
 \label{fig:example of f mapping}
 \end{figure}
 
-Notice that by the definition of $f$, in a binary lattice polygons draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
+Notice that by the definition of $f$, in a binary lattice the red dotted lines of a polygon draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
 
-To enumerate $|\mathbb{S}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual \textit{cells} in a binary lattice.
+To enumerate $|\mathbb{P}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual cells in a binary lattice.
 
 \begin{definition}
 Let a \textit{cell} be a $(1,1)$ binary lattice.
@@ -668,7 +558,7 @@ Let a \textit{cell} be a $(1,1)$ binary lattice.
 
 \begin{exmp}
 \label{exmp: tile to cell}
-Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in the top-left tile $T_2$ mapping to the top-left cell diagrammed below.
+Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in the $T_2$ tile at position $(0,0)$ mapping to the cell at position $(0,0)$, diagrammed below.
 
 \begin{center}
     \begin{tikzpicture}
@@ -683,32 +573,50 @@ Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in t
         \( \lablvertex{3}{1}{$0$} \)
     \end{tikzpicture}
 \end{center}
+
+Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_2$ can map to. We diagram applying $f$ to the $T_2$ cells at positions $(2, 3), (2, 4)$, and $(3,1)$ below.
+
+\begin{center}
+    \begin{tikzpicture}
+        \cellB{0}{0}{1}{1}
+        \( \lablnode{1.5}{0.5}{$\pmb{\to}$} \)
+        \cell{2}{0}{3}{1}
+        \( \lablvertex{2}{0}{$1$} \)
+        \( \lablvertex{2}{1}{$1$} \)
+        \( \lablvertex{3}{0}{$1$} \)
+        \( \lablvertex{3}{1}{$1$} \)
+        
+        \cellB{4}{0}{5}{1}
+        \( \lablnode{5.5}{0.5}{$\pmb{\to}$} \)
+        \cell{6}{0}{7}{1}
+        \( \lablvertex{6}{0}{$1$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{0}{$0$} \)
+        \( \lablvertex{7}{1}{$1$} \)
+        
+        \cellB{8}{0}{9}{1}
+        \( \lablnode{9.5}{0.5}{$\pmb{\to}$} \)
+        \cell{10}{0}{11}{1}
+        \( \lablvertex{10}{0}{$0$} \)
+        \( \lablvertex{10}{1}{$0$} \)
+        \( \lablvertex{11}{0}{$0$} \)
+        \( \lablvertex{11}{1}{$0$} \)
+
+    \end{tikzpicture}
+\end{center}
+
 \end{exmp}
 
-For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels.  For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. The set of all unique cells is 
-$$\{\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\}.$$
+For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels. For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. There are sixteen cells:  
+$$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \text{ and }\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}.$$
 
-\begin{definition}
-    For a given $(m,n)$, let $\ell^*$ be the framed binary lattice made of only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
-    \label{def:all zeros}
-\end{definition}
-
-Therefore, as all mosaics that do not contain a polygon map to $\ell^*$ under $f$, we have
-
-\begin{equation}
-\label{eq: guiding eq}
-\mathbb{S}^{(m,n)} = f^{-1}(\{\ell^*\}),
-\end{equation}
-
-and so it suffices to compute $|f^{-1}(\{\ell^*\})|$. 
-
-It would be convenient to compute $f^{-1}(\ell)$ for any binary lattice $\ell$ ``cell-by-cell''. Let $u: \mathbb{L}^{(m,n)} \to \mathbb{N}$  map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
+It would be convenient to compute $f^{-1}(\{\ell\})$ for any framed binary lattice $\ell$ ``cell-by-cell''. For a binary lattice $\ell$, let $u(\ell)$ be the product over all cells in $\ell$, with each term being $$\begin{cases}
         7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
         0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
-        1 & \text{otherwise,}
+        1 & \text{otherwise}
     \end{cases}$$
 
-where these terms come from the number of tiles in $\mathbb{T}$ that can map to a specific cell under $f$. For a given binary lattice $\ell$ that does not contain  $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, the function $u(\ell)$ enumerates a set of mosaics of a specific form, in which at each square a tile is either uniquely specified, or can be any tile in $\mathbb{T}$. We can depict this set with a \textit{mosaic diagram}, where we introduce a notational tile with a red dot at the center to indicate that any tile in $\mathbb{T}$ can be in that location (to avoid confusion with the $T_0$ tile). For example, the mosaic diagram for the binary lattice in Figure \ref{fig:example of f mapping} is depicted in Figure \ref{fig: mosaic diagram}. Consequently, the mosaic in Figure \ref{fig:example of f mapping} is included in the set represented by the mosaic diagram in Figure \ref{fig: mosaic diagram}.
+\noindent where these terms come from the number of tiles in $\mathbb{T}$ that can map to a specific cell under $f$. For a given binary lattice $\ell$ that does not contain  $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, the function $u(\ell)$ counts the number of mosaics of a specific form, in which at each square a tile is either uniquely specified, or can be any tile in $\mathbb{T}$. We can depict this set with a \textit{mosaic diagram}, where we introduce a notational tile with a red dot at the center to indicate that any tile in $\mathbb{T}$ can be in that location (to avoid confusion with the $T_0$ tile). For example, the mosaic diagram for the binary lattice in Figure \ref{fig:example of f mapping} is depicted in Figure \ref{fig: mosaic diagram}. Consequently, the mosaic in Figure \ref{fig:example of f mapping} is included in the set represented by the mosaic diagram in Figure \ref{fig: mosaic diagram}.
 
 \begin{figure}
 \begin{center}
@@ -756,15 +664,28 @@ where these terms come from the number of tiles in $\mathbb{T}$ that can map to 
 
     \end{tikzpicture}
 \end{center}
-\caption{Mosaic Diagram of Binary Lattice in Figure \ref{fig:example of f mapping}}
 \label{fig: mosaic diagram}
+\caption{Mosaic Diagram of Binary Lattice in Figure \ref{fig:example of f mapping}}
 \end{figure}
 
-One would hope that the function $u$ could be used to compute $|\mathbb{S}^{(m,n)}|$ in some way. However for the $(m,n)$ binary lattice $\ell^*$, we have
 
-$$u(\ell^*) = 7^{mn} = |\mathbb{M}^{(m,n)}| > |\mathbb{S}^{(m,n)}|.$$
+\begin{definition}
+    For a given $(m,n)$, let $\ell^*$ be the framed binary lattice made of only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
+    \label{def:all zeros}
+\end{definition}
 
-Clearly, this approach overcounts $|\mathbb{S}^{(m,n)}|$. We can examine this phenomena more closely by first definining $g$.
+Therefore, as all mosaics that do not contain a polygon map to $\ell^*$ under $f$, we have
+
+\begin{equation}
+\label{eq: guiding eq}
+\mathbb{P}^{(m,n)} = f^{-1}(\{\ell^*\}),
+\end{equation}
+
+and so it suffices to compute $|f^{-1}(\{\ell^*\})|$. One would hope that the function $u$ could be used to compute $|\mathbb{P}^{(m,n)}|$ in some way. However for the $(m,n)$ binary lattice $\ell^*$, we have
+
+$$u(\ell^*) = 7^{mn} > |\mathbb{P}^{(m,n)}|.$$
+
+Clearly, this approach overcounts $|\mathbb{P}^{(m,n)}|$. We can examine this phenomena more closely by first definining $g$.
 
 \begin{definition}
     $g: \mathbb{F}^{(m,n)} \to \mathbb{M}^{(m,n)}$ takes a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
@@ -972,7 +893,7 @@ If $\ell$ is a framed binary lattice that does not contain the cells $\begin{sma
 
 \begin{proof}
 
-For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(1,n)$ framed binary lattice $\ell$ for some $n \geq 1$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $v(\ell)=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
+For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(1,n)$ framed binary lattice $\ell$ for some $n \geq 1$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $\text{sign}(v(\ell))=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
 
 For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labeled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
 
@@ -1219,7 +1140,7 @@ In Case \ref{subfig: bit flip case 2}, the flip does not add a $\begin{smallmatr
 
 In Case \ref{subfig: bit flip case 3}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
 
-In Case \ref{subfig: bit flip case 4}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so $1$ polygon is created. Either way, the RHS changes.
+In Case \ref{subfig: bit flip case 4}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so one polygon is created. Either way, the RHS changes sign.
 
 In Case \ref{subfig: bit flip case 5}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
 
@@ -1232,7 +1153,7 @@ We point out here that the function $v$ if defined for all binary lattices, whil
 
 \begin{prop}
 The number of $(m,n)$ mosaics that do not contain a polygon has
-$$\left|\mathbb{S}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
+$$\left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
 \label{prop: sum of vs}
 \end{prop}
 
@@ -1257,15 +1178,15 @@ $$\sum_{p=0}^{P(\ell)}(-1)^{p}\binom{P(\ell)}{p} = 0,$$
 
 and as the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M}^{(m,n)} | P(f(\mathcal{M})) = 0\}}\binom{0}{0} = |f^{-1}(\ell^*)| = |\mathbb{S}^{(m,n)}|.$$
+$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M}^{(m,n)} | P(f(\mathcal{M})) = 0\}}\binom{0}{0} = |f^{-1}(\ell^*)| = |\mathbb{P}^{(m,n)}|.$$
 
 \end{proof}
 
-As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the state matrix recursion method.
+As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the matrix recursion method.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-We begin by defining the state matrices.
+We begin by defining the matrices.
 
 \begin{definition}
 
@@ -1283,23 +1204,25 @@ Let the $n$ digit binary representation of the number $k$ be written as $\beta_n
 
 \begin{prop}
 The $(i,j)$-th entry of $A_{n}$ is $v(\ell)$, where $\ell$ is the $(1, n)$ binary lattice where the top row of vertices has labels $0\beta_{n-1}(i)0$ and the bottom row of vertices has labels $0\beta_{n-1}(j)0$, both read left to right. Furthermore, the same statement is true for $B_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $0\beta_{n-1}(j)0$, for $C_{n}$ with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$, and for $D_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$.
-\label{prop: one by n state matrix}
+\label{prop: one by n matrix}
 \end{prop}
 
 \begin{proof}
-We prove by induction. For $n=1$, the definition of the state matrices gives $A_1$ is $v(\ell)$ where $\ell$ is the $(1,1)$ binary lattice with top row $0\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=00$, as $\beta_0(0)$ is the empty string. The same is true for $B_1$ with top row $0\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=00$, for $C_1$ with top row $1\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=10$, and for $D_1$ with top row $1\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=10$.
+We prove by induction. For $n=1$, the definition of the matrices gives $A_1$ is $v(\ell)$ where $\ell$ is the $(1,1)$ binary lattice with top row $0\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=00$, as $\beta_0(0)$ is the empty string. The same is true for $B_1$ with top row $0\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=00$, for $C_1$ with top row $1\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=10$, and for $D_1$ with top row $1\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=10$.
 
-We next assume matrices $A_n, B_n, C_n$, and $D_n$ follow their associated statements in Proposition \ref{prop: one by n state matrix}. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The argument is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
+We next assume matrices $A_n, B_n, C_n$, and $D_n$ follow their associated statements in Proposition \ref{prop: one by n matrix}. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The argument is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
 
 $$v(\ell) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).$$
 
-We show that $A_{n+1}$ also follows Proposition \ref{prop: one by n state matrix}. From the definition, we have
+We show that $A_{n+1}$ also follows Proposition \ref{prop: one by n matrix}. From the definition, we have
 
 $$A_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix}.$$
 
 By construction, the $(i,j)$-th entry in $B_n$ is located in the $(i, j+2^{n-1})$-th entry of $A_{n+1}$, as each block matrix $A_n, B_n, C_n, D_n$ are $2^{n-1} \times 2^{n-1}$ matrices. Also by construction, the value in the $(i,j)$-th entry in $B_n$ which we call $v(\ell)$ is multiplied by $v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})$. The definition of $v$ gives
 
-$$v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})v(\ell) = v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\right)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
+$$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & 0 & \beta_{n}(i) & 0 \\ 0 & 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
+
+as desired.
 
 Therefore, the $(i, j+2^{n-1})$-th entry of $A_{n+1}$ is $v(\ell)$ where $\ell$ is the $(1,n+1)$ binary lattice where the top row of vertices is $0\beta_{n}(i)0$ and the bottom row of vertices is $0\beta_{n}(j+2^{n-1})0$, which completes the induction step for $A_{n+1}$. Similar arguments hold for matrices $B_{n+1}$, $C_{n+1}$, $D_{n+1}$.
 
@@ -1307,13 +1230,13 @@ Therefore, the $(i, j+2^{n-1})$-th entry of $A_{n+1}$ is $v(\ell)$ where $\ell$ 
 
 \begin{prop}
 The $(i,j)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(j)0$, both read left to right.
-\label{prop: m by n state matrix}
+\label{prop: m by n matrix}
 \end{prop}
 
 \begin{proof}
-We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n state matrix}, as the set $L$ only has the unique $(1,n)$ binary lattice.
+We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n matrix}, as the set $L$ only has the unique $(1,n)$ binary lattice.
 
-We next assume that the $(i,j)$-th entry of $A^{m}_{n}$ satisfies the statement in Proposition \ref{prop: m by n state matrix}, and show the statement also holds for $A^{m+1}_{n}$. To begin, consider the product $A^{m}_{n} \cdot A_n$, and choose an integer $k \in [0, 2^{n-1}-1]$. From the induction hypothesis the value at the $(i,k)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(k)0$. Similarly, the $(k, j)$-th entry of $A_n$ is the $(1,n)$ binary lattice $\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}.$
+We next assume that the $(i,j)$-th entry of $A^{m}_{n}$ satisfies the statement in Proposition \ref{prop: m by n matrix}, and show the statement also holds for $A^{m+1}_{n}$. To begin, consider the product $A^{m}_{n} \cdot A_n$, and choose an integer $k \in [0, 2^{n-1}-1]$. From the induction hypothesis the value at the $(i,k)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(k)0$. Similarly, the $(k, j)$-th entry of $A_n$ is the $(1,n)$ binary lattice $\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}.$
 
 Therefore, the dot product of the $i$-th row and the $j$-th column is $(i,j)$-th value of $A_n^{m+1}$, which is
 
@@ -1327,12 +1250,8 @@ The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry
 \end{prop}
 
 \begin{proof}
-By Proposition \ref{prop: m by n state matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Proposition \ref{prop: sum of vs}, which completes the proof.
+By Proposition \ref{prop: m by n matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Proposition \ref{prop: sum of vs}, which completes the proof.
 \end{proof}
-
-\section{Acknowledgements}
-
-The authors would like to thank Richard Schank for his suggestions, including proposing the definition for $f$ and working to develop the state matrix recursion matrix solution.
 
 % \newpage
 

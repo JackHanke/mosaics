@@ -35,7 +35,7 @@ A video summarizing this work can be found [here](https://www.youtube.com/watch?
 
 ## Developer Notes
 
-To refresh bib references, run `biber mosaics` .
+To refresh bib references, run `biber mosaics` in `writeup`.
 
 ## Citations w/ Links
 

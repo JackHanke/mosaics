@@ -378,6 +378,32 @@
       \endverb
       \warn{\item article entry 'Oh2014' (./bibb.bib): Invalid format '2015/03/01' of date field 'date' - ignoring}
     \endentry
+    \entry{oeispaper}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=b3de05a8d9dbc5a4521ddc3bcc11bc2c}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Joshua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8efdadd4956ae852f5e8891d4fad7c40}{%
+           family={Verrill},
+           familyi={V\bibinitperiod},
+           given={Helena},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd821b973da8dde617851932f31c06f9}
+      \strng{fullhash}{dd821b973da8dde617851932f31c06f9}
+      \strng{bibnamehash}{dd821b973da8dde617851932f31c06f9}
+      \strng{authorbibnamehash}{dd821b973da8dde617851932f31c06f9}
+      \strng{authornamehash}{dd821b973da8dde617851932f31c06f9}
+      \strng{authorfullhash}{dd821b973da8dde617851932f31c06f9}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Published electronically at \url{https://oeis.org/A116694/a116694.pdf}}
+      \field{title}{On Dividing Rectangles Into Rectangles}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
