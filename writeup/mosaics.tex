@@ -6,8 +6,8 @@
 
 % \usepackage{subfig}
 \usepackage[english]{babel}
-\usepackage{capt-of}
-\usepackage{tabularray}
+% \usepackage{capt-of}
+% \usepackage{tabularray}
 \usepackage{caption}
 \usepackage{subcaption}
 % \usepackage{subcaption}
@@ -18,7 +18,7 @@
 \usetikzlibrary{shapes}
 \usepackage{hyperref}
 %might be unnecessary
-\usepackage{doi}
+% \usepackage{doi}
 
 %bibliography CMDS
 
@@ -548,7 +548,7 @@ Let $f$ map an $(m,n)$ mosaic and labels each vertex with the following rule. If
 \label{fig:example of f mapping}
 \end{figure}
 
-Notice that by the definition of $f$, in a binary lattice the red dotted lines of a polygon draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
+Notice that by the definition of $f$, in a binary lattice the red dotted lines of a polygon draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three red-dotted lines of the polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
 
 To enumerate $|\mathbb{P}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual cells in a binary lattice.
 
@@ -873,7 +873,7 @@ and the empty product being $1$.
 
 \begin{exmp}
 \label{exmp: v on a ell}
-If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$.
+If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are $2$ $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, $1$ $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, $9$ $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and $2$ $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
 \end{exmp}
 
 We will first show that $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
@@ -898,13 +898,13 @@ For this proof, we use LHS and RHS to abbreviate the left and right hand side of
 For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labeled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
 
 \noindent\textbf{Procedure:} \\
-\indent \textbf{Step a.} Add a bottom row to $\ell$ of $n+1$ vertices all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_a$. \\
-\indent \textbf{Step b.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_a$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_b$.\\
-\indent \textbf{Step c.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_b$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
+\indent \textbf{Step 1.} Add a bottom row to $\ell$ of $n+1$ vertices, all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_a$. \\
+\indent \textbf{Step 2.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_a$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_b$.\\
+\indent \textbf{Step 3.} Againk scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_b$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
 
-For step a, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS, no new edge-connected regions are created, no new polygons are created in $g(\ell_a)$ so Equation \ref{eq: sign prop} is preserved by step a.
+For step 1, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS, no new edge-connected regions are created, no new polygons are created in $g(\ell_a)$ so Equation \ref{eq: sign prop} is preserved by step a.
 
-For steps b and c, we encounter two distinct cases which we diagram in Figure \ref{fig: step diagrams}. These diagrams have $a,b,c,d \in [0, 1]$, and use the \# symbol to indicate the vertex being changed from a $0$ to a $1$.
+For steps 2 and 3, we encounter two distinct cases which we diagram in Figure \ref{fig: step diagrams}. These diagrams have $a,b,c,d \in [0, 1]$, and use the \# symbol to indicate the vertex being changed from a $0$ to a $1$.
 
 \begin{figure}[h!]
 \centering
@@ -931,7 +931,7 @@ For steps b and c, we encounter two distinct cases which we diagram in Figure \r
 \( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
-\caption{Step b. Diagram}
+\caption{Step 2 Diagram}
 \label{subfig: step b diagram}
 \end{subfigure}
 ~
@@ -958,18 +958,16 @@ For steps b and c, we encounter two distinct cases which we diagram in Figure \r
 \( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
-\caption{Step c. Diagram}
+\caption{Step 3 Diagram}
 \label{subfig: step c diagram}
 \end{subfigure}
 \caption{Step Diagrams}
 \label{fig: step diagrams}
 \end{figure}
 
-For step b, Figure  \ref{subfig: step b diagram} depicts all possible cases one can encounter scanning left to right on $\ell_a$. Note that the vertex right of the \# symbol must be $0$, as the procedure moving left to right on $\ell_a$ gives that this vertex must be $0$.
+For step 2, Figure  \ref{subfig: step b diagram} depicts all possible cases one can encounter scanning left to right on $\ell_a$. Note that the vertex right of the \# symbol must be $0$, as the procedure moving left to right on $\ell_a$ gives that this vertex must be $0$. Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $P(\ell_a) = P(\ell_b)$, and so the RHS is preserved.
 
-Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $P(\ell_a) = P(\ell_b)$, and so the RHS is preserved.
-
-For step c, Figure \ref{subfig: step c diagram} depicts all possible cases one can encounter scanning left to right on $\ell_b$. It cannot be the case that $a=1$ and $c=0$, as this would imply $\ell'$ contains $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Similarly, it cannot be the cases that $b=1$ and $d=0$, as this would imply $\ell_b$ contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Additionally, it cannot be the case that $b=0$ and $d=1$, as the procedure moves left-to-right. This results in the following $6$ cases, which we show each preserve Equation \ref{eq: sign prop}.
+For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one can encounter scanning left to right on $\ell_b$. It cannot be the case that $a=1$ and $c=0$, as this would imply $\ell'$ contains $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Similarly, it cannot be the cases that $b=1$ and $d=0$, as this would imply $\ell_b$ contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Additionally, it cannot be the case that $b=0$ and $d=1$, as the procedure moves left-to-right. This results in the following $6$ cases, which we show each preserve Equation \ref{eq: sign prop}.
 
 \begin{figure}[h!]
 \centering
@@ -1130,7 +1128,7 @@ For step c, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 \caption{}
 \label{subfig: bit flip case 6}
 \end{subfigure}
-\caption{Step c. Cases}
+\caption{Step 3. Cases}
 \label{fig: }
 \end{figure}
 
