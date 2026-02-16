@@ -279,47 +279,11 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is compl
 \label{fig:example mosaics}
 \end{figure}
 
-If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the red dotted lines form multiple polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}, which we highlight in gray. 
+If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the red dotted lines form multiple polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}, which we highlight the corresponding tiles in gray. 
 
 \begin{definition}
 An $(m,n)$ \textit{messy polygon mosaic} is an $(m,n)$ mosaic that contains at least one polygon. 
 \end{definition}
-
-\begin{exmp}
-Below is one of the polygons in the messy polygon mosaic in Figure \ref{fig:example messy polygon mosaic}.
-
-\begin{figure}[h!]
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellC{3}{0}{4}{1}
-        \cellE{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
-        % row2
-        \cellC{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellF{6}{1}{7}{2}
-        % row3
-        \cellF{2}{2}{3}{3}
-        \cellF{6}{2}{7}{3}
-        % row4
-        \cellB{2}{3}{3}{4}
-        \cellE{3}{3}{4}{4}
-        \cellE{4}{3}{5}{4}
-        \cellE{5}{3}{6}{4}
-        \cellA{6}{3}{7}{4}
-    \end{tikzpicture}
-\caption{A polygon in Figure \ref{fig:example messy polygon mosaic}}
-\label{fig: example polygon}
-\end{center}
-\end{figure}
-
-As in Figure \ref{fig:example messy polygon mosaic}, a mosaic can contain polygons that surround other polygons. 
-\end{exmp}
-
-Further note that when a part of a mosaic, both tiles and polygons also have an associated location within the mosaic. The mosaic in Figure \ref{fig:example messy polygon mosaic} contains $3$ polygons, although two of the polygons are the same up to location.
-
 
 What is the probability of constructing a messy polygon mosaic, given the dimensions of the bathroom $m,n$? As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the total number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of $(m,n)$ messy polygon mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
 
@@ -333,7 +297,7 @@ For integers $k \geq 1$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ mat
 A_{k+1} = \begin{pmatrix} 7A_{k} & B_{k} \\ C_{k} & D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} -A_{k} & B_{k} \\ 0C_{k} & D_{k} \end{pmatrix} \\
 C_{k+1} = \begin{pmatrix} A_{k} & 0B_{k} \\ C_{k} & D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} A_{k} & -B_{k} \\ C_{k} & 7D_{k} \end{pmatrix}.
 \end{eqnarray*}
-
+\label{def: matrix defs}
 \end{definition}
 
 Throughout this work, we index elements in matrices, mosaics, and later binary lattices with a pair of coordinates. The first coordinate is the row index, counted top to bottom, and the second coordinate is the column index, counted left to right, both beginning at $0$. 
@@ -604,9 +568,9 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
 For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels. For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. There are sixteen cells:  
 $$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \text{ and }\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}.$$
 
-Tiles that do not form a polygon map to cells $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, and no tile can map to cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Furthermore, any tile that is part of a polygon maps to one of the $12$ remaining possible cells.
+Under $f$, tiles that do not form a polygon map to cells $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, and no tile can map to cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Furthermore, any tile that is part of a polygon maps to one of the $12$ remaining possible cells.
 
-We can define a general function $v$ that maps a cell to some integer, then extend $v$ to binary lattices by taking the product over $v$ of the individual cells in the binary lattice. The specific $v$ for our purposes is the following.
+We can then define a general function $v$ that maps a cell to some integer, then extend $v$ to $(m,n)$ binary lattices by taking the product over $v$ of the $mn$ individual cells in the binary lattice. We choose the following definition for $v$.
 
 \begin{definition}
 Let $v$ map a binary lattice to the product over all cells in the binary lattice, with each term being $$\begin{cases}
@@ -625,21 +589,15 @@ If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:ex
 \end{exmp}
 
 \begin{definition}
-Let $g$ takes a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
+If $\ell$ is a framed binary lattice that does not contain $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, let $P(\ell)$ to be the number of polygons in the polygon mosaic formed by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with the blank tile $T_0$, and replacing all other cells with the unique tile that maps to that cell under $f$.
 \end{definition}
 
-Notice that for some binary lattice $\ell$, $g(\ell)$ is not necessarily equal to $f^{-1}(\ell)$, as $g$ only returns polygon mosaics and not messy polygon mosaics.
-
-We first show that our choice of $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
-
-\begin{definition}
-For a framed binary lattice $\ell$, let $P(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
-\end{definition}
+We show our choice of $v$, which is computed ``cell-by-cell'' over a framed binary lattice $\ell$, recovers global information about $P(\ell)$.
 
 \begin{prop} 
 If $\ell$ is a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then 
 \begin{equation}
-\text{sign}(v(\ell)) = (-1)^{P(\ell)}.
+    \text{sign}(v(\ell)) = (-1)^{P(\ell)}.
 \label{eq: sign prop}
 \end{equation}
 \label{prop: sign of v}
@@ -649,7 +607,7 @@ If $\ell$ is a framed binary lattice that does not contain the cells $\begin{sma
 
 For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(0,n)$ framed binary lattice $\ell$ for some $n \geq 0$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $\text{sign}(v(\ell))=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
 
-For the induction step, consider any $(m+1,n)$ framed binary strip $\ell'$ for $m \geq 1$ such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. Similarly, define $\ell$ to be the framed binary lattice that shares the top $m$ rows of vertices with $\ell'$. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
+For the induction step, consider any $(m+1,n)$ framed binary strip $\ell'$ for $m \geq 1$ such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. Similarly, define $\ell$ to be the framed binary lattice that shares the top $m$ rows of vertices with $\ell'$, and the bottom most row all being $0$. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
 
 \noindent\textbf{Procedure:} \\
 \indent \textbf{Step 1.} Add a bottom row to $\ell$ of $n+1$ vertices, all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_1$. \\
@@ -658,9 +616,9 @@ For the induction step, consider any $(m+1,n)$ framed binary strip $\ell'$ for $
 
 For step 1, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS no new polygons are created in $g(\ell_1)$, so Equation \ref{eq: sign prop} is preserved by step 1.
 
-For steps 2 and 3, we prove the result for each intermediate vertex change as we scan left to right. Furthermore, as each intermediate change only flips a single vertex label from $0$ to $1$, we only need to consider the $4$ cells that share this vertex. We diagram all possible cases for both steps in Figure \ref{fig: step 2 cases} and Figure \ref{fig: step 3 cases}, where the \# symbol indicates the vertex being changed from a $0$ to a $1$. We know that the bottom $m+1$-st row of vertices must all be $0$ by construction.
+For steps 2 and 3, we prove the result for each intermediate vertex change as we scan left to right. Furthermore, as each intermediate change only flips a single vertex label from $0$ to $1$, we only need to consider the $4$ cells that share this vertex. We diagram all possible cases for both steps in Figure \ref{fig: step 2 cases} and Figure \ref{fig: step 3 cases}, where the \# symbol indicates the vertex flipping from a $0$ to a $1$. We know that the bottom most row of vertices must all be $0$ by construction.
 
-For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the vertex right of the \# symbol must be $0$, as the procedure moves left to right on $\ell_a$. Additionally, the $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cell cannot be created or destroyed, and so Figure \ref{fig: step 2 cases} depicts all $6$ possible cases.
+For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the vertex right of the \# symbol must be $0$, as the procedure moves left to right on $\ell_1$. Additionally, the $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cell cannot be created or destroyed, and so Figure \ref{fig: step 2 cases} depicts all $6$ possible cases.
 
 \begin{figure}[h!]
 \centering
@@ -825,9 +783,42 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \label{fig: step 2 cases}
 \end{figure}
 
-\noindent As no case in Figure \ref{fig: step 2 cases} creates or destroys $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cells, the LHS sign does not change for any intermediate vertex flip. Similarly, all step 2 cases can only represent the edge of one polygon, both before and after the flip, and so the RHS is preserved.
+\noindent As no case in Figure \ref{fig: step 2 cases} creates or destroys any $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cells, the LHS sign does not change for any intermediate vertex flip. Similarly, one can check that both before and after the vertex is changed from $0$ to $1$ that the following is true. Replacing each $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cell with $T_0$ and replacing all other cells with their unique corresponding tile only forms tiles that must all be part of the same polygon. For example, the corresponding tiles for Case \ref{subfig: step 2 bit flip case 5} is shown in Figure \ref{fig: step 2 example tile swap}.
 
-For step 3, the vertex above the \# symbol must be $0$ by definition. As we cannot create or destroy $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ or $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cells, Figure \ref{fig: step 3 cases} depicts all $6$ possible cases.
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+% row 2 of cells
+\cellE{0}{1}{1}{2}
+\cellE{1}{1}{2}{2}
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cellC{0}{0}{1}{1}
+\cellD{1}{0}{2}{1}
+% row 2 of cells
+\cellA{0}{1}{1}{2}
+\cellB{1}{1}{2}{2}
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+\caption{Tile configurations for before and after flipping the vertex in Case \ref{subfig: step 2 bit flip case 5}}
+\label{fig: step 2 example tile swap}
+\end{figure}
+
+\noindent Therefore the number of polygons remains the same, and so the RHS is preserved.
+
+For step 3, the vertex above the \# symbol must be $0$ by definition. As we cannot create or destroy $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, Figure \ref{fig: step 3 cases} depicts all $6$ possible cases.
 
 \begin{figure}[h!]
 \centering
@@ -993,18 +984,49 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \label{fig: step 3 cases}
 \end{figure}
 
-We show Equation \ref{eq: sign prop} holds case by case. In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new polygon the sign of the RHS changes. In Case \ref{subfig: bit flip case 2}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 3}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 4}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 5}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so one polygon is created. Either way, the RHS changes sign. In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 5} applies, as the flip either removes or adds a polygon, so the RHS changes.
+We show Equation \ref{eq: sign prop} holds case by case. In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new polygon the sign of the RHS changes. In Case \ref{subfig: bit flip case 2}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 3}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 4}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 5}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, replacing the cells with the appropriate tiles results in a configuration that can either represent portions of one or two polygons, as shown in Figure \ref{fig: tile config for double case}.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cellD{0}{0}{1}{1}
+\cellC{1}{0}{2}{1}
+% row 2 of cells
+\cellA{0}{1}{1}{2}
+\cellF{1}{1}{2}{2}
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cellE{0}{0}{1}{1}
+\cellE{1}{0}{2}{1}
+% row 2 of cells
+\cellE{0}{1}{1}{2}
+\cellD{1}{1}{2}{2}
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+\caption{Tile configurations for before and after flipping the vertex in Case \ref{subfig: bit flip case 5}}
+\label{fig: tile config for double case}
+\end{figure}
+
+\noindent If the tiles were part of one polygon before the flip, the tiles after the flip must be part of two distinct polygons. Similarly, if the tiles are were part of two polygons before the flip, the tiles after the flip must be of one polygon. Either way the total number of polygons changes by $1$, and so the RHS changes sign. In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 5} applies for the RHS, as the flip either removes or adds a polygon.
 
 As all cases preserve Equation \ref{eq: sign prop}, the $(m+1, n)$ framed binary lattice $\ell'$ also follows Equation \ref{eq: sign prop}.
 \end{proof}
 
-We point out here that the function $v$ if defined for all binary lattices, while Proposition \ref{prop: sign of v} only holds for framed binary lattices that do not contain cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
-
-\begin{prop}
+\begin{thm}
 The number of $(m,n)$ mosaics that do not contain a polygon has
 $$\left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
-\label{prop: sum of vs}
-\end{prop}
+\label{thm: sum of vs}
+\end{thm}
 
 \begin{proof}
 Choose a mosaic $\mathcal{M}$ that has $P(\ell')$ polygons, where $\ell' = f(\mathcal{M})$. We begin by determining how many times $\mathcal{M}$ is counted in the related sum
@@ -1031,35 +1053,39 @@ $$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M
 
 \end{proof}
 
+We point out here that the function $v$ if defined for all binary lattices, while Proposition \ref{prop: sign of v} only holds for framed binary lattices that do not contain cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
+
 As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the matrix recursion method.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
-We begin by defining the matrices.
-
-\begin{definition}
-
-Let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, B_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}, C_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, D_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}$, and for integers $k \geq 1$,
+We begin by recognizing the matrices $A_k, B_k, C_k, D_k$ in Definition \ref{def: matrix defs} can be rewritten using any function $v$ from cells to integers that is extended to $(m,n)$ binary lattices as the product over individual cells. We write $A_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, B_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}, C_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, D_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}$, and for integers $k \geq 1$,
 
 \begin{eqnarray*}
 A_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix} \\
 C_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix}.
 \end{eqnarray*}
-\end{definition}
+
+We work with general $v$ in this section, and substitute the specific $v$ from Definition \ref{def: def of v} to give Theorem \ref{thm: messy mosaics} and a related result at the end.
 
 \begin{definition}
-Let the $n$ digit binary representation of the number $k$ be written as $\beta_n(k)$. If $k$ is $0$, $\beta_k(n)$ returns the empty string.
+Let the $n$ digit binary representation of the number $k$ be written as $\beta_n(k)$. If $n$ is $0$, $\beta_n(k)$ returns the empty string.
 \end{definition}
 
+We remind the reader matrix elements are indexed starting at $0$.
+
 \begin{prop}
-The $(i,j)$-th entry of $A_{n}$ is $v(\ell)$, where $\ell$ is the $(1, n)$ binary lattice where the top row of vertices has labels $0\beta_{n-1}(i)0$ and the bottom row of vertices has labels $0\beta_{n-1}(j)0$, both read left to right. Furthermore, the same statement is true for $B_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $0\beta_{n-1}(j)0$, for $C_{n}$ with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$, and for $D_{n}$ with top row $1\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$.
+For all integers $n \geq 1$, the $(i,j)$-th entry of \begin{eqnarray*}
+A_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & B_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), \\
+C_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & D_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).
+\end{eqnarray*}
 \label{prop: one by n matrix}
 \end{prop}
 
 \begin{proof}
-We prove by induction. For $n=1$, the definition of the matrices gives $A_1$ is $v(\ell)$ where $\ell$ is the $(1,1)$ binary lattice with top row $0\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=00$, as $\beta_0(0)$ is the empty string. The same is true for $B_1$ with top row $0\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=00$, for $C_1$ with top row $1\beta_0(0)0=00$ and bottom row $0\beta_0(0)0=10$, and for $D_1$ with top row $1\beta_0(0)0=10$ and bottom row $1\beta_0(0)0=10$.
+We prove by induction. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string.
 
-We next assume matrices $A_n, B_n, C_n$, and $D_n$ follow their associated statements in Proposition \ref{prop: one by n matrix}. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The argument is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
+We next assume our result for some fixed $n \geq 1$. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The assumption is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
 
 $$v(\ell) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).$$
 
@@ -1067,7 +1093,7 @@ We show that $A_{n+1}$ also follows Proposition \ref{prop: one by n matrix}. Fro
 
 $$A_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix}.$$
 
-By construction, the $(i,j)$-th entry in $B_n$ is located in the $(i, j+2^{n-1})$-th entry of $A_{n+1}$, as each block matrix $A_n, B_n, C_n, D_n$ are $2^{n-1} \times 2^{n-1}$ matrices. Also by construction, the value in the $(i,j)$-th entry in $B_n$ which we call $v(\ell)$ is multiplied by $v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})$. The definition of $v$ gives
+\noindent By construction, the $(i,j)$-th entry in $B_n$ is located in the $(i, j+2^{n-1})$-th entry of $A_{n+1}$, as each block matrix $A_n, B_n, C_n, D_n$ are $2^{n-1} \times 2^{n-1}$ matrices. Also by construction, the value in the $(i,j)$-th entry in $B_n$ which we call $v(\ell)$ is multiplied by $v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})$. The definition of $v$ gives
 
 $$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & 0 & \beta_{n}(i) & 0 \\ 0 & 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
 
@@ -1099,10 +1125,10 @@ The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry
 \end{prop}
 
 \begin{proof}
-By Proposition \ref{prop: m by n matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Proposition \ref{prop: sum of vs}, which completes the proof.
+By Proposition \ref{prop: m by n matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Theorem \ref{thm: sum of vs}, which completes the proof.
 \end{proof}
 
-% \newpage
+\newpage
 
 \printbibliography
 
