@@ -279,14 +279,10 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is compl
 \label{fig:example mosaics}
 \end{figure}
 
-If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the tiles form multiple polygons, which we highlight in gray. 
+If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the red dotted lines form multiple polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}, which we highlight in gray. 
 
 \begin{definition}
-A \textit{polygon}\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.} is a nonempty subset $p$ of edge-wise connected tiles such that if one chooses any starting tile in $p$, one can visit each tile in the set exactly once by doing the following. Identify an edge that is shared between the current tile and a tile that has not been visited and has $2$ dotted lines drawn from the edge's midpoint. Set the current tile to this new tile. Repeat the procedure until the new tile is the starting tile.
-\end{definition}
-
-\begin{definition}
-An \textit{messy polygon} $(m,n)$ {mosaic} is an $(m,n)$ mosaic that contains at least one polygon. 
+An $(m,n)$ \textit{messy polygon mosaic} is an $(m,n)$ mosaic that contains at least one polygon. 
 \end{definition}
 
 \begin{exmp}
@@ -325,9 +321,9 @@ As in Figure \ref{fig:example messy polygon mosaic}, a mosaic can contain polygo
 Further note that when a part of a mosaic, both tiles and polygons also have an associated location within the mosaic. The mosaic in Figure \ref{fig:example messy polygon mosaic} contains $3$ polygons, although two of the polygons are the same up to location.
 
 
-What is the probability of constructing a messy polygon mosaic, given the dimensions of the bathroom $m,n$? As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the total number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of messy polygon $(m,n)$ mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
+What is the probability of constructing a messy polygon mosaic, given the dimensions of the bathroom $m,n$? As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the total number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of $(m,n)$ messy polygon mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
 
-From the fact that the smallest polygon is made of $4$ tiles (appearing twice in Figure \ref{fig:example messy polygon mosaic}), we can conclude that $\left|\mathbb{P}^{(n,1)}\right|=7^n$, and $\left|\mathbb{P}^{(2,2)}\right| = 7^4 - 1$. For $m, n \geq 2$, we first define the matrices for messy polygon mosaics.
+From the fact that the smallest polygon is made of $4$ tiles (appearing twice in Figure \ref{fig:example messy polygon mosaic}), we can conclude that $\left|\mathbb{P}^{(n,1)}\right|=7^n$, and $\left|\mathbb{P}^{(2,2)}\right| = 7^4 - 1$. For $m, n \geq 2$, we first define the following matrices.
 
 \begin{definition}
 
@@ -354,14 +350,14 @@ The number of $(m,n)$ mosaics that do not contain a polygon $\left|\mathbb{P}^{(
 Hong and Oh \cite{Hong2018} studied a similar question in which they construct mosaics from $\mathbb{T}$, but were interested in the number of polygon mosaics.
 
 \begin{definition}
-An \textit{polygon} $(m,n)$ {mosaic} is an $(m,n)$ mosaic that contains at least one polygon and every tile that is not part of a polygon is $T_0$.
+An $(m,n)$ \textit{polygon mosaic} is an $(m,n)$ mosaic that contains at least one polygon and every tile that is not part of a polygon is $T_0$.
 \end{definition}
 
-Clearly, all polygon mosaics are messy polygon mosaics. The sequence A181245 on the OEIS \cite{oeis} is the array of $1 +$ the number of polygon $(m,n)$ mosaics. The authors in \cite{Hong2018} provide bounds for the number of polygon mosaics.
+Clearly, all polygon mosaics are messy polygon mosaics. The sequence A181245 on the OEIS \cite{oeis} is the array of $1 +$ the number of $(m,n)$ polygon mosaics. The authors in \cite{Hong2018} provide bounds for the number of polygon mosaics.
 
 \begin{thm}[\cite{Hong2018}]
 \label{thm:Hong2018}
-The number of polygon $(m,n)$ mosaics for $m,n \geq 3$ is bounded between
+The number of $(m,n)$ polygon mosaics for $m,n \geq 3$ is bounded between
 $2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$
 \end{thm}
 
@@ -369,7 +365,7 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
 
 \begin{thm}[\cite{Oh2014}]
 \label{thm:Oh2014}
-The number of knot $(m,n)$ mosaics for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
+The number of $(m,n)$ knot mosaics for $m,n \geq 2$ is $2 \left\| (X_{m-2}+O_{m-2})^{n-2} \right\|$, where $X_0 = O_0 = \begin{bmatrix} 1 \\ \end{bmatrix}$ and $X_{m-2}$ and $O_{m-2}$ are $2^{m-2} \times 2^{m-2}$ matrices defined as
 
 $$ X_{k+1} = \begin{pmatrix}
     X_k & O_k \\
@@ -394,7 +390,7 @@ We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ bin
 
 \begin{definition}
 
-Let $f$ map an $(m,n)$ mosaic and labels each vertex with the following rule. If the vertex is surrounded by the red dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the red dotted lines of an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
+Let $f$ be the map that takes an $(m,n)$ mosaic and labels each vertex with the following rule. If the vertex is surrounded by the red dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the red dotted lines of an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
     
 \end{definition}
 
@@ -544,13 +540,11 @@ Let $f$ map an $(m,n)$ mosaic and labels each vertex with the following rule. If
 
     \end{tikzpicture}
 \end{center}
-\caption{$f$ applied to the left mosaic in Figure \ref{fig:example messy polygon mosaic}, resulting in a binary lattice. We highlight each possible way a $T_2$ tile can map to a cell by shading a representative tile in gray.}
+\caption{$f$ applied to the mosaic in Figure \ref{fig:example messy polygon mosaic}, resulting in a binary lattice. We highlight each possible way a $T_2$ tile can map to a cell by shading a representative tile in gray.}
 \label{fig:example of f mapping}
 \end{figure}
 
-Notice that by the definition of $f$, in a binary lattice the red dotted lines of a polygon draw out the boundary between edge-connected vertices with the same label, excluding the vertices that are edge-connected to the boundary $0$'s. For example in Figure \ref{fig:example of f mapping} the three red-dotted lines of the polygons correspond with the boundary of the three edge-connected regions of vertices that are not edge-connected to the boundary $0$'s.
-
-To enumerate $|\mathbb{P}^{(m,n)}|$, it will be useful to consider how $f$ maps individual tiles in $\mathbb{T}$ to individual cells in a binary lattice.
+To enumerate $|\mathbb{P}^{(m,n)}|$, it will be useful to consider how $f$ maps the tiles in $\mathbb{T}$ to the cells in a binary lattice.
 
 \begin{definition}
 Let a \textit{cell} be a $(1,1)$ binary lattice.
@@ -610,263 +604,17 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
 For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels. For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. There are sixteen cells:  
 $$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \text{ and }\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}.$$
 
-It would be convenient to compute $f^{-1}(\{\ell\})$ for any framed binary lattice $\ell$ ``cell-by-cell''. For a binary lattice $\ell$, let $u(\ell)$ be the product over all cells in $\ell$, with each term being $$\begin{cases}
-        7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
-        0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
-        1 & \text{otherwise}
-    \end{cases}$$
+Tiles that do not form a polygon map to cells $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, and no tile can map to cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Furthermore, any tile that is part of a polygon maps to one of the $12$ remaining possible cells.
 
-\noindent where these terms come from the number of tiles in $\mathbb{T}$ that can map to a specific cell under $f$. For a given binary lattice $\ell$ that does not contain  $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, the function $u(\ell)$ counts the number of mosaics of a specific form, in which at each square a tile is either uniquely specified, or can be any tile in $\mathbb{T}$. We can depict this set with a \textit{mosaic diagram}, where we introduce a notational tile with a red dot at the center to indicate that any tile in $\mathbb{T}$ can be in that location (to avoid confusion with the $T_0$ tile). For example, the mosaic diagram for the binary lattice in Figure \ref{fig:example of f mapping} is depicted in Figure \ref{fig: mosaic diagram}. Consequently, the mosaic in Figure \ref{fig:example of f mapping} is included in the set represented by the mosaic diagram in Figure \ref{fig: mosaic diagram}.
-
-\begin{figure}
-\begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellopen{0}{0}{1}{1}
-        \cellopen{1}{0}{2}{1}
-        \cellopen{2}{0}{3}{1}
-        \cellC{3}{0}{4}{1}
-        \cellE{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
-        % row2
-        \cellopen{0}{1}{1}{2}
-        \cellopen{1}{1}{2}{2}
-        \cellC{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellC{4}{1}{5}{2}
-        \cellD{5}{1}{6}{2}
-        \cellF{6}{1}{7}{2}
-        % row3
-        \cellopen{0}{2}{1}{3}
-        \cellopen{1}{2}{2}{3}
-        \cellF{2}{2}{3}{3}
-        \cellopen{3}{2}{4}{3}
-        \cellB{4}{2}{5}{3}
-        \cellA{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
-        % row4
-        \cellC{0}{3}{1}{4}
-        \cellD{1}{3}{2}{4}
-        \cellB{2}{3}{3}{4}
-        \cellE{3}{3}{4}{4}
-        \cellD{4}{3}{5}{4}
-        \cellopen{5}{3}{6}{4}
-        \cellF{6}{3}{7}{4}
-        % row5
-        \cellB{0}{4}{1}{5}
-        \cellA{1}{4}{2}{5}
-        \cellopen{2}{4}{3}{5}
-        \cellopen{3}{4}{4}{5}
-        \cellB{4}{4}{5}{5}
-        \cellE{5}{4}{6}{5}
-        \cellA{6}{4}{7}{5}
-
-    \end{tikzpicture}
-\end{center}
-\label{fig: mosaic diagram}
-\caption{Mosaic Diagram of Binary Lattice in Figure \ref{fig:example of f mapping}}
-\end{figure}
-
+We can define a general function $v$ that maps a cell to some integer, then extend $v$ to binary lattices by taking the product over $v$ of the individual cells in the binary lattice. The specific $v$ for our purposes is the following.
 
 \begin{definition}
-    For a given $(m,n)$, let $\ell^*$ be the framed binary lattice made of only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells.
-    \label{def:all zeros}
-\end{definition}
-
-Therefore, as all mosaics that do not contain a polygon map to $\ell^*$ under $f$, we have
-
-\begin{equation}
-\label{eq: guiding eq}
-\mathbb{P}^{(m,n)} = f^{-1}(\{\ell^*\}),
-\end{equation}
-
-and so it suffices to compute $|f^{-1}(\{\ell^*\})|$. One would hope that the function $u$ could be used to compute $|\mathbb{P}^{(m,n)}|$ in some way. However for the $(m,n)$ binary lattice $\ell^*$, we have
-
-$$u(\ell^*) = 7^{mn} > |\mathbb{P}^{(m,n)}|.$$
-
-Clearly, this approach overcounts $|\mathbb{P}^{(m,n)}|$. We can examine this phenomena more closely by first definining $g$.
-
-\begin{definition}
-    $g: \mathbb{F}^{(m,n)} \to \mathbb{M}^{(m,n)}$ takes a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
-\end{definition}
-
-Notice that for some binary lattice $\ell$, $g(\ell)$ is not necessarily equal to $f^{-1}(\ell)$, as $g$ only returns polygon mosaics and not messy polygon mosaics. We can now examine the overcounting more closely.
-
-\begin{exmp}
-
-Consider the following binary lattices and mosaics for $(m,n)=(4,2)$. 
-
-\begin{center}
-    \begin{tikzpicture}[scale=0.95]
-
-        % row1
-        \cell{-3}{0}{-2}{1}
-        \cell{-3}{1}{-2}{2}
-        \cell{-3}{2}{-2}{3}
-        \cell{-3}{3}{-2}{4}
-        \cell{-2}{0}{-1}{1}
-        \cell{-2}{1}{-1}{2}
-        \cell{-2}{2}{-1}{3}
-        \cell{-2}{3}{-1}{4}
-
-        \( \lablnode{-2}{-1}{$\ell_{1}$} \)
-
-        \( \lablvertex{-3}{0}{$0$} \)
-        \( \lablvertex{-2}{0}{$0$} \)
-        \( \lablvertex{-1}{0}{$0$} \)
-
-        \( \lablvertex{-3}{1}{$0$} \)
-        \( \lablvertex{-2}{1}{$0$} \)
-        \( \lablvertex{-1}{1}{$0$} \)
-
-        \( \lablvertex{-3}{2}{$0$} \)
-        \( \lablvertex{-2}{2}{$0$} \)
-        \( \lablvertex{-1}{2}{$0$} \)
-
-        \( \lablvertex{-3}{3}{$0$} \)
-        \( \lablvertex{-2}{3}{$1$} \)
-        \( \lablvertex{-1}{3}{$0$} \)
-
-        \( \lablvertex{-3}{4}{$0$} \)
-        \( \lablvertex{-2}{4}{$0$} \)
-        \( \lablvertex{-1}{4}{$0$} \)
-
-        % row1
-        \cell{0}{0}{1}{1}
-        \cell{0}{1}{1}{2}
-        \cell{0}{2}{1}{3}
-        \cell{0}{3}{1}{4}
-        \cell{1}{0}{2}{1}
-        \cell{1}{1}{2}{2}
-        \cell{1}{2}{2}{3}
-        \cell{1}{3}{2}{4}
-
-        \( \lablnode{1}{-1}{$\ell_{2}$} \)
-        
-        \( \lablvertex{0}{0}{$0$} \)
-        \( \lablvertex{1}{0}{$0$} \)
-        \( \lablvertex{2}{0}{$0$} \)
-
-        \( \lablvertex{0}{1}{$0$} \)
-        \( \lablvertex{1}{1}{$1$} \)
-        \( \lablvertex{2}{1}{$0$} \)
-
-        \( \lablvertex{0}{2}{$0$} \)
-        \( \lablvertex{1}{2}{$0$} \)
-        \( \lablvertex{2}{2}{$0$} \)
-
-        \( \lablvertex{0}{3}{$0$} \)
-        \( \lablvertex{1}{3}{$0$} \)
-        \( \lablvertex{2}{3}{$0$} \)
-
-        \( \lablvertex{0}{4}{$0$} \)
-        \( \lablvertex{1}{4}{$0$} \)
-        \( \lablvertex{2}{4}{$0$} \)
-
-        % row1
-        \cell{3}{0}{4}{1}
-        \cell{3}{1}{4}{2}
-        \cell{3}{2}{4}{3}
-        \cell{3}{3}{4}{4}
-        \cell{4}{0}{5}{1}
-        \cell{4}{1}{5}{2}
-        \cell{4}{2}{5}{3}
-        \cell{4}{3}{5}{4}
-
-        \( \lablnode{4}{-1}{$\ell_{3}$} \)
-
-        \( \lablvertex{3}{0}{$0$} \)
-        \( \lablvertex{4}{0}{$0$} \)
-        \( \lablvertex{5}{0}{$0$} \)
-
-        \( \lablvertex{3}{1}{$0$} \)
-        \( \lablvertex{4}{1}{$1$} \)
-        \( \lablvertex{5}{1}{$0$} \)
-
-        \( \lablvertex{3}{2}{$0$} \)
-        \( \lablvertex{4}{2}{$0$} \)
-        \( \lablvertex{5}{2}{$0$} \)
-
-        \( \lablvertex{3}{3}{$0$} \)
-        \( \lablvertex{4}{3}{$1$} \)
-        \( \lablvertex{5}{3}{$0$} \)
-
-        \( \lablvertex{3}{4}{$0$} \)
-        \( \lablvertex{4}{4}{$0$} \)
-        \( \lablvertex{5}{4}{$0$} \)
-
-        \cell{6}{0}{7}{1}
-        \cell{7}{0}{8}{1}
-
-        \cell{6}{1}{7}{2}
-        \cell{7}{1}{8}{2}
-
-        \cellC{6}{2}{7}{3}
-        \cellD{7}{2}{8}{3}    
-
-        \cellB{6}{3}{7}{4}
-        \cellA{7}{3}{8}{4}    
-
-        \( \lablnode{7}{-1}{Mosaic $1$} \)
-
-        \cell{9}{0}{10}{1}
-        \cellF{10}{0}{11}{1}
-
-        \cellE{9}{1}{10}{2}
-        \cellB{10}{1}{11}{2}
-
-        \cellC{9}{2}{10}{3}
-        \cellD{10}{2}{11}{3}    
-
-        \cellB{9}{3}{10}{4}
-        \cellA{10}{3}{11}{4}    
-
-        \( \lablnode{10}{-1}{Mosaic $2$} \)
-
-        \cellC{12}{0}{13}{1}
-        \cellD{13}{0}{14}{1}
-
-        \cellB{12}{1}{13}{2}
-        \cellA{13}{1}{14}{2}
-
-        \cellC{12}{2}{13}{3}
-        \cellD{13}{2}{14}{3}    
-
-        \cellB{12}{3}{13}{4}
-        \cellA{13}{3}{14}{4}    
-
-        \( \lablnode{13}{-1}{Mosaic $3$} \)
-
-    \end{tikzpicture}
-\end{center}
-
-We have $u(\ell_1) = 7^4, u(\ell_2) = 7^4,$ and $u(\ell_3) = 1$. We also have $f(\text{Mosaic } 3) = \ell_3$. Each cell in the bottom two rows of $\ell_1$ map to $7$ possible tiles. However, $1$ of the $7^4$ combinations forms a new polygon in these bottom two rows. This is also true for the top two rows of $\ell_2$. Therefore, $u(\ell_1)$, $u(\ell_2)$, and $u(\ell_3)$ all count Mosaic $3$.
-
-\label{exmp:U doesnt work}
-\end{exmp}
-
-Example \ref{exmp:U doesnt work} leads us to conclude the following.
-
-\begin{prop}
-For a framed binary lattice $\ell$ that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, $u(\ell)$ counts the number of mosaics that have at least the polygons in $g(\ell)$.
-\label{prop: u counts atleast g l}
-\end{prop}
-
-\begin{proof}
-Choose an framed binary lattice $\ell$ that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. By the definition of $g$, the function $u(\ell)$ counts the number of mosaics that have exactly the polygons in $g(\ell)$. Additionally, as $u$ counts each possible combination of tiles for $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells, this includes all polygons that do not conflict with the polygons in $g(\ell)$.
-\end{proof}
-
-Surprisingly, this overcounting phenomena can be remedied by a small modificiation to $u$, which we call $v$.
-
-\begin{definition}
-Let $v: \mathbb{L}^{(m,n)} \to \mathbb{Z}$ map a binary lattice $\ell$ to the product over all cells in $\ell$ with each term being $$\begin{cases}
+Let $v$ map a binary lattice to the product over all cells in the binary lattice, with each term being $$\begin{cases}
     7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
     0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
     -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
     1 & \text{otherwise}
 \end{cases}$$
-
 and the empty product being $1$.
 \label{def: def of v}
 \end{definition}
@@ -876,7 +624,13 @@ and the empty product being $1$.
 If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are $2$ $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, $1$ $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, $9$ $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and $2$ $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
 \end{exmp}
 
-We will first show that $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
+\begin{definition}
+Let $g$ takes a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ and constructs a mosaic by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with $T_{0}$, and replacing all other cells with the unique tile that maps to that cell under $f$. 
+\end{definition}
+
+Notice that for some binary lattice $\ell$, $g(\ell)$ is not necessarily equal to $f^{-1}(\ell)$, as $g$ only returns polygon mosaics and not messy polygon mosaics.
+
+We first show that our choice of $v(\ell)$, which is computed ``cell-by-cell'' from $\ell$, recovers global information about the number of polygons in $g(\ell)$ if $\ell$ is framed.
 
 \begin{definition}
 For a framed binary lattice $\ell$, let $P(\ell)$ to be the number of polygons in the polygon mosaic $g(\ell)$.
@@ -893,81 +647,187 @@ If $\ell$ is a framed binary lattice that does not contain the cells $\begin{sma
 
 \begin{proof}
 
-For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(1,n)$ framed binary lattice $\ell$ for some $n \geq 1$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $\text{sign}(v(\ell))=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
+For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(0,n)$ framed binary lattice $\ell$ for some $n \geq 0$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $\text{sign}(v(\ell))=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
 
-For the induction step, fix an $(m,n)$ framed binary strip $\ell$ for $m \geq 1$. Then consider an $(m+1,n)$ framed binary strip $\ell'$ that shares the top $m-1$ rows of vertices with $\ell$ and an arbitrarily-labeled $m$-th row, such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
+For the induction step, consider any $(m+1,n)$ framed binary strip $\ell'$ for $m \geq 1$ such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. Similarly, define $\ell$ to be the framed binary lattice that shares the top $m$ rows of vertices with $\ell'$. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
 
 \noindent\textbf{Procedure:} \\
-\indent \textbf{Step 1.} Add a bottom row to $\ell$ of $n+1$ vertices, all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_a$. \\
-\indent \textbf{Step 2.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_a$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_b$.\\
-\indent \textbf{Step 3.} Againk scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_b$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
+\indent \textbf{Step 1.} Add a bottom row to $\ell$ of $n+1$ vertices, all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_1$. \\
+\indent \textbf{Step 2.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_1$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_2$.\\
+\indent \textbf{Step 3.} Again scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_2$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
 
-For step 1, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS, no new edge-connected regions are created, no new polygons are created in $g(\ell_a)$ so Equation \ref{eq: sign prop} is preserved by step a.
+For step 1, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS no new polygons are created in $g(\ell_1)$, so Equation \ref{eq: sign prop} is preserved by step 1.
 
-For steps 2 and 3, we encounter two distinct cases which we diagram in Figure \ref{fig: step diagrams}. These diagrams have $a,b,c,d \in [0, 1]$, and use the \# symbol to indicate the vertex being changed from a $0$ to a $1$.
+For steps 2 and 3, we prove the result for each intermediate vertex change as we scan left to right. Furthermore, as each intermediate change only flips a single vertex label from $0$ to $1$, we only need to consider the $4$ cells that share this vertex. We diagram all possible cases for both steps in Figure \ref{fig: step 2 cases} and Figure \ref{fig: step 3 cases}, where the \# symbol indicates the vertex being changed from a $0$ to a $1$. We know that the bottom $m+1$-st row of vertices must all be $0$ by construction.
+
+For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the vertex right of the \# symbol must be $0$, as the procedure moves left to right on $\ell_a$. Additionally, the $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cell cannot be created or destroyed, and so Figure \ref{fig: step 2 cases} depicts all $6$ possible cases.
 
 \begin{figure}[h!]
 \centering
-\begin{subfigure}[t]{0.4\textwidth}
+\begin{subfigure}[t]{0.2\textwidth}
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
 \cell{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
-% row 2 of cells
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
 % row 1 labels
-\( \lablvertex{0}{0}{c} \)
+\( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
 \( \lablvertex{2}{0}{$0$} \)
 % row 2 labels
-\( \lablvertex{0}{1}{a} \)
+\( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$1$} \)
-\( \lablvertex{2}{1}{b} \)
-% row 3 labels
-\( \lablvertex{0}{-1}{$0$} \)
-\( \lablvertex{1}{-1}{$0$} \)
-\( \lablvertex{2}{-1}{$0$} \)
-\end{tikzpicture}
-\end{center}
-\caption{Step 2 Diagram}
-\label{subfig: step b diagram}
-\end{subfigure}
-~
-\begin{subfigure}[t]{0.4\textwidth}
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-% row 1 of cells
-\cell{0}{-1}{1}{0}
-\cell{1}{-1}{2}{0}
-% row 1 labels
-\( \lablvertex{0}{0}{c} \)
-\( \lablvertex{1}{0}{\#} \)
-\( \lablvertex{2}{0}{d} \)
-% row 2 labels
-\( \lablvertex{0}{1}{a} \)
-\( \lablvertex{1}{1}{$0$} \)
-\( \lablvertex{2}{1}{b} \)
+\( \lablvertex{2}{1}{$0$} \)
 % row -1 labels
 \( \lablvertex{0}{-1}{$0$} \)
 \( \lablvertex{1}{-1}{$0$} \)
 \( \lablvertex{2}{-1}{$0$} \)
 \end{tikzpicture}
 \end{center}
-\caption{Step 3 Diagram}
-\label{subfig: step c diagram}
+\caption{}
+\label{subfig: step 2 bit flip case 1}
 \end{subfigure}
-\caption{Step Diagrams}
-\label{fig: step diagrams}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{$0$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{subfig: step 2 bit flip case 2}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{$0$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{subfig: step 2 bit flip case 3}
+\end{subfigure}
+
+% \hfill
+
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{subfig: step 2 bit flip case 4}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{subfig: step 2 bit flip case 5}
+\end{subfigure}
+~
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cell{0}{0}{1}{1}
+\cell{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$0$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{1}{1}{$1$} \)
+\( \lablvertex{2}{1}{$1$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$0$} \)
+\( \lablvertex{1}{-1}{$0$} \)
+\( \lablvertex{2}{-1}{$0$} \)
+\end{tikzpicture}
+\end{center}
+\caption{}
+\label{subfig: step 2 bit flip case 6}
+\end{subfigure}
+\caption{Step 2 Cases}
+\label{fig: step 2 cases}
 \end{figure}
 
-For step 2, Figure  \ref{subfig: step b diagram} depicts all possible cases one can encounter scanning left to right on $\ell_a$. Note that the vertex right of the \# symbol must be $0$, as the procedure moving left to right on $\ell_a$ gives that this vertex must be $0$. Notice that no assignment of $a$, $b$, and $c$ can create cells $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$. Additionally, it cannot be the case that $a=0$ and $c=1$, as that would imply that $\ell'$ contains the cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Therefore we have $\text{sign}(v(\ell_b)) = \text{sign}(v(\ell_a))$, so the LHS is preserved. Also note that because a polygon in $g(\ell)$ is an edge-connected set of vertices with the same label (not including the boundary $0$'s), that for all assignments of $a,b,c$, step b only involves one edge-connected set of vertices. Therefore, we have $P(\ell_a) = P(\ell_b)$, and so the RHS is preserved.
+\noindent As no case in Figure \ref{fig: step 2 cases} creates or destroys $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cells, the LHS sign does not change for any intermediate vertex flip. Similarly, all step 2 cases can only represent the edge of one polygon, both before and after the flip, and so the RHS is preserved.
 
-For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one can encounter scanning left to right on $\ell_b$. It cannot be the case that $a=1$ and $c=0$, as this would imply $\ell'$ contains $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Similarly, it cannot be the cases that $b=1$ and $d=0$, as this would imply $\ell_b$ contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$. Additionally, it cannot be the case that $b=0$ and $d=1$, as the procedure moves left-to-right. This results in the following $6$ cases, which we show each preserve Equation \ref{eq: sign prop}.
+For step 3, the vertex above the \# symbol must be $0$ by definition. As we cannot create or destroy $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ or $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cells, Figure \ref{fig: step 3 cases} depicts all $6$ possible cases.
 
 \begin{figure}[h!]
 \centering
@@ -1006,17 +866,18 @@ For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
 % row 1 labels
-\( \lablvertex{0}{0}{$0$} \)
+\( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
-\( \lablvertex{2}{0}{$1$} \)
+\( \lablvertex{2}{0}{$0$} \)
 % row 2 labels
 \( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
-\( \lablvertex{2}{1}{$1$} \)
+\( \lablvertex{2}{1}{$0$} \)
 % row -1 labels
 \( \lablvertex{0}{-1}{$0$} \)
 \( \lablvertex{1}{-1}{$0$} \)
 \( \lablvertex{2}{-1}{$0$} \)
+    
 \end{tikzpicture}
 \end{center}
 \caption{}
@@ -1036,7 +897,7 @@ For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 \( \lablvertex{1}{0}{\#} \)
 \( \lablvertex{2}{0}{$0$} \)
 % row 2 labels
-\( \lablvertex{0}{1}{$0$} \)
+\( \lablvertex{0}{1}{$1$} \)
 \( \lablvertex{1}{1}{$0$} \)
 \( \lablvertex{2}{1}{$0$} \)
 % row -1 labels
@@ -1060,7 +921,7 @@ For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
 % row 1 labels
-\( \lablvertex{0}{0}{$1$} \)
+\( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
 \( \lablvertex{2}{0}{$1$} \)
 % row 2 labels
@@ -1088,11 +949,11 @@ For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
-\( \lablvertex{2}{0}{$0$} \)
+\( \lablvertex{2}{0}{$1$} \)
 % row 2 labels
-\( \lablvertex{0}{1}{$1$} \)
+\( \lablvertex{0}{1}{$0$} \)
 \( \lablvertex{1}{1}{$0$} \)
-\( \lablvertex{2}{1}{$0$} \)
+\( \lablvertex{2}{1}{$1$} \)
 % row -1 labels
 \( \lablvertex{0}{-1}{$0$} \)
 \( \lablvertex{1}{-1}{$0$} \)
@@ -1128,21 +989,11 @@ For step 3, Figure \ref{subfig: step c diagram} depicts all possible cases one c
 \caption{}
 \label{subfig: bit flip case 6}
 \end{subfigure}
-\caption{Step 3. Cases}
-\label{fig: }
+\caption{Step 3 Cases}
+\label{fig: step 3 cases}
 \end{figure}
 
-In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new edge-connected region, a new polygon is created, and so the sign of the RHS changes. 
-
-In Case \ref{subfig: bit flip case 2}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
-
-In Case \ref{subfig: bit flip case 3}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
-
-In Case \ref{subfig: bit flip case 4}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so one polygon is created. Either way, the RHS changes sign.
-
-In Case \ref{subfig: bit flip case 5}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same.
-
-In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 4} applies, as the flip either removes or adds a polygon, so the RHS changes.
+We show Equation \ref{eq: sign prop} holds case by case. In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new polygon the sign of the RHS changes. In Case \ref{subfig: bit flip case 2}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 3}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 4}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new edge-connected region, the RHS stays the same. In Case \ref{subfig: bit flip case 5}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, either the two edge-connected regions of $1$'s are distinct in the full framed binary lattice, or they are joined. After the flip, if the regions were distinct, they are now joined, and so $1$ polygon is removed. If the regions were joined, a new edge-connected region of $0$'s (that is not connected to the boundary) is created, and so one polygon is created. Either way, the RHS changes sign. In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 5} applies, as the flip either removes or adds a polygon, so the RHS changes.
 
 As all cases preserve Equation \ref{eq: sign prop}, the $(m+1, n)$ framed binary lattice $\ell'$ also follows Equation \ref{eq: sign prop}.
 \end{proof}
