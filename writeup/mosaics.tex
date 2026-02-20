@@ -350,7 +350,7 @@ Our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further 
 
 \section{Preliminaries}
 
-We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ binary lattice. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}.
+We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ binary lattice. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed binary lattice} to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}.
 
 \begin{definition}
 
@@ -568,18 +568,22 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
 For convenience, we denote a cell by the $2 \times 2$ matrix of its vertex labels. For example, we denote the cell in Example \ref{exmp: tile to cell} as $\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}$. There are sixteen cells:  
 $$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \text{ and }\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}.$$
 
-Under $f$, tiles that do not form a polygon map to cells $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, and no tile can map to cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Furthermore, any tile that is part of a polygon maps to one of the $12$ remaining possible cells.
+Under $f$, no tile can map to $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Furthermore, tiles that do not form a polygon must map to cells $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, and any tile that is part of a polygon must map to one of the twelve remaining possible cells.
 
 We can then define a general function $v$ that maps a cell to some integer, then extend $v$ to $(m,n)$ binary lattices by taking the product over $v$ of the $mn$ individual cells in the binary lattice. We choose the following definition for $v$.
 
 \begin{definition}
-Let $v$ map a binary lattice to the product over all cells in the binary lattice, with each term being $$\begin{cases}
+Define a map $v$ from cells to integers as follows.
+
+$$\begin{cases}
     7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
     0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
     -1 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}\\
     1 & \text{otherwise}
 \end{cases}$$
-and the empty product being $1$.
+
+More generally, we define $v$ from binary lattices to integers by taking the product of $v$ applied to each cell in the binary lattice. By definition, $v$ applied to a binary lattice with no cells equals $1$.
+
 \label{def: def of v}
 \end{definition}
 
@@ -591,12 +595,12 @@ If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:ex
 We show our choice of $v$ has useful properties. To begin, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. Let $A_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. We immediately have that the number of mosaics that contain a polygon is
 
 \begin{equation}
-7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i \in S} A_i \Big|.
+7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i=1}^N A_i \Big|.
 \label{eq: inc exl setup}
 \end{equation}
 
 \begin{prop}
-Let $\mathcal{M}$ be a mosaic that only contains polygons with indexes in the set $S$. We then have
+Let $\mathcal{M}$ be a mosaic and let $S$ be the indices of the polygons $\mathcal{M}$. We then have
 $$\Big|v(f(\mathcal{M}))\Big| = \Big|\bigcap_{i \in S} A_i \Big|.$$
 \end{prop}
 
@@ -1141,7 +1145,7 @@ We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n ma
 
 $$\sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right).$$
 
-The $(i,j)$-th element of $A_{n} \cdot A^{m}_n$ is the dot product of the $i$-th row of $A_{n}$ and the $j$-th column of $A^{m}_n$. By construction, we have
+The $(i,j)$-th element of $A_{n} \cdot A^{m}_n$ is the dot product of the $i$-th row of $A_{n}$ and the $j$-th column of $A^{m}_n$. By construction, that is
 
 $$\sum_{k=0}^{2^{n-1}-1} v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(k) & 0 \end{smallmatrix}\right) \sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right) = \sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right),$$
 
@@ -1158,7 +1162,7 @@ $$\begin{smallmatrix} 0 & \beta_{n-1}(0) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(0) 
 \noindent which is simply all framed binary lattices. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Theorem \ref{thm: sum of vs}, which completes the proof.
 \end{proof}
 
-\textbff{TODO} immediate extension to polygon mosaics
+\textbf{TODO} immediate extension to polygon mosaics
 
 
 

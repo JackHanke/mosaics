@@ -59,3 +59,25 @@ Additionally, the journals these papers are published in are as follows:
 0. 1. 2. and 3. are published in [Quantum Information Processing](https://link.springer.com/journal/11128)
 4. is published in [Reviews in Mathematical Physics](https://worldscientific.com/worldscinet/rmp)
 5. is published in [Canadian Mathematical Bulletin](https://www.cambridge.org/core/journals/canadian-mathematical-bulletin)
+
+## NOTES
+
+include goal of paper in first para
+
+for counting 
+
+we number the rows 0,1, ..., m-1 top to bottom and columns 0,1, ..., n-1 left to right.
+
+shade cells in 3.1 gray
+
+
+we look at the magnitude and the sign of v
+
+
+we still need to define compatibility, ie overlapping polygons cant happen, intersection is null set
+
+
+for prop 4.2, first do single sum case, then do double case
+
+the work we are about to do with general v will do both of these things
+
