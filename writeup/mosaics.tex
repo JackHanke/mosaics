@@ -350,7 +350,7 @@ Our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further 
 
 \section{Preliminaries}
 
-We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ binary lattice. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}. Also let $\mathbb{L}^{(m,n)}$ be the set of all $(m,n)$ binary lattices and $\mathbb{F}^{(m,n)}$ be the set of all $(m,n)$ framed binary lattices. We immediately have $\left|\mathbb{L}^{(m,n)}\right| = 2^{(m+1)(n+1)}$, $\left|\mathbb{F}^{(m,n)}\right| = 2^{(m-1)(n-1)}$. 
+We begin by defining a map that takes an $(m,n)$ mosaic and gives an $(m,n)$ binary lattice. An $(m,n)$ binary lattice is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed} binary lattice to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed binary lattice is shown on the right of Figure \ref{fig:example of f mapping}.
 
 \begin{definition}
 
@@ -588,11 +588,25 @@ and the empty product being $1$.
 If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are $2$ $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, $1$ $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, $9$ $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and $2$ $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
 \end{exmp}
 
+We show our choice of $v$ has useful properties. To begin, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. Let $A_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. We immediately have that the number of mosaics that contain a polygon is
+
+\begin{equation}
+7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i \in S} A_i \Big|.
+\label{eq: inc exl setup}
+\end{equation}
+
+\begin{prop}
+Let $\mathcal{M}$ be a mosaic that only contains polygons with indexes in the set $S$. We then have
+$$\Big|v(f(\mathcal{M}))\Big| = \Big|\bigcap_{i \in S} A_i \Big|.$$
+\end{prop}
+
+\begin{proof}
+If a cell is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(f(\mathcal{M}))|$ is just $7$ to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $f(\mathcal{M})$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, \textbf{TODO}
+\end{proof}
+
 \begin{definition}
 If $\ell$ is a framed binary lattice that does not contain $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, let $P(\ell)$ to be the number of polygons in the polygon mosaic formed by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with the blank tile $T_0$, and replacing all other cells with the unique tile that maps to that cell under $f$.
 \end{definition}
-
-We show our choice of $v$, which is computed ``cell-by-cell'' over a framed binary lattice $\ell$, recovers global information about $P(\ell)$.
 
 \begin{prop} 
 If $\ell$ is a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then 
@@ -1024,11 +1038,28 @@ As all cases preserve Equation \ref{eq: sign prop}, the $(m+1, n)$ framed binary
 
 \begin{thm}
 The number of $(m,n)$ mosaics that do not contain a polygon has
-$$\left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell).$$
+\begin{equation}
+\left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell} v(\ell),
+\label{eq: sum of v}
+\end{equation}
+where the sum is over all $(m,n)$ framed binary lattices.
 \label{thm: sum of vs}
 \end{thm}
 
 \begin{proof}
+First notice for the sum in Equation \ref{eq: sum of v} that $v$ of any framed binary lattice that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ is $0$. Therefore we simplify to only summing over all framed binary lattices that do not contain these cells.
+
+Consider the set of 
+
+For all $1 \leq i \leq N$, let $A_i$ be the set of all $(m, n)$ mosaics that include $P_i$. 
+
+$\bigcup_{i=1}^N A_i$
+
+By the inclusion-exclusion principle, 
+
+$$\Big|\bigcup_{i=1}^N A_i \Big| = \sum_{i=1}^N |A_i| - \sum_{1 \leq i \leq j \leq N}|A_i \cap A_j| + \dots + $$
+
+
 Choose a mosaic $\mathcal{M}$ that has $P(\ell')$ polygons, where $\ell' = f(\mathcal{M})$. We begin by determining how many times $\mathcal{M}$ is counted in the related sum
 
 $$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell).$$
@@ -1055,7 +1086,7 @@ $$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M
 
 We point out here that the function $v$ if defined for all binary lattices, while Proposition \ref{prop: sign of v} only holds for framed binary lattices that do not contain cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
 
-As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute $\sum_{\ell \in \mathbb{F}^{(m,n)}}v(\ell)$ efficiently using the matrix recursion method.
+As in Theorem \ref{thm:Oh2014} from \cite{Oh2014}, we can compute the sum in Equation \ref{eq: sum of v} efficiently using the matrix recursion method, which we describe next.
 
 \section{Proof of Theorem \ref{thm: messy mosaics}}
 
@@ -1072,68 +1103,70 @@ We work with general $v$ in this section, and substitute the specific $v$ from D
 Let the $n$ digit binary representation of the number $k$ be written as $\beta_n(k)$. If $n$ is $0$, $\beta_n(k)$ returns the empty string.
 \end{definition}
 
-We remind the reader matrix elements are indexed starting at $0$.
+We extend our shorthand for cells to $(1,n)$ binary lattice using analagous matrix notation and the definition for $\beta_n(k)$. For example, we write
+
+$$v\left(\begin{smallmatrix} 0 & \beta_{2}(1) & 0 \\ 0 & \beta_{2}(0) & 0 \end{smallmatrix}\right) = v \Big(\begin{smallmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{smallmatrix}\Big) = v \Big(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\Big) v \Big(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\Big) v \Big(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}\Big).$$
+
+Finally, we remind the reader matrix elements are indexed starting at $0$.
 
 \begin{prop}
 For all integers $n \geq 1$, the $(i,j)$-th entry of \begin{eqnarray*}
-A_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & B_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), \\
-C_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & D_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).
+A_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & B_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), \\
+C_n \text{ is } v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right), & D_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).
 \end{eqnarray*}
 \label{prop: one by n matrix}
 \end{prop}
 
 \begin{proof}
-We prove by induction. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string.
+We prove by induction. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string. We next assume our result for some fixed $n \geq 1$. Since $A_n$ has size $2^{n-1} \times 2^{n-1}$, the $(i, j+2^{n-1})$ element of $A_{n+1}$ equals $v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ times the $(i,j)$ element of $B_n$. By our induction hypothesis, this equals
 
-We next assume our result for some fixed $n \geq 1$. Therefore, the entry $(i,j)$ in, say, $B_n$ is $v(\ell)$ where $\ell$ is the binary lattice with top row $0\beta_{n-1}(i)0$ and bottom row $1\beta_{n-1}(j)0$. The assumption is analagous for any choice of $A_n, B_n, C_n, D_n$. For $n > 1$ we can depict the $(1,n)$ binary lattice using similar notation to cells, namely
+$$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & 0 & \beta_{n-1}(i) & 0 \\ 0 & 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
 
-$$v(\ell) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right).$$
+\noindent as desired. Analagous arguments show that the other blocks in $A_{n+1}$ have the desired values. Similarly, since $C_n$ has size $2^{n-1} \times 2^{n-1}$, the $(i+2^{n-1}, j)$ element of $D_{n+1}$ equals $v\left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ times the $(i,j)$ element of $C_n$. By our induction hypothesis, this equals
 
-We show that $A_{n+1}$ also follows Proposition \ref{prop: one by n matrix}. From the definition, we have
+$$v\Big(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & 1 & \beta_{n-1}(i) & 0 \\ 1 & 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & \beta_{n}(i+2^{n-1}) & 0 \\ 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right),$$
 
-$$A_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix}.$$
-
-\noindent By construction, the $(i,j)$-th entry in $B_n$ is located in the $(i, j+2^{n-1})$-th entry of $A_{n+1}$, as each block matrix $A_n, B_n, C_n, D_n$ are $2^{n-1} \times 2^{n-1}$ matrices. Also by construction, the value in the $(i,j)$-th entry in $B_n$ which we call $v(\ell)$ is multiplied by $v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})$. The definition of $v$ gives
-
-$$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & 0 & \beta_{n}(i) & 0 \\ 0 & 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(j+2^{n-1}) & 0 \end{smallmatrix}\right),$$
-
-as desired.
-
-Therefore, the $(i, j+2^{n-1})$-th entry of $A_{n+1}$ is $v(\ell)$ where $\ell$ is the $(1,n+1)$ binary lattice where the top row of vertices is $0\beta_{n}(i)0$ and the bottom row of vertices is $0\beta_{n}(j+2^{n-1})0$, which completes the induction step for $A_{n+1}$. Similar arguments hold for matrices $B_{n+1}$, $C_{n+1}$, $D_{n+1}$.
-
+\noindent again as desired. These arguments must be adapted to prove the desired results for all blocks of $B_{n+1}, C_{n+1},$ and $D_{n+1}$, but all the work is similar. 
 \end{proof}
 
+We further extend our shorthand for binary lattices. If a binary lattices $\ell$ has the top row of vertices $0\beta_{n-1}(i)0$ and the bottom row of vertices $0\beta_{n-1}(j)0$, and left and right-most column of vertices being labeled $0$, we write $\ell$ is like $\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}.$
+
 \begin{prop}
-The $(i,j)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(j)0$, both read left to right.
+For all positive integers $m,n$, the $(i,j)$-th entry of $A^{m}_{n}$ is $\sum v(\ell)$, where the sum is over all $(m, n)$ binary lattices like $\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}$.
 \label{prop: m by n matrix}
 \end{prop}
 
 \begin{proof}
-We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n matrix}, as the set $L$ only has the unique $(1,n)$ binary lattice.
+We prove by induction. The base case $m=1$ is Proposition \ref{prop: one by n matrix}, as the sum is only over $\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}$. We next assume our result for fixed positive $m,n$. From the induction hypothesis, for any integer $k \in \{0,1,\dots,2^{n-1}-1\}$ the $(i, k)$-th entry of $A_n$ is $v\Big(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(k) & 0 \end{smallmatrix}\Big)$ and the $(k,j)$-th entry of $A^{m}_{n}$ is
 
-We next assume that the $(i,j)$-th entry of $A^{m}_{n}$ satisfies the statement in Proposition \ref{prop: m by n matrix}, and show the statement also holds for $A^{m+1}_{n}$. To begin, consider the product $A^{m}_{n} \cdot A_n$, and choose an integer $k \in [0, 2^{n-1}-1]$. From the induction hypothesis the value at the $(i,k)$-th entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top row of vertices having labels $0\beta_{n-1}(i)0$ and the bottom row of vertices having labels $0\beta_{n-1}(k)0$. Similarly, the $(k, j)$-th entry of $A_n$ is the $(1,n)$ binary lattice $\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}.$
+$$\sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right).$$
 
-Therefore, the dot product of the $i$-th row and the $j$-th column is $(i,j)$-th value of $A_n^{m+1}$, which is
+The $(i,j)$-th element of $A_{n} \cdot A^{m}_n$ is the dot product of the $i$-th row of $A_{n}$ and the $j$-th column of $A^{m}_n$. By construction, we have
 
-$$\sum_{k=0}^{2^{n-1}-1}v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(k) & 0 \end{smallmatrix}\right)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right),$$
+$$\sum_{k=0}^{2^{n-1}-1} v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(k) & 0 \end{smallmatrix}\right) \sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(k) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right) = \sum_{\ell \text{ like } \begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}} v\left(\ell\right),$$
 
-which gives the desired result for $A_n^{m+1}$.
+which gives the desired result.
 \end{proof}
 
-\begin{prop}
-The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry of $A_{n}^m$.
-\end{prop}
+\noindent \textbf{Theorem \ref{thm: messy mosaics}.} The number of $(m,n)$ mosaics that do not contain a polygon is the $(0,0)$ entry of $A_{n}^m$.
 
 \begin{proof}
-By Proposition \ref{prop: m by n matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum_{\ell \in L}v(\ell)$, where $L$ is the set of $(m, n)$ binary lattices with the top and bottom rows of vertices having labels $0\beta_{n-1}(0)0$. As $A$ has left-most and right-most columns all labeled $0$, all binary lattices counted at $(0,0)$ are framed, so $L = \mathbb{F}^{(m,n)}$. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Theorem \ref{thm: sum of vs}, which completes the proof.
+By Proposition \ref{prop: m by n matrix}, the $(0,0)$ entry of $A^{m}_{n}$ is $\sum v(\ell)$, where the sum is over all $(m, n)$ binary lattices of the form 
+
+$$\begin{smallmatrix} 0 & \beta_{n-1}(0) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(0) & 0 \end{smallmatrix},$$
+
+\noindent which is simply all framed binary lattices. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Theorem \ref{thm: sum of vs}, which completes the proof.
 \end{proof}
+
+\textbff{TODO} immediate extension to polygon mosaics
+
+
+
 
 \newpage
 
 \printbibliography
 
 % \section{Appendix}
-
-% \textbf{TODO}
 
 \end{document}
