@@ -1,24 +1,24 @@
-[0] Config.pm:308> INFO - This is Biber 2.20
-[0] Config.pm:311> INFO - Logfile is 'mosaics.blg'
-[37] biber:340> INFO - === Sun Feb 15, 2026, 20:04:02
-[45] Biber.pm:420> INFO - Reading 'mosaics.bcf'
-[77] Biber.pm:994> INFO - Found 10 citekeys in bib section 0
-[85] Biber.pm:4463> INFO - Processing section 0
-[90] Biber.pm:4654> INFO - Looking for bibtex file './bibb.bib' for section 0
-[91] bibtex.pm:1713> INFO - LaTeX decoding ...
-[154] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
-[199] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[199] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[199] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[200] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[206] bbl.pm:676> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
-[208] bbl.pm:779> INFO - Output to mosaics.bbl
-[209] Biber.pm:131> WARN - article entry 'Lomonaco08' (./bibb.bib): Invalid format '2008/06/01' of date field 'date' - ignoring
-[209] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Lomonaco08' is invalid - run biber with '--validate_datamodel' for details.
-[209] Biber.pm:131> WARN - article entry 'Oh2014' (./bibb.bib): Invalid format '2015/03/01' of date field 'date' - ignoring
-[209] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2014' is invalid - run biber with '--validate_datamodel' for details.
-[209] Biber.pm:131> WARN - article entry 'Oh2019' (./bibb.bib): Invalid format '2019/06/12' of date field 'date' - ignoring
-[209] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2019' is invalid - run biber with '--validate_datamodel' for details.
-[209] Biber.pm:131> WARN - legacy month field 'APR' in entry 'Oh2018Aztec' is not an integer - this will probably not sort properly.
-[209] Biber.pm:131> WARN - legacy month field 'MAY' in entry 'Oh2019tiling' is not an integer - this will probably not sort properly.
-[209] Biber.pm:133> INFO - WARNINGS: 8
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'mosaics.blg'
+[33] biber-darwin:340> INFO - === Sat Feb 21, 2026, 11:40:44
+[41] Biber.pm:419> INFO - Reading 'mosaics.bcf'
+[80] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
+[88] Biber.pm:4419> INFO - Processing section 0
+[92] Biber.pm:4610> INFO - Looking for bibtex file './bibb.bib' for section 0
+[95] bibtex.pm:1713> INFO - LaTeX decoding ...
+[174] bibtex.pm:1519> INFO - Found BibTeX data source './bibb.bib'
+[226] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[226] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[226] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[226] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[234] bbl.pm:660> INFO - Writing 'mosaics.bbl' with encoding 'UTF-8'
+[238] bbl.pm:763> INFO - Output to mosaics.bbl
+[238] Biber.pm:131> WARN - article entry 'Lomonaco08' (./bibb.bib): Invalid format '2008/06/01' of date field 'date' - ignoring
+[238] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Lomonaco08' is invalid - run biber with '--validate_datamodel' for details.
+[238] Biber.pm:131> WARN - article entry 'Oh2014' (./bibb.bib): Invalid format '2015/03/01' of date field 'date' - ignoring
+[238] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2014' is invalid - run biber with '--validate_datamodel' for details.
+[238] Biber.pm:131> WARN - article entry 'Oh2019' (./bibb.bib): Invalid format '2019/06/12' of date field 'date' - ignoring
+[238] Biber.pm:131> WARN - ISBN '1573-1332' in entry 'Oh2019' is invalid - run biber with '--validate_datamodel' for details.
+[238] Biber.pm:131> WARN - legacy month field 'APR' in entry 'Oh2018Aztec' is not an integer - this will probably not sort properly.
+[238] Biber.pm:131> WARN - legacy month field 'MAY' in entry 'Oh2019tiling' is not an integer - this will probably not sort properly.
+[238] Biber.pm:133> INFO - WARNINGS: 8
