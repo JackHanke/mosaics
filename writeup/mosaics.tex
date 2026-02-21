@@ -175,7 +175,7 @@ Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ unit
 \label{fig:tile set}
 \end{figure}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is complete once you place $mn$ randomly selected tiles from $\mathbb{T}$ to cover the floor, after which you remove your blindfold. We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}.
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is complete once you place $mn$ randomly selected tiles from $\mathbb{T}$ to cover the floor, after which you remove your blindfold. We are interested in the probability of constructing at least one polygon with the red lines with this process.
 
 \begin{figure}[h!]
     \begin{center}
@@ -279,13 +279,13 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is compl
 \label{fig:example mosaics}
 \end{figure}
 
-If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the red dotted lines form multiple polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}, which we highlight the corresponding tiles in gray. 
+We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}. If $m=5$ and $n=7$, you may have constructed the mosaic in Figure \ref{fig:example mosaic}. You may have also constructed the mosaic in Figure \ref{fig:example messy polygon mosaic}. Notice that in the mosaic in Figure \ref{fig:example messy polygon mosaic}, the red dotted lines form multiple polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature to highlight their connection with self-avoiding walks.}, which we highlight the corresponding tiles in gray. 
 
 \begin{definition}
 An $(m,n)$ \textit{messy polygon mosaic} is an $(m,n)$ mosaic that contains at least one polygon. 
 \end{definition}
 
-What is the probability of constructing a messy polygon mosaic, given the dimensions of the bathroom $m,n$? As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the total number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of $(m,n)$ messy polygon mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
+As there are $|\mathbb{T}|^{mn} = 7^{mn}$ total mosaics, we focus on the number of messy polygon mosaics. In fact, it turns out to be simpler to enumerate the number of mosaics that \textit{do not} contain a polygon. Therefore, let $\mathbb{P}^{(m,n)}$ be the subset of $(m,n)$ mosaics that do not contain a polygon. Clearly the number of $(m,n)$ messy polygon mosaics is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$.
 
 From the fact that the smallest polygon is made of $4$ tiles (appearing twice in Figure \ref{fig:example messy polygon mosaic}), we can conclude that $\left|\mathbb{P}^{(n,1)}\right|=7^n$, and $\left|\mathbb{P}^{(2,2)}\right| = 7^4 - 1$. For $m, n \geq 2$, we first define the following matrices.
 
@@ -300,9 +300,7 @@ C_{k+1} = \begin{pmatrix} A_{k} & 0B_{k} \\ C_{k} & D_{k} \end{pmatrix} & D_{k+1
 \label{def: matrix defs}
 \end{definition}
 
-Throughout this work, we index elements in matrices, mosaics, and later binary lattices with a pair of coordinates. The first coordinate is the row index, counted top to bottom, and the second coordinate is the column index, counted left to right, both beginning at $0$. 
-
-Here is our main result.
+For matrices, mosaics, and later binary lattices, we number the rows $0,1,\dots,m-1$ top to bottom, and columns $0,1,\dots,n-1$ left to right. Here is our main result.
 
 \begin{thm}
 \label{thm: messy mosaics}
@@ -520,7 +518,7 @@ Applying $f$ to the mosaic in Figure \ref{fig:example of f mapping} results in t
 
 \begin{center}
     \begin{tikzpicture}
-        \cellB{0}{0}{1}{1}
+        \cellBf{0}{0}{1}{1}
         
         \( \lablnode{1.5}{0.5}{$\pmb{\to}$} \)
         \cell{2}{0}{3}{1}
@@ -536,7 +534,7 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
 
 \begin{center}
     \begin{tikzpicture}
-        \cellB{0}{0}{1}{1}
+        \cellBf{0}{0}{1}{1}
         \( \lablnode{1.5}{0.5}{$\pmb{\to}$} \)
         \cell{2}{0}{3}{1}
         \( \lablvertex{2}{0}{$1$} \)
@@ -544,7 +542,7 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
         \( \lablvertex{3}{0}{$1$} \)
         \( \lablvertex{3}{1}{$1$} \)
         
-        \cellB{4}{0}{5}{1}
+        \cellBf{4}{0}{5}{1}
         \( \lablnode{5.5}{0.5}{$\pmb{\to}$} \)
         \cell{6}{0}{7}{1}
         \( \lablvertex{6}{0}{$1$} \)
@@ -552,7 +550,7 @@ Figure \ref{fig:example of f mapping} also illustrates the three other cells $T_
         \( \lablvertex{7}{0}{$0$} \)
         \( \lablvertex{7}{1}{$1$} \)
         
-        \cellB{8}{0}{9}{1}
+        \cellBf{8}{0}{9}{1}
         \( \lablnode{9.5}{0.5}{$\pmb{\to}$} \)
         \cell{10}{0}{11}{1}
         \( \lablvertex{10}{0}{$0$} \)
@@ -592,25 +590,72 @@ More generally, we define $v$ from binary lattices to integers by taking the pro
 If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are $2$ $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, $1$ $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, $9$ $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and $2$ $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
 \end{exmp}
 
-We show our choice of $v$ has useful properties. To begin, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. Let $A_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. We immediately have that the number of mosaics that contain a polygon is
+We show our choice of $v$ has useful properties by first considering the magnitude, then the sign.  For the magnitude of $v$, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. We remind the reader that a polygon is determined not only by its shape and orientation, but also its location within the mosaic. For example, Figure \ref{fig: polygons in different places} depicts three distinct polygons, which for reference we call polygons $1, 2,$ and $3$.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tikzpicture}
+%
+\cellC{0}{0}{1}{1}
+\cellD{1}{0}{2}{1}
+\cell{2}{0}{3}{1}
+\cell{3}{0}{4}{1}
+
+\cellB{0}{1}{1}{2}
+\cellA{1}{1}{2}{2}
+\cell{2}{1}{3}{2}
+\cell{3}{1}{4}{2}
+%
+\cell{5}{0}{6}{1}
+\cellC{6}{0}{7}{1}
+\cellD{7}{0}{8}{1}
+\cell{8}{0}{9}{1}
+
+\cell{5}{1}{6}{2}
+\cellB{6}{1}{7}{2}
+\cellA{7}{1}{8}{2}
+\cell{8}{1}{9}{2}
+%
+\cell{10}{0}{11}{1}
+\cell{11}{0}{12}{1}
+\cellC{12}{0}{13}{1}
+\cellD{13}{0}{14}{1}
+
+\cell{10}{1}{11}{2}
+\cell{11}{1}{12}{2}
+\cellB{12}{1}{13}{2}
+\cellA{13}{1}{14}{2}
+
+\end{tikzpicture}
+\end{center}
+\caption{Polygons $1,2,$ and $3$}
+\label{fig: polygons in different places}
+\end{figure}
+
+Let $M_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. We immediately have the number of messy polygon mosaics is
 
 \begin{equation}
-7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i=1}^N A_i \Big|.
+7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i=1}^N M_i \Big|.
 \label{eq: inc exl setup}
 \end{equation}
 
+Notice that not every subset of polygons $1 \leq i \leq N$ has a mosaic that contains them. For example, for the polygons in Figure \ref{fig: polygons in different places} the second-from-left column contains different tiles in polygon $1$ and polygon $2$, so no mosaic exists that contain these two polygons, and so $M_1 \cap M_2 = \varnothing$.
+
 \begin{prop}
-Let $\mathcal{M}$ be a mosaic and let $S$ be the indices of the polygons $\mathcal{M}$. We then have
-$$\Big|v(f(\mathcal{M}))\Big| = \Big|\bigcap_{i \in S} A_i \Big|.$$
+Let $\mathcal{M}$ be a mosaic and let $S$ be the indices of the polygons in $\mathcal{M}$. We then have
+$$\Big|v(f(\mathcal{M}))\Big| = \Big|\bigcap_{i \in S} M_i \Big|.$$
+\label{prop: mag of v}
 \end{prop}
 
 \begin{proof}
-If a cell is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(f(\mathcal{M}))|$ is just $7$ to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $f(\mathcal{M})$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, \textbf{TODO}
+From the definition of $v$, if a cell comes from a tile that is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(f(\mathcal{M}))|$ is just $7$ to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $f(\mathcal{M})$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, $|v(f(\mathcal{M}))|$ counts all mosaics that contain the polygons in $\mathcal{M}$. This is the definition of $\bigcap_{i \in S} M_i$, and so the equality holds.
 \end{proof}
 
 \begin{definition}
 If $\ell$ is a framed binary lattice that does not contain $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, let $P(\ell)$ to be the number of polygons in the polygon mosaic formed by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with the blank tile $T_0$, and replacing all other cells with the unique tile that maps to that cell under $f$.
 \end{definition}
+
+For the sign of $v$, we show that though $v(\ell)$ is computed ``cell-by-cell'', we recover global information about $P(\ell)$.
 
 \begin{prop} 
 If $\ell$ is a framed binary lattice that does not contain the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then 
@@ -830,7 +875,7 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \end{tikzpicture}
 \end{center}
 \end{subfigure}
-\caption{Tile configurations for before and after flipping the vertex in Case \ref{subfig: step 2 bit flip case 5}}
+\caption{Tile configurations before and after flipping the vertex in Case \ref{subfig: step 2 bit flip case 5}}
 \label{fig: step 2 example tile swap}
 \end{figure}
 
@@ -1031,7 +1076,7 @@ We show Equation \ref{eq: sign prop} holds case by case. In Case \ref{subfig: bi
 \end{tikzpicture}
 \end{center}
 \end{subfigure}
-\caption{Tile configurations for before and after flipping the vertex in Case \ref{subfig: bit flip case 5}}
+\caption{Tile configurations before and after flipping the vertex in Case \ref{subfig: bit flip case 5}}
 \label{fig: tile config for double case}
 \end{figure}
 
@@ -1051,41 +1096,28 @@ where the sum is over all $(m,n)$ framed binary lattices.
 \end{thm}
 
 \begin{proof}
-First notice for the sum in Equation \ref{eq: sum of v} that $v$ of any framed binary lattice that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ is $0$. Therefore we simplify to only summing over all framed binary lattices that do not contain these cells.
 
-Consider the set of 
+We begin by rewriting Equation \ref{eq: inc exl setup} to 
 
-For all $1 \leq i \leq N$, let $A_i$ be the set of all $(m, n)$ mosaics that include $P_i$. 
+$$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big|.$$
 
-$\bigcup_{i=1}^N A_i$
+By the inclusion-exclusion principle, we have
 
-By the inclusion-exclusion principle, 
+$$-\Big|\bigcup_{i=1}^N M_i \Big| = \sum_{\varnothing \neq J \subseteq \{1,2,\dots,N\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big|.$$
 
-$$\Big|\bigcup_{i=1}^N A_i \Big| = \sum_{i=1}^N |A_i| - \sum_{1 \leq i \leq j \leq N}|A_i \cap A_j| + \dots + $$
+Consider the collection of terms in the above sum such that $|J|=k \geq 1$. From the definition of $M$, this collection of terms counts the number of mosaics that have at least $k$ polygons. Propositions \ref{prop: mag of v} and \ref{prop: sign of v} give the magnitude and sign of the terms is
 
+$$\sum_{J \subseteq \{1,2,\dots,N\}, |J|=k}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
 
-Choose a mosaic $\mathcal{M}$ that has $P(\ell')$ polygons, where $\ell' = f(\mathcal{M})$. We begin by determining how many times $\mathcal{M}$ is counted in the related sum
+\textbf{TODO something about how prop 3.1 extends to the sum above}
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell).$$
+\textbf{TODO something about overlapping polygons}
 
-We point out here that as $u(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}) = u(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}) = v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}) = v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}) = 0$, framed binary lattices with these cells don't contribute to either summation, and so can be ignored for the remainder of this argument.
+Additionally notice that the binary lattice $\ell^*$ made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells has $v(\ell^*) = 7^{mn}$, and is the only framed binary lattice such that $P(\ell) = 0$. Therefore, we can write
 
-Proposition \ref{prop: u counts atleast g l} shows that the function $u(\ell)$ counts the mosaics with at least the polygons in $g(\ell)$. Consequently, for a framed binary lattice $\ell$, $u(\ell)$ counts $\mathcal{M}$ if the polygons in $g(\ell)$ are a subset of the polygons in $\mathcal{M}$. Therefore, as the number of ways to choose a size $p$ subset of $P(\ell)$ polygons is $\binom{P(\ell)}{p}$, $\mathcal{M}$ is counted $\sum_{p=0}^{P(\ell)}\binom{P(\ell)}{p}$ times. This then gives
+$$\Big|\mathbb{P}^{(m,n)}\Big| = \sum_{k \geq 0} \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
 
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}}u(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}\binom{P(f(\mathcal{M}))}{p}.$$
-
-Following the same logic for $\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell)$, Proposition \ref{prop: sign of v} gives that size $p$ subsets where $p$ is odd are subtracted, which gives
-
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\mathcal{M} \in \mathbb{M}^{(m,n)}}\sum_{p=0}^{P(f(\mathcal{M}))}(-1)^{p}\binom{P(f(\mathcal{M}))}{p}.$$
-
-Finally, by the binomial theorem, for $P(\ell) > 0$ we have
-
-$$\sum_{p=0}^{P(\ell)}(-1)^{p}\binom{P(\ell)}{p} = 0,$$
-
-and as the only binary lattice with $P(\ell) = 0$ is $\ell^*$, we have
-
-$$\sum_{\ell \in \mathbb{F}^{(m,n)}} v(\ell) = \sum_{\{\mathcal{M} \in \mathbb{M}^{(m,n)} | P(f(\mathcal{M})) = 0\}}\binom{0}{0} = |f^{-1}(\ell^*)| = |\mathbb{P}^{(m,n)}|.$$
-
+Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed binary lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed binary lattices in Equation \ref{eq: sum of v} gives the desired result.
 \end{proof}
 
 We point out here that the function $v$ if defined for all binary lattices, while Proposition \ref{prop: sign of v} only holds for framed binary lattices that do not contain cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
@@ -1101,7 +1133,7 @@ A_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}
 C_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix})D_{k} \end{pmatrix} & D_{k+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})A_{k} & v(\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix})B_{k} \\ v(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix})C_{k} & v(\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix})D_{k} \end{pmatrix}.
 \end{eqnarray*}
 
-We work with general $v$ in this section, and substitute the specific $v$ from Definition \ref{def: def of v} to give Theorem \ref{thm: messy mosaics} and a related result at the end.
+We work with general $v$ in this section, and substitute the specific $v$ from Definition \ref{def: def of v} to give Theorem \ref{thm: messy mosaics}, as well as exactly enumerating the number of polygon mosaics that were bounded in \cite{Hong2018}.
 
 \begin{definition}
 Let the $n$ digit binary representation of the number $k$ be written as $\beta_n(k)$. If $n$ is $0$, $\beta_n(k)$ returns the empty string.
@@ -1162,10 +1194,7 @@ $$\begin{smallmatrix} 0 & \beta_{n-1}(0) & 0 \\ & \dots & \\ 0 & \beta_{n-1}(0) 
 \noindent which is simply all framed binary lattices. Substituting the values for $v$ from Definition \ref{def: def of v} gives the sum from Theorem \ref{thm: sum of vs}, which completes the proof.
 \end{proof}
 
-\textbf{TODO} immediate extension to polygon mosaics
-
-
-
+\textbf{TODO} immediate extension to polygon mosaics. We point out that this result is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge this result has not appeared in print.
 
 \newpage
 
