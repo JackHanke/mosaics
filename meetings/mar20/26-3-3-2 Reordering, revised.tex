@@ -1,0 +1,212 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{definition}
+\newtheorem*{defn*}{\protect\definitionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\definitionname}{Definition}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\title{March~3 proposed changes: reordering sections}
+
+\maketitle
+These are overall suggestions I decided to type out. This is a proposed
+outline of the entire paper. The main point of what's below is to
+reorder what's already written. Anything appearing in double brackets
+{[}{[}like this{]}{]} is an aside to you separate from what I'm proposing
+for the paper.
+
+\section{Mosaics.}
+
+This section introduces the terms \emph{mosaic}, \emph{polygon mosaic},
+and \emph{messy polygon mosaic}, probably in that order. It will include
+what's now in Section~1 Introduction and Section~2 Related Work,
+with the following things delayed. For all of these, we define them
+for $\left(m,n\right)$, we should explicitly say that $m$ and $n$
+are positive integers.
+
+I'm wondering if a \emph{polygon mosaic} should include mosaics that
+are entirely comprised of blank tiles. I'm leaning in this direction
+because as I read the current draft, that choice just seemed to ``feel''
+more and more correct. That would, unfortunately, make the term \emph{messy
+polygon mosaic} weird. How attached are you to the term ``messy''?
+I know it's been your terminology forever. We could instead define
+\emph{polygon-free mosaic} (i.e., the complement of our current \emph{messy
+polygon mosaic}) and count the number of those. Of course, the number
+of mosaics that have at least one polygon will be $7^{mn}$ minus
+the number of polygon-free mosaics. That's a big shift! I've taken
+a couple days to think about it and it's growing on me. We should
+discuss it.
+
+Here are things I suggest omitting from this section:
+\begin{itemize}
+\item Don't actually define the matrices $A_{k}$, $B_{k}$, $C_{k}$, $D_{k}$,
+nor state Theorem~1.1. We can do these things when we're ready to
+prove the result. Rather, we say in the text that our goal is, for
+any given positive integers $m$ and $n$, to determine the number
+of polygon mosaics, and also the number of polygon-free mosaics (as
+defined above). We refer to those two theorems below (e.g., ``We
+will show how to calculate the number of polygon mosaics in Theorem~{[}ref{]}
+and the number of polygon-free mosaics in Theorem~{[}ref{]}.'')
+\item Minimal historical references (if any) and no mention at all of knots.
+This all can come at the end of our paper. I'm not suggesting deleting
+anything, just moving it.
+\end{itemize}
+
+\section{Binary lattices.}
+
+Define binary lattice. I think that we no longer need $\left(m,n\right)$
+binary lattices with $m$ or $n$ zero. That is, we only need to define
+binary lattices for $m$ and $n$ positive integers.
+
+Define \emph{good lattices} (as in my other document, i.e., not containing
+$\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$ cells) and \emph{framed lattices} (aka framed binary lattices).
+
+As in my other document, define the function $\mathscr{L}$, a bijection
+from polygon mosaics to good framed lattices.
+
+\section{Counting polygon mosaics.}
+
+Here we count the number of $\left(m,n\right)$ polygon mosaics for
+any positive integers $m$ and $n$. This might be a short section
+(maybe it's a final part of the previous section??) involving only
+defining $v$ (i.e., $0$ for $\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$, $1$ otherwise; then expanding to an arbitrary lattice) and saying
+our desired number is $\sum v\left(\ell\right)$, where the sum is
+over all good framed lattices.
+
+\section{Matrix calculations.}
+
+Motivated by the previous section we work with a more general $v$
+and introduce matrices.
+
+At this stage, $v$ is an arbitrary function from cells to the set
+$\mathbb{C}$ of complex numbers. Then we extend $v$ to be a function
+on binary lattices. We then define $A_{k}$, $B_{k}$, $C_{k}$, and
+$D_{k}$ based on this arbitrary fixed $v$. 
+\begin{prop}
+For any $v$ as given above, $\sum v\left(\ell\right)$, where the
+sum is over all $\left(m,n\right)$ good framed lattices, is equal
+to the $\left(0,0\right)$ entry of $A_{n}^{m}$.
+\end{prop}
+
+{[}{[}Note: We have two big things to prove. One is above, and the
+other below. Some of my motivation for the shuffling of the order
+of topics is so that we can get a concrete result, i.e., for polygon
+mosaics, without having to do both big proofs. Also, I think it's
+nice to start with polygon mosaics, since polygon-free mosaics are
+more complicated.{]}{]}
+
+\section{Polygon-free mosaics.}
+
+This will be where the inclusion exclusion principle is used (I suggest
+an explicit statement, and my preference is to include a proof). Because
+of the potential of changing from ``messy mosaics'' to ``polygon-free
+mosaics,'' it's not clear which version of the inclusion exclusion
+principle we want (i.e., $\left(-1\right)^{\left|J\right|}$ \uline{or}
+$\left(-1\right)^{\left|J\right|-1}$, where $J$ runs over all subsets
+of indices \uline{or} all nonempty subsets of indices).
+
+Here we will define $v$ using the integers $0$, $1$, $-1$, and
+$7$ in the usual way for messy mosaics (or polygon-free mosaics),
+i.e., now $v$ does not just use $0$ and $1$ as above).
+
+Here's a potentially useful rephrasing of stuff we already have: consider
+when we have the size $\left(m,n\right)$ fixed and we enumerate all
+polygons (my previous ``gridded polygons'') $M_{1}$, $M_{2}$,
+\ldots , $M_{N}$. We consider the intersection $\bigcap_{j\in J}M_{j}$,
+as $J$ varies through nonempty subsets of $\left\{ 1,2,\dots,N\right\} $.
+Those $J$ such that $\bigcap_{j\in J}M_{j}$ is nonempty (i.e., the
+$M_{j}$, $j\in J$ are ``compatible'') correspond one-to-one with
+polygon mosaics. I think that's a useful intermediate step that we
+don't currently have. Then those polygon mosaics correspond one-to-one
+(via $\mathscr{L}$) with good framed lattices.
+
+The intermediate step of talking about polynomial mosaics might be
+nice because we can talk about all the mosaics that ``include''
+a certain polynomial mosaic. More precisely, here's something we might
+try.
+\begin{defn*}
+{[}{[}formerly ``compatible'' perhaps{]}{]} A mosaic $M$ \emph{includes}
+the polynomial mosaic $P$ if $M$ can be formed from $P$ by placing
+any tile (including the empty tile $T_{0}$) wherever $P$ has an
+empty tile $T_{0}$.
+\end{defn*}
+\begin{prop}
+Given a polynomial mosaic $P$, $\left|v\left(\mathscr{L}\left(P\right)\right)\right|$
+is equal to the number of mosaics that include $P$, and the sign
+of $v\left(\mathscr{L}\left(P\right)\right)$ is equal to $-1$ if
+$P$ contains an odd number of polynomials, and $1$ if $P$ contains
+an even number of polynomials.
+
+{[}{[}Equivalent, not sure which is better{]}{]} For every good framed
+lattice $\ell$, $\left|v\left(\ell\right)\right|$ equals the number
+of mosaics that include $\mathscr{L}^{-1}\left(\ell\right)$ and the
+sign of $v\left(\ell\right)$ equals $-1$ raised to the power of
+the number of polygons in $\mathscr{L}^{-1}\left(\ell\right)$.
+\end{prop}
+
+
+\section{Extensions and reflections on earlier work}
+
+Begin perhaps with extensions you and I know are simple but which
+might not occur to readers. For example, if there are three types
+of tiles connecting the midpoint of the top and bottom midpoints (e.g.,
+the vertical dotted bar we already have plus one with a rightward
+zig zag and one with a leftward zag zig). If we set $v\left(\begin{array}{cc}
+0 & 1\\
+0 & 1
+\end{array}\right)$ and $v\left(\begin{array}{cc}
+1 & 0\\
+1 & 0
+\end{array}\right)$ to $3$ then the techniques we used can be used to count the number
+of polygon mosaics and the number of polygon-free mosaics. (Here the
+number of ``messy mosaics'' would of course be $9^{mn}$ minus the
+number of polygon-free mosaics.)
+
+Then talk about work others have done, providing bounds on what we
+found exactly (the number of polygon mosaics). The work on knots.
+How our work can be easily adapted to replicate their results on the
+number of knot mosaics. Conclude with an open question: how can we
+calculate the number of knot-free mosaics. Of course, you and I struggled
+with this for a long time but ultimately found that binary lattices
+would probably not do the job. We can mention that we do not think
+our techniques generalize to this open question.
+\end{document}

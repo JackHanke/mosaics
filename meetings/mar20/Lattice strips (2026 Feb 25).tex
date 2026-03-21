@@ -1,0 +1,123 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{remark}
+\newtheorem*{claim*}{\protect\claimname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\claimname}{Claim}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+I recommend we consider the term \emph{framed lattice} rather than
+\emph{framed binary lattice} (i.e., ``binary'' is implied by ``framed'').
+That might be good on its own but also is parallel to what I have
+below.
+
+I don't think the terminology I'm introducing is important enough
+to define separately because it's only used in this one result. Therefore
+I have written the terminology into the proof. I've also relegated
+a proposition to a mere claim inside the proof. And what used to be
+a theorem is here a proposition. We can discuss this, but my general
+feeling is that a theorem is something that people want to know outside
+the paper. That is, it has value outside the context of what we're
+doing at that particular time in the paper.
+
+\bigskip{}
+\bigskip{}
+
+\begin{prop}
+For all positive integers $m$ and $n$, the $\left(0,0\right)$ entry
+of $A_{n}^{m}$ equals $\sum v\left(\ell\right)$, where the sum is
+over all $\left(m,n\right)$ framed binary lattices $\ell$ {[}{[}or,
+using my suggestion above, ``\ldots{} over all $\left(m,n\right)$
+framed lattices $\ell$''{]}{]}.
+\end{prop}
+
+\begin{proof}
+Fix $n$. We first introduce some terminology. For all positive integers
+$m$, we say a \emph{height~$m$ strip} is an $\left(m,n\right)$
+binary lattice in which all vertices in the outside columns (i.e.,
+column~$0$ and column~$n$) are labeled zero. {[}{[}Do we say ``vertices
+are zero'' or ``vertices are labeled zero''? I'm not sure I care,
+except that we should be consistent.{]}{]} Then for a height~$m$
+strip $\ell$ and a nonnegative integer $i<2^{n-1}$, we say a particular
+row of $\ell$ is \emph{determined by $i$} if that row is equal to
+$0\ \beta_{n-1}\left(i\right)\ 0$. Note that an $\left(m,n\right)$
+framed {[}{[}binary{]}{]} lattice is exactly a height~$m$ strip
+in which both the top and bottom rows are determined by $0$. Thus,
+to prove our proposition it suffices to show the following.
+\begin{claim*}
+For all positive integers $m$ and nonnegative integers $i,j<2^{n-1}$,
+the $\left(i,j\right)$ entry of $A_{n}^{m}$ equals $\sum v\left(\ell\right)$,
+where the sum is over all height~$m$ strips $\ell$ whose first
+row is determined by $i$ and whose last row is determined by $j$.
+\end{claim*}
+To prove the claim, first observe that for each $i$ and $j$, there
+exists a unique height~$1$ strip whose first row is determined by
+$i$ and whose last row is determined by $j$. By Proposition~4.1,
+$v$ applied to this strip is equal to the $\left(i,j\right)$ entry
+of $A_{n}$. This proves our claim when $m=1$. We continue by induction,
+so for some $m\ge2$, assume the claim for $m-1$.
+
+Fix nonnegative integers $i,j<2^{n-1}$, and consider some nonnegative
+integer $k<2^{n-1}$. As in the $m=1$ case, Proposition~4.1 tells
+us that the $\left(i,k\right)$ entry of $A_{n}$ equals $v$ applied
+to the unique height~$1$ strip with first and last rows determined
+respectively by $i$ and by $k$. By our induction hypothesis, the
+$\left(k,j\right)$ entry of $A_{n}^{m-1}$ equals $\sum v\left(\ell\right)$,
+where the sum is over all height~$m-1$ strips $\ell$ whose first
+and last rows are determined respectively by $k$ and by $j$. Consider
+applying $v$ both to the height~$1$ strip indicated above and to
+one of the height~$m-1$ strips $\ell$ in this sum. As in Figure~(picture
+below), by the definition of $v$, the product of these two numbers
+is equal to $v$ applied to the height~$m$ strip formed by overlapping
+the bottom row of the height~$1$ strip to the top row of $\ell$.
+\[
+v\left(\begin{array}{ccc}
+0 & \beta_{n-1}\left(i\right) & 0\\
+0 & \beta_{n-1}\left(k\right) & 0
+\end{array}\right)v\left(\begin{array}{ccc}
+0 & \beta_{n-1}\left(k\right) & 0\\
+\vdots & \vdots & \vdots\\
+0 & \beta_{n-1}\left(j\right) & 0
+\end{array}\right)=v\left(\begin{array}{ccc}
+0 & \beta_{n-1}\left(i\right) & 0\\
+0 & \beta_{n-1}\left(k\right) & 0\\
+\vdots & \vdots & \vdots\\
+0 & \beta_{n-1}\left(j\right) & 0
+\end{array}\right)
+\]
+
+From this we see that the product of the $\left(i,k\right)$ entry
+of $A_{n}$ and the $\left(k,j\right)$ entry of $A_{n}^{m-1}$ is
+equal to $\sum v\left(\ell\right)$, where the sum is now over all
+height~$m$ strips $\ell$ whose first, second, and last rows are
+determined respectively by $i$, by $k$, and by $j$. This tells
+us, in turn, that when we additionally sum over all nonnegative $k<2^{n-1}$,
+we can conclude that the $\left(i,j\right)$ entry of $A_{n}\cdot A_{n}^{m-1}=A_{n}^{m}$
+is, as desired, the sum $\sum v\left(\ell\right)$ where the sum is
+over all height~$m$ strips $\ell$ whose first and last rows are
+determined respectively by $i$ and by $j$.
+\end{proof}
+
+\end{document}
