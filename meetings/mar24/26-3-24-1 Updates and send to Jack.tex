@@ -1,0 +1,231 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{definition}
+\newtheorem*{defn*}{\protect\definitionname}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\definitionname}{Definition}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\begin{defn*}
+A lattice is \emph{proper} if none of its cells is either $\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$.
+\end{defn*}
+%
+\begin{defn*}
+Let $P$ be a polygon mosaic. If we replace blank tiles of $P$ (all,
+some, or none) with other tiles, then the resulting mosaic $M$ is
+called a \emph{mosaic created from $P$}.
+\end{defn*}
+\begin{prop}
+For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$.
+\begin{enumerate}
+\item The number of mosaics created from $P$ equals $\left|v\left(\ell\right)\right|$.
+\item If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
+is positive {[}resp. negative{]}.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The first part is simple. Observe that $\left|v\left(\ell\right)\right|=7^{i}$,
+where $i$ is the number of blank tiles of $P$, and this is equal
+to the number of mosaics created from $P$. It is in the second part
+where we will need a lot more work.
+
+Let $N$ be the number of vertices of $\ell$ that are $1$, and define
+$\ell_{0}$ to be the lattice formed by changing these $N$ vertices
+from $1$ to $0$. That is, $\ell_{0}$ has the same dimensions as
+$\ell$ but all vertices are $0$. We will change $\ell_{0}$ back
+to $\ell$ by changing these vertices back from $0$ to $1$, one
+vertex at a time. The order in which we make these changes is as follows.
+
+We change back the vertices one row at a time, working from top to
+bottom. In each row we make two passes, each time moving from left
+to right, and each time only changing vertices if the corresponding
+vertex of $\ell$ is $1$. On the first pass we change a vertex if
+the vertex is directly above it is $1$. (Because we are working the
+rows from top to bottom, this vertex is $1$ in both our current lattice
+and also in $\ell$.) On the second pass we change the remaining vertices
+of the row, i.e., if the vertex is directly above it is $0$.
+
+This procedure creates a sequence $\ell_{0}$, $\ell_{1}$, \ldots ,
+$\ell_{N}$ of lattices with $\ell_{N}=\ell$. Because $\ell=\mathscr{L}\left(P\right)$,
+we know $\ell$ is a proper framed lattice. Since every $\ell_{i}$
+has the same dimensions as $\ell$ and has vertices of $0$ in at
+least the same positions as in $\ell$, we see every $\ell_{i}$ is
+a framed lattice. We will prove that every $\ell_{i}$ is also a proper
+lattice (which is the reason we make two passes through each row)
+and that by taking $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$,
+the second part of the proposition holds for $P_{i}$ and $\ell_{i}$.
+
+Because every $\ell_{i}$ is framed, in the transition from $\ell_{i-1}$
+to $\ell_{i}$, the single vertex that changes is adjacent to eight
+vertices, as in Figure~TBA (please make it look like $\begin{array}{ccc}
+ul & u & ur\\
+l & \# & r\\
+dl & d & dr
+\end{array}$), where the changing vertex $\#$ is $0$ in $\ell_{i-1}$ and $1$
+in $\ell_{i}$, and the remaining vertices are labeled for their relative
+position to this central vertex, such as $dl$ for down left and $u$
+for up.
+
+We need to consider all possible adjacent vertices. Since our process
+goes from top to bottom one row at a time, we have $\left(dl,d,dr\right)=\left(0,0,0\right)$.
+Also, because of the way in which we make our two passes, if $u=1$
+then $r=0$ and $\left(ul,l\right)\neq\left(0,1\right)$, whereas
+if $u=0$ then $\left(ur,r\right)\neq\left(0,1\right)$. Additionally,
+suppose $u=0$, and that neither $\left(ul,l\right)$ nor $\left(ur,r\right)$
+equals $\left(1,0\right)$. Indeed, if $\left(ul,l\right)=\left(1,0\right)$
+then since we are making the second pass through the row, we would
+have a cell $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$ in $\ell_{i}$ and thus also in $\ell_{N}=\ell$, contradicting that
+$\ell$ is a proper lattice. Similarly, $\left(ur,r\right)=\left(1,0\right)$
+implies the that $\ell$ has a cell $\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ (since with $ur=1$, $r$ cannot change in the second pass), again
+contradicting that $\ell$ is a proper lattice. Putting all this together,
+on the first pass, i.e., when $u=1$, the vertices can only be as
+in the six cases pictured in Figure~{[}5{]}. Similarly, on the second
+pass we have $u=0$ and one of the six cases of Figure~{[}7{]}.
+
+Since trivially $\ell_{0}$ is a proper lattice, the twelve cases
+in Figures~{[}5{]} and {[}7{]} show inductively that every $\ell_{i}$
+is a proper lattice. For every $i$, we have already seen that $\ell_{i}$
+is a framed lattice, so let $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$.
+Figures~{[}5{]} and {[}7{]} also show the portions of $P_{i-1}$
+and $P_{i}$ that are in these two cells, where the dashed(?) lines
+are from the polygons of $P_{i-1}$ and the dotted(?) lines from the
+polygons of $P_{i}$. (Recall that $\#$ is $0$ in $\ell_{i-1}$
+and $1$ in $\ell_{i}$.)
+
+Let us say a cell is \emph{negative} if it is $\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}$, i.e., if its evaluation under $v$ is negative. The second conclusion
+of the proposition can be rephrased by saying that the number of negative
+cells in $\ell$ and the number of polygons in $P$ have the same
+parity, i.e., are both even or both odd. For example, $\ell_{0}$
+satisfies the conclusion of the proposition because $\ell_{0}$ has
+no negative cells and $P_{0}$ has no polygons.
+
+Assume now that some $P_{i-1}$ and $\ell_{i-1}$ satisfies the second
+conclusion of the proposition, and let us show that the same is true
+for $P_{i}$ and $\ell_{i}$. This will complete the proposition.
+We know that we are in one of the twelve cases of Figures~{[}5{]}
+and {[}7{]}, and we must look at the number of negative cells in $\ell_{i}$
+versus $\ell_{i-1}$, and the number of polygons in $P_{i}$ versus
+$P_{i-1}$. An easy case is (a) of Figure~{[}7{]} because $\ell_{i}$
+has one more negative cell (specifically, a cell $\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$), and $P_{i}$ has one more polygon than $P_{i-1}$.
+
+Let us now look in the remaining cases at how the number of negative
+cells changes from $\ell_{i-1}$ to $\ell_{i}$. In the six cases
+of Figure~{[}5{]} and also case (d) of Figure~{[}7{]}, the four
+pictured cells have no negative cells regardless of whether $\#$
+equals $0$ or $1$, so there is no change. The number is also unchanged
+in (b) of Figure~{[}7{]} because in this case a single negative cell
+$\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ changes position between $\ell_{i-1}$ and $\ell_{i}$. In (c) of
+Figure~{[}7{]}, the number of negative cells increases by $2$ because
+changing $0$ to $1$ in the central position creates both a cell
+$\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}$ and a cell $\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$. For the final two cases, the number decreases by $1$ in (e) of
+Figure~{[}7{]} and increases by $1$ in (f) of Figure~{[}7{]}. Therefore,
+we can complete the proposition by showing that in the six cases of
+Figure~{[}5{]} and in (b), (c), (d) of Figure~{[}7{]}, $P_{i-1}$
+and $P_{i}$ have the same number of polygons, whereas in (e) and
+(f) of Figure~{[}7{]}, the number of polygons in $P_{i-1}$ and $P_{i}$
+differ by $1$.
+
+Consider, for example, (c) of Figure~{[}5{]}, and look at the point
+just above the lower left corner and the point just left of the upper
+right corner. In $P_{i-1}$ these are connected by a straight dashed
+line, and in $P_{i}$ these are connected by dotted line segments.
+We call both of these \emph{inside connections}. Because $P_{i-1}$
+and $P_{i}$ are polygon mosaics, these same points are connected
+by straight line segments outside the pictured area, and we will call
+these \emph{outside connections} because they connect points on the
+edge of the pictured square with a path outside the square. This outside
+connection is the same in $P_{i-1}$ and $P_{i}$. Therefore $P_{i-1}$
+and $P_{i}$ have the same number of polygons because the polygon
+with this outside connection changes shape, and all other polygons
+are unchanged. Similar reasoning completes the remaining cases of
+Figure~{[}5{]} and cases (b), (c), (d) of Figure~{[}7{]}.
+
+We now must show that in (e) and (f) of Figure~{[}7{]}, the number
+of polygons in $P_{i-1}$ and $P_{i}$ differ by $1$. We will explicitly
+show this in (e), and essentially identical reasoning applies to (f).
+There are four places where inside connections meet the edge of the
+outer square. Beginning in the lower left and working clockwise, let
+$x_{1}$, $x_{2}$, $x_{3}$, and $x_{4}$ be these points. For example,
+$x_{3}$ is just left of the upper right corner and $x_{4}$ is just
+above the lower right corner. In $P_{i-1}$, there is an inside connection
+between $x_{1}$ and $x_{2}$, and another between $x_{3}$ and $x_{4}$,
+whereas $P_{i}$ has inside connections between $x_{1}$ and $x_{4}$,
+and between $x_{2}$ and $x_{3}$.
+
+Any outside connections in $P_{i-1}$ and $P_{i}$ must be identical,
+and since these are polygon mosaics, each of $x_{1}$, $x_{2}$, $x_{3}$,
+and $x_{4}$ is the end of some outside connection. One possibility
+is that we have one outside connection between $x_{1}$ and $x_{2}$,
+and another between $x_{3}$ and $x_{4}$. In this case, the inside
+and outside connections of $P_{i-1}$ complete two polygons, one including
+$x_{1}$ and $x_{2}$, and the other including $x_{3}$ and $x_{4}$.
+However, $P_{i}$ will have one fewer polygon because a single polygon
+contains all $x_{i}$. Another possibility is to have one outside
+connection between $x_{1}$ and $x_{4}$, and another between $x_{2}$
+and $x_{3}$. In this case, in $P_{i-1}$ a single polygon includes
+all $x_{i}$, whereas in $P_{i}$ they complete two polygons, one
+containing $x_{1}$ and $x_{4}$, and the other containing $x_{2}$
+and $x_{3}$, and therefore $P_{i}$ has one more polygon than $P_{i-1}$.
+These are the only possibilities since it is impossible to have an
+outside connection between $x_{1}$ and $x_{3}$, and another between
+$x_{2}$ and $x_{4}$. This is because our polygons are in a plane,
+and polygons in a mosaic are not able to cross one another. This completes
+our proof.
+\end{proof}
+
+\end{document}
