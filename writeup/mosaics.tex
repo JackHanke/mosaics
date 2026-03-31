@@ -96,6 +96,13 @@
 \newcommand{\cellEf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
 \newcommand{\cellFf}[4]{\filldraw[gray!40] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
+% before and after diagrams
+\newcommand{\cellAa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellBa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellCa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3 * 0.5 + #1 * 0.5 , #4) -- (#3, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellDa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3 * 0.5 + #1 * 0.5 , #4) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellEa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3, #4 * 0.5 + #2 * 0.5) -- (#1, #4 * 0.5 + #2 * 0.5);}
+\newcommand{\cellFa}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[blue, thick, dashed] (#3 * 0.5 + #1 * 0.5 , #2) -- (#3 * 0.5 + #1 * 0.5 , #4);}
 
 % \newcommand{\cellA}[4]{\draw[red, thick, densely dotted] ( #1 + 0.5 , #2 ) arc(0:90:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
 % \newcommand{\cellB}[4]{\draw[red, thick, densely dotted] ( #1 + 1 , #2 + 0.5 ) arc(90:180:{0.5}); \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 );}
@@ -144,14 +151,14 @@
 \begin{center}
 
 \begin{abstract}
-Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ retangular lattice is constructed from a selection of $7$ distinct tiles. These lattices are called \textit{mosaics}. The authors provide bounds on a subset of these mosaics that both contain polygons and have all other tiles that are not part of a polygon set to the blank tile. We introduce and enumerate mosaics with the related property of not containing a polygon, which we call polygon-free mosaics.
+Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ retangular lattice is constructed from a selection of $7$ distinct tiles. These lattices are called \textit{mosaics}. They provided bounds on a subset of these mosaics that both contain polygons and have all other tiles that are not part of a polygon set to the blank tile. We introduce and enumerate mosaics with the related property of not containing a polygon, which we call polygon-free mosaics.
 \end{abstract}
 
 \end{center}
 
 \section{Mosaics}
 
-Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, blindfolded. At your disposal is an unending supply of $7$ distinct types of tiles. These tiles, diagrammed in Figure \ref{fig:tile set}, are composed of unit squares with dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile $T_0$.
+Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, blindfolded. At your disposal is an unending supply of $7$ distinct types of tiles. These tiles, diagrammed in Figure \ref{fig:tile set}, unit squares with red dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile $T_0$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -327,7 +334,7 @@ $$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 
 
 \begin{definition}
 
-Let $\mathcal{L}$ map $(m,n)$ polygon mosaics to a $(m,n)$ binary lattice with the following rule. If the vertex is surrounded by the red dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the red dotted lines of an odd number of polygons, label it $1$. Removing the red dotted lines from the tiles gives the framed binary lattice. 
+Let $\mathcal{L}$ map $(m,n)$ polygon mosaics to a $(m,n)$ binary lattice with the following rule. If the vertex is surrounded by the dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the dotted lines of an odd number of polygons, label it $1$. Removing the dotted lines from the tiles gives the framed lattice. 
     
 \end{definition}
 
@@ -651,7 +658,7 @@ More generally, we define $v$ from binary lattices to integers by taking the pro
 
 \begin{exmp}
 \label{exmp: v on a ell}
-If we let $\ell$ be the framed binary lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are $2$ $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, $1$ $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, $9$ $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and $2$ $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
+If we let $\ell$ be the framed lattice on the right of Figure \ref{fig:example of f mapping}, we have $v(\ell) = -7^{11}$, as there are two $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, one $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cells, nine $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and two $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells.
 \end{exmp}
 
 We show our choice of $v$ has useful properties by first considering the magnitude, then the sign.  For the magnitude of $v$, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. We remind the reader that a polygon is determined not only by its shape and orientation, but also its location within the mosaic. For example, Figure \ref{fig: polygons in different places} depicts three distinct polygons in a $(2,4)$ mosaic, which for reference we call polygons $1, 2,$ and $3$.
@@ -718,7 +725,7 @@ Let $J$ be a subset of indices of polygons. If there exists at least one mosaic 
 \label{eq: intersect of M}
 \end{equation}
 
-\noindent where $\ell$ is the framed binary lattice such that $\ell = f(\mathcal{M})$ where $\mathcal{M}$ is any mosaic that only contains the polygons in $J$.
+\noindent where $\ell$ is the framed lattice such that $\ell = f(\mathcal{M})$ where $\mathcal{M}$ is any mosaic that only contains the polygons in $J$.
 \label{prop: mag of v}
 \end{prop}
 
@@ -727,40 +734,45 @@ From the definition of $M_j$, the left hand side of Equation \ref{eq: intersect 
 \end{proof}
 
 \begin{definition}
-If $\ell$ is a framed binary lattice that does not contain $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, let $P(\ell)$ to be the number of polygons in the polygon mosaic formed by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with the blank tile $T_0$, and replacing all other cells with the unique tile that maps to that cell under $f$.
+If $\ell$ is a framed proper lattice, let $P(\ell)$ to be the number of polygons in the polygon mosaic formed by replacing all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells with the blank tile $T_0$, and replacing all other cells with the unique tile that maps to that cell under $f$.
 \end{definition}
 
 For the sign of $v$, we show that though $v(\ell)$ is computed ``cell-by-cell'', we recover global information about $P(\ell)$.
 
-\begin{prop} 
-If $\ell$ is a proper framed binary lattice, then 
-\begin{equation}
-    \text{sign}(v(\ell)) = (-1)^{P(\ell)}.
-\label{eq: sign prop}
-\end{equation}
+\begin{prop}
+For a polygon mosaic $P$, let $\ell=\mathcal{L}\left(P\right)$. If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
+is positive {[}resp. negative{]}.
 \label{prop: sign of v}
 \end{prop}
 
 \begin{proof}
+Let $N$ be the number of vertices of $\ell$ that are $1$, and define
+$\ell_{0}$ to be the lattice formed by changing these $N$ vertices
+from $1$ to $0$. That is, $\ell_{0}$ has the same dimensions as
+$\ell$ but all vertices are $0$. We will change $\ell_{0}$ back
+to $\ell$ by changing these vertices back from $0$ to $1$, one
+vertex at a time. The order in which we make these changes is as follows.
 
-For this proof, we use LHS and RHS to abbreviate the left and right hand side of Equation \ref{eq: sign prop}. We prove the result by induction. For the base case, construct the $(0,n)$ framed binary lattice $\ell$ for some $n \geq 0$. As there are no cells in $\ell$, from the definition of $v$ the LHS is $\text{sign}(v(\ell))=1$. As there no polygons in $g(\ell)$, we have the RHS is $1$.
+We change back the vertices one row at a time, working from top to
+bottom. In each row we make two passes, each time moving from left
+to right, and each time only changing vertices if the corresponding
+vertex of $\ell$ is $1$. On the first pass we change a vertex if
+the vertex is directly above it is $1$. (Because we are working the
+rows from top to bottom, this vertex is $1$ in both our current lattice
+and also in $\ell$.) On the second pass we change the remaining vertices
+of the row, i.e., if the vertex is directly above it is $0$.
 
-For the induction step, consider any $(m+1,n)$ framed binary strip $\ell'$ for $m \geq 1$ such that there are no $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells. Similarly, define $\ell$ to be the framed binary lattice that shares the top $m$ rows of vertices with $\ell'$, and the bottom most row all being $0$. We show that we can construct $\ell'$ from $\ell$ with a procedure that preserves Equation \ref{eq: sign prop} with each intermediate step.
-
-\noindent\textbf{Procedure:} \\
-\indent \textbf{Step 1.} Add a bottom row to $\ell$ of $n+1$ vertices, all labeled $0$. This results in a new $(m+1,n)$ framed binary lattice we denote $\ell_1$. \\
-\indent \textbf{Step 2.} Scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}$ column in $\ell_1$ to $\begin{smallmatrix} 1 \\ 1 \end{smallmatrix}$. Completing this scan results in a new framed binary lattice denoted $\ell_2$.\\
-\indent \textbf{Step 3.} Again scanning rows $m-1$ and $m$ of $\ell'$ left to right, if there exists a column of the form $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$, change the associated $\begin{smallmatrix} 0 \\ 0 \end{smallmatrix}$ column in $\ell_2$ to $\begin{smallmatrix} 0 \\ 1 \end{smallmatrix}$. Completing this scan results in the framed binary lattice $\ell'$.\\
-
-For step 1, only $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells are added. As $\text{sign}\left(v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}\right)\right) = 1$, the LHS is unchanged. For the RHS no new polygons are created in $g(\ell_1)$, so Equation \ref{eq: sign prop} is preserved by step 1.
-
-For steps 2 and 3, we prove the result for each intermediate vertex change as we scan left to right. Furthermore, as each intermediate change only flips a single vertex label from $0$ to $1$, we only need to consider the $4$ cells that share this vertex. We diagram all possible cases for both steps in Figure \ref{fig: step 2 cases} and Figure \ref{fig: step 3 cases}, where the \# symbol indicates the vertex flipping from a $0$ to a $1$. We know that the bottom most row of vertices must all be $0$ by construction.
-
-For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the vertex right of the \# symbol must be $0$, as the procedure moves left to right on $\ell_1$. Additionally, the $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ cell cannot be created or destroyed, and so Figure \ref{fig: step 2 cases} depicts all $6$ possible cases.
+This procedure creates a sequence $\ell_{0}$, $\ell_{1}$, \ldots ,
+$\ell_{N}$ of lattices with $\ell_{N}=\ell$. Because $\ell=\mathcal{L}\left(P\right)$,
+we know $\ell$ is a proper framed lattice. Since every $\ell_{i}$
+has the same dimensions as $\ell$ and has vertices of $0$ in at
+least the same positions as in $\ell$, we see every $\ell_{i}$ is
+a framed lattice. We will prove that every $\ell_{i}$ is also a proper
+lattice (which is the reason we make two passes through each row)
+and that by taking $P_{i}=\mathcal{L}^{-1}\left(\ell_{i}\right)$,
+the second part of the proposition holds for $P_{i}$ and $\ell_{i}$.
 
 \begin{figure}[h!]
-\centering
-\begin{subfigure}[t]{0.2\textwidth}
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
@@ -768,6 +780,61 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \cell{1}{0}{2}{1}
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+% row 1 labels
+\( \lablvertex{0}{0}{$l$} \)
+\( \lablvertex{1}{0}{\#} \)
+\( \lablvertex{2}{0}{$r$} \)
+% row 2 labels
+\( \lablvertex{0}{1}{$ul$} \)
+\( \lablvertex{1}{1}{$u$} \)
+\( \lablvertex{2}{1}{$ur$} \)
+% row -1 labels
+\( \lablvertex{0}{-1}{$dl$} \)
+\( \lablvertex{1}{-1}{$d$} \)
+\( \lablvertex{2}{-1}{$dr$} \)
+%
+
+\end{tikzpicture}
+\end{center}
+\caption{Cases Diagram}
+\label{fig: cases diagram}
+\end{figure}
+
+Because every $\ell_{i}$ is framed, in the transition from $\ell_{i-1}$
+to $\ell_{i}$, the single vertex that changes is adjacent to eight
+vertices, as in Figure \ref{fig: cases diagram}, where the changing vertex $\#$ is $0$ in $\ell_{i-1}$ and $1$ in $\ell_{i}$, and the remaining vertices are labeled for their relative position to this central vertex, such as $dl$ for down left and $u$
+for up.
+
+We need to consider all possible adjacent vertices. Since our process goes from top to bottom one row at a time, we have $\left(dl,d,dr\right)=\left(0,0,0\right)$.
+Also, because of the way in which we make our two passes, if $u=1$
+then $r=0$ and $\left(ul,l\right)\neq\left(0,1\right)$, whereas
+if $u=0$ then $\left(ur,r\right)\neq\left(0,1\right)$. Additionally,
+suppose $u=0$, and that neither $\left(ul,l\right)$ nor $\left(ur,r\right)$
+equals $\left(1,0\right)$. Indeed, if $\left(ul,l\right)=\left(1,0\right)$
+then since we are making the second pass through the row, we would
+have a cell $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ in $\ell_{i}$ and thus also in $\ell_{N}=\ell$, contradicting that
+$\ell$ is a proper lattice. Similarly, $\left(ur,r\right)=\left(1,0\right)$
+implies the that $\ell$ has a cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ (since with $ur=1$, $r$ cannot change in the second pass), again
+contradicting that $\ell$ is a proper lattice. Putting all this together,
+on the first pass, i.e., when $u=1$, the vertices can only be as
+in the six cases pictured in Figure \ref{fig: step 2 cases}. Similarly, on the second
+pass we have $u=0$ and one of the six cases of Figure \ref{fig: step 3 cases}.
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[t]{0.2\textwidth}
+\begin{center}
+\begin{tikzpicture}
+% row 1 of cells
+\cellCa{0}{0}{1}{1}
+\cellDa{1}{0}{2}{1}
+\cell{0}{-1}{1}{0}
+\cell{1}{-1}{2}{0}
+%
+\cellF{0}{0}{1}{1}
+\cellF{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -790,10 +857,15 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
+\cellEa{0}{0}{1}{1}
+\cellDa{1}{0}{2}{1}
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+%
+\cellA{0}{0}{1}{1}
+\cellF{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -816,10 +888,15 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
+\cellBa{0}{0}{1}{1}
+\cellDa{1}{0}{2}{1}
+\cellDa{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+% 
+\cell{0}{0}{1}{1}
+\cellF{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -844,10 +921,15 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
+\cellCa{0}{0}{1}{1}
+\cellEa{1}{0}{2}{1}
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+% 
+\cellF{0}{0}{1}{1}
+\cellB{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -870,10 +952,15 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
+\cellEa{0}{0}{1}{1}
+\cellEa{1}{0}{2}{1}
 \cell{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+% 
+\cellA{0}{0}{1}{1}
+\cellB{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -896,10 +983,15 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
+\cellBa{0}{0}{1}{1}
+\cellEa{1}{0}{2}{1}
+\cellDa{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+%
+\cell{0}{0}{1}{1}
+\cellB{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -921,53 +1013,16 @@ For step 2, the vertex above the \# symbol must be $1$ by definition. Also, the 
 \label{fig: step 2 cases}
 \end{figure}
 
-\noindent As no case in Figure \ref{fig: step 2 cases} creates or destroys any $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cells, the LHS sign does not change for any intermediate vertex flip. Similarly, one can check that both before and after the vertex is changed from $0$ to $1$ that the following is true. Replacing each $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cell with $T_0$ and replacing all other cells with their unique corresponding tile only forms tiles that must all be part of the same polygon. For example, the corresponding tiles for Case \ref{subfig: step 2 bit flip case 5} is shown in Figure \ref{fig: step 2 example tile swap}.
-
 \begin{figure}[h!]
 \centering
 \begin{subfigure}[t]{0.2\textwidth}
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-% row 2 of cells
-\cellE{0}{1}{1}{2}
-\cellE{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-\end{subfigure}
-~
-\begin{subfigure}[t]{0.2\textwidth}
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cellC{0}{0}{1}{1}
-\cellD{1}{0}{2}{1}
-% row 2 of cells
-\cellA{0}{1}{1}{2}
-\cellB{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-\end{subfigure}
-\caption{Tile configurations before and after flipping the vertex in Case \ref{subfig: step 2 bit flip case 5}}
-\label{fig: step 2 example tile swap}
-\end{figure}
-
-\noindent Therefore the number of polygons remains the same, and so the RHS is preserved.
-
-For step 3, the vertex above the \# symbol must be $0$ by definition. As we cannot create or destroy $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells, Figure \ref{fig: step 3 cases} depicts all $6$ possible cases.
-
-\begin{figure}[h!]
-\centering
-\begin{subfigure}[t]{0.2\textwidth}
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
-\cell{1}{-1}{2}{0}
+\cellB{0}{0}{1}{1}
+\cellA{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -990,10 +1045,15 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
+\cellAa{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
+\cellDa{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+%
+\cellE{0}{0}{1}{1}
+\cellA{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1017,10 +1077,15 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
+\cellFa{0}{0}{1}{1}
 \cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
+\cellDa{0}{-1}{1}{0}
 \cell{1}{-1}{2}{0}
+% 
+\cellC{0}{0}{1}{1}
+\cellA{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellD{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1046,9 +1111,14 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \begin{tikzpicture}
 % row 1 of cells
 \cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
+\cellFa{1}{0}{2}{1}
 \cell{0}{-1}{1}{0}
-\cell{1}{-1}{2}{0}
+\cellCa{1}{-1}{2}{0}
+%
+\cellB{0}{0}{1}{1}
+\cellD{1}{0}{2}{1}
+\cellC{0}{-1}{1}{0}
+\cellE{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$0$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1071,10 +1141,15 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
-\cell{1}{-1}{2}{0}
+\cellAa{0}{0}{1}{1}
+\cellFa{1}{0}{2}{1}
+\cellDa{0}{-1}{1}{0}
+\cellCa{1}{-1}{2}{0}
+%
+\cellE{0}{0}{1}{1}
+\cellD{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellE{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1097,10 +1172,15 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \begin{center}
 \begin{tikzpicture}
 % row 1 of cells
-\cell{0}{0}{1}{1}
-\cell{1}{0}{2}{1}
-\cell{0}{-1}{1}{0}
-\cell{1}{-1}{2}{0}
+\cellFa{0}{0}{1}{1}
+\cellFa{1}{0}{2}{1}
+\cellDa{0}{-1}{1}{0}
+\cellCa{1}{-1}{2}{0}
+%
+\cellC{0}{0}{1}{1}
+\cellD{1}{0}{2}{1}
+\cellE{0}{-1}{1}{0}
+\cellE{1}{-1}{2}{0}
 % row 1 labels
 \( \lablvertex{0}{0}{$1$} \)
 \( \lablvertex{1}{0}{\#} \)
@@ -1122,42 +1202,94 @@ For step 3, the vertex above the \# symbol must be $0$ by definition. As we cann
 \label{fig: step 3 cases}
 \end{figure}
 
-We show Equation \ref{eq: sign prop} holds case by case. In Case \ref{subfig: bit flip case 1}, the flip add one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. As the flip creates a new polygon the sign of the RHS changes. In Case \ref{subfig: bit flip case 2}, the flip removes and adds a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 3}, the flip adds both a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell and a $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 4}, the flip does not add a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, so the sign of the LHS stays the same. As the flip does not create a new polygon, the RHS stays the same. In Case \ref{subfig: bit flip case 5}, the flip removes a $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, so the sign of the LHS changes. Before the flip, replacing the cells with the appropriate tiles results in a configuration that can either represent portions of one or two polygons, as shown in Figure \ref{fig: tile config for double case}.
+Since trivially $\ell_{0}$ is a proper lattice, the twelve cases
+in Figures \ref{fig: step 2 cases} and \ref{fig: step 3 cases} show inductively that every $\ell_{i}$
+is a proper lattice. For every $i$, we have already seen that $\ell_{i}$
+is a framed lattice, so let $P_{i}=\mathcal{L}^{-1}\left(\ell_{i}\right)$.
+Figures \ref{fig: step 2 cases} and \ref{fig: step 3 cases} also show the portions of $P_{i-1}$
+and $P_{i}$ that are in these two cells, where the dashed lines
+are from the polygons of $P_{i-1}$ and the dotted lines from the
+polygons of $P_{i}$. (Recall that $\#$ is $0$ in $\ell_{i-1}$
+and $1$ in $\ell_{i}$.)
 
-\begin{figure}[h!]
-\centering
-\begin{subfigure}[t]{0.2\textwidth}
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cellD{0}{0}{1}{1}
-\cellC{1}{0}{2}{1}
-% row 2 of cells
-\cellA{0}{1}{1}{2}
-\cellF{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-\end{subfigure}
-~
-\begin{subfigure}[t]{0.2\textwidth}
-\begin{center}
-\begin{tikzpicture}
-% row 1 of cells
-\cellE{0}{0}{1}{1}
-\cellE{1}{0}{2}{1}
-% row 2 of cells
-\cellE{0}{1}{1}{2}
-\cellD{1}{1}{2}{2}
-\end{tikzpicture}
-\end{center}
-\end{subfigure}
-\caption{Tile configurations before and after flipping the vertex in Case \ref{subfig: bit flip case 5}}
-\label{fig: tile config for double case}
-\end{figure}
+Let us say a cell is \emph{negative} if it is $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, i.e., if its evaluation under $v$ is negative. The second conclusion
+of the proposition can be rephrased by saying that the number of negative
+cells in $\ell$ and the number of polygons in $P$ have the same
+parity, i.e., are both even or both odd. For example, $\ell_{0}$
+satisfies the conclusion of the proposition because $\ell_{0}$ has
+no negative cells and $P_{0}$ has no polygons.
 
-\noindent If the tiles were part of one polygon before the flip, the tiles after the flip must be part of two distinct polygons. Similarly, if the tiles are were part of two polygons before the flip, the tiles after the flip must be of one polygon. Either way the total number of polygons changes by $1$, and so the RHS changes sign. In Case \ref{subfig: bit flip case 6}, the flip adds $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, so the sign of the LHS changes. The same logic from Case \ref{subfig: bit flip case 5} applies for the RHS, as the flip either removes or adds a polygon.
+Assume now that some $P_{i-1}$ and $\ell_{i-1}$ satisfies the second
+conclusion of the proposition, and let us show that the same is true
+for $P_{i}$ and $\ell_{i}$. This will complete the proposition.
+We know that we are in one of the twelve cases of Figures \ref{fig: step 2 cases}
+and \ref{fig: step 3 cases}, and we must look at the number of negative cells in $\ell_{i}$
+versus $\ell_{i-1}$, and the number of polygons in $P_{i}$ versus
+$P_{i-1}$. An easy case is (a) of Figure \ref{fig: step 3 cases} because $\ell_{i}$
+has one more negative cell (specifically, a cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$), and $P_{i}$ has one more polygon than $P_{i-1}$.
 
-As all cases preserve Equation \ref{eq: sign prop}, the $(m+1, n)$ framed binary lattice $\ell'$ also follows Equation \ref{eq: sign prop}.
+Let us now look in the remaining cases at how the number of negative
+cells changes from $\ell_{i-1}$ to $\ell_{i}$. In the six cases
+of Figure \ref{fig: step 2 cases} and also case (d) of Figure \ref{fig: step 3 cases}, the four
+pictured cells have no negative cells regardless of whether $\#$
+equals $0$ or $1$, so there is no change. The number is also unchanged
+in (b) of Figure \ref{fig: step 3 cases} because in this case a single negative cell
+$\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ changes position between $\ell_{i-1}$ and $\ell_{i}$. In (c) of
+Figure \ref{fig: step 3 cases}, the number of negative cells increases by $2$ because
+changing $0$ to $1$ in the central position creates both a cell $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ and a cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$. For the final two cases, the number decreases by $1$ in (e) of
+Figure \ref{fig: step 3 cases} and increases by $1$ in (f) of Figure \ref{fig: step 3 cases}. Therefore,
+we can complete the proposition by showing that in the six cases of
+Figure \ref{fig: step 2 cases} and in (b), (c), (d) of Figure \ref{fig: step 3 cases}, $P_{i-1}$
+and $P_{i}$ have the same number of polygons, whereas in (e) and
+(f) of Figure \ref{fig: step 3 cases}, the number of polygons in $P_{i-1}$ and $P_{i}$
+differ by $1$.
+
+Consider, for example, (c) of Figure \ref{fig: step 2 cases}, and look at the point
+just above the lower left corner and the point just left of the upper
+right corner. In $P_{i-1}$ these are connected by a straight dashed
+line, and in $P_{i}$ these are connected by dotted line segments.
+We call both of these \emph{inside connections}. Because $P_{i-1}$
+and $P_{i}$ are polygon mosaics, these same points are connected
+by straight line segments outside the pictured area, and we will call
+these \emph{outside connections} because they connect points on the
+edge of the pictured square with a path outside the square. This outside
+connection is the same in $P_{i-1}$ and $P_{i}$. Therefore $P_{i-1}$
+and $P_{i}$ have the same number of polygons because the polygon
+with this outside connection changes shape, and all other polygons
+are unchanged. Similar reasoning completes the remaining cases of
+Figure \ref{fig: step 2 cases} and cases (b), (c), (d) of Figure \ref{fig: step 3 cases}.
+
+We now must show that in (e) and (f) of Figure \ref{fig: step 3 cases}, the number
+of polygons in $P_{i-1}$ and $P_{i}$ differ by $1$. We will explicitly
+show this in (e), and essentially identical reasoning applies to (f).
+There are four places where inside connections meet the edge of the
+outer square. Beginning in the lower left and working clockwise, let
+$x_{1}$, $x_{2}$, $x_{3}$, and $x_{4}$ be these points. For example,
+$x_{3}$ is just left of the upper right corner and $x_{4}$ is just
+above the lower right corner. In $P_{i-1}$, there is an inside connection
+between $x_{1}$ and $x_{2}$, and another between $x_{3}$ and $x_{4}$,
+whereas $P_{i}$ has inside connections between $x_{1}$ and $x_{4}$,
+and between $x_{2}$ and $x_{3}$.
+
+Any outside connections in $P_{i-1}$ and $P_{i}$ must be identical,
+and since these are polygon mosaics, each of $x_{1}$, $x_{2}$, $x_{3}$,
+and $x_{4}$ is the end of some outside connection. One possibility
+is that we have one outside connection between $x_{1}$ and $x_{2}$,
+and another between $x_{3}$ and $x_{4}$. In this case, the inside
+and outside connections of $P_{i-1}$ complete two polygons, one including
+$x_{1}$ and $x_{2}$, and the other including $x_{3}$ and $x_{4}$.
+However, $P_{i}$ will have one fewer polygon because a single polygon
+contains all $x_{i}$. Another possibility is to have one outside
+connection between $x_{1}$ and $x_{4}$, and another between $x_{2}$
+and $x_{3}$. In this case, in $P_{i-1}$ a single polygon includes
+all $x_{i}$, whereas in $P_{i}$ they complete two polygons, one
+containing $x_{1}$ and $x_{4}$, and the other containing $x_{2}$
+and $x_{3}$, and therefore $P_{i}$ has one more polygon than $P_{i-1}$.
+These are the only possibilities since it is impossible to have an
+outside connection between $x_{1}$ and $x_{3}$, and another between
+$x_{2}$ and $x_{4}$. This is because our polygons are in a plane,
+and polygons in a mosaic are not able to cross one another. This completes
+our proof.
 \end{proof}
 
 \begin{thm}
@@ -1166,7 +1298,7 @@ The number of $(m,n)$ mosaics that do not contain a polygon has
 \left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell} v(\ell),
 \label{eq: sum of v}
 \end{equation}
-where the sum is over all $(m,n)$ framed binary lattices.
+where the sum is over all $(m,n)$ framed lattices.
 \label{thm: sum of vs}
 \end{thm}
 
@@ -1176,7 +1308,7 @@ We begin by rewriting Equation \ref{eq: inc exl setup} to
 
 $$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big|.$$
 
-By the inclusion-exclusion principle, we have
+By the inclusion-exclusion principle (proved in the Appendix), we have
 
 \begin{equation}
 -\Big|\bigcup_{i=1}^N M_i \Big| = \sum_{\varnothing \neq J \subseteq \{1,2,\dots,N\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big|.
@@ -1187,24 +1319,24 @@ Consider an individual subset of polygon indices $J$ in the sum in Equation \ref
 
 $$(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = v(\ell),$$
 
-where $\ell$ is the binary lattice such that $f(\mathcal{M}) = \ell$ for all mosaics $\mathcal{M}$ that contain at least the polygons in $J$.
+\noindent where $\ell$ is the binary lattice such that $f(\mathcal{M}) = \ell$ for all mosaics $\mathcal{M}$ that contain at least the polygons in $J$.
 
 Now discard all $0$ terms in Equation \ref{eq: incl excl applied} and group the terms in Equation \ref{eq: incl excl applied} for all $J$ such that $|J|=k$. From the definition of $M$, the absolute value of this collection of terms counts the number of mosaics that have at least $k$ polygons, and so
 
 $$\sum_{J \subseteq \{1,2,\dots,N\}, |J|=k}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
 
-Additionally notice that the binary lattice $\ell^*$ made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells has $v(\ell^*) = 7^{mn}$, and is the only framed binary lattice such that $P(\ell) = 0$. Therefore, we can write
+Additionally notice that the binary lattice $\ell^*$ made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells has $v(\ell^*) = 7^{mn}$, and is the only framed lattice such that $P(\ell) = 0$. Therefore, we can write
 
 $$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big| = \sum_{k \geq 0} \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
 
-Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed binary lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed binary lattices in Equation \ref{eq: sum of v} gives the desired result.
+Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed lattices in Equation \ref{eq: sum of v} gives the desired result.
 \end{proof}
 
 As in Section \ref{section: matrices}, substituting the values of $v$ into matrices $A_k, B_k, C_k, D_k$ gives the sum from Theorem \ref{thm: sum of vs} by Theorem \ref{thm: m by n matrix}. For completeness, we write these substitutions below.
 
 \begin{definition}
 
-For integers $k \geq 1$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
+For positive integers $k$ let $A_k, B_k, C_k, D_k$ be $2^{k-1} \times 2^{k-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
 
 \begin{eqnarray*}
 A_{k+1} = \begin{pmatrix} 7A_{k} & B_{k} \\ C_{k} & D_{k} \end{pmatrix} & B_{k+1} = \begin{pmatrix} -A_{k} & B_{k} \\ 0C_{k} & D_{k} \end{pmatrix} \\
@@ -1220,31 +1352,7 @@ The number of $(m,n)$ polygon-free mosaics $\left|\mathbb{P}^{(m,n)}\right|$ is 
 
 Finally, we introduce possible extensions to our work, as well as how our work relates to other mosaic enumeration efforts.
 
-\section{Extensions and Related Work}
-
-Enumerating the number of polygon-free mosaics in certain extensions of the tileset $\mathbb{T}$ is simple to do. For example, if we extend $\mathbb{T}$ to include three types of tiles that connect the top and bottom midpoints like below
-
-\begin{figure}[h!]
-\begin{center}
-\begin{tikzpicture}
-    %
-    \cellF{0}{0}{1}{1}
-    %
-    \draw[thick] (2, 0) rectangle (3,1);
-    \draw[red, thick, densely dotted] (3 * 0.5 + 2 * 0.5 , 0) -- (3 * 0.5 + 2 * 0.5 , 0.33) -- (3 * 0.75 + 2 * 0.25 , 0.5) -- (3 * 0.5 + 2 * 0.5 , 0.66) -- (3 * 0.5 + 2 * 0.5 , 1);
-    
-    %
-    \draw[thick] (4, 0) rectangle (5,1);
-    \draw[red, thick, densely dotted] (5 * 0.5 + 4 * 0.5 , 0) -- (5 * 0.5 + 4 * 0.5 , 0.33) -- (5 * 0.25 + 4 * 0.75 , 0.5) -- (5 * 0.5 + 4 * 0.5 , 0.66) -- (5 * 0.5 + 4 * 0.5 , 1);
-\end{tikzpicture}
-\end{center}
-    % \caption{The tile set $\mathbb{T}$}
-    % \label{fig:tile set}
-\end{figure}
-
-% \newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
-
-\noindent one simply needs to adjust the $v$ from Definition \ref{def: def of v} to have $v\left(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix} \right) = v\left(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix} \right) = 3.$
+\section{Related Work and Extensions}
 
 In terms of related work, our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further generalizing the techniques in Oh et al. \cite{Oh2014} to explore a new direction in mosaic enumeration. To begin, Hong and Oh \cite{Hong2018} provided bounds on the number of polygon mosaics.
 
@@ -1277,12 +1385,45 @@ for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of 
 
 Oh and colleagues go beyond enumeration by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Section \ref{section: matrices} method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to enumerate the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
 
-We point out it is not possible to extend our results naively to the Lomonaco and Kauffman \cite{Lomonaco08} tile set to enumerate the number of \emph{knot-free mosaics}. This is specifically due to the deductions for Case \ref{subfig: bit flip case 5} and Case \ref{subfig: bit flip case 6} in the proof of Theorem \ref{prop: sign of v}, as knots allow for additional subcases in which the number of knots does not change.
+Enumerating the number of polygon-free mosaics in certain extensions of the tileset $\mathbb{T}$ is simple to do. For example, if we extend $\mathbb{T}$ to include three types of tiles that connect the top and bottom midpoints like below
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tikzpicture}
+    %
+    \cellF{0}{0}{1}{1}
+    %
+    \draw[thick] (2, 0) rectangle (3,1);
+    \draw[red, thick, densely dotted] (3 * 0.5 + 2 * 0.5 , 0) -- (3 * 0.5 + 2 * 0.5 , 0.33) -- (3 * 0.75 + 2 * 0.25 , 0.5) -- (3 * 0.5 + 2 * 0.5 , 0.66) -- (3 * 0.5 + 2 * 0.5 , 1);
+    %
+    \draw[thick] (4, 0) rectangle (5,1);
+    \draw[red, thick, densely dotted] (5 * 0.5 + 4 * 0.5 , 0) -- (5 * 0.5 + 4 * 0.5 , 0.33) -- (5 * 0.25 + 4 * 0.75 , 0.5) -- (5 * 0.5 + 4 * 0.5 , 0.66) -- (5 * 0.5 + 4 * 0.5 , 1);
+\end{tikzpicture}
+\end{center}
+    % \caption{The tile set $\mathbb{T}$}
+    % \label{fig:tile set}
+\end{figure}
+
+% \newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
+
+\noindent one simply needs to adjust the $v$ from Definition \ref{def: def of v} to have $v\left(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix} \right) = v\left(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix} \right) = 3.$
+
+We point out it is not possible to extend our results naively to the Lomonaco and Kauffman \cite{Lomonaco08} tile set to enumerate the number of \emph{knot-free mosaics}. This is specifically due to the deductions for Case \ref{subfig: bit flip case 5} and Case \ref{subfig: bit flip case 6} in the proof of Theorem \ref{prop: sign of v}, as knots are able to cross each other. This allows for additional subcases in which the number of knots does not change in these cases.
 
 \newpage
 
 \printbibliography
 
-% \section{Appendix}
+\newpage
+
+\section{Appendix}
+
+\textbf{Proposition}: The Inclusion-Exclusion Principle
+For finite sets $A_{1}, A_{2}, \dots, A_{M}$, 
+$$\left| \bigcup_{j=1}^{M} A_{j} \right| = \sum_{\emptyset \neq I \subseteq \{1, 2, \dots, M\}} (-1)^{|I|-1} \left| \bigcap_{j \in I} A_{j} \right|$$
+
+\begin{proof}
+The case of one set is trivial, and the case of two sets is the familiar and easily justified statement that $|A_{1} \cup A_{2}| = |A_{1}| + |A_{2}| - |A_{1} \cap A_{2}|$. Proceeding inductively, for $M \ge 3$, assume the result for $M-1$ sets, and let us prove it for $M$ sets. Let us split up the sum on the right into those sets $I$ that do not contain $M$ and those that do. By our inductive hypothesis, the first sum equals $|\bigcup_{j=1}^{M-1} A_{j}|$ and the second sum can be written as $\sum_{\{M\} \subseteq I \subseteq \{1, 2, \dots, M\}} (-1)^{|I|-1} \left| \bigcap_{j \in I} A_{j} \right|.$ Separating out the term with $I = \{M\}$, this equals $|A_{M}| - \sum_{\emptyset \neq I \subseteq \{1, 2, \dots, M-1\}} (-1)^{|I|} |\bigcap_{j \in I} (A_{j} \cap A_{M})|$. Again using our inductive hypothesis, the sum here is $\left| \bigcup_{j=1}^{M-1} (A_{j} \cap A_{M}) \right| = \left| \left( \bigcup_{j=1}^{M-1} A_{j} \right) \cap A_{M} \right|.$ The entire right side of our desired equation therefore equals $\left| \bigcup_{j=1}^{M-1} A_{j} \right| + |A_{M}| - \left| \left( \bigcup_{j=1}^{M-1} A_{j} \right) \cap A_{M} \right|.$ By the case of our proposition with two sets, this equals $|\bigcup_{j=1}^{M} A_{j}|$, as desired.
+\end{proof}
 
 \end{document}
