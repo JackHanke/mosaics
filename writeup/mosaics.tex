@@ -149,14 +149,14 @@
 \begin{center}
 
 \begin{abstract}
-Hong and Oh introduced a model for multiple ring polymers in physics in which an $m \times n$ retangular grid is constructed from a selection of $7$ distinct tiles. These grids are called \textit{mosaics}. Hong and Oh provided bounds on the number of these mosaics in which the tile patterns form polygons and all tiles that do not form a polygon are the blank tile. We exactly enumerate polygon mosaics. We also introduce and enumerate mosaics with the related property of not containing a polygon, which we call polygon-free mosaics.
+Hong and Oh introduced a model for multiple ring polymers in physics in $7$ distinct tiles are used to form an $m \times n$ retangular grid, which they call \emph{mosaics}. Hong and Oh provided bounds on the number of these mosaics in which the tile patterns form polygons and all tiles that are not part of a polygon are the blank tile, which they call \emph{polygon mosaics}. We exactly enumerate polygon mosaics. We also introduce and enumerate mosaics with the related property of not containing a polygon, which we call polygon-free mosaics.
 \end{abstract}
 
 \end{center}
 
 \section{Mosaics}
 
-Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, blindfolded. At your disposal is an unending supply of $7$ distinct types of tiles. These tiles, diagrammed in Figure~\ref{fig:tile set}, unit squares with red dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile $T_0$.
+Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, blindfolded. At your disposal is an unending supply of $7$ distinct types of tiles. These tiles, diagrammed in Figure~\ref{fig:tile set}, are composed of unit squares with red dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile $T_0$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -181,7 +181,7 @@ Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ unit
 \label{fig:tile set}
 \end{figure}
 
-We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is complete once you place $mn$ tiles from $\mathbb{T}$ to cover the floor, after which you remove your blindfold. We are interested in the number of floors that do not contain polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons"\cite{flory1949configuration, guttmann} in the literature to highlight their connection with self-avoiding walks.}.
+We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is complete once you place $mn$ tiles from $\mathbb{T}$ to cover the floor, after which you remove your blindfold. We are interested in the number of floors that do not contain polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature\cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks.}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -227,6 +227,42 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is compl
         % row1
         \cellCf{0}{0}{1}{1}
         \cellEf{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellA{3}{0}{4}{1}
+        % row2
+        \cellFf{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        \cellBf{2}{1}{3}{2}
+        \cellDf{3}{1}{4}{2}
+        % row3
+        \cellFf{0}{2}{1}{3}
+        \cellE{1}{2}{2}{3}
+        \cellD{2}{2}{3}{3}
+        \cellFf{3}{2}{4}{3}
+        % row4
+        \cellFf{0}{3}{1}{4}
+        \cellF{1}{3}{2}{4}
+        \cellC{2}{3}{3}{4}
+        \cellFf{3}{3}{4}{4}
+        % row5
+        \cellBf{0}{4}{1}{5}
+        \cellEf{1}{4}{2}{5}
+        \cellEf{2}{4}{3}{5}
+        \cellAf{3}{4}{4}{5}
+    \end{tikzpicture}
+
+    \end{center}
+    \caption{A mosaic that is not polygon-free}
+    \label{fig:example not polygon free mosaic}
+\end{subfigure}
+% \hfill
+% \hspace{0.05\textwidth}
+\begin{subfigure}[t]{0.3\textwidth}
+    \begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellCf{0}{0}{1}{1}
+        \cellEf{1}{0}{2}{1}
         \cellEf{2}{0}{3}{1}
         \cellDf{3}{0}{4}{1}
         % row2
@@ -255,56 +291,19 @@ We denote the set of tiles $\mathbb{T}=\{T_0, \dots, T_{6}\}$. The task is compl
     \caption{A polygon mosaic}
     \label{fig:example polygon mosaic}
 \end{subfigure}
-% \hfill
-% \hspace{0.05\textwidth}
-\begin{subfigure}[t]{0.3\textwidth}
-    \begin{center}
-    
-    \begin{tikzpicture}
-        % row1
-        \cellCf{0}{0}{1}{1}
-        \cellEf{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellA{3}{0}{4}{1}
-        % row2
-        \cellFf{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cellBf{2}{1}{3}{2}
-        \cellDf{3}{1}{4}{2}
-        % row3
-        \cellFf{0}{2}{1}{3}
-        \cellE{1}{2}{2}{3}
-        \cellD{2}{2}{3}{3}
-        \cellFf{3}{2}{4}{3}
-        % row4
-        \cellFf{0}{3}{1}{4}
-        \cellF{1}{3}{2}{4}
-        \cellC{2}{3}{3}{4}
-        \cellFf{3}{3}{4}{4}
-        % row5
-        \cellBf{0}{4}{1}{5}
-        \cellEf{1}{4}{2}{5}
-        \cellEf{2}{4}{3}{5}
-        \cellAf{3}{4}{4}{5}
-    \end{tikzpicture}
-    \end{center}
-    \caption{A mosaic that is not polygon-free}
-    \label{fig:example not polygon free mosaic}
-\end{subfigure}
-
 
 \end{center}
 \caption{Examples of $(5,4)$ mosaics}
 \label{fig:example mosaics}
 \end{figure}
 
-We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}, where $m,n$ are positive integers. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics. We highlight the tiles that are part of a polygon in gray. Figure~\ref{fig:example polygon free mosaic} depicts a polygon-free mosaic, Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic, and Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is not polygon-free. 
+We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}, where $m,n$ are positive integers. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics. We highlight the tiles that are part of a polygon in gray. 
 
 \begin{definition}
 An $(m,n)$ \textit{polygon-free mosaic} is an $(m,n)$ mosaic that does not contain a polygon. An $(m,n)$ \textit{polygon mosaic} is an $(m,n)$ mosaic such that any tile that is not part of a polygon is $T_0$.
 \end{definition}
 
-Notice that the only mosaic that is both a polygon mosaic and a polygon-free mosaic is the mosaic of all $T_0$ tiles.
+Figure~\ref{fig:example polygon free mosaic} depicts a polygon-free mosaic, Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is not polygon-free, and Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic. Notice that the only mosaic that is both a polygon mosaic and a polygon-free mosaic is the mosaic of all $T_0$ tiles.
 
 Let $\mathbb{P}^{(m,n)}$ be the set of $(m,n)$ polygon-free mosaics. Clearly the number of $(m,n)$ mosaics that contain at least one polygon is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$. To determine the number of polygon-free mosaics, we begin by defining a related object to mosaics, that being binary lattices. 
 
@@ -499,7 +498,7 @@ $\mathcal{L}$ is surjective because
 
 To enumerate polygon mosaics, we begin by defining a function $v$ that maps cells to integers. More generally, we define $v$ from binary lattices to integers by taking the product of $v$ applied to each cell in the binary lattice. 
 
-We say we \emph{assign} values to $v$ if we give specific integers for each cell. We choose this construction because we will show that just by changing the assignment of integers in $v$ we can enumerate both polygon mosaics (Section~\ref{section: counting polygon mosaics}), polygon-free mosaics (Section~\ref{section: counting polygon-free mosaics}), and similar questions for extensions to the tileset (Section~\ref{section: related work and extensions}).
+We say we \emph{assign} values to $v$ if we substitute specific integers for $v$ of each cell. We choose this construction because we will show that just by changing the assignment of integers in $v$, we can enumerate both polygon mosaics (Section~\ref{section: counting polygon mosaics}) and polygon-free mosaics (Section~\ref{section: counting polygon-free mosaics}) under the tile set $\mathbb{T}$, as well as certain extensions to $\mathbb{T}$ (Section~\ref{section: related work and extensions}).
 
 \begin{remark} If we assign
 
@@ -508,7 +507,7 @@ $$\begin{cases}
 1 & \text{otherwise}
 \end{cases}$$
 
-The number of $(m,n)$ polygon mosaics is $\sum v(\ell)$, where the sum is over all framed lattices $\ell$.
+\noindent The number of $(m,n)$ polygon mosaics is $\sum v(\ell)$, where the sum is over all framed lattices $\ell$.
 \label{prop: sum of v for polygon mosaics}
 \end{remark}
 
@@ -705,25 +704,23 @@ We immediately have the number of mosaics that contain at least one polygon is
 \label{eq: inc exl setup}
 \end{equation}
 
-Notice that not every subset of polygons $1 \leq i \leq N$ has a mosaic that contains them all. For example, for the polygons in Figure~\ref{fig: polygons in different places} $M_1 \cap M_2 = M_2 \cap M_3 = \varnothing$ but $M_1 \cap M_3$ contains exactly the polygon mosaic with polygons $1$ and $3$.
+Notice that not every subset of polygons has a mosaic that contains them all. For example, for the polygons in Figure~\ref{fig: polygons in different places} $M_1 \cap M_2 = M_2 \cap M_3 = \varnothing$ but $M_1 \cap M_3$ contains exactly the polygon mosaic with polygons $1$ and $3$.
 
 \begin{prop}
-Let $J$ be a subset of indices of polygons. If there exists at least one mosaic that contains all polygons in $J$, we have
+For a polygon mosaic $P$, let $\ell=\mathcal{L}\left(P\right)$. If $J$ is the subset of indices of the polygons in $P$ we have
 
 \begin{equation}
-\Big|\bigcap_{j \in J} M_j \Big| = \Big|v(\ell)\Big|,
+\Big|\bigcap_{j \in J} M_j \Big| = \Big|v(\ell)\Big|.
 \label{eq: intersect of M}
 \end{equation}
-
-\noindent where $\ell$ is the framed lattice such that $\ell = \mathcal{L}(\mathcal{M})$ where $\mathcal{M}$ is any mosaic that only contains the polygons in $J$.
 \label{prop: mag of v}
 \end{prop}
 
 \begin{proof}
-From the definition of $M_j$, the left hand side of Equation~\ref{eq: intersect of M} counts the number of mosaics that necessarily contain the polygons in $J$, and possibly contain other polygons. For the right hand side, if a cell comes from a tile that is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(\ell)|$ is just $7$ raised to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $\ell$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, $|v(\ell)|$ counts all possible tile assignments in all locations that are not part of a polygon in $J$. Therefore $|v(\ell)|$ counts mosaics that contain the polygons in $J$. This is the definition of $\bigcap_{i \in S} M_i$, and so the equality holds.
+From the definition of $M_j$, the left hand side of Equation~\ref{eq: intersect of M} counts the number of mosaics that necessarily contain the polygons in $J$, and possibly contain other polygons, or tiles of any type that are not part of polygons. For the right hand side, if a cell comes from a tile that is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(\ell)|$ is just $7$ raised to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $\ell$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, $|v(\ell)|$ counts all possible tile assignments in all locations that are not part of a polygon in $J$. Therefore $|v(\ell)|$ counts mosaics that contain the polygons in $J$. This is the definition of $\bigcap_{i \in S} M_i$, and so the equality holds.
 \end{proof}
 
-For the sign of $v$, we show that although $v(\ell)$ is computed ``cell-by-cell'', we recover global information about $\mathcal{L}(P)$.
+For the sign of $v$, consider a polygon mosaic $P$, and let $\ell=\mathcal{L}\left(P\right)$. We show that although $v(\ell)$ is computed ``cell-by-cell'' of $\ell$, we recover global information about $P$.
 
 \begin{prop}
 For a polygon mosaic $P$, let $\ell=\mathcal{L}\left(P\right)$. If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
@@ -1309,26 +1306,22 @@ By the inclusion-exclusion principle (see the Appendix), we have
 \label{eq: incl excl applied}
 \end{equation}
 
-Consider an individual subset of polygon indices $J$ in the sum in Equation~\ref{eq: incl excl applied} such that $|J|=k \geq 1$. If there exists no mosaic that contains all polygons in $J$, by the definition of $M$ the term is $0$. If at least one mosaic does exist, Propositions~\ref{prop: mag of v} and~\ref{prop: sign of v} give the following
+For Equation \ref{eq: incl excl applied}, for some $\varnothing \neq J \subseteq \{1,2,\dots,N\}$, if $\bigcap_{j \in J} M_j$ is empty then the $\Big|\bigcap_{j \in J} M_j \Big|$ term is $0$. Therefore, the domain of summation can be rewritten to be over all $J$ such that there exists a polygon mosaic $P$ with exactly the polygons in $J$. For fixed $J$, if $\mathcal{L}(P)=\ell$, Propositions~\ref{prop: mag of v} and~\ref{prop: sign of v} give the following
 
-$$(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = v(\ell),$$
+$$(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = v(\ell).$$
 
-\noindent where $\ell=\mathcal{L}(\mathcal{M})$, where $\mathcal{M}$ is the polygon mosaic containing exactly the polygons in $J$.
+Therefore, we can rewrite the sum in Equation \ref{eq: incl excl applied} as
 
-\noindent where $\ell$ is the binary lattice such that $f(\mathcal{M}) = \ell$ for all mosaics $\mathcal{M}$ that contain at least the polygons in $J$.
+$$\sum_{J \subseteq \{1,2,\dots,N\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\ell}v(\ell).$$
 
-Now discard all $0$ terms in Equation~\ref{eq: incl excl applied} and group the terms in Equation~\ref{eq: incl excl applied} for all $J$ such that $|J|=k$. From the definition of $M$, the absolute value of this collection of terms counts the number of mosaics that have at least $k$ polygons, and so
+\noindent where $\ell$ is over all framed proper lattices that $\mathcal{L}^{-1}(\ell)$  has at least one polygon. Additionally notice that $v$ applied to the binary lattice made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells equals $7^{mn}$, and is the only framed proper lattice such that $\mathcal{L}^{-1}(\ell)$ has no polygons. This gives
 
-$$\sum_{J \subseteq \{1,2,\dots,N\}, |J|=k}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
+$$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big| = \sum_{\ell} v(\ell),$$
 
-Additionally notice that the binary lattice $\ell^*$ made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells has $v(\ell^*) = 7^{mn}$, and is the only framed lattice such that $P(\ell) = 0$. Therefore, we can write
-
-$$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big| = \sum_{k \geq 0} \sum_{\{\ell | P(\ell) = k\}}v(\ell).$$
-
-Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed lattices in Equation~\ref{eq: sum of v} gives the desired result.
+where the sum is over all framed proper lattices. Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed lattices in Equation~\ref{eq: sum of v} gives the desired result.
 \end{proof}
 
-Therefore, the assignment at the beginning of this section gives the main result of the paper.
+Theorem \ref{thm: sum of vs} let's us apply Theorem \ref{thm: m by n matrix} to the $v$ assignment at the beginning of this section, which gives the main result of the paper.
     
 \begin{thm}
 For positive integers $n$ let $A_n, B_n, C_n, D_n$ be $2^{n-1} \times 2^{n-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
@@ -1354,7 +1347,7 @@ The number of $(m,n)$ polygon mosaics for $m,n \geq 3$ is bounded between
 $2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$
 \end{thm}
 
-\noindent Theorem~\ref{prop: sum of v for polygon mosaics} nicely compliments this result with a procedure to exactly enumerate polygon mosaics, as well as exactly enumerating the sequence A181245 on the OEIS \cite{oeis}. It is important to note that contrary to this work, the authors in \cite{Hong2018} did not consider the mosaic of all $T_0$ a polygon mosaic, and so our enumeration differs to theirs by $1$. We also point out that our work allows for both polygon and polygon-free mosaics to be enumerated. The methods in \cite{Oh2014} could be used enumerate just polygon mosaics (ie. an analagous result to Theorem~\ref{prop: sum of v for polygon mosaics}), a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print.
+\noindent Our Theorem~\ref{prop: sum of v for polygon mosaics} nicely compliments this result with a procedure to exactly enumerate polygon mosaics, as well as exactly enumerating the sequence A181245 on the OEIS \cite{oeis}. It is important to note that contrary to this work, the authors in \cite{Hong2018} did not consider the mosaic of all $T_0$ a polygon mosaic, and so our enumeration differs to theirs by $1$. We also point out that our work allows for both polygon and polygon-free mosaics to be enumerated. The methods in \cite{Oh2014} could be used to enumerate just polygon mosaics (ie. an analagous result to Theorem~\ref{prop: sum of v for polygon mosaics}), a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print.
 
 In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors were interested in a subset of mosaics which they call \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics using an analagous method to that of Section~\ref{section: matrices}.
 
@@ -1375,7 +1368,7 @@ O_{k+1} = \begin{pmatrix}
 for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 \end{thm}
 
-Oh and colleagues go beyond enumeration by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Section~\ref{section: matrices} method to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to enumerate the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
+Oh and colleagues go beyond enumeration by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Section~\ref{section: matrices} to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to enumerate the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
 
 Enumerating the number of polygon-free mosaics in certain extensions of the tileset $\mathbb{T}$ is simple to do. For example, let's extend $\mathbb{T}$ to include three types of tiles that connect the top and bottom midpoints like below:
 
