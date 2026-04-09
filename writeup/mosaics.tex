@@ -479,19 +479,17 @@ Let $\mathcal{L}$ map a $(m,n)$ polygon mosaic to a $(m,n)$ proper framed lattic
 \label{fig:example of f mapping}
 \end{figure}
 
+Notice that under $\mathcal{L}$, no tile can map to the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
+
 \begin{prop}
-    The map $\mathcal{L}$ bijectively maps the set of $(m,n)$ polygon mosaics to the set of $(m,n)$ proper framed lattices for all positive integers $m$ and $n$.
-    \label{prop: L is a bijection}
+The map $\mathcal{L}$ bijectively maps the set of $(m,n)$ polygon mosaics to the set of $(m,n)$ proper framed lattices for all positive integers $m$ and $n$.
+\label{prop: L is a bijection}
 \end{prop}
 
-\begin{proof}
-Notice that under $\mathcal{L}$, no tile can map to the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. 
+\begin{proof} 
+The map $\mathcal{L}$ is injective because no two polygon mosaics can map to the same binary lattice. To see this, simply pick a tile for which the two polygon mosaics differ. From the definition of $\mathcal{L}$, the corresponding cell in the framed binary lattice must also be different.
 
-$\mathcal{L}$ is injective because
-
-$\mathcal{L}$ is surjective because
-
-\textbf{TODO}
+The map $\mathcal{L}$ is surjective because each framed proper lattice is mapped to by one polygon mosaic. This polygon mosaic can be constructed by replacing each cell of the lattice with the unique tile in $\mathbb{T}$ that maps to that cell under $\mathcal{L}$. The mosaic constructed from this procedure is a polygon mosaic because \textbf{TODO} \\
 \end{proof}
 
 \section{Counting Polygon Mosaics}\label{section: counting polygon mosaics}
