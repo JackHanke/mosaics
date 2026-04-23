@@ -1,0 +1,42 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{plain}
+\newtheorem*{thm*}{\protect\theoremname}
+\theoremstyle{remark}
+\newtheorem*{claim*}{\protect\claimname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\claimname}{Claim}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\begin{thm*}
+Here is some theorem.
+\end{thm*}
+\begin{proof}
+This is the beginning of the proof.
+\begin{claim*}
+Here is what a claim generally looks like when stated inside a proof.
+There is no indentation on the first line or on subsequent lines when
+the statement of the claim goes on past a line break.
+\end{claim*}
+This is the next paragraph of the proof, and this is where we both
+prove the claim and complete the proof.
+\end{proof}
+Here is ordinary text, following the proof.
+\end{document}
