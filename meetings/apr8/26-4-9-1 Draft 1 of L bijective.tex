@@ -1,0 +1,193 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+{[}{[}At times I found myself saying ``dotted red line'' a lot.
+Your thoughts on introducing the word ``segment'' for any line segment
+appearing on a tile?{]}{]}
+
+{[}{[}The following is a replacement for Section~2. At the beginning
+I note changes from what's there. Then I just go off on my own.{]}{]}
+
+For positive integers $m$ and {[}{[}word ``and'' added here{]}{]}
+$n$, an \emph{$\left(m,n\right)$ binary lattice} is a rectangular
+lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$
+or $1$. We also define a \emph{framed lattice} to be a binary lattice
+in which all {[}{[}``the'' changed to ``all'' here{]}{]} boundary
+vertices are labeled $0$. An example of a $\left(5,7\right)$ framed
+lattice is shown on the right of Figure~{[}{[}ref 3{]}{]}. {[}{[}Next
+stuff reworded. E.g., Definition 2.3 now in text, not a definition
+environment.{]}{]} A \emph{cell} is a $\left(1,1\right)$ binary lattice,
+{[}{[}the next text is reworded{]}{]} which we generally draw without
+connecting lines. The sixteen possible cells are pictured in Figure~{[}{[}make
+existing text into a Figure to be referenced{]}{]}. A binary lattice
+or a framed lattice is \emph{proper} if it contains no cells $\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$. {[}{[}Note: unless we reword this definition, we should never say
+``proper lattice'' but rather ``proper binary lattice.'' I prefer
+``proper'' to be a modifier, so that ``framed'' replaces ``binary''
+but ``proper'' doesn't. I know this is a change from my previous
+preference. I never claimed consistency.{]}{]}
+
+{[}{[}Based on this wording I think $\left(m,n\right)$ goes between
+``proper'' and ``framed.'' If you want something else, e.g., $\left(m,n\right)$
+proper framed lattices, then let's talk about how to write the definitions
+accordingly.{]}{]}
+
+{[}{[}In April~8 draft the following was Definition~2.3. I'm thinking
+it might make more sense to just have this in text and not a Definition
+environment. Thoughts?{]}{]} 
+
+{[}{[}Current Definition~2.3 uses ``vertex'' for a mosaic which
+I think might be confusing. Thus I reworded.{]}{]}
+
+{[}{[}Throughout the paper, I recommend ${\tt \backslash mathscr}$
+for $\mathscr{L}$ and ${\tt \backslash mathcal}$ for $\mathcal{M}$
+so that they look quite different.{]}{]} Let $\mathcal{M}$ be a polygon
+mosaic. We will create a binary lattice from $\mathcal{M}$ by replacing
+every point that is at a corner of a tile of $\mathcal{M}$ by either
+$0$ or $1$. For each such point, we count the number of polygons
+of $\mathcal{M}$ that surround it, i.e., polygons for which the point
+is in the polygon's interior. If this number is even, label the vertex
+$0$, and if it is odd, label the vertex $1$. We then delete all
+red dotted lines that are part of polygons of $\mathcal{M}$. We define
+$\mathscr{L}\left(\mathcal{M}\right)$ to be the resulting binary
+lattice. See Figure~{[}ref for Fig~3{]}. {[}{[}maybe the caption
+of Fig~3 should change from ``$\mathscr{L}$ applied to a polygon
+mosaic'' to ``Applying $\mathscr{L}$ to a polygon mosaic''??{]}{]}
+If $\mathcal{M}$ is an $\left(m,n\right)$ polygon matrix, i.e.,
+$m$ tiles high and $n$ tiles wide, then $\mathscr{L}\left(\mathcal{M}\right)$
+is an $\left(m,n\right)$ binary lattice, i.e., $m+1$ vertices high
+and $n+1$ vertices wide. In fact, $\mathscr{L}\left(\mathcal{M}\right)$
+is an $\left(m,n\right)$ framed lattice because every point on the
+edge of $\mathcal{M}$ is surrounded by no polygons.
+
+In our definition of $\mathscr{L}$, a tile of a polygon mosaic $\mathcal{M}$
+corresponds to a cell of $\mathscr{L}\left(\mathcal{M}\right)$. For
+tile of $\mathcal{M}$ that is not the blank tile, consider laying
+its corresponding cell over it. The red dotted line of the tile separates
+the vertices of the cells, with vertices labeled $0$ on one side
+and labeled $1$ on the other. For example, the second tile of Figure~{[}ref
+1{]} must map to either the cell $\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ or the cell $\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}$. Which one? Consider first where the interior of this polygon is
+relative to this dotted red line, and second, the number of other
+polygons that contain this polygon. For example, the tile maps to
+$\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ if the interior is below the dotted red line and an even number of
+polygons contain this polygon. On the other hand, a blank tile of
+$\mathcal{M}$ corresponds to a cell that is either $\begin{array}{cc}
+0 & 0\\
+0 & 0
+\end{array}$ or $\begin{array}{cc}
+1 & 1\\
+1 & 1
+\end{array}$. With seven tiles, and no cell able to be the image of distinct tiles,
+$\mathscr{L}\left(\mathcal{M}\right)$ can contain fourteen types
+of cells. The two types that never appear in $\mathscr{L}\left(\mathcal{M}\right)$
+are $\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}$ and $\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}$. That is, $\mathscr{L}\left(\mathcal{M}\right)$ is proper.
+
+Given any proper binary lattice $\ell$, we can reverse this process,
+creating a mosaic by replacing each cell by the unique tile that can
+map to it. Define $\mathscr{L}^{-1}$ by restricting this map to proper
+framed lattices, and let us show that $\mathscr{L}^{-1}$ is indeed
+an inverse to $\mathscr{L}$, thus proving that $\mathscr{L}$ gives
+a bijection from $\left(m,n\right)$ polygon mosaics to proper $\left(m,n\right)$
+framed lattices. Our discussion above shows that $\mathscr{L}^{-1}\circ\mathscr{L}\left(\mathcal{M}\right)=\mathcal{M}$
+for any polygon mosaic $\mathcal{M}$, so fixing a proper framed lattice
+$\ell$, we must show that $\mathscr{L}^{-1}\left(\ell\right)$ is
+a polygon mosaic and that $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)=\ell$.
+
+First observe that polygon mosaics can be characterized as those mosaics
+in which every end of a dotted red line on a tile meets, on an adjacent
+tile, another end of a dotted red line. In the mosaic $\mathscr{L}^{-1}\left(\ell\right)$,
+these ends are exactly the points which, in the corresponding cell
+of $\ell$, lie halfway between adjacent vertices of $\ell$, one
+labeled $0$ and the other labeled $1$. Because $\ell$ is a framed
+lattice, the vertex labeled $1$ is an internal vertex. Thus, another
+cell of $\ell$ shares these two vertices, and the dotted red lines
+of $\mathscr{L}^{-1}\left(\ell\right)$ from the two corresponding
+tiles meet. Therefore $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon
+mosaic.
+
+By our analysis of $\mathscr{L}$ and our definition of $\mathscr{L}^{-1}$,
+each cell of $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)$
+must either be equal to the corresponding cell of $\ell$ or is formed
+from the corresponding cell by relabeling all vertices $0$ as $1$
+and $1$ as $0$. Furthermore, since the cells are connected, i.e.,
+none is isolated, we must then have that $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)$
+itself is either equal to $\ell$ or formed by relabeling all vertices
+$0$ as $1$ and $1$ as $0$. By hypothesis, $\ell$ is a framed
+lattice, and by construction, every binary lattice in the range of
+$\mathscr{L}$ is a framed lattice. Therefore $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)=\ell$.
+This concludes our proof that $\mathscr{L}^{-1}$ is the inverse of
+$\mathscr{L}$ and thus that $\mathscr{L}$ is bijective.
+
+\bigskip{}
+\bigskip{}
+
+{[}{[}To insert when defining $v$ with signs (at least something
+along these lines){]}{]}
+
+In Section~{[}ref{]}, we remarked that $\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ and $\begin{array}{cc}
+1 & 1\\
+0 & 1
+\end{array}$ map to the same tile under $\mathscr{L}^{-1}$. By contrast, it is
+$\begin{array}{cc}
+0 & 0\\
+1 & 0
+\end{array}$ and $\begin{array}{cc}
+1 & 0\\
+1 & 1
+\end{array}$ whose image under $v$ is negative.\bigskip{}
+\bigskip{}
+
+{[}{[}Possible insertion after stating or after proving that ``For
+a polygon mosaic $P$ and $\ell=\mathscr{L}\left(P\right)$, if $P$
+contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
+is positive {[}resp. negative{]}''.{]}{]}
+
+We might want to think of this result as relating a ``global'' characteristic
+and ``local'' characteristic, since the number of polygons in $P$
+is determined by looking at the entire mosaic, whereas $v\left(\ell\right)$
+is calculated by looking at one cell at a time. The reader may wish
+to compare this to the definition of $\mathscr{L}$, which is done
+``globally'' and the definition of $\mathscr{L}^{-1}$, which was
+defined ``locally.''
+\end{document}

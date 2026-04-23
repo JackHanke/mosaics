@@ -49,6 +49,9 @@
 \newtheorem{fact}[thm]{Fact}
 \newtheorem{constraint}[thm]{Constraint}
 \newtheorem{condition}[thm]{Condition}
+\providecommand{\claimname}{Claim}
+\theoremstyle{remark}
+\newtheorem*{claim*}{\protect\claimname}
 
 \theoremstyle{definition}
 \newtheorem{eg}[thm]{Example}
@@ -149,14 +152,14 @@
 \begin{center}
 
 \begin{abstract}
-Hong and Oh introduced a model for multiple ring polymers in physics in $7$ distinct tiles are used to form an $m \times n$ retangular grid, which they call \emph{mosaics}. Hong and Oh provided bounds on the number of these mosaics in which the tile patterns form polygons and all tiles that are not part of a polygon are the blank tile, which they call \emph{polygon mosaics}. We exactly count polygon mosaics. We also introduce and enumerate mosaics with the related property of not containing a polygon, which we call polygon free mosaics.
+Hong and Oh introduced a model for multiple ring polymers in physics in which $7$ distinct tiles are used to form an $m \times n$ retangular grid, which they call \emph{mosaics}. Hong and Oh provided bounds on the number of \emph{polygon mosaics}, which are mosaics where the tile patterns form polygons and all tiles that are not part of a polygon are the blank tile. We exactly count polygon mosaics. We also introduce and count mosaics with the related property of not containing a polygon, which we call polygon free mosaics.
 \end{abstract}
 
 \end{center}
 
 \section{Mosaics}
 
-Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, where $m$ and $n$ are positive integers. At your disposal is an unending supply of $7$ distinct tiles. These tiles, diagrammed in Figure~\ref{fig:tile set}, are composed of unit squares with red dotted lines connecting $2$ sides at their midpoints, as well as the ``blank" tile.
+Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ units by $n$ units, where $m$ and $n$ are positive integers. At your disposal is an unending supply of $7$ distinct types of tiles. These tile types, diagrammed in Figure~\ref{fig:tile set}, are composed of unit squares with dotted lines connecting $2$ sides at their midpoints, as well as the ``blank tile".
 
 \begin{figure}[h!]
 \begin{center}
@@ -181,7 +184,7 @@ Imagine you are tasked with tiling a rectangular bathroom floor that is $m$ unit
 \label{fig:tile set}
 \end{figure}
 
-The task is complete once you place $mn$ tiles to cover the floor. We are interested in the number of floors that do not contain polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks.}.
+The task is complete once you place $mn$ tiles to cover the floor. We are interested in the number of floors that do not contain polygons\footnote{Polygons are more commonly referred to as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks.}. We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics. Here we highlight in gray the tiles that are part of a polygon. 
 
 \begin{figure}[h!]
 \begin{center}
@@ -263,22 +266,22 @@ The task is complete once you place $mn$ tiles to cover the floor. We are intere
         % row1
         \cellCf{0}{0}{1}{1}
         \cellEf{1}{0}{2}{1}
-        \cellEf{2}{0}{3}{1}
-        \cellDf{3}{0}{4}{1}
+        \cellDf{2}{0}{3}{1}
+        \cell{3}{0}{4}{1}
         % row2
         \cellFf{0}{1}{1}{2}
-        \cellCf{1}{1}{2}{2}
-        \cellDf{2}{1}{3}{2}
-        \cellFf{3}{1}{4}{2}
+        \cell{1}{1}{2}{2}
+        \cellBf{2}{1}{3}{2}
+        \cellDf{3}{1}{4}{2}
         % row3
         \cellFf{0}{2}{1}{3}
-        \cellBf{1}{2}{2}{3}
-        \cellAf{2}{2}{3}{3}
+        \cellCf{1}{2}{2}{3}
+        \cellDf{2}{2}{3}{3}
         \cellFf{3}{2}{4}{3}
         % row4
         \cellFf{0}{3}{1}{4}
-        \cell{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
+        \cellBf{1}{3}{2}{4}
+        \cellAf{2}{3}{3}{4}
         \cellFf{3}{3}{4}{4}
         % row5
         \cellBf{0}{4}{1}{5}
@@ -297,229 +300,239 @@ The task is complete once you place $mn$ tiles to cover the floor. We are intere
 \label{fig:example mosaics}
 \end{figure}
 
-We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics. We highlight the tiles that are part of a polygon in gray. 
-
 \begin{definition}
 An $(m,n)$ \textit{polygon free mosaic} is an $(m,n)$ mosaic that does not contain a polygon. An $(m,n)$ \textit{polygon mosaic} is an $(m,n)$ mosaic such that any tile that is not part of a polygon is the blank tile.
 \end{definition}
 
 Figure~\ref{fig:example polygon free mosaic} depicts a polygon free mosaic, Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is not polygon free, and Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic. Notice that the only mosaic that is both a polygon mosaic and a polygon free mosaic is the mosaic of all blank tiles.
 
-Let $\mathbb{P}^{(m,n)}$ be the set of $(m,n)$ polygon free mosaics. Clearly the number of $(m,n)$ mosaics that contain at least one polygon is then $7^{mn} - \left|\mathbb{P}^{(m,n)}\right|$. To determine the number of polygon free mosaics, we begin by defining a related object to mosaics, that being binary lattices. 
+To determine the number of polygon free mosaics, we begin by defining a related object to mosaics, that being binary lattices. 
 
-\section{Binary Lattices}
+\section{Binary Lattices}\label{section: binary lattices}
 
-For positive integers $m,n$, an $(m,n)$ \emph{binary lattice} is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed lattice} to be a binary lattice in which the boundary vertices are labeled $0$. An example of a $(5,7)$ framed lattice is shown on the right of Figure~\ref{fig:example of f mapping}.
-
-\begin{definition}
-Let a \textit{cell} be a $(1,1)$ binary lattice.
-\end{definition}
-
-When referring to cells, we omit the connecting lines. There are sixteen cells:
+For positive integers $m$ and $n$, an $(m,n)$ \emph{binary lattice} is a rectangular lattice of $m+1$ by $n+1$ vertices, with each vertex labeled $0$ or $1$. We also define a \textit{framed lattice} to be a binary lattice in which all boundary vertices are labeled $0$. An example of a $(5,4)$ framed lattice is shown on the right of Figure~\ref{fig:example of f mapping}. Let a \textit{cell} be a $(1,1)$ binary lattice. The sixteen possible cells are:
 
 $$\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix},\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}, \text{ and }\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}.$$
 
-\begin{definition}
-Let a \emph{proper lattice} be a binary lattice that does not contain any $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells.
-\end{definition}
+\noindent A \emph{proper lattice} is a framed lattice that does not contain any $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cells.
 
-\begin{definition}
+% \begin{definition}
+% Let $\mathscr{L}$ map a $(m,n)$ polygon mosaic to a $(m,n)$ proper lattice with the following rule. If the vertex is surrounded by the dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the dotted lines of an odd number of polygons, label it $1$. Removing the dotted lines from the tiles gives the framed lattice. 
+% \end{definition}
 
-Let $\mathscr{L}$ map a $(m,n)$ polygon mosaic to a $(m,n)$ proper framed lattice with the following rule. If the vertex is surrounded by the dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the dotted lines of an odd number of polygons, label it $1$. Removing the dotted lines from the tiles gives the framed lattice. 
-    
-\end{definition}
+Let $\mathcal{M}$ be a polygon
+mosaic. We will create a binary lattice from $\mathcal{M}$ by replacing
+every point that is at a corner of a tile of $\mathcal{M}$ by either
+$0$ or $1$. For each such point, we count the number of polygons
+of $\mathcal{M}$ that surround it, i.e., polygons for which the point
+is in the polygon's interior. If this number is even, label the vertex
+$0$, and if it is odd, label the vertex $1$. We then delete all 
+dotted lines that are part of polygons of $\mathcal{M}$. We define
+$\mathscr{L}\left(\mathcal{M}\right)$ to be the resulting binary
+lattice. See Figure~\ref{fig:example of f mapping} for an example. If $\mathcal{M}$ is an $\left(m,n\right)$ polygon mosaic, i.e., $m$ tiles high and $n$ tiles wide, then $\mathscr{L}\left(\mathcal{M}\right)$ is an $\left(m,n\right)$ binary lattice, i.e., $m+1$ vertices high and $n+1$ vertices wide. In fact, $\mathscr{L}\left(\mathcal{M}\right)$ is an $\left(m,n\right)$ framed lattice because every point on the
+edge of $\mathcal{M}$ is surrounded by no polygons.
+
 
 \begin{figure}[h!]
 \begin{center}
     \begin{tikzpicture}
         % row1
-        \cell{0}{0}{1}{1}
-        \cell{1}{0}{2}{1}
-        \cell{2}{0}{3}{1}
-        \cellC{3}{0}{4}{1}
-        \cellE{4}{0}{5}{1}
-        \cellE{5}{0}{6}{1}
-        \cellD{6}{0}{7}{1}
+        \cellC{0}{0}{1}{1}
+        \cellE{1}{0}{2}{1}
+        \cellD{2}{0}{3}{1}
+        \cell{3}{0}{4}{1}
         % row2
-        \cell{0}{1}{1}{2}
+        \cellF{0}{1}{1}{2}
         \cell{1}{1}{2}{2}
-        \cellC{2}{1}{3}{2}
-        \cellA{3}{1}{4}{2}
-        \cellC{4}{1}{5}{2}
-        \cellD{5}{1}{6}{2}
-        \cellF{6}{1}{7}{2}
+        \cellB{2}{1}{3}{2}
+        \cellD{3}{1}{4}{2}
         % row3
-        \cell{0}{2}{1}{3}
-        \cell{1}{2}{2}{3}
-        \cellF{2}{2}{3}{3}
-        \cell{3}{2}{4}{3}
-        \cellB{4}{2}{5}{3}
-        \cellA{5}{2}{6}{3}
-        \cellF{6}{2}{7}{3}
+        \cellF{0}{2}{1}{3}
+        \cellC{1}{2}{2}{3}
+        \cellD{2}{2}{3}{3}
+        \cellF{3}{2}{4}{3}
         % row4
-        \cellC{0}{3}{1}{4}
-        \cellD{1}{3}{2}{4}
-        \cellB{2}{3}{3}{4}
-        \cellE{3}{3}{4}{4}
-        \cellE{4}{3}{5}{4}
-        \cellE{5}{3}{6}{4}
-        \cellA{6}{3}{7}{4}
+        \cellF{0}{3}{1}{4}
+        \cellB{1}{3}{2}{4}
+        \cellA{2}{3}{3}{4}
+        \cellF{3}{3}{4}{4}
         % row5
         \cellB{0}{4}{1}{5}
-        \cellA{1}{4}{2}{5}
-        \cell{2}{4}{3}{5}
-        \cell{3}{4}{4}{5}
-        \cell{4}{4}{5}{5}
-        \cell{5}{4}{6}{5}
-        \cell{6}{4}{7}{5}
+        \cellE{1}{4}{2}{5}
+        \cellE{2}{4}{3}{5}
+        \cellA{3}{4}{4}{5}
         % arrow
-        \( \lablnode{7.5}{2.5}{$\pmb{\to}$} \)
+        \( \lablnode{4.5}{2.5}{$\pmb{\to}$} \)
         % 
-        \( \lablnode{7.5}{1.9}{$\pmb{\mathscr{L}}$} \)
+        % \( \lablnode{4.5}{1.9}{$\pmb{\mathscr{L}}$} \)
 
         % row1
+        \cellC{5}{0}{6}{1}
+        \cellE{6}{0}{7}{1}
+        \cellD{7}{0}{8}{1}
         \cell{8}{0}{9}{1}
-        \cell{9}{0}{10}{1}
-        \cell{10}{0}{11}{1}
-        \cell{11}{0}{12}{1}
-        \cell{12}{0}{13}{1}
-        \cell{13}{0}{14}{1}
-        \cell{14}{0}{15}{1}
+        
         % row2
-        \cell{8}{1}{9}{2}
-        \cell{9}{1}{10}{2}
-        \cell{10}{1}{11}{2}
-        \cell{11}{1}{12}{2}
-        \cell{12}{1}{13}{2}
-        \cell{13}{1}{14}{2}
-        \cell{14}{1}{15}{2}
+        \cellF{5}{1}{6}{2}
+        \cell{6}{1}{7}{2}
+        \cellB{7}{1}{8}{2}
+        \cellD{8}{1}{9}{2}
         % row3
-        \cell{8}{2}{9}{3}
-        \cell{9}{2}{10}{3}
-        \cell{10}{2}{11}{3}
-        \cell{11}{2}{12}{3}
-        \cell{12}{2}{13}{3}
-        \cell{13}{2}{14}{3}
-        \cell{14}{2}{15}{3}
+        \cellF{5}{2}{6}{3}
+        \cellC{6}{2}{7}{3}
+        \cellD{7}{2}{8}{3}
+        \cellF{8}{2}{9}{3}
         % row4
-        \cell{8}{3}{9}{4}
-        \cell{9}{3}{10}{4}
-        \cell{10}{3}{11}{4}
-        \cell{11}{3}{12}{4}
-        \cell{12}{3}{13}{4}
-        \cell{13}{3}{14}{4}
-        \cell{14}{3}{15}{4}
+        \cellF{5}{3}{6}{4}
+        \cellB{6}{3}{7}{4}
+        \cellA{7}{3}{8}{4}
+        \cellF{8}{3}{9}{4}
         % row5
-        \cell{8}{4}{9}{5}
-        \cell{9}{4}{10}{5}
-        \cell{10}{4}{11}{5}
-        \cell{11}{4}{12}{5}
-        \cell{12}{4}{13}{5}
-        \cell{13}{4}{14}{5}
-        \cell{14}{4}{15}{5}
-
-        % label for row1
+        \cellB{5}{4}{6}{5}
+        \cellE{6}{4}{7}{5}
+        \cellE{7}{4}{8}{5}
+        \cellA{8}{4}{9}{5}
+        % row0
+        \( \lablvertex{5}{0}{$0$} \)
+        \( \lablvertex{6}{0}{$0$} \)
+        \( \lablvertex{7}{0}{$0$} \)
         \( \lablvertex{8}{0}{$0$} \)
         \( \lablvertex{9}{0}{$0$} \)
+        % row1
+        \( \lablvertex{5}{1}{$0$} \)
+        \( \lablvertex{6}{1}{$1$} \)
+        \( \lablvertex{7}{1}{$1$} \)
+        \( \lablvertex{8}{1}{$0$} \)
+        \( \lablvertex{9}{1}{$0$} \)
+        % row2
+        \( \lablvertex{5}{2}{$0$} \)
+        \( \lablvertex{6}{2}{$1$} \)
+        \( \lablvertex{7}{2}{$1$} \)
+        \( \lablvertex{8}{2}{$1$} \)
+        \( \lablvertex{9}{2}{$0$} \)
+        % row3
+        \( \lablvertex{5}{3}{$0$} \)
+        \( \lablvertex{6}{3}{$1$} \)
+        \( \lablvertex{7}{3}{$0$} \)
+        \( \lablvertex{8}{3}{$1$} \)
+        \( \lablvertex{9}{3}{$0$} \)
+        % row4
+        \( \lablvertex{5}{4}{$0$} \)
+        \( \lablvertex{6}{4}{$1$} \)
+        \( \lablvertex{7}{4}{$1$} \)
+        \( \lablvertex{8}{4}{$1$} \)
+        \( \lablvertex{9}{4}{$0$} \)
+        % row5
+        \( \lablvertex{5}{5}{$0$} \)
+        \( \lablvertex{6}{5}{$0$} \)
+        \( \lablvertex{7}{5}{$0$} \)
+        \( \lablvertex{8}{5}{$0$} \)
+        \( \lablvertex{9}{5}{$0$} \)
+
+        \( \lablnode{9.5}{2.5}{$\pmb{\to}$} \)
+
+        % row0
         \( \lablvertex{10}{0}{$0$} \)
         \( \lablvertex{11}{0}{$0$} \)
         \( \lablvertex{12}{0}{$0$} \)
         \( \lablvertex{13}{0}{$0$} \)
         \( \lablvertex{14}{0}{$0$} \)
-        \( \lablvertex{15}{0}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{1}{$0$} \)
-        \( \lablvertex{9}{1}{$0$} \)
+        % row1
         \( \lablvertex{10}{1}{$0$} \)
-        \( \lablvertex{11}{1}{$0$} \)
+        \( \lablvertex{11}{1}{$1$} \)
         \( \lablvertex{12}{1}{$1$} \)
-        \( \lablvertex{13}{1}{$1$} \)
-        \( \lablvertex{14}{1}{$1$} \)
-        \( \lablvertex{15}{1}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{2}{$0$} \)
-        \( \lablvertex{9}{2}{$0$} \)
+        \( \lablvertex{13}{1}{$0$} \)
+        \( \lablvertex{14}{1}{$0$} \)
+        % row2
         \( \lablvertex{10}{2}{$0$} \)
         \( \lablvertex{11}{2}{$1$} \)
         \( \lablvertex{12}{2}{$1$} \)
-        \( \lablvertex{13}{2}{$0$} \)
-        \( \lablvertex{14}{2}{$1$} \)
-        \( \lablvertex{15}{2}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{3}{$0$} \)
-        \( \lablvertex{9}{3}{$0$} \)
+        \( \lablvertex{13}{2}{$1$} \)
+        \( \lablvertex{14}{2}{$0$} \)
+        % row3
         \( \lablvertex{10}{3}{$0$} \)
         \( \lablvertex{11}{3}{$1$} \)
-        \( \lablvertex{12}{3}{$1$} \)
+        \( \lablvertex{12}{3}{$0$} \)
         \( \lablvertex{13}{3}{$1$} \)
-        \( \lablvertex{14}{3}{$1$} \)
-        \( \lablvertex{15}{3}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{4}{$0$} \)
-        \( \lablvertex{9}{4}{$1$} \)
+        \( \lablvertex{14}{3}{$0$} \)
+        % row4
         \( \lablvertex{10}{4}{$0$} \)
-        \( \lablvertex{11}{4}{$0$} \)
-        \( \lablvertex{12}{4}{$0$} \)
-        \( \lablvertex{13}{4}{$0$} \)
+        \( \lablvertex{11}{4}{$1$} \)
+        \( \lablvertex{12}{4}{$1$} \)
+        \( \lablvertex{13}{4}{$1$} \)
         \( \lablvertex{14}{4}{$0$} \)
-        \( \lablvertex{15}{4}{$0$} \)
-        % label for row1
-        \( \lablvertex{8}{5}{$0$} \)
-        \( \lablvertex{9}{5}{$0$} \)
+        % row5
         \( \lablvertex{10}{5}{$0$} \)
         \( \lablvertex{11}{5}{$0$} \)
         \( \lablvertex{12}{5}{$0$} \)
         \( \lablvertex{13}{5}{$0$} \)
         \( \lablvertex{14}{5}{$0$} \)
-        \( \lablvertex{15}{5}{$0$} \)
-
     \end{tikzpicture}
 \end{center}
-\caption{$\mathscr{L}$ applied to a polygon mosaic}
+\caption{Applying $\mathscr{L}$ to a polygon mosaic}
 \label{fig:example of f mapping}
 \end{figure}
 
-Notice that under $\mathscr{L}$, no tile can map to the cells $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$.
+In our definition of $\mathscr{L}$, a tile of a polygon mosaic $\mathcal{M}$
+corresponds to a cell of $\mathscr{L}\left(\mathcal{M}\right)$. For a tile of $\mathcal{M}$ that is not the blank tile, consider laying
+its corresponding cell over it. The dotted line of the tile separates
+the vertices of the cells, with vertices labeled $0$ on one side
+and labeled $1$ on the other. For example, the second from left tile of Figure~\ref{fig:tile set} must map to either the cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or the cell $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$. Which one? Consider first where the interior of this polygon is
+relative to this dotted line, and second, the number of other
+polygons that contain this polygon. For example, the tile maps to $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ if the interior is below the dotted line and an even number of
+polygons contain this polygon. On the other hand, a blank tile of
+$\mathcal{M}$ corresponds to a cell that is either $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$. With seven tiles, and no cell able to be the image of distinct tiles,
+$\mathscr{L}\left(\mathcal{M}\right)$ can contain fourteen types
+of cells. The two types that never appear in $\mathscr{L}\left(\mathcal{M}\right)$
+are $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. That is, $\mathscr{L}\left(\mathcal{M}\right)$ is proper.
 
-\begin{prop}
-The map $\mathscr{L}$ bijectively maps the set of $(m,n)$ polygon mosaics to the set of $(m,n)$ proper framed lattices for all positive integers $m$ and $n$.
-\label{prop: L is a bijection}
-\end{prop}
+Given any proper lattice $\ell$, we can reverse this process,
+creating a mosaic by replacing each cell by the unique tile that can
+map to it. Define $\mathscr{L}^{-1}$ by restricting this map to proper lattices, and let us show that $\mathscr{L}^{-1}$ is indeed
+an inverse to $\mathscr{L}$, thus proving that $\mathscr{L}$ gives
+a bijection from $\left(m,n\right)$ polygon mosaics to $\left(m,n\right)$ proper  lattices. Our discussion above shows that $\mathscr{L}^{-1}\circ\mathscr{L}\left(\mathcal{M}\right)=\mathcal{M}$ for any polygon mosaic $\mathcal{M}$, so fixing a proper lattice $\ell$, we must show that $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon mosaic and that $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)=\ell$.
 
-\begin{proof} 
-The map $\mathscr{L}$ is injective because no two polygon mosaics can map to the same binary lattice. To see this, simply pick a tile for which the two polygon mosaics differ. From the definition of $\mathscr{L}$, the corresponding cell in the framed binary lattice must also be different.
+First observe that polygon mosaics can be characterized as those mosaics
+in which every end of a dotted line on a tile meets, on an adjacent
+tile, another end of a dotted line. In the mosaic $\mathscr{L}^{-1}\left(\ell\right)$,
+these ends are exactly the points which, in the corresponding cell
+of $\ell$, lie halfway between adjacent vertices of $\ell$, one
+labeled $0$ and the other labeled $1$. Because $\ell$ is a framed
+lattice, the vertex labeled $1$ is an internal vertex. Thus, another
+cell of $\ell$ shares these two vertices, and the dotted lines
+of $\mathscr{L}^{-1}\left(\ell\right)$ from the two corresponding
+tiles meet. Therefore $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon
+mosaic.
 
-The map $\mathscr{L}$ is surjective because each framed proper lattice is mapped to by one polygon mosaic. This polygon mosaic can be constructed by replacing each cell of the lattice with the unique tile in $\mathbb{T}$ that maps to that cell under $\mathscr{L}$. The mosaic constructed from this procedure is a polygon mosaic because \textbf{TODO} \\
-\end{proof}
+By our analysis of $\mathscr{L}$ and our definition of $\mathscr{L}^{-1}$,
+each cell of $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)$
+must either be equal to the corresponding cell of $\ell$ or is formed
+from the corresponding cell by relabeling all vertices $0$ as $1$
+and $1$ as $0$. Furthermore, since the cells are connected, i.e.,
+none is isolated, we must then have that $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)$
+itself is either equal to $\ell$ or formed by relabeling all vertices
+$0$ as $1$ and $1$ as $0$. By hypothesis, $\ell$ is a framed
+lattice, and by construction, every binary lattice in the range of
+$\mathscr{L}$ is a framed lattice. Therefore $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)=\ell$.
+This concludes our proof that $\mathscr{L}^{-1}$ is the inverse of
+$\mathscr{L}$ and thus that $\mathscr{L}$ is bijective.
+
+The goals of this paper are twofold, counting polygon mosaics and polygon free mosaics. 
 
 \section{Counting Polygon Mosaics}\label{section: counting polygon mosaics}
 
-To enumerate polygon mosaics, we begin by defining a function $v$ that maps cells to integers. More generally, we define $v$ from binary lattices to integers by taking the product of $v$ applied to each cell in the binary lattice. 
+To count polygon mosaics, we begin by defining a function $v$ that maps cells to real numbers. More generally, we define $v$ from binary lattices to real numbers by taking the product of $v$ applied to each cell in the binary lattice. Throughout this work we will show that choices of $v$ allow us to count both polygon mosaics (Section~\ref{section: counting polygon mosaics}) and polygon free mosaics (Section~\ref{section: counting polygon free mosaics}) under the tile set, as well as certain extensions to the tileset (Section~\ref{section: related work and extensions}).
 
-We say we \emph{assign} values to $v$ if we substitute specific integers for $v$ of each cell. We choose this construction because we will show that just by changing the assignment of integers in $v$, we can enumerate both polygon mosaics (Section~\ref{section: counting polygon mosaics}) and polygon free mosaics (Section~\ref{section: counting polygon free mosaics}) under the tile set, as well as certain extensions to the tileset (Section~\ref{section: related work and extensions}).
-
-\begin{remark} If we assign
+Consider the $v$ in which
 
 $$\begin{cases}
 0 & \text{for cells } \begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\\
-1 & \text{otherwise}
+1 & \text{otherwise.}
 \end{cases}$$
 
-\noindent The number of $(m,n)$ polygon mosaics is $\sum v(\ell)$, where the sum is over all framed lattices $\ell$.
-\label{prop: sum of v for polygon mosaics}
-\end{remark}
+\noindent We quickly show that the number of $(m,n)$ polygon mosaics is then $\sum v(\ell)$, where the sum is over all framed lattices $\ell$. For the framed lattices that are proper, there is one corresponding polygon mosaic. For the framed lattices that are not proper, the lattice must contain a $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cell, and so contribute nothing to the sum.
 
-\begin{proof}
-From Proposition~\ref{prop: L is a bijection}, there is a bijection between polygon mosaics and framed proper lattices, and so $v(\ell)$ counts one poylgon mosaic for each framed proper lattice $\ell$. By the definition of $v$, if $\ell'$ is a binary lattice that contains either $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, then $v(\ell') = 0$. Therefore, $\sum v(\ell)$ over all framed lattices is equal to the sum over all proper framed lattices.
-\end{proof}
-
-We show that we can more efficiently compute the sum $\sum v(\ell)$ from Remark~\ref{prop: sum of v for polygon mosaics} using matrices.
-
-\section{Computing $\sum v(\ell)$ with Matrices} \label{section: matrices}
-
-In this section we provide no assignment for $v$, and so represent assignments of cells just as $v$ of the cell. For example, $v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})$ represents the arbitrary assignment for cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$.
-
-Define the $1 \times 1$ matices $A_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, B_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}, C_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, D_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}$, and for positive integers $n$, define the following $2^{n-1} \times 2^{n-1}$ matrices
+We can more efficiently compute the sum $\sum v(\ell)$ using matrices for any choice of $v$. Here we make no choice for the values of $v$, and so represent specific values of $v$ symbolically. Define the $1 \times 1$ matices $A_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, B_{1}=\begin{pmatrix}v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}, C_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})\end{pmatrix}, D_{1}=\begin{pmatrix}v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})\end{pmatrix}$, and for positive integers $n$, define the following $2^{n-1} \times 2^{n-1}$ matrices
 \begin{eqnarray*}
 A_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix} & B_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 0 & 1 \\ 1 & 1 \end{smallmatrix})D_{n} \end{pmatrix} \\
 C_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix})D_{n} \end{pmatrix} & D_{n+1} = \begin{pmatrix} v(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix})A_{n} & v(\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix})B_{n} \\ v(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix})C_{n} & v(\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix})D_{n} \end{pmatrix}.
@@ -541,15 +554,13 @@ C_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{
 \end{eqnarray*}
 \end{prop}
 \begin{proof}
-We induct on $n$. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string. We next assume our result for some fixed $n \geq 1$. The induction step requires proving the entires in matrices $A_{n+1}, B_{n+1}, C_{n+1}$, and $D_{n+1}$ all follow the proposition for each of the four $2^{n-1} \times 2^{n-1} $ block matrices that define them. We do two of the sixteen cases for illustration, that being the upper right quadrant of $A_{n+1}$ then the lower left quadrant of $D_{n+1}$.
+We induct on $n$. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string. We next assume our result for some fixed $n \geq 1$. The induction step requires proving the proposition for entries in $A_{n+1}, B_{n+1}, C_{n+1}$, and $D_{n+1}$. As each $n+1$ indexed matrix is defined by quadrants of the matrices $A_{n}, B_{n}, C_{n}$, and $D_{n}$, there are sixteen cases to examine. We do two of the sixteen cases for illustration, that being the upper right quadrant of $A_{n+1}$ then the lower left quadrant of $D_{n+1}$.
 
 Let $i,j$ be nonnegative integers less than $2^{n-1}$ that index entries in $A_n, B_n, C_n$, or $D_n$. For the upper right block matrix in $A_{n+1}$, by definition the $(i, 2^{n-1}+j)$ entry of $A_{n+1}$ equals $v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ times the $(i,j)$ entry of $B_n$. By our induction hypothesis, this equals
 
 $$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 0 & \beta_{n-1}(i) & 0 \\ 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & 0 & \beta_{n-1}(i) & 0 \\ 0 & 1 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 0 & \beta_{n}(i) & 0 \\ 0 & \beta_{n}(2^{n-1}+j) & 0 \end{smallmatrix}\right),$$
 
-\noindent as desired.
-
-Similarly, for the lower left quadrant of $D_{n+1}$, by definition the $(2^{n-1}+i, j)$ entry of $D_{n+1}$ equals $v\left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ times the $(i,j)$ entry of $C_n$. By our induction hypothesis, this equals
+\noindent as desired. Similarly, for the lower left quadrant of $D_{n+1}$, by definition the $(2^{n-1}+i, j)$ entry of $D_{n+1}$ equals $v\left(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\right)$ times the $(i,j)$ entry of $C_n$. By our induction hypothesis, this equals
 
 $$v\Big(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & 1 & \beta_{n-1}(i) & 0 \\ 1 & 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & \beta_{n}(2^{n-1}+i) & 0 \\ 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right),$$
 
@@ -566,8 +577,7 @@ over all $\left(m,n\right)$ framed lattices $\ell$.
 \begin{proof}
 Fix $n$. We first introduce some terminology. For all positive integers
 $m$, we say a \emph{height~$m$ strip} is an $\left(m,n\right)$
-binary lattice in which all vertices in the outside columns (i.e.,
-column~$0$ and column~$n$) are labeled zero. Then for a height~$m$
+binary lattice in which all vertices in the farthest left and farthest right columns are labeled zero. Then for a height~$m$
 strip $\ell$ and a nonnegative integer $i<2^{n-1}$, we say a particular
 row of $\ell$ is \emph{determined by $i$} if that row is equal to
 $0\ \beta_{n-1}\left(i\right)\ 0$. Note that an $\left(m,n\right)$
@@ -575,10 +585,12 @@ framed lattice is exactly a height~$m$ strip
 in which both the top and bottom rows are determined by $0$. Thus,
 to prove our proposition it suffices to show the following.
 
-\emph{Claim.} For all positive integers $m$ and nonnegative integers $i,j<2^{n-1}$,
+\begin{claim*}
+For all positive integers $m$ and nonnegative integers $i,j<2^{n-1}$,
 the $\left(i,j\right)$ entry of $A_{n}^{m}$ equals $\sum v\left(\ell\right)$,
 where the sum is over all height~$m$ strips $\ell$ whose first
 row is determined by $i$ and whose last row is determined by $j$.
+\end{claim*}
 
 To prove the claim, first observe that for each $i$ and $j$, there
 exists a unique height~$1$ strip whose first row is determined by
@@ -616,7 +628,7 @@ over all height~$m$ strips $\ell$ whose first and last rows are
 determined respectively by $i$ and by $j$.
 \end{proof}
 
-Assigning the values for $v$ from Remark~\ref{prop: sum of v for polygon mosaics} into the matrices from Theorem~\ref{thm: m by n matrix} gives the following theorem.
+Substituting the values for $v$ from Remark~\ref{prop: sum of v for polygon mosaics} into the matrices from Theorem~\ref{thm: m by n matrix} gives the following theorem.
 
 \begin{thm}
 For positive integers $n$ let $A_n, B_n, C_n, D_n$ be $2^{n-1} \times 2^{n-1}$ matrices with integer entries, where $A_{1}=B_{1}=C_{1}=D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
@@ -629,11 +641,11 @@ C_{n+1} = \begin{pmatrix} A_{n} & 0B_{n} \\ C_{n} & D_{n} \end{pmatrix} & D_{n+1
 \noindent Then the number of $(m,n)$ polygon mosaics is the $(0,0)$ entry of $A_{n}^m$.
 \end{thm}
 
-Now that we have enumerated polygon mosaics, we move to the more complicated polygon free mosaics.
+Now that we have counted polygon mosaics, we move to the more complicated polygon free mosaics.
 
-\section{Counting polygon free Mosaics}\label{section: counting polygon free mosaics}
+\section{Counting Polygon Free Mosaics}\label{section: counting polygon free mosaics}
 
-We use the following assignment for $v$ to count polygon free mosaics
+We use the following choice for $v$ to count polygon free mosaics
 
 $$\begin{cases}
     7 & \text{for cells } \begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}, \begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}\\
@@ -644,7 +656,7 @@ $$\begin{cases}
 
 For example, if we let $\ell$ be the framed lattice on the right of Figure~\ref{fig:example of f mapping}, we have $v(\ell) = -7^{13}$, as there are two $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cells, one $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$ cell, twelve $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells, and one $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cell.
 
-We show our choice of $v$ has useful properties by first considering the magnitude, then the sign.  For the magnitude of $v$, for fixed $m,n$ give an index $1 \leq i \leq N$ to every way one polygon can be formed in an $(m,n)$ mosaic. A polygon is determined not only by its shape and orientation, but also its location within the mosaic. For example, Figure~\ref{fig: polygons in different places} depicts three distinct polygons in a $(2,4)$ mosaic, which for reference we call polygons $1, 2,$ and $3$.
+We show our choice of $v$ has useful properties by first considering the magnitude, then its sign.  For the magnitude of $v$, for fixed $m$ and $n$ give an index $1 \leq i \leq p$ to every way one polygon can be formed in an $(m,n)$ mosaic. A polygon is determined not only by its shape and orientation, but also its location within the mosaic. For example, Figure~\ref{fig: polygons in different places} depicts three distinct polygons in a $(2,4)$ mosaic, which for reference we call polygons $1, 2,$ and $3$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -686,19 +698,14 @@ We show our choice of $v$ has useful properties by first considering the magnitu
 \label{fig: polygons in different places}
 \end{figure}
 
-\begin{definition}
-Let $M_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. 
-\label{defn: def of M_i}
-\end{definition}
-
-We immediately have the number of mosaics that contain at least one polygon is
+Let $M_i$ be the set of $(m,n)$ mosaics that contain polygon $i$. We immediately have the number of mosaics that contain at least one polygon is
 
 \begin{equation}
-7^{mn} - \Big|\mathbb{P}^{(m,n)}\Big| = \Big|\bigcup_{i=1}^N M_i \Big|.
+\Big|\bigcup_{i=1}^p M_i \Big|.
 \label{eq: inc exl setup}
 \end{equation}
 
-Notice that many subsets of polygons do not have mosaics that contains them all. For example, for the polygons in Figure~\ref{fig: polygons in different places} $M_1 \cap M_2 = M_2 \cap M_3 = \varnothing$ but $M_1 \cap M_3$ contains exactly the polygon mosaic with polygons $1$ and $3$.
+\noindent Notice that many subsets of polygons do not have mosaics that contains them all. For example, for the polygons in Figure~\ref{fig: polygons in different places}, $M_1 \cap M_2 = M_2 \cap M_3 = \varnothing$ but $M_1 \cap M_3$ contains exactly the polygon mosaic with polygons $1$ and $3$.
 
 \begin{prop}
 For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$. If $J$ is the subset of indices of the polygons in $P$ we have
@@ -711,10 +718,8 @@ For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$. If $J$ is the su
 \end{prop}
 
 \begin{proof}
-From the definition of $M_j$, the left hand side of Equation~\ref{eq: intersect of M} counts the number of mosaics that necessarily contain the polygons in $J$, and possibly contain other polygons, or tiles of any type that are not part of polygons. For the right hand side, if a cell comes from a tile that is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(\ell)|$ is just $7$ raised to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $\ell$. As all tiles in $\mathbb{T}$ can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, $|v(\ell)|$ counts all possible tile assignments in all locations that are not part of a polygon in $J$. Therefore $|v(\ell)|$ counts mosaics that contain the polygons in $J$. This is the definition of $\bigcap_{i \in S} M_i$, and so the equality holds.
+From the definition of $M_j$, the left hand side of Equation~\ref{eq: intersect of M} counts the number of mosaics that necessarily contain the polygons in $J$, and possibly contain other polygons, or tiles of any type that are not part of polygons. For the right hand side, if a cell comes from a tile that is part of a polygon, the absolute value of $v$ of the cell is $1$. Therefore, $|v(\ell)|$ is just $7$ raised to the number of $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cells in $\ell$. As all tiles in the tile set can map to $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$, $|v(\ell)|$ counts all possible tile assignments in all locations that are not part of a polygon in $J$. Therefore $|v(\ell)|$ counts mosaics that contain the polygons in $J$. This is the definition of $\bigcap_{j \in J} M_i$, and so the equality holds.
 \end{proof}
-
-For the sign of $v$, consider a polygon mosaic $P$, and let $\ell=\mathscr{L}\left(P\right)$. We show that although $v(\ell)$ is computed ``cell-by-cell'' of $\ell$, we recover global information about $P$.
 
 \begin{prop}
 For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$. If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
@@ -722,8 +727,16 @@ is positive {[}resp. negative{]}.
 \label{prop: sign of v}
 \end{prop}
 
+We might want to think of this result as relating a ``global'' characteristic
+and ``local'' characteristic, since the number of polygons in $P$
+is determined by looking at the entire mosaic, whereas $v\left(\ell\right)$
+is calculated by looking at one cell at a time. The reader may wish
+to compare this to the definition of $\mathscr{L}$, which is done
+``globally'' and the definition of $\mathscr{L}^{-1}$, which was
+defined ``locally.''
+
 \begin{proof}
-Let $N$ be the number of vertices of $\ell$ that are $1$, and define
+For the proof of Proposition \ref{prop: sign of v}, let $N$ be the number of vertices of $\ell$ that are $1$, and define
 $\ell_{0}$ to be the lattice formed by changing these $N$ vertices
 from $1$ to $0$. That is, $\ell_{0}$ has the same dimensions as
 $\ell$ but all vertices are $0$. We will change $\ell_{0}$ back
@@ -741,7 +754,7 @@ of the row, i.e., if the vertex is directly above it is $0$.
 
 This procedure creates a sequence $\ell_{0}$, $\ell_{1}$, \ldots ,
 $\ell_{N}$ of lattices with $\ell_{N}=\ell$. Because $\ell=\mathscr{L}\left(P\right)$,
-we know $\ell$ is a proper framed lattice. Since every $\ell_{i}$
+we know $\ell$ is a proper lattice. Since every $\ell_{i}$
 has the same dimensions as $\ell$ and has vertices of $0$ in at
 least the same positions as in $\ell$, we see every $\ell_{i}$ is
 a framed lattice. We will prove that every $\ell_{i}$ is also a proper
@@ -1278,44 +1291,39 @@ our proof.
 \end{proof}
 
 \begin{thm}
-The number of $(m,n)$ polygon free mosaics is
-\begin{equation}
-\left|\mathbb{P}^{(m,n)}\right| = \sum_{\ell} v(\ell),
-\label{eq: sum of v}
-\end{equation}
-where the sum is over all $(m,n)$ framed lattices.
+For all positive integers $m$ and $n$, the number of $(m,n)$ polygon free mosaics is $\sum v(\ell)$, where the sum is over all $(m,n)$ framed lattices.
 \label{thm: sum of vs}
 \end{thm}
 
 \begin{proof}
 
-We begin by rewriting Equation~\ref{eq: inc exl setup} to 
+From Equation~\ref{eq: inc exl setup} we have the number of polygon free mosaics is
 
-$$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big|.$$
+$$7^{mn} - \Big|\bigcup_{i=1}^p M_i \Big|.$$
 
 By the inclusion-exclusion principle (see the Appendix), we have
 
 \begin{equation}
--\Big|\bigcup_{i=1}^N M_i \Big| = \sum_{\varnothing \neq J \subseteq \{1,2,\dots,N\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big|.
+-\Big|\bigcup_{i=1}^p M_i \Big| = \sum_{\varnothing \neq J \subseteq \{1,2,\dots,p\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big|.
 \label{eq: incl excl applied}
 \end{equation}
 
-For Equation \ref{eq: incl excl applied}, for some $\varnothing \neq J \subseteq \{1,2,\dots,N\}$, if $\bigcap_{j \in J} M_j$ is empty then the $\Big|\bigcap_{j \in J} M_j \Big|$ term is $0$. Therefore, the domain of summation can be rewritten to be over all $J$ such that there exists a polygon mosaic $P$ with exactly the polygons in $J$. For fixed $J$, if $\mathscr{L}(P)=\ell$, Propositions~\ref{prop: mag of v} and~\ref{prop: sign of v} give the following
+For Equation \ref{eq: incl excl applied}, for some $\varnothing \neq J \subseteq \{1,2,\dots,p\}$, if $\bigcap_{j \in J} M_j$ is empty then the $\Big|\bigcap_{j \in J} M_j \Big|$ term is $0$. Therefore, the domain of summation can be rewritten to be over all $J$ such that there exists a polygon mosaic $P$ with exactly the polygons in $J$. For fixed $J$, if $\mathscr{L}(P)=\ell$, Propositions~\ref{prop: mag of v} and~\ref{prop: sign of v} give the following
 
 $$(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = v(\ell).$$
 
 Therefore, we can rewrite the sum in Equation \ref{eq: incl excl applied} as
 
-$$\sum_{J \subseteq \{1,2,\dots,N\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\ell}v(\ell).$$
+$$\sum_{J \subseteq \{1,2,\dots,p\}}(-1)^{|J|}\Big|\bigcap_{j \in J} M_j \Big| = \sum_{\ell}v(\ell).$$
 
-\noindent where $\ell$ is over all framed proper lattices that $\mathscr{L}^{-1}(\ell)$  has at least one polygon. Additionally notice that $v$ applied to the binary lattice made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells equals $7^{mn}$, and is the only framed proper lattice such that $\mathscr{L}^{-1}(\ell)$ has no polygons. This gives
+\noindent where $\ell$ is over all proper lattices that $\mathscr{L}^{-1}(\ell)$  has at least one polygon. Additionally notice that $v$ applied to the binary lattice made up of all $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cells equals $7^{mn}$, and is the only proper lattice such that $\mathscr{L}^{-1}(\ell)$ has no polygons. This gives
 
-$$\Big|\mathbb{P}^{(m,n)}\Big| = 7^{mn} - \Big|\bigcup_{i=1}^N M_i \Big| = \sum_{\ell} v(\ell),$$
+$$7^{mn} - \Big|\bigcup_{i=1}^p M_i \Big| = \sum_{\ell} v(\ell),$$
 
-where the sum is over all framed proper lattices. Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed lattices in Equation~\ref{eq: sum of v} gives the desired result.
+where the sum is over all proper lattices. Finally, notice that the sum $\sum_{\ell}v(\ell) = 0$ for the framed lattices that contains $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$, as $v\left(\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}\right)=v\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)=0$. Therefore, summing over all framed lattices in Equation~\ref{eq: sum of v} gives the desired result.
 \end{proof}
 
-Theorem \ref{thm: sum of vs} let's us apply Theorem \ref{thm: m by n matrix} to the $v$ assignment at the beginning of this section, which gives the main result of the paper.
+Theorem \ref{thm: sum of vs} let's us apply Theorem \ref{thm: m by n matrix} to the choice of $v$ at the beginning of this section, which gives the main result of the paper.
     
 \begin{thm}
 For positive integers $n$ let $A_n, B_n, C_n, D_n$ be $2^{n-1} \times 2^{n-1}$ matrices with integer entries, where $A_{1}=\begin{pmatrix}7\end{pmatrix}, B_{1}=\begin{pmatrix}-1\end{pmatrix}, C_{1}=\begin{pmatrix}1\end{pmatrix}, D_{1}=\begin{pmatrix}1\end{pmatrix}$ and
@@ -1333,7 +1341,7 @@ Finally, we introduce possible extensions to our work, as well as how our work r
 
 \section{Related Work and Extensions}\label{section: related work and extensions}
 
-In terms of related work, our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further generalizing the techniques in Oh et al. \cite{Oh2014} to explore a new direction in mosaic enumeration. Hong and Oh \cite{Hong2018} provided bounds on the number of polygon mosaics.
+In terms of related work, our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further generalizing the techniques in Oh et al. \cite{Oh2014} to explore a new direction in counting mosaics. Hong and Oh \cite{Hong2018} provided bounds on the number of polygon mosaics.
 
 \begin{thm}[\cite{Hong2018}]
 \label{thm:Hong2018}
@@ -1341,9 +1349,9 @@ The number of $(m,n)$ polygon mosaics for $m,n \geq 3$ is bounded between
 $2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$
 \end{thm}
 
-\noindent Our Theorem~\ref{prop: sum of v for polygon mosaics} nicely compliments this result with a procedure to exactly enumerate polygon mosaics, as well as exactly recreate the sequence A181245 on the OEIS \cite{oeis}. Note that unlike here, the authors in \cite{Hong2018} did not consider the mosaic made from only blank tiles a polygon mosaic, and so our result differs to theirs by $1$. We also point out that our work allows for both polygon and polygon free mosaics to be enumerated. The methods in \cite{Oh2014} could be used to enumerate just polygon mosaics (i.e. an analagous result to Theorem~\ref{prop: sum of v for polygon mosaics}), a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print.
+\noindent Our Theorem~\ref{prop: sum of v for polygon mosaics} compliments this result with a procedure to exactly count polygon mosaics, as well as exactly recreate the sequence A181245 on the OEIS \cite{oeis}. Note that unlike here, the authors in \cite{Hong2018} did not consider the mosaic made from only blank tiles a polygon mosaic, and so our result differs to theirs by $1$. We also point out that our work allows for both polygon and polygon free mosaics to be counted. The methods in \cite{Oh2014} could be used to count just polygon mosaics (i.e. an analagous result to Theorem~\ref{prop: sum of v for polygon mosaics}), a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print.
 
-In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which $\mathbb{T}$ is a subset. The authors were interested in a subset of mosaics which they call \textit{knot mosaics}. Oh et al. \cite{Oh2014} enumerated the number of knot mosaics using an analagous method to that of Section~\ref{section: matrices}. Oh and colleagues go beyond enumeration by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Section~\ref{section: matrices} to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to enumerate the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
+In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which our tile set is a subset. The authors were interested in a subset of mosaics which they call \textit{knot mosaics}. Oh et al. \cite{Oh2014} counted the number of knot mosaics using an analagous method to that of Section~\ref{section: matrices}. Oh and colleagues go beyond counting by bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Section~\ref{section: matrices} to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to count the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
 
 % \begin{thm}[\cite{Oh2014}]
 % \label{thm:Oh2014}
@@ -1362,7 +1370,7 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
 % for $k=0,1,\dots,m-3$. Here $\left\| N \right\|$ denotes the sum of elements of matrix $N$.
 % \end{thm}
 
-Enumerating the number of polygon free mosaics in certain extensions of the tileset $\mathbb{T}$ is simple to do. For example, let's extend $\mathbb{T}$ to include three types of tiles that connect the top and bottom midpoints like below:
+Counting the number of polygon free mosaics in certain extensions of the tile set is simple to do. For example, let's extend our tile set to include three types of tiles that connect the top and bottom midpoints like below:
 
 \begin{figure}[h!]
 \begin{center}
@@ -1377,15 +1385,13 @@ Enumerating the number of polygon free mosaics in certain extensions of the tile
     \draw[red, thick, densely dotted] (5 * 0.5 + 4 * 0.5 , 0) -- (5 * 0.5 + 4 * 0.5 , 0.33) -- (5 * 0.25 + 4 * 0.75 , 0.5) -- (5 * 0.5 + 4 * 0.5 , 0.66) -- (5 * 0.5 + 4 * 0.5 , 1);
 \end{tikzpicture}
 \end{center}
-    % \caption{The tile set $\mathbb{T}$}
-    % \label{fig:tile set}
 \end{figure}
 
 % \newcommand{\cellA}[4]{ \draw[thick] ( #1 , #2 ) rectangle ( #3 , #4 ); \draw[red, thick, densely dotted] (#3 * 0.5 + #1 * 0.5 , #2) -- (#1, #4 * 0.5 + #2 * 0.5);}
 
-To enumerate polygon {[}resp. polygon free{]} mosaics in this new tile set, one simply needs to adjust the assignments of $v$ in Section \ref{section: counting polygon mosaics} {[}resp. \ref{section: counting polygon free mosaics}{]} to have $v\left(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix} \right) = v\left(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix} \right) = 3.$
+To count polygon {[}resp. polygon free{]} mosaics in this new tile set, one simply needs to adjust the choice of $v$ in Section \ref{section: counting polygon mosaics} {[}resp. \ref{section: counting polygon free mosaics}{]} to have $v\left(\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix} \right) = v\left(\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix} \right) = 3.$
 
-We point out it is not possible to extend our results naively to the Lomonaco and Kauffman \cite{Lomonaco08} tile set to enumerate the number of \emph{knot-free mosaics}. This is specifically due to the reasoning for Case~\ref{subfig: bit flip case 5} and Case~\ref{subfig: bit flip case 6} in the proof of Theorem~\ref{prop: sign of v}, as knots are able to cross each other. This allows for additional subcases in which the number of knots does not change in these cases.
+We point out it is not possible to extend our results naively to the Lomonaco and Kauffman \cite{Lomonaco08} tile set to count the number of \emph{knot free mosaics}. This is specifically due to the reasoning for Case~\ref{subfig: bit flip case 5} and Case~\ref{subfig: bit flip case 6} in the proof of Theorem~\ref{prop: sign of v}, as knots are able to cross each other.
 
 \section{Acknowledgements}
 
