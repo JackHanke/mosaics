@@ -1,0 +1,272 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{definition}
+\newtheorem*{defn*}{\protect\definitionname}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\definitionname}{Definition}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\begin{defn*}
+A \emph{cell product function} is a real valued function whose domain
+is the set of all binary lattices and whose value on any lattice is
+the product of its values on every cell in the lattice.
+\end{defn*}
+{[}{[}I'm proposing what's below as a theorem rather than proposition,
+to be parallel to Theorem~\ref{thm: sum of vs}. I feel both should
+be theorems or both propositions, and Theorem~\ref{thm: sum of vs}
+seems worthy of being a theorem rather than a proposition.{]}{]}
+\begin{thm}
+Let $v$ be the cell product function that maps the cells $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$ to $0$, and maps the fourteen other cells cells to $1$. Then for
+all positive integers $m$ and $n$, the number of $\left(m,n\right)$
+polygon mosaics equals $\sum_{\ell}v\left(\ell\right)$, where the
+sum is over all $\left(m,n\right)$ framed lattices $\ell$.
+\end{thm}
+
+\begin{proof}
+For any framed lattice $\ell$, $v\left(\ell\right)$ is $1$ if $\ell$
+is proper, i.e., has neither $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ nor $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$cells, and otherwise is $0$, so that $\sum_{\ell}v\left(\ell\right)$
+counts the number of proper $\left(m,n\right)$ framed lattices. Our
+conclusion now follows from the fact that $\mathscr{L}$ gives a bijection
+from the set of $\left(m,n\right)$ polygon mosaics to the set of
+proper $\left(m,n\right)$ framed lattices.
+\end{proof}
+{[}{[}Here is a proposed rephrasing of material that on April~8 was
+in Section~4. For a major result like this, I think it might be better
+to put everything in one statement rather than spreading it through
+prior definitions.{]}{]}
+\begin{thm}
+Let $v$ be any cell product function. Define the $1\times1$ matrices
+$A_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, $B_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, $C_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, and $D_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, and for positive integers $n$, define the $2^{n}\times2^{n}$ matrices
+{[}{[}We used to say $2^{n-1}\times2^{n-1}$; this bothered me for
+a while, and now I realize it was wrong!! The issue is that while
+$A_{n}$, $B_{n}$, etc. are indeed $2^{n-1}\times2^{n-1}$, here
+we are defining $A_{n+1}$, $B_{n+1}$, etc.{]}{]}
+\begin{eqnarray*}
+A_{n+1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}0 & 0\\
+0 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}0 & 1\\
+0 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}0 & 1\\
+0 & 1
+\end{smallmatrix}\right)D_{n}
+\end{pmatrix} & B_{n+1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}0 & 0\\
+1 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}0 & 1\\
+1 & 1
+\end{smallmatrix}\right)D_{n}
+\end{pmatrix}\\
+C_{n+1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}1 & 1\\
+0 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}1 & 1\\
+0 & 1
+\end{smallmatrix}\right)D_{n}
+\end{pmatrix} & D_{n+1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}1 & 1\\
+1 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}\right)D_{n}
+\end{pmatrix}.
+\end{eqnarray*}
+ Then for all positive integers $m$ and $n$, the upper left entry
+of $A_{n}^{m}$ equals $\sum_{\ell}v\left(\ell\right)$, where the
+sum is over all $\left(m,n\right)$ framed lattices $\ell$. \label{thm: m by n matrix}
+{[}{[}I changed ``$\left(0,0\right)$ entry'' to ``upper left entry''
+because it means a casual reader doesn't need to know how we're numbering
+matrix entries to understand this theorem's conclusion. Thoughts?{]}{]}
+\end{thm}
+
+
+\section{Counting polygon-free Mosaics}
+
+\begin{thm}
+Let $v$ be the cell product function that maps the cells $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}$ and $\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}$ to $7$, $\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix}$ to $-1$, and the ten other cells to $1$. Then for all positive
+integers $m$ and $n$, the number of $\left(m,n\right)$ polygon-free
+mosaics equals $\sum_{\ell}v\left(\ell\right)$, where the sum is
+over all $\left(m,n\right)$ framed lattices $\ell$. \label{thm: sum of vs} 
+\label{section: counting polygon free mosaics}
+\end{thm}
+
+Throughout this section, let $v$ be as in Theorem~\ref{thm: sum of vs}.
+Thus, for example, if $\ell$ is the framed lattice on the right of
+Figure~\ref{fig:example of f mapping}, we have $v\left(\ell\right)=-7^{13}$,
+as there are no $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ or $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$ cells, twelve $\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}$ cells, one $\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}$ cell, two $\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}$ cells, and one $\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix}$ cell.
+
+The following result, which is an important part of proving Theorem~\ref{thm: sum of vs},
+connects local and global information in the sense that $v\left(\ell\right)$
+is calculated by multiplying values for each cell of $\ell$, whereas
+the number of polygons is a characteristic of an entire mosaic.
+\begin{prop}
+For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$.
+If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
+is positive {[}resp. negative{]}, where $v$ is as in Theorem~\ref{thm: sum of vs}.
+\label{prop: sign of v} 
+\end{prop}
+
+\begin{proof}
+{[}{[}Insert proof of this proposition here.{]}{]}
+\end{proof}
+%
+\begin{proof}[Proof of Theorem~\ref{thm: sum of vs}]
+ Fixing $m$ and $n$, throughout this proof we use ``polygon mosaic''
+for ``$\left(m,n\right)$ polygon mosaic,'' ``framed lattice''
+for ``$\left(m,n\right)$ framed lattice,'' and so on.
+
+We introduce the following identification for polygon mosaics. Let
+$\left\{ P_{i}\right\} _{i\in J}$ be the set of all polygon mosaics
+that have exactly one polygon, and for any subset $I$ of $J$, let
+$P_{I}$, if it exists, be the polygon mosaic that contains exactly
+the polygons of $P_{i}$ for all $i\in I$. For example, $P_{\emptyset}$
+is the polygon mosaic containing no polygons, i.e., the mosaic entirely
+composed of blank tiles, and for any $i\in J$, $P_{\left\{ i\right\} }$
+always exists and equals $P_{i}$. For an arbitrary $I\subseteq J$,
+$P_{I}$ exists if and only if the polygons of $P_{i}$, for $i\in I$,
+do not ``overlap.'' More precisely, $P_{I}$ exists if and only
+if for every mosaic location, there is at most one $i\in I$ such
+that $P_{i}$ has a non-blank tile there. Notice that every polygon
+mosaic can be uniquely written as $P_{I}$ for some $I\subseteq J$.
+
+Next we look at some sets of mosaics. For any $I\subseteq J$ such
+that $P_{I}$ exists, let $M_{I}$ be the set of mosaics that contain
+the polygons of $P_{I}$, i.e., the set of mosaics that can be formed
+from $P_{I}$ by using any tile wherever $P_{I}$ has a blank tile.
+Notice that the size $\left|M_{I}\right|$ of this set equals $7^{a}$,
+where $a$ is the number of blank tiles in $P_{I}$. By the definition
+of $\mathscr{L}$, the number of cells of $\mathscr{L}\left(P_{I}\right)$
+that are either $\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}$ or $\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}$ is also $a$, and since $\mathscr{L}\left(P_{I}\right)$ is proper,
+i.e. it has neither $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ nor $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$ cells, we see that $\left|v\left(\mathscr{L}\left(P_{I}\right)\right)\right|=\left|M_{I}\right|$.
+Furthermore, $\left|I\right|$ is the number of polygons in $P_{I}$,
+so Proposition~\ref{prop: sign of v} tells us that $v\left(\mathscr{L}\left(P_{I}\right)\right)$
+and $\left(-1\right)^{\left|I\right|}$ have the same sign. Therefore,
+if $P_{I}$ exists then 
+\[
+v\left(\mathscr{L}\left(P_{I}\right)\right)=\left(-1\right)^{\left|I\right|}\left|M_{I}\right|.
+\]
+
+We must show that the the sum $\sum_{\ell}v\left(\ell\right)$ over
+all framed lattices $\ell$ is equal to number of polygon-free mosaics.
+The sum is unchanged if we restrict to the sum over all proper framed
+lattices $\ell$ because $v\left(\ell\right)=0$ if $\ell$ is not
+proper. Furthermore, since $\mathscr{L}$ gives a bijection from polygon
+mosaics to proper framed lattices, 
+\[
+\sum_{\ell}v\left(\ell\right)=\sum v\left(\mathscr{L}\left(P_{I}\right)\right)=\sum\left(-1\right)^{\left|I\right|}\left|M_{I}\right|,
+\]
+ where the second and third sums are over all $I\subseteq J$ such
+that $P_{I}$ exists. The total number of mosaics, which happens to
+be $7^{mn}$, equals $\left|M_{\emptyset}\right|$. Notice that if
+$J=\emptyset$ if and only if $m=1$ or $n=1$. If this is the case
+then every mosaic is polygon-free, the third sum above is $\left|M_{\emptyset}\right|$,
+and our theorem is complete. Therefore we may assume that $m\ge2$
+and $n\ge2$, so that $J\neq\emptyset$ and the third sum has a nonzero
+term with $I\neq\emptyset$, for example, $I=\left\{ i\right\} $
+for any $i\in J$.
+
+For any $I\neq\emptyset$ such that $P_{I}$ exists, $M_{I}=\bigcap_{i\in I}M_{\left\{ i\right\} }$
+by the definition of the $M_{I}$. Thus 
+\[
+\sum_{\ell}v\left(\ell\right)=\left|M_{\emptyset}\right|-\sum\left(-1\right)^{\left|I\right|-1}\left|\bigcap_{i\in I}M_{\left\{ i\right\} }\right|,
+\]
+ where the sum on the right is over all $I$ such that $P_{I}$ exists
+and $\emptyset\neq I\subseteq J$. In this equation, the value on
+the right side is unchanged if instead we sum over all $I$ such that
+$\emptyset\neq I\subseteq J$. This is because when $P_{I}$ is not
+defined, the $P_{i}$, $i\in I$, ``overlap'' in the sense described
+above, and so $\bigcap_{i\in I}M_{\left\{ i\right\} }=\emptyset$.
+By the inclusion-exclusion principle (see the Appendix), this summation
+over all $I$ with $\emptyset\neq I\subseteq J$ equals $\left|\bigcup_{i\in J}M_{\left\{ i\right\} }\right|$,
+i.e., the number of mosaics that contain at least one polygon. Since
+$\left|M_{\emptyset}\right|$ is the total number of mosaics, we conclude,
+as desired, that $\sum_{\ell}v\left(\ell\right)$ is the number of
+polygon-free mosaics.
+\end{proof}
+
+\end{document}
