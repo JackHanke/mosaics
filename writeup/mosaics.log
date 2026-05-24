@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  16 MAY 2026 11:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  23 MAY 2026 14:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1009,24 +1009,24 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (./mosaics.aux)
 \openout1 = `mosaics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 151.
-LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 155.
+LaTeX Font Info:    ... okay on input line 155.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1053,7 +1053,7 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 151.
+Package hyperref Info: Link coloring OFF on input line 155.
 
 (./mosaics.out) (./mosaics.out)
 \@outlinefile=\write5
@@ -1071,12 +1071,8 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `mosaics.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-
-
-Package biblatex Warning: File 'mosaics.bbl' is wrong format version - expected
- 3.2.
-
 Package biblatex Info: ... file 'mosaics.bbl' found.
+
 (./mosaics.bbl
 
 Package biblatex Warning: Biber reported the following issues
@@ -1097,8 +1093,8 @@ Package biblatex Warning: Biber reported the following issues
  '2015/03/01' of date field 'date' - ignoring.
 
 )
-Package biblatex Info: Reference section=0 on input line 151.
-Package biblatex Info: Reference segment=0 on input line 151.
+Package biblatex Info: Reference section=0 on input line 155.
+Package biblatex Info: Reference segment=0 on input line 155.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1135,34 +1131,24 @@ Package biblatex Info: Reference segment=0 on input line 151.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Trying to load font information for U+rsfs on input line 15
-3.
+7.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 153
+LaTeX Font Info:    Trying to load font information for U+msa on input line 157
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 153
+LaTeX Font Info:    Trying to load font information for U+msb on input line 157
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Citation 'flory1949configuration' on page 1 undefined on input l
-ine 189.
-
-
-LaTeX Warning: Citation 'guttmann' on page 1 undefined on input line 189.
-
-
-Underfull \hbox (badness 8151) in paragraph at lines 189--189
-[][][]\OT1/cmr/m/n/10 Polygons are more com-monly re-ferred to as ``self-avoidi
-ng poly-gons" in the lit-er-a-ture
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1170,119 +1156,63 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 1495--1497
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2] [3] [4] [5] [6]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7] [8] [9] [10]
-
-LaTeX Warning: Citation 'Hong2018' on page 11 undefined on input line 1396.
-
-
-LaTeX Warning: Citation 'Oh2014' on page 11 undefined on input line 1396.
-
-
-LaTeX Warning: Citation 'Hong2018' on page 11 undefined on input line 1396.
-
-
-LaTeX Warning: Citation 'Hong2018' on page 11 undefined on input line 1398.
-
-
-LaTeX Warning: Citation 'oeis' on page 11 undefined on input line 1404.
-
-
-LaTeX Warning: Citation 'Hong2018' on page 11 undefined on input line 1404.
-
-
-LaTeX Warning: Citation 'Oh2014' on page 11 undefined on input line 1404.
-
-
-LaTeX Warning: Citation 'Hong2018' on page 11 undefined on input line 1404.
-
-
-LaTeX Warning: Citation 'Oh2014' on page 11 undefined on input line 1404.
-
-
-LaTeX Warning: Citation 'Lomonaco08' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Oh2014' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Oh2016' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Oh2019' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Choi2024' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Oh2018Aztec' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'Oh2019tiling' on page 11 undefined on input line 1406.
-
-
-
-LaTeX Warning: Citation 'oeispaper' on page 11 undefined on input line 1406.
-
-
-LaTeX Warning: Citation 'oeis' on page 11 undefined on input line 1406.
-
-
-Overfull \hbox (0.91309pt too wide) in paragraph at lines 1406--1407
-[]\OT1/cmr/m/n/12 In re-lated work, Lomonaco and Kauff-man [[]] in-tro-duced mo
--saics con-structed
  []
 
-[11]
-
-LaTeX Warning: Citation 'Lomonaco08' on page 12 undefined on input line 1446.
-
 [12]
+Underfull \hbox (badness 10000) in paragraph at lines 1508--1510
 
-LaTeX Warning: Empty bibliography on input line 1454.
+ []
 
-[13] (./mosaics.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 1517--1519
+
+ []
+
+[13] [14]
+Overfull \hbox (26.6316pt too wide) in paragraph at lines 1538--1538
+\OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
+, p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
+42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
+ []
+
+[15]
+Overfull \hbox (41.29456pt too wide) in paragraph at lines 1561--1566
+\OT1/cmr/m/n/12 Again us-ing our in-duc-tive hy-poth-e-sis, this fi-nal sum equ
+als $[] = [] \OML/cmm/m/it/12 :$
+ []
+
+
+Overfull \hbox (35.21007pt too wide) in paragraph at lines 1561--1566
+\OT1/cmr/m/n/12 The en-tire right side of our de-sired equa-tion there-fore equ
+als $[] + \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 A[]\OMS/cmsy/m/n/12 j ^^@ [] \OML/
+cmm/m/it/12 :$
+ []
+
+[16] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 50BB69FC6D01EF6B03F6A4AE71964637;1057.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                mosaics
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: 7A7A543699DB2F05BA534836030E5CEA;1188.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33255 strings out of 474116
- 648802 string characters out of 5743681
- 2005187 words of memory out of 5000000
- 55104 multiletter control sequences out of 15000+600000
- 572661 words of font info for 94 fonts, out of 8000000 for 9000
+ 33321 strings out of 474116
+ 650270 string characters out of 5743681
+ 2006187 words of memory out of 5000000
+ 55154 multiletter control sequences out of 15000+600000
+ 571668 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,2643b,1777s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
@@ -1291,19 +1221,18 @@ sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on mosaics.pdf (13 pages, 271213 bytes).
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on mosaics.pdf (16 pages, 286879 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 228 compressed objects within 3 object streams
- 39 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

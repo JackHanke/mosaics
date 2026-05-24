@@ -1,0 +1,53 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+\theoremstyle{plain}
+\newtheorem*{prop*}{\protect\propositionname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\propositionname}{Proposition}
+
+\begin{document}
+
+\section{Appendix}
+\begin{prop*}[The inclusion-exclusion principle]
+ For finite sets $A_{1},A_{2},\dots,A_{M}$, 
+\[
+\left|\bigcup_{j=1}^{M}A_{j}\right|=\sum_{\varnothing\neq I\subseteq\left\{ 1,2,\dots,M\right\} }\left(-1\right)^{\left|I\right|-1}\left|\bigcap_{j\in I}A_{j}\right|.
+\]
+\end{prop*}
+\begin{proof}
+The $M=1$ case is trivial, and $M=2$ case is the familiar and easily
+justified statement that $\left|A_{1}\cup A_{2}\right|=\left|A_{1}\right|+\left|A_{2}\right|-\left|A_{1}\cap A_{2}\right|$.
+We proceed inductively, so for $M\ge3$, assume the result for $M-1$
+sets, and let us prove it for $M$ sets. We split up the sum on the
+right of our desired equation into sets $I$ that do not contain $M$
+and those that do. By our inductive hypothesis, the first sum equals
+$\left|\bigcup_{j=1}^{M-1}A_{j}\right|$. The second sum is $\sum_{\left\{ M\right\} \subseteq I\subseteq\left\{ 1,2,\dots,M\right\} }\left(-1\right)^{\left|I\right|-1}\left|\bigcap_{j\in I}A_{j}\right|$,
+which we rewrite by separating the $I=\left\{ M\right\} $ term and
+reindexing the rest using $J=I\setminus\left\{ M\right\} $ to get
+\[
+\left|A_{M}\right|-\sum_{\varnothing\neq J\subseteq\{1,2,\dots,M-1\}}\left(-1\right)^{\left|J\right|-1}\left|\bigcap_{j\in J}\left(A_{j}\cap A_{M}\right)\right|.
+\]
+ Again using our inductive hypothesis, this final sum equals $\left|\bigcup_{j=1}^{M-1}\left(A_{j}\cap A_{M}\right)\right|=\left|\left(\bigcup_{j=1}^{M-1}A_{j}\right)\cap A_{M}\right|.$
+The entire right side of our desired equation therefore equals $\left|\bigcup_{j=1}^{M-1}A_{j}\right|+|A_{M}|-\left|\left(\bigcup_{j=1}^{M-1}A_{j}\right)\cap A_{M}\right|.$
+By the $M=2$ case, this is $\left|\bigcup_{j=1}^{M}A_{j}\right|$,
+as desired. 
+\end{proof}
+
+\end{document}
