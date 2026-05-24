@@ -308,7 +308,7 @@ We are interested in the number of mosaics in which the line segments do not for
 \label{fig:example mosaics}
 \end{figure}
 
-The types of polygons that can be formed from the tiles are more commonly known as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks. As self-avoiding polygons are formed by walks on the square lattice, some authors \cite{Hong2018} have chosen to represent the tiles connecting adjacent sides with two line segments that meet at the center of the square at a right angle. We choose our construction for visual clarity, but point out the results of this paper are true for either style of tile.
+The types of polygons that can be formed from the tiles are more commonly known as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks. As self-avoiding polygons are formed by walks on the square lattice, some authors \cite{Hong2018} have chosen to represent the tiles connecting adjacent sides with two line segments that meet at the center of the square at a right angle, as in Figure \ref{fig:tile styles}. We choose our construction for visual clarity, but point out the results of this paper are true for either style of tile.
 
 \begin{figure}[h!]
 \begin{center}
@@ -326,7 +326,7 @@ The types of polygons that can be formed from the tiles are more commonly known 
 An $(m,n)$ \textit{polygon free mosaic} is an $(m,n)$ mosaic that does not contain a polygon. An $(m,n)$ \textit{polygon mosaic} is an $(m,n)$ mosaic such that any tile that is not part of a polygon is the blank tile.
 \end{definition}
 
-Figure~\ref{fig:example polygon free mosaic} depicts a polygon free mosaic, Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is neither a polygon free mosaics nor a polygon mosaic, and Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic. Notice that the only mosaic that is both a polygon mosaic and a polygon free mosaic is the mosaic of all blank tiles. The goals of this paper are twofold, counting polygon mosaics and polygon free mosaics. 
+Figure~\ref{fig:example polygon free mosaic} depicts a polygon free mosaic, Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is neither a polygon free mosaics nor a polygon mosaic, and Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic. Notice that for a given $m$ and $n$, the only mosaic that is both a polygon mosaic and a polygon free mosaic is the mosaic of all blank tiles. The goals of this paper are twofold, counting polygon mosaics and counting polygon free mosaics. 
 
 \section{Mapping Mosaics to Proper Lattices}\label{section: binary lattices}
 
@@ -1419,7 +1419,7 @@ $2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}
 
 \noindent Our Theorem~\ref{thm: polygon mosaic summation final} compliments this result with a procedure to exactly count polygon mosaics, as well as exactly recreate the sequence A181245 on the OEIS \cite{oeis}. Note that unlike here, the authors in \cite{Hong2018} did not consider the mosaic made from only blank tiles a polygon mosaic, and so our result differs to theirs by $1$. We also point out that our work allows for both polygon and polygon free mosaics to be counted. The methods in \cite{Oh2014} could be used to count just polygon mosaics, a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print.
 
-In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which our tile set is a subset. This tileset is diagrammed in Figure~\ref{fig: lk tile set}.
+In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from a tile set of $11$ distinct tiles, of which our tile set is a subset. This tile set is diagrammed in Figure~\ref{fig: lk tile set}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -1495,37 +1495,63 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
 Counting the number of polygon mosaics and polygon free mosaics in certain extensions of the tile set is simple to do. Throughout this section, fix positive integers $m$ and $n$. By convention, $\sum_{\ell}v(\ell)$ always designates the sum of $v(\ell)$ over all $(m,n)$ framed lattices $\ell$. In all cases, $v$ is a cell product function, and therefore Theorem~\ref{thm: m by n matrix} tells us that matrices can be used to evaluate such sums.
 \\
 
-\noindent \textbf{Fewer tiles.} If we limit ourselves to a subset of the tiles in Figure~\ref{fig:tile set} then, of course, there are fewer polygon mosaics and polygon free mosaics. We can count how many using our existing work. For example, omitting the last tile of Figure~\ref{fig:tile set}, the number of polygon mosaics equals $\sum_{\ell}v(\ell)$, where $v$ is the cell product function such that $v\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right) = 0$ and $v$ evaluated at the other twelve cells is $1$. This can be shown using the reasoning of Theorem~\ref{thm: sum of v for polygon mosaics}, since the omitted tile is the one that maps via $\mathscr{L}$ to either $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$ or $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$.
+\noindent \textbf{Fewer tiles.} If we limit ourselves to a subset of the tiles in Figure~\ref{fig:tile set} then, of course, there are fewer polygon mosaics and polygon free mosaics. We can count how many using our existing work. For example, omitting the last tile from left of Figure~\ref{fig:tile set}, the number of polygon mosaics equals $\sum_{\ell}v(\ell)$, where $v$ is the cell product function such that $v\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right) = 0$ and otherwise $1$. This can be shown using the reasoning of Theorem~\ref{thm: sum of v for polygon mosaics}, since the omitted tile is the one that maps via $\mathscr{L}$ to either $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$ or $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$.
 
-We can similarly count the number of polygon mosaics that can be formed by omitting a different tile or by omitting several tiles. It is worth noting, however, that some of these turn out to be trivial. Specifically, if the second, third, fourth, or fifth tile is omitted from Figure~\ref{fig:tile set} then there is only one possible polygon mosaic, namely the one that contains only blank tiles. 
+We can similarly count the number of polygon mosaics that can be formed by omitting a different tile or by omitting several tiles. It is worth noting, however, that some of these turn out to be trivial. Specifically, if the second, third, fourth, or fifth tile from left is omitted from Figure~\ref{fig:tile set} then there is only one possible polygon mosaic, namely the one that contains only blank tiles. 
 
-To see this, we outline omitting the second tile; omitting the third, fourth, or fifth tile is similar. First, consider the tiles that are not blank, assuming there are some, in a polygon mosaic. Of those tiles, look at those in the highest possible row. The one farthest to the right must be the second tile of Figure~\ref{fig:tile set}. Second, in any framed binary lattice in which not all vertices are zero, among the vertices that are 1 and are as high as possible, the one farthest to the right must be the corner of a cell that is $\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)$. Finally, in Theorem ~\ref{thm: m by n matrix}, if $v\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)=0$ and $v\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)=1$ then for all positive integers $m$ and $n$, the upper right entry of $A_{n}^{m}$ equals $1$.
+To see this, we outline omitting the second tile; omitting the third, fourth, or fifth tile from left is similar. First, consider the tiles that are not blank, assuming there are some, in a polygon mosaic. Of those tiles, look at those in the highest possible row. The one farthest to the right must be the second tile of Figure~\ref{fig:tile set}. Second, in any framed binary lattice in which not all vertices are zero, among the vertices that are 1 and are as high as possible, the one farthest to the right must be the corner of a cell that is $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$. Finally, in Theorem ~\ref{thm: m by n matrix}, if $v\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)=0$ and $v\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)=1$ then for all positive integers $m$ and $n$, the upper right entry of $A_{n}^{m}$ equals $1$.
 
 As for determining the number of polygon free $(m, n)$ mosaics using a reduced tile set, this will simply be $7^{mn}$ if the second, third, fourth, or fifth tile is omitted from the tile set, since we have just seen that no polygons can be formed. For these or other omitted tiles, we can use the ideas from Theorem~\ref{thm: sum of v for polygon mosaics}. 
 
-For example, if we omit the last tile of Figure ?? then we use the cell product function $v$ that maps $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$, $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$, $\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right)$, and $\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)$ to 6 (since there are six tiles that can replace the blank tile in a polygon free mosaic), $\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}\right)$ to 1, and the remaining eight tiles to 1. 
+For example, if we omit the last tile of Figure~\ref{fig:tile set} then we use the cell product function $v$ that maps $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$, $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$, $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$, and $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$ (since there are six tiles that can replace the blank tile in a polygon free mosaic), $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining eight cells to $1$. 
 
-For omitting the blank tile, we would use $u$ defined by mapping $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right)$ to 1, $\left(\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}\right)$ to 6, and the remaining ten tiles to 1. In this case we would consider polygon mosaics that might include blank tiles, and create only those polygon free mosaics in which the blank tile was replaced by a tile that is not blank. This example was posed by the first author of this paper and served as the motivation for all our work.
+For omitting the blank tile, we would use $v$ defined by mapping $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$ to 0, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining ten tiles to $1$. In this case we would consider polygon mosaics that might include blank tiles, and create only those polygon free mosaics in which the blank tile was replaced by a tile that is not blank. This example was posed by the first author of this paper and served as the motivation for all our work. The number of polygon free mosaics with this extension is A364440 on the OEIS \cite{oeis}.
 \\
 
-\noindent \textbf{Adding tile variations.} Consider the variations of the final tile of Figure ?? [new figure to be created: all teeth face the same direction, unlike in the current figure at the end of the paper, but we picture one and two ``teeth''], where we add one, two, or any number of ``teeth.'' If we add $a-1$ such tiles, so that there are $a$ tiles that connect the midpoints of the top and bottom tile edges, then the number of polygon mosaics then becomes $\sum_{\ell}v(\ell)$, where $v$ is defined by mapping $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right)$ to $a$, and the remaining twelve tiles to 1. 
+\noindent \textbf{Adding tile variations.} Adding tiles with the same connection points is similar. For instance, we include three types of tiles that connect the top and bottom midpoints like below:
 
-Similarly, the number of polygon free mosaics is $\sum_{\ell}v(\ell)$, where $v$ is defined by mapping $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right)$ to $a$, $\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)$ to $a+6$, $\left(\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}\right)$ to 1, and the remaining eight tiles to 1. To see both of these results, extend the function $\mathscr{L}$ to act on this expanded set of mosaics. 
+\begin{figure}[h!]
+\begin{center}
+\begin{tikzpicture}
+    %
+    \cellF{0}{0}{1}{1}
+    %
+    \draw[thick] (2, 0) rectangle (3,1);
+    \draw[red, thick, densely dotted] (3 * 0.5 + 2 * 0.5 , 0) -- (3 * 0.5 + 2 * 0.5 , 0.33) -- (3 * 0.75 + 2 * 0.25 , 0.5) -- (3 * 0.5 + 2 * 0.5 , 0.66) -- (3 * 0.5 + 2 * 0.5 , 1);
+    %
+    \draw[thick] (4, 0) rectangle (5,1);
+    \draw[red, thick, densely dotted] (5 * 0.5 + 4 * 0.5 , 0) -- (5 * 0.5 + 4 * 0.5 , 0.33) -- (5 * 0.25 + 4 * 0.75 , 0.5) -- (5 * 0.5 + 4 * 0.5 , 0.66) -- (5 * 0.5 + 4 * 0.5 , 1);
+\end{tikzpicture}
+\end{center}
+\end{figure}
 
-Fix an $(m,n)$ framed lattice $l$. When counting polygon mosaics, $v(l)$ is the number of polygon mosaics that map to a given framed binary lattice $l$, whereas when counting polygon free mosaics, $|v(l)|$ is the number of polygon mosaics mapping to $l$, and the sign of $v(l)$ is as in Proposition ??.
-
-Adding other tiles would work similarly, provided we are careful with the signs when counting polygon free mosaics. For example, if we took the expanded tile set above and additionally added $b-1$ variations of the second tile of Figure ??, for a total of $b$ such tiles, then the number of polygon free mosaics would be $\sum_{\ell}v(\ell)$, where $v$ is the cell product function mapping $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$ to 0, $\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right)$ to $a$, $\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)$ to $b$, $\left(\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}\right)$ to $b$, $\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)$ to $a+b+5$, and the remaining seven tiles to 1.
+To count polygon mosaics in this new tile set, take $v$ such that $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ map to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ map to $3$, and all other cells map to $1$. To count polygon free mosaics, take $v$ that maps $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ to $3$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $9$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and map $1$ to the eight remaining cells.
 \\
 
-\noindent \textbf{Tiles with more than one line} Consider adding one or more of the following four tiles to the tile set of Figure ??: [four tiles; first tile has connections from left edge to upper edge and also from right edge to lower edge; second tile has connections from left edge to lower edge and from right edge to upper edge; third and fourth tiles are the two crossing tiles that make up knot mosaics]. Using these tiles to form a mosaic gives us additional possibilities for polygon mosaics. Note that using the third or fourth tile allow us to form polygons that overlap, but each segment is still part of a unique polygon. 
+\noindent \textbf{The Lomonaco and Kauffman tile set.} Although we could consider counting the number of knot free mosaics built from the Lomonaco and Kauffman tile set in Figure~\ref{fig: lk tile set}, we will not do so. We invite others to find a way to count such mosaics, but we indicate some potential difficulties. First, there are two reasonable ways to define a knot free mosaic. A knot free mosaic could either be a mosaic in which no knot can be found, or one in which no set of tiles exists for which all segments in those tiles are part of knots. For example, the mosaic in Figure~\ref{fig: knot free mosaic} is polygon free in the second sense but not in the first. 
 
-We can still define $\mathscr{L}$ as we did in Section ?? by counting the number of polygons surrounding a vertex, and these new tiles all map to either $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ or $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$.
+\begin{figure}[h!]
+\begin{center}
+    \begin{tikzpicture}
+        % row 1
+        \cellC{0}{0}{1}{1}
+        \cellD{1}{0}{2}{1}
+        \cell{2}{0}{3}{1}
+        % row 2
+        \cellB{0}{1}{1}{2}
+        \cellG{1}{1}{2}{2}
+        \cellF{2}{1}{3}{2}
+        % row 3
+        \cellD{0}{2}{1}{3}
+        \cellF{1}{2}{2}{3}
+        \cell{2}{2}{3}{3}
+    \end{tikzpicture}
+\end{center}
+\caption{A mosaic that is knot free in the second sense but not the first}
+\label{fig: knot free mosaic}
+\end{figure}
 
-If we add one of these tiles then the number of polygon mosaics is $\sum_{l}v(l)$, where $v$ is the cell product function that maps all cells to 1, so that $\sum_{\ell}v(\ell)=2^{(m-1)(n-1)}$. If we add two, three, or four of these tiles then the number of polygon mosaics is $\sum_{\ell}v(\ell)$, where $v$ is the cell product function that maps $\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right)$ and $\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right)$ to 2, 3, or 4, respectively, and all other cells to 1.
-
-If we specifically add the last two of these four tiles, then the question of counting polygon mosaics is exactly the problem investigated by Oh et al. [Add citation and more historical context here.]
-
-Although we could consider polygon free mosaics adding with tiles in Figure ?? [the one above including knot tiles], we will not do so. We invite others to find a way to count such mosaics, but we indicate some potential difficulties. First, there are two reasonable ways to define a polygon free mosaic. A polygon free mosaic could either be a mosaic in which no polygon can be found, or one in which no set of tiles exists for which all segments in those tiles are part of polygons. For example, the following mosaic is polygon free in the second sense but not in the first. [A picture needs to be created: a $(2,2)$ mosaic that has a diamond polygon, but one of the tiles has an extra diagonal segment.] A second problem is that the end of the proof of Proposition ?? relies on polynomials not being able to cross one another, something that is possible if either the third or fourth tiles in Fig ?? [new one with knot tiles] are used.
+A second problem is that the end of the proof of Proposition~\ref{prop: sign of v} relies on polygons not being able to cross one another, something that is possible with knots formed from the Lomonaco and Kauffman tile set.
 
 
 \section{Acknowledgments}
