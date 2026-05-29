@@ -81,3 +81,6 @@ for prop 4.2, first do single sum case, then do double case
 
 the work we are about to do with general v will do both of these things
 
+## TODOs
+
+goal: the american mathematical monthly

@@ -1,0 +1,78 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{amstext}
+\usepackage{amsthm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\section{Binary Lattices}
+
+\label{section: binary lattices}
+
+For positive integers $m$ and $n$, an $\left(m,n\right)$\emph{
+lattice} is a rectangular grid that has $m+1$ rows and $n+1$ columns
+of integers, which we call \emph{vertices}. All our lattices will
+be \emph{binary}, meaning that each vertex is $0$ or $1$. A \emph{cell}
+is a $\left(1,1\right)$ binary lattice, so that an $\left(m,n\right)$
+binary lattice is made up of $mn$ cells. The sixteen possible cells
+are 
+\[
+\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix},\begin{smallmatrix}0 & 0\\
+0 & 1
+\end{smallmatrix},\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix},\begin{smallmatrix}0 & 0\\
+1 & 1
+\end{smallmatrix},\begin{smallmatrix}0 & 1\\
+0 & 0
+\end{smallmatrix},\begin{smallmatrix}0 & 1\\
+0 & 1
+\end{smallmatrix},\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix},\begin{smallmatrix}0 & 1\\
+1 & 1
+\end{smallmatrix},\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix},\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix},\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix},\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix},\begin{smallmatrix}1 & 1\\
+0 & 0
+\end{smallmatrix},\begin{smallmatrix}1 & 1\\
+0 & 1
+\end{smallmatrix},\begin{smallmatrix}1 & 1\\
+1 & 0
+\end{smallmatrix},\text{ and }\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}.
+\]
+ We further define that a lattice is \emph{framed} if it is binary
+and every vertex on the boundary of the lattice is $0$, and a lattice
+is \emph{proper} if it is framed and does not contain any $\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}$ or $\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}$ cells. For example, the right side of Figure~\ref{fig:example of f mapping}
+is a $\left(5,4\right)$ proper lattice.
+
+\end{document}
