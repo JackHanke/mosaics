@@ -162,14 +162,14 @@
 \begin{center}
 
 \begin{abstract}
-Imagine you are tiling a rectangular bathroom floor with $7$ distinct types of square tiles of unit length. Six of the tile types have a line segment connecting a pair of sides of the unit square at their midpoints. The seventh tile is the ``blank'' tile with no line segment. Some floors covered in these tiles, referred to as mosaics in the literature, can contain polygons formed by the line segments. Hong and Oh gave bounds on the number of polygon mosaics, which are mosaics in which any tile that is not part of a polygon is the blank tile. We exactly count polygon mosaics. We also introduce and count the more difficult polygon free mosaics, which are mosaics that do not contain a polygon.
+Imagine you are tiling a rectangular bathroom floor with seven distinct types of square tiles of unit length. Six of the tile types have a line segment connecting a pair of sides of the unit square at their midpoints. The seventh tile is the ``blank'' tile with no line segment. Some floors covered in these tiles, referred to as mosaics in the literature, can contain polygons formed by the line segments. Hong and Oh gave bounds on the number of polygon mosaics, which are mosaics in which any tile that is not part of a polygon is the blank tile. We exactly count polygon mosaics. We also introduce and solve the more difficult problem of counting polygon free mosaics, which are mosaics that do not contain a polygon.
 \end{abstract}
 
 \end{center}
 
 \section{Mosaics}
 
-Imagine you are tiling a rectangular bathroom floor that is $m$ units by $n$ units, where $m$ and $n$ are positive integers. At your disposal is an unending supply of $7$ distinct types of tiles, as in Figure~\ref{fig:tile set}, which are made up of unit squares and possibly another line segment. The first tile type is the ``blank tile" with no additional line segment. The other six tile types are composed of each way the midpoints of $2$ sides of a unit square can be connected with a line segment.
+Imagine you are tiling a rectangular bathroom floor that is $m$ units by $n$ units, where $m$ and $n$ are positive integers. At your disposal is an unending supply of seven distinct types of tiles, as in Figure~\ref{fig:tile set}, which are made up of unit squares and possibly another line segment. The first tile type is the ``blank tile" with no additional line segment, and the other six tile types each has a line segment that connects, in all possible ways, the midpoints of two sides.
 
 \begin{figure}[h!]
 \begin{center}
@@ -194,85 +194,11 @@ Imagine you are tiling a rectangular bathroom floor that is $m$ units by $n$ uni
 \label{fig:tile set}
 \end{figure}
 
-\noindent The task is complete once you place $mn$ tiles to cover the floor. We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics.
-
-We are interested in the number of $(m,n)$ mosaics in which the line segments do not form any polygons, as well as the number of mosaics in which any tile that is not part of a polygon is the blank tile. We shade the tiles that are part of a polygon in Figure~\ref{fig:example mosaics}. 
+\noindent The task is complete once you cover the floor, which requires $mn$ tiles. We call a fully tiled $m \times n$ floor an $(m,n)$ \textit{mosaic}. Figure~\ref{fig:example mosaics} shows various $(5,4)$ mosaics. Notice that the segments from some tiles form polygons and others do not; in Figure~\ref{fig:example mosaics} we shade the tiles that are part of any polygon. Our goal in this paper is, for any given $m$ and $n$, to count the number of polygon mosaics and the number of polygon free mosaics.
 
 \begin{figure}[h!]
 \begin{center}
-    \begin{subfigure}[t]{0.3\textwidth}
-        \begin{center}
-        \begin{tikzpicture}
-        % row1
-        \cellA{0}{0}{1}{1}
-        \cellB{1}{0}{2}{1}
-        \cellF{2}{0}{3}{1}
-        \cellC{3}{0}{4}{1}
-        % row2
-        \cellA{0}{1}{1}{2}
-        \cellE{1}{1}{2}{2}
-        \cell{2}{1}{3}{2}
-        \cellE{3}{1}{4}{2}
-        % row3
-        \cellA{0}{2}{1}{3}
-        \cellB{1}{2}{2}{3}
-        \cellA{2}{2}{3}{3}
-        \cellB{3}{2}{4}{3}
-        % row4
-        \cellC{0}{3}{1}{4}
-        \cellD{1}{3}{2}{4}
-        \cell{2}{3}{3}{4}
-        \cell{3}{3}{4}{4}
-        % row5
-        \cellA{0}{4}{1}{5}
-        \cellD{1}{4}{2}{5}
-        \cellE{2}{4}{3}{5}
-        \cellD{3}{4}{4}{5}
-
-        \end{tikzpicture}
-        \end{center}
-    \caption{A polygon free mosaic}
-    \label{fig:example polygon free mosaic}
-    \end{subfigure}
-% \hfill
-% \hspace{0.05\textwidth}
-\begin{subfigure}[t]{0.3\textwidth}
-    \begin{center}
-    \begin{tikzpicture}
-        % row1
-        \cellCf{0}{0}{1}{1}
-        \cellEf{1}{0}{2}{1}
-        \cellDf{2}{0}{3}{1}
-        \cellA{3}{0}{4}{1}
-        % row2
-        \cellFf{0}{1}{1}{2}
-        \cell{1}{1}{2}{2}
-        \cellBf{2}{1}{3}{2}
-        \cellDf{3}{1}{4}{2}
-        % row3
-        \cellFf{0}{2}{1}{3}
-        \cellE{1}{2}{2}{3}
-        \cellD{2}{2}{3}{3}
-        \cellFf{3}{2}{4}{3}
-        % row4
-        \cellFf{0}{3}{1}{4}
-        \cellF{1}{3}{2}{4}
-        \cellC{2}{3}{3}{4}
-        \cellFf{3}{3}{4}{4}
-        % row5
-        \cellBf{0}{4}{1}{5}
-        \cellEf{1}{4}{2}{5}
-        \cellEf{2}{4}{3}{5}
-        \cellAf{3}{4}{4}{5}
-    \end{tikzpicture}
-
-    \end{center}
-    \caption{A mosaic that is not polygon free}
-    \label{fig:example not polygon free mosaic}
-\end{subfigure}
-% \hfill
-% \hspace{0.05\textwidth}
-\begin{subfigure}[t]{0.3\textwidth}
+\begin{subfigure}[t]{0.29\textwidth}
     \begin{center}
     \begin{tikzpicture}
         % row1
@@ -306,26 +232,102 @@ We are interested in the number of $(m,n)$ mosaics in which the line segments do
     \caption{A polygon mosaic}
     \label{fig:example polygon mosaic}
 \end{subfigure}
+\hspace{0.05cm}
+\begin{subfigure}[t]{0.29\textwidth}
+    \begin{center}
+    \begin{tikzpicture}
+    % row1
+    \cellA{0}{0}{1}{1}
+    \cellB{1}{0}{2}{1}
+    \cellF{2}{0}{3}{1}
+    \cellC{3}{0}{4}{1}
+    % row2
+    \cellA{0}{1}{1}{2}
+    \cellE{1}{1}{2}{2}
+    \cell{2}{1}{3}{2}
+    \cellE{3}{1}{4}{2}
+    % row3
+    \cellA{0}{2}{1}{3}
+    \cellB{1}{2}{2}{3}
+    \cellA{2}{2}{3}{3}
+    \cellB{3}{2}{4}{3}
+    % row4
+    \cellC{0}{3}{1}{4}
+    \cellD{1}{3}{2}{4}
+    \cell{2}{3}{3}{4}
+    \cell{3}{3}{4}{4}
+    % row5
+    \cellA{0}{4}{1}{5}
+    \cellD{1}{4}{2}{5}
+    \cellE{2}{4}{3}{5}
+    \cellD{3}{4}{4}{5}
 
+    \end{tikzpicture}
+    \end{center}
+\caption{A polygon free mosaic}
+\label{fig:example polygon free mosaic}
+\end{subfigure}
+\hspace{0.05cm}
+\begin{subfigure}[t]{0.29\textwidth}
+    \begin{center}
+    \begin{tikzpicture}
+        % row1
+        \cellCf{0}{0}{1}{1}
+        \cellEf{1}{0}{2}{1}
+        \cellDf{2}{0}{3}{1}
+        \cellA{3}{0}{4}{1}
+        % row2
+        \cellFf{0}{1}{1}{2}
+        \cell{1}{1}{2}{2}
+        \cellBf{2}{1}{3}{2}
+        \cellDf{3}{1}{4}{2}
+        % row3
+        \cellFf{0}{2}{1}{3}
+        \cellE{1}{2}{2}{3}
+        \cellD{2}{2}{3}{3}
+        \cellFf{3}{2}{4}{3}
+        % row4
+        \cellFf{0}{3}{1}{4}
+        \cellF{1}{3}{2}{4}
+        \cellC{2}{3}{3}{4}
+        \cellFf{3}{3}{4}{4}
+        % row5
+        \cellBf{0}{4}{1}{5}
+        \cellEf{1}{4}{2}{5}
+        \cellEf{2}{4}{3}{5}
+        \cellAf{3}{4}{4}{5}
+    \end{tikzpicture}
+
+    \end{center}
+    \caption{A mosaic that is neither a polygon mosaic nor a polygon free mosaic}
+    \label{fig:example not polygon free mosaic}
+\end{subfigure}
 \end{center}
 \caption{Examples of $(5,4)$ mosaics, with tiles forming polygons shaded}
 \label{fig:example mosaics}
 \end{figure}
 
 \begin{definition}
-An $(m,n)$ \textit{polygon free mosaic} is an $(m,n)$ mosaic that does not contain a polygon. An $(m,n)$ \textit{polygon mosaic} is an $(m,n)$ mosaic such that any tile that is not part of a polygon is the blank tile.
+An $(m,n)$ mosaic is a \textit{polygon mosaic} if all line segments are part of polygons, and it is a \textit{polygon free mosaic} if the line segments form no polygons.
 \end{definition}
 
-Figure~\ref{fig:example polygon free mosaic} depicts a polygon free mosaic, Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is neither a polygon free mosaics nor a polygon mosaic, and Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic. Notice that if a mosaic is polygon and polygon free, then all its tiles are blank. We have two main goals in this paper, counting polygon mosaics and counting polygon free mosaics.
+Figure~\ref{fig:example polygon mosaic} depicts a polygon mosaic, Figure~\ref{fig:example polygon free mosaic} depicts a polygon free mosaic, and Figure~\ref{fig:example not polygon free mosaic} depicts a mosaic that is neither a polygon free mosaics nor a polygon mosaic. Notice that if a mosaic is polygon and polygon free then all its tiles are blank. We have two main goals in this paper, counting polygon mosaics and counting polygon free mosaics.
 
-The types of polygons that can be formed from the tiles are more commonly known as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks. As self-avoiding polygons are formed by walks on the square lattice, some authors \cite{Hong2018} have chosen to represent the tiles connecting adjacent sides with two line segments that meet at the center of the square at a right angle, as in Figure \ref{fig:tile styles}. We choose our construction for visual clarity, but point out the results of this paper are true for either style of tile.
+The types of polygons that can be formed from the tiles are more commonly known as ``self-avoiding polygons" in the literature \cite{flory1949configuration, guttmann} to highlight their connection with self-avoiding walks. As self-avoiding polygons are formed by walks on a square lattice, some authors \cite{Hong2018} have chosen to represent the tiles connecting adjacent sides with two line segments that meet at the center of the square at a right angle, as in Figure \ref{fig:tile styles}. The results of this paper are true for either style of tile.
 
 \begin{figure}[h!]
 \begin{center}
     \begin{tikzpicture}
         \cellA{0}{0}{1}{1}
-        % \( \lablnode{2}{-0.5}{$T_1$} \) 
-        \draw[thick] ( 1.5 , 0 ) rectangle ( 2.5 , 1 ); \draw[red, thick, densely dotted] (1.5 , 0.5) -- (2, 0.5) -- (2,0);
+        \cellB{1.5}{0}{2.5}{1}
+        \cellC{3}{0}{4}{1}
+        \cellD{4.5}{0}{5.5}{1}
+
+        \draw[thick] ( 6.5 , 0 ) rectangle ( 7.5 , 1 ); \draw[red, thick, densely dotted] (6.5 , 0.5) -- (7, 0.5) -- (7,0);
+        \draw[thick] ( 8 , 0 ) rectangle ( 9 , 1 ); \draw[red, thick, densely dotted] (8.5 , 0) -- (8.5, 0.5) -- (9,0.5);
+        \draw[thick] ( 9.5 , 0 ) rectangle ( 10.5 , 1 ); \draw[red, thick, densely dotted] (10 , 1) -- (10, 0.5) -- (10.5,0.5);
+        \draw[thick] ( 11 , 0 ) rectangle ( 12 , 1 ); \draw[red, thick, densely dotted] (11 , 0.5) -- (11.5, 0.5) -- (11.5,1);
+
     \end{tikzpicture}
 \end{center}
 \caption{Our tile style (left) and another common style \cite{Hong2018} (right)}
@@ -381,11 +383,7 @@ is a $\left(5,4\right)$ proper lattice.
 % Let $\mathscr{L}$ map a $(m,n)$ polygon mosaic to a $(m,n)$ proper lattice with the following rule. If the vertex is surrounded by the dotted lines of an even number of polygons (including $0$ polygons), label it $0$. If the vertex is surrounded by the dotted lines of an odd number of polygons, label it $1$. Removing the dotted lines from the tiles gives the framed lattice. 
 % \end{definition}
 
-Let $P$ be a polygon mosaic. We will create a binary lattice from $P$ by replacing every point that is at a corner of a tile of $P$ by either $0$ or $1$. For each such point, we count the number of polygons of $P$ that surround it, i.e., polygons for which the point is in the polygon's interior. If this number is even, label the vertex $0$, and if it is odd, label the vertex $1$. We then delete all 
-dotted lines that are part of polygons of $P$, and define
-$\mathscr{L}\left(P\right)$ to be the resulting binary
-lattice. See Figure~\ref{fig:example of f mapping} for an example. If $P$ is an $\left(m,n\right)$ polygon mosaic, i.e., $m$ tiles high and $n$ tiles wide, then $\mathscr{L}\left(P\right)$ is an $\left(m,n\right)$ binary lattice, i.e., $m+1$ vertices high and $n+1$ vertices wide. In fact, $\mathscr{L}\left(P\right)$ is an $\left(m,n\right)$ framed lattice because every point on the
-edge of $P$ is surrounded by no polygons.
+Let $P$ be a polygon mosaic. We will create a binary lattice from $P$ by replacing every point that is at a corner of a tile of $P$ by either $0$ or $1$. For each such point, we count the number of polygons of $P$ that surround it, i.e., polygons for which the point is in the polygon's interior. If this number is even, label the vertex $0$, and if it is odd, label the vertex $1$. We then delete all  tile edges and dotted line segments, and define $\mathscr{L}\left(P\right)$ to be the resulting binary lattice. See Figure~\ref{fig:example of f mapping} for an example. If $P$ is an $\left(m,n\right)$ polygon mosaic, i.e., $m$ tiles high and $n$ tiles wide, then $\mathscr{L}\left(P\right)$ is an $\left(m,n\right)$ binary lattice, i.e., $m+1$ vertices high and $n+1$ vertices wide. In fact, $\mathscr{L}\left(P\right)$ is an $\left(m,n\right)$ framed lattice because every point on the edge of $P$ is surrounded by no polygons.
 
 
 \begin{figure}[h!]
@@ -528,11 +526,11 @@ edge of $P$ is surrounded by no polygons.
 \label{fig:example of f mapping}
 \end{figure}
 
-In our definition of $\mathscr{L}$, a tile of a polygon mosaic $P$ corresponds to a cell of $\mathscr{L}\left(P\right)$. For a tile of $P$ that is not the blank tile, consider laying its corresponding cell over it, an example for which is shown in the middle of Figure~\ref{fig:example of f mapping}. The dotted line of the tile separates the vertices of the cells, with vertices labeled $0$ on one side and labeled $1$ on the other. For example, the second from left tile of Figure~\ref{fig:tile set} must map to either the cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or the cell $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$. Which one? Consider first where the interior of this polygon is relative to this dotted line, and second, the number of other polygons that contain this polygon. For example, the tile maps to $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ if the interior is below the dotted line and an even number of polygons contain this polygon. On the other hand, a blank tile of $P$ corresponds to a cell that is either $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$. With seven tiles, and no cell able to be the image of distinct tiles, $\mathscr{L}\left(P\right)$ contains up to fourteen types of cells. The two types that never appear in $\mathscr{L}\left(P\right)$ are $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Because $\mathscr{L}\left(P\right)$ is also framed, $\mathscr{L}\left(P\right)$ is proper.
+In our definition of $\mathscr{L}$, a tile of a polygon mosaic $P$ corresponds to a cell of $\mathscr{L}\left(P\right)$. It can be helpful to overlay $P$ and $\mathscr{L}(P)$, such as in the middle of Figure~\ref{fig:example of f mapping}. Whenever we do this, in any tile that is not blank, the dotted line segment separates the vertices labeled $0$ on one side and labeled $1$ on the other. Any given tile can map to one of two cells. For example, the tile second from left in Figure~\ref{fig:tile set} must map to either the cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or the cell $\begin{smallmatrix} 1 & 1 \\ 0 & 1 \end{smallmatrix}$. Which one? Look first where the interior of this polygon is relative to this dotted line segment, and second, the number of other polygons that contain this polygon. For example, the tile maps to $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ if the interior is below the dotted line segment and an even number of polygons contain this polygon. A blank tile of $P$, on the other hand, corresponds to a cell that is either $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$. With seven tiles, and no cell able to be the image of distinct tiles, $\mathscr{L}\left(P\right)$ contains up to fourteen types of cells. The two types that never appear in $\mathscr{L}\left(P\right)$ are $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$. Because $\mathscr{L}\left(P\right)$ is also framed, $\mathscr{L}\left(P\right)$ is thus proper.
 
 Given any proper lattice $\ell$, we can reverse this process, creating a mosaic by replacing each cell by the unique tile that can map to it. Define $\mathscr{L}^{-1}$ by restricting this map to proper lattices, and let us show that $\mathscr{L}^{-1}$ is indeed an inverse to $\mathscr{L}$. This will prove that $\mathscr{L}$ gives a bijection from $\left(m,n\right)$ polygon mosaics to $\left(m,n\right)$ proper  lattices. Our discussion above shows that $\mathscr{L}^{-1}\circ\mathscr{L}\left(P\right)=P$ for any polygon mosaic $P$, so fixing a proper lattice $\ell$, we must show that $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon mosaic and that $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)=\ell$.
 
-First observe that polygon mosaics can be characterized as those mosaics in which every end of a dotted line on a tile meets, on an adjacent tile, another end of a dotted line. In the mosaic $\mathscr{L}^{-1}\left(\ell\right)$, these ends are exactly the points, in the corresponding cell of $\ell$, which lie halfway between adjacent vertices of $\ell$, one labeled $0$ and the other labeled $1$. Because $\ell$ is a framed lattice, the vertex labeled $1$ is an internal vertex. Thus, another cell of $\ell$ shares these two vertices, and the dotted lines of $\mathscr{L}^{-1}\left(\ell\right)$ from the two corresponding tiles meet. Therefore $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon mosaic.
+First observe that polygon mosaics can be characterized as those mosaics in which every end of a dotted line segment on a tile meets, on an adjacent tile, another end of a dotted line segment. In the mosaic $\mathscr{L}^{-1}\left(\ell\right)$, these ends are exactly the points, in the corresponding cell of $\ell$, which lie halfway between adjacent vertices of $\ell$, one labeled $0$ and the other labeled $1$. Because $\ell$ is a framed lattice, the vertex labeled $1$ is an internal vertex. Thus, another cell of $\ell$ shares these two vertices, and the dotted lines of $\mathscr{L}^{-1}\left(\ell\right)$ from the two corresponding tiles meet. Therefore $\mathscr{L}^{-1}\left(\ell\right)$ is a polygon mosaic.
 
 By our analysis of $\mathscr{L}$ and our definition of $\mathscr{L}^{-1}$,
 each cell of $\mathscr{L}\circ\mathscr{L}^{-1}\left(\ell\right)$
@@ -599,7 +597,7 @@ C_n \text{ is } v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{
 \end{eqnarray*}
 \end{prop}
 \begin{proof}
-We induct on $n$. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string. We next assume our result for some fixed $n \geq 1$. The induction step requires proving the proposition for entries in $A_{n+1}, B_{n+1}, C_{n+1}$, and $D_{n+1}$. As these matrices are defined by quadrants of the matrices $A_{n}, B_{n}, C_{n}$, and $D_{n}$, there are sixteen cases to examine. We prove two of the sixteen cases for illustration, that being the upper right quadrant of $A_{n+1}$ and then the lower left quadrant of $D_{n+1}$.
+We induct on $n$. The $n=1$ case is trivial, as $\beta_0(0)$ is the empty string. We next assume our result for some fixed $n \geq 1$. The induction step requires proving the proposition for all entries in $A_{n+1}, B_{n+1}, C_{n+1}$, and $D_{n+1}$. As these matrices are defined by quadrants, using matrices $A_{n}, B_{n}, C_{n}$, and $D_{n}$, there are sixteen cases to examine. We prove two of the sixteen cases for illustration, that being the upper right quadrant of $A_{n+1}$ and then the lower left quadrant of $D_{n+1}$.
 
 Let $i,j$ be nonnegative integers less than $2^{n-1}$. For the upper right block matrix in $A_{n+1}$, by definition the $(i, 2^{n-1}+j)$ entry of $A_{n+1}$ equals $v\left(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ times the $(i,j)$ entry of $B_n$. By our induction hypothesis, this equals
 
@@ -609,7 +607,7 @@ $$v\Big(\begin{smallmatrix} 0 & 0 \\ 0 & 1 \end{smallmatrix}\Big)v\left(\begin{s
 
 $$v\Big(\begin{smallmatrix} 1 & 1 \\ 1 & 0 \end{smallmatrix}\Big)v\left(\begin{smallmatrix} 1 & \beta_{n-1}(i) & 0 \\ 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & 1 & \beta_{n-1}(i) & 0 \\ 1 & 0 & \beta_{n-1}(j) & 0 \end{smallmatrix}\right) = v\left(\begin{smallmatrix} 1 & \beta_{n}(2^{n-1}+i) & 0 \\ 1 & \beta_{n}(j) & 0 \end{smallmatrix}\right),$$
 
-\noindent again as desired. These arguments must be adapted to prove the desired results for all quadrants of $A_{n+1}, B_{n+1}, C_{n+1},$ and $D_{n+1}$, but all the work is similar. 
+\noindent again as desired. These arguments must be adapted to prove the desired results for all quadrants of $A_{n+1}, B_{n+1}, C_{n+1},$ and $D_{n+1}$, but the work is similar. 
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm: m by n matrix}]
@@ -629,23 +627,9 @@ where the sum is over all height~$m$ strips $\ell$ whose first
 row is determined by $i$ and whose last row is determined by $j$.
 \end{claim*}
 
-To prove the claim, first observe that for each $i$ and $j$, there
-exists a unique height~$1$ strip whose first row is determined by
-$i$ and whose last row is determined by $j$. By Proposition~\ref{prop: one by n matrix},
-$v$ applied to this strip is equal to the $\left(i,j\right)$ entry
-of $A_{n}$. This proves our claim when $m=1$. We continue by induction,
-so for some $m\ge2$, assume the claim for $m-1$.
+To prove the claim, first observe that for each $i$ and $j$, there exists a unique height~$1$ strip whose first row is determined by $i$ and whose last row is determined by $j$. By Proposition~\ref{prop: one by n matrix}, $v$ applied to this strip is equal to the $\left(i,j\right)$ entry of $A_{n}$. This proves our claim when $m=1$. We continue by induction, so for some $m\ge2$, assume the claim for $m-1$.
 
-Fix nonnegative integers $i,j<2^{n-1}$, and consider some nonnegative
-integer $k<2^{n-1}$. As in the $m=1$ case, Proposition~\ref{prop: one by n matrix} tells
-us that the $\left(i,k\right)$ entry of $A_{n}$ equals $v$ applied
-to the unique height~$1$ strip with first and last rows determined
-respectively by $i$ and by $k$. By our induction hypothesis, the
-$\left(k,j\right)$ entry of $A_{n}^{m-1}$ equals $\sum_{\ell} v\left(\ell\right)$,
-where the sum is over all height~$m-1$ strips $\ell$ whose first
-and last rows are determined respectively by $k$ and by $j$. Consider
-applying $v$ both to the height~$1$ strip indicated above and to
-one of the height~$m-1$ strips $\ell$ in this sum. Because $v$ is a cell product function, the product of these two numbers is equal to $v$ applied to the height~$m$ strip formed by overlapping the bottom row of the height~$1$ strip to the top row of $\ell$, which we illustrate as
+Fix nonnegative integers $i,j<2^{n-1}$, and consider some nonnegative integer $k<2^{n-1}$. As in the $m=1$ case, Proposition~\ref{prop: one by n matrix} tells us that the $\left(i,k\right)$ entry of $A_{n}$ equals $v$ applied to the unique height~$1$ strip with first and last rows determined respectively by $i$ and by $k$. By our induction hypothesis, the $\left(k,j\right)$ entry of $A_{n}^{m-1}$ equals $\sum_{\ell} v\left(\ell\right)$, where the sum is over all height~$m-1$ strips $\ell$ whose first and last rows are determined respectively by $k$ and by $j$. Consider applying $v$ both to the height~$1$ strip indicated above and to one of the height~$m-1$ strips $\ell$ in this sum. Because $v$ is a cell product function, the product of these two numbers is equal to $v$ applied to the height~$m$ strip formed by overlapping the bottom row of the height~$1$ strip to the top row of $\ell$, which we illustrate as
 
 % weird hack for vdot 
 \begin{equation*}
@@ -674,22 +658,22 @@ A_{n+1} = \begin{pmatrix} A_{n} & \; B_{n} \\ C_{n} & D_{n} \end{pmatrix} & B_{n
 C_{n+1} = \begin{pmatrix} A_{n} & 0B_{n} \\ C_{n} & D_{n} \end{pmatrix} & D_{n+1} = \begin{pmatrix} A_{n} & B_{n} \\ \: C_{n} & D_{n} \end{pmatrix}.
 \end{eqnarray*}
 
-\noindent Then the number of $(m,n)$ polygon mosaics is the upper left entry of $A_{n}^m$.
+\noindent Then for all positive integers $m$ and $n$, the number of $(m,n)$ polygon mosaics is the upper left entry of $A_{n}^m$.
 \label{thm: polygon mosaic summation final}
 \end{thm}
 
-Now that we have counted polygon mosaics, we move to the more complicated polygon free mosaics.
+Now that we have counted polygon mosaics, we move to the more complicated problem of counting polygon free mosaics.
 
 \section{Counting Polygon Free Mosaics}\label{section: counting polygon free mosaics}
 
 The main goal of this section is to prove the following theorem.
 
 \begin{thm}
-Let $v$ be the cell product function that maps the cells $\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\0 & 1\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0 & 0\\0 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 1\\1 & 1\end{smallmatrix}$ to $7$, $\begin{smallmatrix}0 & 0\\1 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\1 & 1\end{smallmatrix}$ to $-1$, and the ten other cells to $1$. Then for all positive integers $m$ and $n$, the number of $\left(m,n\right)$ polygon free mosaics equals $\sum_{\ell}v\left(\ell\right)$, where the sum is over all $\left(m,n\right)$ framed lattices $\ell$. \label{thm: sum of vs} 
+Let $v$ be the cell product function that maps the cells $\begin{smallmatrix}0 & 1\\1 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\0 & 1\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0 & 0\\0 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 1\\1 & 1\end{smallmatrix}$ to $7$, $\begin{smallmatrix}0 & 0\\1 & 0\end{smallmatrix}$ and $\begin{smallmatrix}1 & 0\\1 & 1\end{smallmatrix}$ to $-1$, and the ten other cells to $1$. Then for all positive integers $m$ and $n$, the number of $\left(m,n\right)$ polygon free mosaics equals $\sum_{\ell}v\left(\ell\right)$, where the sum is over all $\left(m,n\right)$ framed lattices $\ell$.
 \label{thm: polygon free summation}
 \end{thm}
 
-Throughout this section, let $v$ be as in Theorem~\ref{thm: polygon free summation}. For example, if $\ell$ is the proper lattice on the right of Figure~\ref{fig:example of f mapping}, we have $v(\ell) = 7^2$, as there is one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, one $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, one $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cell, and one $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cell. For the proof of Theorem \ref{thm: polygon free summation}, we need to following key result.
+Throughout this section, let $v$ be as in Theorem~\ref{thm: polygon free summation}. For example, if $\ell$ is the proper lattice on the right of Figure~\ref{fig:example of f mapping}, we have $v(\ell) = 49$, as there is one $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ cell, one $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ cell, one $\begin{smallmatrix} 0 & 0 \\ 0 & 0 \end{smallmatrix}$ cell, and one $\begin{smallmatrix} 1 & 1 \\ 1 & 1 \end{smallmatrix}$ cell. For the proof of Theorem \ref{thm: polygon free summation}, we need to following key result.
 
 \begin{prop}
 For a polygon mosaic $P$, let $\ell=\mathscr{L}\left(P\right)$. If $P$ contains an even {[}resp. odd{]} number of polygons then $v\left(\ell\right)$
@@ -709,30 +693,24 @@ defined ``locally.''
 Let $N$ be the number of vertices of $\ell$ that are $1$, and define
 $\ell_{0}$ to be the lattice formed by changing these $N$ vertices
 from $1$ to $0$. That is, $\ell_{0}$ has the same dimensions as
-$\ell$ but all vertices are $0$. We will change $\ell_{0}$ back
+$\ell$, but all its vertices are $0$. We will change $\ell_{0}$ back
 to $\ell$ by flipping these vertices back from $0$ to $1$, one
 vertex at a time. The order in which we flip vertices is as follows.
 
 We flip vertices one row at a time, working from top to
 bottom. In each row we make two passes, each time moving from left
-to right, and each time flipping a vertex if the corresponding
-vertex of $\ell$ is $1$. On the first pass we flip a vertex if
-the vertex directly above it is $1$. (Because we are working the
-rows from top to bottom, this vertex is $1$ in both our current lattice
-and also in $\ell$.) On the second pass we flip the remaining vertices
-of the row, i.e., if the vertex directly above it is $0$.
+to right. In both passes, the flipped vertex must be at the same place as a vertex of $\ell$ that is $1$.  In the first pass we additionally require that the vertex directly above is 1 (this vertex is 1 in both our current lattice and also in $\ell$, since we are working the rows from top to bottom), whereas in the second pass the vertex directly above must be $0$.
 
 This procedure creates a sequence $\ell_{0}$, $\ell_{1}$, \ldots ,
-$\ell_{N}$ of lattices with $\ell_{N}=\ell$. Because $\ell=\mathscr{L}\left(P\right)$,
-we know $\ell$ is a proper lattice. Since every $\ell_{i}$
+$\ell_{N}$ of lattices with $\ell_{N}=\ell$. Because $\ell=\mathscr{L}\left(P\right)$, we know $\ell$ is a proper lattice. Since every $\ell_{i}$
 has the same dimensions as $\ell$ and has vertices of $0$ in at
 least the same positions as in $\ell$, we see every $\ell_{i}$ is
-a framed lattice. We will prove that every $\ell_{i}$ is also a proper
+a framed lattice. We will prove that every $\ell_{i}$ is actually a proper
 lattice (which is the reason we make two passes through each row)
-and that by taking $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$,
-the proposition holds for $P_{i}$ and $\ell_{i}$, for all $i$. Since $\ell = \ell_N$, this will complete our proof.
+and that by taking $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$ for all $i$,
+the proposition holds for all $P_{i}$ and $\ell_{i}$. Since $\ell = \ell_N$, this will complete our proof.
 
-In the transition from $\ell_{i-1}$ to $\ell_{i}$, because every $\ell_{i}$ is framed, the single vertex that changes is adjacent to eight vertices, as in Figure~\ref{fig: cases diagram}, where the changing vertex $\#$ is $0$ in $\ell_{i-1}$ and $1$ in $\ell_{i}$, and the remaining vertices are labeled for their relative position to this central vertex, such as $dl$ for down left and $u$
+In the transition from $\ell_{i-1}$ to $\ell_{i}$, because every $\ell_{i}$ is framed, the single vertex that changes is adjacent to eight vertices, as in Figure~\ref{fig: cases diagram}, where the changing central vertex $\#$ is $0$ in $\ell_{i-1}$ and $1$ in $\ell_{i}$, and the remaining vertices are labeled for their relative position to this central vertex, such as $dl$ for down left and $u$
 for up.
 \begin{figure}[h!]
 \begin{center}
@@ -762,7 +740,7 @@ for up.
 \label{fig: cases diagram}
 \end{figure}
 
-We need to consider all possible adjacent vertices. Since our process goes from top to bottom one row at a time, we have $\left(dl,d,dr\right)=\left(0,0,0\right)$. Also, because of the way in which we make our two passes, if $u=1$ then $r=0$ and $\left(ul,l\right)\neq\left(0,1\right)$, whereas if $u=0$ then $\left(ur,r\right)\neq\left(0,1\right)$. Additionally, in the case $u=0$, neither $\left(ul,l\right)$ nor $\left(ur,r\right)$ equals $\left(1,0\right)$. Indeed, if $\left(ul,l\right)=\left(1,0\right)$ then since we are making the second pass through the row, we would have a cell $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ in $\ell_{i}$ and thus also in $\ell_{N}=\ell$, contradicting that $\ell$ is a proper lattice. Similarly, $\left(ur,r\right)=\left(1,0\right)$ implies that $\ell$ has a cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ (since with $ur=1$, $r$ cannot change in the second pass), again contradicting that $\ell$ is a proper lattice. Putting all this together, on the first pass, i.e., when $u=1$, the vertices can only be as in the six cases pictured in Figure~\ref{fig: step 2 cases}. Similarly, on the second pass we have $u=0$ and one of the six cases of Figure~\ref{fig: step 3 cases}.
+Let us determine the adjacent vertices that can occur. Since our process goes from top to bottom one row at a time, we have $\left(dl,d,dr\right)=\left(0,0,0\right)$. Also, because of the way in which we make our two passes, if $u=1$ then $r=0$ and $\left(ul,l\right)\neq\left(0,1\right)$, whereas if $u=0$ then $\left(ur,r\right)\neq\left(0,1\right)$. Additionally, in the case $u=0$, neither $\left(ul,l\right)$ nor $\left(ur,r\right)$ equals $\left(1,0\right)$. Indeed, if $\left(ul,l\right)=\left(1,0\right)$ then we would have a cell $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ in $\ell_{i}$, and thus also in $\ell_{N}=\ell$, since we are making the second pass through the row. This would contradict that $\ell$ is a proper lattice. Similarly, $\left(ur,r\right)=\left(1,0\right)$ implies that $\ell$ has a cell $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ (since with $ur=1$, $r$ cannot change in the second pass), again contradicting that $\ell$ is a proper lattice. Putting all this together, on the first pass, i.e., when $u=1$, the vertices can only be as in the six cases pictured in Figure~\ref{fig: step 2 cases}. Similarly, on the second pass we have $u=0$ and one of the six cases of Figure~\ref{fig: step 3 cases}.
 
 \begin{figure}[h!]
 \centering
@@ -1179,7 +1157,7 @@ We need to consider all possible adjacent vertices. Since our process goes from 
 \label{fig: step 3 cases}
 \end{figure}
 
-Since trivially $\ell_{0}$ is a proper lattice, the twelve cases in Figures~\ref{fig: step 2 cases} and~\ref{fig: step 3 cases} show inductively that every $\ell_{i}$ is a proper lattice because none of the cases create a $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cell when $\#$ changes from $0$ to $1$. For every $i$, we have already seen that $\ell_{i}$ is a framed lattice, so let $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$. Figures~\ref{fig: step 2 cases} and~\ref{fig: step 3 cases} also show the portions of $P_{i-1}$ and $P_{i}$ that are in these four cells, where the dashed lines are from the polygons of $P_{i-1}$ and the dotted lines from the polygons of $P_{i}$. (Recall that $\#$ is $0$ in $\ell_{i-1}$ and $1$ in $\ell_{i}$.)
+Since trivially $\ell_{0}$ is a proper lattice, the twelve cases in Figures~\ref{fig: step 2 cases} and~\ref{fig: step 3 cases} show inductively that every $\ell_{i}$ is a proper lattice because none of the cases create a $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ cell and we have already seen that every $\ell_{i}$ is framed. For every $i$, let $P_{i}=\mathscr{L}^{-1}\left(\ell_{i}\right)$. Figures~\ref{fig: step 2 cases} and~\ref{fig: step 3 cases} also show the portions of $P_{i-1}$ and $P_{i}$ that are in these four cells, where the dashed lines are from the polygons of $P_{i-1}$ and the dotted lines from the polygons of $P_{i}$. (Recall that $\#$ is $0$ in $\ell_{i-1}$ and $1$ in $\ell_{i}$.)
 
 Let us say a cell is \emph{negative} if it is $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ or $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$, i.e., if its evaluation under $v$ is negative. The conclusion of Proposition~\ref{prop: sign of v} can be rephrased by saying that the number of negative
 cells in $\ell$ and the number of polygons in $P$ have the same
@@ -1193,31 +1171,18 @@ We know that we are in one of the twelve cases of Figures~\ref{fig: step 2 cases
 and~\ref{fig: step 3 cases}, and we must look at the number of negative cells in $\ell_{i}$
 versus $\ell_{i-1}$, and the number of polygons in $P_{i}$ versus
 $P_{i-1}$. An easy case is (a) of Figure~\ref{fig: step 3 cases} because $\ell_{i}$
-has one more negative cell (specifically $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$), and $P_{i}$ has one more polygon than $P_{i-1}$.
+has one more negative cell than $\ell_{i-1}$ (specifically $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$), and $P_{i}$ has one more polygon than $P_{i-1}$.
 
-In the remaining cases let us know look at how the number of negative cells changes from $\ell_{i-1}$ to $\ell_{i}$. In the six cases
-of Figure~\ref{fig: step 2 cases} and also case (d) of Figure~\ref{fig: step 3 cases}, the four
-pictured cells have no negative cells regardless of whether $\#$
-equals $0$ or $1$, so there is no change. The number is also unchanged
-in (b) of Figure~\ref{fig: step 3 cases} because a single negative cell
-$\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ changes position between $\ell_{i-1}$ and $\ell_{i}$. In (c) of
-Figure~\ref{fig: step 3 cases}, the number of negative cells increases by $2$ because
-changing $0$ to $1$ in the central position creates both a cell $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ and a cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$. Finally, the number decreases by $1$ in (e) of
-Figure~\ref{fig: step 3 cases} and increases by $1$ in (f) of Figure~\ref{fig: step 3 cases}. Therefore,
-we can complete the theorem by showing that in the six cases of
-Figure~\ref{fig: step 2 cases} and in (b), (c), (d) of Figure~\ref{fig: step 3 cases}, $P_{i-1}$
-and $P_{i}$ have the same number of polygons, whereas in (e) and
-(f) of Figure~\ref{fig: step 3 cases}, the number of polygons in $P_{i-1}$ and $P_{i}$
-differs by $1$.
+In the remaining cases let us now look at how the number of negative cells changes from $\ell_{i-1}$ to $\ell_{i}$. In the six cases of Figure~\ref{fig: step 2 cases} and also case (d) of Figure~\ref{fig: step 3 cases}, the four pictured cells have no negative cells regardless of whether $\#$ equals $0$ or $1$, so there is no change. The number is also unchanged in (b) of Figure~\ref{fig: step 3 cases} because a single negative cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$ changes position between $\ell_{i-1}$ and $\ell_{i}$. In (c) of Figure~\ref{fig: step 3 cases}, the number of negative cells increases by $2$ because changing $0$ to $1$ in the central position creates both a cell $\begin{smallmatrix} 1 & 0 \\ 1 & 1 \end{smallmatrix}$ and a cell $\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}$. Finally, the number decreases by $1$ in (e) of Figure~\ref{fig: step 3 cases} and increases by $1$ in (f) of Figure~\ref{fig: step 3 cases}. Therefore, we can complete the proposition by showing that in the six cases of Figure~\ref{fig: step 2 cases} and in (b), (c), (d) of Figure~\ref{fig: step 3 cases}, $P_{i-1}$ and $P_{i}$ have the same number of polygons, whereas in (e) and (f) of Figure~\ref{fig: step 3 cases}, the number of polygons in $P_{i-1}$ and $P_{i}$ differs by $1$.
 
 Consider, for example, (c) of Figure~\ref{fig: step 2 cases}, and look
 just above the lower left corner and just left of the upper
 right corner. In $P_{i-1}$ these are connected by a straight dashed
-line, and in $P_{i}$ these are connected by dotted line segments.
+line segment, and in $P_{i}$ these are connected by dotted line segments.
 We call both of these \emph{inside connections}. Because $P_{i-1}$
 and $P_{i}$ are polygon mosaics, these same points are connected
-by straight line segments outside the pictured area, and we will call
-these \emph{outside connections} because they connect points on the
+by line segments outside the pictured area, and we will call
+this an \emph{outside connection} because it connects points on the
 edge of the pictured area with a path outside the area. This outside
 connection is the same in $P_{i-1}$ and $P_{i}$. Therefore $P_{i-1}$
 and $P_{i}$ have the same number of polygons because the polygon
@@ -1364,8 +1329,7 @@ from $P_{I}$ by using any tile wherever $P_{I}$ has a blank tile.
 Notice that the size $\left|M_{I}\right|$ of this set equals $7^{a}$,
 where $a$ is the number of blank tiles in $P_{I}$. By the definition
 of $\mathscr{L}$, the number of cells of $\mathscr{L}\left(P_{I}\right)$
-that are either $\begin{smallmatrix}0 & 0\\0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix}1 & 1\\1 & 1 \end{smallmatrix}$ is also $a$, and since $\mathscr{L}\left(P_{I}\right)$ is proper,
-i.e. it has neither $\begin{smallmatrix}0 & 1\\1 & 0 \end{smallmatrix}$ nor $\begin{smallmatrix}1 & 0\\0 & 1 \end{smallmatrix}$ cells, we see that $\left|v\left(\mathscr{L}\left(P_{I}\right)\right)\right|=\left|M_{I}\right|$. Furthermore, $\left|I\right|$ is the number of polygons in $P_{I}$,
+that are either $\begin{smallmatrix}0 & 0\\0 & 0 \end{smallmatrix}$ or $\begin{smallmatrix}1 & 1\\1 & 1 \end{smallmatrix}$ is also $a$, and since $\mathscr{L}\left(P_{I}\right)$ is proper, and thus it has neither $\begin{smallmatrix}0 & 1\\1 & 0 \end{smallmatrix}$ nor $\begin{smallmatrix}1 & 0\\0 & 1 \end{smallmatrix}$ cells, we see that $\left|v\left(\mathscr{L}\left(P_{I}\right)\right)\right|=\left|M_{I}\right|$. Furthermore, $\left|I\right|$ is the number of polygons in $P_{I}$,
 so Proposition~\ref{prop: sign of v} tells us that $v\left(\mathscr{L}\left(P_{I}\right)\right)$
 and $\left(-1\right)^{\left|I\right|}$ have the same sign. Therefore,
 if $P_{I}$ exists then 
@@ -1373,16 +1337,11 @@ if $P_{I}$ exists then
 v\left(\mathscr{L}\left(P_{I}\right)\right)=\left(-1\right)^{\left|I\right|}\left|M_{I}\right|.
 \]
 
-We must show that the sum $\sum_{\ell}v\left(\ell\right)$ over
-all framed lattices $\ell$ is equal to the number of polygon free mosaics.
-The sum is unchanged if we restrict the sum to all proper
-lattices $\ell$ because $v\left(\ell\right)=0$ if $\ell$ is not
-proper. Furthermore, since $\mathscr{L}$ gives a bijection from polygon
-mosaics to proper lattices, 
+We must show that the sum $\sum_{\ell}v\left(\ell\right)$ over all framed lattices $\ell$ is equal to the number of polygon free mosaics. The sum is unchanged if we restrict the sum to all proper lattices $\ell$ because $v\left(\ell\right)=0$ if $\ell$ is framed but not proper. Furthermore, since $\mathscr{L}$ gives a bijection from polygon mosaics to proper lattices, 
 \[
 \sum_{\ell}v\left(\ell\right)=\sum v\left(\mathscr{L}\left(P_{I}\right)\right)=\sum\left(-1\right)^{\left|I\right|}\left|M_{I}\right|,
 \]
- where the second and third sums are over all $I\subseteq J$ such
+where the second and third sums are over all $I\subseteq J$ such
 that $P_{I}$ exists. 
 
 The total number of mosaics, which happens to
@@ -1393,8 +1352,7 @@ and $n\ge2$, so that $J\neq\varnothing$ and the third sum has a nonzero
 term with $I\neq\varnothing$, for example, $I=\left\{ i\right\} $
 for any $i\in J$.
 
-For any $I\neq\varnothing$ such that $P_{I}$ exists, $M_{I}=\bigcap_{i\in I}M_{\left\{ i\right\} }$
-by the definition of the $M_{I}$ and $M_{\{i\}}$. Thus 
+For any $I\neq\varnothing$ such that $P_{I}$ exists, $M_{I}=\bigcap_{i\in I}M_{\left\{ i\right\} }$ by the definition of $M_{I}$ and the $M_{\{i\}}$. Thus 
 \[
 \sum_{\ell}v\left(\ell\right)=\left|M_{\varnothing}\right|-\sum\left(-1\right)^{\left|I\right|-1}\left|\bigcap_{i\in I}M_{\left\{ i\right\} }\right|,
 \]
@@ -1421,7 +1379,7 @@ A_{n+1} = \begin{pmatrix} 7A_{n} & B_{n} \\ C_{n} & D_{n} \end{pmatrix} & B_{n+1
 C_{n+1} = \begin{pmatrix} A_{n} & 0B_{n} \\ C_{n} & D_{n} \end{pmatrix} & D_{n+1} = \begin{pmatrix} A_{n} & -B_{n} \\ C_{n} & 7D_{n} \end{pmatrix}.
 \end{eqnarray*}
 
-\noindent Then the number of $(m,n)$ polygon free mosaics is the upper left entry of $A_{n}^m$.
+\noindent Then for all positive integers $m$ and $n$, the number of $(m,n)$ polygon free mosaics is the upper left entry of $A_{n}^m$.
 \label{thm: messy mosaics}
 \end{thm}
 
@@ -1431,13 +1389,15 @@ Our work can be seen as an extension to Hong and Oh \cite{Hong2018} and further 
 
 \begin{thm}[\cite{Hong2018}]
 \label{thm:Hong2018}
-The number of $(m,n)$ polygon mosaics for $m,n \geq 3$ is bounded between
+The number of $(m,n)$ polygon mosaics for $m,n \geq 3$ is between \\
 $2^{m+n-3}\left(\frac{17}{10}\right)^{(m-2)(n-2)}$ and $2^{m+n-3}\left(\frac{31}{16}\right)^{(m-2)(n-2)}.$
 \end{thm}
 
-\noindent Our Theorem~\ref{thm: polygon mosaic summation final} compliments this result with a procedure to exactly count polygon mosaics, as well as exactly recreate the sequence A181245 on the OEIS \cite{oeis}. Note that unlike here, the authors in \cite{Hong2018} did not consider the mosaic made from only blank tiles a polygon mosaic, and so our result differs from theirs by $1$. The methods in \cite{Oh2014} could be used to count just polygon mosaics, a fact which is likely known to the authors of \cite{Hong2018} and \cite{Oh2014}, though to our knowledge has not appeared in print. Importantly, however, our work also counts polygon free mosaics.
+\noindent Our Theorem~\ref{thm: polygon mosaic summation final} compliments this result with a procedure to exactly count polygon mosaics, as well as recreate the sequence A181245 on the OEIS \cite{oeis}. Note that unlike here, Hong and Oh did not consider the mosaic made from only blank tiles a polygon mosaic, and so our result differs from theirs by $1$. 
 
-In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from the eleven distinct tile of Figure~\ref{fig: lk tile set}, the first seven of which form our tile set.
+The methods in \cite{Oh2014} could be used to count just polygon mosaics, a fact which is likely known to the authors of \cite{Oh2014}, though to our knowledge has not appeared in print. Importantly, however, our work also counts polygon free mosaics.
+
+In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics constructed from the eleven distinct tile types of Figure~\ref{fig: lk tile set}, the first seven of which form our tile set.
 
 \begin{figure}[h!]
 \begin{center}
@@ -1466,20 +1426,20 @@ In related work, Lomonaco and Kauffman \cite{Lomonaco08} introduced mosaics cons
 \label{fig: lk tile set}
 \end{figure}
 
-\noindent The authors were interested in a subset of mosaics which they call \textit{knot mosaics}, since the line segments form knots. Like polygon mosaics, knot mosaics are mosaics in which any tile that is not part of a knot is the blank tile. Oh et al. \cite{Oh2014} counted the number of knot mosaics using an analagous method to that of Theorem~\ref{thm: m by n matrix}. Oh and colleagues go beyond counting by also bounding the growth rate of knot mosaics \cite{Oh2016, Oh2019, Choi2024}, and Oh further adapts techniques similar to Theorem~\ref{thm: m by n matrix} to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to count the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
+\noindent The authors were interested in a subset of mosaics which they call \textit{knot mosaics}, since the line segments form knots. Like polygon mosaics, knot mosaics are mosaics in which any tile that is not part of a knot is the blank tile. Oh et al. \cite{Oh2014} counted the number of knot mosaics using an analagous method to that of Theorem~\ref{thm: m by n matrix}. Oh and colleagues go beyond counting by also bounding the growth rate of knot mosaics \cite{Choi2024, Oh2016, Oh2019}, and Oh further adapts techniques similar to Theorem~\ref{thm: m by n matrix} to solve problems in monomer and dimer tilings \cite{Oh2018Aztec, Oh2019tiling}. Related ideas were independently used to count the number of rectangular partitions of a rectangle in \cite{oeispaper} for the sequence A182275 on the OEIS \cite{oeis}.
 
 \section{Extensions and Further Questions}\label{section: extensions}
 
-It is simple to adapt our techniques to count polygon mosaics and polygon free mosaics in certain extensions of our tile set. Throughout this section, fix positive integers $m$ and $n$, and let $\sum_{\ell}v(\ell)$ always designate the sum of $v(\ell)$ over all $(m,n)$ framed lattices $\ell$. In all cases, $v$ is a cell product function, and therefore Theorem~\ref{thm: m by n matrix} tells us that matrices can be used to evaluate such sums.
+It is simple to adapt our techniques to count polygon mosaics and polygon free mosaics in certain extensions of our tile set. Throughout this section, fix positive integers $m$ and $n$, and let $\sum_{\ell}v(\ell)$ always designate the sum of $v(\ell)$ over all $(m,n)$ framed lattices $\ell$. In all cases, $v$ is a cell product function, and therefore Theorem~\ref{thm: m by n matrix} tells us that matrices can be used to evaluate these sums.
 \\
 
 \noindent \textbf{Fewer tiles.} If we limit ourselves to a subset of the tiles in Figure~\ref{fig:tile set} then, of course, there are fewer polygon mosaics and polygon free mosaics. We can count how many using our existing work. For example, omitting the rightmost tile of Figure~\ref{fig:tile set}, the number of polygon mosaics equals $\sum_{\ell}v(\ell)$, where $v$ is the cell product function such that $v\left(\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}\right) = v\left(\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}\right) = 0$ and otherwise $1$. This can be shown using the reasoning of Theorem~\ref{thm: sum of v for polygon mosaics}, since the omitted tile is the one that maps via $\mathscr{L}$ to either $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$ or $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$.
 
-We can similarly count the number of polygon mosaics that can be formed by omitting a different tile or by omitting several tiles. It is worth noting, however, that some of these turn out to be trivial. Specifically, if the second, third, fourth, or fifth tile from left is omitted from Figure~\ref{fig:tile set} then there is only one possible polygon mosaic, namely the one that contains only blank tiles. We outline omitting the second tile; omitting the third, fourth, or fifth tile from left is similar. There are three ways to see this. First consider the tiles that are not blank, assuming there are some, in a polygon mosaic. Of those tiles, look at those in the highest possible row. The one farthest to the right must be the second tile of Figure~\ref{fig:tile set}. Second, in any framed binary lattice in which not all vertices are zero, among the vertices that are 1 and are as high as possible, the one farthest to the right must be the corner of a cell that is $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$. Finally, in Theorem ~\ref{thm: m by n matrix}, if $v\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)=0$ and $v\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)=1$ then for all positive integers $m$ and $n$, the upper right entry of $A_{n}^{m}$ equals $1$.
+We can similarly count the number of polygon mosaics that can be formed by omitting a different tile or by omitting several tiles. It is worth noting, however, that some of these turn out to be trivial. Specifically, if the second, third, fourth, or fifth tile from left is omitted from Figure~\ref{fig:tile set} then there is only one possible polygon mosaic, namely the one that contains only blank tiles. We outline omitting the second tile; omitting the third, fourth, or fifth tile from left is similar. There are three ways to see this. First assume a polygon mosaic has tiles that are not blank. Of these tiles, look at those in the highest possible row. The one farthest to the right must be the second tile of Figure~\ref{fig:tile set}. Second, in any framed binary lattice in which not all vertices are zero, among the vertices that are 1 and are as high as possible, the one farthest to the right must be the corner of a cell that is $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$. Finally, leaving some details to the reader, in Theorem ~\ref{thm: m by n matrix}, if $v\left(\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}\right)=0$ and $v\left(\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}\right)=1$ then for all positive integers $m$ and $n$, the upper right entry of $A_{n}^{m}$ equals $1$.
 
-As for determining the number of polygon free $(m, n)$ mosaics using a reduced tile set, this will simply be $7^{mn}$ if the second, third, fourth, or fifth tile is omitted from the tile set, since we have just seen that no polygons can be formed. For these or other omitted tiles, we can use the ideas from Theorem~\ref{thm: sum of v for polygon mosaics}. For example, if we omit the last tile of Figure~\ref{fig:tile set} then we use the cell product function $v$ that maps $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$, $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$, $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$, and $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$ (since there are six tiles that can replace the blank tile in a polygon free mosaic), $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining eight cells to $1$. 
+As for determining the number of polygon free $(m, n)$ mosaics using a reduced tile set, this will simply be $7^{mn}$ if the second, third, fourth, or fifth tile is omitted from the tile set, since we have just seen that no polygons can be formed. For these or other omitted tiles, we can use the ideas from Theorem~\ref{thm: polygon free summation}. For example, if we omit the last tile of Figure~\ref{fig:tile set} then we use the cell product function $v$ that maps $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$, $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$, $\begin{smallmatrix}0&1\\ 0&1\end{smallmatrix}$, and $\begin{smallmatrix}1&0\\ 1&0\end{smallmatrix}$ to $0$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$ (since there are six tiles that can replace the blank tile), $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining eight cells to $1$. 
 
-For omitting the blank tile, we would use $v$ defined by mapping $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$ to 0, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining ten tiles to $1$. In this case we would consider polygon mosaics that might include blank tiles, and create only those polygon free mosaics in which the blank tile was replaced by a tile that is not blank. This example was posed by the first author of this paper and served as the motivation for all our work. The number of polygon free mosaics with the blank tile omitted is A364440 on the OEIS \cite{oeis}.
+For omitting the blank tile, we would use $v$ defined by mapping $\begin{smallmatrix}0&1\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 0&1\end{smallmatrix}$ to 0, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $6$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and the remaining ten tiles to $1$. In this case we would consider polygon mosaics that might include blank tiles, and create only those polygon free mosaics in which the blank tile was replaced by a tile that is not blank. This problem was posed by the first author of this paper and served as the motivation for all our work. The number of polygon free mosaics with the blank tile omitted is A364440 on the OEIS \cite{oeis}.
 \\
 
 \noindent \textbf{Adding tile variations.} Adding tiles with the same connection points is similar. For instance, consider including three types of tiles that connect the top and bottom midpoints such as in Figure~\ref{fig: various top bottom tiles}.
@@ -1501,12 +1461,12 @@ For omitting the blank tile, we would use $v$ defined by mapping $\begin{smallma
 \label{fig: various top bottom tiles}
 \end{figure}
 
-\noindent To count polygon mosaics in this new tile set, take $v$ such that $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ map to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ map to $3$, and all other cells map to $1$. To count polygon free mosaics, take $v$ that maps $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ to $3$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $9$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and map $1$ to the eight remaining cells.
+\noindent To count polygon mosaics in this new tile set, take $v$ such that $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ map to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ map to $3$, and all other cells map to $1$. To count polygon free mosaics, take $v$ that maps $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$ to $3$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $9$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-1$, and map the eight remaining cells to $1$.
 
-One could also construct a tile set with both styles of tile in Figure \ref{fig:tile styles}. If this is done for each tile that joins adjacent sides of the unit square, then to count polygon mosaics take $v$ such that $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ map to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$, $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$, $\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix}$, and $\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}$ map to $1$, and all other cells map to $2$. To count polygon free mosaics, take $v$ that maps $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$, $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$, $\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix}$, and $\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}$ map to $1$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $11$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-2$, and map $2$ to the six remaining cells.
+One could also construct a tile set with both styles of tile in Figure \ref{fig:tile styles}. If this is done for each tile that joins adjacent sides of the unit square, then to count polygon mosaics take $v$ such that $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ map to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$, $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$, $\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix}$, and $\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}$ map to $1$, and all other cells map to $2$. To count polygon free mosaics, take $v$ that maps $\begin{smallmatrix} 0 & 1 \\ 1 & 0 \end{smallmatrix}$ and $\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}$ to $0$, $\begin{smallmatrix} 0 & 1 \\ 0 & 1 \end{smallmatrix}$, $\begin{smallmatrix} 1 & 0 \\ 1 & 0 \end{smallmatrix}$, $\begin{smallmatrix} 0 & 0 \\ 1 & 1 \end{smallmatrix}$, and $\begin{smallmatrix} 1 & 1 \\ 0 & 0 \end{smallmatrix}$ map to $1$, $\begin{smallmatrix}0&0\\ 0&0\end{smallmatrix}$ and $\begin{smallmatrix}1&1\\ 1&1\end{smallmatrix}$ to $11$, $\begin{smallmatrix}0&0\\ 1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\ 1&1\end{smallmatrix}$ to $-2$, and map the six remaining cells to $2$.
 \\
 
-\noindent \textbf{The Lomonaco and Kauffman tile set.} Although we could consider counting the number of knot free mosaics built from the Lomonaco and Kauffman tile set in Figure~\ref{fig: lk tile set}, we will not do so. For this tile set, there are two reasonable ways to define a knot free mosaic. A knot free mosaic could either be a mosaic in which no knot can be found, or one in which no set of tiles exists for which all segments in those tiles are part of knots. For example, the mosaic in Figure~\ref{fig: knot free mosaic} is knot free in the second sense but not in the first. 
+\noindent \textbf{The Lomonaco and Kauffman tile set.} We can count knot mosaics by taking $v$ such that $\begin{smallmatrix}0&1\\1&0\end{smallmatrix}$ and $\begin{smallmatrix}1&0\\0&1\end{smallmatrix}$ to $4$, and map the twelve remaining cells to $1$. This is equivalent to the main result in \cite{Oh2014}. Although we could consider counting the number of knot free mosaics built from the Lomonaco and Kauffman tile set in Figure~\ref{fig: lk tile set}, we will not do so. For this tile set, there are two reasonable ways to define a knot free mosaic. A knot free mosaic could either be a mosaic in which no knot can be found, or one in which no set of tiles exists for which all segments in those tiles are part of knots. For example, the mosaic in Figure~\ref{fig: knot free mosaic} is knot free in the second sense but not in the first. 
 
 \begin{figure}[h!]
 \begin{center}
