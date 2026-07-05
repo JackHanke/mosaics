@@ -1,0 +1,355 @@
+%% LyX 2.5.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[oneside,english]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\synctex=-1
+\usepackage{xcolor}
+\colorlet{note_fontcolor}{lightgray}
+\usepackage{enumitem}
+\usepackage{amsthm}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% The greyedout annotation environment
+\newenvironment{lyxgreyedout}
+{\normalfont\normalsize\textcolor{note_fontcolor}\bgroup\ignorespaces}
+{\ignorespacesafterend\egroup}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\newlength{\lyxlabelwidth}      % auxiliary length 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\date{}
+\usepackage{commath}
+
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{remark}
+\newtheorem*{rem*}{\protect\remarkname}
+\newtheorem*{claim*}{\protect\claimname}
+\usepackage{babel}
+\providecommand{\claimname}{Claim}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+
+\section{Counting Polygon Mosaics}
+
+\label{section: counting polygon mosaics}
+\begin{thm}
+Let $v$ be any cell product function. Define the $1\times1$ matrices
+$A_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, $B_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, $C_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, and $D_{1}=\begin{pmatrix}v\left(\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix}\right)\end{pmatrix}$, and for positive integers $n$, define the $2^{n}\times2^{n}$ matrices
+\begin{lyxgreyedout}
+Note that in the expressions below like $v(\begin{smallmatrix}0 & 0\\
+0 & 1
+\end{smallmatrix})B_{n}$, the LaTeX should be updated to \textbackslash left( and \textbackslash right).%
+\end{lyxgreyedout}
+\begin{eqnarray*}
+A_{n+1}=\begin{pmatrix}v(\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix})A_{n} & v(\begin{smallmatrix}0 & 0\\
+0 & 1
+\end{smallmatrix})B_{n}\\
+v(\begin{smallmatrix}0 & 1\\
+0 & 0
+\end{smallmatrix})C_{n} & v(\begin{smallmatrix}0 & 1\\
+0 & 1
+\end{smallmatrix})D_{n}
+\end{pmatrix} & B_{n+1}=\begin{pmatrix}v(\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix})A_{n} & v(\begin{smallmatrix}0 & 0\\
+1 & 1
+\end{smallmatrix})B_{n}\\
+v(\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix})C_{n} & v(\begin{smallmatrix}0 & 1\\
+1 & 1
+\end{smallmatrix})D_{n}
+\end{pmatrix}\\
+C_{n+1}=\begin{pmatrix}v(\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix})A_{n} & v(\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix})B_{n}\\
+v(\begin{smallmatrix}1 & 1\\
+0 & 0
+\end{smallmatrix})C_{n} & v(\begin{smallmatrix}1 & 1\\
+0 & 1
+\end{smallmatrix})D_{n}
+\end{pmatrix} & D_{n+1}=\begin{pmatrix}v(\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix})A_{n} & v(\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix})B_{n}\\
+v(\begin{smallmatrix}1 & 1\\
+1 & 0
+\end{smallmatrix})C_{n} & v(\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix})D_{n}
+\end{pmatrix}.
+\end{eqnarray*}
+Then for all positive integers $m$ and $n$, the upper left entry
+of $A^{m}_{n}$ equals $\sum_{\ell}v\left(\ell\right)$, where the
+sum is over all $\left(m,n\right)$ framed lattices $\ell$. \label{thm: m by n matrix} 
+\end{thm}
+
+In the statement of Theorem~\ref{thm: m by n matrix}, we evaluate
+$v$ at each of the sixteen possible cells at least once. The order
+in which these values appear may look haphazard but is exactly what
+we need to establish the first part of Proposition~\ref{prop: one by n matrix},
+which we will use to prove the proposition's second part, which in
+turn is a key part of the proof of Theorem~\ref{thm: m by n matrix}.
+
+Until we complete the proof of Theorem~\ref{thm: m by n matrix},
+we use, as found there, $v$ and the matrices $A_{n},B_{n},C_{n},$
+and $D_{n}$, for $n\ge1$. Also, let $\beta_{n}(k)$ be the $n$
+digit binary representation of the nonnegative integer $k<2^{n}$,
+separated out into individual digits (e.g., $\beta_{3}\left(5\right)$
+is $1\ 0\ 1$ rather than $101$), with $\beta_{0}\left(0\right)$
+being the empty string. This allows us, for example, to write the
+binary lattice $\begin{smallmatrix}0 & 1 & 1 & 0\\
+0 & 0 & 1 & 0
+\end{smallmatrix}$ as $\begin{smallmatrix}\beta_{4}\left(6\right)\\
+\beta_{4}\left(2\right)
+\end{smallmatrix}$ or as $\begin{smallmatrix}0 & \beta_{2}\left(3\right) & 0\\
+0 & \beta_{2}\left(1\right) & 0
+\end{smallmatrix}$.
+\begin{prop}
+\label{prop: one by n matrix} Let $n$ be a positive integer. Numbering
+rows and columns beginning at $0$, we have the following.
+\begin{enumerate}
+\item $\begin{pmatrix}A_{n} & B_{n}\\
+C_{n} & D_{n}
+\end{pmatrix}$ equals the $2^{n}\times2^{n}$ matrix whose $\left(i,j\right)$ entry
+is $v\left(\begin{smallmatrix}\beta_{n+1}\left(2i\right)\\
+\beta_{n+1}\left(2j\right)
+\end{smallmatrix}\right)$.
+\item $A_{n}$ equals the $2^{n-1}\times2^{n-1}$ matrix whose $\left(i,j\right)$
+entry is $v\left(\begin{smallmatrix}0 & \beta_{n-1}\left(i\right) & 0\\
+0 & \beta_{n-1}\left(j\right) & 0
+\end{smallmatrix}\right)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Notice that for all nonnegative integers $k<2^{n}$, $\beta_{n+1}\left(2k\right)$
+is the string $\beta_{n}\left(k\right)\ 0$ and that if $k<2^{n-1}$
+then $\beta_{n}\left(k\right)$ is the string $0\ \beta_{n-1}\left(k\right)$.
+Putting these together, the first part of the proposition implies
+the second.
+
+Define $X_{n}$ to be the $2^{n}\times2^{n}$ matrix $\begin{pmatrix}A_{n} & B_{n}\\
+C_{n} & D_{n}
+\end{pmatrix}$ and $Y_{n}$ to be the $2^{n}\times2^{n}$ matrix whose $\left(i,j\right)$
+entry is $v\left(\begin{smallmatrix}\beta_{n+1}\left(2i\right)\\
+\beta_{n+1}\left(2j\right)
+\end{smallmatrix}\right)$. To complete the proposition, we must prove $X_{n}=Y_{n}$ for all
+positive integers $n$. Since $\beta_{2}\left(0\right)$ is $0\ 0$
+and $\beta_{2}\left(2\right)$ is $1\ 0$, the $n=1$ case follows
+from the definitions of $A_{1}$, $B_{1}$, $C_{1}$, and $D_{1}$
+in Theorem~\ref{thm: m by n matrix}. Continuing by induction, we
+assume $X_{n}=Y_{n}$ and prove $X_{n+1}=Y_{n+1}$.
+
+The statement of Theorem~\ref{thm: m by n matrix} tells us that
+\[
+X_{n+1}=\begin{pmatrix}v\left(\begin{smallmatrix}0 & 0\\
+0 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}0 & 0\\
+0 & 1
+\end{smallmatrix}\right)B_{n} & v\left(\begin{smallmatrix}0 & 0\\
+1 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}0 & 0\\
+1 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}0 & 1\\
+0 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}0 & 1\\
+0 & 1
+\end{smallmatrix}\right)D_{n} & v\left(\begin{smallmatrix}0 & 1\\
+1 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}0 & 1\\
+1 & 1
+\end{smallmatrix}\right)D_{n}\\
+v\left(\begin{smallmatrix}1 & 0\\
+0 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}1 & 0\\
+0 & 1
+\end{smallmatrix}\right)B_{n} & v\left(\begin{smallmatrix}1 & 0\\
+1 & 0
+\end{smallmatrix}\right)A_{n} & v\left(\begin{smallmatrix}1 & 0\\
+1 & 1
+\end{smallmatrix}\right)B_{n}\\
+v\left(\begin{smallmatrix}1 & 1\\
+0 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}1 & 1\\
+0 & 1
+\end{smallmatrix}\right)D_{n} & v\left(\begin{smallmatrix}1 & 1\\
+1 & 0
+\end{smallmatrix}\right)C_{n} & v\left(\begin{smallmatrix}1 & 1\\
+1 & 1
+\end{smallmatrix}\right)D_{n}
+\end{pmatrix},
+\]
+so that each entry of $X_{n+1}$ is $v$ evaluated at a cell times
+an entry of $A_{n}$, $B_{n}$, $C_{n}$, or $D_{n}$. After we also
+express every entry of $Y_{n+1}$ as $v$ evaluated at a cell times
+another quantity, we will show that the cells evaluated at $v$ are
+the same, as are the other quantities, and thus $X_{n+1}=Y_{n+1}$.
+To express an entry of $Y_{n+1}$ in our desired way, we use that
+$v$ is a cell product function to write $v\left(\begin{smallmatrix}\beta_{n+2}\left(2i\right)\\
+\beta_{n+2}\left(2j\right)
+\end{smallmatrix}\right)$ as the product of $v$ applied to the leftmost cell of $\begin{smallmatrix}\beta_{n+2}\left(2i\right)\\
+\beta_{n+2}\left(2j\right)
+\end{smallmatrix}$ and $v\left(\ell_{i,j}\right)$, where $\ell_{i,j}$ is the binary
+lattice formed by deleting the leftmost column of $\begin{smallmatrix}\beta_{n+2}\left(2i\right)\\
+\beta_{n+2}\left(2j\right)
+\end{smallmatrix}$.
+
+Consider $\beta_{n+2}\left(2k\right)$ for $k=0$, $1$, \ldots ,
+$2^{n+1}-1$. The first half of these $2^{n+1}$ strings begin with
+$0$ and the second half begin with $1$. Splitting each half in half,
+the strings in each of these four parts begin with $0\ 0$, $0\ 1$,
+$1\ 0$, and $1\ 1$, in that order. Therefore, as we go down any
+column of $Y_{n+1}$ from the top row to the bottom row in four equal
+parts, the leftmost cell of $\begin{smallmatrix}\beta_{n+2}\left(2i\right)\\
+\beta_{n+2}\left(2j\right)
+\end{smallmatrix}$ has upper row $0\ 0$, $0\ 1$, $1\ 0$, then $1\ 1$. Similarly,
+going to the right across any row of $Y_{n+1}$, the leftmost cell
+has lower row $0\ 0$, $0\ 1$, $1\ 0$, then $1\ 1$. Comparing this
+to $X_{n+1}$ as above, the cells evaluated by $v$ are the same in
+both $X_{n+1}$ and $Y_{n+1}$.
+
+To complete our proof, we must show for all $i$ and $j$ that $v\left(\ell_{i,j}\right)$
+is equal to the entry of $A_{n}$, $B_{n}$, $C_{n}$, or $D_{n}$
+that appears in the appropriate block of $X_{n+1}$ as shown above.
+Returning to $\beta_{n+2}\left(2k\right)$ for $k=0$, $1$, \ldots ,
+$2^{n+1}-1$ and deleting the first digit of each string, this sequence
+becomes two copies of the sequence of strings given by $\beta_{n+1}\left(2k\right)$
+for $k=0$, $1$, \ldots , $2^{n}-1$. Using this, consider the $2^{n+1}\times2^{n+1}$
+matrix whose $\left(i,j\right)$ entry is $v\left(\ell_{i,j}\right)$.
+As we go down any column, we get two copies of $\beta_{n+1}\left(2i\right)$
+for $i=0$, $1$, \ldots , $2^{n}-1$ in the upper row of $\ell_{i,j}$,
+and as we move right across any row, we get two copies of $\beta_{n+1}\left(2j\right)$
+for $j=0$, $1$, \ldots , $2^{n}-1$ in the lower row of $\ell_{i,j}$.
+Therefore, using the definition of $Y_{n}$, the matrix of $v\left(\ell_{i,j}\right)$
+is exactly $\begin{pmatrix}Y_{n} & Y_{n}\\
+Y_{n} & Y_{n}
+\end{pmatrix}$. By our induction hypothesis, $Y_{n}=X_{n}=\begin{pmatrix}A_{n} & B_{n}\\
+C_{n} & D_{n}
+\end{pmatrix}$, and thus in the $\left(i,j\right)$ entry of $X_{n+1}$ as given
+above, the entry of $A_{n}$, $B_{n}$, $C_{n}$, or $D_{n}$ equals
+$v\left(\ell_{i,j}\right)$, as needed.
+\end{proof}
+
+\begin{rem*}
+For any positive integer $n$ and any nonnegative integers $i$, $j<2^{n}$,
+Proposition~\ref{prop: one by n matrix} expresses $v\left(\begin{smallmatrix}\beta_{n+1}\left(2i\right)\\
+\beta_{n+1}\left(2j\right)
+\end{smallmatrix}\right)$ as an entry of $X_{n}=\begin{pmatrix}A_{n} & B_{n}\\
+C_{n} & D_{n}
+\end{pmatrix}$. That is, some entry of $A_{n}$, $B_{n}$, $C_{n}$ or $D_{n}$
+gives us the evaluation at $v$ of every $\left(2,n+1\right)$ binary
+lattice provided that its rightmost column is $\begin{smallmatrix}0\\
+0
+\end{smallmatrix}$. Although we do not need it, we can instead find $v\left(\begin{smallmatrix}\beta_{n}\left(i\right)\\
+\beta_{n}\left(j\right)
+\end{smallmatrix}\right)$, i.e., $v$ evaluated at any $\left(2,n\right)$ binary lattice.
+For this, we would use the equations of Theorem~\ref{thm: m by n matrix}
+with $\hat{A}$ replacing $A$, $\hat{B}$ replacing $B$, etc., except
+defining $\hat{A}_{1}=\hat{B}_{1}=\hat{C}_{1}=\hat{D}_{1}=\left(1\right)$.
+Adapting our work above, we would then show using induction that $\hat{X_{n}}=\begin{pmatrix}\hat{A}_{n} & \hat{B}_{n}\\
+\hat{C}_{n} & \hat{D}_{n}
+\end{pmatrix}$ is the $2^{n}\times2^{n}$ matrix whose $\left(i,j\right)$ entry
+is $v\left(\begin{smallmatrix}\beta_{n}\left(i\right)\\
+\beta_{n}\left(j\right)
+\end{smallmatrix}\right)$ for any integer $n\ge2$ and any nonnegative integers $i$, $j<2^{n}$.
+Furthermore, by adapting the claim below in the proof of Theorem~\ref{thm: m by n matrix},
+the $\left(i,j\right)$ entry of $\hat{X}^{m}_{n}$ equals $\sum_{\ell}v\left(\ell\right)$,
+where the sum is over all $\left(m,n\right)$ binary lattices whose
+top and bottom rows are equal to $\beta_{n}\left(i\right)$ and $\beta_{n}\left(j\right)$,
+respectively. In particular, adding all the entries of $\hat{X}^{m}_{n}$
+gives $\sum_{\ell}v\left(\ell\right)$, where the sum is over all
+$\left(m,n\right)$ binary lattices.
+\end{rem*}
+\begin{proof}[Proof of Theorem~\ref{thm: m by n matrix}]
+ Fix $n$. We first introduce some terminology. For all positive
+integers $m$, we say a \emph{height~$m$ strip} is an $\left(m,n\right)$
+binary lattice in which all vertices in the farthest left and farthest
+right columns are labeled zero. Then for a height~$m$ strip $\ell$
+and a nonnegative integer $i<2^{n-1}$, we say a particular row of
+$\ell$ is \emph{determined by $i$} if that row is equal to $0\ \beta_{n-1}\left(i\right)\ 0$.
+Note that an $\left(m,n\right)$ framed lattice is exactly a height~$m$
+strip in which both the top and bottom rows are determined by $0$.
+Thus, to prove our theorem it suffices to show the following.
+\begin{claim*}
+For all positive integers $m$ and nonnegative integers $i,j<2^{n-1}$,
+the $\left(i,j\right)$ entry of $A^{m}_{n}$ equals $\sum_{\ell}v\left(\ell\right)$,
+where the sum is over all height~$m$ strips $\ell$ whose first
+row is determined by $i$ and whose last row is determined by $j$. 
+\end{claim*}
+To prove the claim, first observe that for each $i$ and $j$, there
+exists a unique height~$1$ strip whose first row is determined by
+$i$ and whose last row is determined by $j$. By the second part
+of Proposition~\ref{prop: one by n matrix}, $v$ applied to this
+strip is equal to the $\left(i,j\right)$ entry of $A_{n}$. This
+proves our claim when $m=1$. We continue by induction, so for some
+$m\ge2$, assume the claim for $m-1$.
+
+Fix nonnegative integers $i,j<2^{n-1}$, and consider some nonnegative
+integer $k<2^{n-1}$. As in the $m=1$ case, the second part of Proposition~\ref{prop: one by n matrix}
+tells us that the $\left(i,k\right)$ entry of $A_{n}$ equals $v$
+applied to the unique height~$1$ strip with first and last rows
+determined respectively by $i$ and by $k$. By our induction hypothesis,
+the $\left(k,j\right)$ entry of $A^{m-1}_{n}$ equals $\sum_{\ell}v\left(\ell\right)$,
+where the sum is over all height~$m-1$ strips $\ell$ whose first
+and last rows are determined respectively by $k$ and by $j$. Consider
+applying $v$ both to the height~$1$ strip indicated above and to
+one of the height~$m-1$ strips $\ell$ in this sum. Because $v$
+is a cell product function, the product of these two numbers is equal
+to $v$ applied to the height~$m$ strip formed by overlapping the
+bottom row of the height~$1$ strip to the top row of $\ell$, which
+we illustrate as
+
+% weird hack for vdot 
+\[
+v\left(\begin{smallmatrix}0 & \beta_{n-1}(i) & 0\\
+0 & \beta_{n-1}(k) & 0
+\end{smallmatrix}\right)v\left(\begin{smallmatrix}0 & \beta_{n-1}(k) & 0\\
+\vphantom{\int\limits^{x}}\smash{\vdots} & \vphantom{\int\limits^{x}}\smash{\vdots} & \vphantom{\int\limits^{x}}\smash{\vdots}\\
+0 & \beta_{n-1}(j) & 0
+\end{smallmatrix}\right)=v\left(\begin{smallmatrix}0 & \beta_{n-1}(i) & 0\\
+0 & \beta_{n-1}(k) & 0\\
+\vphantom{\int\limits^{x}}\smash{\vdots} & \vphantom{\int\limits^{x}}\smash{\vdots} & \vphantom{\int\limits^{x}}\smash{\vdots}\\
+0 & \beta_{n-1}(j) & 0
+\end{smallmatrix}\right).
+\]
+
+\noindent From this we see that the product of the $\left(i,k\right)$
+entry of $A_{n}$ and the $\left(k,j\right)$ entry of $A^{m-1}_{n}$
+is equal to $\sum_{\ell}v\left(\ell\right)$, where the sum is now
+over all height~$m$ strips $\ell$ whose first, second, and last
+rows are determined respectively by $i$, by $k$, and by $j$. This
+tells us, in turn, that when we additionally sum over all nonnegative
+$k<2^{n-1}$, we can conclude that the $\left(i,j\right)$ entry of
+$A_{n}\cdot A^{m-1}_{n}=A^{m}_{n}$ is, as desired, the sum $\sum_{\ell}v\left(\ell\right)$
+where the sum is over all height~$m$ strips $\ell$ whose first
+and last rows are determined respectively by $i$ and by $j$.
+\end{proof}
+
+
+\end{document}
