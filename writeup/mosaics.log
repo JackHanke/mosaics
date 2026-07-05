@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  5 JUL 2026 10:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  5 JUL 2026 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1153,50 +1153,53 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] [5] [6]
+[2] [3] [4] [5] [6] [7]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1433--1435
 
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 1440--1442
+Underfull \hbox (badness 10000) in paragraph at lines 1739--1741
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1464--1466
+Underfull \hbox (badness 10000) in paragraph at lines 1746--1748
 
  []
 
-[13] [14]
-Overfull \hbox (26.6316pt too wide) in paragraph at lines 1500--1500
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 1770--1772
+
+ []
+
+[14] [15]
+Overfull \hbox (26.6316pt too wide) in paragraph at lines 1806--1806
 \OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
 , p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
 42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
  []
 
-[15]
-Overfull \hbox (41.29456pt too wide) in paragraph at lines 1523--1528
+[16]
+Overfull \hbox (41.29456pt too wide) in paragraph at lines 1829--1834
 \OT1/cmr/m/n/12 Again us-ing our in-duc-tive hy-poth-e-sis, this fi-nal sum equ
 als $[] = [] \OML/cmm/m/it/12 :$
  []
 
 
-Overfull \hbox (35.21007pt too wide) in paragraph at lines 1523--1528
+Overfull \hbox (35.21007pt too wide) in paragraph at lines 1829--1834
 \OT1/cmr/m/n/12 The en-tire right side of our de-sired equa-tion there-fore equ
 als $[] + \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 A[]\OMS/cmsy/m/n/12 j ^^@ [] \OML/
 cmm/m/it/12 :$
  []
 
-[16] (./mosaics.aux)
+[17] (./mosaics.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1209,10 +1212,10 @@ Package logreq Info: Writing requests to 'mosaics.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  33324 strings out of 474116
- 650346 string characters out of 5743681
- 2002187 words of memory out of 5000000
- 55155 multiletter control sequences out of 15000+600000
- 570255 words of font info for 84 fonts, out of 8000000 for 9000
+ 650367 string characters out of 5743681
+ 2004187 words of memory out of 5000000
+ 55154 multiletter control sequences out of 15000+600000
+ 569554 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,16n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1233,10 +1236,10 @@ ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 24/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
 4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on mosaics.pdf (16 pages, 279849 bytes).
+Output written on mosaics.pdf (17 pages, 283934 bytes).
 PDF statistics:
- 368 PDF objects out of 1000 (max. 8388607)
- 308 compressed objects within 4 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 317 compressed objects within 4 object streams
+ 61 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
