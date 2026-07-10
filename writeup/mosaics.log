@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  5 JUL 2026 13:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  10 JUL 2026 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1165,35 +1165,35 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 1739--1741
+Underfull \hbox (badness 10000) in paragraph at lines 1741--1743
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1746--1748
+Underfull \hbox (badness 10000) in paragraph at lines 1748--1750
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 1770--1772
+Underfull \hbox (badness 10000) in paragraph at lines 1772--1774
 
  []
 
 [14] [15]
-Overfull \hbox (26.6316pt too wide) in paragraph at lines 1806--1806
+Overfull \hbox (26.6316pt too wide) in paragraph at lines 1808--1808
 \OT1/cmr/m/it/12 views in Math-e-mat-i-cal Physics \OT1/cmr/m/n/12 36.10 (2024)
 , p. 2450025. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$\OT1/cmtt/m/n/12 10 . 11
 42 / S0129055X24500259$[]\OT1/cmr/m/n/12 .
  []
 
 [16]
-Overfull \hbox (41.29456pt too wide) in paragraph at lines 1829--1834
+Overfull \hbox (41.29456pt too wide) in paragraph at lines 1831--1836
 \OT1/cmr/m/n/12 Again us-ing our in-duc-tive hy-poth-e-sis, this fi-nal sum equ
 als $[] = [] \OML/cmm/m/it/12 :$
  []
 
 
-Overfull \hbox (35.21007pt too wide) in paragraph at lines 1829--1834
+Overfull \hbox (35.21007pt too wide) in paragraph at lines 1831--1836
 \OT1/cmr/m/n/12 The en-tire right side of our de-sired equa-tion there-fore equ
 als $[] + \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 A[]\OMS/cmsy/m/n/12 j ^^@ [] \OML/
 cmm/m/it/12 :$
@@ -1205,7 +1205,7 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: 96DD90E714D6EF8204AF2E3924735202;1231.
+(rerunfilecheck)             Checksum: F0A20250F192ED40FF67528F139CEDA9;1226.
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
@@ -1213,7 +1213,7 @@ Package logreq Info: Writing requests to 'mosaics.run.xml'.
 Here is how much of TeX's memory you used:
  33324 strings out of 474116
  650367 string characters out of 5743681
- 2004187 words of memory out of 5000000
+ 2003187 words of memory out of 5000000
  55154 multiletter control sequences out of 15000+600000
  569554 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1236,7 +1236,7 @@ ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 24/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
 4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on mosaics.pdf (17 pages, 283934 bytes).
+Output written on mosaics.pdf (17 pages, 283915 bytes).
 PDF statistics:
  378 PDF objects out of 1000 (max. 8388607)
  317 compressed objects within 4 object streams
