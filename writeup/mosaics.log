@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  3 AUG 2026 20:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.27)  5 AUG 2026 19:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1161,12 +1161,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1308--1310
 
  []
 
-[13]
+
 Underfull \hbox (badness 10000) in paragraph at lines 1315--1317
 
  []
 
-
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 1339--1341
 
  []
@@ -1196,20 +1196,33 @@ cmm/m/it/12 :$
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `mosaics.out' has not changed.
-(rerunfilecheck)             Checksum: A6121129082EF7D9DE508A6397DEBDDA;1224.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package rerunfilecheck Warning: File `mosaics.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `mosaics.out':
+(rerunfilecheck)             Before: A897CDBC895F60CAA842EA088C4D03C0;1058
+(rerunfilecheck)             After:  DB9FDB930060C8188DCDE0FD16595A71;1146.
+
+Package biblatex Warning: Please rerun LaTeX.
+
 Package logreq Info: Writing requests to 'mosaics.run.xml'.
 \openout1 = `mosaics.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33316 strings out of 474116
- 650231 string characters out of 5743681
+ 33314 strings out of 474116
+ 650211 string characters out of 5743681
  2006187 words of memory out of 5000000
- 55150 multiletter control sequences out of 15000+600000
+ 55148 multiletter control sequences out of 15000+600000
  569554 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,2636b,1775s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,2636b,1787s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1228,10 +1241,10 @@ ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive
 24/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
 4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
 /2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on mosaics.pdf (16 pages, 285411 bytes).
+Output written on mosaics.pdf (16 pages, 284945 bytes).
 PDF statistics:
- 370 PDF objects out of 1000 (max. 8388607)
- 310 compressed objects within 4 object streams
+ 363 PDF objects out of 1000 (max. 8388607)
+ 303 compressed objects within 4 object streams
  57 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
